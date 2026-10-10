@@ -1,0 +1,574 @@
+[
+ {
+  "path": "<eureka-image>/mnt/odm_a/etc/vintf/manifest/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.xml",
+  "note": "verified ASCII XML; inferred: VINTF manifest entry for Oculus composer HAL 1.1 (anorak build)"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/etc/vintf/manifest/vendor.oculus.hardware.graphics.gpucontrol@1.0-impl-anorak.xml",
+  "note": "verified ASCII XML containing IGpuControl; inferred: VINTF manifest entry for Oculus GPU control HAL"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus composer HAL 1.1 implementation (anorak)"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib/hw/vendor.oculus.hardware.graphics.gpucontrol@1.0-impl-anorak.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus GPU control HAL implementation (anorak)"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib/vendor.oculus.hardware.graphics.composer@1.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus composer HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib/vendor.oculus.hardware.graphics.composer@1.1.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus composer HAL 1.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib/vendor.oculus.hardware.graphics.gpucontrol@1.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus GPU control HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib64/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus composer HAL 1.1 implementation (anorak)"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib64/hw/vendor.oculus.hardware.graphics.gpucontrol@1.0-impl-anorak.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus GPU control HAL implementation (anorak)"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib64/vendor.oculus.hardware.graphics.composer@1.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus composer HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib64/vendor.oculus.hardware.graphics.composer@1.1.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus composer HAL 1.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/odm_a/lib64/vendor.oculus.hardware.graphics.gpucontrol@1.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus GPU control HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/product_a/etc/permissions/android.hardware.opengles.aep.xml",
+  "note": "verified XML; inferred: feature declaration for OpenGL ES AEP"
+ },
+ {
+  "path": "<eureka-image>/mnt/product_a/etc/permissions/android.hardware.vulkan.compute-0.xml",
+  "note": "verified XML; inferred: feature declaration for Vulkan compute level 0"
+ },
+ {
+  "path": "<eureka-image>/mnt/product_a/etc/permissions/android.hardware.vulkan.level-1.xml",
+  "note": "verified XML with name android.hardware.vulkan.level; inferred: Vulkan hardware level feature declaration"
+ },
+ {
+  "path": "<eureka-image>/mnt/product_a/etc/permissions/android.hardware.vulkan.version-1_1.xml",
+  "note": "verified XML; inferred: Vulkan 1.1 version feature declaration"
+ },
+ {
+  "path": "<eureka-image>/mnt/product_a/etc/permissions/android.software.opengles.deqp.level.xml",
+  "note": "verified XML; inferred: OpenGL ES dEQP level feature declaration"
+ },
+ {
+  "path": "<eureka-image>/mnt/product_a/etc/permissions/android.software.vulkan.deqp.level.xml",
+  "note": "verified XML; inferred: Vulkan dEQP level feature declaration"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/bin/gpuservice",
+  "note": "verified ELF 64-bit ARM64 PIE executable; inferred: GPU service daemon (init service gpu)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/etc/bpf/gpu_mem.o",
+  "note": "verified ELF 64-bit eBPF relocatable object; inferred: eBPF object for GPU memory tracing"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/etc/init/gpuservice.rc",
+  "note": "verified ASCII text, first line service gpu /system/bin/gpuservice; inferred: init service entry for gpuservice"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/arm/boot-framework-graphics.art",
+  "note": "verified binary data; inferred: ART image of framework-graphics package (token match only, low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/arm/boot-framework-graphics.oat",
+  "note": "verified ELF 32-bit ARM shared object; inferred: compiled code of framework-graphics package (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/arm64/boot-framework-graphics.art",
+  "note": "verified binary data; inferred: ART image of framework-graphics package (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/arm64/boot-framework-graphics.oat",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: compiled code of framework-graphics package (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/boot-framework-graphics.vdex",
+  "note": "verified Android vdex file; inferred: verifier dependency data for framework-graphics (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/framework-graphics.jar",
+  "note": "verified Android APK/JAR with classes.dex; inferred: framework Java graphics package (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.allocator@2.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics buffer allocator HAL 2.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.allocator@3.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics buffer allocator HAL 3.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.allocator@4.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics buffer allocator HAL 4.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.bufferqueue@1.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics bufferqueue HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.bufferqueue@2.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics bufferqueue HAL 2.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.common-V2-ndk_platform.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics common types library (NDK platform)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.common@1.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics common types HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.common@1.1.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics common types HAL 1.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.common@1.2.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics common types HAL 1.2 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.mapper@2.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: gralloc mapper HAL 2.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.mapper@2.1.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: gralloc mapper HAL 2.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.mapper@3.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: gralloc mapper HAL 3.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/android.hardware.graphics.mapper@4.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: gralloc mapper HAL 4.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libEGL.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: EGL loader library (platform)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libGLESv1_CM.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: OpenGL ES 1.x loader library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libGLESv2.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: OpenGL ES 2.0 loader library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libGLESv3.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: OpenGL ES 3.x loader library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libgraphicsenv.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: graphics environment library (GPU driver environment)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libjnigraphics.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: bitmap JNI helper library (token match only, low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib/libvulkan.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Vulkan loader library (platform)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.allocator@2.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics buffer allocator HAL 2.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.allocator@3.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics buffer allocator HAL 3.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.allocator@4.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics buffer allocator HAL 4.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.bufferqueue@1.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics bufferqueue HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.bufferqueue@2.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics bufferqueue HAL 2.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.common-V2-ndk_platform.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics common types library (NDK platform)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.common@1.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics common types HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.common@1.1.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics common types HAL 1.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.common@1.2.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics common types HAL 1.2 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.composer@2.1.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.1 library (display composition)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.composer@2.2.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.2 library (display composition)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.composer@2.3.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.3 library (display composition)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.composer@2.4.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.4 library (display composition)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.mapper@2.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: gralloc mapper HAL 2.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.mapper@2.1.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: gralloc mapper HAL 2.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.mapper@3.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: gralloc mapper HAL 3.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/android.hardware.graphics.mapper@4.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: gralloc mapper HAL 4.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libEGL.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: EGL loader library (platform)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libGLESv1_CM.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: OpenGL ES 1.x loader library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libGLESv2.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: OpenGL ES 2.0 loader library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libGLESv3.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: OpenGL ES 3.x loader library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libgpumem.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: GPU memory accounting library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libgpumemtracer.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: GPU memory tracer library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libgpuservice.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: GPU service library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libgraphicsenv.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics environment library (GPU driver environment)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libjnigraphics.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: bitmap JNI helper library (token match only, low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/lib64/libvulkan.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Vulkan loader library (platform)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/arm/boot-framework-graphics.vdex",
+  "note": "verified symlink -> ../boot-framework-graphics.vdex; inferred: alias to framework-graphics vdex (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/framework/arm64/boot-framework-graphics.vdex",
+  "note": "verified symlink -> ../boot-framework-graphics.vdex; inferred: alias to framework-graphics vdex (low GPU relevance)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/bin/gpumeminfo",
+  "note": "verified ELF 64-bit ARM64 PIE executable; inferred: GPU memory info utility"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/bin/gpuprofserver",
+  "note": "verified ELF 64-bit ARM64 PIE executable; inferred: GPU profiling server"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/bin/gpustats",
+  "note": "verified ELF 64-bit ARM64 PIE executable; inferred: GPU statistics utility"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/bin/ovrgpuprofiler",
+  "note": "verified ELF 64-bit ARM64 PIE executable; inferred: GPU profiler binary (Oculus build)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/etc/init/gpuprofilingservice.rc",
+  "note": "verified ASCII text; inferred: init service entry for GPU profiling service"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib/libVkLayer_ADRENO_qprofiler.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Vulkan layer for Adreno profiling (qprofiler)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib/vendor.oculus.hardware.graphics.composer@1.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus composer HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib/vendor.oculus.hardware.graphics.composer@1.1.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus composer HAL 1.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib/vendor.oculus.hardware.graphics.gpucontrol@1.0.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Oculus GPU control HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib64/libVkLayer_ADRENO_qprofiler.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Vulkan layer for Adreno profiling (qprofiler)"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib64/libgpuprofilingservice.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: GPU profiling service library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib64/vendor.oculus.hardware.graphics.composer@1.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus composer HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib64/vendor.oculus.hardware.graphics.composer@1.1.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus composer HAL 1.1 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_ext_a/lib64/vendor.oculus.hardware.graphics.gpucontrol@1.0.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Oculus GPU control HAL 1.0 library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml",
+  "note": "verified XML; inferred: VINTF manifest entry for QTI display gralloc mapper HAL"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/egl/eglSubDriverAndroid.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: EGL sub-driver (Android) vendor library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/egl/libEGL_adreno.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno EGL driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/egl/libGLESv1_CM_adreno.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno OpenGL ES 1.x (CM) driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/egl/libGLESv2_adreno.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno OpenGL ES 2.x/3.x driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/egl/libq3dtools_adreno.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno q3dtools library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/egl/libq3dtools_esx.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: q3dtools ESX library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: QTI display gralloc mapper HAL implementation"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/hw/vulkan.adreno.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno Vulkan driver (HAL ICD)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libOpenCL_adreno.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno OpenCL driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libadreno_app_profiles.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno application profile library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libadreno_utils.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno utilities library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libgsl.so",
+  "note": "verified ELF 32-bit ARM shared object; inferred: Adreno GPU support library (GSL), user space"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libEGL_adreno.so",
+  "note": "verified symlink -> egl/libEGL_adreno.so; inferred: alias of Adreno EGL driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libGLESv2_adreno.so",
+  "note": "verified symlink -> egl/libGLESv2_adreno.so; inferred: alias of Adreno OpenGL ES 2.x/3.x driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libq3dtools_adreno.so",
+  "note": "verified symlink -> egl/libq3dtools_adreno.so; inferred: alias of Adreno q3dtools library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/android.hardware.graphics.composer@2.1.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.1 client library (vendor copy)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/android.hardware.graphics.composer@2.2.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.2 client library (vendor copy)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/android.hardware.graphics.composer@2.3.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.3 client library (vendor copy)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/android.hardware.graphics.composer@2.4.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: graphics composer HAL 2.4 client library (vendor copy)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/egl/eglSubDriverAndroid.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: EGL sub-driver (Android) vendor library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/egl/libEGL_adreno.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno EGL driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/egl/libGLESv1_CM_adreno.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno OpenGL ES 1.x (CM) driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/egl/libGLESv2_adreno.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno OpenGL ES 2.x/3.x driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/egl/libq3dtools_adreno.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno q3dtools library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/egl/libq3dtools_esx.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: q3dtools ESX library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: QTI display gralloc mapper HAL implementation"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/hw/vulkan.adreno.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno Vulkan driver (HAL ICD)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libOpenCL_adreno.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno OpenCL driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libadreno_app_profiles.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno application profile library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libadreno_utils.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno utilities library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "note": "verified ELF 64-bit ARM64 shared object; inferred: Adreno GPU support library (GSL), user space"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libEGL_adreno.so",
+  "note": "verified symlink -> egl/libEGL_adreno.so; inferred: alias of Adreno EGL driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libGLESv2_adreno.so",
+  "note": "verified symlink -> egl/libGLESv2_adreno.so; inferred: alias of Adreno OpenGL ES 2.x/3.x driver"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libq3dtools_adreno.so",
+  "note": "verified symlink -> egl/libq3dtools_adreno.so; inferred: alias of Adreno q3dtools library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_dlkm_a/lib/modules/gpucc-anorak.ko",
+  "note": "verified ELF 64-bit ARM64 relocatable (kernel module); observed string qcom,anorak-gpucc; inferred: GPU clock controller module"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_dlkm_a/lib/modules/log_gpu_error.ko",
+  "note": "verified ELF 64-bit ARM64 relocatable (kernel module); observed description=Log GPU Errors Driver; inferred: GPU error logging module"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_dlkm_a/lib/modules/msm_drm.ko",
+  "note": "adjacent, outside requested tokens: verified ELF 64-bit ARM64 relocatable (kernel module); observed strings DRM DP AUX register failed, DRM_FORMAT_MOD_QCOM_CAC_R; inferred: Qualcomm display DRM/KMS module (GPU relevance unverified)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/hw/gralloc.default.so",
+  "note": "adjacent: verified ELF 32-bit ARM shared object; inferred: gralloc HAL implementation (graphics buffer allocation)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/hw/gralloc.default.so",
+  "note": "adjacent: verified ELF 64-bit ARM64 shared object; inferred: gralloc HAL implementation (graphics buffer allocation)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libgralloc.qti.so",
+  "note": "adjacent: verified ELF 32-bit ARM shared object; inferred: QTI gralloc library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libgralloc.qti.so",
+  "note": "adjacent: verified ELF 64-bit ARM64 shared object; inferred: QTI gralloc library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libgralloccore.so",
+  "note": "adjacent: verified ELF 32-bit ARM shared object; inferred: gralloc core library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libgralloccore.so",
+  "note": "adjacent: verified ELF 64-bit ARM64 shared object; inferred: gralloc core library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libgrallocutils.so",
+  "note": "adjacent: verified ELF 32-bit ARM shared object; inferred: gralloc utilities library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libgrallocutils.so",
+  "note": "adjacent: verified ELF 64-bit ARM64 shared object; inferred: gralloc utilities library"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib/libOpenCL.so",
+  "note": "adjacent: verified ELF 32-bit ARM shared object; inferred: generic OpenCL ICD loader"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/lib64/libOpenCL.so",
+  "note": "adjacent: verified ELF 64-bit ARM64 shared object; inferred: generic OpenCL ICD loader"
+ },
+ {
+  "path": "<eureka-image>/mnt/system_a/system/bin/surfaceflinger",
+  "note": "adjacent: verified ELF 64-bit ARM64 PIE executable; inferred: compositor service (GPU-composited output)"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/bin/hw/vendor.qti.hardware.display.composer-service",
+  "note": "adjacent: verified ELF 64-bit ARM64 PIE executable; inferred: QTI display composer HAL service"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/etc/init/vendor.qti.hardware.display.composer-service.rc",
+  "note": "adjacent: verified present, 331 bytes; inferred: init entry for the QTI display composer service"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml",
+  "note": "adjacent: verified present, 4602 bytes; inferred: VINTF manifest entry for the QTI display composer service"
+ },
+ {
+  "path": "<eureka-image>/mnt/vendor_a/etc/display/DPU930.xml",
+  "note": "adjacent: verified present, 2108 bytes; inferred: display engine (DPU) configuration file"
+ }
+]

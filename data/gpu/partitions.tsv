@@ -1,0 +1,9 @@
+partition	size_bytes	sha256_prefix
+odm_a	120070144	0c9149726444d482
+odm_dlkm_a	1511424	af04ce09999f2062
+product_a	340672512	2921d62a2c675bd3
+system_a	1230807040	21274491f9aabc8f
+system_ext_a	1362567168	97bd72cb1ccec6b8
+vendor_a	426274816	6abbdb75be7a2753
+vendor_dlkm_a	63754240	96c80d09d0bd58aa
+scratch	2521616384	8fc8305997e2e3f8

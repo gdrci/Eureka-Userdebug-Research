@@ -1,0 +1,250 @@
+[
+ {
+  "target": "zap",
+  "id": "F1",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
+  "claim": "File sizes: .mdt 6284 bytes (0x188c), .b00 148 (0x94), .b01 1072 (0x430), .b02 6136 (0x17f8), .elf 5168 (0x1430), .mbn 14328 (0x37f8). Full SHA-256 values are listed in the evidence.",
+  "evidence": "cd $FW && sha256sum a740v3_zap.* ; $ZI $FW compare | head -8. Output: 008e8edf4d23b4f6ce8131f5256801247af9a28139419a49a37c1e8da705f1e7  a740v3_zap.b00 ; 74b860591eb73f952547a816bd60b746419cc312150031f3bd9fc942470347d7  a740v3_zap.b01 ; 682063d46b1793b851142486a2bb3ae0abb26f90061bc3dc82b2210d9c5a2509  a740v3_zap.b02 ; 8a8c07a9fe8884c720b72d037eb6a9968fcc02f9b8168ad4c611de1aac549c4f  a740v3_zap.elf ; b5f4646ecff743dae4a279817046c5797d4310310c8548a5a0fa5730b7731af6  a740v3_zap.mbn ; ebdc682ac7199d005a11dad222954679fee61d7ff260b99a0586424f9c328bcc  a740v3_zap.mdt ; compare lines: 'ebdc682ac7199d00 a740v3_zap.mdt 6284' and 'b5f4646ecff743da a740v3_zap.mbn 14328'"
+ },
+ {
+  "target": "zap",
+  "id": "F2",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
+  "claim": "The .mdt begins with an ELF32 little-endian header: EI_CLASS 1, EI_DATA 1, EI_VERSION 1, OS/ABI 0. Fields: e_type 2 (EXEC), e_machine 164 (0xa4), e_version 1, e_entry 0x1000, e_phoff 0x34, e_shoff 0 (no section header table), e_flags 0x3, e_ehsize 52, e_phentsize 32, e_phnum 3, e_shentsize 0, e_shnum 0, e_shstrndx 0.",
+  "evidence": "$ZI $FW info a740v3_zap.mdt. Excerpt: '== a740v3_zap.mdt (size 6284 = 0x188c) ==' ; 'e_ident class=1 data=1 version=1 osabi=0 abiver=0' ; 'e_type=2 e_machine=164 (0xa4) e_version=1 e_entry=0x1000 e_phoff=0x34 e_shoff=0x0' ; 'e_flags=0x3 e_ehsize=52 e_phentsize=32 e_phnum=3 e_shentsize=0 e_shnum=0 e_shstrndx=0'. Raw bytes: od -A x -t x1z -N 32 a740v3_zap.mdt gives '000000 7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00' and '000010 02 00 a4 00 01 00 00 00 00 10 00 00 34 00 00 00'."
+ },
+ {
+  "target": "zap",
+  "id": "F3",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
+  "claim": "The .mdt program header table at 0x34 has three 32-byte entries. [0]: p_type 0, p_offset 0x0, p_vaddr 0x0, p_paddr 0x0, p_filesz 0x94 (148), p_memsz 0, p_flags 0x07000000, p_align 0. [1]: p_type 1 (PT_LOAD), p_offset 0x1000, p_vaddr 0x1000, p_paddr 0x1000, p_filesz 0x430 (1072), p_memsz 0x430, p_flags 0x08000007, p_align 0x100000. [2]: p_type 0, p_offset 0x2000, p_vaddr 0, p_paddr 0, p_filesz 0x17f8 (6136), p_memsz 0x17f8, p_flags 0x02000000, p_align 0x1000. The .mbn table contains the same three entries.",
+  "evidence": "$ZI $FW info a740v3_zap.mdt a740v3_zap.mbn. Excerpt for the .mdt: 'phdr[0] @0x34 type=0 offset=0x0 vaddr=0x0 paddr=0x0 filesz=0x94(148) memsz=0x0(0) flags=0x07000000 align=0x0' ; 'phdr[1] @0x54 type=1 offset=0x1000 vaddr=0x1000 paddr=0x1000 filesz=0x430(1072) memsz=0x430(1072) flags=0x08000007 align=0x100000' ; 'phdr[2] @0x74 type=0 offset=0x2000 vaddr=0x0 paddr=0x0 filesz=0x17f8(6136) memsz=0x17f8(6136) flags=0x02000000 align=0x1000'. The .mbn output repeats these three lines exactly."
+ },
+ {
+  "target": "zap",
+  "id": "F5",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
+  "claim": ".b00 is byte-identical to .mdt bytes 0x0 to 0x93 (148 bytes). .b02 is byte-identical to .mdt bytes from 0x94 to end (6136 bytes). The .b01 bytes do not occur anywhere in the .mdt.",
+  "evidence": "$ZI $FW compare. Excerpt: 'mdt[0:0x94] vs b00 lenA=148 lenB=148 equal=true' ; 'mdt[0x94:] vs b02 lenA=6136 lenB=6136 equal=true' ; 'a740v3_zap.mdt contains a740v3_zap.b00 at offsets [0]' ; 'a740v3_zap.mdt contains a740v3_zap.b01 at offsets []' ; 'a740v3_zap.mdt contains a740v3_zap.b02 at offsets [148]'."
+ },
+ {
+  "target": "zap",
+  "id": "F9",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
+  "claim": "Header bytes differ between .elf and .mbn: .elf has e_phnum 1 and one program header, .mbn has e_phnum 3 and the three-entry table. Over the overlapping prefix 0x0 to 0x1430 there are 30 differing bytes, the first at 0x2c and the last at 0x91. The code bytes at 0x1000 to 0x142f are identical.",
+  "evidence": "$ZI $FW compare. Excerpt: 'mbn[0:0x94] vs elf[0:0x94] lenA=148 lenB=148 equal=false' ; 'overlapping prefix length=5168 diffs=30 first=0x2c last=0x91'. Byte check: od -A x -t x1 -j 44 -N 8 a740v3_zap.mbn gives '00002c 03 00 00 00 00 00 00 00' and od -A x -t x1 -j 44 -N 8 a740v3_zap.elf gives '00002c 01 00 00 00 00 00 00 00'."
+ },
+ {
+  "target": "zap",
+  "id": "F13",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
+  "claim": "None of the 32-byte SHA-256 digests of .b01, .b02, .mdt or .mbn appears as a raw byte sequence in the hash segment.",
+  "evidence": "$ZI $FW scan. Excerpt: 'sha256(b01)=74b860591eb73f952547a816bd60b746419cc312150031f3bd9fc942470347d7 occurrences in mbn hash seg: []' ; 'sha256(b02)=682063d46b1793b851142486a2bb3ae0abb26f90061bc3dc82b2210d9c5a2509 occurrences in mbn hash seg: []' ; 'sha256(mdt)=ebdc682ac7199d005a11dad222954679fee61d7ff260b99a0586424f9c328bcc occurrences in mbn hash seg: []' ; 'sha256(mbn)=b5f4646ecff743dae4a279817046c5797d4310310c8548a5a0fa5730b7731af6 occurrences in mbn hash seg: []'."
+ },
+ {
+  "target": "zap",
+  "id": "F16",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
+  "claim": "The .elf, .b00 and .b01 files contain no printable run of 4 or more characters. The .b02, .mdt and .mbn files each contain 83 such runs, all located in the hash segment, and these are the certificate names, validity strings and random-looking fragments listed in F14. No build ID, version string or message name was found.",
+  "evidence": "strings -n 4 a740v3_zap.elf | wc -l gives 0 ; strings -n 4 a740v3_zap.b00 | wc -l gives 0 ; strings -n 4 a740v3_zap.b01 | wc -l gives 0 ; strings -n 4 a740v3_zap.b02 | wc -l gives 83 ; strings -n 4 a740v3_zap.mbn | wc -l gives 83 ; strings -n 4 a740v3_zap.mdt | wc -l gives 83. LC_ALL=C grep -obUaiP '[\\x20-\\x7e]{0,40}(build|version|msg|ver[0-9]|zap)[\\x20-\\x7e]{0,40}' a740v3_zap.mbn gives no output."
+ },
+ {
+  "target": "zap",
+  "id": "F17",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.b01",
+  "claim": "The code segment (.b01, file offset 0x1000 in .elf and .mbn, virtual address 0x1000) starts at e_entry 0x1000. The first little-endian word is 0x01511014.",
+  "evidence": "od -A x -t x4 -N 64 a740v3_zap.b01 gives '000000 01511014 700f010c 2842000f b8090071' ; '000010 a8000071 c0420004 70030014 d1000000' ; '000020 a8090071 b8050000 90432008 90ac7378' ; '000030 d40000ef 30630010 90843008 98822007'."
+ },
+ {
+  "target": "zap",
+  "id": "F19",
+  "label": "verified",
+  "file": "<tools>/work/a740v3_zap/b01_disasm.txt",
+  "claim": "Disassembling the whole 1072-byte .b01 with the same decoder and default CPU yields 202 brace-delimited packet blocks and 60 'invalid instruction encoding' warnings. The cause of the warnings is not determined.",
+  "evidence": "od -An -v -tx1 a740v3_zap.b01 | tr -s ' \\n' ' ' | sed 's/ \\([0-9a-f][0-9a-f]\\)/ 0x\\1/g' | llvm-mc --disassemble -triple=hexagon > $W/b01_disasm.txt 2> $W/b01_disasm.err ; grep -c '{' $W/b01_disasm.txt gives 202 ; grep -c 'invalid instruction encoding' $W/b01_disasm.err gives 60."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "G-01",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "gmu_gen70200.bin is 67,240 bytes (0x106a8), a multiple of 4. It holds 11 descriptor records at offsets 0x000-0x0af, then four block records whose headers sit at 0x0b0, 0x29c, 0x10648 and 0x10680, each followed by its payload. The walk consumes the file exactly (0 unconsumed bytes). Payload bytes total 67,000, and 11x16 + 4x16 + 67,000 = 67,240.",
+  "evidence": "Command: $WORK/gmu_gen70200/fwparse/fwparse gmu \"$FW/gmu_gen70200.bin\" (built with: cd $WORK/gmu_gen70200/fwparse && go build -o fwparse .). Excerpt: 'file=.../gmu_gen70200.bin size=67240 (0x106a8) rem4=0' and 'zero-word1 records stepped over: 11; walk end=0x106a8; file end=0x106a8; unconsumed bytes=0; payload total=67000'."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "G-02",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "Descriptor table: 11 records of 16 bytes at 0x00-0xaf. Each record is four little-endian dwords {addr, zero word, type, size}. Every zero word is 0. Type is 1 for records 0-8 and 7 for records 9-10. Values: 0x00000000/0x1dc, 0x00004000/0x1039c, 0x00000200/0x3838, 0x00100000/0x92ac, 0x00200000/0x12c80, 0x00300000/0x1b240, 0x10004000/0x2d50, 0x10007000/0xf84, 0x10007fdc/0x18 (type 1); 0x60000000/0x1000 and 0x60001000/0x1000 (type 7).",
+  "evidence": "Command: $WORK/gmu_gen70200/fwparse/fwparse gmu \"$FW/gmu_gen70200.bin\". Excerpt: '  rec@0x0000 addr=0x00000000 word1=0x00000000 type=1 size=0x1dc (476) typeOK=true', '  rec@0x0010 addr=0x00004000 ... size=0x1039c (66460)', '  rec@0x0090 addr=0x60000000 word1=0x00000000 type=7 size=0x1000 (4096) typeOK=true'."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "S-01",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
+  "claim": "a740v3_sqe.fw is 76,148 bytes (0x12974), a multiple of 4, giving 19,037 dwords. dword0 is 0x00000000.",
+  "evidence": "Command: fwparse sqe \"$FW/a740v3_sqe.fw\". Excerpt: 'file=.../a740v3_sqe.fw size=76148 (0x12974) dwords=19037 rem4=0' and 'dword0=0x00000000 (dropped by loader)'."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "S-03",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/lib/modules/msm_kgsl.ko",
+  "claim": "Applying the driver's version rule to this file gives version 0x01511175. The low nibble of dword1 is 0x5, so the special case (nibble 0xa) does not apply, and the version is dword1 itself. dword3 is not used for this file.",
+  "evidence": "Command: fwparse sqe \"$FW/a740v3_sqe.fw\". Excerpt: 'dword1=0x01511175 dword3=0x01511146 low-nibble(dword1)=0x5 ruleA=false' and 'loader version=0x01511175'. Rule source (observed): llvm-objdump -d -r --disassemble-symbols=adreno_get_firmware \"$KO\" lines '3fd98: 12000d0a and w10, w8, #0xf' and '3fd9c: 7100295f cmp w10, #0xa'."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "S-06",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
+  "claim": "dword2 is 0x01004a5c. Its low 24 bits, 0x4a5c = 19,036, equal both the dword count the loader copies (size-4)/4 and the index of the last dword in the file.",
+  "evidence": "Command: fwparse sqe \"$FW/a740v3_sqe.fw\". Excerpt: 'dword2=0x01004a5c low24=0x004a5c (dec 19036) equals copy dwords=true equals last dword index=true' and 'loader copy: src=file+4 bytes=76144 dwords=19036'."
+ },
+ {
+  "target": "kgsl",
+  "id": "F1",
+  "label": "verified",
+  "file": "msm_kgsl.ko",
+  "claim": "ELF type and machine: 64-bit little-endian AArch64 relocatable object (ET_REL, EM_AARCH64, ELFOSABI_NONE, EV_CURRENT). Not stripped (.symtab present). No program headers. File size 2868976 bytes. SHA-256 e5d17bec61d20020709578cac263396988524e5e08b95f27e71555011c95d21c. SHA-1 build ID a09092d7b3e78c37956e0b71ad84ba4c4b59e21f.",
+  "evidence": "Commands: file $T ; sha256sum $T ; ls -la $T ; readelf -h $T | sed -n 1,4p ; readelf -h $T | sed -n 16,18p ; $W/elfscan $T structure | head -1. Output: msm_kgsl.ko: ELF 64-bit LSB relocatable, ARM aarch64, version 1 (SYSV), BuildID[sha1]=a09092d7b3e78c37956e0b71ad84ba4c4b59e21f, not stripped. Hash line: e5d17bec61d20020709578cac263396988524e5e08b95f27e71555011c95d21c. ls: -rw-r--r--. 1 root root 2868976 Jan 1 2009 msm_kgsl.ko. readelf: Class: ELF64 / Data: 2's complement, little endian / Size of program headers: 0 (bytes) / Number of program headers: 0 / Size of section headers: 64 (bytes). Scanner header line: == header class=ELFCLASS64 data=ELFDATA2LSB osabi=ELFOSABI_NONE type=ET_REL machine=EM_AARCH64 version=EV_CURRENT"
+ },
+ {
+  "target": "kgsl",
+  "id": "F16",
+  "label": "verified",
+  "file": "msm_kgsl.ko",
+  "claim": "Imports: 506 undefined symbols (507 __versions entries; the extra one is module_layout). 35 imports are exported by sibling modules in this partition: qcom-scm 17 (qcom_scm_dcvs_ca_available, qcom_scm_dcvs_core_available, qcom_scm_dcvs_init_ca_v2, qcom_scm_dcvs_init_v2, qcom_scm_dcvs_reset, qcom_scm_dcvs_update, qcom_scm_dcvs_update_ca_v2, qcom_scm_dcvs_update_v2, qcom_scm_io_reset, qcom_scm_kgsl_set_smmu_aperture, qcom_scm_kgsl_set_smmu_lpac_aperture, qcom_scm_pas_auth_and_reset, qcom_scm_pas_shutdown_retry, qcom_scm_set_remote_state, qtee_shmbridge_allocate_shm, qtee_shmbridge_free_shm, qtee_shmbridge_is_enabled); llcc-qcom 5 (llcc_get_slice_id, llcc_slice_activate, llcc_slice_deactivate, llcc_slice_getd, llcc_slice_putd); qcom_iommu_util 3 (qcom_alloc_io_pgtable_ops, qcom_free_io_pgtable_ops, qcom_iommu_get_asid_nr); mem_buf_dev 2 (mem_buf_dma_buf_copy_vmperm, mem_buf_dma_buf_exclusive_owner); mdt_loader 2 (qcom_mdt_get_size, qcom_mdt_load); cmd-db 2 (cmd_db_read_addr, cmd_db_read_aux_data); clk-qcom 2 (qcom_clk_dump, qcom_clk_set_flags); secure_buffer 1 (hyp_assign_table); log_gpu_error 1 (log_gpu_error). These nine modules are exactly the depends= list in F2. The remaining 471 undefined names are attributed in F17.",
+  "evidence": "Commands: readelf -sW $T | awk $7==UND && $8!= | wc -l (output 506); grep -c ^crc= $W/versions.txt (507); for f in $D/*.ko, elfscan exports per module, awk into $W/sibling_exports.tsv (1786 rows) ; awk NR==FNR join into $W/import_attrib.tsv ; awk -F tab $2!=- count per exporter | sort -rn. Output: 506 ; 507 ; 35 resolved ; 17 qcom-scm / 5 llcc-qcom / 3 qcom_iommu_util / 2 mem_buf_dev / 2 mdt_loader / 2 cmd-db / 2 clk-qcom / 1 secure_buffer / 1 log_gpu_error. Extra __versions entry: comm check output module_layout only."
+ },
+ {
+  "target": "userspace",
+  "id": "F01",
+  "label": "verified",
+  "file": "lib64/libEGL_adreno.so; lib64/libGLESv2_adreno.so; lib64/libq3dtools_adreno.so; lib/libEGL_adreno.so; lib/libGLESv2_adreno.so; lib/libq3dtools_adreno.so",
+  "claim": "Three targets are relative symlinks into an egl/ subdirectory in both lib64 and lib: libEGL_adreno.so -> egl/libEGL_adreno.so, libGLESv2_adreno.so -> egl/libGLESv2_adreno.so, libq3dtools_adreno.so -> egl/libq3dtools_adreno.so. The other five targets are regular files in both directories (lib64 sizes: libgsl.so 2218160, libOpenCL_adreno.so 163408, libadreno_utils.so 97800, libadreno_app_profiles.so 976128, libar-gsl.so 203176 bytes).",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; ls -l $V/lib64/libEGL_adreno.so $V/lib64/libGLESv2_adreno.so $V/lib64/libq3dtools_adreno.so $V/lib/libEGL_adreno.so $V/lib/libGLESv2_adreno.so $V/lib/libq3dtools_adreno.so; readlink -f $V/lib64/libEGL_adreno.so. Output: lrw-r--r--. 1 root root 20 Jan  1  2009 lib64/libEGL_adreno.so -> egl/libEGL_adreno.so ; lrw-r--r--. 1 root root 23 Jan  1  2009 lib64/libGLESv2_adreno.so -> egl/libGLESv2_adreno.so ; lrw-r--r--. 1 root root 25 Jan  1  2009 lib64/libq3dtools_adreno.so -> egl/libq3dtools_adreno.so ; the lib/ entries carry the same link targets. readlink -f output: .../mnt/vendor_a/lib64/egl/libEGL_adreno.so"
+ },
+ {
+  "target": "userspace",
+  "id": "F03",
+  "label": "verified",
+  "file": "lib64/libgsl.so; lib/libgsl.so",
+  "claim": "libgsl.so DT_NEEDED (9, identical in lib64 and lib): libcutils.so, liblog.so, libz.so, libsync.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libgsl.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libcutils.so,liblog.so,libz.so,libsync.so,libdmabufheap.so,libc++.so,libc.so,libm.so,libdl.so (same command on $V/lib/libgsl.so gives the identical list)"
+ },
+ {
+  "target": "userspace",
+  "id": "F04",
+  "label": "verified",
+  "file": "lib64/libEGL_adreno.so; lib/libEGL_adreno.so",
+  "claim": "libEGL_adreno.so DT_NEEDED (9, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libEGL_adreno.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libadreno_utils.so,libgsl.so,libcutils.so,libdl.so,libz.so,liblog.so,libc++.so,libc.so,libm.so"
+ },
+ {
+  "target": "userspace",
+  "id": "F06",
+  "label": "verified",
+  "file": "lib64/libOpenCL_adreno.so; lib/libOpenCL_adreno.so",
+  "claim": "libOpenCL_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, libvndksupport.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libOpenCL_adreno.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libcutils.so,libvndksupport.so,liblog.so,libc++.so,libc.so,libm.so,libdl.so"
+ },
+ {
+  "target": "userspace",
+  "id": "F07",
+  "label": "verified",
+  "file": "lib64/libadreno_utils.so; lib/libadreno_utils.so",
+  "claim": "libadreno_utils.so DT_NEEDED (7, identical in lib64 and lib): libgsl.so, liblog.so, libnativewindow.so, libc++.so, libc.so, libm.so, libdl.so",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libadreno_utils.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libgsl.so,liblog.so,libnativewindow.so,libc++.so,libc.so,libm.so,libdl.so"
+ },
+ {
+  "target": "userspace",
+  "id": "F10",
+  "label": "verified",
+  "file": "lib64/libar-gsl.so; lib/libar-gsl.so",
+  "claim": "libar-gsl.so DT_NEEDED (8, identical in lib64 and lib): liblx-osal.so, libar-acdb.so, liblx-ar_util.so, libar-gpr.so, libc++.so, libc.so, libm.so, libdl.so",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libar-gsl.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: liblx-osal.so,libar-acdb.so,liblx-ar_util.so,libar-gpr.so,libc++.so,libc.so,libm.so,libdl.so"
+ },
+ {
+  "target": "userspace",
+  "id": "F11",
+  "label": "verified",
+  "file": "lib64/*.so; lib/*.so",
+  "claim": "Defined dynamic-symbol totals (lib64 / lib): libgsl.so 580 / 580; libEGL_adreno.so 151 / 152; libGLESv2_adreno.so 538 / 539; libOpenCL_adreno.so 444 / 444; libadreno_utils.so 109 / 109; libq3dtools_adreno.so 556 / 556; libadreno_app_profiles.so 6 / 6; libar-gsl.so 189 / 189.",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; for f in $V/lib64/libEGL_adreno.so $V/lib/libEGL_adreno.so; do readelf -W --dyn-syms $f | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\" { n++ } END { printf \"defined=%d\\n\", n }'; done  (the same shape of command with the egl/gl/cl/vk tests shown in F12 to F15 gives the other totals). Output excerpt for lib64/libEGL_adreno.so: defined=151 ; lib/libEGL_adreno.so: defined=152 ; lib64/libGLESv2_adreno.so: defined=538 ; lib/libGLESv2_adreno.so: defined=539 ; lib64/libgsl.so: defined=580"
+ },
+ {
+  "target": "userspace",
+  "id": "F12",
+  "label": "verified",
+  "file": "lib64/libEGL_adreno.so; lib/libEGL_adreno.so",
+  "claim": "libEGL_adreno.so exports 78 defined dynamic symbols whose names match ^egl[A-Z] (lib64 and lib both 78). No gl*, glX*, cl* or vk* names are exported by this library.",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -W --dyn-syms $V/lib64/libEGL_adreno.so | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\" { n++; s=$8; if (s ~ /^egl[A-Z]/) e++; else if (s ~ /^glX[A-Z]/) x++; else if (s ~ /^gl[A-Z]/) g++; else if (s ~ /^cl[A-Z]/) c++; else if (s ~ /^vk[A-Z]/) v++ } END { printf \"defined=%d egl=%d gles_gl=%d glX=%d cl=%d vk=%d\\n\", n, e, g, x, c, v }'  Output: defined=151 egl=78 gles_gl=0 glX=0 cl=0 vk=0 ; same command on lib/libEGL_adreno.so: defined=152 egl=78 gles_gl=0 glX=0 cl=0 vk=0"
+ },
+ {
+  "target": "userspace",
+  "id": "F14",
+  "label": "verified",
+  "file": "lib64/libOpenCL_adreno.so; lib/libOpenCL_adreno.so",
+  "claim": "libOpenCL_adreno.so exports 7 defined dynamic symbols matching ^cl[A-Z] (both lib64 and lib). The other 437 (lib64) defined symbols are not cl-prefixed.",
+  "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -W --dyn-syms $V/lib64/libOpenCL_adreno.so | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\" { n++; s=$8; if (s ~ /^egl[A-Z]/) e++; else if (s ~ /^glX[A-Z]/) x++; else if (s ~ /^gl[A-Z]/) g++; else if (s ~ /^cl[A-Z]/) c++; else if (s ~ /^vk[A-Z]/) v++ } END { printf \"defined=%d egl=%d gles_gl=%d glX=%d cl=%d vk=%d\\n\", n, e, g, x, c, v }'  Output: defined=444 egl=0 gles_gl=0 glX=0 cl=7 vk=0 ; lib/libOpenCL_adreno.so: defined=444 egl=0 gles_gl=0 glX=0 cl=7 vk=0"
+ },
+ {
+  "target": "initsel",
+  "id": "svc-composer-hw",
+  "label": "verified",
+  "file": "etc/init/hw/init.anorak.rc:330-340",
+  "claim": "Service vendor.qti.hardware.display.composer runs /vendor/bin/hw/vendor.qti.hardware.display.composer-service with class 'hal animation', user system, group 'graphics drmrpc', capabilities SYS_NICE, no seclabel, socket pps (stream 0660 system system), onrestart 'class_restart strata' and 'restart surfaceflinger', task_profiles ServiceCapacityLow ServicePerformance, flags override and disabled. Exec label of the binary is hal_graphics_composer_default_exec.",
+  "evidence": "Command: <W>/rcscan/rcscan <ROOT>. Output: SERVICE etc/init/hw/init.anorak.rc:330 name=vendor.qti.hardware.display.composer match=graphics-stack cmd=[/vendor/bin/hw/vendor.qti.hardware.display.composer-service] class=hal animation | user=system | group=graphics drmrpc | capabilities=SYS_NICE | socket=pps stream 0660 system system | onrestart=class_restart strata ; restart surfaceflinger | task_profiles=ServiceCapacityLow ServicePerformance | disabled | override. Command: cd <ROOT> && ls -Z bin/hw/vendor.qti.hardware.display.composer-service. Output: u:object_r:hal_graphics_composer_default_exec:s0 bin/hw/vendor.qti.hardware.display.composer-service"
+ },
+ {
+  "target": "initsel",
+  "id": "svc-oculus-gpucontrol",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:1183-1186,3338-3343; etc/selinux/vendor_file_contexts:116,118",
+  "claim": "hal_oculus_gpucontrol_default has exec type hal_oculus_gpucontrol_default_exec (vendor_sepolicy.cil:1185) with init exec and transition rules at lines 3338-3343. Vendor file contexts bind only odm library paths for the gpucontrol HAL (lines 116 and 118); no binary path is bound. No service for this HAL appears in the vendor rc set. Its hwservice type hal_oculus_gpucontrol_hwservice is declared at line 1239.",
+  "evidence": "Command: cd <ROOT> && sed -n '3343p' etc/selinux/vendor_sepolicy.cil. Output: (typetransition init_32_0 hal_oculus_gpucontrol_default_exec process hal_oculus_gpucontrol_default). Command: cd <ROOT> && rg -n 'gpucontrol' etc/selinux/vendor_file_contexts. Output: 116:/(odm|vendor/odm)/lib(64)?/hw/vendor\\.oculus\\.hardware\\.graphics\\.gpucontrol@1\\.([0-9])+-impl(-[A-Za-z0-9_]+)?\\.so u:object_r:same_process_hal_file:s0 ; 118:/(odm|vendor/odm)/lib(64)?/vendor\\.oculus\\.hardware\\.graphics\\.gpucontrol@1\\.([0-9])+\\.so u:object_r:same_process_hal_file:s0"
+ },
+ {
+  "target": "initsel",
+  "id": "init-kgsl-writes",
+  "label": "verified",
+  "file": "etc/init/hw/init.anorak.rc:129-189; etc/init/hw/init.anorak.power.rc:16-22",
+  "claim": "Init writes to kgsl sysfs at boot. init.anorak.rc: 'on boot' (trigger line 129) contains 'write /sys/class/kgsl/kgsl-3d0/perfcounter 1' at line 189. init.anorak.power.rc: 'on boot' (trigger line 16) contains 'write /sys/class/kgsl/kgsl-3d0/bcl 0' at line 22.",
+  "evidence": "Command: <W>/rcscan/rcscan <ROOT>. Output: ACTION etc/init/hw/init.anorak.rc:129 trigger=[boot] -> etc/init/hw/init.anorak.rc:189 write /sys/class/kgsl/kgsl-3d0/perfcounter 1 ; ACTION etc/init/hw/init.anorak.power.rc:16 trigger=[boot] -> etc/init/hw/init.anorak.power.rc:22 write /sys/class/kgsl/kgsl-3d0/bcl 0. Command: cd <ROOT> && rg -n '^on boot' etc/init/hw/init.anorak.rc etc/init/hw/init.anorak.power.rc. Output: etc/init/hw/init.anorak.rc:129:on boot ; etc/init/hw/init.anorak.power.rc:16:on boot"
+ },
+ {
+  "target": "initsel",
+  "id": "init-gpu-config-files",
+  "label": "verified",
+  "file": "etc/init/hw/init.anorak.rc:424-437",
+  "claim": "On post-fs-data, init removes /data/vendor/gpu/esx_config.txt and /data/vendor/gpu/qgl_config.txt (lines 426-427). On sys.boot_completed=1 with debug.vendor.gpu.esx_config set (trigger line 429), init creates /data/vendor/gpu (mode 0755, owner system, group system) and writes esx_config.txt, then chmod 664 (lines 430-432). The qgl_config.txt path follows the same pattern at lines 434-437. The file contexts label these paths gpu_config_override_file (vendor_file_contexts line 241, declared vendor_sepolicy.cil:1123).",
+  "evidence": "Command: <W>/rcscan/rcscan <ROOT>. Output (excerpt): ACTION etc/init/hw/init.anorak.rc:424 trigger=[post-fs-data] -> etc/init/hw/init.anorak.rc:426 rm /data/vendor/gpu/esx_config.txt ; ACTION etc/init/hw/init.anorak.rc:429 trigger=[property:sys.boot_completed=1 && property:debug.vendor.gpu.esx_config=*] -> etc/init/hw/init.anorak.rc:430 mkdir /data/vendor/gpu 0755 system system. Command: cd <ROOT> && rg -n 'gpu_config' etc/selinux/vendor_file_contexts. Output: 241:/data/vendor/gpu/(esx|qgl)_config.txt gpu_config_override_file"
+ },
+ {
+  "target": "initsel",
+  "id": "label-kgsl-sysfs-proc",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:12,15,62,130,162,171,172,192,849,853,927,929",
+  "claim": "genfscon labels: /sys/gpu_error is proc_gpu_error (line 12); /kgsl/proc is proc_kgsl_dbg (line 15); /devices/platform/soc/3d00000.qcom,kgsl-3d0/devfreq/3d00000.qcom,kgsl-3d0 is vendor_sysfs_kgsl (line 62); /devices/platform/soc/3d00000.qcom,kgsl-3d0/kgsl/kgsl-3d0 is vendor_sysfs_kgsl (line 130); /devices/virtual/kgsl/kgsl/pagetables is vendor_sysfs_kgsl_proc (line 162); /devices/virtual/kgsl/kgsl/thread is vendor_sysfs_kgsl (line 171); /devices/virtual/kgsl/kgsl/proc is vendor_sysfs_kgsl_proc (line 172); /devices/virtual/kgsl is vendor_sysfs_kgsl (line 192). Types are declared at lines 849 (proc_gpu_error), 853 (proc_kgsl_dbg), 927 (vendor_sysfs_kgsl) and 929 (vendor_sysfs_kgsl_proc).",
+  "evidence": "Command: cd <ROOT> && rg -n '^\\(genfscon.*(gpu|kgsl)' etc/selinux/vendor_sepolicy.cil. Output: 12:(genfscon proc /sys/gpu_error (u object_r proc_gpu_error ((s0) (s0)))) ; 15:(genfscon proc /kgsl/proc (u object_r proc_kgsl_dbg ((s0) (s0)))) ; 62:(genfscon sysfs /devices/platform/soc/3d00000.qcom,kgsl-3d0/devfreq/3d00000.qcom,kgsl-3d0 (u object_r vendor_sysfs_kgsl ((s0) (s0)))) ; 130, 162, 171, 172, 192 as listed in the claim. Command: cd <ROOT> && sed -n '849p;853p;927p;929p' etc/selinux/vendor_sepolicy.cil. Output: (type proc_gpu_error) ; (type proc_kgsl_dbg) ; (type vendor_sysfs_kgsl) ; (type vendor_sysfs_kgsl_proc)"
+ },
+ {
+  "target": "initsel",
+  "id": "vintf-compat-matrix",
+  "label": "verified",
+  "file": "etc/vintf/compatibility_matrix.xml:14,30",
+  "claim": "The compatibility matrix (root type=device version=4.0) requires android.hidl.allocator@1.0 IAllocator/ashmem (line 14, optional false) and android.hidl.memory@1.0 IMapper/ashmem (line 30, optional false). These are the only memory-allocation and mapping HAL requirements in the matrix. No graphics composer or memtrack requirement is present.",
+  "evidence": "Command: <W>/vintfscan/vintfscan <ROOT>. Output: HAL compatibility_matrix.xml:14 [compatibility-matrix type=device version=4.0] GFX name=android.hidl.allocator format=hidl optional=false transport= versions=[1.0] interfaces=[IAllocator/ashmem] ; HAL compatibility_matrix.xml:30 [compatibility-matrix type=device version=4.0] - name=android.hidl.memory format=hidl optional=false versions=[1.0] interfaces=[IMapper/ashmem]"
+ }
+]
