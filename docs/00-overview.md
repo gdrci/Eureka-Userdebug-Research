@@ -47,13 +47,17 @@ For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file
 
 The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](05-init-selinux-and-hal.md) come from the first GPU run and cover the zap image, the SQE and GMU firmware, the kgsl module, the userspace GPU libraries and the GPU init entries. The subsystem run also produced a GPU group (`data/subsystems/gpu/`, 67 files) with its own claims, in `data/subsystems/gpu/claims.json`. Those claims are not merged into pages 01 to 05.
 
+## Behaviour and applications
+
+Two pages are built from the image's files but are not inventory subsystems. [26](26-init-boot-behaviour.md) parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. [27](27-important-apps.md) decodes 14 applications from the apps group (page 20) with androguard; its facts are in `data/apks/`, and the extraction and page-generation scripts are in `tools/apk/`.
+
 ## How the claims were checked
 
-Each subsystem was decoded by one agent, which wrote the role table and the claims. A second pass re-ran each claim's command and tried to refute it. The pages state the verified claims. Claims whose wording was corrected show the corrected wording. Claims that did not hold are listed as excluded, with the reason. The totals across the 21 subsystems are 835 claims: 653 confirmed, 160 needing a wording change, and 22 refuted.
+Each subsystem has a role table and a claims file. A separate pass re-ran each claim's command and tried to refute it. The pages state the verified claims. Claims whose wording was corrected show the corrected wording. Claims that did not hold are listed as excluded, with the reason. The totals across the 21 subsystems are 835 claims: 653 confirmed, 160 needing a wording change, and 22 refuted.
 
 ## Reproducing the evidence
 
-`tools/` holds the unpacker and the helper programs. `tools/README.md` gives the build steps and the variables used by the evidence commands.
+`tools/` holds the unpacker, the helper programs and the APK extraction scripts (`tools/apk/`). `tools/README.md` gives the build steps and the variables used by the evidence commands.
 
 ## Limits
 

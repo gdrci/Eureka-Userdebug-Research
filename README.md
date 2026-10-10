@@ -48,12 +48,16 @@ The super image holds the dynamic partitions. `boot`, `vendor_boot` and the kern
 | Configuration files | [23](docs/23-config-files.md) | [23](docs/23-config-files.zh-CN.md) |
 | Native tools and HAL binaries | [24](docs/24-native-tools-and-hal-binaries.md) | [24](docs/24-native-tools-and-hal-binaries.zh-CN.md) |
 | Miscellaneous root and small files | [25](docs/25-unclassified.md) | [25](docs/25-unclassified.zh-CN.md) |
+| Init and boot behaviour | [26](docs/26-init-boot-behaviour.md) | [26](docs/26-init-boot-behaviour.zh-CN.md) |
+| Important applications | [27](docs/27-important-apps.md) | [27](docs/27-important-apps.zh-CN.md) |
 
 ## Evidence
 
 - `data/gpu/confirmed_findings.json`: every claim in these documents, with the command and output that reproduce it.
 - `data/gpu/partitions.tsv`: the logical partitions in the super image, with sizes and SHA-256 prefixes.
 - `data/inventory/files.tsv`: every file and symlink in the eight partitions, with its subsystem, size, MIME type and SHA-256.
+- `data/behaviour/`: the services, actions, imports, boot phases and service classes parsed from the `.rc` files, behind document 26.
+- `data/apks/`: the manifest and dex facts for the 14 applications in document 27, with `summary.tsv`.
 - `data/subsystems/<subsystem>/`: the role table (`roles.tsv`) and the claims with their evidence (`claims.json`) for each subsystem.
 - `tools/superunpack.go`: the unpacker used to split the super image. It streams the logical partitions and checks them against the LP metadata.
 
