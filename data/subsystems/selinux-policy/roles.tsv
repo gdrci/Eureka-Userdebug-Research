@@ -1,0 +1,52 @@
+partition	path	role	confidence
+odm_a	etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256	SHA-256 record (65 bytes) of plat_sepolicy.cil plus mapping/32.0.cil; same value as the platform record	verified
+odm_a	etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256	SHA-256 record of system_ext_sepolicy.cil plus system_ext mapping/32.0.cil; byte-identical to the system_ext record	verified
+odm_a	etc/selinux/precompiled_sepolicy	Precompiled binary SELinux policy (magic 0xf97cff8c, policy version 30, 8 symbol tables, 7 ocontexts)	verified
+system_a	system/etc/selinux/plat_file_contexts	Platform file-label table: path regex to SELinux file context (644 lines, 423 distinct labels, all declared in mounted CIL)	verified
+system_a	system/etc/selinux/plat_keystore2_key_contexts	Keystore2 namespace-to-label table (integer namespace to key label, 7 entries)	verified
+system_a	system/etc/selinux/plat_seapp_contexts	App/process label selection rules keyed on user, seinfo, name, isPrivApp; yield domain, type, levelFrom (34 lines)	verified
+system_a	system/etc/selinux/mapping/30.0.cil	Mapping table for policy version 30.0 (2188 lines)	verified
+system_a	system/etc/selinux/mapping/30.0.compat.cil	Compatibility rules for version 30.0 (902 bytes; vendordomain definition and mlsvendorcompat app_data_file/privapp_data_file allows)	verified
+system_a	system/etc/selinux/mapping/27.0.compat.cil	Compatibility rules for version 27.0 (987 bytes; allowx ioctl ranges for vendordomain)	verified
+system_a	system/etc/selinux/mapping/32.0.cil	Current mapping table for policy version 32.0 (3714 lines; 1238 attribute aliases with _32_0 suffix)	verified
+system_a	system/etc/selinux/mapping/27.0.cil	Mapping table for policy version 27.0 (1476 lines, type declarations)	verified
+system_a	system/etc/selinux/mapping/26.0.cil	Mapping table for policy version 26.0 (754 lines, type declarations)	verified
+system_a	system/etc/selinux/mapping/28.0.compat.cil	Compatibility rules for version 28.0 (987 bytes); content not read	inferred
+system_a	system/etc/selinux/mapping/29.0.compat.cil	Compatibility rules for version 29.0 (846 bytes); content not read	inferred
+system_a	system/etc/selinux/mapping/31.0.cil	Mapping table for policy version 31.0 (2470 lines, expandtypeattribute aliases)	verified
+system_a	system/etc/selinux/mapping/31.0.compat.cil	Placeholder compat file (29 bytes, text "This file can't be empty.")	verified
+system_a	system/etc/selinux/mapping/28.0.cil	Mapping table for policy version 28.0 (1726 lines)	verified
+system_a	system/etc/selinux/mapping/26.0.compat.cil	Compatibility rules for version 26.0 (987 bytes); content not read	inferred
+system_a	system/etc/selinux/mapping/29.0.cil	Mapping table for policy version 29.0 (1977 lines)	verified
+system_a	system/etc/selinux/plat_mac_permissions.xml	Platform signature-to-seinfo table (3 signer entries: platform, media, network_stack)	verified
+system_a	system/etc/selinux/plat_hwservice_contexts	HIDL/AIDL hwservice interface-to-label table (85 entries)	verified
+system_a	system/etc/selinux/plat_sepolicy.cil	Platform policy source in CIL (28,911 lines; 1482 type declarations, 9891 allow rules, mls true)	verified
+system_a	system/etc/selinux/plat_sepolicy_and_mapping.sha256	SHA-256 record of plat_sepolicy.cil plus mapping/32.0.cil (bf6094...); recomputed and matched	verified
+system_a	system/etc/selinux/plat_property_contexts	Property-name-to-label table (932 data lines; exact or prefix match keys, typed entries)	verified
+system_a	system/etc/selinux/plat_service_contexts	Binder service-name-to-label table (312 entries, plus default "*" entry)	verified
+system_ext_a	etc/selinux/system_ext_sepolicy.cil	system_ext policy source in CIL (4,724 lines; 357 type declarations, 3159 allow rules)	verified
+system_ext_a	etc/selinux/system_ext_seapp_contexts	seapp rules for system_ext apps (seinfo oculus_* and fbandroid_debug mapped to domains such as asr_app, mrds_service_app)	observed
+system_ext_a	etc/selinux/system_ext_sepolicy_and_mapping.sha256	SHA-256 record of system_ext_sepolicy.cil plus system_ext mapping/32.0.cil; recomputed and matched	verified
+system_ext_a	etc/selinux/mapping/28.0.compat.cil	Empty compat placeholder (0 bytes)	verified
+system_ext_a	etc/selinux/mapping/31.0.compat.cil	Empty compat placeholder (0 bytes)	verified
+system_ext_a	etc/selinux/mapping/26.0.compat.cil	Empty compat placeholder (0 bytes)	verified
+system_ext_a	etc/selinux/mapping/32.0.cil	system_ext mapping table for version 32.0 (49,528 bytes; 299 attribute aliases with _32_0 suffix)	verified
+system_ext_a	etc/selinux/mapping/27.0.compat.cil	Empty compat placeholder (0 bytes)	verified
+system_ext_a	etc/selinux/mapping/29.0.compat.cil	Empty compat placeholder (0 bytes)	verified
+system_ext_a	etc/selinux/mapping/30.0.compat.cil	Empty compat placeholder (0 bytes)	verified
+system_ext_a	etc/selinux/system_ext_file_contexts	File-label table for system_ext paths (86 entries, path regex to context)	verified
+system_ext_a	etc/selinux/system_ext_mac_permissions.xml	Signature-to-seinfo table for system_ext (11 signer entries, Oculus and Facebook seinfo values)	verified
+system_ext_a	etc/selinux/system_ext_hwservice_contexts	hwservice-to-label table (3 entries, vendor.oculus.hardware.* interfaces)	verified
+system_ext_a	etc/selinux/system_ext_property_contexts	Property-name-to-label table for system_ext (57 data lines)	verified
+system_ext_a	etc/selinux/system_ext_service_contexts	Service-name-to-label table for system_ext (129 data lines)	verified
+vendor_a	etc/selinux/vendor_seapp_contexts	seapp rule for vendor app com.qualcomm.timeservice (domain vendor_timeservice_app, type app_data_file)	verified
+vendor_a	etc/selinux/plat_sepolicy_vers.txt	Platform sepolicy version string "32.0" (5 bytes)	verified
+vendor_a	etc/selinux/plat_pub_versioned.cil	Versioned copy of platform public policy, names suffixed _32_0 (2077 distinct names; 4,695 allow rules)	verified
+vendor_a	etc/selinux/vendor_property_contexts	Property-name-to-label table for vendor properties (49 data lines)	verified
+vendor_a	etc/selinux/vndservice_contexts	Vendor binder (vndbinder) service-name-to-label table (4 entries)	verified
+vendor_a	etc/selinux/vendor_service_contexts	Service-name-to-label table for vendor HAL services (3 entries; hal_drm_service not declared in mounted policy)	verified
+vendor_a	etc/selinux/vendor_hwservice_contexts	hwservice-to-label table for vendor HALs (50 data lines)	verified
+vendor_a	etc/selinux/vendor_mac_permissions.xml	Signature-to-seinfo table for vendor (1 signer entry, seinfo platform)	verified
+vendor_a	etc/selinux/selinux_denial_metadata	Annotation table of 35 rows: domain, target type, object class, bug reference	observed
+vendor_a	etc/selinux/vendor_sepolicy.cil	Vendor policy source in CIL (388,964 bytes; 436 type declarations, 2150 allow rules, 200 genfscon)	verified
+vendor_a	etc/selinux/vendor_file_contexts	File-label table for vendor paths (492 entries, path regex to context)	verified

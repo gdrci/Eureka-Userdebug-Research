@@ -2,45 +2,61 @@
 
 [中文版](00-overview.zh-CN.md)
 
-This repository documents the GPU subsystem of the Eureka userdebug image. The subsystem has four parts: firmware that the GPU runs, the kernel driver that loads it, the userspace libraries that applications call, and the init and SELinux entries that start them.
+This repository documents the Eureka userdebug image (Android 12, platform `anorak`) from its eight logical partitions. Each file is assigned to one subsystem, and each subsystem has its own page.
 
-## What was unpacked
+## Source
 
-The super image has eight logical partitions (`data/gpu/partitions.tsv`). The GPU material is in two of them:
+| Field | Value |
+|---|---|
+| Image | `meta-quest_eureka_userdebug_v71_super.img.xz`, 1,731,727,192 bytes |
+| Decompressed | `super.img`, 4,917,264,792 bytes (sparse) |
+| Logical partitions | `odm_a`, `odm_dlkm_a`, `product_a`, `system_a`, `system_ext_a`, `vendor_a`, `vendor_dlkm_a`, `scratch` (`data/gpu/partitions.tsv`) |
 
-| Partition | Size (bytes) | Holds |
-|---|---:|---|
-| `vendor_a` | 426,274,816 | GPU firmware under `firmware/`, the userspace libraries, the init scripts and vendor SELinux policy |
-| `vendor_dlkm_a` | 63,754,240 | the kgsl kernel module `lib/modules/msm_kgsl.ko` |
+`boot`, `vendor_boot` and the kernel image are not in the super image. The device tree and the bootloaders are not covered.
 
-The other partitions hold GPU-related files that the first pass did not decode (section list below).
+## Inventory and coverage
 
-## Decoded so far
+`data/inventory/files.tsv` lists all 5,685 entries in the eight partitions (regular files and symbolic links), with size, MIME type and SHA-256 for each regular file. Each entry is assigned to exactly one subsystem. `data/inventory/subsystem_counts.txt` gives the counts.
 
-Five target groups were decoded: the zap image (`01`), the SQE and GMU firmware (`02`), the kgsl module (`03`), the userspace libraries (`04`), and the init and SELinux entries (`05`). Each claim was reproduced by one check and then tested by a second check that tried to refute it. Only claims that passed both are in these documents.
+For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file. The row count equals the number of inventory rows for that subsystem, which was checked for all 21 subsystems: the role tables total 5,685 rows. The `scratch` partition holds only empty overlay directories.
 
-- 31 claims passed both checks. They are in `data/gpu/confirmed_findings.json`.
-- Some claims were judged right in substance but worded or labelled wrongly. They are not in these documents yet. Each section lists the open items.
+## Subsystem pages
 
-## Not yet decoded
+| Page | Subsystem | Files |
+|---|---|---:|
+| [06](06-kernel-modules.md) | Kernel modules (vendor and ODM dlkm) | 306 |
+| [07](07-selinux-policy.md) | SELinux policy and file contexts | 51 |
+| [08](08-hal-manifests.md) | HAL manifests (VINTF) | 62 |
+| [09](09-init-and-properties.md) | Init scripts and build properties | 183 |
+| [10](10-display-and-composer.md) | Display and composer | 132 |
+| [11](11-camera.md) | Camera | 83 |
+| [12](12-dsp-and-remote-processors.md) | DSP and remote processors | 243 |
+| [13](13-wifi-bluetooth.md) | Wi-Fi and Bluetooth | 104 |
+| [14](14-audio.md) | Audio | 239 |
+| [15](15-sensors-mcu-meta-hal.md) | Sensors, MCU and Meta HALs | 263 |
+| [16](16-power-thermal-charging.md) | Power, thermal and charging | 21 |
+| [17](17-security-keystore-crypto.md) | Keystore, keymaster and crypto | 60 |
+| [18](18-media-codecs.md) | Media and codecs | 163 |
+| [19](19-framework-and-system-services.md) | Framework and system services | 707 |
+| [20](20-apps.md) | Apps | 431 |
+| [21](21-native-libraries.md) | Native shared libraries | 1,371 |
+| [22](22-fonts-locale-input-resources.md) | Fonts, locale, input and resources | 448 |
+| [23](23-config-files.md) | Configuration files | 392 |
+| [24](24-native-tools-and-hal-binaries.md) | Native tools and HAL binaries | 346 |
+| [25](25-unclassified.md) | Miscellaneous root and small files | 13 |
 
-A completeness pass over the mounted partitions returned 143 files whose names match GPU terms (`data/gpu/uncovered_candidates.json`). They are not covered by sections `01` to `05`. The main groups:
+The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](05-init-selinux-and-hal.md) come from the first GPU run and cover the zap image, the SQE and GMU firmware, the kgsl module, the userspace GPU libraries and the GPU init entries. The subsystem run also produced a GPU group (`data/subsystems/gpu/`, 67 files) with its own claims, in `data/subsystems/gpu/claims.json`. Those claims are not merged into pages 01 to 05.
 
-- **`system_a`**: the `gpuservice` daemon (`system/bin/gpuservice`), its init file, an eBPF object for GPU memory (`system/etc/bpf/gpu_mem.o`), and the framework-graphics boot images.
-- **`odm_a`**: the Oculus composer HAL (`vendor.oculus.hardware.graphics.composer@1.0`, `@1.1`) and the Oculus GPU-control HAL (`vendor.oculus.hardware.graphics.gpucontrol@1.0`), in 32-bit and 64-bit builds, with their VINTF manifest entries.
-- **`product_a`**: the OpenGL ES and Vulkan feature declarations (`etc/permissions/android.hardware.opengles.aep.xml` and the Vulkan level files).
+## How the claims were checked
 
-These need a second decoding run before any claim is made about them.
+Each subsystem was decoded by one agent, which wrote the role table and the claims. A second pass re-ran each claim's command and tried to refute it. The pages state the verified claims. Claims whose wording was corrected show the corrected wording. Claims that did not hold are listed as excluded, with the reason. The totals across the 21 subsystems are 835 claims: 653 confirmed, 160 needing a wording change, and 22 refuted.
 
 ## Reproducing the evidence
 
-The commands in `data/gpu/confirmed_findings.json` call the helpers in `tools/` and use shell variables for the mounted paths. `tools/README.md` gives the build steps and the variable values, so each command can be run from the repository.
+`tools/` holds the unpacker and the helper programs. `tools/README.md` gives the build steps and the variables used by the evidence commands.
 
-## Hardware
+## Limits
 
-The firmware names the GPU as `a740v3` (Adreno 740 generation). The kernel module is `msm_kgsl`, with the device node `kgsl-3d0`. The device tree is not in the image, so the GPU's base address and clock tables are not covered.
-
-## What this build does not contain
-
-- The boot chain, TrustZone, hypervisor and kernel images are not in the super image. The stalled items from the Greatwhite research (object `0x91`, the OEM key reader and the SBL1 jump) cannot be rechecked on this build from these partitions.
-- The firmware signatures and their provenance are not established by these documents. The documents describe the bytes as mounted.
+- The image's boot chain, TrustZone, hypervisor and kernel are not in the super image, so the stalled items from the Greatwhite research (object `0x91`, the OEM key reader and the SBL1 jump) cannot be rechecked from these partitions.
+- The firmware signatures and their provenance are not established by these documents. The pages describe the bytes as mounted.
+- Behaviour is described from names, strings, configuration and static structure. Commands were not executed on a device.

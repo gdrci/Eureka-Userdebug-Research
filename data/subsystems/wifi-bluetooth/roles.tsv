@@ -1,0 +1,105 @@
+partition	path	role	confidence
+odm_a	bin/hw/vendor.oculus.hardware.wifi@1.0-service	Oculus vendor Wi-Fi HAL service: hwbinder IWifi default instance, started by odm init rc	verified
+odm_a	lib64/vendor.oculus.hardware.wifi@1.0.so	64-bit HIDL interface library for vendor.oculus.hardware.wifi@1.0 (IWifi)	verified
+odm_a	etc/bluetooth/bt_did_override.conf	Bluetooth Device ID override: DID1 vendorId 0x01AB, productId 0x0504, version 0x0100	verified
+product_a	etc/permissions/oculus.software.wifi.sleep.xml	Feature flag oculus.software.wifi.sleep for the Wi-Fi sleep policy	verified
+product_a	etc/permissions/android.hardware.wifi.rtt.xml	Feature flag declaring android.hardware.wifi.rtt	verified
+product_a	etc/permissions/android.hardware.wifi.direct.xml	Feature flag declaring android.hardware.wifi.direct	verified
+product_a	etc/permissions/android.hardware.wifi.xml	Feature flag declaring android.hardware.wifi	verified
+product_a	etc/permissions/android.hardware.bluetooth.xml	Feature flag declaring android.hardware.bluetooth	verified
+product_a	etc/permissions/android.hardware.wifi.aware.xml	Feature flag declaring android.hardware.wifi.aware	verified
+product_a	etc/permissions/android.hardware.bluetooth_le.xml	Feature flag declaring android.hardware.bluetooth_le	verified
+system_a	system/apex/com.android.wifi.capex	Compressed Wi-Fi APEX com.android.wifi; ext2 payload holds framework-wifi.jar, service-wifi.jar, ServiceWifiResources.apk, OsuLogin.apk, WFA CA certificates	verified
+system_a	system/bin/wificond	wificond Wi-Fi control daemon (init service class main, user wifi)	verified
+system_a	system/app/Bluetooth/lib/arm64/libbluetooth_jni.so	Symlink to /system/lib64/libbluetooth_jni.so (Bluetooth app native library path)	verified
+system_a	system/etc/bluetooth/bt_did.conf	Bluetooth Device ID base config: DID1 productId 0x1200, version 0x1436, primaryRecord true	verified
+system_a	system/etc/bluetooth/bt_stack.conf	Bluetooth stack config: TraceConf and TRC_* trace levels set to 2; PTS test keys left commented	verified
+system_a	system/etc/permissions/com.oculus.vrbluetooth.xml	Privileged permission grant: com.oculus.vrbluetooth receives BLUETOOTH_PRIVILEGED	verified
+system_a	system/lib/android.hardware.bluetooth.a2dp@1.0.so	32-bit HIDL interface library android.hardware.bluetooth.a2dp@1.0	verified
+system_a	system/lib/android.hardware.bluetooth.audio@2.0.so	32-bit HIDL interface library android.hardware.bluetooth.audio@2.0	verified
+system_a	system/lib/android.hardware.bluetooth.audio@2.1.so	32-bit HIDL interface library android.hardware.bluetooth.audio@2.1	verified
+system_a	system/lib/android.hardware.bluetooth@1.0.so	32-bit HIDL interface library android.hardware.bluetooth@1.0 (IBluetoothHci)	verified
+system_a	system/lib/android.hardware.bluetooth@1.1.so	32-bit HIDL interface library android.hardware.bluetooth@1.1	verified
+system_a	system/lib/android.hardware.wifi@1.0.so	32-bit HIDL interface library android.hardware.wifi@1.0 (IWifi)	verified
+system_a	system/lib/android.hardware.wifi@1.1.so	32-bit HIDL interface library android.hardware.wifi@1.1	verified
+system_a	system/lib/android.hardware.wifi@1.2.so	32-bit HIDL interface library android.hardware.wifi@1.2	verified
+system_a	system/lib/android.hardware.wifi@1.3.so	32-bit HIDL interface library android.hardware.wifi@1.3	verified
+system_a	system/lib/libbluetooth.so	32-bit Bluetooth stack library, SONAME libbluetooth.so	verified
+system_a	system/lib/libwifirpc.so	32-bit Wi-Fi RPC library (nng PAIR/PUB/REP/REQ/SUB sockets, JNI class WifiRpc)	observed
+system_a	system/lib64/android.hardware.bluetooth.a2dp@1.0.so	64-bit HIDL interface library android.hardware.bluetooth.a2dp@1.0	verified
+system_a	system/lib64/android.hardware.bluetooth.audio@2.0.so	64-bit HIDL interface library android.hardware.bluetooth.audio@2.0	verified
+system_a	system/lib64/android.hardware.bluetooth.audio@2.1.so	64-bit HIDL interface library android.hardware.bluetooth.audio@2.1	verified
+system_a	system/lib64/android.hardware.bluetooth@1.0.so	64-bit HIDL interface library android.hardware.bluetooth@1.0 (IBluetoothHci)	verified
+system_a	system/lib64/android.hardware.bluetooth@1.1.so	64-bit HIDL interface library android.hardware.bluetooth@1.1	verified
+system_a	system/lib64/android.hardware.wifi@1.0.so	64-bit HIDL interface library android.hardware.wifi@1.0 (IWifi), framework copy	verified
+system_a	system/lib64/android.hardware.wifi@1.1.so	64-bit HIDL interface library android.hardware.wifi@1.1	verified
+system_a	system/lib64/android.hardware.wifi@1.2.so	64-bit HIDL interface library android.hardware.wifi@1.2	verified
+system_a	system/lib64/android.hardware.wifi@1.3.so	64-bit HIDL interface library android.hardware.wifi@1.3	verified
+system_a	system/lib64/android.system.wifi.keystore@1.0.so	HIDL interface library android.system.wifi.keystore@1.0 (IKeystore)	verified
+system_a	system/lib64/libbluetooth.so	64-bit Bluetooth stack library (stripped; btif_* and bluetoothInterface exports; Rust cxxbridge symbols)	verified
+system_a	system/lib64/libbluetooth_jni.so	Bluetooth framework JNI library registering com.android.bluetooth native methods (gatt, avrcp, sdp, hearing aid)	observed
+system_a	system/lib64/libwifi-system-iface.so	System-side interface helper library (android::wifi_system::InterfaceTool: up/down state, MAC address, bridge add and remove)	observed
+system_a	system/lib64/libwifirpc.so	64-bit Wi-Fi RPC library (nng sockets, JNI class WifiRpc)	observed
+system_ext_a	bin/wifitelemetry	Wi-Fi telemetry daemon (init service class late_start, user system) using libwifitelemetry	verified
+system_ext_a	bin/wifi_cli	OSSDK Wi-Fi command-line tool that dlopens an OSSDK module (createWifiHandler, setStreamClassV4/V6, clearStreamClass)	observed
+system_ext_a	lib/vendor.oculus.hardware.wifi@1.0.so	32-bit HIDL interface library for vendor.oculus.hardware.wifi@1.0 (IWifi)	verified
+system_ext_a	lib64/libwifitelemetry.so	Wi-Fi telemetry library: nl80211 scan and station parsers, OVR::OS::WifiHalConnector	observed
+system_ext_a	lib64/vendor.oculus.hardware.wifi@1.0.so	64-bit HIDL interface library for vendor.oculus.hardware.wifi@1.0 (same name as odm copy, different content)	verified
+vendor_a	lib/android.hardware.bluetooth.audio@2.0.so	32-bit vendor HIDL library android.hardware.bluetooth.audio@2.0	verified
+vendor_a	lib/android.hardware.bluetooth.audio@2.1.so	32-bit vendor HIDL library android.hardware.bluetooth.audio@2.1	verified
+vendor_a	lib/android.hardware.bluetooth@1.0.so	32-bit vendor HIDL library android.hardware.bluetooth@1.0	verified
+vendor_a	lib/hw/android.hardware.bluetooth@1.0-impl-qti.so	32-bit Qualcomm Bluetooth HAL implementation (HIDL_FETCH_IBluetoothHci, rampatch and NVM loading)	verified
+vendor_a	lib/hw/audio.bluetooth.default.so	32-bit Bluetooth audio HAL module (audio.bluetooth.default)	verified
+vendor_a	lib/libbluetooth_audio_session.so	32-bit Bluetooth audio session library, client of the bluetooth.audio HAL and FMQ	verified
+vendor_a	lib/libwifi-hal-ctrl.so	32-bit Wi-Fi HAL control helper library (5 exports, NEEDED only libc++ and libc)	observed
+vendor_a	lib/libwifi-hal-qcom.so	32-bit Qualcomm Wi-Fi HAL extension: QCA_WLAN_VENDOR_ATTR nl80211 vendor attributes, NEEDED libcld80211	observed
+vendor_a	lib/libwpa_drv_oem_hmd.so	32-bit wpa_supplicant driver wrapper with OEM vendor commands (TX power, power surge, TX duty cycle)	observed
+vendor_a	etc/wifi/p2p_supplicant_overlay.conf	wpa_supplicant P2P overlay: disable_scan_offload, p2p_no_group_iface, persistent_reconnect, bss_max_count=400, p2p_go_he	verified
+vendor_a	etc/wifi/wpa_supplicant_overlay.conf	wpa_supplicant overlay: disable_scan_offload, p2p_disabled, tdls_external_control, wowlan_triggers, interworking	verified
+vendor_a	etc/wifi/icm.conf	ICM (interface and channel manager) config: one radio phy0, 2.4 GHz channel 6 (softap0) and 5 GHz channel 44	verified
+vendor_a	etc/wifi/WCNSS_qcom_cfg.ini	Qualcomm WLAN driver override file: channel bonding, roaming, TX/RX chains, DP ring sizes, scan timings	verified
+vendor_a	etc/wifi/wpa_supplicant.conf	Base wpa_supplicant config: update_config, eapol_version, ap_scan, fast_reauth, pmf, oce, sae_pwe	verified
+vendor_a	etc/bluetooth_audio_policy_configuration_7_0.xml	Audio policy module 'bluetooth' (halVersion 2.0): A2DP, hearing aid and LE audio mix ports and BT device ports	verified
+vendor_a	bt_firmware/image/hpbtfw21.tlv	Qualcomm Bluetooth rampatch (patch) firmware in TLV container, build BTFW.HSP.2.1.0-00632-PATCHZ for QCA6490	verified
+vendor_a	bt_firmware/image/hpnv20g.bin	Bluetooth NVM configuration blob in TLV container (type 0x02), variant 20g	verified
+vendor_a	bt_firmware/image/hpnv20.bin	Bluetooth NVM configuration blob in TLV container (type 0x02), variant 20	verified
+vendor_a	bt_firmware/image/hpbtfw20.tlv	Qualcomm Bluetooth rampatch (patch) firmware in TLV container, build BTFW.HSP.2.0.1-00252 for QCA6490	verified
+vendor_a	bt_firmware/image/hpnv21.bin	Bluetooth NVM configuration blob in TLV container (type 0x02), variant 21, contains EVT2 marker	verified
+vendor_a	bt_firmware/image/hpnv21g.bin	Bluetooth NVM configuration blob in TLV container (type 0x02), variant 21g	verified
+vendor_a	lib64/android.hardware.bluetooth.audio@2.0.so	64-bit vendor HIDL library android.hardware.bluetooth.audio@2.0	verified
+vendor_a	lib64/android.hardware.bluetooth.audio@2.1.so	64-bit vendor HIDL library android.hardware.bluetooth.audio@2.1	verified
+vendor_a	lib64/android.hardware.bluetooth@1.0.so	64-bit vendor HIDL library android.hardware.bluetooth@1.0	verified
+vendor_a	lib64/android.hardware.wifi.hostapd@1.0.so	HIDL interface library android.hardware.wifi.hostapd@1.0 (IHostapd)	verified
+vendor_a	lib64/android.hardware.wifi.hostapd@1.1.so	HIDL interface library android.hardware.wifi.hostapd@1.1 (IHostapd)	verified
+vendor_a	lib64/android.hardware.wifi.hostapd@1.2.so	HIDL interface library android.hardware.wifi.hostapd@1.2 (IHostapd)	verified
+vendor_a	lib64/android.hardware.wifi.hostapd@1.3.so	HIDL interface library android.hardware.wifi.hostapd@1.3 (IHostapd)	verified
+vendor_a	lib64/android.hardware.wifi.supplicant@1.0.so	HIDL interface library android.hardware.wifi.supplicant@1.0 (ISupplicant)	verified
+vendor_a	lib64/android.hardware.wifi.supplicant@1.1.so	HIDL interface library android.hardware.wifi.supplicant@1.1 (ISupplicant)	verified
+vendor_a	lib64/android.hardware.wifi.supplicant@1.2.so	HIDL interface library android.hardware.wifi.supplicant@1.2 (ISupplicant)	verified
+vendor_a	lib64/android.hardware.wifi.supplicant@1.3.so	HIDL interface library android.hardware.wifi.supplicant@1.3 (ISupplicant)	verified
+vendor_a	lib64/android.hardware.wifi.supplicant@1.4.so	HIDL interface library android.hardware.wifi.supplicant@1.4 (ISupplicant)	verified
+vendor_a	lib64/android.hardware.wifi@1.0.so	HIDL interface library android.hardware.wifi@1.0 (IWifi)	verified
+vendor_a	lib64/android.hardware.wifi@1.1.so	HIDL interface library android.hardware.wifi@1.1 (IWifi)	verified
+vendor_a	lib64/android.hardware.wifi@1.2.so	HIDL interface library android.hardware.wifi@1.2 (IWifi)	verified
+vendor_a	lib64/android.hardware.wifi@1.3.so	HIDL interface library android.hardware.wifi@1.3 (IWifi)	verified
+vendor_a	lib64/android.hardware.wifi@1.4.so	HIDL interface library android.hardware.wifi@1.4 (IWifi)	verified
+vendor_a	lib64/android.hardware.wifi@1.5.so	HIDL interface library android.hardware.wifi@1.5 (IWifi)	verified
+vendor_a	lib64/android.system.wifi.keystore@1.0.so	HIDL interface library android.system.wifi.keystore@1.0 (IKeystore)	verified
+vendor_a	lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so	64-bit Qualcomm Bluetooth HAL implementation (HIDL_FETCH_IBluetoothHci, rampatch and NVM loading)	verified
+vendor_a	lib64/hw/audio.bluetooth.default.so	64-bit Bluetooth audio HAL module (audio.bluetooth.default)	verified
+vendor_a	lib64/hw/android.hardware.bluetooth.audio@2.1-impl.so	64-bit Bluetooth audio HAL 2.1 implementation module	verified
+vendor_a	lib64/libbluetooth_audio_session.so	64-bit Bluetooth audio session library, client of the bluetooth.audio HAL and FMQ	verified
+vendor_a	lib64/libkeystore-engine-wifi-hidl.so	OpenSSL keystore engine for Wi-Fi (exports EVP_PKEY_from_keystore)	verified
+vendor_a	lib64/libkeystore-wifi-hidl.so	Wi-Fi keystore helper (exports keystore_get), NEEDED android.system.wifi.keystore@1.0	verified
+vendor_a	lib64/libwifi-hal-ctrl.so	64-bit Wi-Fi HAL control helper library (5 exports)	observed
+vendor_a	lib64/libwifi-hal-qcom.so	64-bit Qualcomm Wi-Fi HAL extension (QCA vendor nl80211 attributes, NEEDED libcld80211)	observed
+vendor_a	lib64/libwifi-hal.so	Generic Wi-Fi HAL C library with 77 wifi_* exports (wifi_get_valid_channels, wifi_set_link_stats, wifi_cleanup)	verified
+vendor_a	lib64/libwpa_client.so	wpa_supplicant control-interface client library (wpa_ctrl_open, wpa_ctrl_request, wpa_ctrl_recv)	verified
+vendor_a	lib64/libwpa_drv_oem_hmd.so	64-bit wpa_supplicant driver wrapper with OEM vendor commands (TX power, power surge, TX duty cycle)	observed
+vendor_a	bin/wpa_cli	wpa_cli control utility for wpa_supplicant (interface listing and selection, P2P commands)	observed
+vendor_a	bin/cnss-daemon	Qualcomm WLAN subsystem daemon: platform QMI client, calibration file /data/vendor/wifi/wlfw_cal_%02d.bin (init service cnss-daemon)	verified
+vendor_a	bin/hw/hostapd	hostapd 2.10-devel-12 access point daemon with IHostapd HAL service (init service hostapd, disabled oneshot)	verified
+vendor_a	bin/hw/wpa_supplicant	wpa_supplicant 2.10-devel-12 with ISupplicant HAL service (init service wpa_supplicant, class main)	verified
+vendor_a	bin/hw/android.hardware.bluetooth@1.0-service-qti	Qualcomm Bluetooth HAL service: IBluetoothHci @1.0 default instance (init service vendor.bluetooth-1-0-qti)	verified
+vendor_a	bin/hw/android.hardware.wifi@1.0-service	Wi-Fi HAL service: IWifi default instance, interfaces @1.0 through @1.5 (init service vendor.wifi_hal_legacy)	verified
+vendor_a	bin/cnss_diag	Qualcomm WLAN diagnostics logger (init service vendor.cnss_diag, started when persist.ovr.cnss_diag.enabled=true)	verified

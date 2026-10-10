@@ -1,0 +1,574 @@
+{
+ "key": "camera",
+ "summary": "The camera group has 83 files in five partitions (vendor_a 57, system_a 12, system_ext_a 6, odm_a 4, product_a 4). Its core is a QTI Camera HAL3 module (vendor_a/lib64/hw/camera.qcom.so, hw_module id \"camera\", module API 3.0) that loads CHI pipeline and 3A/statistics component libraries from vendor_a/lib64/camera/components; an XR camera HAL implementation (vendor_a/lib64/libxrcamerahal.so) is reached through an odm shim (odm_a/lib64/libcamerahal.so exporting CameraHalC_Init/Start/Stop/Deinit). A camera mux-mode service family (system_ext cameramuxmodeservice daemon, a client monitor library, a JSON reader library and a command-line client) is configured by /product/etc/cameramuxmode/config.json (v1) and by configv2.json (version 3), which is duplicated in vendor_a and read by the odm sensor service. The CAMERA_ICP firmware is an Xtensa ELF32 MDT image with 21 program headers, 13 of whose segment files carry data. vendor_a/etc/camera holds 16 tuning and sensor-module blobs (Chromatix headers, AEC/AWB tables, CVA and depth AE JSON) for IMX471, OG01A1B and OV7251 sensors, and system_a holds framework and HIDL client libraries (camera.common@1.0, camera.device@3.2, camera2 NDK, camera client, camera metadata) in 32-bit and 64-bit builds. Init references in the mounted partitions name only cameramuxmodeservice; SELinux labels cover the mux-mode service, its config directory and properties, and the firmware directory.",
+ "rowsExpected": 83,
+ "rowsListed": 83,
+ "claims": [
+  {
+   "id": "C01",
+   "label": "verified",
+   "claim": "The camera group contains 83 rows: vendor_a 57, system_a 12, system_ext_a 6, odm_a 4, product_a 4. Mounted files live under B/mnt, where B is <image>. Commands in later claims are run from B/mnt unless a path is absolute.",
+   "evidence": "command: awk -F \"\\t\" '$1==\"camera\"' classified.tsv | wc -l ; then cut -f2 input_rows.tsv | sort | uniq -c   output: 83 ; 4 odm_a / 4 product_a / 12 system_a / 6 system_ext_a / 57 vendor_a",
+   "verdict": "confirmed",
+   "reason": "83 rows with subsystem camera in the classified table. Input rows split vendor_a 57, system_a 12, system_ext_a 6, odm_a 4, product_a 4 (sum 83). Mounted files resolve under the stated base directory.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C02",
+   "label": "verified",
+   "claim": "Every one of the 83 rows exists under B/mnt, and its byte size and sha256 equal the recorded values.",
+   "evidence": "command: while IFS=tab read -r sub part path kind size mime sha; do sha256sum mnt/$part/$path; stat -c %s mnt/$part/$path; compare to recorded values; done < input_rows.tsv   output: rows=83 missing=0 bad=0",
+   "verdict": "confirmed",
+   "reason": "All 83 input rows resolve under mnt/<partition>/<path>. Missing 0, byte-size mismatches 0, SHA-256 mismatches 0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C03",
+   "label": "verified",
+   "claim": "Three groups of rows have identical content: product_a and vendor_a etc/cameramuxmode/configv2.json; vendor_a etc/camera cvaectuning_ht.json and cvaectuning_slam.json; and eight zero-byte firmware segments.",
+   "evidence": "command: cut -f7 input_rows.tsv | sort | uniq -c | awk '$1>1' ; cmp vendor_a/etc/cameramuxmode/configv2.json product_a/etc/cameramuxmode/configv2.json   output: 2 c9a3405f38ab70efeeba93eb25d2cef93e18172f6b406af626d81e5ff098b399 ; 2 d80c4422d759c9a6e27da87310b3a20b9504c412d93e6c247db97b68ac960237 ; 8 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 ; SAME_CONFIGV2_PRODUCT_VENDOR",
+   "file": "vendor_a/etc/cameramuxmode/configv2.json",
+   "verdict": "confirmed",
+   "reason": "Exactly three duplicate-content groups. Two rows with SHA-256 c9a3405f... are product_a and vendor_a etc/cameramuxmode/configv2.json (26988 bytes, byte-identical). Two rows with SHA-256 d80c4422... are vendor_a etc/camera cvaectuning_ht.json and cvaectuning_slam.json (10962 bytes, byte-identical). Eight zero-byte rows share the empty-content hash: vendor_a firmware CAMERA_ICP.b10 to b16 and b19.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C04",
+   "label": "verified",
+   "claim": "camera.qcom.so is a 10,921,800-byte stripped ELF64 AArch64 shared object of type DYN with 1054 defined and 493 undefined dynamic symbols.",
+   "evidence": "command: readelf -h vendor_a/lib64/hw/camera.qcom.so | grep -E 'Class|Machine|Type:' ; file -b vendor_a/lib64/hw/camera.qcom.so ; readelf -W --dyn-syms vendor_a/lib64/hw/camera.qcom.so | awk 'NR>1 && $7!=\"UND\"' | wc -l   output: Class: ELF64 / Type: DYN (Shared object file) / Machine: AArch64 ; ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, BuildID[md5/uuid]=5173b1b2d25b826fd16288b893614ccf, stripped ; 1054 (defined) and 493 (UND)",
+   "file": "vendor_a/lib64/hw/camera.qcom.so",
+   "verdict": "refuted",
+   "reason": "Size 10921800, ELF64, AArch64, type DYN and stripped all reproduce. The symbol counts do not. The dynamic symbol table has 1545 entries including the null entry at index 0: 1052 defined named symbols and 492 undefined named symbols, plus the null entry (493 UND lines). The claimed filter also counted two output header lines (1052 + 2 = 1054).",
+   "corrected_claim": "camera.qcom.so is a 10,921,800-byte stripped ELF64 AArch64 shared object of type DYN with 1052 defined and 492 undefined named dynamic symbols (1545 dynamic symbol entries, including the null entry at index 0)."
+  },
+  {
+   "id": "C05",
+   "label": "verified",
+   "claim": "The HAL module symbol HMI decodes as a hw_module_t with tag 0x48574d54, module_api_version 0x0300, hal_api_version 0x0100, id camera, name QTI Camera HAL, author Qualcomm Technologies, Inc. Its methods pointer is 0xa36fa0.",
+   "evidence": "command: python3 -I scripts/hw_module_decode.py vendor_a/lib64/hw/camera.qcom.so HMI   output: symbol HMI vaddr=0xa36e38 size=360 ; hw_module_t.tag = 0x48574d54 ; module_api_version = 0x0300  hal_api_version = 0x0100 ; id = 'camera' ; name = 'QTI Camera HAL' ; author = 'Qualcomm Technologies, Inc.' ; methods ptr = 0xa36fa0. The script resolves PT_LOAD mapping and reads the struct from the file.",
+   "file": "vendor_a/lib64/hw/camera.qcom.so",
+   "verdict": "confirmed",
+   "reason": "HMI is at vaddr 0xa36e38, size 360. Decoding the struct across all PT_LOAD segments gives tag 0x48574d54, module_api_version 0x0300, hal_api_version 0x0100, id 'camera', name 'QTI Camera HAL', author 'Qualcomm Technologies, Inc.' and methods pointer 0xa36fa0. The file uses packed RELR relocations, so the stored pointers are link-time addresses, which is how the claim states them.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C06",
+   "label": "verified",
+   "claim": "camera.qcom.so has 39 NEEDED entries. They include the CamX core libraries (libcamxcommonutils, libcamxhalbuffermanager, libcamxsettingsmanager, libcamxcsl, libcamxfdengine, libcamxhwnodecontext, libcamximageformatutils, libcamxstatscore), gralloc and display HIDL libraries, the QMI and sensor-calibration libraries, and libcamera_metadata.",
+   "evidence": "command: readelf -d vendor_a/lib64/hw/camera.qcom.so | grep NEEDED   output (excerpt): NEEDED libc++.so; libcutils.so; liblog.so; libsync.so; android.hardware.graphics.common@1.1.so; libhardware.so; libhidlbase.so; libhidltransport.so; libcamera_metadata.so; libcamxcommonutils.so; libcamxhalbuffermanager.so; libcamxsettingsmanager.so; ... libcamxcsl.so; libcamxfdengine.so; libcamxhwnodecontext.so; libcamximageformatutils.so; libcamxstatscore.so; libprotobuf-cpp-full-3.9.1.so; libqmi_cci.so; libsensorcalibration.so; libsns_direct_channel_stub.so; libdl.so; libc.so; libm.so",
+   "file": "vendor_a/lib64/hw/camera.qcom.so",
+   "verdict": "confirmed",
+   "reason": "39 NEEDED entries. All named libraries are present: the CamX core set, the gralloc and display HIDL set (android.hardware.graphics.allocator@4.0, mapper@4.0, libgralloc.qti.so, vendor.qti.hardware.display.*), libqmi_cci.so, libsensorcalibration.so and libcamera_metadata.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C07",
+   "label": "observed",
+   "claim": "camera.qcom.so holds literal paths and property keys that set its file and component locations: /vendor/lib64/camera/components/, /vendor/etc/camera, /data/vendor/camera, /data/vendor/camera/metadata, the format patterns %s/%s%s_%s_%d.bin, %s/GlobalUsecase%s_%d.bin and %s/PerUsecase%s_%d.bin, and property keys such as persist.vendor.camera.isp.enablePiAEC, persist.vendor.camera.eeprom.reload and persist.vendor.camera.enablemetahashmap.",
+   "evidence": "command: strings -n 5 vendor_a/lib64/hw/camera.qcom.so | grep -E '/vendor/|/data/|/firmware|CAMERA_ICP|com[.]qti[.]|persist[.]camera|persist[.]vendor[.]camera|sensormodule|tuned|[.]bin|[.]json'   output (excerpt): /vendor/etc/camera ; /data/vendor/camera ; /vendor/lib64/camera/components/ ; %s/%s%s_%s_%d.bin ; %s/GlobalUsecase%s_%d.bin ; com.qti.sensormodule.truly_ov8856.bin ; persist.vendor.camera.isp.enablePiAEC ; persist.vendor.camera.eeprom.reload",
+   "file": "vendor_a/lib64/hw/camera.qcom.so",
+   "verdict": "needs_change",
+   "reason": "All literal paths, format patterns and property keys reproduce. The wording is wrong: the three property keys do not set file or component locations. Only the literal paths do.",
+   "corrected_claim": "camera.qcom.so holds literal paths for its file and component locations (/vendor/lib64/camera/components/, /vendor/etc/camera, /data/vendor/camera, /data/vendor/camera/metadata), format patterns %s/%s%s_%s_%d.bin, %s/GlobalUsecase%s_%d.bin and %s/PerUsecase%s_%d.bin, and property keys such as persist.vendor.camera.isp.enablePiAEC, persist.vendor.camera.eeprom.reload and persist.vendor.camera.enablemetahashmap."
+  },
+  {
+   "id": "C08",
+   "label": "observed",
+   "claim": "camera.qcom.so contains HAL3 entry-point trace names (ConfigureStreams, ProcessCaptureRequest, ProcessCaptureResult, SetTorchMode, GetVendorTagOps, GetCameraInfo and others) and a large set of com.qti.chi.* vendor-tag names (for example multicamerainfo, cameraconfiguration, offlinepipelineinfo, statsaec).",
+   "evidence": "command: strings -n 5 vendor_a/lib64/hw/camera.qcom.so | grep -E 'SCOPEEventHAL3|com[.]qti[.]chi[.]' | sort -u | head   output (excerpt): SCOPEEventHAL3ConfigureStreams ; SCOPEEventHAL3ProcessCaptureRequest ; SCOPEEventHAL3ProcessCaptureResult ; SCOPEEventHAL3SetTorchMode ; SCOPEEventHAL3GetVendorTagOps ; com.qti.chi.cameraconfiguration ; com.qti.chi.multicamerainfo ; com.qti.chi.offlinepipelineinfo ; com.qti.chi.statsaec",
+   "file": "vendor_a/lib64/hw/camera.qcom.so",
+   "verdict": "confirmed",
+   "reason": "All six SCOPEEventHAL3 names listed (ConfigureStreams, ProcessCaptureRequest, ProcessCaptureResult, SetTorchMode, GetVendorTagOps, GetCameraInfo) are present. 23 distinct com.qti.chi.* strings exist, including multicamerainfo, cameraconfiguration, offlinepipelineinfo and statsaec.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C09",
+   "label": "observed",
+   "claim": "Other vendor libraries and the HAL provider configuration reference camera.qcom.so by path or name: com.qti.chi.override.so, libispcontroller.so, libmonocameracontrol.so and libxrcamerahal.so. No init service in the mounted init directories starts a camera provider, and the provider executable is labelled only by a pattern rule in vendor_file_contexts.",
+   "evidence": "command: grep -r -a -l -E 'camera[.]qcom[.]so' .   output: ./vendor_a/lib64/hw/com.qti.chi.override.so ; ./vendor_a/lib64/libispcontroller.so ; ./vendor_a/lib64/libmonocameracontrol.so ; ./vendor_a/lib64/libxrcamerahal.so. command: grep -n android[.]hardware[.]camera[.]provider vendor_a/etc/selinux/vendor_file_contexts   output: 19:/(vendor|system/vendor)/bin/hw/android[.]hardware[.]camera[.]provider@2[.][0-9]+-service_64 u:object_r:hal_camera_default_exec:s0 (lines 19-23 carry the same label for -service, -service-lazy and -external-service variants)",
+   "file": "vendor_a/etc/selinux/vendor_file_contexts",
+   "verdict": "refuted",
+   "reason": "The four referencing libraries reproduce: com.qti.chi.override.so, libispcontroller.so, libmonocameracontrol.so and libxrcamerahal.so. No configuration text file in the mounted tree (xml, json, rc, cfg, conf, prop) references camera.qcom.so, and no camera entry exists in the vendor or odm vintf manifests, so the 'HAL provider configuration' part is unsupported. The init result (no init rc file starts a camera provider) and the file-context labelling (vendor_file_contexts lines 19 to 23) reproduce.",
+   "corrected_claim": "Other vendor libraries reference camera.qcom.so by name: com.qti.chi.override.so, libispcontroller.so, libmonocameracontrol.so and libxrcamerahal.so. No configuration file in the mounted tree references it. No init rc file in the mounted directories starts a camera provider, and the provider executable is labelled only by the pattern rules at vendor_file_contexts lines 19 to 23."
+  },
+  {
+   "id": "C10",
+   "label": "verified",
+   "claim": "libxrcamerahal.so is an 461,024-byte stripped AArch64 shared object, SONAME libxrcamerahal.so, with 473 defined and 157 undefined dynamic symbols. Its only camera-specific export is CreateCameraHal. It NEEDs libcamerahal.so, libcamerafencewrapper.so, libcamxhalbuffermanager.so, libdevicesensors.so and libcamera_metadata.so, among others.",
+   "evidence": "command: readelf -d vendor_a/lib64/libxrcamerahal.so | grep -E 'NEEDED|SONAME'; readelf -W --dyn-syms vendor_a/lib64/libxrcamerahal.so | awk 'NR>1 && $7!=\"UND\" && $5==\"GLOBAL\"' | grep -v _Z   output: SONAME libxrcamerahal.so ; NEEDED libbase.so libcamerahal.so libcamera_metadata.so libcutils.so libdevicesensors.so libimagebuffer.so liblog.so libmros_vendor_sysprops.so libosutils.so libperfettoutils.so libsensortelemetry.so libsync.so libui.so libutils.so libcamxhalbuffermanager.so libcamerafencewrapper.so libc++.so libc.so libm.so libdl.so ; GLOBAL CreateCameraHal",
+   "file": "vendor_a/lib64/libxrcamerahal.so",
+   "verdict": "refuted",
+   "reason": "Size 461024, SONAME, AArch64 shared object and the NEEDED entries (libcamerahal.so, libcamerafencewrapper.so, libcamxhalbuffermanager.so, libdevicesensors.so, libcamera_metadata.so, among others) reproduce. The counts do not: 471 defined and 156 undefined named symbols (628 entries including the null entry); the claim has 473 and 157. The 'only camera-specific export' wording is wrong: the library exports 150 mangled GLOBAL symbols beginning _ZN9CameraHal or _ZNK9CameraHal (for example _ZN9CameraHal11XrCameraHal16InitializeModuleEv). CreateCameraHal is the only unmangled camera-specific export; the claimed filter removed the mangled names before concluding.",
+   "corrected_claim": "libxrcamerahal.so is a 461,024-byte stripped AArch64 shared object, SONAME libxrcamerahal.so, with 471 defined and 156 undefined named dynamic symbols. Its only unmangled camera-specific export is CreateCameraHal; it also exports 150 mangled C++ symbols in the CameraHal namespace. It NEEDs libcamerahal.so, libcamerafencewrapper.so, libcamxhalbuffermanager.so, libdevicesensors.so and libcamera_metadata.so, among others."
+  },
+  {
+   "id": "C11",
+   "label": "observed",
+   "claim": "libxrcamerahal.so contains a Qualcomm HAL path, a dependency name for a monochrome ISP control library, and property keys for multistream, foveation, Teton GME/MCTF and an AEC statistics switch. It also references the vendor tag org.codeaurora.qcamera3.sessionParameters.",
+   "evidence": "command: strings -n 6 vendor_a/lib64/libxrcamerahal.so | grep -i -E 'camera|persist' | head -n 40   output (excerpt): /vendor/lib64/hw/camera.qcom.so ; failed to find 'GetIspMonoCameraControlCreator' in 'libmonocameracontrol' ; persist.vendor.camera.isp_foveation_mode ; persist.vendor.camera.multistream.enable ; persist.vendor.camera.teton.enable_gme_mctf ; persist.vendor.debug.camera.aec.enable2AStats ; persist.vendor.camera.rgb.min_sensitivity ; org.codeaurora.qcamera3.sessionParameters",
+   "file": "vendor_a/lib64/libxrcamerahal.so",
+   "verdict": "confirmed",
+   "reason": "The Qualcomm HAL path /vendor/lib64/hw/camera.qcom.so, the monochrome dependency string libmonocameracontrol (with the message failed to find GetIspMonoCameraControlCreator), the property keys isp_foveation_mode, multistream.enable, teton.enable_gme_mctf and debug.camera.aec.enable2AStats, and org.codeaurora.qcamera3.sessionParameters all reproduce.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C12",
+   "label": "verified",
+   "claim": "odm_a/lib64/libcamerahal.so is a stripped AArch64 shared object (SONAME libcamerahal.so, 36,896 bytes) whose exports are CameraHalC_Init, CameraHalC_Start, CameraHalC_Stop and CameraHalC_Deinit. It NEEDs libbase, libimagebuffer, liblog, libmros_vendor_sysprops, libsensortelemetry, libui and libutils.",
+   "evidence": "command: readelf -W --dyn-syms odm_a/lib64/libcamerahal.so | awk 'NR>1 && $7!=\"UND\" {print $8}' ; readelf -d odm_a/lib64/libcamerahal.so | grep -E 'NEEDED|SONAME'   output: CameraHalC_Init CameraHalC_Start CameraHalC_Deinit CameraHalC_Stop (exports, plus internal symbols) ; SONAME libcamerahal.so ; NEEDED libbase.so libimagebuffer.so liblog.so libmros_vendor_sysprops.so libsensortelemetry.so libui.so libutils.so libc++.so libc.so libm.so libdl.so",
+   "file": "odm_a/lib64/libcamerahal.so",
+   "verdict": "needs_change",
+   "reason": "Size 36896, SONAME, the NEEDED list and the four CameraHalC_* C-linkage symbols reproduce. The library also exports 14 mangled C++ symbols in the CameraHal namespace (including a vtable), so 'whose exports are' is incomplete.",
+   "corrected_claim": "odm_a/lib64/libcamerahal.so is a stripped AArch64 shared object (SONAME libcamerahal.so, 36,896 bytes). Its C-linkage exports are CameraHalC_Init, CameraHalC_Start, CameraHalC_Stop and CameraHalC_Deinit; it also exports 14 mangled C++ symbols in the CameraHal namespace. It NEEDs libbase, libimagebuffer, liblog, libmros_vendor_sysprops, libsensortelemetry, libui and libutils (plus libc++, libc, libm and libdl)."
+  },
+  {
+   "id": "C13",
+   "label": "observed",
+   "claim": "The odm camera HAL shim loads its implementation with dlopen and exposes CreateCameraHal. Its candidate names include libfastpathcamerahal.so and an xrcamera-named library. Its properties are persist.vendor.camera.hal and vendor.camera.hal.debug_file.",
+   "evidence": "command: strings -n 6 odm_a/lib64/libcamerahal.so | grep -E 'dlopen|CreateCameraHal|fastpath|persist|debug_file|Error loading|xrcamera|lib[a-z]*camerahal'   output (excerpt): dlopen ; dlerror ; dlclose ; CreateCameraHal ; libfastpathcamerahal.so ; %s:%s: Using fastpath camera hal ; %s:%s: Error loading shared library: %s ; persist.vendor.camera.hal ; vendor.camera.hal.debug_file ; >xrcamera",
+   "file": "odm_a/lib64/libcamerahal.so",
+   "verdict": "needs_change",
+   "reason": "The dlopen, dlerror and dlclose strings, the CreateCameraHal string, the candidate names libfastpathcamerahal.so and libxrcamerahal.so, the 'Using fastpath camera hal' and 'Error loading' messages, and the two properties all reproduce. The shim has no exact unmangled CreateCameraHal entry in its dynamic symbol table, so 'exposes' is wrong. The name appears as a string alongside a load-error message, which is consistent with a name lookup in the loaded library (inferred).",
+   "corrected_claim": "The odm camera HAL shim loads its implementation with dlopen and refers to a CreateCameraHal entry point by name in that library; it does not export an unmangled CreateCameraHal symbol. Its candidate names include libfastpathcamerahal.so and an xrcamera-named library (libxrcamerahal.so). Its properties are persist.vendor.camera.hal and vendor.camera.hal.debug_file."
+  },
+  {
+   "id": "C14",
+   "label": "verified",
+   "claim": "libfastpathcamerahal.so is absent from the mounted partitions. The shim's other dependencies are present: libsyncboss.so and libdevicesensors.so are in odm_a, and libcamxcsl.so, libcamxhalbuffermanager.so, libcamxsettingsmanager.so and libcamerafencewrapper.so are in vendor_a. libcameracontrol.so NEEDs libcamerahal.so and libsyncboss.so.",
+   "evidence": "command: find . -name libfastpathcamerahal.so   output: (no match, ls reports cannot access for vendor_a and odm_a). command: find . -name libsyncboss.so -o -name libdevicesensors.so -o -name libcamxcsl.so   output: ./odm_a/lib64/libsyncboss.so ; ./odm_a/lib64/libdevicesensors.so ; ./vendor_a/lib64/libcamxcsl.so. command: readelf -d vendor_a/lib64/libcameracontrol.so | grep NEEDED   output includes libcamerahal.so and libsyncboss.so",
+   "file": "odm_a/lib64/libcamerahal.so",
+   "verdict": "refuted",
+   "reason": "libfastpathcamerahal.so is absent from every mounted partition. The presence of the other listed libraries reproduces, and libcameracontrol.so NEEDs libcamerahal.so and libsyncboss.so. The attribution is wrong: the shim's NEEDED list (libbase, libimagebuffer, liblog, libmros_vendor_sysprops, libsensortelemetry, libui, libutils, libc++, libc, libm, libdl) includes none of libsyncboss.so, libdevicesensors.so or any libcamx library. Those are NEEDed by other components.",
+   "corrected_claim": "libfastpathcamerahal.so is absent from the mounted partitions. The shim's NEEDED list does not include libsyncboss.so, libdevicesensors.so or any libcamx library. Those libraries are present (libsyncboss.so and libdevicesensors.so in odm_a; libcamxcsl.so, libcamxhalbuffermanager.so, libcamxsettingsmanager.so and libcamerafencewrapper.so in vendor_a) and are NEEDed by other components: cameratool (libsyncboss.so, libdevicesensors.so), libxrcamerahal.so (libcamxhalbuffermanager.so, libcamerafencewrapper.so), and camera.qcom.so (libcamxcsl.so, libcamxsettingsmanager.so). libcameracontrol.so NEEDs libcamerahal.so and libsyncboss.so."
+  },
+  {
+   "id": "C15",
+   "label": "verified",
+   "claim": "cameratool is a 6,746,120-byte AArch64 PIE executable with interpreter /system/bin/linker64. It NEEDs libcamerahal.so, libcameracontrol.so, libsyncboss.so, libdevicesensors.so, libtelemetry.so and related telemetry libraries.",
+   "evidence": "command: file -b odm_a/bin/cameratool ; readelf -d odm_a/bin/cameratool | grep NEEDED   output: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, BuildID[md5/uuid]=152c05619514e1a5... ; NEEDED libperfettoutils.so libsensortelemetry.so libtdigesttelemetry.so libtelemetry.so libbase.so libcamerahal.so libcutils.so libdevicesensors.so liblog.so libosutils.so libsysutils.so libui.so libutils.so libcameracontrol.so libsyncboss.so libc++.so libc.so libm.so libdl.so",
+   "file": "odm_a/bin/cameratool",
+   "verdict": "confirmed",
+   "reason": "6746120 bytes, PIE, AArch64, interpreter /system/bin/linker64, 19 NEEDED entries including libcamerahal.so, libcameracontrol.so, libsyncboss.so, libdevicesensors.so, libtelemetry.so and libtdigesttelemetry.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C16",
+   "label": "observed",
+   "claim": "cameratool documents frame streaming, metadata dumps, and per-camera-set selection flags (for example --teton, --esker, --pikes, --cascade, --grays, --canyon, --maryland, --jackson, --glacier). Its -O option resolves paths relative to /vendor/etc/camera, and it has a --syncboss-only and a --disable-syncboss mode.",
+   "evidence": "command: strings -n 6 odm_a/bin/cameratool | grep -E '^[[:space:]]+-' | head -n 60   output (excerpt): -O, --config-override <PATH> Camera configuration override path (relative to /vendor/etc/camera) ; -i, --id <NUM> Enable a specific HAL camera ID. Not valid on Hollywood. Can be specified multiple times. ; -d, --dump <NUM> Dump every <NUM>th frame to a directory specified by --out. ; -t, --time <NUM> Run time in seconds. ; --syncboss-only Use Syncboss-only mode. ; --disable-syncboss Disable syncboss. ; -F, --factory mode Enter factory test mode. ; --stop-streams Streams to be stopped ... e.g --stop-streams 0:1:2",
+   "file": "odm_a/bin/cameratool",
+   "verdict": "confirmed",
+   "reason": "All listed option strings reproduce: the per-camera-set flags (--teton, --esker, --pikes, --cascade, --grays, --canyon, --maryland, --jackson, --glacier), -O relative to /vendor/etc/camera, --syncboss-only and --disable-syncboss, plus frame dump and metadata options.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C17",
+   "label": "observed",
+   "claim": "syncboss_camera_tests is a stripped AArch64 shared-object-type executable with interpreter /system/bin/linker64. It is a test binary for the SyncBoss camera path and carries SyncBoss log text. It references libcamerahal.so as a dependency name.",
+   "evidence": "command: file -b odm_a/bin/syncboss_camera_tests ; grep -a -l 'libcamerahal[.]so' -r odm_a/bin   output: ELF 64-bit LSB shared object, ARM aarch64 ... dynamically linked, interpreter /system/bin/linker64, stripped ; odm_a/bin/syncboss_camera_tests (also listed: odm_a/bin/cameratool, odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service) ; text: SyncBossHAL ; SyncBossFW",
+   "file": "odm_a/bin/syncboss_camera_tests",
+   "verdict": "needs_change",
+   "reason": "Stripped, shared-object type, linker64 interpreter and the SyncBoss log text reproduce. The string libcamerahal.so is present, but it is not a NEEDED entry: the NEEDED list is liblog.so, libm.so, libdl.so and libc.so only.",
+   "corrected_claim": "syncboss_camera_tests is a stripped AArch64 shared-object-type executable with interpreter /system/bin/linker64. It is a test binary for the SyncBoss camera path (inferred from its name and log text), carries SyncBoss log text, and contains the string libcamerahal.so, which is not among its NEEDED entries (liblog.so, libm.so, libdl.so, libc.so)."
+  },
+  {
+   "id": "C18",
+   "label": "verified",
+   "claim": "cameramuxmodeservice is a 134,448-byte AArch64 PIE executable with interpreter /system/bin/linker64. It NEEDs 17 libraries, including libcameramuxmodereader.so, libbinder.so, libjsoncpp.so, libtrackingvendorutils.so and vendor.oculus.hardware.sensors@1.0.so.",
+   "evidence": "command: file -b system_ext_a/bin/cameramuxmodeservice ; readelf -h system_ext_a/bin/cameramuxmodeservice | grep -E 'Type|Machine' ; readelf -d system_ext_a/bin/cameramuxmodeservice | grep NEEDED   output: ELF 64-bit LSB pie executable, ARM aarch64 ... interpreter /system/bin/linker64 ; Type: DYN ; Machine: AArch64 ; NEEDED libperfettoutils.so libbase.so libbinder.so libcameramuxmodereader.so libcutils.so libdeviceid.so libjsoncpp.so liblog.so libosutils.so libtrackingvendorutils.so libutils.so libvrsensors-hidlwrapper.so vendor.oculus.hardware.sensors@1.0.so libc++.so libc.so libm.so libdl.so",
+   "file": "system_ext_a/bin/cameramuxmodeservice",
+   "verdict": "confirmed",
+   "reason": "134448 bytes, DYN PIE, AArch64, interpreter /system/bin/linker64, 17 NEEDED entries including libcameramuxmodereader.so, libbinder.so, libjsoncpp.so, libtrackingvendorutils.so and vendor.oculus.hardware.sensors@1.0.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C19",
+   "label": "verified",
+   "claim": "The init service for cameramuxmodeservice runs from /system_ext/bin in late_start as user system with group system and camera, and holds the SYS_NICE capability. It is also started on the factorytest trigger.",
+   "evidence": "command: cat system_ext_a/etc/init/cameramuxmodeservice.rc   output: service cameramuxmodeservice /system_ext/bin/cameramuxmodeservice / class late_start / user system / group system camera / capabilities SYS_NICE / on factorytest / start cameramuxmodeservice",
+   "file": "system_ext_a/etc/init/cameramuxmodeservice.rc",
+   "verdict": "confirmed",
+   "reason": "The init unit reads: service cameramuxmodeservice /system_ext/bin/cameramuxmodeservice; class late_start; user system; group system camera; capabilities SYS_NICE; and on factorytest, start cameramuxmodeservice.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C20",
+   "label": "observed",
+   "claim": "cameramuxmodeservice contains its config path /product/etc/cameramuxmode/config.json, binder service name cameramuxmodeservice, a feature-gate string for CMMv2 (enabled true or false) and log text for mode switching and client promotion. It also contains symbol names for getCameraMuxModeConfigJsonFileContent and FeatureChecks::isCMMv2Enabled.",
+   "evidence": "command: strings -n 4 system_ext_a/bin/cameramuxmodeservice | grep -E 'config.json|cameramuxmodeservice|CMMV2|CMMv2|Switching active|Can.t find mode|Initialized Service|GENERIC_SLOT_0|getCameraMuxModeConfigJsonFileContent|isCMMv2Enabled'   output (excerpt): /product/etc/cameramuxmode/config.json ; cameramuxmodeservice ; CMMV2 enabled: true ; CMMV2 enabled: false ; CMMv2 enabled. Skip updating camera channel config. ; Initialized Service with mux mode %s ; Switching active CameraMuxMode from '%s' to '%s' ; GENERIC_SLOT_0",
+   "file": "system_ext_a/bin/cameramuxmodeservice",
+   "verdict": "confirmed",
+   "reason": "All listed strings reproduce: /product/etc/cameramuxmode/config.json, the cameramuxmodeservice binder name, the CMMV2 enabled true and false strings, mode-switching and initialization messages, and the mangled names for getCameraMuxModeConfigJsonFileContent and FeatureChecks isCMMv2Enabled. The binary also carries the client-promotion text Failed to promote client on binder death.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C21",
+   "label": "verified",
+   "claim": "SELinux file, service and property contexts label the cameramux components: /product/etc/cameramuxmode is system_cameramuxmode_file, the service binary is cameramuxmodeservice_exec, the binder name cameramuxmodeservice is cameramuxmode_service, and the persist.cmm. property prefix is cameramuxmode_prop.",
+   "evidence": "command: grep -n cameramuxmode system_ext_a/etc/selinux/system_ext_file_contexts system_ext_a/etc/selinux/system_ext_service_contexts system_ext_a/etc/selinux/system_ext_property_contexts   output: system_ext_file_contexts:28:/product/etc/cameramuxmode(/.*)?   u:object_r:system_cameramuxmode_file:s0 ; system_ext_file_contexts:78:/system_ext/bin/cameramuxmodeservice   u:object_r:cameramuxmodeservice_exec:s0 ; system_ext_service_contexts:13:cameramuxmodeservice   u:object_r:cameramuxmode_service:s0 ; system_ext_property_contexts:27:persist.cmm.   u:object_r:cameramuxmode_prop:s0",
+   "file": "system_ext_a/etc/selinux/system_ext_file_contexts",
+   "verdict": "confirmed",
+   "reason": "system_ext_file_contexts line 28 labels /product/etc/cameramuxmode(/.*)? as system_cameramuxmode_file; line 78 labels /system_ext/bin/cameramuxmodeservice as cameramuxmodeservice_exec; system_ext_service_contexts line 13 maps cameramuxmodeservice to cameramuxmode_service; system_ext_property_contexts line 27 maps persist.cmm. to cameramuxmode_prop.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C22",
+   "label": "verified",
+   "claim": "The system_ext SELinux policy declares the cameramuxmodeservice domain, transitions it from init, and grants it service-manager add/find on cameramuxmode_service, binder calls with servicemanager, system_server and priv_app, and read access to cameramuxmode_prop and system_cameramuxmode_file.",
+   "evidence": "command: grep -n cameramuxmode system_ext_a/etc/selinux/system_ext_sepolicy.cil | sed -n '1,60p' (excerpt)   output: 192:(type cameramuxmodeservice) ; 194:(type cameramuxmodeservice_exec) ; 1417:(allow init cameramuxmodeservice_exec (file (read getattr map execute open))) ; 1422:(typetransition init cameramuxmodeservice_exec process cameramuxmodeservice) ; 1423:(allow cameramuxmodeservice cameramuxmode_service (service_manager (add find))) ; 1430:(allow cameramuxmodeservice system_server (binder (call transfer))) ; 1436:(allow cameramuxmodeservice cameramuxmode_prop (file (read getattr map open))) ; 1438:(allow cameramuxmodeservice system_cameramuxmode_file (dir (ioctl read getattr lock open watch watch_reads search)))",
+   "file": "system_ext_a/etc/selinux/system_ext_sepolicy.cil",
+   "verdict": "confirmed",
+   "reason": "Type declarations (lines 192 and 194), the init typetransition (line 1422), service_manager add and find on cameramuxmode_service (line 1423), binder calls with servicemanager (line 1425), system_server (line 1430) and priv_app (line 1433), and read access to cameramuxmode_prop (line 1436) and system_cameramuxmode_file (lines 1438 to 1440) all reproduce.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C23",
+   "label": "verified",
+   "claim": "libcameramuxmodemonitor.so (lib64) is a 115,544-byte AArch64 shared object with 168 defined and 195 undefined dynamic symbols. It exports CameraMuxModeMonitor and the ICameraMuxModeClient and ICameraMuxModeService binder interfaces. It NEEDs 13 libraries, including libvrsensors-hidlwrapper.so and libvrsensors-utils.so.",
+   "evidence": "command: readelf -d system_ext_a/lib64/libcameramuxmodemonitor.so | grep -E 'NEEDED|SONAME'; readelf -W --dyn-syms system_ext_a/lib64/libcameramuxmodemonitor.so | awk 'NR>1 && $7!=\"UND\" && $5==\"GLOBAL\"' | awk '{print $8}' | grep -E 'CameraMuxModeMonitor|ICameraMuxMode' | head -n 8   output: NEEDED libperfettoutils.so libbase.so libbinder.so libcutils.so liblog.so libosutils.so libutils.so libvrsensors-hidlwrapper.so libvrsensors-utils.so libc++.so libc.so libm.so libdl.so ; _ZN3OVR2OS20CameraMuxModeMonitor23getCurrentCameraMuxModeEv ; _ZN6oculus8internal20ICameraMuxModeClient10descriptorE ; _ZN6oculus8internal22BpCameraMuxModeServiceE0_NS0_21ICameraMuxModeServiceE",
+   "file": "system_ext_a/lib64/libcameramuxmodemonitor.so",
+   "verdict": "needs_change",
+   "reason": "Size 115544, AArch64 shared object, 13 NEEDED entries (including libvrsensors-hidlwrapper.so and libvrsensors-utils.so), and the CameraMuxModeMonitor and ICameraMuxMode* exports reproduce. Defined named symbols = 168 (matches). Undefined named symbols = 194; the claimed 195 counts the null entry at index 0.",
+   "corrected_claim": "libcameramuxmodemonitor.so (lib64) is a 115,544-byte AArch64 shared object with 168 defined and 194 undefined named dynamic symbols (195 undefined entries if the null entry at index 0 is counted). It exports CameraMuxModeMonitor and the ICameraMuxModeClient and ICameraMuxModeService binder interface symbols. It NEEDs 13 libraries, including libvrsensors-hidlwrapper.so and libvrsensors-utils.so."
+  },
+  {
+   "id": "C24",
+   "label": "verified",
+   "claim": "The mux-mode monitor library is a NEEDed dependency of mrsystemservice, trackingservice, sensorproxy, trackingfidelityservice, cameramuxmodeservice_tool, stream-publisher and libcmsservice-headset.so, and of the system libraries libvrsrecorder.so and libvrsrecorder_utils_camera.so.",
+   "evidence": "command: for f in $(grep -r -a -l -E 'libcameramuxmodemonitor' system_ext_a system_a); do readelf -d $f | grep NEEDED | grep libcameramuxmodemonitor; done   output: system_ext_a/bin/mrsystemservice NEEDED: libcameramuxmodemonitor.so ; system_ext_a/bin/trackingservice ; system_ext_a/bin/sensorproxy ; system_ext_a/bin/cameramuxmodeservice_tool ; system_ext_a/bin/trackingfidelityservice ; system_ext_a/lib64/libcmsservice-headset.so ; system_a/system/bin/stream-publisher ; system_a/system/lib64/libvrsrecorder.so ; system_a/system/lib64/libvrsrecorder_utils_camera.so",
+   "file": "system_ext_a/lib64/libcameramuxmodemonitor.so",
+   "verdict": "confirmed",
+   "reason": "Libraries that NEED libcameramuxmodemonitor.so: system_ext_a/bin/mrsystemservice, trackingservice, sensorproxy, cameramuxmodeservice_tool, trackingfidelityservice; libcmsservice-headset.so (in both system_ext lib and lib64); system_a/system/bin/stream-publisher; system_a/system/lib64/libvrsrecorder.so and libvrsrecorder_utils_camera.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C25",
+   "label": "observed",
+   "claim": "The monitor library holds IPC and error text for its binder client: connection to CameraMuxModeService, setting a mux mode, a callback named on_camera_mux_mode_changed, and a transaction name set_active_camera_mux_mode. It also includes the consumer-frame-type report format.",
+   "evidence": "command: strings -n 6 system_ext_a/lib64/libcameramuxmodemonitor.so | grep -E 'CamMuxConnect|on_camera_mux_mode_changed|set_active_camera_mux_mode|Could not|Consumer To FrameTypes|FrameType Configuration'   output: CamMuxConnect ; on_camera_mux_mode_changed ; set_active_camera_mux_mode ; %s: Could not connect to CameraMuxModeService ; %s: Could not set mux mode to %s ; Consumer To FrameTypes: ; FrameType Configuration:",
+   "file": "system_ext_a/lib64/libcameramuxmodemonitor.so",
+   "verdict": "confirmed",
+   "reason": "The strings CamMuxConnect, on_camera_mux_mode_changed, set_active_camera_mux_mode, 'Could not connect to CameraMuxModeService', 'Could not set mux mode to %s', 'Consumer To FrameTypes:' and 'FrameType Configuration:' all reproduce.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C26",
+   "label": "verified",
+   "claim": "libcameramuxmodereader.so is a 23,888-byte AArch64 shared object whose only camera export is OVR::OS::getCameraMuxModeConfigJsonFileContent(const char*). It NEEDs libjsoncpp.so and liblog.so, among others.",
+   "evidence": "command: readelf -d system_ext_a/lib64/libcameramuxmodereader.so | grep NEEDED; readelf -W --dyn-syms system_ext_a/lib64/libcameramuxmodereader.so | awk 'NR>1 && $7!=\"UND\" && $5==\"GLOBAL\"' | awk '{print $8}'   output: NEEDED libjsoncpp.so liblog.so libosutils.so libc++.so libc.so libm.so libdl.so ; _ZN3OVR2OS37getCameraMuxModeConfigJsonFileContentEPKc ; __cfi_check",
+   "file": "system_ext_a/lib64/libcameramuxmodereader.so",
+   "verdict": "confirmed",
+   "reason": "23888 bytes, AArch64 shared object. Its only camera-related GLOBAL export is _ZN3OVR2OS37getCameraMuxModeConfigJsonFileContentEPKc (OVR::OS::getCameraMuxModeConfigJsonFileContent(const char*)). NEEDs libjsoncpp.so and liblog.so among others.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C27",
+   "label": "verified",
+   "claim": "libcameramuxmodereader.so is NEEDed by cameramuxmodeservice, libmxrcamera_image_provider.so, libtokaido_device_features.so, libvrsrecorder.so, libvrsrecorder_utils_camera.so and libvrsrecorder_utils_common.so.",
+   "evidence": "command: for f in $(grep -r -a -l -E 'libcameramuxmodereader' system_ext_a system_a); do readelf -d $f | grep NEEDED | grep libcameramuxmodereader; done   output: system_ext_a/bin/cameramuxmodeservice NEEDED: libcameramuxmodereader.so ; system_a/system/lib64/libmxrcamera_image_provider.so ; system_a/system/lib64/libtokaido_device_features.so ; system_a/system/lib64/libvrsrecorder.so ; system_a/system/lib64/libvrsrecorder_utils_camera.so ; system_a/system/lib64/libvrsrecorder_utils_common.so",
+   "file": "system_ext_a/lib64/libcameramuxmodereader.so",
+   "verdict": "confirmed",
+   "reason": "NEEDed by system_ext_a/bin/cameramuxmodeservice and by system_a libmxrcamera_image_provider.so, libtokaido_device_features.so, libvrsrecorder.so, libvrsrecorder_utils_camera.so and libvrsrecorder_utils_common.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C28",
+   "label": "verified",
+   "claim": "cameramuxmodeservice_tool is a 15,856-byte AArch64 PIE executable that NEEDs libcameramuxmodemonitor.so, libgflags.so, libhidlbase.so and libjsoncpp.so, among others.",
+   "evidence": "command: file -b system_ext_a/bin/cameramuxmodeservice_tool ; readelf -d system_ext_a/bin/cameramuxmodeservice_tool | grep NEEDED   output: ELF 64-bit LSB pie executable, ARM aarch64 ... interpreter /system/bin/linker64 ; NEEDED libbase.so libbinder.so libcameramuxmodemonitor.so libcutils.so libgflags.so libhidlbase.so libjsoncpp.so liblog.so libosutils.so libutils.so vendor.oculus.hardware.sensors@1.0.so libc++.so libc.so libm.so libdl.so",
+   "file": "system_ext_a/bin/cameramuxmodeservice_tool",
+   "verdict": "confirmed",
+   "reason": "15856 bytes, PIE, AArch64, interpreter /system/bin/linker64. NEEDs libcameramuxmodemonitor.so, libgflags.so, libhidlbase.so and libjsoncpp.so among others.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C29",
+   "label": "observed",
+   "claim": "The mux-mode command-line client accepts -info and -set_active <name>, prints the current mux mode, and reports binder failures for setActiveCameraMuxMode.",
+   "evidence": "command: strings -n 4 system_ext_a/bin/cameramuxmodeservice_tool | grep -E 'info|set_active|Connected|Binder call|Switched|Current CameraMuxMode'   output: -info Display info about current camera mux mode ; -set_active Set the active camera mux mode with its name ; Current CameraMuxMode: ; Connected to 'cameramuxmodeservice' ; Binder call 'setActiveCameraMuxMode' failed ; Switched active mode to '%s'",
+   "file": "system_ext_a/bin/cameramuxmodeservice_tool",
+   "verdict": "confirmed",
+   "reason": "Strings -info (Display info about current camera mux mode), -set_active (Set the active camera mux mode with its name), 'Current CameraMuxMode:', 'Connected to cameramuxmodeservice', 'Binder call setActiveCameraMuxMode failed' and 'Switched active mode to %s' all reproduce.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C30",
+   "label": "verified",
+   "claim": "product_a/etc/cameramuxmode/config.json (v1) is a JSON object with six top-level mode tables (default, HandTracking, HandTrackingUseIOT, RubyTracking, default_popstudy_hack, HandTracking_popstudy_hack). Each table has consumerToFrameTypesMap, frameConfiguration and frameTypeToExposureAlgorithmMap. For example, default maps GENERIC_SLOT_0 to InsideOutTracking, GENERIC_SLOT_1 to FlexibleFrame and GENERIC_SLOT_3 to ProjectorAssistedDepth.",
+   "evidence": "command: python3 -I -c 'import json; d=json.load(open(\"product_a/etc/cameramuxmode/config.json\")); print(list(d.keys())); print(list(d[\"default\"].keys())); print(d[\"default\"][\"frameTypeToExposureAlgorithmMap\"])'   output: ['default', 'HandTracking', 'HandTrackingUseIOT', 'RubyTracking', 'default_popstudy_hack', 'HandTracking_popstudy_hack'] ; ['consumerToFrameTypesMap', 'frameConfiguration', 'frameTypeToExposureAlgorithmMap'] ; {'GENERIC_SLOT_0': 'InsideOutTracking', 'GENERIC_SLOT_1': 'FlexibleFrame', 'GENERIC_SLOT_2': 'InsideOutTracking', 'GENERIC_SLOT_3': 'ProjectorAssistedDepth'}",
+   "file": "product_a/etc/cameramuxmode/config.json",
+   "verdict": "needs_change",
+   "reason": "The six top-level tables, their three keys and the default map values all reproduce. The '(v1)' label is not stated in the file: config.json has no version field. The v1 name is a naming convention relative to configv2.json, which carries version 3 (inferred).",
+   "corrected_claim": "product_a/etc/cameramuxmode/config.json is a JSON object with six top-level mode tables (default, HandTracking, HandTrackingUseIOT, RubyTracking, default_popstudy_hack, HandTracking_popstudy_hack). Each table has consumerToFrameTypesMap, frameConfiguration and frameTypeToExposureAlgorithmMap. For example, default maps GENERIC_SLOT_0 to InsideOutTracking, GENERIC_SLOT_1 to FlexibleFrame and GENERIC_SLOT_3 to ProjectorAssistedDepth. The file has no version field."
+  },
+  {
+   "id": "C31",
+   "label": "verified",
+   "claim": "product_a/etc/cameramuxmode/configv2.json (version 3) has cameraSystems with worldTracking (niceEnabled true, configurations empty and default, 16 modes) and color (niceEnabled false, configurations empty, default and display, 5 modes). Each configuration has frameRateVariant, frameRateMultiplier and slots. color/display uses frameRateVariant display with multiplier 72; the other configurations use utility with multiplier 1.0.",
+   "evidence": "command: python3 -I script printing version, cameraSystems keys, niceEnabled, configuration keys and mode counts for configv2.json   output: version 3 ; == system worldTracking keys: ['niceEnabled', 'configurations', 'modes'] ; niceEnabled True ; config empty ['frameRateVariant', 'frameRateMultiplier', 'slots'] ; == system color ; niceEnabled False ; config display ['frameRateVariant', 'frameRateMultiplier', 'slots'] ; worldTracking default frameRateVariant= utility frameRateMultiplier= 1.0 slots= [{\"label\": \"0:0\", \"cameraIds\": [0, 1, 2, 3]}, ...] ; color display frameRateVariant= display frameRateMultiplier= 72 slots= [{\"label\": \"default\", \"cameraIds\": [4, 5]}]",
+   "file": "product_a/etc/cameramuxmode/configv2.json",
+   "verdict": "confirmed",
+   "reason": "Version 3. worldTracking: niceEnabled true, configurations empty and default, 16 modes. color: niceEnabled false, configurations empty, default and display, 5 modes. Each configuration has frameRateVariant, frameRateMultiplier and slots. color/display is display with multiplier 72; the other configurations are utility with multiplier 1.0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C32",
+   "label": "verified",
+   "claim": "Each mode in configv2.json has name, configuration, purposes (name, slots and optional cameraIds), controlPurposes (name and slots), capabilities, frameTags and fidelities (name and levelRange). In worldTracking the mode lowLightHandsDepth uses the default configuration, a depth_projector capability on slot 3, frameTags [1, 0, 1, 0] and fidelities such as hands (levelRange [1, 4]) and iot (levelRange [2, 5]).",
+   "evidence": "command: python3 -I -c 'import json; d=json.load(open(\"product_a/etc/cameramuxmode/configv2.json\")); m=[x for x in d[\"cameraSystems\"][\"worldTracking\"][\"modes\"] if x[\"name\"]==\"lowLightHandsDepth\"][0]; print({k:m[k] for k in [\"configuration\",\"capabilities\",\"frameTags\",\"fidelities\"]})'   output (excerpt): configuration 'default' ; capabilities {'depth_projector': {'slots': [3]}} ; frameTags [1, 0, 1, 0] ; fidelities [{'name': 'hands', 'levelRange': [1, 4]}, {'name': 'iobt', 'levelRange': [1, 5]}, {'name': 'iot', 'levelRange': [2, 5]}, ...]",
+   "file": "product_a/etc/cameramuxmode/configv2.json",
+   "verdict": "confirmed",
+   "reason": "All 21 modes share the same key set. Purposes (name, slots, optional cameraIds), controlPurposes (name, slots) and fidelities (name, levelRange) have valid sub-structure. lowLightHandsDepth: configuration default, capability depth_projector on slot 3, frameTags [1, 0, 1, 0], hands levelRange [1, 4], iot levelRange [2, 5].",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C33",
+   "label": "observed",
+   "claim": "configv2.json is read by odm and system libraries at /vendor/etc/cameramuxmode/configv2.json (the odm sensor service, libsensorscommon.so, libsensoremulator.so and the sensor emulator). The system stream publisher and vrs-recorder binaries mention it as well. cameramuxmodeservice reads only the v1 path. No SELinux context entry covers /vendor/etc/cameramuxmode.",
+   "evidence": "command: grep -a -o -E '[ -~]{0,60}configv2[.]json[ -~]{0,20}' odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service system_a/system/lib64/libstreampublisher.so ; grep -r -n cameramux vendor_a/etc/selinux/vendor_file_contexts   output: odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service: /vendor/etc/cameramuxmode/configv2.json ; system_a/system/lib64/libstreampublisher.so: /vendor/etc/cameramuxmode/configv2.json Could not find mux mode '{}' in configv2.json ; vendor_file_contexts: no matching line",
+   "file": "odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service",
+   "verdict": "needs_change",
+   "reason": "Path references reproduce: the odm sensor service and its -mock variant, sensoremu, libsensorscommon.so and libsensoremulator.so in odm_a; libstreampublisher.so and vrs-recorder and vrs-recorder2 in system_a. cameramuxmodeservice has no configv2.json reference and uses the config.json path. No file-context entry covers /vendor/etc/cameramuxmode. The wording is wrong: libstreampublisher.so is a shared library, not a binary.",
+   "corrected_claim": "configv2.json is read by odm and system components at /vendor/etc/cameramuxmode/configv2.json: the odm sensor service (and its -mock variant), sensoremu, libsensorscommon.so and libsensoremulator.so in odm_a, and the system library libstreampublisher.so and the vrs-recorder and vrs-recorder2 binaries in system_a. cameramuxmodeservice contains no configv2.json reference and reads /product/etc/cameramuxmode/config.json. No SELinux file-context entry covers /vendor/etc/cameramuxmode."
+  },
+  {
+   "id": "C34",
+   "label": "verified",
+   "claim": "android.hardware.camera.device@3.2.so (lib64) is a 195,888-byte AArch64 shared object with 265 defined and 168 undefined dynamic symbols. It NEEDs android.hardware.camera.common@1.0.so, android.hardware.graphics.common@1.0.so and libhidlbase.so, among others. It defines 93 symbols whose names contain ICameraDevice.",
+   "evidence": "command: readelf -d system_a/system/lib64/android.hardware.camera.device@3.2.so | grep NEEDED ; readelf -W --dyn-syms system_a/system/lib64/android.hardware.camera.device@3.2.so | awk 'NR>1 && $7!=\"UND\"' | wc -l ; readelf -W --dyn-syms ... | awk 'NR>1 && $7!=\"UND\" && $8 ~ /ICameraDevice/' | wc -l   output: NEEDED android.hardware.camera.common@1.0.so ; android.hardware.graphics.common@1.0.so ; libhidlbase.so ; liblog.so ; libutils.so ; libcutils.so ; libc++.so ; libc.so ; libm.so ; libdl.so ; defined 265 ; ICameraDevice-named 93",
+   "file": "system_a/system/lib64/android.hardware.camera.device@3.2.so",
+   "verdict": "refuted",
+   "reason": "195888 bytes, AArch64 shared object, the NEEDED list and the 93 ICameraDevice-named symbols reproduce. The counts do not: 263 defined and 167 undefined named dynamic symbols (431 entries including the null entry). The claimed 265 and 168 include the two output header lines and the null entry.",
+   "corrected_claim": "android.hardware.camera.device@3.2.so (lib64) is a 195,888-byte AArch64 shared object with 263 defined and 167 undefined named dynamic symbols (431 dynamic symbol entries including the null entry). It NEEDs android.hardware.camera.common@1.0.so, android.hardware.graphics.common@1.0.so and libhidlbase.so, among others. It defines 93 symbols whose names contain ICameraDevice."
+  },
+  {
+   "id": "C35",
+   "label": "observed",
+   "claim": "The device@3.2 library names the HIDL interfaces ICameraDevice, ICameraDeviceCallback and ICameraDeviceSession, and carries client, server and passthrough method labels such as open, getCameraCharacteristics, getResourceCost and configureStreams.",
+   "evidence": "command: strings -n 6 system_a/system/lib64/android.hardware.camera.device@3.2.so | grep -E '^android[.]hardware[.]camera[.]device@[0-9.]+::I|HIDL::ICameraDevice(Session)?::(open|configureStreams|getCameraCharacteristics)::' | sort -u   output: android.hardware.camera.device@3.2::ICameraDevice ; android.hardware.camera.device@3.2::ICameraDeviceCallback ; android.hardware.camera.device@3.2::ICameraDeviceSession ; HIDL::ICameraDevice::open::client ; HIDL::ICameraDevice::getCameraCharacteristics::server ; HIDL::ICameraDeviceSession::configureStreams::server",
+   "file": "system_a/system/lib64/android.hardware.camera.device@3.2.so",
+   "verdict": "confirmed",
+   "reason": "The interface names ICameraDevice, ICameraDeviceCallback and ICameraDeviceSession, and client, server and passthrough labels for open, getCameraCharacteristics and configureStreams, all reproduce. getResourceCost appears 8 times.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C36",
+   "label": "verified",
+   "claim": "The system compatibility matrix 5 declares android.hardware.camera.provider at version 2.4-6 with interface ICameraProvider, and the hwservice contexts label android.hardware.camera.provider::ICameraProvider as hal_camera_hwservice.",
+   "evidence": "command: grep -n -A3 camera system_a/system/etc/vintf/compatibility_matrix.5.xml | head -n 8 ; grep -n camera system_a/system/etc/selinux/plat_hwservice_contexts   output: 151: <name>android.hardware.camera.provider</name> ; 152: <version>2.4-6</version> ; 154: <name>ICameraProvider</name> ; plat_hwservice_contexts:25:android.hardware.camera.provider::ICameraProvider u:object_r:hal_camera_hwservice:s0 ; plat_hwservice_contexts:3:android.frameworks.cameraservice.service::ICameraService u:object_r:fwk_camera_hwservice:s0",
+   "file": "system_a/system/etc/vintf/compatibility_matrix.5.xml",
+   "verdict": "confirmed",
+   "reason": "compatibility_matrix.5.xml lines 151 to 154: android.hardware.camera.provider, version 2.4-6, interface ICameraProvider. plat_hwservice_contexts line 25 labels android.hardware.camera.provider::ICameraProvider as hal_camera_hwservice.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C37",
+   "label": "observed",
+   "claim": "The 64-bit system framework libraries export their expected APIs: libcamera2ndk.so exports ACameraManager_openCamera, ACaptureRequest_* and ACameraCaptureSession_* functions; libcamera_client.so exports BpCameraService::connect and android::Camera symbols; libcamera_metadata.so exports allocate_camera_metadata, append_camera_metadata and find_camera_metadata_entry style functions.",
+   "evidence": "command: readelf -W --dyn-syms system_a/system/lib64/libcamera2ndk.so | awk 'NR>1 && $7!=\"UND\"{print $8}' | head -n 4 ; readelf -W --dyn-syms system_a/system/lib64/libcamera_client.so | awk 'NR>1 && $7!=\"UND\"{print $8}' | grep -E 'BpCameraService7connect|android6Camera' | head -n 3 ; strings -n 6 system_a/system/lib64/libcamera_metadata.so | grep -E '_camera_metadata' | head -n 4   output: ACaptureSessionOutput_free@@LIBCAMERA2NDK ; ACameraManager_openCamera@@LIBCAMERA2NDK ; _ZN7android8hardware15BpCameraService7connect... ; _ZN7android6Camera37recordingFrameHandleCallbackTimestamp... ; allocate_camera_metadata ; append_camera_metadata ; add_camera_metadata_entry",
+   "file": "system_a/system/lib64/libcamera2ndk.so",
+   "verdict": "confirmed",
+   "reason": "libcamera2ndk exports ACameraManager_openCamera, 21 ACaptureRequest_* names and 9 ACameraCaptureSession_* names. libcamera_client exports BpCameraService connect and 72 android6Camera symbols. libcamera_metadata exports allocate_camera_metadata, append_camera_metadata and find_camera_metadata_entry.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C38",
+   "label": "verified",
+   "claim": "The Chromatix tuned parameter files begin with the magic QTI Chromatix Header and carry the parser version string Parameter Parser V3.4.0 (2106301010). A 32-bit little-endian size field at offset 0x1c is the file size minus 4. The last four bytes are a CRC32 of the preceding bytes for com.qti.tuned.eureka_imx471_left.bin and com.qti.tuned.default.bin.",
+   "evidence": "command: python3 -I scripts/chromatix_check.py vendor_a/etc/camera/com.qti.tuned.eureka_imx471_left.bin vendor_a/etc/camera/com.qti.tuned.default.bin   output: com.qti.tuned.eureka_imx471_left.bin | magic='QTI Chromatix Header' | u32@0x1c=1357590 | file=1357594 | diff=4 | tail=0x2a8f3759 crc32(body)=match ; com.qti.tuned.default.bin | magic='QTI Chromatix Header' | u32@0x1c=1147830 | file=1147834 | diff=4 | tail=0xc1c37984 crc32(body)=match",
+   "file": "vendor_a/etc/camera/com.qti.tuned.eureka_imx471_left.bin",
+   "verdict": "confirmed",
+   "reason": "Both tuned files start with the magic QTI Chromatix Header and have the u32 at 0x1c equal to file size minus 4 (diff 4). Recomputing CRC32 over all bytes before the last four, the little-endian trailer matches for both files (0x2a8f3759 and 0xc1c37984).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C39",
+   "label": "verified",
+   "claim": "The six com.qti.sensormodule.camNN bins share the Chromatix header. Their u32 at 0x1c equals the file size, and the trailing word is 0xffffffff (no CRC match). Each embeds its module name and the string cameraModuleData.",
+   "evidence": "command: python3 -I scripts/chromatix_check.py vendor_a/etc/camera/com.qti.sensormodule.cam04_none_eureka_imx471_left_csi0.bin vendor_a/etc/camera/com.qti.sensormodule.cam00_none_eureka_og01a1b_left_csi4.bin   output: com.qti.sensormodule.cam04_none_eureka_imx471_left_csi0.bin | magic='QTI Chromatix Header' | u32@0x1c=5527 | file=5527 | diff=0 | tail=0xffffffff crc32(body)=no-match ; com.qti.sensormodule.cam00_none_eureka_og01a1b_left_csi4.bin | u32@0x1c=5319 | file=5319 | diff=0 | tail=0xffffffff ; cameras cam00..cam05 all show diff=0",
+   "file": "vendor_a/etc/camera/com.qti.sensormodule.cam04_none_eureka_imx471_left_csi0.bin",
+   "verdict": "confirmed",
+   "reason": "All six sensor-module bins start with the Chromatix magic. The u32 at 0x1c equals the file size (cam00 5319, cam01 5319, cam02 5279, cam03 5279, cam04 5527, cam05 5528). The trailing word is 0xffffffff and does not match a CRC32. Each file embeds its own file-name stem and the string cameraModuleData.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C40",
+   "label": "verified",
+   "claim": "The sensor-module file names encode the camera index, the module vendor, the sensor, the side and the CSI port: cam00 og01a1b left csi4; cam01 og01a1b right csi1; cam02 ov7251 left csi5 (liteon); cam03 ov7251 right csi2 (liteon); cam04 imx471 left csi0; cam05 imx471 right csi3. Sensors marked none have no module vendor.",
+   "evidence": "command: ls vendor_a/etc/camera | grep sensormodule | sed -E 's/com[.]qti[.]sensormodule[.](cam[0-9]+)_([a-z]+)_eureka_([a-z0-9]+)_([a-z]+)_(csi[0-9])[.]bin/\\1 vendor=\\2 sensor=\\3 side=\\4 \\5/'   output: cam00 vendor=none sensor=og01a1b side=left csi4 ; cam01 vendor=none sensor=og01a1b side=right csi1 ; cam02 vendor=liteon sensor=ov7251 side=left csi5 ; cam03 vendor=liteon sensor=ov7251 side=right csi2 ; cam04 vendor=none sensor=imx471 side=left csi0 ; cam05 vendor=none sensor=imx471 side=right csi3",
+   "file": "vendor_a/etc/camera/com.qti.sensormodule.cam04_none_eureka_imx471_left_csi0.bin",
+   "verdict": "needs_change",
+   "reason": "The decoded tokens for all six names reproduce. The meanings given to them (module vendor, side, CSI port) are interpretive: the file contains no field documentation for the second token, so these readings are inferred, not verified.",
+   "corrected_claim": "The six com.qti.sensormodule.camNN bins are named com.qti.sensormodule.camNN_<token>_eureka_<sensor>_<side>_csiN.bin (verified tokens): cam00 none og01a1b left csi4; cam01 none og01a1b right csi1; cam02 liteon ov7251 left csi5; cam03 liteon ov7251 right csi2; cam04 none imx471 left csi0; cam05 none imx471 right csi3. The meaning of the second token (module vendor, with none meaning no module vendor) is inferred."
+  },
+  {
+   "id": "C41",
+   "label": "observed",
+   "claim": "camera.qcom.so names a sample sensor-module file com.qti.sensormodule.truly_ov8856.bin and its two-lane variant, which shows the naming pattern com.qti.sensormodule.<sensor>.bin that the sensor-module bins in this group follow. No literal match for the group's file names appears in the HAL.",
+   "evidence": "command: strings -n 6 vendor_a/lib64/hw/camera.qcom.so | grep -E 'sensormodule|cameraModuleData'   output: com.qti.sensormodule.truly_ov8856.bin ; com.qti.sensormodule.truly_ov8856_2lane.bin ; sensormodule ; cameraModuleData",
+   "file": "vendor_a/lib64/hw/camera.qcom.so",
+   "verdict": "needs_change",
+   "reason": "The HAL literal names (com.qti.sensormodule.truly_ov8856.bin and its 2lane variant), the sensormodule and cameraModuleData strings, and the absence of the group's file-name tokens (eureka, cam04, imx471, og01a1b, ov7251) all reproduce. The pattern statement is wrong: the group's six bins use the longer com.qti.sensormodule.camNN_<vendor>_eureka_<sensor>_<side>_csiN.bin form, so they do not follow the short com.qti.sensormodule.<sensor>.bin pattern.",
+   "corrected_claim": "camera.qcom.so names a sample sensor-module file com.qti.sensormodule.truly_ov8856.bin and its two-lane variant, which show the short com.qti.sensormodule.<sensor>.bin naming. The six bins in this group use the longer com.qti.sensormodule.camNN_<vendor>_eureka_<sensor>_<side>_csiN.bin form (see C40). No literal match for the group's file names, or for the tokens eureka, cam04, imx471, og01a1b or ov7251, appears in camera.qcom.so."
+  },
+  {
+   "id": "C42",
+   "label": "observed",
+   "claim": "The AEC and AWB core tuning tables are binary tables with text labels. AECoreTuning_imx471.bin (13157 bytes) and AECoreTuning_imx471_v2.bin (15775 bytes) differ in contents and labels (triggers luxIndexTrigger and gyroSqrTrigger in v2). AWBCoreTuning_imx471.bin and AWBCoreTuning_imx471_CIQ_Vivid.bin have the same size (27947) but differ in bytes. Magic-based detection reports a Targa image for the AWB files, which is a false match.",
+   "evidence": "command: head -c 16 vendor_a/etc/camera/AWBCoreTuning_imx471.bin | od -A x -t x1 ; strings -n 6 vendor_a/etc/camera/AECoreTuning_imx471_v2.bin | head -n 1 ; cmp vendor_a/etc/camera/AWBCoreTuning_imx471.bin vendor_a/etc/camera/AWBCoreTuning_imx471_CIQ_Vivid.bin   output: 01 00 01 01 01 00 00 00 ... ; invalidTrigger|luxIndexTrigger|gyroSqrTrigger|combinedLumaTrigger| ; AWB CIQ and AWB plain differ ; AEC v2 and AEC v1 differ",
+   "file": "vendor_a/etc/camera/AECoreTuning_imx471_v2.bin",
+   "verdict": "confirmed",
+   "reason": "AECoreTuning_imx471.bin is 13157 bytes and AECoreTuning_imx471_v2.bin is 15775 bytes; the v2 file alone carries luxIndexTrigger and gyroSqrTrigger. The AWB pair is 27947 bytes each and differs in 92 bytes. The file-type tool reports Targa for the two AWB files and generic data for the AEC files. Calling the Targa result a false match is an interpretation.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C43",
+   "label": "verified",
+   "claim": "cvaectuning_slam.json, cvaectuning_ht.json and depthaectuning.json are JSON objects with the same four top-level keys: basic, metering, convergence and factorization. The first two are byte-identical.",
+   "evidence": "command: python3 -I -c 'import json; [print(p, list(json.load(open(p)).keys())) for p in [\"vendor_a/etc/camera/cvaectuning_slam.json\",\"vendor_a/etc/camera/depthaectuning.json\"]]'   output: vendor_a/etc/camera/cvaectuning_slam.json dict ['basic', 'metering', 'convergence', 'factorization'] ; vendor_a/etc/camera/depthaectuning.json dict ['basic', 'metering', 'convergence', 'factorization']",
+   "file": "vendor_a/etc/camera/cvaectuning_slam.json",
+   "verdict": "confirmed",
+   "reason": "cvaectuning_slam.json, cvaectuning_ht.json and depthaectuning.json are JSON objects with top-level keys basic, metering, convergence and factorization. The slam and ht files are byte-identical.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C44",
+   "label": "verified",
+   "claim": "CAMERA_ICP.mdt is an ELF32 executable for Tensilica Xtensa (e_flags 0x300) with entry 0x0 and 21 program headers. It is the header half of a split firmware image.",
+   "evidence": "command: readelf -h vendor_a/firmware/CAMERA_ICP.mdt | grep -E 'Class|Machine|Type|Entry|Flags|Number of program' ; od -A x -t x1z -N 16 vendor_a/firmware/CAMERA_ICP.b00   output: Class: ELF32 ; Type: EXEC (Executable file) ; Machine: Tensilica Xtensa Processor ; Entry point address: 0x0 ; Flags: 0x300 ; Number of program headers: 21 ; b00 begins 7f 45 4c 46 01 01 01 00 ...",
+   "file": "vendor_a/firmware/CAMERA_ICP.mdt",
+   "verdict": "confirmed",
+   "reason": "CAMERA_ICP.mdt is ELF32, EXEC type, Tensilica Xtensa machine, flags 0x300, entry 0x0 and 21 program headers. CAMERA_ICP.b00 begins with the ELF magic. The split reading is supported by the 21 segment files mapped by the program headers.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C45",
+   "label": "verified",
+   "claim": "Program header index N maps to segment file CAMERA_ICP.bNN, and the file size equals the program header FileSiz in all 21 cases. Thirteen segment files carry data (b00 to b09, b17, b18, b20). Eight are zero bytes (b10 to b16 and b19). Segment 8 is 857980 bytes at vaddr 0x1000, segment 17 is 13124 bytes at 0xe0400000, and segment 18 is 38884 bytes at 0xe0420000. Segment 20 (PT_NULL type) holds 7000 bytes.",
+   "evidence": "command: python3 -I scripts/mdt_map.py vendor_a/firmware/CAMERA_ICP.mdt   output: idx08 type=1 vaddr=0x00001000 filesz=857980 memsz=857980 file_size=857980 match=True ; idx17 type=1 vaddr=0xe0400000 filesz=13124 ; idx18 type=1 vaddr=0xe0420000 filesz=38884 ; idx19 type=1 vaddr=0x00000000 filesz=0 memsz=0 file_size=0 match=True ; idx20 type=0 vaddr=0x00000000 filesz=7000 memsz=7000 file_size=7000 match=True ; matched 21 of 21",
+   "file": "vendor_a/firmware/CAMERA_ICP.mdt",
+   "verdict": "confirmed",
+   "reason": "All 21 program-header FileSiz values match the segment file sizes. Data files are b00 to b09, b17, b18, b20 (13 files); zero-byte files are b10 to b16 and b19 (8 files). Segment 8 is 857980 bytes at 0x1000, segment 17 is 13124 bytes at 0xe0400000, segment 18 is 38884 bytes at 0xe0420000, and segment 20 is PT_NULL with 7000 bytes.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C46",
+   "label": "observed",
+   "claim": "Segment 8 holds text naming the CPAS, BPS and IPE command-descriptor blocks and an error-fatal message. Segment 9 holds BPS and IPE enqueue functions and memory-map text. Segment 20 holds X.509-style text (Eureka_FW_Root, Meta Platforms, Inc., Menlo Park) and validity dates, consistent with a certificate block.",
+   "evidence": "command: strings -n 6 vendor_a/firmware/CAMERA_ICP.b08 | head -n 6 ; strings -n 6 vendor_a/firmware/CAMERA_ICP.b09 | head -n 6 ; strings -n 6 vendor_a/firmware/CAMERA_ICP.b20 | head -n 4   output: Error Fatal Occurred, coredump for more details | CPAS_CDM | BPS_CDM | IPE0_CDM | IPE1_CDM | CPAS_CDM ; MemMapUmdCdmRegions | EnqueueCommandToStream | EnqueueBpsWaitForIpe | EnqueueBpsWaitForBps | EnqueueIpeWaitForBps | EnqueueIpeWaitForIpe ; XVdCG,Z | Eureka_FW_Root | Meta Platforms, Inc. | Menlo Park | 230516210606Z | 430511210606Z",
+   "file": "vendor_a/firmware/CAMERA_ICP.b20",
+   "verdict": "confirmed",
+   "reason": "b08 contains CPAS_CDM, BPS_CDM, IPE0_CDM, IPE1_CDM and the error-fatal message. b09 contains MemMapUmdCdmRegions and the enqueue functions EnqueueBpsWaitForIpe and others. b20 contains Eureka_FW_Root, Meta Platforms, Inc., Menlo Park and the validity strings 230516210606Z and 430511210606Z.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C47",
+   "label": "verified",
+   "claim": "The vendor SELinux file contexts label everything under /vendor/firmware as firmware_file. No path-specific camera firmware rule exists.",
+   "evidence": "command: grep -n firmware vendor_a/etc/selinux/vendor_file_contexts   output: 231:/vendor/firmware(/.*)?          u:object_r:firmware_file:s0",
+   "file": "vendor_a/etc/selinux/vendor_file_contexts",
+   "verdict": "confirmed",
+   "reason": "vendor_file_contexts line 231 is /vendor/firmware(/.*)? labelled firmware_file. No camera-specific firmware rule exists. The claim's excerpt omits other firmware lines in the same file (lines 123 to 125 for arfirmware and line 245 for bt_firmware); these do not affect the claim.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C48",
+   "label": "observed",
+   "claim": "The vendor_dlkm camera kernel module carries a firmware name string CAMERA_ICP.elf. The mounted firmware set provides CAMERA_ICP.mdt, so the name in the module does not match the provided file name.",
+   "evidence": "command: grep -r -a -l CAMERA_ICP . ; grep -a -o -E '[ -~]{0,30}CAMERA_ICP[ -~]{0,30}' vendor_dlkm_a/lib/modules/camera.ko   output: ./vendor_dlkm_a/lib/modules/camera.ko ; CAMERA_ICP.elf",
+   "file": "vendor_dlkm_a/lib/modules/camera.ko",
+   "verdict": "confirmed",
+   "reason": "vendor_dlkm_a/lib/modules/camera.ko contains the string CAMERA_ICP.elf. The mounted firmware set provides CAMERA_ICP.mdt, not CAMERA_ICP.elf. No other mounted file contains the name.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C49",
+   "label": "observed",
+   "claim": "The CHI pipeline nodes, 3A libraries and statistics algorithm components export their factory symbols: libcorepi_3a_v1.so and libcorepi_3a_v2.so export createCorePiAWBInterface (v2 also createCorePiAEInterface); com.qti.stats.awb.so exports CreateAWBAlgorithm; com.qti.stats.aec.so exports CreateAECAlgorithm; com.qti.stats.aecxcore.so exports CreateAecXCoreAlgo; com.meta.node.gipp.so has GIPPNodeCreate; com.meta.node.fastAI.so has FastAINodeProcRequest; com.meta.node.foveation.fusion.so has FoveationBlend; com.qti.eisv3.so has eis_utility functions.",
+   "evidence": "command: for f in vendor_a/lib64/camera/components/*.so; do echo $f; readelf -W --dyn-syms $f | awk 'NR>1 && $7!=\"UND\" && $5==\"GLOBAL\"{print $8}' | grep -E 'Create|createCorePi|NodeCreate|ProcRequest|FoveationBlend|eis_utility' | head -n 3; done   output (excerpt): libcorepi_3a_v2.so: createCorePiAWBInterface ; createCorePiAEInterface ; com.qti.stats.awb.so: CreateAWBAlgorithm ; com.qti.stats.aec.so: CreateAECAlgorithm ; com.qti.stats.aecxcore.so: CreateAecXCoreAlgo ; com.meta.node.gipp.so: GIPPNodeCreate",
+   "file": "vendor_a/lib64/camera/components/com.qti.stats.awb.so",
+   "verdict": "refuted",
+   "reason": "Confirmed exports: com.qti.stats.awb.so exports CreateAWBAlgorithm; com.qti.stats.aec.so exports CreateAECAlgorithm; com.qti.stats.aecxcore.so exports CreateAecXCoreAlgo; com.qti.eisv3.so exports eis_utility_* functions. Mismatches: (a) libcorepi_3a_v1.so also exports createCorePiAEInterface, so the 'v2 also' qualifier is wrong; (b) com.meta.node.gipp.so (GIPPNodeCreate) and com.meta.node.fastAI.so (FastAINodeProcRequest) contain these names only as strings, with no dynamic or static symbol entry; (c) com.meta.node.foveation.fusion.so contains FoveationBlend only inside log-message text.",
+   "corrected_claim": "libcorepi_3a_v1.so and libcorepi_3a_v2.so export createCorePiAWBInterface and createCorePiAEInterface. com.qti.stats.awb.so exports CreateAWBAlgorithm; com.qti.stats.aec.so exports CreateAECAlgorithm; com.qti.stats.aecxcore.so exports CreateAecXCoreAlgo; com.qti.eisv3.so exports eis_utility_* functions. com.meta.node.gipp.so (GIPPNodeCreate) and com.meta.node.fastAI.so (FastAINodeProcRequest) contain these names only as strings, and com.meta.node.foveation.fusion.so contains FoveationBlend only as a log-message prefix. None of these three is an exported symbol."
+  },
+  {
+   "id": "C50",
+   "label": "observed",
+   "claim": "vendor.qti.hardware.camera.postproc@1.0 is a HIDL package with IPostProcService, IPostProcServiceCallBacks and IPostProcSession. The service-impl library exports RegisterIPostProcService and text CameraPostProc_Create and CameraPostProc_Destroy, and NEEDs 26 libraries. The package has no init, SELinux or vintf entry in the mounted partitions; com.qti.chi.override.so references it.",
+   "evidence": "command: strings -n 6 vendor_a/lib64/vendor.qti.hardware.camera.postproc@1.0.so | grep -E '^vendor[.]qti[.]hardware[.]camera[.]postproc@1[.]0::I' | sort -u ; grep -r -a -l 'postproc@1[.]0' . ; grep -r -n postproc vendor_a/etc/init vendor_a/etc/selinux vendor_a/etc/vintf   output: vendor.qti.hardware.camera.postproc@1.0::IPostProcService ; ::IPostProcServiceCallBacks ; ::IPostProcSession ; ./vendor_a/lib64/hw/com.qti.chi.override.so ; ./vendor_a/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so ; ./vendor_a/lib64/vendor.qti.hardware.camera.postproc@1.0.so ; (grep found no lines in init, selinux or vintf)",
+   "file": "vendor_a/lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so",
+   "verdict": "confirmed",
+   "reason": "The service-impl library has 26 NEEDED entries, exports the mangled RegisterIPostProcService symbol (_Z24RegisterIPostProcServicev), and contains CameraPostProc_Create and CameraPostProc_Destroy strings. The three IPostProc* HIDL names are present. The claim's excerpt for the absence check is not reproduced as written: a plain postproc search returns only unrelated display-postproc lines in vendor_sepolicy.cil. A camera-specific search finds no init, SELinux or vintf entry. com.qti.chi.override.so references the package.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C51",
+   "label": "observed",
+   "claim": "The camera warp-grid provider interface is an AIDL package with ICameraWarpGridProvider, ICameraWarpGridProviderClient, WarpGridComputeRequest, WarpGridBufferFormat and SystemTimestamp types. The odm_a and system_ext_a copies of its NDK stub are the same size (63192 bytes) but have different build IDs and different sha256 values. mrsystemservice.rc declares the interface instance.",
+   "evidence": "command: strings -n 6 odm_a/lib64/vendor.oculus.hardware.mixedreality.camerawarpgridprovider-V1-ndk_platform.so | grep camerawarpgridprovider[.] | sort -u ; file -b odm_a/lib64/vendor.oculus.hardware.mixedreality.camerawarpgridprovider-V1-ndk_platform.so system_ext_a/lib64/vendor.oculus.hardware.mixedreality.camerawarpgridprovider-V1-ndk_platform.so ; grep -n camerawarpgridprovider system_ext_a/etc/init/mrsystemservice.rc   output: vendor.oculus.hardware.mixedreality.camerawarpgridprovider.ICameraWarpGridProvider ; ...WarpGridComputeRequest ; ...WarpGridBufferFormat ; ...ICameraWarpGridProviderClient ; BuildID[md5/uuid]=3ad017760187c1cdca947fe610b57075 (odm_a) ; BuildID[md5/uuid]=1f12a72fd696376c99f8a83844335f74 (system_ext_a) ; mrsystemservice.rc:13: interface aidl vendor.oculus.hardware.mixedreality.camerawarpgridprovider.ICameraWarpGridProvider/default",
+   "file": "odm_a/lib64/vendor.oculus.hardware.mixedreality.camerawarpgridprovider-V1-ndk_platform.so",
+   "verdict": "confirmed",
+   "reason": "Both NDK stub copies are 63192 bytes, with different BuildIDs (3ad017760187c1cdca947fe610b57075 in odm_a, 1f12a72fd696376c99f8a83844335f74 in system_ext_a) and different SHA-256 values. The strings include ICameraWarpGridProvider, ICameraWarpGridProviderClient, WarpGridComputeRequest, WarpGridBufferFormat and SystemTimestamp. mrsystemservice.rc line 13 declares the aidl interface instance.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C52",
+   "label": "observed",
+   "claim": "The camera group is referenced by device-node groups and cgroup/cpuset setup in the mounted init and ueventd files: the video, media, v4l-subdev and synx device nodes are set to group camera, and init creates camera-daemon cpu, stune and cpuset groups and /data/misc/cameraserver.",
+   "evidence": "command: grep -n camera vendor_a/etc/ueventd.rc ; grep -n -E 'camera-daemon|cameraserver' system_a/system/etc/init/hw/init.rc | head -n 12   output: vendor_a/etc/ueventd.rc:140: /dev/video* 0660 system camera ; 144: /dev/media* 0660 system camera ; 145: /dev/v4l-subdev* 0660 system camera ; 69: /dev/synx_device 0660 root camera ; system_a/system/etc/init/hw/init.rc:221: mkdir /dev/cpuctl/camera-daemon ; 229: mkdir /dev/stune/camera-daemon ; 389: mkdir /dev/cpuset/camera-daemon ; 795: mkdir /data/misc/cameraserver 0700 cameraserver cameraserver",
+   "file": "vendor_a/etc/ueventd.rc",
+   "verdict": "confirmed",
+   "reason": "vendor_a/etc/ueventd.rc sets /dev/video*, /dev/media*, /dev/v4l-subdev* to system camera and /dev/synx_device to root camera. system_a init.rc has the camera-daemon cpuctl (line 221), stune (line 229) and cpuset (line 389) groups, and line 795 creates /data/misc/cameraserver owned by cameraserver.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C53",
+   "label": "observed",
+   "claim": "Property contexts assign camera property families to labels: persist.vendor.camera. and vendor.camera. map to vendor_camera_prop, vendor.debug.camera. maps to vendor_camera_prop, persist.cmm. maps to cameramuxmode_prop, and camera.disable_zsl_mode and similar keys map to camera_config_prop in the system policy.",
+   "evidence": "command: grep -n camera vendor_a/etc/selinux/vendor_property_contexts | head -n 6 ; grep -n -E 'camera[.]|persist[.]cmm' system_a/system/etc/selinux/plat_property_contexts system_ext_a/etc/selinux/system_ext_property_contexts | head -n 6   output: vendor_property_contexts:29: persist.vendor.camera. u:object_r:vendor_camera_prop:s0 ; :47: vendor.camera. u:object_r:vendor_camera_prop:s0 ; :48: vendor.debug.camera. u:object_r:vendor_camera_prop:s0 ; plat_property_contexts:335: camera.disable_zsl_mode u:object_r:camera_config_prop:s0 exact bool ; system_ext_property_contexts:27: persist.cmm. u:object_r:cameramuxmode_prop:s0",
+   "file": "vendor_a/etc/selinux/vendor_property_contexts",
+   "verdict": "confirmed",
+   "reason": "vendor_property_contexts maps persist.vendor.camera. (line 29), vendor.camera. (line 47) and vendor.debug.camera. (line 48) to vendor_camera_prop. system_ext_property_contexts line 27 maps persist.cmm. to cameramuxmode_prop. plat_property_contexts lines 335 onward map camera.disable_zsl_mode and similar keys to camera_config_prop.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C54",
+   "label": "inferred",
+   "claim": "camera_click.ogg and camera_focus.ogg are short Ogg Vorbis stereo sounds at 44100 Hz for the camera shutter click and focus events. The role comes from the file names, and no init, SELinux or application reference to them was found in the mounted partitions.",
+   "evidence": "command: file -b product_a/media/audio/ui/camera_click.ogg product_a/media/audio/ui/camera_focus.ogg ; grep -r -l camera_click . (no hits)   output: Ogg data, Vorbis audio, stereo, 44100 Hz, ~80000 bps, created by: Xiph.Org libVorbis I (1.3.2) ; Ogg data, Vorbis audio, stereo, 44100 Hz, ~112000 bps",
+   "file": "product_a/media/audio/ui/camera_click.ogg",
+   "verdict": "refuted",
+   "reason": "The format (Ogg Vorbis, stereo, 44100 Hz) and the file sizes (7010 and 9376 bytes) reproduce; the duration is not measured and 'short' is inferred from size and bitrate. The no-reference statement is wrong: the literal strings camera_click.ogg and camera_focus.ogg appear in system_a/system/framework/framework.jar, in an uncompressed member alongside other camera names such as camera_autorotate. No init or SELinux reference was found.",
+   "corrected_claim": "camera_click.ogg and camera_focus.ogg are short Ogg Vorbis stereo files at 44100 Hz (7010 and 9376 bytes). Their names appear as literal strings in system_a/system/framework/framework.jar, in a list alongside other camera names; no init or SELinux reference was found. The camera shutter and focus roles are inferred from the file names."
+  },
+  {
+   "id": "C55",
+   "label": "observed",
+   "claim": "Among the mounted init service and group definitions, the only service whose name contains camera is cameramuxmodeservice. Other init files use camera only as a group name or in cameraserver restarts.",
+   "evidence": "command: grep -r -I -n -E '^[[:space:]]*service[[:space:]].*cam' odm_a/etc/init product_a/etc/init system_ext_a/etc/init vendor_a/etc/init system_a/system/etc/init   output: system_ext_a/etc/init/cameramuxmodeservice.rc:1: service cameramuxmodeservice /system_ext/bin/cameramuxmodeservice ; system_a/system/etc/init/hw/init.zygote64.rc:11: onrestart restart cameraserver (zygote rc files)",
+   "file": "system_ext_a/etc/init/cameramuxmodeservice.rc",
+   "verdict": "confirmed",
+   "reason": "Across the five init directories, the only service definition whose name contains cam is cameramuxmodeservice. Other camera uses are group names or onrestart restart cameraserver lines in the zygote init files (for example system_a/system/etc/init/hw/init.zygote64.rc line 11).",
+   "corrected_claim": ""
+  }
+ ],
+ "gaps": [
+  "The camera provider service binary (the android.hardware.camera.provider@2.x-service that loads camera.qcom.so) is not among the mounted partitions searched, so its NEEDED list, its registration and its init rc are undetermined.",
+  "No init rc in the mounted init directories starts the QTI camera HAL, cameratool, libcamerahal, the postproc HIDL service or a firmware loader for CAMERA_ICP; these starts are unresolved.",
+  "No vintf manifest entry for android.hardware.camera.provider or vendor.qti.hardware.camera.postproc was found in the mounted vintf directories; only the system compatibility matrices were located.",
+  "The CAMERA_ICP loader is not identified. camera.ko names CAMERA_ICP.elf while the set holds CAMERA_ICP.mdt and the segment files. The load order, the segment-type semantics of the program header flags, and any verification flow were not determined, and no assessment was made.",
+  "The meaning of the ICP firmware segment payloads (code and data layout, command formats and the sign-off text in segment 20) is limited to text labels and headers; no disassembly was performed.",
+  "The Chromatix tuned and sensor-module blobs were decoded only at the header, size and checksum level. Parameter sections and their values were not parsed.",
+  "The AEC and AWB core tuning tables (binary, no header magic) were not decoded beyond size, leading bytes and text labels.",
+  "The CHI pipeline graph definitions (XML or JSON describing com.meta.node.* and com.qti.* nodes) are not in this group; the node topology is unresolved.",
+  "The odm libcamerahal shim's selection between the XR HAL and a fastpath HAL is not resolved, because libfastpathcamerahal.so is absent from the mounted partitions.",
+  "The field-level parser for configv2.json was not located. libcameramuxmodereader.so exports only a file-content getter, and cameramuxmodeservice reads only the v1 path literal. Which binary parses the v3 keys (version, cameraSystems, modes) is unresolved.",
+  "The system_a 32-bit libraries (lib/ directory) were sampled by SONAME, NEEDED and export names only, and their roles rest on those names.",
+  "Roles for camera_click.ogg and camera_focus.ogg are inferred from file names alone.",
+  "cameratool and syncboss_camera_tests were not executed; their behaviour is described from option and log text.",
+  "The dependency closure was checked only for the libraries named in this review. Libraries from other partitions such as libsyncboss.so, libdevicesensors.so and libcamxcsl.so were confirmed present, but the full NEEDED resolution for every row was not computed.",
+  "vendor_dlkm_a and odm_dlkm_a were searched only for the camera.ko string; their other contents are outside this group."
+ ],
+ "rolesFile": "data/subsystems/camera/roles.tsv"
+}

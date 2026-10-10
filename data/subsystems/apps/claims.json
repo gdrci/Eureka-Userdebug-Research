@@ -1,0 +1,477 @@
+{
+ "key": "apps",
+ "summary": "The apps group is 431 rows: product_a 27, system_a 123, system_ext_a 278, vendor_a 3. The rows are 142 Android APK archives (142 distinct package names), 137 ELF odex files and 137 vdex containers (136 packages, plus a second arm variant of Horizon), 2 ART app images, 2 ART profiles and 11 symlinks into /system_ext/lib64. Of the APK packages, 103 are com.oculus/com.meta/com.facebook packages (mostly on system_ext_a and product_a), 37 are AOSP com.android packages (mostly system_a), and 2 are other names. The manifests report platform build version 32 for most APKs, with targetSdkVersion 32 in 84 of 138 APKs that declare one. Signing uses two certificate families: CN=Android (mapped to seinfo platform in plat_mac_permissions.xml) and CN=Android Debug (mapped to seinfo fbandroid_debug in system_ext_mac_permissions.xml). Configuration that names these packages is outside the group, in privapp-permissions, default-permissions and sysconfig XML files, the nonDiscretionaryAppPackageName list, system_ext_seapp_contexts (one package only) and one vendor JSON key. The group has no firmware and no init .rc file names any of the 15 deep-dive packages. Roles for all 431 rows are in roles.tsv: 306 verified and 125 inferred.",
+ "rowsExpected": 431,
+ "rowsListed": 431,
+ "claims": [
+  {
+   "id": "c01",
+   "claim": "The apps group has 431 input rows: product_a 27, system_a 123, system_ext_a 278, vendor_a 3.",
+   "label": "verified",
+   "evidence": "Command: awk -F'\\t' '$1==\"apps\"' <image>/classified.tsv | cut -f2 | sort | uniq -c   Output: 27 product_a / 123 system_a / 278 system_ext_a / 3 vendor_a (total 431 from the same awk piped to wc -l). Existence check on the mount, same group: 420 regular files present, 0 missing; 11 rows are symlinks and are not stat-ed as files.",
+   "verdict": "confirmed",
+   "reason": "verified. Definitions: S = <scratch>/<scratch>; W = <tools>/work/subsystems/apps; E = <scratch>/eureka. Command: awk -F'\\t' '$1==\"apps\"' $E/classified.tsv | cut -f2 | sort | uniq -c, and the same filter piped to wc -l. Output: 27 product_a, 123 system_a, 278 system_ext_a, 3 vendor_a; wc -l 431. Existence: python3 -I $W/checks.py sha opened all 420 file rows of input_rows.tsv without error; 11 rows have kind symlink in column 3.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c02",
+   "claim": "Row kinds by file magic: 142 zip (APK), 137 ELF (odex), 137 vdex, 11 symlink, 2 ART image, 2 profile. No other magic occurs.",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/magic.py <image>-tools/work/subsystems/apps/input_rows.tsv <image>-tools/work/subsystems/apps/magic.tsv ; cut -f3 magic.tsv | sort | uniq -c   Output: summary lines 'art-image 2', 'elf 137', 'profile 2', 'symlink 11', 'vdex 137', 'zip 142'; the same counts by full magic: 2 art-image:099, 137 elf, 2 profile:015, 11 symlink, 137 vdex:027, 142 zip.",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/magic.py $W/input_rows.tsv $W/magic_rerun.tsv; cut -f3 $W/magic_rerun.tsv | sort | uniq -c. Output: 2 art-image:099, 137 elf, 2 profile:015, 11 symlink, 137 vdex:027, 142 zip (sum 431). No other or oat-dey category appears.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c03",
+   "claim": "The SHA-256 of all 420 regular files recomputed from the mount matches the sha256 column of the input for every file.",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/checks.py sha   Output: regular files 420 match 420 mismatch 0",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/checks.py sha. Output: regular files 420 match 420 mismatch 0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c04",
+   "claim": "roles.tsv has a header and 431 data rows, one per input row, with the same (partition, path) keys as the input and no duplicates. Confidence counts: 306 verified, 125 inferred.",
+   "label": "verified",
+   "evidence": "Command: wc -l <image>-tools/work/subsystems/apps/roles.tsv ; awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c   Output: 432 roles.tsv; '306 verified' and '125 inferred'. Sorted (partition, path) pairs of roles.tsv without the header compared with input_rows.tsv keys using cmp: identical (no output, exit 0). Duplicate-key count: 0.",
+   "file": "<image>-tools/work/subsystems/apps/roles.tsv",
+   "verdict": "confirmed",
+   "reason": "verified. Command: wc -l $W/roles.tsv; awk -F'\\t' 'NR>1{print $4}' $W/roles.tsv | sort | uniq -c; cut -f1,2 of roles.tsv and input_rows.tsv, sed 1d on roles, sort, then cmp; uniq -d on the keys. Output: wc -l 432 (header plus 431 rows); 306 verified, 125 inferred; cmp prints nothing and exits 0; 431 keys on each side; 0 duplicate keys.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c05",
+   "claim": "All 11 symlink rows point to absolute targets in /system_ext/lib64 (libjdns_sd.so, libqrcodereader_jni.so, libwis_input_device.so, libvoidactivity_jni.so, libpreloader.so, libpowerstatscollector.so, libfetchstats.so, libquickplaydataloader-jni.so, libcrypoimpl.so, libtourguideapi.so, libcmsservice-headset.so), and each target exists in the system_ext_a lib64 directory.",
+   "label": "verified",
+   "evidence": "Command: for f in $(awk -F'\\t' '$3==\"symlink\"{print $1\"/\"$2}' <image>-tools/work/subsystems/apps/input_rows.tsv); do echo \"$f -> $(readlink <image>/mnt/$f)\"; done   Output (excerpt): system_ext_a/app/VrCastService/lib/arm64/libjdns_sd.so -> /system_ext/lib64/libjdns_sd.so ; system_ext_a/priv-app/CompanionServer/lib/arm64/libcrypoimpl.so -> /system_ext/lib64/libcrypoimpl.so. Target test: for t in libjdns_sd.so ... libcmsservice-headset.so: test -e .../mnt/system_ext_a/lib64/$t → 11 present, 0 absent. lib64 directory holds 152 entries.",
+   "verdict": "confirmed",
+   "reason": "verified. Command: readlink on each of the 11 symlink rows under $E/mnt; test -e $E/mnt/system_ext_a/lib64/<target> for the 11 names; ls $E/mnt/system_ext_a/lib64 | wc -l. Output: all 11 targets are /system_ext/lib64/<name> with the names listed in the claim; present 11, absent 0; lib64 holds 152 entries.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c06",
+   "claim": "Machine type of the 137 odex ELF files: 135 are AArch64 (e_machine 0xb7); 2 are ARM32 (e_machine 0x28): app/Horizon/oat/arm/Horizon.odex and priv-app/BodyApiService/oat/arm/BodyApiService.odex.",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/checks.py elf   Output: ARM32 odex: system_ext_a app/Horizon/oat/arm/Horizon.odex ; ARM32 odex: system_ext_a priv-app/BodyApiService/oat/arm/BodyApiService.odex ; e_machine counts {'0xb7': 135, '0x28': 2}",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/checks.py elf. Output: e_machine counts {'0xb7': 135, '0x28': 2}; ARM32 odex: system_ext_a app/Horizon/oat/arm/Horizon.odex and priv-app/BodyApiService/oat/arm/BodyApiService.odex. e_machine is read at offset 18 as a little-endian uint16.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c07",
+   "claim": "Each of the 137 odex files contains the OAT header string 'oat\\n199\\0' near file offset 4096 (search window 4000-4112 bytes).",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/checks.py oat   Output: oat header (offset ~4096) counts {b'oat\\n199\\x00': 137}",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/checks.py oat; plus a per-file search for the bytes 'oat' and newline from offset 4000 within the first 4112 bytes. Output: {b'oat\\n199\\x00': 137}; offset histogram {4096: 137}; no file lacks the header at that offset.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c08",
+   "claim": "The vdex header of Settings.apk (vdex 027) has the magic 'vdex', version '027\\0', and the 32-bit fields after offset 8 are 4, 0, 60, 8, 1, 0, 0, 2 (offsets 8,12,...,36). The file is 204124 bytes; the Settings odex is 95152 bytes. The file contains no 'dex\\n' header (dex_size field is 0). The meaning of the first count field (4) is unresolved against the two classes*.dex entries of the APK.",
+   "label": "verified",
+   "evidence": "Command: python3 -I -c \"import struct; d=open('<image>/mnt/system_ext_a/priv-app/Settings/oat/arm64/Settings.vdex','rb').read(40); print(d[:8]); print([struct.unpack_from('<I', d, o)[0] for o in range(8, 40, 4)])\" ; ls -l on Settings.odex and Settings.vdex   Output: b'vdex027\\x00' / [4, 0, 60, 8, 1, 0, 0, 2] ; -rw-r--r-- 95152 Settings.odex ; -rw-r--r-- 204124 Settings.vdex",
+   "verdict": "needs_change",
+   "reason": "Raw values verified; field names inferred. Command: python3 -I -c with struct.unpack_from('<I') over the first 40 bytes of $E/mnt/system_ext_a/priv-app/Settings/oat/arm64/Settings.vdex for offsets 8 to 36 step 4; ls -l on Settings.odex and Settings.vdex; Python bytes.find for the sequence 'dex' plus newline over the whole vdex. Output: b'vdex027\\x00'; [4, 0, 60, 8, 1, 0, 0, 2]; Settings.odex 95152 bytes; Settings.vdex 204124 bytes; find returns -1. Assigning offset 12 the name dex_size is an inference that the file does not establish.",
+   "corrected_claim": "The Settings.vdex header (magic 'vdex', version '027' plus NUL) has 32-bit values at offsets 8, 12, ..., 36 of 4, 0, 60, 8, 1, 0, 0, 2. The file is 204124 bytes; the Settings odex is 95152 bytes. The file contains no 'dex' plus newline sequence. The field names for these values are not established by the file; the meaning of the first value (4) against the two classes*.dex entries is unresolved."
+  },
+  {
+   "id": "c09",
+   "claim": "The two ART app images are SystemUX.art and SettingsPanelApp.art (art header version 099). The two ART profiles are SystemUX.apk.prof and SettingsPanelApp.apk.prof (pro header version 015).",
+   "label": "verified",
+   "evidence": "Command: python3 -I -c \"d=open('<image>/mnt/system_ext_a/priv-app/SystemUX/oat/arm64/SystemUX.art','rb').read(16); print('art magic', d[:4], d[4:8]); p=open('<image>/mnt/system_ext_a/priv-app/SystemUX/SystemUX.apk.prof','rb').read(8); print('prof magic', p[:4], p[4:8])\"   Output: art magic b'art\\n' b'099\\x00' ; prof magic b'pro\\x00' b'015\\x00'. Magic summary over all rows (magic.py): art-image:099 = 2 and profile:015 = 2.",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I reads of the first 16 bytes of SystemUX.art and of SettingsPanelApp.art (oat/arm64), and the first 8 bytes of SystemUX.apk.prof and SettingsPanelApp.apk.prof; python3 -I $W/magic.py counts. Output: b'art\\n' b'099\\x00' for both ART files; b'pro\\x00' b'015\\x00' for both profiles; art-image:099 = 2 and profile:015 = 2.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c10",
+   "claim": "Six APKs have no odex/vdex with a matching name: product_a app/ModuleMetadata/ModuleMetadata.apk, product_a overlay/PermissionControllerRRO.apk, product_a overlay/PlatformRRO.apk, system_ext_a app/DeviceIdentityTest/DeviceIdentityTest.apk, system_ext_a priv-app/DeviceAuthServer/DeviceAuthServer.apk, system_ext_a priv-app/QuickPlayService/QuickPlayService.apk. The 137 odex files map to 136 packages (Horizon has two).",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/checks.py noodex   Output: APK without odex/vdex: product_a app/ModuleMetadata/ModuleMetadata.apk / product_a overlay/PermissionControllerRRO.apk / product_a overlay/PlatformRRO.apk / system_ext_a app/DeviceIdentityTest/DeviceIdentityTest.apk / system_ext_a priv-app/DeviceAuthServer/DeviceAuthServer.apk / system_ext_a priv-app/QuickPlayService/QuickPlayService.apk",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/checks.py noodex. Output: the six APK rows match the claim exactly (product_a app/ModuleMetadata, overlay/PermissionControllerRRO, overlay/PlatformRRO; system_ext_a app/DeviceIdentityTest, priv-app/DeviceAuthServer, priv-app/QuickPlayService). Mapping the 137 odex paths to APK keys (oat-folder parent plus basename) gives 136 distinct keys, all matching APK keys; the only duplicate is system_ext_a app/Horizon/Horizon (arm and arm64). 142 APKs minus 6 equals 136.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c11",
+   "claim": "The 142 APK manifests yield 142 distinct package names. sharedUserId: none 93, android.uid.system 37, android.media 4, android.uid.shared 3, android.uid.bluetooth 1, android.uid.calendar 1, android.uid.networkstack 1, android.uid.shell 1, com.oculus.uid 1. Package name prefixes: com.oculus/com.meta/com.facebook 103, com.android 37, other 2 (android.ext.shared, com.qualcomm.timeservice).",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/comps.py > comps.txt ; awk -F' \\| ' '{print $3}' comps.txt | sort | uniq -c ; cut -f3 apk_summary.tsv | sed 1d | sort -u | wc -l   Output: 93 uid=None / 37 uid=android.uid.system / 4 uid=android.media / 3 uid=android.uid.shared / 1 each of the other uid values; 142 distinct packages. Prefix count: 103 / 37 / 2 (cut and awk over apk_summary.tsv).",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/comps.py > $W/comps_rerun.txt; awk -F' \\| ' '{print $3}' $W/comps_rerun.txt | sort | uniq -c; cut -f3 apk_summary.tsv | sed 1d | sort -u | wc -l; prefix counts by grep. Output: 93 uid=None, 37 android.uid.system, 4 android.media, 3 android.uid.shared, 1 each of bluetooth, calendar, networkstack, shell, com.oculus.uid; 142 distinct packages; prefixes 103 (com.oculus, com.meta, com.facebook), 37 com.android, 2 other (android.ext.shared, com.qualcomm.timeservice).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c12",
+   "claim": "The two RRO overlays are static overlays: PlatformRRO.apk targets package 'android'; PermissionControllerRRO.apk targets com.android.permissioncontroller with targetName PermissionControllerRoles. Both have zero components.",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/checks.py overlay   Output: product_a/overlay/PlatformRRO.apk {'targetPackage': 'android', 'isStatic': 'true', 'resourcesMap': 'type0x1:7f020000'} ; product_a/overlay/PermissionControllerRRO.apk {'targetPackage': 'com.android.permissioncontroller', 'targetName': 'PermissionControllerRoles', 'isStatic': 'true', 'resourcesMap': 'type0x1:7f020001'}",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/checks.py overlay; comps_rerun.txt rows for both overlays. Output: product_a/overlay/PlatformRRO.apk {'targetPackage': 'android', 'isStatic': 'true', 'resourcesMap': 'type0x1:7f020000'}; PermissionControllerRRO.apk {'targetPackage': 'com.android.permissioncontroller', 'targetName': 'PermissionControllerRoles', 'isStatic': 'true', ...}; ncomp=0 for both.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c13",
+   "claim": "The 15 deep-dive APKs use two signing certificate families: SHA-256 c8a2e9bccf597c2f...51192ab8 (subject CN=Android, O=Android, emailAddress android@android.com) for Settings, Bluetooth, Telecom, PackageInstaller, SettingsProvider, SystemPermissions, MetaSystemUI; and SHA-256 fac61745dc090378...91033b9c (subject CN=Android Debug) for SystemWebView, SystemUX, Horizon, Store, Integrity, OSUpdater, Carmel, VrShell. The first family matches a signer in plat_mac_permissions.xml with seinfo platform; the second matches a signer in system_ext_mac_permissions.xml with seinfo fbandroid_debug.",
+   "label": "verified",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/certs.py <the 15 APK paths under mnt> ; openssl pkcs7 -inform DER -in .../apps/certs/Settings_CERT.RSA -print_certs ; python3 -I .../apps/checks.py mac   Output: subject=C = US, ST = California, L = Mountain View, O = Android, OU = Android, CN = Android, emailAddress = android@android.com (Settings_CERT.RSA) ; subject=C = US, ST = Unknown, L = Unknown, O = Unknown, OU = Android, CN = Android Debug (Store_ANDROIDD.RSA) ; mac lines: Settings_CERT.RSA c8a2e9bc...51192ab8 ('plat_mac_permissions.xml', ['platform']) ; Store_ANDROIDD.RSA fac61745...91033b9c ('system_ext_mac_permissions.xml', ['fbandroid_debug'])",
+   "verdict": "confirmed",
+   "reason": "verified. Command: for each of the 15 APKs, read META-INF RSA entries from the zip, openssl pkcs7 -inform DER -print_certs, openssl x509 -outform DER, sha256 of the DER certificate; openssl x509 -noout -subject; python3 -I $W/checks.py mac. Output: Settings, Bluetooth, Telecom, PackageInstaller, SettingsProvider, SystemPermissions, MetaSystemUI hash to c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8, subject CN = Android, emailAddress android@android.com. SystemWebView, SystemUX, Horizon, Store, Integrity, OSUpdater, Carmel, VrShell hash to fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c, subject CN = Android Debug. Lookup: plat_mac_permissions.xml seinfo ['platform']; system_ext_mac_permissions.xml seinfo ['fbandroid_debug'].",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c14",
+   "claim": "The SELinux mac_permissions files have 11 signer entries in system_ext_mac_permissions.xml (seinfo values echovr, fbandroid_debug, oculus_apps, oculus_apps_v2, oculus_core, oculus_inhouse, oculus_loneechoavalanche, oculus_privapps, oculus_prod, oculus_workrooms, oculus_workrooms_dev) and 3 signer entries in plat_mac_permissions.xml (seinfo platform, media, network_stack). None of the 142 package names appears as a package element in either file.",
+   "label": "verified",
+   "evidence": "Command: python3 -I -c \"import xml.etree.ElementTree as ET; r=ET.parse('<image>/mnt/system_ext_a/etc/selinux/system_ext_mac_permissions.xml').getroot(); print(len(r.findall('signer')), sorted(set(x.get('value') for x in r.iter('seinfo'))))\" ; same for mnt/system_a/system/etc/selinux/plat_mac_permissions.xml   Output: 11 [...] and 3 ['media', 'network_stack', 'platform']; grep -c 'package name=' on both files: 0 (the files are single-line XML).",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I -c with xml.etree.ElementTree on system_ext_mac_permissions.xml and plat_mac_permissions.xml; grep -c '<package' and grep -c 'package name='. Output: 11 signers with seinfo values echovr, fbandroid_debug, oculus_apps, oculus_apps_v2, oculus_core, oculus_inhouse, oculus_loneechoavalanche, oculus_privapps, oculus_prod, oculus_workrooms, oculus_workrooms_dev; 3 signers with media, network_stack, platform; 0 package elements or package name attributes in either file.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c15",
+   "claim": "Among the 15 deep-dive packages, only com.oculus.updater appears in an SELinux seapp file: system_ext_seapp_contexts lines 35 and 36, both with domain=osupdater_app. The other 14 deep-dive package names do not appear in any selinux directory of the mounted etc trees.",
+   "label": "verified",
+   "evidence": "Command: for n in com.android.settings com.android.bluetooth com.android.server.telecom com.android.packageinstaller com.android.providers.settings com.android.webview com.oculus.systemux com.oculus.horizon com.oculus.store com.oculus.systempermissions com.oculus.integrity com.oculus.updater com.meta.systemui com.oculus.browser com.oculus.vrshell; do grep -rIn -F -- \"name=$n \" <image>/mnt/*/etc/selinux <image>/mnt/*/system/etc/selinux; done   Output: system_ext_a/etc/selinux/system_ext_seapp_contexts:35:user=_app seinfo=fbandroid_debug name=com.oculus.updater domain=osupdater_app type=app_data_file levelFrom=all ; system_ext_a/etc/selinux/system_ext_seapp_contexts:36:user=_app seinfo=oculus_prod name=com.oculus.updater domain=osupdater_app type=app_data_file levelFrom=all",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIl -F -- 'name=<pkg>' over */etc/selinux and */system/etc/selinux for each of the 15 names, and without the trailing-space variant. Output: only com.oculus.updater matches, in system_ext_a/etc/selinux/system_ext_seapp_contexts lines 35 and 36 (domain=osupdater_app; seinfo fbandroid_debug and oculus_prod). The other 14 names return no file.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c16",
+   "claim": "No init .rc file in the mounted partitions contains the priv-app/app path patterns for the deep-dive APKs or the 15 deep-dive package names. Init directories (etc/init, system/etc/init, etc/init/hw) have no matching line.",
+   "label": "verified",
+   "evidence": "Command: grep -rIln -E 'priv-app|com\\.oculus\\.(systemux|horizon|store|vrshell|integrity|updater|systempermissions|browser)|com\\.android\\.(settings|bluetooth|webview|server\\.telecom|packageinstaller|providers\\.settings)|com\\.meta\\.systemui' <image>/mnt --include='*.rc' | wc -l ; grep -rIn -E <same pattern> .../mnt/*/etc/init .../mnt/*/system/etc/init .../mnt/*/etc/init/hw   Output: 0 files ; no output lines.",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -E with the claim pattern over */etc/init, */system/etc/init and */etc/init/hw (no include filter); grep -rIl with --include='*.rc' over the whole mount tree; a further grep for (priv-app|/app) followed by the deep-dive directory names in .rc files. Output: 0 matching lines in the init directories; 0 matching .rc files out of 170 .rc files present; 0 for the app-path variant.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "c17",
+   "claim": "The mounted file_contexts files contain no explicit label line for /system_ext/app or /system_ext/priv-app. system_ext paths fall under the generic rule '/(system_ext|system/system_ext)(/.*)?  u:object_r:system_file:s0' (plat_file_contexts line 55). Explicit app-path labels exist only for vendor and odm priv-app directories (plat_file_contexts lines 14 and 30).",
+   "label": "verified",
+   "evidence": "Command: grep -n -E 'app' <image>/mnt/system_ext_a/etc/selinux/system_ext_file_contexts ; grep -n -E '(system_ext|priv-?app)' <image>/mnt/system_a/system/etc/selinux/plat_file_contexts   Output: system_ext_file_contexts lines 9, 49, 65 only (audiotapper entries); plat_file_contexts:55:/(system_ext|system/system_ext)(/.*)?               u:object_r:system_file:s0 ; plat_file_contexts:14:/(vendor|system/vendor)/priv-app(/.*)?         u:object_r:vendor_app_file:s0 ; plat_file_contexts:30:/(odm|vendor/odm)/priv-app(/.*)?              u:object_r:vendor_app_file:s0",
+   "verdict": "needs_change",
+   "reason": "Lines cited verified; the claim omits explicit vendor and odm app-directory labels. Command: grep -n 'app' $E/mnt/system_ext_a/etc/selinux/system_ext_file_contexts; grep -n 'app' $E/mnt/system_a/system/etc/selinux/plat_file_contexts; sed -n '14p;30p;55p' on plat_file_contexts. Output: system_ext_file_contexts lines 9, 49, 65 (audiotapper entries only); plat_file_contexts line 55 is the generic system_ext rule; line 14 vendor priv-app; line 30 odm priv-app. The same search also returns plat_file_contexts line 13 (/(vendor|system/vendor)/app) and line 29 (/(odm|vendor/odm)/app), which the claim does not mention. No /system/app or /system/priv-app label appears.",
+   "corrected_claim": "The mounted file_contexts files contain no explicit label for /system_ext/app or /system_ext/priv-app. system_ext paths fall under the generic rule '/(system_ext|system/system_ext)(/.*)?  u:object_r:system_file:s0' (plat_file_contexts line 55). Explicit app-directory labels exist for vendor and odm only: plat_file_contexts lines 13 (vendor app) and 29 (odm app), and lines 14 (vendor priv-app) and 30 (odm priv-app). plat_file_contexts has no explicit label for /system/app or /system/priv-app."
+  },
+  {
+   "id": "c18",
+   "claim": "Target SDK distribution of the 142 APKs: 23 (6), 24 (2), 25 (2), 26 (2), 28 (14), 29 (17), 30 (3), 31 (3), 32 (84), 33 (2), 34 (1), 35 (2); four APKs declare none. minSdkVersion values run from 23 to 32; versionName 12 appears on 79 APKs.",
+   "label": "verified",
+   "evidence": "Command: awk -F'\\t' 'NR>1 && $8!=\"None\" {print $8}' <image>-tools/work/subsystems/apps/apk_summary.tsv | sort -n | uniq -c   Output: 23:6 24:2 25:2 26:2 28:14 29:17 30:3 31:3 32:84 33:2 34:1 35:2 (counts in the form value:count). Same table: minSdk 23:5 ... 32:87; versionName '12' count 79.",
+   "verdict": "confirmed",
+   "reason": "verified. Command: awk -F'\\t' 'NR>1 && $8!=\"None\" {print $8}' apk_summary.tsv | sort -n | uniq -c (targetSdk, column 8); the same on column 7 for minSdk; awk on NR>1 and column 4 for versionName. Output: targetSdk 23:6 24:2 25:2 26:2 28:14 29:17 30:3 31:3 32:84 33:2 34:1 35:2, with 4 None rows; minSdk 23:5 24:4 25:2 26:4 28:18 29:15 31:5 32:87; versionName 12 on 79 rows.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d01",
+   "claim": "Settings.apk (system_ext_a/priv-app/Settings): package com.android.settings, versionName 12, versionCode 32, sharedUserId android.uid.system, minSdkVersion 32, targetSdkVersion 32; 63099467 bytes, sha256 05024d4363869eef685bdbb9d4add1d1091e4277d033982143fba5625fac6887; 2434 zip entries; classes.dex and classes2.dex, both dex version 039 (8102 and 1423 class definitions); no native libraries; 343 components (282 activity, 15 activity-alias, 20 receiver, 15 service, 11 provider) of which 213 activities, 15 aliases, 16 receivers, 10 services and 7 providers are exported; 105 uses-permission; uses-library org.apache.http.legacy, androidx.window.extensions, androidx.window.sidecar; uses-feature oculus.software.handtracking; application class com.android.settings.SettingsApplication.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/Settings/Settings.apk",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/deep.py <image>/mnt/system_ext_a/priv-app/Settings/Settings.apk   Output (excerpt): size 63099467 sha256 05024d43...6887 / zip_entries 2434 / DEX classes.dex version=039 file_size=9220584 ... class_defs=8102 / DEX classes2.dex version=039 file_size=1751412 ... class_defs=1423 / native_entries [] / manifest {'package': 'com.android.settings', 'versionName': '12', 'versionCode': '32', 'sharedUserId': 'android.uid.system', ...} / uses-sdk {'minSdkVersion': '32', 'targetSdkVersion': '32'} / components {'activity': 282, 'activity-alias': 15, 'receiver': 20, 'service': 15, 'provider': 11} exported {'activity': 213, 'activity-alias': 15, 'receiver': 16, 'service': 10, 'provider': 7} / permissions_count 105 / uses-library ['org.apache.http.legacy', 'androidx.window.extensions', 'androidx.window.sidecar'] / uses-feature_count 1 sample ['oculus.software.handtracking'] / META-INF ['META-INF/CERT.SF', 'META-INF/CERT.RSA', 'META-INF/MANIFEST.MF']",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (zipfile plus AXML pass) and python3 -I $W/deep.py on Settings.apk. Output: size 63099467; sha256 05024d4363869eef685bdbb9d4add1d1091e4277d033982143fba5625fac6887; 2434 entries; classes.dex ver 039 class_defs 8102; classes2.dex ver 039 class_defs 1423; no lib entries; package com.android.settings, versionName 12, versionCode 32, sharedUserId android.uid.system; min 32, target 32; components 343 {activity 282, activity-alias 15, receiver 20, service 15, provider 11}; explicit exported=true 261 {activity 213, alias 15, receiver 16, service 10, provider 7}; 31 components have no exported attribute and none has an intent filter, so the explicit counts equal the effective exports; uses-permission 105; uses-library org.apache.http.legacy, androidx.window.extensions, androidx.window.sidecar; uses-feature oculus.software.handtracking; application com.android.settings.SettingsApplication.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d01b",
+   "claim": "Settings odex (oat/arm64/Settings.odex, AArch64 ELF64 DYN, 95152 bytes): OAT key-value store reads compilation-reason=prebuilt, compiler-filter=verify, concurrent-copying=true, debuggable=false, native-debuggable=false, requires-image=false, and a classpath that starts with /system/framework/org.apache.http.legacy.jar, /system_ext/framework/androidx.window.extensions.jar and /system_ext/framework/androidx.window.sidecar.jar, matching the manifest uses-library list. Section .dex is NOBITS of size 0x31d5c.",
+   "label": "verified",
+   "evidence": "Command: readelf -h <image>/mnt/system_ext_a/priv-app/Settings/oat/arm64/Settings.odex ; readelf -SW (same file) ; python3 -I -c \"import re; d=open('.../Settings.odex','rb').read(); seg=d[4100:6300]; [print(4100+m.start(), repr(m.group().decode())[:200]) for m in re.finditer(rb'[\\x20-\\x7e]{3,}', seg)]\"   Output: Machine: AArch64 / Type: DYN (Shared object file) ; [ 2] .rodata PROGBITS 0000000000001000 001000 014000 ; [ 4] .dex NOBITS 0000000000015000 000000 031d5c ; 6003 'compiler-filter' / 6019 'verify' / 6050 'debuggable' ... classpath: PCL[/system/framework/org.apache.http.legacy.jar*3239720430]#PCL[/system_ext/framework/androidx.window.extensions.jar*2276275257]#PCL[/system_ext/framework/androidx.window.sidecar.jar*405467879...]",
+   "verdict": "confirmed",
+   "reason": "verified. Command: readelf -h and readelf -SW on Settings.odex; Python search of bytes 4100 to 6300 for printable runs. Output: ELF64, Type DYN, Machine AArch64; section [4] .dex NOBITS size 031d5c; key-value pairs at offsets 5975 to 6106: compilation-reason=prebuilt, compiler-filter=verify, concurrent-copying=true, debuggable=false, native-debuggable=false, requires-image=false. The value under the key classpath (offset 5762) is a class-loader-context string PCL[]{PCL[/system/framework/org.apache.http.legacy.jar*3239720430]#PCL[/system_ext/framework/androidx.window.extensions.jar*2276275257]#PCL[/system_ext/framework/androidx.window.sidecar.jar*4054678798]}; the three jars match the manifest uses-library list. The PCL wrapper is part of the stored value.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d02",
+   "claim": "Bluetooth.apk (system_a/app/Bluetooth): package com.android.bluetooth, versionName 12, sharedUserId android.uid.bluetooth, minSdk and targetSdk 32; 8401460 bytes, sha256 eaf2ee6d206d26a1ef3651e3a71b151d1fd88637af534d468c6a316136391d60; 95 zip entries; classes.dex version 039 (5404 class definitions); no native libraries; 40 components (24 service, 10 activity, 4 provider, 2 receiver), 22 services, 2 activities, 2 providers and 2 receivers exported; 61 uses-permission; uses-library javax.obex; application class com.android.bluetooth.btservice.AdapterApp; provider com.android.bluetooth.opp.BluetoothOppProvider with authority com.android.bluetooth.opp (exported); signed with the CN=Android certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/app/Bluetooth/Bluetooth.apk",
+   "evidence": "Command: python3 -I <image>-tools/work/subsystems/apps/deep.py <image>/mnt/system_a/system/app/Bluetooth/Bluetooth.apk   Output (excerpt): size 8401460 sha256 eaf2ee6d206d26a1ef3651e3a71b151d1fd88637af534d468c6a316136391d60 / zip_entries 95 / DEX classes.dex version=039 file_size=7536480 ... class_defs=5404 / native_entries [] / manifest {'package': 'com.android.bluetooth', 'versionName': '12', 'versionCode': '32', 'sharedUserId': 'android.uid.bluetooth', ...} / components {'provider': 4, 'service': 24, 'receiver': 2, 'activity': 10} exported {'provider': 2, 'service': 22, 'receiver': 2, 'activity': 2} / permissions_count 61 / uses-library ['javax.obex'] / providers [... 'com.android.bluetooth.opp.BluetoothOppProvider authorities=com.android.bluetooth.opp exported=true' ...]",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (Bluetooth.apk); META-INF/CERT.RSA hash check. Output: size 8401460; sha256 eaf2ee6d206d26a1ef3651e3a71b151d1fd88637af534d468c6a316136391d60; 95 entries; classes.dex ver 039 class_defs 5404; no lib entries; package com.android.bluetooth, versionName 12, sharedUserId android.uid.bluetooth, min 32, target 32; components 40 {provider 4, service 24, receiver 2, activity 10}; explicit exported {provider 2, service 22, receiver 2, activity 2}; 8 without the attribute, none with an intent filter; uses-permission 61; uses-library javax.obex; application com.android.bluetooth.btservice.AdapterApp; provider com.android.bluetooth.opp.BluetoothOppProvider, authorities com.android.bluetooth.opp, exported true; signer hash c8a2e9bc...51192ab8 (CN = Android family).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d03",
+   "claim": "Telecom.apk (system_a/priv-app/Telecom): package com.android.server.telecom, versionName 12, sharedUserId android.uid.system, process 'system', minSdk and targetSdk 32; 10581692 bytes, sha256 cbf0ff75fe09a38d7a6cd0780333d688a355a70c219020845b7cde3a7cf9dd24; 930 zip entries; classes.dex version 039 (3092 class definitions); no native libraries; 15 components (9 activity, 2 activity-alias, 2 receiver, 2 service), 4 activities, 2 aliases, 1 receiver and 2 services exported; 28 uses-permission including android.permission.CALL_PRIVILEGED and BIND_INCALL_SERVICE; no uses-library; 5 custom permissions declared with protectionLevel 0x12.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/priv-app/Telecom/Telecom.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_a/system/priv-app/Telecom/Telecom.apk   Output (excerpt): size 10581692 sha256 cbf0ff75fe09a38d7a6cd0780333d688a355a70c219020845b7cde3a7cf9dd24 / zip_entries 930 / DEX classes.dex version=039 file_size=3735140 ... class_defs=3092 / manifest {'package': 'com.android.server.telecom', 'versionName': '12', 'versionCode': '32', 'sharedUserId': 'android.uid.system', ...} / application {'process': 'system', ...} / components {'activity': 9, 'activity-alias': 2, 'receiver': 2, 'service': 2} exported {'activity': 4, 'activity-alias': 2, 'receiver': 1, 'service': 2} / permissions_count 28 / uses-library [] / declared custom permissions: 5 (protectionLevel 0x12)",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (Telecom.apk); membership test on uses-permission names. Output: size 10581692; sha256 cbf0ff75fe09a38d7a6cd0780333d688a355a70c219020845b7cde3a7cf9dd24; 930 entries; classes.dex ver 039 class_defs 3092; package com.android.server.telecom, versionName 12, sharedUserId android.uid.system, process system, min 32, target 32; components 15 {activity 9, activity-alias 2, receiver 2, service 2}; explicit exported {activity 4, alias 2, receiver 1, service 2}; uses-permission 28, containing CALL_PRIVILEGED and an entry containing BIND_INCALL_SERVICE (both present); no uses-library; 5 permission declarations, all protectionLevel 0x12.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d04",
+   "claim": "PackageInstaller.apk (system_a/priv-app/PackageInstaller): package com.android.packageinstaller, versionName 12, no sharedUserId, minSdk and targetSdk 32; 3171858 bytes, sha256 b7d89294664b1d6ecda8c10bd4313de3b202e13a1c3b3ad51b0b4159e4d4b3db; 416 zip entries; classes.dex version 039 (1374 class definitions); no native libraries; 17 components (receiver 5, activity 10, service 1, provider 1), exported activity 2, service 1, provider 1; 15 uses-permission (INSTALL_PACKAGES, DELETE_PACKAGES, ...); application class PackageInstallerApplication; provider authority com.google.android.packageinstaller.wear.provider (exported); 0 custom permissions declared.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/priv-app/PackageInstaller/PackageInstaller.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_a/system/priv-app/PackageInstaller/PackageInstaller.apk   Output (excerpt): size 3171858 sha256 b7d89294664b1d6ecda8c10bd4313de3b202e13a1c3b3ad51b0b4159e4d4b3db / zip_entries 416 / DEX classes.dex version=039 file_size=1664312 ... class_defs=1374 / manifest {'package': 'com.android.packageinstaller', 'versionName': '12', 'versionCode': '32', 'sharedUserId': None, ...} / components {'receiver': 5, 'activity': 10, 'service': 1, 'provider': 1} exported {'activity': 2, 'service': 1, 'provider': 1} / permissions_count 15 / providers ['com.android.packageinstaller.wear.WearPackageIconProvider authorities=com.google.android.packageinstaller.wear.provider exported=true'] / declared custom permissions: 0",
+   "verdict": "needs_change",
+   "reason": "Verified apart from the application class wording. Command: python3 -I $W/deep_check.py (PackageInstaller.apk). Output: size 3171858; sha256 b7d89294664b1d6ecda8c10bd4313de3b202e13a1c3b3ad51b0b4159e4d4b3db; 416 entries; classes.dex ver 039 class_defs 1374; no lib entries; package com.android.packageinstaller, versionName 12, no sharedUserId, min 32, target 32; components 17 {receiver 5, activity 10, service 1, provider 1}; explicit exported {activity 2, service 1, provider 1}; uses-permission 15; provider com.android.packageinstaller.wear.WearPackageIconProvider with authority com.google.android.packageinstaller.wear.provider, exported true; 0 custom permissions. The application class is printed as com.android.packageinstaller.PackageInstallerApplication, so the claim gives only the simple name.",
+   "corrected_claim": "PackageInstaller.apk (system_a/priv-app/PackageInstaller): package com.android.packageinstaller, versionName 12, no sharedUserId, minSdk and targetSdk 32; 3171858 bytes, sha256 b7d89294664b1d6ecda8c10bd4313de3b202e13a1c3b3ad51b0b4159e4d4b3db; 416 zip entries; classes.dex version 039 (1374 class definitions); no native libraries; 17 components (receiver 5, activity 10, service 1, provider 1), exported activity 2, service 1, provider 1; 15 uses-permission (INSTALL_PACKAGES, DELETE_PACKAGES, ...); application class com.android.packageinstaller.PackageInstallerApplication; provider authority com.google.android.packageinstaller.wear.provider (exported); 0 custom permissions declared."
+  },
+  {
+   "id": "d05",
+   "claim": "SettingsProvider.apk (system_a/priv-app/SettingsProvider): package com.android.providers.settings, versionName 12, sharedUserId android.uid.system, process 'system'; 374089 bytes, sha256 e0db7e587c4f4f975cec162f0f42d10cd6a742ef8b7462b14065751734667b91; 16 zip entries; one classes.dex, version 039, 81 class definitions; no native libraries; 2 components (one provider, one service), both exported; the provider's authority is 'settings'; the service WriteFallbackSettingsFilesJobService requires android.permission.BIND_JOB_SERVICE; 0 uses-permission.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/priv-app/SettingsProvider/SettingsProvider.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_a/system/priv-app/SettingsProvider/SettingsProvider.apk   Output (excerpt): size 374089 sha256 e0db7e587c4f4f975cec162f0f42d10cd6a742ef8b7462b14065751734667b91 / zip_entries 16 / DEX classes.dex version=039 file_size=239888 ... class_defs=81 / manifest {'package': 'com.android.providers.settings', 'versionName': '12', 'versionCode': '32', 'sharedUserId': 'android.uid.system', ...} / components {'provider': 1, 'service': 1} exported {'provider': 1, 'service': 1} / providers ['com.android.providers.settings.SettingsProvider authorities=settings exported=true'] / exported_sample [... 'service com.android.providers.settings.WriteFallbackSettingsFilesJobService perm=android.permission.BIND_JOB_SERVICE'] / permissions_count 0",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (SettingsProvider.apk). Output: size 374089; sha256 e0db7e587c4f4f975cec162f0f42d10cd6a742ef8b7462b14065751734667b91; 16 entries; classes.dex ver 039 class_defs 81; no lib entries; sharedUserId android.uid.system, process system; components 2 {provider 1, service 1}, both explicit exported true; provider authority settings; service com.android.providers.settings.WriteFallbackSettingsFilesJobService with permission android.permission.BIND_JOB_SERVICE; uses-permission 0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d06",
+   "claim": "SystemWebView.apk (product_a/app/SystemWebView): package com.android.webview, versionName 126.0.6478.122, versionCode 647812201, minSdkVersion 26, targetSdkVersion 34, compileSdkVersion 34; 240555911 bytes, sha256 20b7ba7f934ea32d09d7aee25cbaceaa3ca467116e8ba4df6bfc4d8a7b79345b; 605 zip entries; one classes.dex, version 038 (3480 class definitions); native libraries for arm64-v8a and armeabi-v7a: libwebviewchromium.so and libcrashpad_handler_trampoline.so; 61 components (52 service, 3 activity, 2 activity-alias, 4 provider), 50 services, 2 activities and 4 providers exported; 6 uses-permission; uses-library androidx.window.extensions, android.ext.adservices; uses-feature android.hardware.touchscreen and android.software.leanback; META-INF includes oculus_prod.OSIG; signed with the CN=Android Debug certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/product_a/app/SystemWebView/SystemWebView.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/product_a/app/SystemWebView/SystemWebView.apk   Output (excerpt): size 240555911 sha256 20b7ba7f934ea32d09d7aee25cbaceaa3ca467116e8ba4df6bfc4d8a7b79345b / zip_entries 605 / DEX classes.dex version=038 file_size=2262184 ... class_defs=3480 / native_entries ['lib/arm64-v8a/libcrashpad_handler_trampoline.so', 'lib/arm64-v8a/libwebviewchromium.so', 'lib/armeabi-v7a/libcrashpad_handler_trampoline.so', 'lib/armeabi-v7a/libwebviewchromium.so'] / uses-sdk {'minSdkVersion': '26', 'targetSdkVersion': '34'} / components {'service': 52, 'activity': 3, 'activity-alias': 2, 'provider': 4} exported {'service': 50, 'activity': 2, 'provider': 4} / uses-library ['androidx.window.extensions', 'android.ext.adservices'] / META-INF ['META-INF/IMPORTED.RSA', 'META-INF/MANIFEST.MF', 'META-INF/oculus_prod.OSIG', 'META-INF/IMPORTED.SF']",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (SystemWebView.apk). Output: size 240555911; sha256 20b7ba7f934ea32d09d7aee25cbaceaa3ca467116e8ba4df6bfc4d8a7b79345b; 605 entries; classes.dex ver 038 class_defs 3480 (only dex); native arm64-v8a 2 entries and armeabi-v7a 2 entries (libwebviewchromium.so, libcrashpad_handler_trampoline.so); package com.android.webview, versionName 126.0.6478.122, versionCode 647812201; min 26, target 34, compileSdk 34; components 61 {service 52, activity 3, alias 2, provider 4}; explicit exported service 50, activity 2, provider 4; uses-permission 6; uses-library androidx.window.extensions, android.ext.adservices; uses-feature android.hardware.touchscreen, android.software.leanback; META-INF includes oculus_prod.OSIG; signer hash fac61745...91033b9c (CN = Android Debug family).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d07",
+   "claim": "SystemUX.apk (system_ext_a/priv-app/SystemUX): package com.oculus.systemux, versionName 71.0.0.605.522, versionCode 665334819, no sharedUserId, minSdk and targetSdk 32; 26833840 bytes, sha256 e2bac78ac3fb06aed7d2d7251dcfe910d6bcaed76b2371a88b9674226611779c; 1338 zip entries; classes.dex and classes2.dex, both version 035 (2324 and 11736 class definitions); more than 10 arm64-v8a native libraries (for example libairlinkjni.so, libappmenupanel.so, libc++_shared.so); 70 components (33 service, 13 activity, 21 receiver, 2 provider, 1 activity-alias), 27 services, 13 activities, 12 receivers and 1 alias exported; 108 uses-permission; 6 custom permissions declared; application class com.oculus.systemux.SystemUXApplication; signed with the CN=Android Debug certificate family; accompanied by SystemUX.art (version 099) and SystemUX.apk.prof (version 015).",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/SystemUX/SystemUX.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/priv-app/SystemUX/SystemUX.apk   Output (excerpt): size 26833840 sha256 e2bac78ac3fb06aed7d2d7251dcfe910d6bcaed76b2371a88b9674226611779c / zip_entries 1338 / DEX classes.dex version=035 file_size=1891844 ... class_defs=2324 / DEX classes2.dex version=035 file_size=9734568 ... class_defs=11736 / native_entries ['lib/arm64-v8a/libairlinkjni.so', 'lib/arm64-v8a/libappmenupanel.so', ...] / manifest {'package': 'com.oculus.systemux', 'versionName': '71.0.0.605.522', 'versionCode': '665334819', 'sharedUserId': None, ...} / components {'service': 33, 'activity': 13, 'receiver': 21, 'provider': 2, 'activity-alias': 1} exported {'service': 27, 'activity': 13, 'receiver': 12, 'activity-alias': 1} / permissions_count 108 / declared custom permissions: 6 (python3 -I .../apps/checks.py decl: 'SystemUX.apk declared 6')",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (SystemUX.apk); python3 -I $W/checks.py decl. Output: size 26833840; sha256 e2bac78ac3fb06aed7d2d7251dcfe910d6bcaed76b2371a88b9674226611779c; 1338 entries; classes.dex ver 035 class_defs 2324, classes2.dex ver 035 class_defs 11736; arm64-v8a 36 native entries; package com.oculus.systemux, versionName 71.0.0.605.522, versionCode 665334819, no sharedUserId, min 32, target 32; components 70 {service 33, activity 13, receiver 21, provider 2, activity-alias 1}; explicit exported {service 27, activity 13, receiver 12, alias 1}; uses-permission 108; 6 custom permissions; application com.oculus.systemux.SystemUXApplication; signer hash fac61745...91033b9c (CN = Android Debug family); SystemUX.art 099 and SystemUX.apk.prof 015 present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d08",
+   "claim": "Horizon.apk (system_ext_a/app/Horizon): package com.oculus.horizon, versionName 71.0.0.894.253, versionCode 665345962, sharedUserId com.oculus.uid, minSdk and targetSdk 23, compileSdk 34; 83246125 bytes, sha256 c3259210a521e710fb0e1bd7b48a2fb60d44cdb31e8b5c5dd9b32dd5e3bb92f0; 596 zip entries; classes.dex (version 035, 3523 class definitions) and classes2.dex (version 035, 9514 class definitions); arm64-v8a native libraries including libNativeApiManager-V1.so; 108 components (53 service, 37 receiver, 15 provider, 3 activity), 17 services, 16 receivers, 12 providers and 1 activity exported; 61 uses-permission; 20 custom permissions declared; uses-feature android.hardware.camera; odex files for both arm (ARM32) and arm64 (AArch64); signed with the CN=Android Debug certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/app/Horizon/Horizon.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/app/Horizon/Horizon.apk   Output (excerpt): size 83246125 sha256 c3259210a521e710fb0e1bd7b48a2fb60d44cdb31e8b5c5dd9b32dd5e3bb92f0 / zip_entries 596 / DEX classes.dex version=035 file_size=2889332 ... class_defs=3523 / DEX classes2.dex version=035 file_size=7904960 ... class_defs=9514 / manifest {'package': 'com.oculus.horizon', 'versionName': '71.0.0.894.253', 'versionCode': '665345962', 'sharedUserId': 'com.oculus.uid', ...} / uses-sdk {'minSdkVersion': '23', 'targetSdkVersion': '23'} / components {'provider': 15, 'service': 53, 'receiver': 37, 'activity': 3} exported {'service': 17, 'receiver': 16, 'activity': 1, 'provider': 12} / permissions_count 61 / uses-feature_count 1 sample ['android.hardware.camera'] / declared custom permissions: 20 / odex: app/Horizon/oat/arm/Horizon.odex and app/Horizon/oat/arm64/Horizon.odex",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (Horizon.apk); python3 -I $W/checks.py decl; odex path listing. Output: size 83246125; sha256 c3259210a521e710fb0e1bd7b48a2fb60d44cdb31e8b5c5dd9b32dd5e3bb92f0; 596 entries; classes.dex ver 035 class_defs 3523, classes2.dex ver 035 class_defs 9514; arm64-v8a 83 and armeabi-v7a 54 native entries; package com.oculus.horizon, versionName 71.0.0.894.253, versionCode 665345962, sharedUserId com.oculus.uid, min 23, target 23, compileSdk 34; components 108 {provider 15, service 53, receiver 37, activity 3}; explicit exported {service 17, receiver 16, activity 1, provider 12}; 1 component without the attribute and no intent filter; uses-permission 61; 20 custom permissions; uses-feature android.hardware.camera; odex files in oat/arm and oat/arm64; signer hash fac61745...91033b9c.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d09",
+   "claim": "Store.apk (system_ext_a/app/Store): package com.oculus.store, versionName 228.0.0.19.109, versionCode 374700256, minSdk and targetSdk 28, compileSdk 35; 22705166 bytes, sha256 ef9c9219c12d81c41b7f82d8adcba64701252e0b07dcaa9bc1c09bf79b7e8575; 586 zip entries; classes.dex (version 035, 2634 class definitions) and classes2.dex (version 035, 5506 class definitions); arm64-v8a native libraries (for example libasyncexecutor.so, libbsdiff.so); 34 components (14 service, 3 activity, 15 receiver, 2 provider), 3 services, 2 activities and 5 receivers exported; 21 uses-permission; 2 custom permissions declared; signed with the CN=Android Debug certificate family using META-INF/ANDROIDD.RSA.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/app/Store/Store.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/app/Store/Store.apk   Output (excerpt): size 22705166 sha256 ef9c9219c12d81c41b7f82d8adcba64701252e0b07dcaa9bc1c09bf79b7e8575 / zip_entries 586 / DEX classes.dex version=035 file_size=2177576 ... class_defs=2634 / DEX classes2.dex version=035 ... class_defs=5506 / manifest {'package': 'com.oculus.store', 'versionName': '228.0.0.19.109', 'versionCode': '374700256', ...} / uses-sdk {'minSdkVersion': '28', 'targetSdkVersion': '28'} / components {'service': 14, 'activity': 3, 'receiver': 15, 'provider': 2} exported {'service': 3, 'activity': 2, 'receiver': 5} / permissions_count 21 / META-INF ['META-INF/ANDROIDD.SF', 'META-INF/ANDROIDD.RSA', 'META-INF/MANIFEST.MF']",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (Store.apk); META-INF/ANDROIDD.RSA hash check. Output: size 22705166; sha256 ef9c9219c12d81c41b7f82d8adcba64701252e0b07dcaa9bc1c09bf79b7e8575; 586 entries; classes.dex ver 035 class_defs 2634, classes2.dex ver 035 class_defs 5506; arm64-v8a 24 native entries including libasyncexecutor.so and libbsdiff.so; package com.oculus.store, versionName 228.0.0.19.109, versionCode 374700256; min 28, target 28, compileSdk 35; components 34 {service 14, activity 3, receiver 15, provider 2}; explicit exported {service 3, activity 2, receiver 5}; uses-permission 21; 2 custom permissions; signer hash fac61745...91033b9c from META-INF/ANDROIDD.RSA.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d10",
+   "claim": "SystemPermissions.apk (system_ext_a/priv-app/SystemPermissions): package com.oculus.systempermissions, versionName 12, no sharedUserId, minSdk and targetSdk 32; 1313575 bytes, sha256 a561fc1a84d6477d873119b095c241422114c0beb5232fad4190cc2538f8a04d; 71 zip entries; one classes.dex (version 039, 629 class definitions); no native libraries; 3 activities (MainActivity, ConsentZeroActivity, WebviewActivity), 2 exported; 16 uses-permission (including ACCESS_FINE_LOCATION, WRITE_SECURE_SETTINGS); 3 custom permissions declared; uses-feature android.hardware.location and oculus.software.handtracking; signed with the CN=Android platform certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/SystemPermissions/SystemPermissions.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/priv-app/SystemPermissions/SystemPermissions.apk   Output (excerpt): size 1313575 sha256 a561fc1a84d6477d873119b095c241422114c0beb5232fad4190cc2538f8a04d / zip_entries 71 / DEX classes.dex version=039 file_size=603504 ... class_defs=629 / manifest {'package': 'com.oculus.systempermissions', 'versionName': '12', 'sharedUserId': None, ...} / components {'activity': 3} exported {'activity': 2} / permissions_count 16 / uses-feature_count 2 sample ['android.hardware.location', 'oculus.software.handtracking'] / declared custom permissions: 3 (checks.py decl)",
+   "verdict": "needs_change",
+   "reason": "Verified apart from the custom-permission count. Command: python3 -I $W/checks.py decl; python3 -I $W/deep_check.py (SystemPermissions.apk). Output: size 1313575; sha256 a561fc1a84d6477d873119b095c241422114c0beb5232fad4190cc2538f8a04d; 71 entries; classes.dex ver 039 class_defs 629; no lib entries; package com.oculus.systempermissions, versionName 12, no sharedUserId, min 32, target 32; activities com.oculus.systempermissions.MainActivity, ConsentZeroActivity, WebviewActivity, with 2 explicit exported true; uses-permission 16 containing ACCESS_FINE_LOCATION and WRITE_SECURE_SETTINGS (both present); uses-feature android.hardware.location and oculus.software.handtracking. The three permission declarations are android.permission.WRITE_SECURE_SETTINGS, com.oculus.permission.USE_ACCOUNTS_META and com.oculus.permission.USE_ACCOUNTS_OCULUS, all with protectionLevel 0x32; only the last two are com.oculus names.",
+   "corrected_claim": "SystemPermissions.apk (system_ext_a/priv-app/SystemPermissions): package com.oculus.systempermissions, versionName 12, no sharedUserId, minSdk and targetSdk 32; 1313575 bytes, sha256 a561fc1a84d6477d873119b095c241422114c0beb5232fad4190cc2538f8a04d; 71 zip entries; classes.dex version 039 (629 class definitions); no native libraries; 3 activities (MainActivity, ConsentZeroActivity, WebviewActivity), 2 exported; 16 uses-permission (including ACCESS_FINE_LOCATION, WRITE_SECURE_SETTINGS); uses-feature android.hardware.location and oculus.software.handtracking; 3 permission declarations: com.oculus.permission.USE_ACCOUNTS_META, com.oculus.permission.USE_ACCOUNTS_OCULUS, and android.permission.WRITE_SECURE_SETTINGS (a platform name redeclared here); signed with the CN=Android certificate family."
+  },
+  {
+   "id": "d11",
+   "claim": "Integrity.apk (system_ext_a/priv-app/Integrity): package com.oculus.integrity, versionName 71.0.0.618.530, versionCode 665335042, minSdk and targetSdk 28, compileSdk 35; 16765255 bytes, sha256 241a66412764818df76c5232a86b521a7940847e8c9a1266bfe006eaecb22ec0; 1787 zip entries; classes.dex (version 035, 2331 class definitions) and classes2.dex (version 035, 5172 class definitions); arm64-v8a native libraries (for example libandroid_aware_dlopen.so, libbreakpad.so, libcoremerged.so); 30 components (15 service, 12 receiver, 2 provider, 1 activity), 3 services and 3 receivers exported; 33 uses-permission; uses-library org.apache.http.legacy; 2 custom permissions declared; signed with the CN=Android Debug certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/Integrity/Integrity.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/priv-app/Integrity/Integrity.apk   Output (excerpt): size 16765255 sha256 241a66412764818df76c5232a86b521a7940847e8c9a1266bfe006eaecb22ec0 / zip_entries 1787 / DEX classes.dex version=035 file_size=2025488 ... class_defs=2331 / DEX classes2.dex version=035 file_size=4460756 ... class_defs=5172 / manifest {'package': 'com.oculus.integrity', 'versionName': '71.0.0.618.530', ...} / uses-sdk {'minSdkVersion': '28', 'targetSdkVersion': '28'} / components {'service': 15, 'provider': 2, 'receiver': 12, 'activity': 1} exported {'service': 3, 'receiver': 3} / permissions_count 33 / uses-library ['org.apache.http.legacy'] / declared custom permissions: 2",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (Integrity.apk). Output: size 16765255; sha256 241a66412764818df76c5232a86b521a7940847e8c9a1266bfe006eaecb22ec0; 1787 entries; classes.dex ver 035 class_defs 2331, classes2.dex ver 035 class_defs 5172; arm64-v8a 21 native entries (libandroid_aware_dlopen.so, libbreakpad.so, libcoremerged.so among them); package com.oculus.integrity, versionName 71.0.0.618.530, versionCode 665335042; min 28, target 28, compileSdk 35; components 30 {service 15, provider 2, receiver 12, activity 1}; explicit exported {service 3, receiver 3}; uses-permission 33; uses-library org.apache.http.legacy; 2 custom permissions; signer hash fac61745...91033b9c.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d12",
+   "claim": "OSUpdater.apk (system_ext_a/priv-app/OSUpdater): package com.oculus.updater, versionName 71.0.0.890.252, versionCode 665332293, minSdk and targetSdk 26, compileSdk 34; 6155671 bytes, sha256 e96bca4ce8120d3e289e334940e7ae115a6d263dcb267d599c6c5a25eec8d958; 134 zip entries; one classes.dex (version 035, 6551 class definitions); no native libraries; 24 components (14 receiver, 9 service, 1 provider), 5 receivers and 3 services exported; 30 uses-permission; uses-feature android.hardware.vr.headtracking; 3 custom permissions declared; application class com.oculus.updater.OculusUpdaterApplication; signed with the CN=Android Debug certificate family (ANDROIDD.RSA).",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/OSUpdater/OSUpdater.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/priv-app/OSUpdater/OSUpdater.apk   Output (excerpt): size 6155671 sha256 e96bca4ce8120d3e289e334940e7ae115a6d263dcb267d599c6c5a25eec8d958 / zip_entries 134 / DEX classes.dex version=035 file_size=5910868 ... class_defs=6551 / native_entries [] / uses-sdk {'minSdkVersion': '26', 'targetSdkVersion': '26'} / components {'provider': 1, 'service': 9, 'receiver': 14} exported {'receiver': 5, 'service': 3} / permissions_count 30 / uses-feature_count 2 sample [None, 'android.hardware.vr.headtracking'] / declared custom permissions: 3 (checks.py decl)",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (OSUpdater.apk); python3 -I $W/checks.py decl. Output: size 6155671; sha256 e96bca4ce8120d3e289e334940e7ae115a6d263dcb267d599c6c5a25eec8d958; 134 entries; classes.dex ver 035 class_defs 6551; no lib entries; package com.oculus.updater, versionName 71.0.0.890.252, versionCode 665332293; min 26, target 26, compileSdk 34; components 24 {provider 1, service 9, receiver 14}; explicit exported {receiver 5, service 3}; uses-permission 30; uses-feature android.hardware.vr.headtracking (plus one unnamed entry); 3 custom permissions; application com.oculus.updater.OculusUpdaterApplication; signer hash fac61745...91033b9c (ANDROIDD.RSA).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d13",
+   "claim": "MetaSystemUI.apk (system_ext_a/priv-app/MetaSystemUI): package com.meta.systemui, versionName 12, no sharedUserId, minSdk and targetSdk 32; process com.meta.systemui, persistent true; 2655491 bytes, sha256 5637bd3c7b6e4a122299a181dd2bd5c313d78e930ec346b3733ead54682e648e; 322 zip entries; one classes.dex (version 039, 1584 class definitions); no native libraries; 2 services, none exported; 8 uses-permission (including INTERNAL_SYSTEM_WINDOW and MANAGE_ACTIVITY_TASKS); 0 custom permissions declared; signed with the CN=Android platform certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/MetaSystemUI/MetaSystemUI.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/priv-app/MetaSystemUI/MetaSystemUI.apk   Output (excerpt): size 2655491 sha256 5637bd3c7b6e4a122299a181dd2bd5c313d78e930ec346b3733ead54682e648e / zip_entries 322 / DEX classes.dex version=039 file_size=1847552 ... class_defs=1584 / native_entries [] / manifest {'package': 'com.meta.systemui', 'versionName': '12', 'sharedUserId': None, ...} / application {'name': 'com.meta.systemui.SystemUIApplication', 'process': 'com.meta.systemui', 'persistent': 'true', ...} / components {'service': 2} exported {} / permissions_count 8",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (MetaSystemUI.apk); python3 -I $W/checks.py decl. Output: size 2655491; sha256 5637bd3c7b6e4a122299a181dd2bd5c313d78e930ec346b3733ead54682e648e; 322 entries; classes.dex ver 039 class_defs 1584; no lib entries; package com.meta.systemui, versionName 12, no sharedUserId, min 32, target 32; application process com.meta.systemui, persistent true; components 2 services, explicit exported 0; uses-permission 8 including INTERNAL_SYSTEM_WINDOW and MANAGE_ACTIVITY_TASKS (both present); 0 custom permissions; signer hash c8a2e9bc...51192ab8 (CN = Android family).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d14",
+   "claim": "Carmel.apk (system_ext_a/app/Carmel): package com.oculus.browser, versionName 35.1.0.78.167.646680531, versionCode 565301467, minSdkVersion 26, targetSdkVersion 35, compileSdk 35; 194804395 bytes, sha256 1e44fe1ae8ed0e56749327cca8961bf463d1545c4aba11d953c4356120a090db; 3445 zip entries; one classes.dex (version 038, 13356 class definitions); arm64-v8a native libraries libchrome.so, libchromium_android_linker.so, libopenxr_loader.so and libpanelappsdk.so; 138 components (71 service, 32 activity, 24 receiver, 6 provider, 5 activity-alias), 10 activities, 10 receivers, 5 aliases, 3 services and 1 provider exported; 73 uses-permission; 7 custom permissions declared; uses-library androidx.window.extensions, android.ext.adservices; application class com.oculus.browser.HydraApplication; signed with the CN=Android Debug certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/app/Carmel/Carmel.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/app/Carmel/Carmel.apk   Output (excerpt): size 194804395 sha256 1e44fe1ae8ed0e56749327cca8961bf463d1545c4aba11d953c4356120a090db / zip_entries 3445 / DEX classes.dex version=038 file_size=7745908 ... class_defs=13356 / native_entries ['lib/arm64-v8a/libchrome.so', 'lib/arm64-v8a/libchromium_android_linker.so', 'lib/arm64-v8a/libopenxr_loader.so', 'lib/arm64-v8a/libpanelappsdk.so'] / uses-sdk {'minSdkVersion': '26', 'targetSdkVersion': '35'} / components {'activity': 32, 'activity-alias': 5, 'receiver': 24, 'service': 71, 'provider': 6} exported {'activity-alias': 5, 'activity': 10, 'receiver': 10, 'service': 3, 'provider': 1} / permissions_count 73 / uses-library ['androidx.window.extensions', 'android.ext.adservices'] / declared custom permissions: 7 (checks.py decl)",
+   "verdict": "confirmed",
+   "reason": "verified. Command: python3 -I $W/deep_check.py (Carmel.apk); python3 -I $W/checks.py decl. Output: size 194804395; sha256 1e44fe1ae8ed0e56749327cca8961bf463d1545c4aba11d953c4356120a090db; 3445 entries; classes.dex ver 038 class_defs 13356; arm64-v8a 4 native entries (libchrome.so, libchromium_android_linker.so, libopenxr_loader.so, libpanelappsdk.so); package com.oculus.browser, versionName 35.1.0.78.167.646680531, versionCode 565301467; min 26, target 35, compileSdk 35; components 138 {activity 32, activity-alias 5, receiver 24, service 71, provider 6}; explicit exported {activity-alias 5, activity 10, receiver 10, service 3, provider 1}; 2 components without the attribute and no intent filter; uses-permission 73; uses-library androidx.window.extensions, android.ext.adservices; 7 custom permissions; application com.oculus.browser.HydraApplication; signer hash fac61745...91033b9c.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "d15",
+   "claim": "VrShell.apk (system_ext_a/priv-app/VrShell): package com.oculus.vrshell, versionName 71.0.0.612.529, versionCode 665334768, minSdk and targetSdk 29, compileSdk 34; 88072820 bytes, sha256 ac4541ca21c32d2fef2886d6f765ce92488fbfbcc0c04b9710bcbd0c92315ca7; 1093 zip entries; classes.dex and classes2.dex, both version 035 (2359 and 7393 class definitions); arm64-v8a native libraries (for example libNativeApiManager.so, libVertsClient.so, libVideoJni.so); 122 components (52 service, 41 activity, 21 receiver, 7 provider, 1 activity-alias), 30 services, 10 receivers, 4 activities, 3 providers and 1 alias exported; 115 uses-permission; 16 custom permissions declared; 11 uses-feature entries; application class com.oculus.vrshell.ShellApplication; signed with the CN=Android Debug certificate family.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/priv-app/VrShell/VrShell.apk",
+   "evidence": "Command: python3 -I .../apps/deep.py <image>/mnt/system_ext_a/priv-app/VrShell/VrShell.apk   Output (excerpt): size 88072820 sha256 ac4541ca21c32d2fef2886d6f765ce92488fbfbcc0c04b9710bcbd0c92315ca7 / zip_entries 1093 / DEX classes.dex version=035 file_size=1825196 ... class_defs=2359 / DEX classes2.dex version=035 file_size=5799072 ... class_defs=7393 / manifest {'package': 'com.oculus.vrshell', 'versionName': '71.0.0.612.529', 'versionCode': '665334768', ...} / uses-sdk {'minSdkVersion': '29', 'targetSdkVersion': '29'} / components {'activity': 41, 'service': 52, 'receiver': 21, 'provider': 7, 'activity-alias': 1} exported {'service': 30, 'receiver': 10, 'provider': 3, 'activity': 4, 'activity-alias': 1} / permissions_count 115 / uses-feature_count 11 / declared custom permissions: 16 (checks.py decl)",
+   "verdict": "needs_change",
+   "reason": "Counts verified; the exported wording omits components exported through intent filters at targetSdkVersion 29. Command: python3 -I $W/deep_check.py (VrShell.apk); intent-filter breakdown over the same parsed manifest; python3 -I $W/checks.py decl. Output: size 88072820; sha256 ac4541ca21c32d2fef2886d6f765ce92488fbfbcc0c04b9710bcbd0c92315ca7; 1093 entries; classes.dex ver 035 class_defs 2359, classes2.dex ver 035 class_defs 7393; arm64-v8a 143 native entries; package com.oculus.vrshell, versionName 71.0.0.612.529, versionCode 665334768; min 29, target 29, compileSdk 34; components 122 {activity 41, service 52, receiver 21, provider 7, activity-alias 1}; explicit exported=true {service 30, receiver 10, provider 3, activity 4, alias 1}; 13 components have no exported attribute, and 12 of them (4 activities, 5 services, 3 receivers) declare an intent filter; uses-permission 115; uses-feature 11 entries; 16 custom permissions; application com.oculus.vrshell.ShellApplication; signer hash fac61745...91033b9c.",
+   "corrected_claim": "VrShell.apk (system_ext_a/priv-app/VrShell): package com.oculus.vrshell, versionName 71.0.0.612.529, versionCode 665334768, minSdk and targetSdk 29, compileSdk 34; 88072820 bytes, sha256 ac4541ca21c32d2fef2886d6f765ce92488fbfbcc0c04b9710bcbd0c92315ca7; 1093 zip entries; classes.dex and classes2.dex, both version 035 (2359 and 7393 class definitions); arm64-v8a native libraries (for example libNativeApiManager.so, libVertsClient.so, libVideoJni.so); 122 components (52 service, 41 activity, 21 receiver, 7 provider, 1 activity-alias). Components with android:exported=\"true\": 30 services, 10 receivers, 4 activities, 3 providers, 1 alias. A further 12 components (4 activities, 5 services, 3 receivers) have an intent filter and no android:exported attribute; at targetSdkVersion 29 these are exported by default. 115 uses-permission; 11 uses-feature entries; 16 custom permissions declared; application class com.oculus.vrshell.ShellApplication; signed with the CN=Android Debug certificate family."
+  },
+  {
+   "id": "r01",
+   "claim": "Settings is referenced by name in three configuration files: system_ext_a/etc/permissions/com.android.settings.xml line 18 (privapp-permissions block with 47 permission grants), system_ext_a/etc/nonDiscretionaryAppPackageName line 183, and system_a/system/etc/permissions/privapp-permissions-platform.xml line 554 (block with 2 grants). No init or SELinux file references it.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.android.settings' <image>/mnt/*/etc <image>/mnt/*/system/etc ; grep -c '<permission name=' .../mnt/system_ext_a/etc/permissions/com.android.settings.xml   Output: system_ext_a/etc/permissions/com.android.settings.xml:18:    <privapp-permissions package=\"com.android.settings\"> / system_ext_a/etc/nonDiscretionaryAppPackageName:183:com.android.settings / system_a/system/etc/permissions/privapp-permissions-platform.xml:554:    <privapp-permissions package=\"com.android.settings\"> / 47",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.android.settings' over */etc and */system/etc; python3 -I XML parse of privapp-permissions blocks. Output: system_ext_a/etc/permissions/com.android.settings.xml:18 (privapp block, 47 grants); system_ext_a/etc/nonDiscretionaryAppPackageName:183; system_a/system/etc/permissions/privapp-permissions-platform.xml:554 (block with 2 grants). No match in any selinux or init directory.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r02",
+   "claim": "com.android.bluetooth does not appear in any file under the mounted etc trees (so no privapp, default-permissions, sysconfig or SELinux reference exists for the Bluetooth APK). Its name matches only hardware-service and feature names (for example android.hardware.bluetooth) in other files.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.android.bluetooth' <image>/mnt/*/etc <image>/mnt/*/system/etc | wc -l   Output: 0",
+   "verdict": "needs_change",
+   "reason": "The zero-match result is verified; the second sentence is not supported. Command: grep -rIn -F -- 'com.android.bluetooth' over */etc and */system/etc | wc -l. Output: 0. A search for the shorter string android.hardware.bluetooth returns product_a/etc/permissions/android.hardware.bluetooth.xml and related files, which contain the word bluetooth but not the package name com.android.bluetooth.",
+   "corrected_claim": "com.android.bluetooth does not appear in any file under the mounted etc trees (0 matches), so no privapp-permissions, default-permissions, sysconfig or SELinux reference exists for the Bluetooth APK. Other files mention bluetooth (for example product_a/etc/permissions/android.hardware.bluetooth.xml), but none contains the package name."
+  },
+  {
+   "id": "r03",
+   "claim": "Telecom (com.android.server.telecom) is referenced in system_a/system/etc/permissions/privapp-permissions-platform.xml line 274 (block with 11 permission grants) and nowhere else in the mounted etc trees.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.android.server.telecom' <image>/mnt/*/etc <image>/mnt/*/system/etc   Output: system_a/system/etc/permissions/privapp-permissions-platform.xml:274:    <privapp-permissions package=\"com.android.server.telecom\">",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.android.server.telecom' over */etc and */system/etc; XML parse. Output: system_a/system/etc/permissions/privapp-permissions-platform.xml:274 only; privapp block for com.android.server.telecom has 11 grants.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r04",
+   "claim": "PackageInstaller (com.android.packageinstaller) is referenced in system_a/system/etc/permissions/privapp-permissions-platform.xml line 133 (block with 7 permission grants) and nowhere else in the mounted etc trees.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.android.packageinstaller' <image>/mnt/*/etc <image>/mnt/*/system/etc   Output: system_a/system/etc/permissions/privapp-permissions-platform.xml:133:    <privapp-permissions package=\"com.android.packageinstaller\">",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.android.packageinstaller' over */etc and */system/etc; XML parse. Output: system_a/system/etc/permissions/privapp-permissions-platform.xml:133 only; block has 7 grants.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r05",
+   "claim": "com.android.providers.settings is referenced in system_ext_a/etc/nonDiscretionaryAppPackageName line 184 and in system_a/system/etc/sysconfig/preinstalled-packages-platform.xml line 105, where an install-in-user-type entry lists the SYSTEM user type.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.android.providers.settings' <image>/mnt/*/etc <image>/mnt/*/system/etc ; sed -n '104,106p' .../mnt/system_a/system/etc/sysconfig/preinstalled-packages-platform.xml   Output: system_ext_a/etc/nonDiscretionaryAppPackageName:184:com.android.providers.settings / system_a/system/etc/sysconfig/preinstalled-packages-platform.xml:105:    <install-in-user-type package=\"com.android.providers.settings\"> / next line: <install-in user-type=\"SYSTEM\" />",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.android.providers.settings' over */etc and */system/etc; sed -n '104,106p' on system_a/system/etc/sysconfig/preinstalled-packages-platform.xml. Output: system_ext_a/etc/nonDiscretionaryAppPackageName:184; preinstalled-packages-platform.xml:105 <install-in-user-type package=\"com.android.providers.settings\">; next line <install-in user-type=\"SYSTEM\" />.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r06",
+   "claim": "com.android.webview is not referenced in any file under the mounted etc trees.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.android.webview' <image>/mnt/*/etc <image>/mnt/*/system/etc | wc -l   Output: 0",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.android.webview' over */etc and */system/etc | wc -l. Output: 0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r07",
+   "claim": "SystemUX (com.oculus.systemux) is referenced in system_ext_a/etc/permissions/com.oculus.systemux.xml line 4 (27 privapp grants), system_ext_a/etc/nonDiscretionaryAppPackageName line 37, system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml line 21 and system_a/system/etc/default-permissions/default-permissions.xml line 168 (exception block granting ACCESS_BACKGROUND_LOCATION with fixed=false).",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.systemux' <image>/mnt/*/etc <image>/mnt/*/system/etc ; grep -c '<permission name=' .../mnt/system_ext_a/etc/permissions/com.oculus.systemux.xml   Output: system_ext_a/etc/permissions/com.oculus.systemux.xml:4:    <privapp-permissions package=\"com.oculus.systemux\"> / system_ext_a/etc/nonDiscretionaryAppPackageName:37:com.oculus.systemux / system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml:21:  <hidden-api-whitelisted-app package=\"com.oculus.systemux\" /> / system_a/system/etc/default-permissions/default-permissions.xml:168:    package=\"com.oculus.systemux\" > / 27",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.systemux' over */etc and */system/etc; XML parse of system_ext_a/etc/permissions/com.oculus.systemux.xml and default-permissions.xml. Output: system_ext_a/etc/permissions/com.oculus.systemux.xml:4 (27 grants); nonDiscretionaryAppPackageName:37; oculus-hiddenapi-package-whitelist.xml:21; default-permissions.xml:168, an exception block whose first entry is android.permission.ACCESS_BACKGROUND_LOCATION with fixed=false.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r08",
+   "claim": "Horizon (com.oculus.horizon) is referenced in system_ext_a/etc/permissions/com.oculus.horizon.xml line 3 (privapp block, 3 grants), system_ext_a/etc/nonDiscretionaryAppPackageName line 118, system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml line 12, system_a/system/etc/sysconfig/oculus-doze-allowlist.xml line 9 (allow-in-power-save) and system_a/system/etc/default-permissions/default-permissions.xml line 74. product_a/etc/permissions/com.meta.quest.xml line 10 contains the string only inside a permission name (com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS).",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.horizon' <image>/mnt/*/etc <image>/mnt/*/system/etc   Output: product_a/etc/permissions/com.meta.quest.xml:10: <permission name=\"com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS\"/> / system_ext_a/etc/permissions/com.oculus.horizon.xml:3:    <privapp-permissions package=\"com.oculus.horizon\"> / system_ext_a/etc/nonDiscretionaryAppPackageName:118:com.oculus.horizon / system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml:12:  <hidden-api-whitelisted-app package=\"com.oculus.horizon\" /> / system_a/system/etc/sysconfig/oculus-doze-allowlist.xml:9:  <allow-in-power-save package=\"com.oculus.horizon\" /> / system_a/system/etc/default-permissions/default-permissions.xml:74: package=\"com.oculus.horizon\" >",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.horizon' over */etc and */system/etc; XML parse of com.oculus.horizon.xml. Output: product_a/etc/permissions/com.meta.quest.xml:10 (string inside permission name RECEIVE_SILENT_NOTIFS); system_ext_a/etc/permissions/com.oculus.horizon.xml:3 (privapp block, 3 grants); nonDiscretionaryAppPackageName:118; oculus-hiddenapi-package-whitelist.xml:12; oculus-doze-allowlist.xml:9 (allow-in-power-save); default-permissions.xml:74.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r09",
+   "claim": "Store (com.oculus.store) is referenced in system_ext_a/etc/nonDiscretionaryAppPackageName line 41 and in system_ext_a/etc/default-permissions/com.oculus.store.xml line 4, an exception block with the package attribute and a POST_NOTIFICATIONS permission (fixed=true).",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.store' <image>/mnt/*/etc <image>/mnt/*/system/etc ; sed -n '1,5p' .../mnt/system_ext_a/etc/default-permissions/com.oculus.store.xml   Output: system_ext_a/etc/nonDiscretionaryAppPackageName:41:com.oculus.store / system_ext_a/etc/default-permissions/com.oculus.store.xml:4:  <exception package=\"com.oculus.store\"> / next line: <permission name=\"android.permission.POST_NOTIFICATIONS\" fixed=\"true\" />",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.store' over */etc and */system/etc; sed -n '1,5p' system_ext_a/etc/default-permissions/com.oculus.store.xml. Output: nonDiscretionaryAppPackageName:41; default-permissions/com.oculus.store.xml:4 <exception package=\"com.oculus.store\">; next line android.permission.POST_NOTIFICATIONS fixed=true.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r10",
+   "claim": "SystemPermissions (com.oculus.systempermissions) is referenced only in system_ext_a/etc/permissions/com.oculus.systempermissions.xml line 4, a privapp-permissions block with 5 grants.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.systempermissions' <image>/mnt/*/etc <image>/mnt/*/system/etc ; grep -c '<permission name=' .../mnt/system_ext_a/etc/permissions/com.oculus.systempermissions.xml   Output: system_ext_a/etc/permissions/com.oculus.systempermissions.xml:4:    <privapp-permissions package=\"com.oculus.systempermissions\"> / 5",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.systempermissions' over */etc and */system/etc; XML parse. Output: system_ext_a/etc/permissions/com.oculus.systempermissions.xml:4 only; privapp block has 5 grants.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r11",
+   "claim": "Integrity (com.oculus.integrity) is referenced in system_ext_a/etc/permissions/com.oculus.integrity.xml line 4 (privapp-permissions block with 3 grants) and system_a/system/etc/default-permissions/default-permissions.xml line 80. It is not in nonDiscretionaryAppPackageName.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.integrity' <image>/mnt/*/etc <image>/mnt/*/system/etc ; grep -c '<permission name=' .../mnt/system_ext_a/etc/permissions/com.oculus.integrity.xml   Output: system_ext_a/etc/permissions/com.oculus.integrity.xml:4:    <privapp-permissions package=\"com.oculus.integrity\"> / system_a/system/etc/default-permissions/default-permissions.xml:80:    package=\"com.oculus.integrity\" > / 3",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.integrity' over */etc and */system/etc; XML parse. Output: system_ext_a/etc/permissions/com.oculus.integrity.xml:4 (3 grants); system_a/system/etc/default-permissions/default-permissions.xml:80; no nonDiscretionaryAppPackageName match.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r12",
+   "claim": "OSUpdater (com.oculus.updater) is referenced in: system_ext_a/etc/selinux/system_ext_seapp_contexts lines 35 and 36 (domain osupdater_app, seinfo fbandroid_debug and oculus_prod); system_ext_a/etc/permissions/com.oculus.updater.xml line 3 (privapp block, 10 grants); system_ext_a/etc/nonDiscretionaryAppPackageName line 26; system_a/system/etc/sysconfig/oculus-whitelisted-staged-installer.xml line 6 (whitelisted-staged-installer); oculus-hiddenapi-package-whitelist.xml line 22; oculus-doze-allowlist.xml line 11.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.updater' <image>/mnt/*/etc <image>/mnt/*/system/etc ; grep -c '<permission name=' .../mnt/system_ext_a/etc/permissions/com.oculus.updater.xml   Output: system_ext_a/etc/selinux/system_ext_seapp_contexts:35:user=_app seinfo=fbandroid_debug name=com.oculus.updater domain=osupdater_app type=app_data_file levelFrom=all / ...:36:user=_app seinfo=oculus_prod name=com.oculus.updater domain=osupdater_app type=app_data_file levelFrom=all / system_ext_a/etc/permissions/com.oculus.updater.xml:3:    <privapp-permissions package=\"com.oculus.updater\"> / system_a/system/etc/sysconfig/oculus-whitelisted-staged-installer.xml:6:  <whitelisted-staged-installer package=\"com.oculus.updater\" /> / 10",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.updater' over */etc and */system/etc; XML parse of com.oculus.updater.xml. Output: system_ext_a/etc/selinux/system_ext_seapp_contexts:35 and :36; system_ext_a/etc/permissions/com.oculus.updater.xml:3 (10 grants); nonDiscretionaryAppPackageName:26; oculus-whitelisted-staged-installer.xml:6; oculus-hiddenapi-package-whitelist.xml:22; oculus-doze-allowlist.xml:11.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r13",
+   "claim": "com.meta.systemui is not referenced in any file under the mounted etc trees.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.meta.systemui' <image>/mnt/*/etc <image>/mnt/*/system/etc | wc -l   Output: 0",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.meta.systemui' over */etc and */system/etc | wc -l. Output: 0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r14",
+   "claim": "Carmel (com.oculus.browser) is referenced in system_ext_a/etc/nonDiscretionaryAppPackageName line 137 and in system_a/system/etc/default-permissions/default-permissions.xml line 57 (exception block for com.oculus.browser, BLUETOOTH_CONNECT fixed=true). No privapp block exists for it.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.browser' <image>/mnt/*/etc <image>/mnt/*/system/etc ; sed -n '55,58p' .../mnt/system_a/system/etc/default-permissions/default-permissions.xml   Output: system_ext_a/etc/nonDiscretionaryAppPackageName:137:com.oculus.browser / system_a/system/etc/default-permissions/default-permissions.xml:57:    package=\"com.oculus.browser\" > / next line: <permission name=\"android.permission.BLUETOOTH_CONNECT\" fixed=\"true\"/>",
+   "verdict": "confirmed",
+   "reason": "verified. Command: grep -rIn -F -- 'com.oculus.browser' over */etc and */system/etc; sed -n '55,58p' system_a/system/etc/default-permissions/default-permissions.xml; XML parse. Output: system_ext_a/etc/nonDiscretionaryAppPackageName:137; default-permissions.xml:57 exception for com.oculus.browser with android.permission.BLUETOOTH_CONNECT fixed=true; no privapp match.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "r15",
+   "claim": "VrShell (com.oculus.vrshell) is referenced in system_ext_a/etc/permissions/com.oculus.vrshell.xml line 4 (19 privapp grants), system_ext_a/etc/permissions/com.oculus.vrshell.desktop.xml line 4 (for com.oculus.vrshell.desktop), system_ext_a/etc/nonDiscretionaryAppPackageName lines 12 to 16, system_ext_a/etc/default-permissions/com.oculus.vrshell.xml line 4, system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml lines 24 and 25, and vendor_a/etc/eps_properties.json line 47, where the key path mixer_thread.package_blocklist lists com.oculus.vrshell and com.oculus.firsttimenux.",
+   "label": "verified",
+   "evidence": "Command: grep -rIn -F -- 'com.oculus.vrshell' <image>/mnt/*/etc <image>/mnt/*/system/etc ; sed -n '44,50p' .../mnt/vendor_a/etc/eps_properties.json ; grep -c '<permission name=' .../mnt/system_ext_a/etc/permissions/com.oculus.vrshell.xml   Output (excerpt): system_ext_a/etc/permissions/com.oculus.vrshell.xml:4:    <privapp-permissions package=\"com.oculus.vrshell\"> / system_ext_a/etc/nonDiscretionaryAppPackageName:12-16 (com.oculus.vrshell.keyboardoverlaytest, com.oculus.vrshell.home, com.oculus.vrshell.desktop, com.oculus.vrshell.deskt, com.oculus.vrshell) / vendor_a/etc/eps_properties.json:47:        \"package_blocklist\": [\"com.oculus.vrshell\", \"com.oculus.firsttimenux\"] / lines 46-47 read \"mixer_thread\": { then \"package_blocklist\" / 19",
+   "verdict": "needs_change",
+   "reason": "Listed entries verified; the list omits two default-permissions exception blocks. Command: grep -rIn -F -- 'com.oculus.vrshell' over */etc and */system/etc; sed -n '44,50p' vendor_a/etc/eps_properties.json; json parse of eps_properties.json; XML parse of com.oculus.vrshell.xml and default-permissions.xml. Output: system_ext_a/etc/permissions/com.oculus.vrshell.xml:4 (19 grants); com.oculus.vrshell.desktop.xml:4; nonDiscretionaryAppPackageName:12 to 16; system_ext_a/etc/default-permissions/com.oculus.vrshell.xml:4; oculus-hiddenapi-package-whitelist.xml:24 (com.oculus.vrshell) and :25 (com.oculus.vrshell.home, not com.oculus.vrshell); vendor_a/etc/eps_properties.json:47 under mixer_thread.package_blocklist. Omitted by the claim: system_a/system/etc/default-permissions/default-permissions.xml:185 (package com.oculus.vrshell) and :194 (package com.oculus.vrshell.home).",
+   "corrected_claim": "VrShell (com.oculus.vrshell) is referenced in system_ext_a/etc/permissions/com.oculus.vrshell.xml line 4 (19 privapp grants), system_ext_a/etc/permissions/com.oculus.vrshell.desktop.xml line 4 (for com.oculus.vrshell.desktop), system_ext_a/etc/nonDiscretionaryAppPackageName lines 12 to 16, system_ext_a/etc/default-permissions/com.oculus.vrshell.xml line 4, system_a/system/etc/default-permissions/default-permissions.xml lines 185 (com.oculus.vrshell) and 194 (com.oculus.vrshell.home), system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml line 24 (com.oculus.vrshell) and line 25 (com.oculus.vrshell.home), and vendor_a/etc/eps_properties.json line 47, where the key path mixer_thread.package_blocklist lists com.oculus.vrshell and com.oculus.firsttimenux."
+  }
+ ],
+ "gaps": [
+  "Functional descriptions for the 125 APK rows marked inferred come from package names and component class names only. No dex code, resources.arsc or assets were decompiled or parsed, and acronyms such as SPGO, OCMS, CM, MRDS, QPL, CVP, Q4B and NUX are not expanded from content.",
+  "For the other 127 APKs (outside the 15 deep-dive items) only identity, versions, SDK levels, sharedUserId, component counts, permission counts, uses-library entries and native library names were extracted; exported components and custom permission declarations were enumerated only for the 15 deep-dive items.",
+  "The vdex first count field reads 4 for Settings.apk, which has two classes*.dex entries. Its meaning was not resolved; only raw header words are reported. The overlay resourcesMap values (type0x1:7f020000 and 7f020001) were not decoded.",
+  "Init references were searched by package name and by the priv-app/app path patterns only. The 127 non-deep-dive package names were checked against the etc trees (where init and SELinux files live) but were not individually searched in the .rc files.",
+  "No SELinux label line for /system_ext/app or /system_ext/priv-app was found; the system_ext apps are therefore covered only by the generic system_file rule, and the actual labelling used on device was not observed.",
+  "Signing certificate families were extracted and mapped only for the 15 deep-dive APKs; certificate families of the other APKs were not extracted. The 'Android Debug' subject is reported as observed, without assessment.",
+  "Six APKs have no odex or vdex (two overlays and four others); whether they are intentionally not precompiled was not determined.",
+  "The group contains no firmware, bootloader or hardware configuration files. The 11 symlink targets are in the system_ext_a lib64 partition, which is outside this group; their contents were not examined.",
+  "Install state, runtime behaviour, package-manager database contents and device-side configuration were not observed; only the read-only partition contents were analysed. Security assessment was excluded by the task rules."
+ ],
+ "rolesFile": "data/subsystems/apps/roles.tsv"
+}

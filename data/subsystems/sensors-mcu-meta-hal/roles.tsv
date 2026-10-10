@@ -1,0 +1,264 @@
+partition	path	role	confidence
+odm_a	usr/keychars/oculus-device.kcm	key character map for oculus-device; FORWARD falls back to HOME	verified
+odm_a	usr/keylayout/oculus-device.kl	key layout: scancode 172 -> HOME, 159 -> FORWARD	verified
+odm_a	lib/vendor.oculus.hardware.dock@1.0.so	vendor dock HIDL library (IDock, IDockstateCallback)	verified
+odm_a	lib/vendor.oculus.hardware.telemetry@1.0.so	vendor telemetry HIDL library (IDeviceTelemetry)	verified
+odm_a	bin/hw/vendor.oculus.hardware.sensors@1.0-service	sensors HAL service for vendor.oculus.hardware.sensors@1.0 (reads /vendor/etc/sensorservice.cfg)	observed
+odm_a	bin/hw/vendor.oculus.hardware.dock@1.0-service	dock HAL service (IDock)	observed
+odm_a	bin/hw/vendor.oculus.hardware.sensors@1.0-iad	IAD HAL service (IIad interface, early_hal class)	observed
+odm_a	bin/hw/vendor.oculus.hardware.catty@1.0-service	catty HAL service (ICatty)	observed
+odm_a	bin/hw/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service	maintenanceboot AIDL HAL service	inferred
+odm_a	bin/hw/vendor.oculus.hardware.sensors@1.0-service-mock	mock sensors HAL service (sensors-mock-hal-1-0 init service, disabled)	observed
+odm_a	bin/hw/vendor.oculus.hardware.devicecert@1.0-service.anorak	device certificate HAL service	inferred
+odm_a	bin/hw/vendor.oculus.hardware.keyboxinstaller@1.0-service.anorak	keybox installer HAL service	inferred
+odm_a	bin/hw/vendor.oculus.hardware.pdfu@1.0-service	pdfu HAL service	inferred
+odm_a	bin/hw/vendor.oculus.hardware.externalbattery@1.0-service	external battery HAL service	inferred
+odm_a	bin/hw/vendor.oculus.hardware.sensors@1.0-flicker	flicker sensor HAL service (IFlickerSensor interface)	observed
+odm_a	bin/hw/vendor.oculus.hardware.sensorlock@1.0-service.anorak	sensorlock AIDL HAL service (ISensorLock/default)	observed
+odm_a	bin/sensoremu	sensor emulator service (vendor.sensoremu init service)	observed
+odm_a	bin/sensor-emulator	sensor-emulator service (vendor.sensor-emulator init service, uses libsensoremulator)	observed
+odm_a	lib64/vendor.oculus.hardware.clocks@1.0.so	clocks HIDL library (IClocks)	verified
+odm_a	lib64/libvrsensors-utils.so	VR sensors utility library	inferred
+odm_a	lib64/vendor.oculus.hardware.light@2.0.so	light HIDL 2.0 library (ILight)	verified
+odm_a	lib64/libsensorscommon.so	sensors common library	inferred
+odm_a	lib64/vendor.oculus.hardware.dock@1.0.so	vendor dock HIDL library (IDock, IDockstateCallback)	verified
+odm_a	lib64/vendor.oculus.hardware.sensorlock-V1-ndk_platform.so	sensorlock AIDL NDK stub library (ISensorLock, ISensorLockListener)	verified
+odm_a	lib64/libsensorlock.so	sensorlock backend library (links libsmcihandler)	verified
+odm_a	lib64/libsensortelemetry.so	sensor telemetry library	inferred
+odm_a	lib64/vendor.oculus.hardware.externalbattery@1.0.so	external battery HIDL library (IExternalBattery)	verified
+odm_a	lib64/vendor.oculus.hardware.sensors@1.0.so	vendor sensors HIDL 1.0 library (ICameraProvider, IImu, IMag, IIad, IFlickerSensor, IZapper and about 25 more descriptors)	verified
+odm_a	lib64/vendor.oculus.hardware.keyboxinstaller@1.0.so	keybox installer HIDL library (IDeviceKeyboxInstaller)	verified
+odm_a	lib64/vendor.oculus.hardware.mixedreality-V2-ndk_platform.so	mixed reality AIDL NDK stub library (V2)	verified
+odm_a	lib64/vendor.oculus.hardware.catty@1.0.so	catty HIDL library (ICatty, ICattyPipeClient)	verified
+odm_a	lib64/vendor.oculus.hardware.devicecert@1.0.so	device certificate HIDL library (IDeviceCert)	verified
+odm_a	lib64/libsensoremulatorcore.so	sensor emulator core (contains /data/vendor/misc/sensoremu/sensoremu.conf and recording.vrs paths)	verified
+odm_a	lib64/vendor.oculus.hardware.pdfu-V1-ndk_platform.so	pdfu AIDL NDK stub library (V1)	verified
+odm_a	lib64/libdevicesensors.so	device sensors abstraction library	inferred
+odm_a	lib64/libsensoremulator.so	sensor emulator library (contains path string /vendor/etc/cameramuxmode/configv2.json)	observed
+odm_a	lib64/libvrsensors-hidlwrapper.so	VR sensors HIDL wrapper library	inferred
+odm_a	lib64/vendor.oculus.hardware.telemetry@1.0.so	vendor telemetry HIDL library (IDeviceTelemetry)	verified
+odm_a	lib64/vendor.oculus.hardware.maintenanceboot-V1-ndk_platform.so	maintenanceboot AIDL NDK stub library (V1)	verified
+odm_a	lib64/libdevicesensors-mock.so	mock device sensors library	inferred
+odm_a	lib64/vendor.oculus.hardware.sensors_java@1.0.so	sensors_java HIDL library (IPowerstate, IPowerstateCallback)	verified
+odm_a	lib64/libsensorutils.so	sensor utilities library	inferred
+odm_a	lib64/libflickersensor.so	flicker sensor backend library (links libstals, libtelemetry and vendor sensors@1.0)	verified
+product_a	lib64/vendor.oculus.hardware.telemetry@1.0.so	product-partition copy of telemetry HIDL library (64-bit)	verified
+product_a	lib/vendor.oculus.hardware.telemetry@1.0.so	product-partition copy of telemetry HIDL library (32-bit)	verified
+product_a	etc/permissions/oculus.software.passthrough_display_sync.xml	declares feature oculus.software.passthrough_display_sync	verified
+product_a	etc/permissions/oculus.hardware.sensorlock.xml	declares feature oculus.hardware.sensorlock	verified
+product_a	etc/permissions/oculus.software.passthrough_capture.xml	declares feature oculus.software.passthrough_capture	verified
+product_a	etc/permissions/oculus.software.idle_shutdown.xml	declares feature oculus.software.idle_shutdown	verified
+product_a	etc/permissions/oculus.software.unofficial_apps.xml	declares feature oculus.software.unofficial_apps	verified
+product_a	etc/permissions/com.oculus.panelapp.kiosk.xml	privileged permissions for com.oculus.panelapp.kiosk	verified
+product_a	etc/permissions/oculus.hardware.user_detection.xml	declares feature oculus.hardware.user_detection	verified
+product_a	etc/permissions/oculus.software.handtracking.xml	declares feature oculus.software.handtracking	verified
+product_a	etc/permissions/com.oculus.oemconfig.xml	privileged permissions for com.oculus.oemconfig	verified
+product_a	etc/permissions/oculus.software.passthrough_white_led_signal.xml	declares feature oculus.software.passthrough_white_led_signal	verified
+product_a	etc/permissions/oculus.software.spatial.xml	declares feature oculus.software.spatial	verified
+product_a	etc/permissions/oculus.software.guardian.xml	declares feature oculus.software.guardian	verified
+product_a	etc/permissions/oculus.software.system_resource_service.xml	declares feature oculus.software.system_resource_service	verified
+product_a	etc/permissions/oculus.software.physical_tracked_keyboard.xml	declares feature oculus.software.physical_tracked_keyboard	verified
+product_a	etc/permissions/com.oculus.q4bservice.xml	privileged permissions for com.oculus.q4bservice	verified
+product_a	etc/permissions/oculus_line_frequency_detection.xml	declares feature oculus.software.camera.line_frequency_detection	verified
+product_a	etc/permissions/oculus.software.overlay_keyboard.xml	declares feature oculus.software.overlay_keyboard	verified
+system_a	system/framework/arm64/boot-com.oculus.os.platform.oat	ART boot OAT (ELF container) for com.oculus.os.platform, arm64	verified
+system_a	system/framework/arm64/boot-com.oculus.os.platform.art	ART boot image for com.oculus.os.platform, arm64 (magic art 099)	verified
+system_a	system/framework/arm64/boot-com.oculus.os.platform.vdex	symlink to ../boot-com.oculus.os.platform.vdex	verified
+system_a	system/framework/arm/boot-com.oculus.os.platform.oat	ART boot OAT for com.oculus.os.platform, arm (32-bit)	inferred
+system_a	system/framework/arm/boot-com.oculus.os.platform.art	ART boot image for com.oculus.os.platform, arm (32-bit)	inferred
+system_a	system/framework/arm/boot-com.oculus.os.platform.vdex	symlink to ../boot-com.oculus.os.platform.vdex	verified
+system_a	system/framework/boot-com.oculus.os.platform.vdex	VDEX verification data for the com.oculus.os.platform boot image	inferred
+system_a	system/bin/sensorservice	AOSP sensorservice daemon (creates SensorService, joins binder thread pool)	verified
+system_a	system/bin/touch	symlink to toybox (generic utility, not sensor-specific)	verified
+system_a	system/etc/input_tracking/runtime/eureka/ruby/imu_only_tracker/release/left_imuml_torchscript_boltnn_lite_final.pt	TorchScript IMU-only tracker model, left hand (zip container, 26 entries incl. bytecode.pkl)	verified
+system_a	system/etc/input_tracking/runtime/eureka/ruby/imu_only_tracker/release/right_imuml_torchscript_boltnn_lite_final.pt	TorchScript IMU-only tracker model, right hand (zip container)	verified
+system_a	system/etc/handtracking/runtime/microgesture/.placeholder	empty placeholder in the microgesture model directory	verified
+system_a	system/etc/handtracking/runtime/microgesture/MGV23.ptl	PyTorch Lite microgesture model archive, version 23 (zip, 26 entries, nimble_gesture model code)	verified
+system_a	system/etc/handtracking/runtime/microgesture/MGV25MG.ptl	PyTorch Lite microgesture model archive, version 25 MG variant (zip with producer_info)	verified
+system_a	system/etc/handtracking/runtime/microgesture/MGV23MG.ptl	PyTorch Lite microgesture model archive, version 23 MG variant (zip with producer_info)	verified
+system_a	system/etc/handtracking/runtime/microgesture/MGV24MG.ptl	PyTorch Lite microgesture model archive, version 24 MG variant (zip with producer_info)	verified
+system_a	system/etc/sysconfig/oculus-backup-transport.xml	sysconfig: backup transport whitelisted service (com.oculus.backuptransportservice)	verified
+system_a	system/etc/sysconfig/oculus-whitelisted-staged-installer.xml	staged-installer whitelist: com.oculus.updater, com.oculus.ocms	verified
+system_a	system/etc/sysconfig/oculus-bugreport-package-whitelist.xml	bugreport whitelist: com.oculus.bugreportservice	verified
+system_a	system/etc/sysconfig/oculus-allowed-vendor-apex.xml	allowed vendor APEX: com.meta.quest, com.meta.xr	verified
+system_a	system/etc/sysconfig/oculus-rollback-whitelisted-app.xml	rollback whitelist (5 packages)	verified
+system_a	system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml	hidden-API whitelist (18 packages)	verified
+system_a	system/etc/sysconfig/oculus-doze-allowlist.xml	doze allowlist (6 packages)	verified
+system_a	system/etc/permissions/com.oculus.mrservice.xml	privileged permissions for com.oculus.mrservice	verified
+system_a	system/etc/permissions/oculus.software.mic_sharing.xml	declares feature oculus.software.mic_sharing	verified
+system_a	system/etc/permissions/com.oculus.systemdriver.xml	privileged permissions for com.oculus.systemdriver	verified
+system_a	system/etc/permissions/oculus.software.xrsp.xml	declares feature oculus.software.xrsp	verified
+system_a	system/etc/default-permissions/com.oculus.mrservice.xml	default runtime-permission exceptions for com.oculus.mrservice	verified
+system_a	system/etc/default-permissions/com.oculus.xrstreamingclient.xml	default runtime-permission exceptions for com.oculus.xrstreamingclient	verified
+system_a	system/lib/android.frameworks.sensorservice@1.0.so	frameworks sensorservice HIDL 1.0 library (ISensorManager, IEventQueue, IDirectReportChannel)	verified
+system_a	system/lib/android.hardware.sensors@1.0.so	AOSP sensors HIDL 1.0 library (ISensors)	verified
+system_a	system/lib/android.hardware.sensors@2.0.so	AOSP sensors HIDL 2.0 library (ISensors, ISensorsCallback)	verified
+system_a	system/lib/android.hardware.sensors@2.1.so	AOSP sensors HIDL 2.1 library (ISensors, ISensorsCallback)	verified
+system_a	system/lib/libOVRMrcLib.oculus.so	mixed reality capture (MRC) library	inferred
+system_a	system/lib/libripcclient.oculus.so	RIPC client library	inferred
+system_a	system/lib/libsensor.so	sensor client library (Sensor and SensorManager API)	inferred
+system_a	system/lib/libsensorclientutils.so	sensor client utility library	inferred
+system_a	system/lib/libsensorcontrol.so	sensor control library	inferred
+system_a	system/lib/libsensordatatransforms.so	sensor data transforms library (OVR::SensorDataTransforms: IMU, mag, frame-set transforms)	inferred
+system_a	system/lib/libsensorprivacy.so	sensor privacy library	inferred
+system_a	system/lib/libsensorservice.so	SensorService implementation library (SensorService class, proximity listener API)	inferred
+system_a	system/lib/libsensorservicehidl.so	HIDL bridge for the sensor service	inferred
+system_a	system/lib/libsensorstream.so	sensor stream library	inferred
+system_a	system/lib/libsensortelemetry.so	sensor telemetry library	inferred
+system_a	system/lib/libsensorutils.so	sensor utilities library	inferred
+system_a	system/lib/libvrsensors-hidlwrapper.so	VR sensors HIDL wrapper library	inferred
+system_a	system/lib/libvrsensors-utils.so	VR sensors utility library	inferred
+system_a	system/lib64/android.frameworks.sensorservice@1.0.so	frameworks sensorservice HIDL 1.0 library (ISensorManager, IEventQueue, IDirectReportChannel)	verified
+system_a	system/lib64/android.hardware.sensors@1.0.so	AOSP sensors HIDL 1.0 library (ISensors)	verified
+system_a	system/lib64/android.hardware.sensors@2.0.so	AOSP sensors HIDL 2.0 library (ISensors, ISensorsCallback)	verified
+system_a	system/lib64/android.hardware.sensors@2.1.so	AOSP sensors HIDL 2.1 library (ISensors, ISensorsCallback)	verified
+system_a	system/lib64/libOVRMrcLib.oculus.so	mixed reality capture (MRC) library	inferred
+system_a	system/lib64/libripcclient.oculus.so	RIPC client library	inferred
+system_a	system/lib64/libsensor.so	sensor client library (Sensor and SensorManager API)	inferred
+system_a	system/lib64/libsensorclientutils.so	sensor client utility library	inferred
+system_a	system/lib64/libsensorcontrol.so	sensor control library	inferred
+system_a	system/lib64/libsensordatatransforms.so	sensor data transforms library (OVR::SensorDataTransforms: IMU, mag, frame-set transforms)	inferred
+system_a	system/lib64/libsensorprivacy.so	sensor privacy library	inferred
+system_a	system/lib64/libsensorservice.so	SensorService implementation library (exports SensorService constructor and proximity listener methods)	verified
+system_a	system/lib64/libsensorservicehidl.so	HIDL bridge for the sensor service	inferred
+system_a	system/lib64/libsensorstream.so	sensor stream library	inferred
+system_a	system/lib64/libsensortelemetry.so	sensor telemetry library	inferred
+system_a	system/lib64/libsensorutils.so	sensor utilities library	inferred
+system_a	system/lib64/libvrsensors-hidlwrapper.so	VR sensors HIDL wrapper library	inferred
+system_a	system/lib64/libvrsensors-utils.so	VR sensors utility library	inferred
+system_a	system/lib64/libvrsrecorder_utils_sensorapishim.so	VR recorder sensor API shim library	inferred
+system_a	system/lib64/libxrstreaminghost.oculus.so	XR streaming host library	inferred
+system_ext_a	bin/sensor_validation_standalone	standalone sensor validation executable (links vendor sensors@1.0 and sensorclientutils)	verified
+system_ext_a	bin/meta_screencap	screen capture CLI (links libgui and libjnigraphics)	verified
+system_ext_a	bin/oculusmediametrics	oculus media metrics service executable (links liboculusmediametricsservice)	verified
+system_ext_a	bin/oculussetting	oculus settings CLI	inferred
+system_ext_a	bin/sensor_tool	sensor and camera stream CLI (TOML and JSON config parsing, --out frame dump, links libEGL and libgui)	verified
+system_ext_a	bin/sensorproxy	sensorproxy service (system_ext init service, gated by persist.ovr.enable.sensorproxy)	observed
+system_ext_a	bin/oculuspreferences	oculus preferences CLI	inferred
+system_ext_a	bin/sensor_bench	sensor FMQ benchmark CLI (links libgflags and libfmq; CPU frequency read/write messages)	verified
+system_ext_a	bin/sensor_validation	sensor validation executable (invoked by svt.sh with --conf_file=SensorValidation_<device>_Stu)	observed
+system_ext_a	bin/hw/vendor.oculus.hardware.telemetry@1.0-service	telemetry HAL service (IDeviceTelemetry)	observed
+system_ext_a	etc/permissions/com.oculus.bugreportservice.xml	privileged permissions for com.oculus.bugreportservice	verified
+system_ext_a	etc/permissions/com.oculus.micservice.xml	privileged permissions for com.oculus.micservice	verified
+system_ext_a	etc/permissions/com.oculus.captionservice.xml	privileged permissions for com.oculus.captionservice	verified
+system_ext_a	etc/permissions/com.oculus.integrity.xml	privileged permissions for com.oculus.integrity	verified
+system_ext_a	etc/permissions/oculus.software.store_app.signature.esig.xml	declares feature oculus.software.store_app.signature.esig	verified
+system_ext_a	etc/permissions/com.oculus.configuration.xml	privileged permissions for com.oculus.configuration	verified
+system_ext_a	etc/permissions/com.oculus.vrshell.desktop.xml	privileged permissions for com.oculus.vrshell.desktop	verified
+system_ext_a	etc/permissions/com.oculus.labservice.xml	privileged permissions for com.oculus.labservice	verified
+system_ext_a	etc/permissions/com.oculus.os.vrlockscreen.xml	privileged permissions for com.oculus.os.vrlockscreen	verified
+system_ext_a	etc/permissions/com.oculus.updater.xml	privileged permissions for com.oculus.updater	verified
+system_ext_a	etc/permissions/com.oculus.maintenanceboot.xml	privileged permissions for com.oculus.maintenanceboot	verified
+system_ext_a	etc/permissions/com.oculus.backuptransportservice.xml	privileged permissions for com.oculus.backuptransportservice	verified
+system_ext_a	etc/permissions/com.oculus.ocms.xml	privileged permissions for com.oculus.ocms	verified
+system_ext_a	etc/permissions/com.oculus.vralertservice.xml	privileged permissions for com.oculus.vralertservice	verified
+system_ext_a	etc/permissions/com.oculus.wearableinputservice.xml	privileged permissions for com.oculus.wearableinputservice	verified
+system_ext_a	etc/permissions/com.oculus.companion.server.xml	privileged permissions for com.oculus.companion.server	verified
+system_ext_a	etc/permissions/com.oculus.websafety.xml	privileged permissions for com.oculus.websafety	verified
+system_ext_a	etc/permissions/com.android.provision.xml	privileged permissions for com.android.provision	verified
+system_ext_a	etc/permissions/com.oculus.notification_proxy.xml	privileged permissions for com.oculus.notification_proxy	verified
+system_ext_a	etc/permissions/com.oculus.guardian.xml	privileged permissions for com.oculus.guardian	verified
+system_ext_a	etc/permissions/com.oculus.os.cm.xml	privileged permissions for com.oculus.os.cm	verified
+system_ext_a	etc/permissions/com.oculus.horizon.xml	privileged permissions for com.oculus.horizon	verified
+system_ext_a	etc/permissions/com.oculus.userserver2.xml	privileged permissions for com.oculus.userserver2	verified
+system_ext_a	etc/permissions/com.oculus.vrbtcontrol.xml	privileged permissions for com.oculus.vrbtcontrol	verified
+system_ext_a	etc/permissions/com.oculus.panelapp.settings.xml	privileged permissions for com.oculus.panelapp.settings	verified
+system_ext_a	etc/permissions/com.oculus.vrbttest.xml	privileged permissions for com.oculus.vrbttest	verified
+system_ext_a	etc/permissions/com.oculus.systemutilities.xml	privileged permissions for com.oculus.systemutilities	verified
+system_ext_a	etc/permissions/com.oculus.os.voidactivity.xml	privileged permissions for com.oculus.os.voidactivity	verified
+system_ext_a	etc/permissions/oculus.hardware.standalone_vr.xml	declares feature oculus.hardware.standalone_vr	verified
+system_ext_a	etc/permissions/com.oculus.assistant.xml	privileged permissions for com.oculus.assistant	verified
+system_ext_a	etc/permissions/oculus.software.anti_piracy.xml	declares feature oculus.software.anti_piracy	verified
+system_ext_a	etc/permissions/com.oculus.os.vrusb.xml	privileged permissions for com.oculus.os.vrusb	verified
+system_ext_a	etc/permissions/com.oculus.quickplayservice.xml	privileged permissions for com.oculus.quickplayservice	verified
+system_ext_a	etc/permissions/oculus.software.vr.app.hybrid.xml	declares feature oculus.software.vr.app.hybrid	verified
+system_ext_a	etc/permissions/com.oculus.panelapp.library.xml	privileged permissions for com.oculus.panelapp.library	verified
+system_ext_a	etc/permissions/com.oculus.systempermissions.xml	privileged permissions for com.oculus.systempermissions	verified
+system_ext_a	etc/permissions/com.oculus.bodyapiservice.xml	privileged permissions for com.oculus.bodyapiservice	verified
+system_ext_a	etc/permissions/com.oculus.metacam.xml	privileged permissions for com.oculus.metacam	verified
+system_ext_a	etc/permissions/com.oculus.os.clearactivity.xml	privileged permissions for com.oculus.os.clearactivity	verified
+system_ext_a	etc/permissions/com.oculus.os.platform.xml	declares shared library com.oculus.os.platform	verified
+system_ext_a	etc/permissions/com.oculus.preloader.xml	privileged permissions for com.oculus.preloader	verified
+system_ext_a	etc/permissions/com.oculus.systemux.xml	privileged permissions for com.oculus.systemux	verified
+system_ext_a	etc/permissions/com.oculus.statscollector.xml	privileged permissions for com.oculus.statscollector	verified
+system_ext_a	etc/permissions/com.meta.federatedcomputing.oculus.xml	privileged permissions for com.meta.federatedcomputing.oculus	verified
+system_ext_a	etc/permissions/com.oculus.appsafety.xml	privileged permissions for com.oculus.appsafety	verified
+system_ext_a	etc/permissions/com.oculus.identitymanagement.service.xml	privileged permissions for com.oculus.identitymanagement.service	verified
+system_ext_a	etc/permissions/com.android.managedprovisioning.xml	privileged permissions for com.android.managedprovisioning	verified
+system_ext_a	etc/permissions/com.oculus.preshutdowntaskservice.xml	privileged permissions for com.oculus.preshutdowntaskservice	verified
+system_ext_a	etc/permissions/com.oculus.shellenv.xml	privileged permissions for com.oculus.shellenv	verified
+system_ext_a	etc/permissions/com.oculus.vrshell.xml	privileged permissions for com.oculus.vrshell	verified
+system_ext_a	etc/default-permissions/com.oculus.fitnesstracker.xml	default runtime-permission exceptions for com.oculus.fitnesstracker	verified
+system_ext_a	etc/default-permissions/com.oculus.captionservice.xml	default runtime-permission exceptions for com.oculus.captionservice	verified
+system_ext_a	etc/default-permissions/com.oculus.tv.xml	default runtime-permission exceptions for com.oculus.tv	verified
+system_ext_a	etc/default-permissions/com.oculus.ocms.xml	default runtime-permission exceptions for com.oculus.ocms	verified
+system_ext_a	etc/default-permissions/com.oculus.mrds.xml	default runtime-permission exceptions for com.oculus.mrds	verified
+system_ext_a	etc/default-permissions/com.oculus.guardian.xml	default runtime-permission exceptions for com.oculus.guardian	verified
+system_ext_a	etc/default-permissions/com.oculus.store.xml	default runtime-permission exceptions for com.oculus.store	verified
+system_ext_a	etc/default-permissions/com.oculus.panelapp.settings.xml	default runtime-permission exceptions for com.oculus.panelapp.settings	verified
+system_ext_a	etc/default-permissions/com.oculus.systemutilities.xml	default runtime-permission exceptions for com.oculus.systemutilities	verified
+system_ext_a	etc/default-permissions/com.oculus.os.vrusb.xml	default runtime-permission exceptions for com.oculus.os.vrusb	verified
+system_ext_a	etc/default-permissions/com.oculus.panelapp.library.xml	default runtime-permission exceptions for com.oculus.panelapp.library	verified
+system_ext_a	etc/default-permissions/com.oculus.metacam.xml	default runtime-permission exceptions for com.oculus.metacam	verified
+system_ext_a	etc/default-permissions/com.oculus.identitymanagement.service.xml	default runtime-permission exceptions for com.oculus.identitymanagement.service	verified
+system_ext_a	etc/default-permissions/com.oculus.vrshell.xml	default runtime-permission exceptions for com.oculus.vrshell	verified
+system_ext_a	etc/public.libraries-oculus.txt	public native library list (10 oculus libraries)	verified
+system_ext_a	etc/bootanim/meta-colors.png	boot animation color palette PNG (1024x1, 8-bit colormap)	verified
+system_ext_a	etc/bootanim/meta.bin	boot animation binary data (format not identified)	inferred
+system_ext_a	framework/com.oculus.os.platform.jar	com.oculus.os.platform Android package (classes.dex, 2 entries)	verified
+system_ext_a	framework/oat/arm64/oculus-system-services.odex	ELF-format odex for oculus-system-services, arm64	verified
+system_ext_a	framework/oat/arm64/oculus-system-services.vdex	VDEX (magic vdex027) for oculus-system-services, arm64	verified
+system_ext_a	framework/oat/arm64/oculus-system-services.art	ART image for oculus-system-services, arm64	inferred
+system_ext_a	framework/oculus-system-services.jar	oculus-system-services Android package (73 entries)	verified
+system_ext_a	lib/vendor.oculus.hardware.health@1.0.so	health HIDL library (IHealth, IHealthStatusCallback)	verified
+system_ext_a	lib/libappsensoraccess.oculus.so	app sensor access library	inferred
+system_ext_a	lib/vendor.oculus.hardware.clocks@1.0.so	clocks HIDL library (IClocks)	verified
+system_ext_a	lib/libusl-oculus_cmm_mode_transitions.so	CMM mode transitions library	inferred
+system_ext_a	lib/vendor.oculus.hardware.sensors_java@1.0.so	sensors_java HIDL library (IPowerstate, IPowerstateCallback)	verified
+system_ext_a	lib/libinstsamp.oculus.so	instrumentation sampling library	inferred
+system_ext_a	lib/libsystemsensoraccess.oculus.so	system sensor access library	inferred
+system_ext_a	lib/libusl-oculus_mobile_crashreport.so	mobile crash report library	inferred
+system_ext_a	lib/libbpfagent.oculus.so	BPF agent library	inferred
+system_ext_a	lib/vendor.oculus.hardware.sensors@1.0.so	vendor sensors HIDL 1.0 library (ICameraProvider, IImu, IMag, IIad, IFlickerSensor, IZapper and about 25 more descriptors)	verified
+system_ext_a	lib/libheadtracker.oculus.so	head tracker library	inferred
+system_ext_a	lib/vendor.oculus.hardware.maintenanceboot-V1-ndk_platform.so	maintenanceboot AIDL NDK stub library (V1)	verified
+system_ext_a	lib/libossdk.oculus.so	OSSDK sensor library	inferred
+system_ext_a	lib/vendor.oculus.hardware.telemetry@1.0.so	vendor telemetry HIDL library (IDeviceTelemetry)	verified
+system_ext_a	lib/libparfait.oculus.so	parfait client library	inferred
+system_ext_a	priv-app/Provision/oat/arm64/Provision.odex	precompiled odex for Provision app, arm64	inferred
+system_ext_a	priv-app/Provision/oat/arm64/Provision.vdex	VDEX for Provision app, arm64	inferred
+system_ext_a	priv-app/Provision/Provision.apk	Provision Android app package (6 entries)	verified
+system_ext_a	priv-app/com.oculus.os.platform-res/com.oculus.os.platform-res.apk	platform resource APK: permission-group icons (eyetracking, facetracking, scene) and preferences_store_schema.json	verified
+system_ext_a	priv-app/QuestManagedProvisioning/QuestManagedProvisioning.apk	QuestManagedProvisioning Android app package (775 entries)	verified
+system_ext_a	priv-app/QuestManagedProvisioning/oat/arm64/QuestManagedProvisioning.odex	precompiled odex for QuestManagedProvisioning, arm64	inferred
+system_ext_a	priv-app/QuestManagedProvisioning/oat/arm64/QuestManagedProvisioning.vdex	VDEX for QuestManagedProvisioning, arm64	inferred
+system_ext_a	lib64/libappsensoraccess.oculus.so	app sensor access library	inferred
+system_ext_a	lib64/libbpfagent.oculus.so	BPF agent library	inferred
+system_ext_a	lib64/libheadtracker.oculus.so	head tracker library	inferred
+system_ext_a	lib64/libinstsamp.oculus.so	instrumentation sampling library	inferred
+system_ext_a	lib64/liboculusmediametricsservice.so	oculus media metrics service library	inferred
+system_ext_a	lib64/libossdk.oculus.so	OSSDK sensor library	inferred
+system_ext_a	lib64/libparfait.oculus.so	parfait client library	inferred
+system_ext_a	lib64/libsensorvalidation.so	sensor validation library (lib64, 5.8 MB)	inferred
+system_ext_a	lib64/libsystemsensoraccess.oculus.so	system sensor access library	inferred
+system_ext_a	lib64/libusl-oculus_cmm_mode_transitions.so	CMM mode transitions library	inferred
+system_ext_a	lib64/libusl-oculus_mobile_crashreport.so	mobile crash report library	inferred
+system_ext_a	lib64/oculus-wis-aidl-ndk.so	WIS AIDL NDK stub library	inferred
+system_ext_a	lib64/vendor.oculus.hardware.clocks@1.0.so	clocks HIDL library (IClocks)	verified
+system_ext_a	lib64/vendor.oculus.hardware.health@1.0.so	health HIDL library (IHealth, IHealthStatusCallback)	verified
+system_ext_a	lib64/vendor.oculus.hardware.maintenanceboot-V1-ndk_platform.so	maintenanceboot AIDL NDK stub library (V1)	verified
+system_ext_a	lib64/vendor.oculus.hardware.sensorlock-V1-ndk_platform.so	sensorlock AIDL NDK stub library (ISensorLock, ISensorLockListener)	verified
+system_ext_a	lib64/vendor.oculus.hardware.sensors@1.0.so	vendor sensors HIDL 1.0 library (ICameraProvider, IImu, IMag, IIad, IFlickerSensor, IZapper and about 25 more descriptors)	verified
+system_ext_a	lib64/vendor.oculus.hardware.sensors_java@1.0.so	sensors_java HIDL library (IPowerstate, IPowerstateCallback)	verified
+system_ext_a	lib64/vendor.oculus.hardware.telemetry@1.0.so	vendor telemetry HIDL library (IDeviceTelemetry)	verified
+vendor_a	lib/android.frameworks.sensorservice@1.0.so	frameworks sensorservice HIDL 1.0 library (ISensorManager, IEventQueue, IDirectReportChannel)	verified
+vendor_a	lib/android.hardware.sensors@1.0.so	AOSP sensors HIDL 1.0 library (ISensors)	verified
+vendor_a	etc/sensorservice.cfg	TOML sensor config: nice_constellation="ruby", imu.default_rate fallback 800, mag.default_rate fallback 25	verified
+vendor_a	lib64/android.frameworks.sensorservice@1.0.so	frameworks sensorservice HIDL 1.0 library (ISensorManager, IEventQueue, IDirectReportChannel)	verified
+vendor_a	lib64/android.hardware.sensors@1.0.so	AOSP sensors HIDL 1.0 library (ISensors)	verified
+vendor_a	lib64/android.hardware.sensors@2.0.so	AOSP sensors HIDL 2.0 library (ISensors, ISensorsCallback)	verified
+vendor_a	lib64/libinstsamp.oculus.so	instrumentation sampling library	inferred
+vendor_a	lib64/libsensorcalibration.so	sensor calibration library (links libjsoncpp and libdeviceid)	verified
+vendor_a	lib64/libsensorslog.so	sensor logging library	inferred
+vendor_a	bin/flicker_sensor_tool	flicker sensor test CLI (links libstals and VR sensor utils)	verified
+vendor_a	bin/touch	symlink to toybox_vendor (generic utility, not sensor-specific)	verified

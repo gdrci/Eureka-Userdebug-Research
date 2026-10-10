@@ -1,0 +1,244 @@
+partition	path	role	confidence
+odm_a	firmware/PROX_PS_THDH	symlink to proximity threshold calibration (20 mm set) under /persist	verified
+odm_a	firmware/jedi-downgrade.bin	tar bundle: JEDI MCU app and SPL updater images, 2020 downgrade set	observed
+odm_a	firmware/ruby_archive.bin	tar bundle: ELK and DEERFLY MCU app and SPL updater images, 2024-11 set	observed
+odm_a	firmware/unwind-coulee-app.bin	ELF holding only .debug_frame and symbol sections for the COULEE app (unwind data)	observed
+odm_a	firmware/ruby_prq_archive.bin	tar bundle: ELK and DEERFLY MCU app and SPL updater images, 2024-11 prq set	observed
+odm_a	firmware/ruby-downgrade.bin	tar bundle: ELK and DEERFLY MCU app and SPL updater images, 2023 downgrade set	observed
+odm_a	firmware/ruby_prq-downgrade.bin	tar bundle: ELK and DEERFLY MCU app and SPL updater images, 2024-03 downgrade set	observed
+odm_a	firmware/PROX_PS_CANC	symlink to proximity offset calibration (left) under /persist	verified
+odm_a	firmware/unwind-elk-app.bin	ELF holding only .debug_frame and symbol sections for the ELK app (unwind data)	observed
+odm_a	firmware/jade_archive.tar	tar bundle: JADE MCU app and SPL updater images, 2024-07 set	observed
+odm_a	firmware/syncboss-unwind.bin	ELF holding only .debug_frame and symbol sections for the SyncBoss app (unwind data)	observed
+odm_a	firmware/PROX_PS_CAL_VERSION	symlink to proximity calibration version marker (20 mm set) under /persist	verified
+odm_a	firmware/santana_manager.bin	SantanaManager MCU image, Cortex-M vector table (initial SP 0x20008000)	verified
+odm_a	firmware/syncboss.bin	SyncBoss MCU image, Cortex-M vector table (initial SP 0x2001e000)	verified
+odm_a	firmware/coulee_archive.tar	tar bundle: COULEE MCU app, SPL updater and AMCU_0 image, 2024-09 set	observed
+odm_a	firmware/jedi_archive.bin	tar bundle: JEDI MCU app, SPL updater images and captouch image, 2022 set	observed
+odm_a	firmware/syncboss-app.bin	SyncBoss MCU application image with dAeH header (build id fd5b251dbae5)	observed
+odm_a	firmware/PROX_PS_THDL	symlink named as proximity low threshold, target is the 30 mm threshold file under /persist	verified
+odm_a	etc/firmware/PDFU/Lehua-2833-500F-000100010000000C-00-20240726224740.pdfu	PDFU update package named for Lehua (46-byte ASCII header, Cortex-M image payload)	observed
+odm_a	etc/firmware/PDFU/Moku-2833-5006-00000001000F0000-00-20240726224808.pdfu	PDFU update package named for Moku (46-byte ASCII header, Cortex-M image payload)	observed
+vendor_a	lib/rfsa/adsp/xra_resources/resources_capture_ex.dat	XRA experimental capture tuning resource blob (stinsonExperimentalWola profile)	observed
+vendor_a	lib/rfsa/adsp/xra_resources/resources_capture.dat	XRA capture tuning resource blob (stinson profile)	observed
+vendor_a	lib/rfsa/adsp/xra_resources/xra_config_capture	XRA capture pipeline JSON config (resource path, ports, onInit, injectSine test)	verified
+vendor_a	lib/rfsa/adsp/xra_resources/resources_render.dat	XRA render tuning resource blob (stinson tuning profile, RTT v2.24.0 metadata)	observed
+vendor_a	lib/rfsa/adsp/xra_resources/xra_config_render	XRA render pipeline JSON config (resource path, ports, debug, liveTuningSession)	verified
+vendor_a	lib/rfsa/adsp/xra_render_capi.so	XRA render CAPI module, DSP6 shared object (exports xra_capi_get_static_properties)	observed
+vendor_a	lib/rfsa/adsp/libhap_fastvd_skel.so	FastVD skel library for QNN (qnn::tools::fastvd_qnn symbols), DSP6	observed
+vendor_a	lib/rfsa/adsp/libdfs_skel.so	DFS skel library, DSP6 shared object	inferred
+vendor_a	lib/rfsa/adsp/libQnnHtpV69.so	QNN HTP V69 backend library for Hexagon DSP6 (QnnDsp log strings)	observed
+vendor_a	lib/rfsa/adsp/libdspCV_skel.so	dspCV skel library (computer vision), DSP6 shared object	inferred
+vendor_a	lib/rfsa/adsp/libevadsp_3_0.so	EVA DSP library v3.0 (rfsa copy), DSP6 shared object	inferred
+vendor_a	lib/rfsa/adsp/libhexagon_skel.so	generic Hexagon skel library, DSP6 shared object	inferred
+vendor_a	lib/rfsa/adsp/xra_capture_capi.so	XRA capture CAPI module, DSP6 shared object (exports xra_capi_get_static_properties)	observed
+vendor_a	lib/rfsa/adsp/libQnnBoltnnOpPackageV69.so	QNN op package for HTP V69 (Bolt NN ops), DSP6 shared object	inferred
+vendor_a	lib/rfsa/adsp/libboltEva_skel.so	boltEva skel library, DSP6 shared object	inferred
+vendor_a	bin/adsprpcd	FastRPC user-side daemon for the ADSP, AArch64 PIE (logs "adsp daemon starting")	observed
+vendor_a	bin/cdsprpcd	FastRPC user-side daemon for the CDSP, AArch64 PIE (logs "cdsp daemon starting")	observed
+vendor_a	firmware/hdcpsrm.b02	segment 02 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.b01	segment 01 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/evass.b17	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/cdsp.mdt	ELF program-header file of the CDSP root image (split firmware header)	verified
+vendor_a	firmware/cdsp.b04	segment 04 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b05	segment 05 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/evass.b09	segment 09 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/spss1t.b02	segment 02 of SPSS sensor-subsystem firmware image, variant t (ARM, split)	verified
+vendor_a	firmware/Eureka_Dev1.efm8	EFM8 MCU firmware image, raw binary (tag "EurekaDEV01", LED label strings)	observed
+vendor_a	firmware/crypt1p.sig	signature/certificate container for crypt1 variant p (Qualcomm crypto operations chain)	observed
+vendor_a	firmware/evass.b11	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/adsp.b13	segment 13 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b30	segment 30 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/spss1t.b01	segment 01 of SPSS sensor-subsystem firmware image, variant t (ARM, split)	verified
+vendor_a	firmware/adsp.b22	segment 22 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b02	segment 02 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b39	segment 39 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b13	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/adsp.b18	segment 18 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b25	segment 25 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adspr.jsn	servreg (service registry) JSON config, ADSP root_pd, QMI instance 74	verified
+vendor_a	firmware/evass.b06	segment 06 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/hdcpsrm.b01	segment 01 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/spss1p.b00	segment 00 of SPSS sensor-subsystem firmware image, variant p (ARM, split)	verified
+vendor_a	firmware/asym1t.sig	signature/certificate container for asym1 variant t	observed
+vendor_a	firmware/loadalgota64.mdt	ELF program-header file of loadalgo OTA secure-app image (split header)	verified
+vendor_a	firmware/adsp.b36	segment 36 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b21	segment 21 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/cdsp.b10	segment 10 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp2p2.b03	segment 03 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/battmgr.jsn	servreg JSON config, ADSP charger_pd	verified
+vendor_a	firmware/hdcp1.b07	segment 07 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcp1.mdt	ELF program-header file of HDCP 1.x secure-app image (split header)	verified
+vendor_a	firmware/adsp.b20	segment 20 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b34	segment 34 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcpsrm.b00	segment 00 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/spss1p.mbn	single-file SPSS firmware image, variant p, ARM ELF	verified
+vendor_a	firmware/adsp.b33	segment 33 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b06	segment 06 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini	symlink: WLAN config name mapped to the vendor wifi config directory	verified
+vendor_a	firmware/wlan/qca_cld/wlan_mac.bin	symlink: WLAN MAC address file under /persist	verified
+vendor_a	firmware/cdsp.b11	segment 11 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/cdsp.b02	segment 02 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp2p2.b08	segment 08 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcp2p2.b00	segment 00 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b15	segment 15 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adspua.jsn	servreg JSON config, ADSP audio_pd with avs audio service entry	verified
+vendor_a	firmware/loadalgota64.b00	segment 00 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.b04	segment 04 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/evass.b00	segment 00 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/hdcp1.b04	segment 04 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcp1.b01	segment 01 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/loadalgota64.b06	segment 06 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b07	segment 07 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b10	segment 10 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/eyetz64.mbn	test trusted-application image, AArch64 ELF (tz_app_init and "calling command test" strings)	observed
+vendor_a	firmware/qca6490/regdb.bin	WLAN regulatory database, binary (layout not decoded)	inferred
+vendor_a	firmware/qca6490/eureka_pvt1.0_bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 2 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/m3.bin	WLAN ucode image WLAN_UCODE_HASTINGSPRIME_4.1.4 with ELF32 header (e_machine 3, EM_386)	observed
+vendor_a	firmware/qca6490/eureka_evt2.0_bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 2 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/eureka_dvt1.1_bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 3 of 4, shared by 3 files)	observed
+vendor_a	firmware/qca6490/eureka_dvt1.0_bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 2 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/eureka_evt2.0_bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 1 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/eureka_evt2.1_bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 4 of 4, shared by 3 files)	observed
+vendor_a	firmware/qca6490/bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 1 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 2 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/eureka_dvt1.1_bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 4 of 4, shared by 3 files)	observed
+vendor_a	firmware/qca6490/eureka_pvt1.1_bdwlang.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 4 of 4, shared by 3 files)	observed
+vendor_a	firmware/qca6490/eureka_pvt1.0_bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 1 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/amss.bin	WLAN firmware image, ARM ELF (IMAGE_VARIANT 6490.wlanfw.eval_v1_TOQ, WLAN.HSP.2.0 build)	observed
+vendor_a	firmware/qca6490/Data20.msc	WLAN firmware message catalog, text (10,579 id-coded records, VERSION:536936572)	verified
+vendor_a	firmware/qca6490/Data.msc	WLAN firmware message catalog, text (10,298 id-coded records, VERSION:536936572)	verified
+vendor_a	firmware/qca6490/amss20.bin	WLAN firmware image, ARM ELF (IMAGE_VARIANT 6490.wlanfw.eval_v2_TOQ, WLAN.HSP.2.0 build)	observed
+vendor_a	firmware/qca6490/eureka_dvt1.0_bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 1 of 4, shared by 4 files)	observed
+vendor_a	firmware/qca6490/eureka_evt2.1_bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 3 of 4, shared by 3 files)	observed
+vendor_a	firmware/qca6490/.nolint	empty marker file (lint exclusion)	verified
+vendor_a	firmware/qca6490/eureka_pvt1.1_bdwlan.elf	WLAN board-data ELF wrapping bdwlan.bin (content group 3 of 4, shared by 3 files)	observed
+vendor_a	firmware/adsp.b40	segment 40 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/asym1p.sig	signature/certificate container for asym1 variant p	observed
+vendor_a	firmware/loadalgota64.b05	segment 05 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/cdsp.b07	segment 07 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b05	segment 05 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp1.b06	segment 06 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b11	segment 11 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/crypt1t.sig	signature/certificate container for crypt1 variant t (Qualcomm crypto operations chain)	observed
+vendor_a	firmware/cdsp.b01	segment 01 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b10	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/adsp.b42	segment 42 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/loadalgota64.b03	segment 03 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/cdsp.b06	segment 06 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b12	segment 12 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/spss1p.b01	segment 01 of SPSS sensor-subsystem firmware image, variant p (ARM, split)	verified
+vendor_a	firmware/adsp.b03	segment 03 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/cdspr.jsn	servreg JSON config, CDSP root_pd, QMI instance 76	verified
+vendor_a	firmware/cdsp.b03	segment 03 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b26	segment 26 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp2p2.b01	segment 01 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/spss1p.b02	segment 02 of SPSS sensor-subsystem firmware image, variant p (ARM, split)	verified
+vendor_a	firmware/spss1t.mdt	ELF program-header file of SPSS image variant t (split header)	verified
+vendor_a	firmware/adsp.b17	segment 17 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/keym1t.sig	signature/certificate container for keym1 variant t (key-manager chain)	observed
+vendor_a	firmware/adsp.b37	segment 37 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp2p2.b02	segment 02 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcp1.b03	segment 03 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b23	segment 23 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b31	segment 31 of ADSP root firmware image (Hexagon DSP6, split)	observed
+vendor_a	firmware/adsp.b41	segment 41 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/spss1p.mdt	ELF program-header file of SPSS image variant p (split header)	verified
+vendor_a	firmware/hdcp2p2.b04	segment 04 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcpsrm.b07	segment 07 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcp1.b00	segment 00 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/attestation64.mbn	attestation trusted-application image, AArch64 ELF	inferred
+vendor_a	firmware/adsp.b46	segment 46 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcpsrm.b06	segment 06 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/spss1t.b00	segment 00 of SPSS sensor-subsystem firmware image, variant t (ARM, split)	verified
+vendor_a	firmware/evass.b14	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/cdsp.b05	segment 05 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp1.b05	segment 05 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/cdsp.b08	segment 08 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/widevine.mbn	Widevine DRM trusted-application image, AArch64 ELF (needs libcmnlib.so)	observed
+vendor_a	firmware/loadalgota64.b04	segment 04 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/cdsp.b13	segment 13 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b19	segment 19 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/loadalgota64.b02	segment 02 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.mdt	ELF program-header file of the EVA firmware image (split header)	verified
+vendor_a	firmware/adsps.jsn	servreg JSON config, ADSP sensor_pd, QMI instance 74	verified
+vendor_a	firmware/cdsp.b09	segment 09 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcpsrm.b04	segment 04 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b09	segment 09 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b24	segment 24 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b03	segment 03 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/macch1p.sig	signature/certificate container for macch1 variant p	observed
+vendor_a	firmware/evass.mbn	single-file (unified) EVA firmware image, Xtensa ELF	verified
+vendor_a	firmware/hdcp1.b08	segment 08 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.b15	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/adsp.b28	segment 28 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b43	segment 43 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b16	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/adsp.b01	segment 01 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp1.b02	segment 02 of HDCP 1.x secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcpsrm.b08	segment 08 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/hdcp2p2.mdt	ELF program-header file of HDCP 2.2 secure-app image (split header)	verified
+vendor_a	firmware/hdcpsrm.b03	segment 03 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.b18	segment 18 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/adsp.b00	segment 00 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/loadalgota64.b08	segment 08 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b04	segment 04 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/evass.b08	segment 08 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/loadalgota64.b07	segment 07 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/ovrfwupdate64.mbn	firmware-update trusted-application image, AArch64 ELF	inferred
+vendor_a	firmware/adsp.mdt	ELF program-header file of the ADSP root image (split firmware header)	verified
+vendor_a	firmware/cdsp.b12	segment 12 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b38	segment 38 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp2p2.b06	segment 06 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.b02	segment 02 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/hdcpsrm.mdt	ELF program-header file of HDCP SRM secure-app image (split header)	verified
+vendor_a	firmware/loadalgota64.b01	segment 01 of loadalgo OTA secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b14	segment 14 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/cdsp.b15	segment 15 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/vpu33_4v.mbn	video processing unit (VPU) firmware image, Xtensa ELF (QC_IMAGE video-firmware.3.3)	observed
+vendor_a	firmware/adsp.b16	segment 16 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b35	segment 35 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/macch1t.sig	signature/certificate container for macch1 variant t	observed
+vendor_a	firmware/cdsp.b00	segment 00 of CDSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/spss1t.mbn	single-file SPSS firmware image, variant t, ARM ELF	verified
+vendor_a	firmware/.nolint	empty marker file (lint exclusion)	verified
+vendor_a	firmware/hdcp2p2.b07	segment 07 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/evass.b12	zero-length segment of EVA firmware image (program header size 0)	verified
+vendor_a	firmware/ovrtz64.mbn	trusted-application image, AArch64 ELF (name-based "ovrtz" family)	inferred
+vendor_a	firmware/evass.b07	segment 07 of EVA firmware image (Tensilica Xtensa, split)	verified
+vendor_a	firmware/hdcpsrm.b05	segment 05 of HDCP SRM secure-app image (AArch64, split)	verified
+vendor_a	firmware/sp_license.mbn	SP license trusted-application image, AArch64 ELF (prints "SP license app Init")	observed
+vendor_a	firmware/adsp.b32	segment 32 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b19	segment 19 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/sensorlock64.mbn	sensor-lock trusted-application image, AArch64 ELF	inferred
+vendor_a	firmware/keym1p.sig	signature/certificate container for keym1 variant p (key-manager chain)	observed
+vendor_a	firmware/adsp.b29	segment 29 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/hdcp2p2.b05	segment 05 of HDCP 2.2 secure-app image (AArch64, split)	verified
+vendor_a	firmware/adsp.b27	segment 27 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b08	segment 08 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	firmware/adsp.b44	segment 44 of ADSP root firmware image (Hexagon DSP6, split)	verified
+vendor_a	dsp/adsp/libsysmonquery_skel.so	sysmon query skel for ADSP (sysmonquery_skel_handle_invoke)	observed
+vendor_a	dsp/adsp/fastrpc_shell_0	FastRPC DSP-side shell (user PD) for ADSP, DSP6 shared object	observed
+vendor_a	dsp/adsp/CFCM.so.1	CFCM DSP shared module (lib.ver string), DSP6	observed
+vendor_a	dsp/adsp/libsysmon_skel.so	sysmon skel for ADSP (HVX/VTCM test exports)	observed
+vendor_a	dsp/adsp/SAPlusCmnModule.so.1	SAPlus common DSP module (dsplib helpers), DSP6	observed
+vendor_a	dsp/adsp/libsysmondomain_skel.so	sysmon domain skel for ADSP	observed
+vendor_a	dsp/adsp/libstabilitydomain_skel.so	stability-domain skel for ADSP (crash and bus-clock test helpers)	observed
+vendor_a	dsp/adsp/spv5_module.so.1	spv5 DSP module (lib.ver string), NEEDED SAPlusCmnModule.so.1	observed
+vendor_a	dsp/cdsp/libsysmonquery_skel.so	sysmon query skel for CDSP (sysmonquery_skel_handle_invoke)	observed
+vendor_a	dsp/cdsp/fastrpc_shell_unsigned_3	FastRPC DSP-side shell (user PD) for CDSP, unsigned variant	observed
+vendor_a	dsp/cdsp/libc++abi.so.1	C++ ABI runtime shared library, DSP6 (soname libc++abi.so.1)	observed
+vendor_a	dsp/cdsp/libc++.so.1	C++ standard library, DSP6 (soname libc++.so.1)	observed
+vendor_a	dsp/cdsp/ubwcdma_dynlib.so	UBWC DMA helper library, DSP6 (pStDmaSvcFmt and nDmaApp exports)	observed
+vendor_a	dsp/cdsp/libevadsp_3_0_intermediate.so	EVA DSP library v3.0, intermediate build (soname libevadsp_3_0)	observed
+vendor_a	dsp/cdsp/fastrpc_shell_3	FastRPC DSP-side shell (user PD) for CDSP, variant 3	observed
+vendor_a	dsp/cdsp/libsysmon_skel.so	sysmon skel for CDSP (HVX and VTCM exports)	observed
+vendor_a	dsp/cdsp/libsynx.so	synx sync-object API library, DSP6 (synx_initialize, synx_signal exports)	observed
+vendor_a	dsp/cdsp/libsysmonhvxthrottle_skel.so	sysmon HVX throttle skel (sysmonhvxthrottle_update_npuapps_enabled export)	observed
+vendor_a	dsp/cdsp/libsynx_threadutils.so	synx thread-utility library, DSP6 (soname libsynx_threadutils.so)	observed
+vendor_a	dsp/cdsp/libsysmondomain_skel.so	sysmon domain skel for CDSP	observed
+vendor_a	dsp/cdsp/libbenchmark_skel.so	benchmark skel for CDSP (benchmark_gemmRun, fast9_detect_fine exports)	observed
+vendor_a	dsp/cdsp/libstabilitydomain_skel.so	stability-domain skel for CDSP	observed
+vendor_a	dsp/cdsp/libevadsp_3_0.so	EVA DSP library v3.0 (evaQueryImageInfo, evaDcm_Fence exports)	observed
+vendor_a	dsp/cdsp/libloadalgo_skel.so	loadalgo skel for CDSP (loadalgo_open, loadalgo_Gaussian7x7u8 exports)	observed
+vendor_a	dsp/cdsp/libsynx_os.so	synx OS-abstraction library, DSP6 (soname libsynx_os.so)	observed

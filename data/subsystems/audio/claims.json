@@ -1,0 +1,405 @@
+{
+ "key": "audio",
+ "summary": "The audio group holds 239 rows: 238 regular files and one symbolic link, spread over product_a (51), system_a (111), system_ext_a (12) and vendor_a (65). It contains the Android audio framework (audioserver binary, AudioFlinger and AudioPolicy libraries, AAudio, AIDL client stubs, and HIDL audio interface libraries for versions 4.0 to 7.0), the vendor HAL service and HAL modules (a primary HAL for the anorak platform linked against vendor.qti PAL and AGM components, plus generic primary, USB, remote-submix and A2DP modules), an effects stack of 26 AELI effect libraries (13 per lib directory, plus effects factory and HAL impl libraries), policy, effects, IO-profile and mixer-path configuration files, a system_ext audiotapper service with latency and capture test tools, and 49 Vorbis-in-Ogg UI, alarm, notification and ringtone clips. Init and SELinux references are present for audioserver (system init file, process and service labels), the vendor HAL service (two init definitions of the same service name, HAL labels), the audiotapper pair (disabled services with property triggers and SELinux types), and the Qualcomm ADSP RPC daemon. The roles file has a header and 239 data rows.",
+ "rowsExpected": 239,
+ "rowsListed": 239,
+ "claims": [
+  {
+   "id": "A01",
+   "label": "verified",
+   "claim": "The audio group has 239 rows: product_a 51, system_a 111, system_ext_a 12, vendor_a 65; 238 are regular files and 1 is a symbolic link.",
+   "file": "<image>/classified.tsv",
+   "evidence": "$ awk -F'\\t' '$1==\"audio\"{print $2}' classified.tsv | sort | uniq -c  ->  51 product_a / 111 system_a / 12 system_ext_a / 65 vendor_a. $ awk -F'\\t' '$1==\"audio\" && $4==\"symlink\"' classified.tsv | wc -l  ->  1. $ awk -F'\\t' '$1==\"audio\"' classified.tsv | wc -l  ->  239",
+   "verdict": "confirmed",
+   "reason": "Command: awk -F'\\t' '$1==\"audio\"{print $2}' classified.tsv | sort | uniq -c. Output: 51 product_a, 111 system_a, 12 system_ext_a, 65 vendor_a. Command: awk -F'\\t' '$1==\"audio\" && $4==\"symlink\"' classified.tsv | wc -l. Output: 1 (system_ext_a/priv-app/AudioLatencyTester/lib/arm64/libaudiolatencytester_jni.so). Command: awk -F'\\t' '$1==\"audio\"' classified.tsv | wc -l. Output: 239. Kind counts in the group: 238 file, 1 symlink.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "A02",
+   "label": "verified",
+   "claim": "All 238 regular files match the recorded size and sha256; the symlink system_ext_a/priv-app/AudioLatencyTester/lib/arm64/libaudiolatencytester_jni.so resolves to /system_ext/lib64/libaudiolatencytester_jni.so.",
+   "file": "<image>-tools/work/subsystems/audio/input_rows.tsv",
+   "evidence": "$ while IFS=$'\\t' read -r s p path kind size mime sha; do f=\"<image>/mnt/$p/$path\"; if [ -L \"$f\" ]; then echo SYMLINK ...readlink...; ... sha256sum \"$f\" ... stat -c %s \"$f\" ...; done < input_rows.tsv  ->  'SYMLINK system_ext_a/priv-app/AudioLatencyTester/lib/arm64/libaudiolatencytester_jni.so -> /system_ext/lib64/libaudiolatencytester_jni.so' then 'missing=0 mismatch=0'",
+   "verdict": "confirmed",
+   "reason": "Command: for each row of input_rows.tsv, sha256sum and stat -c %s compared with the recorded sha256 and size for every non-symlink row; readlink for the symlink row. Output: rows=239 missing=0 mismatch=0. Symlink: system_ext_a/priv-app/AudioLatencyTester/lib/arm64/libaudiolatencytester_jni.so -> /system_ext/lib64/libaudiolatencytester_jni.so. The absolute target resolves when /system_ext is mapped to the system_ext_a root: system_ext_a/lib64/libaudiolatencytester_jni.so exists (11240 bytes, listed in classified.tsv). A lookup that appends the target under the partition directory does not find it, so the /system_ext to system_ext_a mapping is the assumption on which 'resolves to' rests.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "A03",
+   "label": "verified",
+   "claim": "The 238 regular files are 93 ELF64 shared objects, 72 ELF32 shared objects, 7 ELF64 PIE executables, 49 Ogg files, 13 XML documents, 3 ASCII text files and 1 shell script.",
+   "file": "<image>-tools/work/subsystems/audio/file_types.tsv",
+   "evidence": "$ file -b <each regular path> > file_types.tsv ; $ cut -f2 file_types.tsv | sed 's/,.*//' | sort | uniq -c  ->  93 ELF 64-bit LSB shared object / 72 ELF 32-bit LSB shared object / 49 Ogg data / 13 XML 1.0 document / 7 ELF 64-bit LSB pie executable / 3 ASCII text / 1 a /system/bin/sh script",
+   "verdict": "confirmed",
+   "reason": "Command: file -b on each of the 238 regular paths, then cut -f2 | sed 's/,.*//' | sort | uniq -c. Output: 93 ELF 64-bit LSB shared object; 72 ELF 32-bit LSB shared object; 49 Ogg data; 13 XML 1.0 document; 7 ELF 64-bit LSB pie executable; 3 ASCII text; 1 a /system/bin/sh script (system_ext_a/bin/audiomonitor). Same counts as file_types.tsv.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "A04",
+   "label": "verified",
+   "claim": "All 49 product_a media clips are Vorbis in an Ogg container, with sample rates of 44100 or 48000 Hz and 1 or 2 channels.",
+   "file": "<image>-tools/work/subsystems/audio/ogg_probe.py",
+   "evidence": "$ python3 -I ogg_probe.py <49 product_a/media/audio/*/*.ogg paths>  ->  'product_a/media/audio/ui/KeypressSpacebar.ogg codec=Vorbis channels=2 sample_rate=44100'; 'product_a/media/audio/ui/ChargingStarted.ogg codec=Vorbis channels=2 sample_rate=48000'; 'product_a/media/audio/ui/KeypressInvalid.ogg codec=Vorbis channels=1 sample_rate=44100'",
+   "verdict": "needs_change",
+   "reason": "Command: python3 -I ogg_probe.py on the 49 audio-group .ogg paths, then file -b cross-check. Output: all 49 codec=Vorbis; channels=2 for 47 and channels=1 for 2; sample_rate=44100 for 46 and 48000 for 3; file -b agrees (2 mono, 47 stereo; 46 at 44100 Hz, 3 at 48000 Hz). The value holds for the 49 group clips. Wording: command ls media/audio/*/*.ogg under product_a returns 51 files, not 49. The two extra are camera_click.ogg and camera_focus.ogg, which classified.tsv places in the camera group (lines 269 and 276). Group clips by directory: alarms 9, notifications 11, ringtones 12, ui 17.",
+   "corrected_claim": "All 49 audio-group .ogg clips under product_a/media/audio/ (alarms 9, notifications 11, ringtones 12, ui 17) are Vorbis in an Ogg container, with sample rates of 44100 or 48000 Hz and 1 or 2 channels. The directory holds 51 .ogg files; camera_click.ogg and camera_focus.ogg belong to the camera group and are not counted."
+  },
+  {
+   "id": "A05",
+   "label": "verified",
+   "claim": "Ten shared objects export the HAL module symbol HMI: audio.a2dp.default.so (system lib and lib64), audio.primary.default.so, audio.usb.default.so, audio.r_submix.default.so and audio.primary.anorak.so (vendor lib and lib64).",
+   "file": "<image>-tools/work/subsystems/audio/hal_effect_symbols.tsv",
+   "evidence": "$ readelf --dyn-syms -W <file> | awk '$7!=\"UND\" {print $8}' | grep -c -x HMI, run over every ELF file  ->  HMI=1 for the 10 files listed in hal_effect_symbols.tsv. $ readelf --dyn-syms -W vendor_a/lib64/hw/audio.primary.anorak.so | awk '$7!=\"UND\" && $8==\"HMI\"'  ->  '371: 0000000000096f20   248 OBJECT  GLOBAL DEFAULT   23 HMI'",
+   "verdict": "needs_change",
+   "reason": "Command: readelf --dyn-syms -W <file> | awk '$7!=\"UND\" && $8 ~ /^HMI(@|$)/' over the 172 ELF files. Output: 10 files with one HMI export each: system_a/system/lib/hw/audio.a2dp.default.so, system_a/system/lib64/hw/audio.a2dp.default.so, and vendor_a/lib/hw and vendor_a/lib64/hw copies of audio.r_submix.default.so, audio.primary.default.so, audio.usb.default.so and audio.primary.anorak.so. Symbol line for anorak: 371: 0000000000096f20 248 OBJECT GLOBAL DEFAULT 23 HMI. The count and file set are right. The stated evidence command (grep -c -x HMI,) has a trailing comma that readelf output does not contain; the exact-match awk above reproduces the count. The claim text attaches '(vendor lib and lib64)' only to audio.primary.anorak.so, but the other three vendor modules are also in both vendor_a/lib/hw and vendor_a/lib64/hw.",
+   "corrected_claim": "Ten shared objects export the HAL module symbol HMI: audio.a2dp.default.so (system lib and lib64), and audio.r_submix.default.so, audio.primary.default.so, audio.usb.default.so and audio.primary.anorak.so, each in both vendor lib and vendor lib64."
+  },
+  {
+   "id": "A06",
+   "label": "verified",
+   "claim": "Twenty-six shared objects export the effect library symbol AELI: 13 under vendor_a/lib/soundfx and 13 under vendor_a/lib64/soundfx (bundlewrapper, volumelistener, visualizer, ldnhncr, qcomvisualizer, qcompostprocbundle, dynproc, downmix, qcomvoiceprocessing, effectproxy, audiopreprocessing, reverbwrapper, hapticgenerator).",
+   "file": "<image>-tools/work/subsystems/audio/hal_effect_symbols.tsv",
+   "evidence": "$ readelf --dyn-syms -W <file> | awk '$7!=\"UND\" {print $8}' | grep -c -x AELI, run over every ELF file  ->  'vendor_a/lib64/soundfx/libaudiopreprocessing.so\\tHMI=0\\tAELI=1' and 'vendor_a/lib/soundfx/libbundlewrapper.so\\tHMI=0\\tAELI=1' (26 such lines)",
+   "verdict": "confirmed",
+   "reason": "Command: readelf --dyn-syms -W <file> | awk '$7!=\"UND\" && $8 ~ /^AELI(@|$)/' over all ELF files; one AELI export in each of 26 files. Output: 13 under vendor_a/lib/soundfx and 13 under vendor_a/lib64/soundfx, namely audiopreprocessing, bundlewrapper, downmix, dynproc, effectproxy, hapticgenerator, ldnhncr, qcompostprocbundle, qcomvisualizer, qcomvoiceprocessing, reverbwrapper, visualizer and volumelistener. The set matches the claim list.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "A07",
+   "label": "verified",
+   "claim": "All 165 shared objects in the group have a SONAME equal to their file name; the 7 ELF executables have no SONAME.",
+   "file": "<image>-tools/work/subsystems/audio/elf_meta.tsv",
+   "evidence": "$ readelf -d <file> | sed -n 's/.*(SONAME).*\\[\\(.*\\)\\]/\\1/p' over 172 ELF files, compared with basename  ->  the only mismatches are audioserver, audio_capture, audiotapperhost, audio_tool, audiotapper, audioadsprpcd and android.hardware.audio.service_64, each with 'soname=' empty",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -d <file> | sed -n 's/.*(SONAME).*\\[\\(.*\\)\\]/\\1/p', compared with basename, over the 172 ELF files. Output: all 165 shared objects have SONAME equal to basename (0 mismatches). The 7 PIE executables (system_a/system/bin/audioserver, system_ext_a/bin/audio_capture, audiotapperhost, audio_tool, audiotapper, vendor_a/bin/audioadsprpcd, vendor_a/bin/hw/android.hardware.audio.service_64) have no SONAME line.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D01",
+   "label": "verified",
+   "claim": "system_a/system/bin/audioserver is an AArch64 PIE (ELF64, interpreter /system/bin/linker64, stripped). It has 20 DT_NEEDED entries, including libaudioflinger.so, libaudiopolicyservice.so, libaaudioservice.so, libmedia.so and libbinder.so. Its undefined symbols include AudioFlinger::instantiate and AudioPolicyService::AudioPolicyService.",
+   "file": "<image>/mnt/system_a/system/bin/audioserver",
+   "evidence": "$ sha256sum system_a/system/bin/audioserver  ->  1f24fc898b34ed9fd14dfdb0d30d8f766a8152c48b42b5e4a026774bd347450f. $ readelf -d system_a/system/bin/audioserver | grep NEEDED  ->  20 lines, e.g. 'Shared library: [libaudioflinger.so]'. $ readelf -l ... | grep -i interpreter  ->  '[Requesting program interpreter: /system/bin/linker64]'. $ readelf --dyn-syms -W system_a/system/bin/audioserver | awk '$7==\"UND\"' | grep -i -E 'instantiate|AudioPolicyService'  ->  'UND _ZN7android12AudioFlinger11instantiateEv' and 'UND _ZN7android18AudioPolicyServiceC1Ev'. Script: deep_dive.sh section 01.",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum system_a/system/bin/audioserver. Output: 1f24fc898b34ed9fd14dfdb0d30d8f766a8152c48b42b5e4a026774bd347450f. readelf -h: Class ELF64, Type DYN (Position-Independent Executable file), Machine AArch64. readelf -l: [Requesting program interpreter: /system/bin/linker64]. readelf -S: 0 .symtab sections (stripped). readelf -d | grep -c NEEDED: 20, including libaudioflinger.so, libaudiopolicyservice.so, libaaudioservice.so, libmedia.so and libbinder.so. readelf --dyn-syms -W | awk '$7==\"UND\"' | grep -i -E 'instantiate|AudioPolicyService': UND _ZN7android12AudioFlinger11instantiateEv and UND _ZN7android18AudioPolicyServiceC1Ev.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D02",
+   "label": "verified",
+   "claim": "The init service audioserver is defined in system_a/system/etc/init/audioserver.rc: class core, user audioserver, a group list containing audio, media and wakelock, capability BLOCK_SUSPEND, and onrestart lines that restart vendor.audio-hal, vendor.audio-hal-4-0-msd, audio_proxy_service, vendor.audio-hal-2-0 and audio-hal-2-0. It also creates /dev/socket/audioserver.",
+   "file": "<image>/mnt/system_a/system/etc/init/audioserver.rc",
+   "evidence": "$ grep -n -E 'service audioserver|onrestart|init.svc.audioserver' system_a/system/etc/init/audioserver.rc  ->  '1:service audioserver /system/bin/audioserver', '9:    onrestart restart vendor.audio-hal', '21:on property:init.svc.audioserver=stopped', '38:on property:init.svc.audioserver=running'. Full file read with cat; last stanza 'mkdir /dev/socket/audioserver 0775 audioserver audioserver'.",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n system_a/system/etc/init/audioserver.rc. Output: line 1 service audioserver /system/bin/audioserver; 2 class core; 3 user audioserver; 5 group audio camera drmrpc media mediadrm net_bt net_bt_admin net_bw_acct wakelock; 6 capabilities BLOCK_SUSPEND; 9 to 14 onrestart restart vendor.audio-hal, vendor.audio-hal-4-0-msd, audio_proxy_service, vendor.audio-hal-2-0, audio-hal-2-0; 21 on property:init.svc.audioserver=stopped; 38 on property:init.svc.audioserver=running; 62-63 on init, mkdir /dev/socket/audioserver 0775 audioserver audioserver.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D03",
+   "label": "verified",
+   "claim": "The SELinux file contexts label /system/bin/audioserver as audioserver_exec and the service contexts label media.audio_flinger, media.audio_policy, media.aaudio, media.log and media.sound_trigger_hw as audioserver_service.",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "evidence": "$ grep -n audioserver system_a/system/etc/selinux/plat_file_contexts  ->  '533:/system/bin/audioserver\\tu:object_r:audioserver_exec:s0'. $ grep -n -E 'media\\.(audio|aaudio|log|sound)' system_a/system/etc/selinux/plat_service_contexts  ->  '162:media.aaudio  u:object_r:audioserver_service:s0', '163:media.audio_flinger ...', '164:media.audio_policy ...', '167:media.log ...', '174:media.sound_trigger_hw ...'",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n audioserver system_a/system/etc/selinux/plat_file_contexts. Output: 533:/system/bin/audioserver u:object_r:audioserver_exec:s0. Command: grep -n -E 'media\\.(audio|aaudio|log|sound)' system_a/system/etc/selinux/plat_service_contexts. Output: 162 media.aaudio, 163 media.audio_flinger, 164 media.audio_policy, 167 media.log, 174 media.sound_trigger_hw, all audioserver_service:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D04",
+   "label": "verified",
+   "claim": "system_a/system/lib64/libaudioflinger.so exports AudioFlinger::instantiate (the symbol audioserver imports). Its DT_NEEDED list includes libaudiohal.so, libaudioclient.so, libaudioprocessing.so, libaudiofoundation.so and libaudiotapper.oculus.so.",
+   "file": "<image>/mnt/system_a/system/lib64/libaudioflinger.so",
+   "evidence": "$ sha256sum system_a/system/lib64/libaudioflinger.so  ->  1bd506aad4de1b3ca9f63714f535b27fa2f2a38c67eb825ffbbb1cff3e544cf4. $ readelf --dyn-syms -W system_a/system/lib64/libaudioflinger.so | awk '$7!=\"UND\"' | grep instantiate  ->  '14 _ZN7android12AudioFlinger11instantiateEv'. $ readelf -d system_a/system/lib64/libaudioflinger.so | grep NEEDED  ->  includes 'libaudiohal.so', 'libaudioclient.so', 'libaudioprocessing.so'",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum system_a/system/lib64/libaudioflinger.so. Output: 1bd506aad4de1b3ca9f63714f535b27fa2f2a38c67eb825ffbbb1cff3e544cf4. Command: readelf --dyn-syms -W <file> | awk '$7!=\"UND\"' | grep instantiate. Output: 687: 00000000001310dc 16 FUNC GLOBAL DEFAULT 14 _ZN7android12AudioFlinger11instantiateEv (defined). readelf -d NEEDED includes libaudiohal.so, libaudioclient.so, libaudioprocessing.so, libaudiofoundation.so and libaudiotapper.oculus.so, each once.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D05",
+   "label": "verified",
+   "claim": "libaudiopolicymanagerdefault.so holds the file names audio_policy_configuration.xml, audio_policy_configuration_a2dp_offload_disabled.xml and audio_policy_configuration_bluetooth_legacy_hal.xml, plus the search prefixes /system/etc, /vendor/etc and /vendor/etc/audio/sku_. libaudiopolicyservice.so holds the paths /system/etc/audio_effects.conf and /vendor/etc/audio_effects.conf.",
+   "file": "<image>/mnt/system_a/system/lib64/libaudiopolicymanagerdefault.so",
+   "evidence": "$ strings -n 6 system_a/system/lib64/libaudiopolicymanagerdefault.so | grep -E '\\.xml|/vendor/etc|/system/etc' | sort -u  ->  '/system/etc', '/vendor/etc', '/vendor/etc/audio/sku_', 'audio_policy_configuration.xml', 'audio_policy_configuration_a2dp_offload_disabled.xml', 'audio_policy_configuration_bluetooth_legacy_hal.xml'. $ strings -n 6 system_a/system/lib64/libaudiopolicyservice.so | grep audio_effects  ->  '/vendor/etc/audio_effects.conf', '/system/etc/audio_effects.conf'",
+   "verdict": "confirmed",
+   "reason": "Command: strings -n 6 system_a/system/lib64/libaudiopolicymanagerdefault.so | grep -E '\\.xml|/vendor/etc|/system/etc' | sort -u. Output: /system/etc, /vendor/etc, /vendor/etc/audio/sku_, audio_policy_configuration.xml, audio_policy_configuration_a2dp_offload_disabled.xml, audio_policy_configuration_bluetooth_legacy_hal.xml. Command: strings -n 6 system_a/system/lib64/libaudiopolicyservice.so | grep audio_effects. Output: /vendor/etc/audio_effects.conf and /system/etc/audio_effects.conf.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D06",
+   "label": "verified",
+   "claim": "vendor_a/bin/hw/android.hardware.audio.service_64 is an AArch64 PIE with 10 DT_NEEDED entries (libcutils, libbinder, libhidlbase, liblog, libutils, libhardware, libc++, libc, libm, libdl). Its strings name the HIDL interfaces IDevicesFactory (4.0 to 7.0), IEffectsFactory (4.0 to 7.0), ISoundTriggerHw (2.0 to 2.3), IBluetoothAudioProvidersFactory (2.0, 2.1) and IBluetoothAudioOffload (1.0), plus the string audiohalservice and the property persist.vendor.audio.service.hwbinder.size_kbyte.",
+   "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.audio.service_64",
+   "evidence": "$ sha256sum vendor_a/bin/hw/android.hardware.audio.service_64  ->  6f944295d4937932d1146b8d7c2655bc05bf1b1effe660ff43c90864091e1502. $ readelf -d ... | grep NEEDED  ->  10 lines ending 'libc.so', 'libm.so', 'libdl.so'. $ strings -n 8 ... | grep -E 'IDevicesFactory|IEffectsFactory|ISoundTriggerHw|audiohalservice|persist.vendor.audio' | sort -u  ->  'android.hardware.audio@4.0::IDevicesFactory' ... 'android.hardware.audio@7.0::IDevicesFactory', 'android.hardware.soundtrigger@2.0::ISoundTriggerHw' ... '@2.3', 'audiohalservice', 'persist.vendor.audio.service.hwbinder.size_kbyte'",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum vendor_a/bin/hw/android.hardware.audio.service_64. Output: 6f944295d4937932d1146b8d7c2655bc05bf1b1effe660ff43c90864091e1502. ELF64 PIE, AArch64. readelf -d NEEDED: 10 entries (libcutils, libbinder, libhidlbase, liblog, libutils, libhardware, libc++, libc, libm, libdl). strings: android.hardware.audio@4.0 to @7.0 ::IDevicesFactory; android.hardware.audio.effect@4.0 to @7.0 ::IEffectsFactory; android.hardware.soundtrigger@2.0 to @2.3 ::ISoundTriggerHw; android.hardware.bluetooth.audio@2.0 and @2.1 ::IBluetoothAudioProvidersFactory; android.hardware.bluetooth.a2dp@1.0 ::IBluetoothAudioOffload; audiohalservice; persist.vendor.audio.service.hwbinder.size_kbyte.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D07",
+   "label": "verified",
+   "claim": "Two init sources define the service vendor.audio-hal for the same binary: vendor_a/etc/init/android.hardware.audio.service_64.rc (line 1, capabilities BLOCK_SUSPEND, no override) and vendor_a/etc/init/hw/init.anorak.rc (line 281, starts with 'override' on line 282 and has 'capabilities BLOCK_SUSPEND SYS_NICE' on line 286). The runtime effect of the two definitions was not reproduced.",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "evidence": "$ grep -rn 'service vendor.audio-hal ' vendor_a/etc/init system_a/system/etc/init  ->  'vendor_a/etc/init/hw/init.anorak.rc:281:service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service_64' and 'vendor_a/etc/init/android.hardware.audio.service_64.rc:1:service vendor.audio-hal /vendor/bin/hw/android.hardware.audio.service_64'. $ grep -n -A10 'service vendor.audio-hal ' vendor_a/etc/init/hw/init.anorak.rc  ->  '282-    override', '286-    capabilities BLOCK_SUSPEND SYS_NICE', '289-    onrestart restart audioserver'",
+   "verdict": "confirmed",
+   "reason": "Command: grep -rn --include='*.rc' -E '^service vendor\\.audio-hal ' over the mounted tree. Output: exactly two definitions, vendor_a/etc/init/hw/init.anorak.rc:281 and vendor_a/etc/init/android.hardware.audio.service_64.rc:1, both for /vendor/bin/hw/android.hardware.audio.service_64. init.anorak.rc: 282 override; 286 capabilities BLOCK_SUSPEND SYS_NICE; 289 onrestart restart audioserver. The other file: line 6 capabilities BLOCK_SUSPEND and no override. Gap: the runtime effect of the two definitions was not reproduced.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D08",
+   "label": "verified",
+   "claim": "SELinux labels for the vendor HAL service: /vendor/bin/hw/android.hardware.audio.service* is hal_audio_default_exec (vendor_file_contexts lines 2, 3, 347), and the HIDL name android.hardware.audio::IDevicesFactory is hal_audio_hwservice (plat_hwservice_contexts line 10).",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
+   "evidence": "$ grep -n 'android\\.hardware\\.audio' vendor_a/etc/selinux/vendor_file_contexts  ->  '347:/vendor/bin/hw/android\\.hardware\\.audio\\.service.*  u:object_r:hal_audio_default_exec:s0'. $ grep -n 'android\\.hardware\\.audio::' system_a/system/etc/selinux/plat_hwservice_contexts  ->  '10:android.hardware.audio::IDevicesFactory  u:object_r:hal_audio_hwservice:s0'",
+   "verdict": "needs_change",
+   "reason": "Command: grep -n -F 'android\\.hardware\\.audio' vendor_a/etc/selinux/vendor_file_contexts. Output: lines 2, 3 and 347 carry hal_audio_default_exec. The stated unescaped grep pattern returns no lines because the file holds backslash-escaped dots. Line 347 pattern: /vendor/bin/hw/android\\.hardware\\.audio\\.service.* (the entry that names the service* glob). Line 2 pattern: (vendor|system/vendor)/bin/hw/android\\.hardware\\.audio(@2\\.0-|\\.)service, with no wildcard after service. Line 3 pattern: .../android\\.hardware\\.audio@7\\.0-service\\.example. Command: grep -n 'android\\.hardware\\.audio::' system_a/system/etc/selinux/plat_hwservice_contexts. Output: 10:android.hardware.audio::IDevicesFactory u:object_r:hal_audio_hwservice:s0 (verified).",
+   "corrected_claim": "/vendor/bin/hw/android.hardware.audio.service* is hal_audio_default_exec per vendor_file_contexts line 347, the entry whose pattern names the service glob. Lines 2 and 3 carry the same label for the @2.0- and @7.0-service.example path forms. The HIDL name android.hardware.audio::IDevicesFactory is hal_audio_hwservice (plat_hwservice_contexts line 10)."
+  },
+  {
+   "id": "D09",
+   "label": "verified",
+   "claim": "system_a/system/lib64/android.hardware.audio@7.0.so has SONAME android.hardware.audio@7.0.so and depends on android.hardware.audio.common@7.0.so, android.hardware.audio.effect@7.0.so and android.hidl.safe_union@1.0.so. It names the interfaces IDevice, IDevicesFactory, IPrimaryDevice, IStream, IStreamIn, IStreamOut, IStreamOutCallback and IStreamOutEventCallback, and defines 927 dynamic symbols.",
+   "file": "<image>/mnt/system_a/system/lib64/android.hardware.audio@7.0.so",
+   "evidence": "$ sha256sum system_a/system/lib64/android.hardware.audio@7.0.so  ->  d0ba380afd204ff1ce0580db85a078a9e435b1dd2fc283781e22a75156fc01d9. $ readelf -d ... | grep -E 'SONAME|NEEDED'  ->  'Library soname: [android.hardware.audio@7.0.so]', 'Shared library: [android.hidl.safe_union@1.0.so]'. $ strings -n 8 ... | grep -E '^android\\.hardware\\.audio@7\\.0::I[A-Za-z]+$' | sort -u  ->  8 lines from '::IDevice' to '::IStreamOutEventCallback'. $ readelf --dyn-syms -W ... | awk '$7!=\"UND\"' | wc -l  ->  927",
+   "verdict": "refuted",
+   "reason": "Command: readelf --dyn-syms -W system_a/system/lib64/android.hardware.audio@7.0.so | awk '$7!=\"UND\"' | wc -l. Output: 927. That count includes three lines that are not symbols: a blank line, the 'Symbol table .dynsym contains 1114 entries:' line and the 'Num: Value Size Type Bind Vis Ndx Name' header. Counting only numbered entries: total 1114 entries; 190 undefined (including the null entry 0); 924 defined. Command: readelf --dyn-syms -W <file> | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\"' | wc -l. Output: 924. The sha256 d0ba380afd204ff1ce0580db85a078a9e435b1dd2fc283781e22a75156fc01d9, SONAME, NEEDED entries and the eight @7.0 interface names match.",
+   "corrected_claim": "system_a/system/lib64/android.hardware.audio@7.0.so has SONAME android.hardware.audio@7.0.so, depends on android.hardware.audio.common@7.0.so, android.hardware.audio.effect@7.0.so and android.hidl.safe_union@1.0.so, names the eight interfaces IDevice, IDevicesFactory, IPrimaryDevice, IStream, IStreamIn, IStreamOut, IStreamOutCallback and IStreamOutEventCallback, and defines 924 dynamic symbols (1114 dynamic entries, 190 of them undefined including the null entry)."
+  },
+  {
+   "id": "D10",
+   "label": "verified",
+   "claim": "system_a/system/lib64/libaudiohal@7.0.so exports createIDevicesFactory and createIEffectsFactory. It is the client-side wrapper for the 7.0 HAL interfaces.",
+   "file": "<image>/mnt/system_a/system/lib64/libaudiohal@7.0.so",
+   "evidence": "$ readelf --dyn-syms -W <file> | awk '$7!=\"UND\" && $4==\"FUNC\" {print $8}'  ->  '__cfi_check createIDevicesFactory createIEffectsFactory' for system_a/system/lib64/libaudiohal@7.0.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf --dyn-syms -W system_a/system/lib64/libaudiohal@7.0.so | awk '$7!=\"UND\" && $4==\"FUNC\" {print $8}'. Output: __cfi_check, createIDevicesFactory, createIEffectsFactory. The client-side role is supported by the undefined imports (readelf --dyn-syms, awk on $7==UND, c++filt): android::hardware::audio::V7_0::IDevicesFactory::getService and android::hardware::audio::effect::V7_0::IEffectsFactory::getService, with 69 undefined V7_0 symbols in total.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D11",
+   "label": "verified",
+   "claim": "vendor_a/lib64/hw/audio.primary.anorak.so exports the HMI symbol, has 23 DT_NEEDED entries including libar-pal.so, libagm.so, libmros_vendor_sysprops.so, vendor.qti.hardware.pal@1.0.so and vendor.qti.hardware.AGMIPC@1.0.so, and its strings include the paths /vendor/etc/default_volume_tables.xml, /vendor/etc/microphone_characteristics.xml, /data/vendor/audio/dsp_config_render and /data/vendor/audio/dsp_config_capture, plus persist.vendor.audio.va_concurrency_mute_enabled and vendor.audio.feature.* properties.",
+   "file": "<image>/mnt/vendor_a/lib64/hw/audio.primary.anorak.so",
+   "evidence": "$ sha256sum vendor_a/lib64/hw/audio.primary.anorak.so  ->  8445e5971cf90619bf284f912c65a060ec9085b93dd50769e4af759af4c89036. $ readelf -d ... | grep -c NEEDED  ->  23. $ readelf -d ... | grep NEEDED | sed ... | tail -12  ->  'libar-pal.so', 'libmros_vendor_sysprops.so', 'vendor.qti.hardware.pal@1.0.so', 'vendor.qti.hardware.AGMIPC@1.0.so', 'libagm.so'. $ strings -n 6 ... | grep -E '/vendor/etc|/data/vendor/audio|persist\\.vendor' | sort -u  ->  '/data/vendor/audio/dsp_config_capture', '/data/vendor/audio/dsp_config_render', '/vendor/etc/default_volume_tables.xml', '/vendor/etc/microphone_characteristics.xml', 'persist.vendor.audio.va_concurrency_mute_enabled'",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum vendor_a/lib64/hw/audio.primary.anorak.so. Output: 8445e5971cf90619bf284f912c65a060ec9085b93dd50769e4af759af4c89036. readelf -d | grep -c NEEDED: 23. Last 12 NEEDED entries include libar-pal.so, libmros_vendor_sysprops.so, vendor.qti.hardware.pal@1.0.so, vendor.qti.hardware.AGMIPC@1.0.so and libagm.so. strings: /data/vendor/audio/dsp_config_capture, /data/vendor/audio/dsp_config_render, /vendor/etc/default_volume_tables.xml, /vendor/etc/microphone_characteristics.xml, persist.vendor.audio.va_concurrency_mute_enabled; six vendor.audio.feature.* property strings. HMI export at 371 (OBJECT, GLOBAL, DEFAULT, 23).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D12",
+   "label": "verified",
+   "claim": "init.anorak.rc creates /data/vendor/audio (mode 0770, owner audio) and the acdbdata subdirectories (lines 92 to 97). vendor_file_contexts line 243 labels /data/vendor/audio(/.*)? as vendor_audio_data_file.",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "evidence": "$ grep -n -E 'mkdir /data/vendor/audio' vendor_a/etc/init/hw/init.anorak.rc  ->  '93:    mkdir /data/vendor/audio 0770 audio audio', '96:    mkdir /data/vendor/audio/acdbdata 0770 media audio', '97:    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio'. $ grep -n 'data/vendor/audio' vendor_a/etc/selinux/vendor_file_contexts  ->  '243:/data/vendor/audio(/.*)?  u:object_r:vendor_audio_data_file:s0'",
+   "verdict": "confirmed",
+   "reason": "Command: sed -n 88,100p vendor_a/etc/init/hw/init.anorak.rc. Output: line 92 comment, 93 mkdir /data/vendor/audio 0770 audio audio, 96 mkdir /data/vendor/audio/acdbdata 0770 media audio, 97 mkdir /data/vendor/audio/acdbdata/delta 0770 media audio. Command: grep -n 'data/vendor/audio' vendor_a/etc/selinux/vendor_file_contexts. Output: 243:/data/vendor/audio(/.*)? u:object_r:vendor_audio_data_file:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D13",
+   "label": "verified",
+   "claim": "vendor_a/lib64/hw/android.hardware.audio@7.0-impl.so imports hw_get_module_by_class, contains the string primary, and lists libhardware.so, libmedia_helper.so and libmediautils_vendor.so among its DT_NEEDED entries. It implements the audio::V7_0 classes.",
+   "file": "<image>/mnt/vendor_a/lib64/hw/android.hardware.audio@7.0-impl.so",
+   "evidence": "$ readelf -d vendor_a/lib64/hw/android.hardware.audio@7.0-impl.so | grep NEEDED  ->  'libhardware.so', 'libmedia_helper.so', 'libmediautils_vendor.so' among 9 entries shown. $ strings -n 5 ... | grep -E '^hw_get_module_by_class$|^primary$'  ->  'hw_get_module_by_class', 'primary'. Class hints from demangled exports: audio::V7_0 (230 symbols)",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -d vendor_a/lib64/hw/android.hardware.audio@7.0-impl.so | grep NEEDED. Output: 20 entries including libhardware.so, libmedia_helper.so and libmediautils_vendor.so. Command: readelf --dyn-syms -W <file> | awk '$7==\"UND\" && $8 ~ /hw_get_module_by_class/'. Output: 117: 0000000000000000 0 FUNC GLOBAL DEFAULT UND hw_get_module_by_class. strings: hw_get_module_by_class and primary. Demangled defined symbols containing audio::V7_0: 336 (306 FUNC, 30 OBJECT). The evidence figure of 230 does not reproduce, though the claim text does not use it. Gap: the runtime load of the primary module was not traced. The role table row for this file labels 'loads a primary HAL module via hw_get_module_by_class' as verified, which is stronger than the evidence (see I01).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D14",
+   "label": "verified",
+   "claim": "vendor_a/etc/audio_policy_configuration.xml is audioPolicyConfiguration version 7.0 with one module (name primary, halVersion 2.0), defaultOutputDevice bus1_default, and globalConfiguration attributes speaker_drc_enabled and call_screen_mode_supported set to true. It includes usb_audio_policy_configuration.xml, r_submix_audio_policy_configuration.xml and bluetooth_audio_policy_configuration_7_0.xml inside the module list, and audio_policy_volumes.xml and default_volume_tables.xml at the end.",
+   "file": "<image>/mnt/vendor_a/etc/audio_policy_configuration.xml",
+   "evidence": "$ grep -n -E '<module |<attachedDevices|<defaultOutputDevice|<xi:include|<globalConfiguration|<audioPolicyConfiguration' vendor_a/etc/audio_policy_configuration.xml  ->  '26:<audioPolicyConfiguration version=\"7.0\" ...', '30:    <globalConfiguration speaker_drc_enabled=\"true\" call_screen_mode_supported=\"true\"/>', '56:        <module name=\"primary\" halVersion=\"2.0\">', '65:            <defaultOutputDevice>bus1_default</defaultOutputDevice>', '198:        <xi:include href=\"usb_audio_policy_configuration.xml\"/>', '211:    <xi:include href=\"/vendor/etc/audio_policy_volumes.xml\"/>', '212:    <xi:include href=\"/vendor/etc/default_volume_tables.xml\"/>'",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n -E '<module |<attachedDevices|<defaultOutputDevice|<xi:include|<globalConfiguration|<audioPolicyConfiguration' vendor_a/etc/audio_policy_configuration.xml. Output: 26 audioPolicyConfiguration version=7.0; 30 globalConfiguration speaker_drc_enabled=true call_screen_mode_supported=true; 56 module name=primary halVersion=2.0 (the only module element); 65 defaultOutputDevice bus1_default (inside the module, which closes at line 195); 198, 201, 204 xi:include of usb_audio_policy_configuration.xml, r_submix_audio_policy_configuration.xml and bluetooth_audio_policy_configuration_7_0.xml, inside the modules container (which closes at line 206); 211 and 212 xi:include of /vendor/etc/audio_policy_volumes.xml and /vendor/etc/default_volume_tables.xml after the modules container.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D15",
+   "label": "verified",
+   "claim": "The primary module lists 12 mixPort, 13 devicePort and 13 route elements. mixPort names include mixport_bus1 to mixport_bus5, mixport_bus1_mmap, hifi_playback, raw input, primary input, mmap_no_irq_in, assistant input and usb_device input. The route to bus1_default takes sources mixport_bus1 and mixport_bus1_mmap. devicePort tagNames include bus1_default to bus5_spatial, Wired Headset, Wired Headphones, USB Headset Out, USB Device Out, Built-In Mic, Wired Headset Mic, USB Device In and USB Headset In.",
+   "file": "<image>/mnt/vendor_a/etc/audio_policy_configuration.xml",
+   "evidence": "$ for t in '<mixPort ' '<devicePort ' '<route '; do grep -c \"$t\" vendor_a/etc/audio_policy_configuration.xml; done  ->  12 / 13 / 13. $ sed -n 168,169p vendor_a/etc/audio_policy_configuration.xml  ->  '<route type=\"mix\" sink=\"bus1_default\"' and 'sources=\"mixport_bus1,mixport_bus1_mmap\"/>'",
+   "verdict": "confirmed",
+   "reason": "Command: grep -c for the element openers in vendor_a/etc/audio_policy_configuration.xml. Output: mixPort 12, devicePort 13, route 13. mixPort names: mixport_bus1 to mixport_bus5, mixport_bus1_mmap, hifi_playback, raw input, primary input, mmap_no_irq_in, assistant input, usb_device input. devicePort tagNames: bus1_default, bus2_voice, bus3_assistant, bus4_earcons, bus5_spatial, Wired Headset, Wired Headphones, USB Headset Out, USB Device Out, Built-In Mic, Wired Headset Mic, USB Device In, USB Headset In. sed -n 168,169p: route type=mix sink=bus1_default sources=mixport_bus1,mixport_bus1_mmap; grep -c 'sink=\"bus1_default\"' returns 1.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D16",
+   "label": "verified",
+   "claim": "system_a/system/etc/audio_effects.conf is in the legacy format. Its libraries block has 6 active entries (bundle, reverb, visualizer, downmix, loudness_enhancer, dynamics_processing), each with a path under /vendor/lib/soundfx. Its effects block has 12 active entries, each with library and uuid keys. 10 further uuid lines are commented out.",
+   "file": "<image>/mnt/system_a/system/etc/audio_effects.conf",
+   "evidence": "$ grep -c -E '^\\s+uuid ' system_a/system/etc/audio_effects.conf  ->  12. $ grep -c -E '^\\s*#.*uuid' system_a/system/etc/audio_effects.conf  ->  10. $ awk '/^effects \\{/{f=1} f && /^  [a-z_]+ \\{/{print $1}' ...  ->  'bassboost virtualizer equalizer volume reverb_env_aux reverb_env_ins reverb_pre_aux reverb_pre_ins visualizer downmix loudness_enhancer dynamics_processing'. $ sed -n 8,12p ... shows 'bundle { path /vendor/lib/soundfx/libbundlewrapper.so }'",
+   "verdict": "confirmed",
+   "reason": "Command: sed and awk listing of system_a/system/etc/audio_effects.conf. Output: legacy format with libraries { } and effects { } blocks. libraries active: bundle, reverb, visualizer, downmix, loudness_enhancer, dynamics_processing, each with a path under /vendor/lib/soundfx (proxy, SW and HW entries are commented out). effects active: bassboost, virtualizer, equalizer, volume, reverb_env_aux, reverb_env_ins, reverb_pre_aux, reverb_pre_ins, visualizer, downmix, loudness_enhancer, dynamics_processing, 12 in all, each with library and uuid. Command: grep -c -E '^\\s+uuid ' gives 12; grep -c -E '^\\s*#.*uuid' gives 10 commented uuid lines.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D17",
+   "label": "verified",
+   "claim": "vendor_a/etc/audio_effects.xml (schema http://schemas.android.com/audio/audio_effects_conf/v2_0) has 8 active library elements and 14 active effect elements. Its pre_processing library, agc, aec and ns effects, and preprocess and postprocess blocks are inside XML comments, so the file defines no active pre- or postprocessing stream blocks.",
+   "file": "<image>/mnt/vendor_a/etc/audio_effects.xml",
+   "evidence": "$ grep -n -E '<!--|-->' vendor_a/etc/audio_effects.xml  ->  comment blocks at lines 3-16, 28-48, 67-81, 83-103, 105-130. Comment-aware awk count of <effect name=  ->  14. Comment-aware awk of <library name=  ->  lines 18 to 25 (8 entries). Comment-aware awk of <preprocess>|<postprocess>  ->  no output",
+   "verdict": "confirmed",
+   "reason": "Command: comment-aware parse of vendor_a/etc/audio_effects.xml (python3 -I, comment blocks at lines 3-16, 28-48, 67-81, 83-103, 105-130). Schema: http://schemas.android.com/audio/audio_effects_conf/v2_0. Active library elements: 8, at lines 18-25 (bundle, reverb, visualizer, downmix, loudness_enhancer, dynamics_processing, haptic_generator, noise_suppressor). Active effect elements: 14, at lines 51-64. Active preprocess or postprocess elements: 0; their blocks at lines 76-80 and 92-102 are inside comments. The pre_processing library (line 15) and the agc, aec and ns effects (lines 45-47) are inside comments. Comment-aware awk output: none for preprocess or postprocess.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D18",
+   "label": "verified",
+   "claim": "Three libraries (system_a/system/lib64/libeffectsconfig.so, vendor_a/lib64/libeffectsconfig.so and vendor_a/lib/libeffectsconfig.so) contain the strings audio_effects.xml and audio_effects_conf. The noise_suppressor library libnseffect.so, which audio_effects.xml lists, is absent from the mounted partitions and from classified.tsv.",
+   "file": "<image>/mnt/system_a/system/lib64/libeffectsconfig.so",
+   "evidence": "$ strings -n 6 system_a/system/lib64/libeffectsconfig.so | grep -E 'audio_effects'  ->  'audio_effects.xml', 'audio_effects_conf'. $ find . -name 'libnseffect*' | wc -l  ->  0. $ grep -n 'libnseffect' classified.tsv  ->  no output",
+   "verdict": "confirmed",
+   "reason": "Command: strings -n 6 on system_a/system/lib64/libeffectsconfig.so, vendor_a/lib64/libeffectsconfig.so and vendor_a/lib/libeffectsconfig.so. Output: each contains audio_effects.xml and audio_effects_conf. find mounted tree -iname '*nseffect*' returns 0; grep -c libnseffect classified.tsv returns 0. audio_effects.xml line 25 (active) names noise_suppressor with path libnseffect.so. grep -rl -a libnseffect over system_a, vendor_a and system_ext_a finds only vendor_a/etc/audio_effects.xml.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D19",
+   "label": "verified",
+   "claim": "vendor_a/etc/mixer_paths_anorak_max98388.xml has a single mixer root (lines 33 to 965) with 190 path blocks and 493 ctl entries. Path names include hifi-filter-coefficients, gsm-mode, amic1, amic2, amic3, speaker, headphones and handset.",
+   "file": "<image>/mnt/vendor_a/etc/mixer_paths_anorak_max98388.xml",
+   "evidence": "$ grep -o -E '<path name=\"[^\"]+\"' vendor_a/etc/mixer_paths_anorak_max98388.xml | head -5  ->  '<path name=\"hifi-filter-coefficients\"', '<path name=\"gsm-mode\"', '<path name=\"amic1\"', '<path name=\"amic2\"', '<path name=\"amic3\"'. $ grep -c '<path ' ...  ->  190. $ grep -c '<ctl ' ...  ->  493. $ grep -n -E '<mixer>|</mixer>' ...  ->  '33:<mixer>', '965:</mixer>'",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n -E '<mixer>|</mixer>' vendor_a/etc/mixer_paths_anorak_max98388.xml. Output: 33 <mixer>, 965 </mixer> (one root). grep -c '<path ' gives 190 (115 closing </path> tags and 75 self-closing); grep -c '<ctl ' gives 493. A comment-aware python3 -I count also gives 190 path and 493 ctl. Path names present: hifi-filter-coefficients, gsm-mode, amic1, amic2 (two blocks), amic3, speaker, headphones, handset.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D20",
+   "label": "verified",
+   "claim": "system_a/system/lib64/libaudioroute.so contains the string mixer_paths.xml and exports audio_route_init, audio_route_apply_path and audio_route_reset. The mapping from that generic name to vendor_a/etc/mixer_paths_anorak_max98388.xml was not determined.",
+   "file": "<image>/mnt/system_a/system/lib64/libaudioroute.so",
+   "evidence": "$ strings -n 6 system_a/system/lib64/libaudioroute.so | grep -o -E 'mixer_paths[A-Za-z0-9_.-]*'  ->  'mixer_paths.xml'. $ readelf --dyn-syms -W ... (FUNC exports)  ->  'audio_route_apply_and_update_path audio_route_apply_path audio_route_free audio_route_init audio_route_force_reset_and_update_path audio_route_reset'",
+   "verdict": "confirmed",
+   "reason": "Command: strings -n 6 system_a/system/lib64/libaudioroute.so | grep -o -E 'mixer_paths[A-Za-z0-9_.-]*'. Output: mixer_paths.xml. Command: readelf --dyn-syms -W on the same file with awk on $7!=\"UND\" and $4==\"FUNC\". Output includes audio_route_init, audio_route_apply_path and audio_route_reset. Gap: the mapping from the generic name mixer_paths.xml to vendor_a/etc/mixer_paths_anorak_max98388.xml was not determined.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D21",
+   "label": "verified",
+   "claim": "vendor_a/etc/audio_io_policy.conf defines outputs (11 profiles: default, proaudio, proaudio_2, voip_rx, deep_buffer, direct_pcm_16, direct_pcm_24, direct_pcm_32, compress_passthrough, compress_offload_16, compress_offload_24) and inputs (record_16bit, record_24bit, record_32bit). Each profile has flags, formats, sampling_rates, bit_width and app_type keys. No audio library in the searched lib directories contains the string audio_io_policy.",
+   "file": "<image>/mnt/vendor_a/etc/audio_io_policy.conf",
+   "evidence": "$ awk '/^outputs \\{/{s=\"out\"} /^inputs \\{/{s=\"in\"} s!=\"\" && /^  [a-z_0-9]+ \\{/{printf \"%s:%s \", s, $1}' vendor_a/etc/audio_io_policy.conf  ->  'out:default out:proaudio out:proaudio_2 out:voip_rx out:deep_buffer out:direct_pcm_16 out:direct_pcm_24 out:direct_pcm_32 out:compress_passthrough out:compress_offload_16 out:compress_offload_24 in:record_16bit in:record_24bit in:record_32bit'. $ sed -n 93,100p ... shows 'record_16bit { formats AUDIO_FORMAT_PCM_16_BIT sampling_rates 8000|16000|...|192000 bit_width 16 app_type 69938 }'. $ grep -rl -a 'audio_io_policy' system_a/system/lib64 vendor_a/lib64 system_a/system/lib vendor_a/lib  ->  no output",
+   "verdict": "needs_change",
+   "reason": "Command: awk section listing and python3 -I key parse of vendor_a/etc/audio_io_policy.conf. Output: 11 output profiles (lines 13 to 84) and 3 input profiles (lines 93 to 106). Every output profile has app_type, bit_width, flags, formats and sampling_rates. Input profiles record_16bit, record_24bit and record_32bit have app_type, bit_width, formats and sampling_rates, but no flags key; sed -n 94,99p shows record_16bit with formats, sampling_rates, bit_width and app_type only. So the claim's statement that each profile has flags is false for the three input profiles. Command: grep -rl -a audio_io_policy over system_a/system/lib64, vendor_a/lib64, system_a/system/lib and vendor_a/lib returns no output.",
+   "corrected_claim": "vendor_a/etc/audio_io_policy.conf defines 11 output profiles (default, proaudio, proaudio_2, voip_rx, deep_buffer, direct_pcm_16, direct_pcm_24, direct_pcm_32, compress_passthrough, compress_offload_16, compress_offload_24) and 3 input profiles (record_16bit, record_24bit, record_32bit). Output profiles have flags, formats, sampling_rates, bit_width and app_type keys; input profiles have formats, sampling_rates, bit_width and app_type keys and no flags key. No audio library in the searched lib directories contains the string audio_io_policy."
+  },
+  {
+   "id": "D22",
+   "label": "verified",
+   "claim": "vendor_a/lib64/soundfx/libaudiopreprocessing.so exports the AELI effect symbol (OBJECT, 56 bytes, at 0xe0800). Its demangled exports include webrtc::EchoCanceller, webrtc::AudioProcessingImpl, webrtc::rnn_vad and webrtc::ApmDataDumper. Its DT_NEEDED list is liblog.so, libutils.so, libc++.so, libc.so, libm.so and libdl.so. In vendor_a/etc/audio_effects.xml its only references (the library and the agc, aec and ns effects) are inside comments.",
+   "file": "<image>/mnt/vendor_a/lib64/soundfx/libaudiopreprocessing.so",
+   "evidence": "$ sha256sum vendor_a/lib64/soundfx/libaudiopreprocessing.so  ->  61a8f421c66e076c1725dc37442a37a3e606c6c4b7531b281a24ac9eaed35e03. $ readelf --dyn-syms -W ... | awk '$7!=\"UND\" && $8==\"AELI\"'  ->  '149: 00000000000e0800    56 OBJECT  GLOBAL DEFAULT   23 AELI'. $ readelf --dyn-syms -W ... | awk '$7!=\"UND\" {print $8}' | c++filt | grep -o 'webrtc::[A-Za-z_]*' | sort | uniq -c | sort -rn | head -4  ->  '142 webrtc::EchoCanceller', '106 webrtc::AudioProcessingImpl', '67 webrtc::rnn_vad', '61 webrtc::ApmDataDumper'. $ grep -n 'pre_processing' vendor_a/etc/audio_effects.xml  ->  '15: <library name=\"pre_processing\" ...' (inside comment), '45: <effect name=\"agc\" library=\"pre_processing\" ...' (inside comment)",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum vendor_a/lib64/soundfx/libaudiopreprocessing.so. Output: 61a8f421c66e076c... (prefix). Command: readelf --dyn-syms -W <file> | awk '$7!=\"UND\" && $8==\"AELI\"'. Output: 149: 00000000000e0800 56 OBJECT GLOBAL DEFAULT 23 AELI. Demangled counts: webrtc::EchoCanceller 142, webrtc::AudioProcessingImpl 106, webrtc::rnn_vad 67, webrtc::ApmDataDumper 61. NEEDED: liblog.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so. Command: grep -n pre_processing vendor_a/etc/audio_effects.xml, with agc, aec and ns also matched: line 15 (library, inside comment 3-16), lines 45, 46 and 47 (agc, aec, ns, inside comment 28-48).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D23",
+   "label": "verified",
+   "claim": "system_ext_a/bin/audiotapper is an AArch64 PIE that depends on libaudiotapperservice.so, libbinder.so, libcutils.so, liblog.so, libutils.so and packagemanager_aidl-cpp.so. It logs 'audiotapper service started' and 'audiotapper service failed to start (%d): %s'. system_ext_a/bin/audiomonitor is a /system/bin/sh script that queries media.audiotapperhost through dumpsys.",
+   "file": "<image>/mnt/system_ext_a/bin/audiotapper",
+   "evidence": "$ sha256sum system_ext_a/bin/audiotapper  ->  d540573c2d1626bc80f5b98ef9d20b56f589bd62ba5ba59bd959dc29ea1d265b. $ readelf -d ... | grep NEEDED  ->  'libaudiotapperservice.so libbinder.so libcutils.so liblog.so libutils.so packagemanager_aidl-cpp.so libc++.so libc.so libm.so libdl.so'. $ strings -n 8 ... | grep -E 'service|started|failed'  ->  'audiotapper service failed to start (%d): %s', 'audiotapper service started'. $ cat system_ext_a/bin/audiomonitor  ->  'SERVICE=\"media.audiotapperhost\"', 'EXEC=\"dumpsys -t 20 <scratch>ERVICE monitor\"', 'echo \"audiomonitor service is disabled\"'",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum system_ext_a/bin/audiotapper. Output: d540573c2d1626bc... (prefix). readelf: ELF64 PIE, Machine AArch64. NEEDED: libaudiotapperservice.so, libbinder.so, libcutils.so, liblog.so, libutils.so, packagemanager_aidl-cpp.so, libc++.so, libc.so, libm.so, libdl.so. strings: audiotapper service failed to start (%d): %s; audiotapper service started. cat system_ext_a/bin/audiomonitor: #!/system/bin/sh, SERVICE=\"media.audiotapperhost\", EXEC=\"dumpsys -t 20 <scratch>ERVICE monitor\". file -b reports a /system/bin/sh script. audiomonitor is in the audio group (classified.tsv).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D24",
+   "label": "verified",
+   "claim": "system_ext_a/etc/init/audiotapper.rc defines service audiotapper (/system_ext/bin/audiotapper; class core, user system, group system, disabled). It creates /data/audiotapper (0770 system system) on post-fs-data and starts or stops the service on persist.ovr.audiotapper.enable_service. system_ext_a/etc/init/audiotapperhost.rc defines service audiotapperhost (class late_start, disabled) and waits for init.svc.audiotapper to be running.",
+   "file": "<image>/mnt/system_ext_a/etc/init/audiotapper.rc",
+   "evidence": "$ cat system_ext_a/etc/init/audiotapper.rc  ->  'service audiotapper /system_ext/bin/audiotapper', 'mkdir /data/audiotapper 0770 system system', 'on property:persist.ovr.audiotapper.enable_service=true', '    enable audiotapper', '    start audiotapper'. $ cat system_ext_a/etc/init/audiotapperhost.rc  ->  'service audiotapperhost /system_ext/bin/audiotapperhost', '    class late_start', '    wait_for_prop init.svc.audiotapper running', '    enable audiotapperhost'",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n system_ext_a/etc/init/audiotapper.rc. Output: service audiotapper /system_ext/bin/audiotapper; class core; user system; group system; disabled; on post-fs-data: mkdir /data/audiotapper 0770 system system; on property:persist.ovr.audiotapper.enable_service=true: enable audiotapper and start audiotapper; on property:persist.ovr.audiotapper.enable_service=false: stop audiotapper. Command: cat -n system_ext_a/etc/init/audiotapperhost.rc. Output: service audiotapperhost /system_ext/bin/audiotapperhost; class late_start; user system; group system; disabled; on property:persist.ovr.audiotapper.enable_service=true: wait_for_prop init.svc.audiotapper running, enable audiotapperhost, start audiotapperhost.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D25",
+   "label": "verified",
+   "claim": "SELinux labels for the audiotapper pair: /data/audiotapper is audiotapper_file, /system_ext/bin/audiotapper is audiotapper_exec and /system_ext/bin/audiotapperhost is audiotapperhost_exec. system_ext_sepolicy.cil declares the types audiotapper, audiotapper_exec, audiotapperhost, audiotapperhost_exec, audiotapper_prop, audiotapper_service, audiotapperhost_service and audiotapper_file.",
+   "file": "<image>/mnt/system_ext_a/etc/selinux/system_ext_file_contexts",
+   "evidence": "$ grep -n -E 'audiotapper' system_ext_a/etc/selinux/system_ext_file_contexts  ->  '9:/data/audiotapper(/.*)?  u:object_r:audiotapper_file:s0', '49:/system_ext/bin/audiotapper  u:object_r:audiotapper_exec:s0', '65:/system_ext/bin/audiotapperhost  u:object_r:audiotapperhost_exec:s0'. $ grep -n -E '\\(type audiotapper' system_ext_a/etc/selinux/system_ext_sepolicy.cil  ->  lines 176, 178, 180, 182, 394, 462, 464, 778",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n audiotapper system_ext_a/etc/selinux/system_ext_file_contexts. Output: 9 /data/audiotapper(/.*)? audiotapper_file; 49 /system_ext/bin/audiotapper audiotapper_exec; 65 /system_ext/bin/audiotapperhost audiotapperhost_exec. Command: grep -n -E '\\(type audiotapper' system_ext_a/etc/selinux/system_ext_sepolicy.cil. Output: lines 176 audiotapper, 178 audiotapper_exec, 180 audiotapperhost, 182 audiotapperhost_exec, 394 audiotapper_prop, 462 audiotapper_service, 464 audiotapperhost_service, 778 audiotapper_file. Each of the eight names is declared once.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D26",
+   "label": "verified",
+   "claim": "vendor_a/bin/audioadsprpcd is an AArch64 PIE with interpreter /system/bin/linker64 and 5 DT_NEEDED entries (liblog, libc++, libc, libm, libdl). Its strings include DSP_LIBRARY_PATH messages and the source path vendor/qcom/anorak/opensource/audio-hal/primary-hal/adsprpcd/adsprpcd.c. It is started by vendor_a/etc/init/vendor.qti.audio-adsprpc-service.rc as vendor.audioadsprpcd_audiopd (class main, user media, group audio media), and labeled vendor_audioadsprpcd_exec by vendor_file_contexts line 429.",
+   "file": "<image>/mnt/vendor_a/bin/audioadsprpcd",
+   "evidence": "$ sha256sum vendor_a/bin/audioadsprpcd  ->  a872ae9c5d3eed913705e6b22ed919025151f6e1b291f8b423a1efae604eef34. $ readelf -d vendor_a/bin/audioadsprpcd | grep NEEDED  ->  5 lines. $ sed -n 30,34p vendor_a/etc/init/vendor.qti.audio-adsprpc-service.rc  ->  'service vendor.audioadsprpcd_audiopd /vendor/bin/audioadsprpcd audiopd', '   class main', '   user media', '   group audio media'. $ grep -n 'audioadsprpcd' vendor_a/etc/selinux/vendor_file_contexts  ->  '429:/vendor/bin/audioadsprpcd  u:object_r:vendor_audioadsprpcd_exec:s0'",
+   "verdict": "confirmed",
+   "reason": "Command: sha256sum vendor_a/bin/audioadsprpcd. Output: a872ae9c5d3eed91... (prefix). readelf -h: ELF64 PIE, AArch64. readelf -l: interpreter /system/bin/linker64. readelf -d NEEDED: liblog.so, libc++.so, libc.so, libm.so, libdl.so (5). strings: DSP_LIBRARY_PATH set to %s, %s; setting DSP_LIBRARY_PATH failed; source path vendor/qcom/anorak/opensource/audio-hal/primary-hal/adsprpcd/adsprpcd.c. sed -n 28,36p vendor_a/etc/init/vendor.qti.audio-adsprpc-service.rc: line 30 service vendor.audioadsprpcd_audiopd /vendor/bin/audioadsprpcd audiopd; class main; user media; group audio media. grep -n audioadsprpcd vendor_a/etc/selinux/vendor_file_contexts: 429:/vendor/bin/audioadsprpcd u:object_r:vendor_audioadsprpcd_exec:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D27",
+   "label": "verified",
+   "claim": "The seven ELF executables in the group are audioserver, audio_capture, audiotapperhost, audio_tool, audiotapper, audioadsprpcd and android.hardware.audio.service_64. audio_tool contains the option names --config_file, --getparam, --setparam (XRA parameters) and AAudio latency and stress options, and links libaudiolatencytester_engine.so.",
+   "file": "<image>/mnt/system_ext_a/bin/audio_tool",
+   "evidence": "$ readelf -d system_ext_a/bin/audio_tool | grep NEEDED  ->  includes 'libaaudio.so', 'libaudioclient.so', 'libaudiolatencytester_engine.so', 'libjsoncpp.so'. $ strings -n 8 system_ext_a/bin/audio_tool | grep -- '--'  ->  '--config_file <absolute_file_path>|xra_config_render|xra_config_capture', '--getparam', '--setparam', '--non-interactive', '--skip_unmute'",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -d system_ext_a/bin/audio_tool | grep NEEDED. Output includes libaaudio.so, libaudioclient.so, libaudiolatencytester_engine.so and libjsoncpp.so. Command: strings -n 8 on the same file, grep -- '--'. Output: --config_file <absolute_file_path>|xra_config_render|xra_config_capture; --getparam=all (acquires all Xra config data); --setparam; --non-interactive; --skip_unmute. AAudio latency options: --number_of_runs, --skip_latency_analyze, --sampling_rate_in, --playback_channel_count. AAudio stress options: aaudio_stress_test with --duration (Duration of the stress test.) and --number_of_streams. The seven PIE executables match the list in the claim.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D28",
+   "label": "verified",
+   "claim": "Audio-related files in the other subsystems that these binaries or configs refer to: bluetooth_audio_policy_configuration_7_0.xml (wifi-bluetooth), default_volume_tables.xml and microphone_characteristics.xml (config-files), audioserver.rc (init-and-properties), libar-pal.so, libagm.so, libsndcardparser.so and libeffectsconfig.so (native-libraries), and audio kernel modules (kernel-modules).",
+   "file": "<image>/classified.tsv",
+   "evidence": "$ grep -n -E 'bluetooth_audio_policy_configuration_7_0|default_volume_tables|microphone_characteristics|libar-pal|libagm.so|libsndcardparser|libeffectsconfig' classified.tsv | cut -f1-4  ->  '4475 wifi-bluetooth vendor_a etc/bluetooth_audio_policy_configuration_7_0.xml file', '4408 config-files vendor_a etc/default_volume_tables.xml file', '4484 config-files vendor_a etc/microphone_characteristics.xml file', '4113 native-libraries vendor_a lib/libar-pal.so file', '4822 native-libraries vendor_a lib64/libsndcardparser.so file', '4712 native-libraries vendor_a lib64/libeffectsconfig.so file'",
+   "verdict": "needs_change",
+   "reason": "Command: grep -n -E 'bluetooth_audio_policy_configuration_7_0|default_volume_tables|microphone_characteristics|libar-pal|libagm.so|libsndcardparser|libeffectsconfig' classified.tsv. Output: 4475 wifi-bluetooth bluetooth_audio_policy_configuration_7_0.xml; 4408 and 4484 config-files default_volume_tables.xml and microphone_characteristics.xml; 4113 and 4628 native-libraries libar-pal.so; 4822 native-libraries lib64/libsndcardparser.so; 4712 native-libraries lib64/libeffectsconfig.so; 1664 init-and-properties audioserver.rc; kernel-modules rows are present (306 in total, including audio_pkt_dlkm.ko). Reference checks with grep -rl -a: bluetooth xml is included by audio_policy_configuration.xml (line 204). default_volume_tables.xml and microphone_characteristics.xml are named by audio.primary.anorak.so. libar-pal.so and libagm.so are in the NEEDED list of audio.primary.anorak.so. libeffectsconfig.so is named by the audio-group libaudiopolicyservice.so. libsndcardparser.so is named only by libtinyalsa.so, libtinycompress.so, libagm_compress_plugin.so and the VNDK apex, none in the audio group. No audio-group file names an audio kernel module (search for wcd938x, snd-soc-max98388, audio_pkt, adsp_loader returned nothing). audioserver.rc is linked by service name (onrestart), not by file name. Gap: the kernel-module relation was not established.",
+   "corrected_claim": "Audio-related files in other subsystems that the audio group refers to: bluetooth_audio_policy_configuration_7_0.xml (wifi-bluetooth; included by audio_policy_configuration.xml), default_volume_tables.xml and microphone_characteristics.xml (config-files; named by audio.primary.anorak.so), libar-pal.so and libagm.so (native-libraries; in the NEEDED list of audio.primary.anorak.so), and libeffectsconfig.so (native-libraries; named by the audio-group libaudiopolicyservice.so). audioserver.rc (init-and-properties) is linked to the audio HAL by service name, not by file name. libsndcardparser.so and the audio kernel modules are in the same subsystems, but no audio-group file refers to them."
+  },
+  {
+   "id": "D29",
+   "label": "verified",
+   "claim": "The roles file has one header line and 239 data rows, one per input row, with no missing or duplicated rows. Confidence counts are 230 verified, 2 observed and 7 inferred.",
+   "file": "<image>-tools/work/subsystems/audio/roles.tsv",
+   "evidence": "$ python3 -I make_roles.py  ->  'input rows: 239', 'missing roles: []', 'unused role keys: []'. $ wc -l roles.tsv  ->  240. $ awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c  ->  7 inferred / 2 observed / 230 verified",
+   "verdict": "confirmed",
+   "reason": "Command: wc -l roles.tsv. Output: 240 (one header line and 239 data rows). The header is partition, path, role, confidence; all 239 data rows have 4 fields. Confidence counts: verified 230, inferred 7, observed 2. The (partition, path) keys of roles.tsv equal those of input_rows.tsv: 239 keys each, 0 missing, 0 extra, 0 duplicated. Gap: the make_roles.py output (missing roles, unused role keys) was not reproduced; the key-set comparison above was used instead.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "I01",
+   "label": "inferred",
+   "claim": "android.hardware.audio@7.0-impl.so loads the primary HAL module (the audio.primary.* modules that export HMI) through hw_get_module_by_class at runtime.",
+   "file": "<image>/mnt/vendor_a/lib64/hw/android.hardware.audio@7.0-impl.so",
+   "evidence": "Derived from D13: the import hw_get_module_by_class and the string primary (both verified). The runtime module selection was not traced.",
+   "verdict": "needs_change",
+   "reason": "Command: readelf --dyn-syms -W vendor_a/lib64/hw/android.hardware.audio@7.0-impl.so with awk on $7==UND. Output: 117: FUNC GLOBAL DEFAULT UND hw_get_module_by_class. strings: hw_get_module_by_class, primary. The two audio.primary.* modules that export HMI are vendor_a/lib/hw and vendor_a/lib64/hw copies of audio.primary.default.so and audio.primary.anorak.so (A05). The import and the string are consistent with loading a primary HAL module, but the runtime selection was not traced (gap). The role table row for this file states the runtime load as verified, which is stronger than the evidence.",
+   "corrected_claim": "android.hardware.audio@7.0-impl.so imports hw_get_module_by_class and contains the string primary, so it probably loads a primary HAL module (an audio.primary.* module that exports HMI) through hw_get_module_by_class. The runtime module selection was not traced."
+  },
+  {
+   "id": "I02",
+   "label": "inferred",
+   "claim": "The audio_effects.xml entries for pre_processing, agc, aec and ns are inactive in this build because they sit inside XML comments; the effect libraries used at runtime come from the legacy audio_effects.conf and the uncommented v2.0 entries.",
+   "file": "<image>/mnt/vendor_a/etc/audio_effects.xml",
+   "evidence": "Derived from D17 (comment-aware parse, verified) and D16 (legacy file read). Which file the framework reads at runtime was not traced beyond the consumer strings in D05 and D18.",
+   "verdict": "needs_change",
+   "reason": "Command: comment-aware parse of vendor_a/etc/audio_effects.xml (D17). Output: the pre_processing library and the agc, aec and ns entries are inside comments, and no preprocess or postprocess block is active. Command: sed of the legacy system_a/system/etc/audio_effects.conf (D16). Its active libraries are bundle, reverb, visualizer, downmix, loudness_enhancer and dynamics_processing. The active v2.0 entries include noise_suppressor (path libnseffect.so), which is absent from the mounted partitions and classified.tsv (D18), so the uncommented v2.0 entries cannot all be the runtime source. Which file the framework reads at runtime was not traced (D05 and D18 show both files have consumers). Gap: the runtime source of the effect libraries was not established.",
+   "corrected_claim": "In this build the pre_processing library and the agc, aec and ns entries in audio_effects.xml sit inside XML comments, so they are not active, and the XML defines no active pre- or postprocessing blocks. Which configuration file the framework reads at runtime was not traced, so the effect libraries in use are not established. An active v2.0 entry names noise_suppressor (libnseffect.so), which is absent from the image."
+  }
+ ],
+ "gaps": [
+  "The reader of vendor_a/etc/audio_io_policy.conf was not identified: no audio library in system_a/system/lib64, system_a/system/lib, vendor_a/lib64 or vendor_a/lib contains the string audio_io_policy.",
+  "libnseffect.so, the noise_suppressor library that audio_effects.xml lists, is absent from the mounted partitions and from classified.tsv.",
+  "The mapping from libaudioroute.so's generic mixer_paths.xml string to vendor_a/etc/mixer_paths_anorak_max98388.xml (or other mixer_paths_* files) was not determined.",
+  "The runtime effect of the two vendor.audio-hal service definitions (vendor_a/etc/init/android.hardware.audio.service_64.rc and vendor_a/etc/init/hw/init.anorak.rc, which includes an override keyword) was not reproduced; only the textual differences were recorded.",
+  "No explicit SELinux file_contexts rule was found for /vendor/etc/audio_policy_configuration.xml, /vendor/etc/audio_effects.xml, /system/etc/audio_effects.conf or /vendor/etc/audio_io_policy.conf; the generic label applied to them was not determined.",
+  "The Ogg clips were checked only at the container and codec header level; durations, loudness, and playback paths were not determined.",
+  "Behaviour of the framework and HAL libraries (AudioFlinger threads, policy engine decisions, AudioTrack and AudioRecord flows) was not analysed. Roles for libaudiohal@4.0, @5.0 and @6.0 (both lib trees), libaudiopolicyenginedefault.so and libaudioprocessing.so rest on exported names only, and libaudiohal@4.0, @5.0 and @6.0 are marked inferred.",
+  "Libraries referenced by the audio binaries but classified under other subsystems were not analysed: libar-pal.so, libagm.so, libmros_vendor_sysprops.so, the vendor.qti.hardware PAL and AGM HIDL libraries, libsndcardparser.so, the bluetooth audio HAL, the audio kernel modules, audioserver.rc, and the audiotapper rc files.",
+  "audioprovider has an SELinux label (/system/bin/audioprovider in system_ext_a/etc/selinux/system_ext_file_contexts line 42) but no executable exists in the mounted partitions (ls reported no such file for system_a/system/bin and system_ext_a/bin), and no classified row exists.",
+  "The semantics of audio_tool's XRA parameter keys (for --getparam and --setparam) were not determined beyond the option names in the binary strings.",
+  "The internals of audio.a2dp.default.so (Rust cxxbridge and bluetooth shim code) were not analysed beyond the export and string evidence.",
+  "The runtime interaction between audioadsprpcd and the DSP (DSP_LIBRARY_PATH handling and restart behaviour) was not reproduced; only strings and the init service definition were read.",
+  "The exact vendor HAL version set used on this device (which of IDevicesFactory 4.0 to 7.0 are actually registered) was not determined beyond the strings present in android.hardware.audio.service_64.",
+  "The policy volume and engine XML files (audio_policy_volumes.xml, audio_policy_engine_stream_volumes.xml, audio_policy_engine_product_strategies.xml) were counted for element names but not parsed in full."
+ ],
+ "rolesFile": "data/subsystems/audio/roles.tsv"
+}

@@ -1,0 +1,708 @@
+partition	path	role	confidence
+odm_a	apex/com.meta.xr.apex	Meta XR APEX in odm partition (ext4 payload)	verified
+odm_a	etc/permissions/privapp-permissions-com.meta.xr.xml	privileged-app permission grants for package com.oculus.systemdriver	verified
+product_a	apex/com.meta.quest.apex	Meta Quest APEX in product partition (ext4 payload)	verified
+product_a	etc/permissions/android.software.midi.xml	feature declaration android.software.midi	verified
+product_a	etc/permissions/handheld_core_hardware.xml	hardware and software feature declarations (18 feature elements) for handheld hardware	verified
+product_a	etc/permissions/android.software.verified_boot.xml	feature declaration android.software.verified_boot	verified
+product_a	etc/permissions/android.software.sip.voip.xml	feature declarations android.software.sip and android.software.sip.voip	verified
+product_a	etc/permissions/android.software.connectionservice.xml	feature declaration android.software.connectionservice	verified
+product_a	etc/permissions/android.hardware.usb.host.xml	feature declaration android.hardware.usb.host (1 feature)	verified
+product_a	etc/permissions/android.software.device_id_attestation.xml	feature declaration android.software.device_id_attestation	verified
+product_a	etc/permissions/com.meta.quest.xml	privileged-app permission grants for package com.oculus.presence (1 privapp-permissions element)	verified
+system_a	system/apex/com.android.i18n.apex	ICU i18n APEX (ext4 payload; javalib/core-icu4j)	verified
+system_a	system/apex/com.android.media.capex	media framework APEX (capex)	verified
+system_a	system/apex/com.android.appsearch.apex	AppSearch APEX (ext4 payload)	verified
+system_a	system/apex/com.android.mediaprovider.capex	MediaProvider APEX (capex)	verified
+system_a	system/apex/com.android.tethering.inprocess.capex	tethering APEX (capex, inprocess)	verified
+system_a	system/apex/com.android.conscrypt.apex	Conscrypt TLS provider APEX (ext4 payload)	verified
+system_a	system/apex/com.android.adbd.capex	ADB daemon APEX (capex, compressed original_apex)	verified
+system_a	system/apex/com.android.apex.cts.shim.apex	CTS shim APEX (ext4 payload)	verified
+system_a	system/apex/com.android.art.capex	ART runtime APEX (capex; dex2oat64 and dalvikvm symlink targets resolve into it)	verified
+system_a	system/apex/com.android.vndk.current.apex	VNDK APEX for version v32 (ext4 payload); manifest name com.android.vndk.v32	verified
+system_a	system/apex/com.android.resolv.capex	DNS resolver APEX (capex)	verified
+system_a	system/apex/com.android.runtime.apex	Bionic runtime APEX (ext4 payload; holds linker, linker64, linkerconfig)	verified
+system_a	system/apex/com.android.sdkext.apex	SDK extensions APEX (ext4 payload)	verified
+system_a	system/apex/com.android.tzdata.apex	time zone data APEX (ext4 payload)	verified
+system_a	system/apex/com.android.os.statsd.apex	statsd APEX (ext4 payload)	verified
+system_a	system/apex/com.android.ipsec.capex	IPsec APEX (capex)	verified
+system_a	system/apex/com.android.permission.capex	permission controller APEX (capex)	verified
+system_a	system/apex/com.android.neuralnetworks.capex	NNAPI runtime APEX (capex)	verified
+system_a	system/apex/com.android.extservices.capex	ExtServices APEX (capex)	verified
+system_a	system/apex/com.android.scheduling.apex	scheduling APEX (ext4 payload)	verified
+system_a	system/framework/services.jar	system_server service classes; unzip lists classes.dex and classes2.dex plus META-INF/MANIFEST.MF (28 entries)	verified
+system_a	system/framework/content.jar	content provider shell command classes (content)	inferred
+system_a	system/framework/bmgr.jar	backup manager shell command classes (bmgr)	inferred
+system_a	system/framework/framework-graphics.jar	framework graphics classes on the boot classpath	inferred
+system_a	system/framework/voip-common.jar	VoIP common classes on the boot classpath	inferred
+system_a	system/framework/org.apache.http.legacy.jar	legacy Apache HTTP client shared library	inferred
+system_a	system/framework/android.test.runner.jar	android.test.runner shared library (instrumentation runner)	inferred
+system_a	system/framework/boot-core-icu4j.vdex	VDEX file for boot image part boot-core-icu4j; magic vdex027	observed
+system_a	system/framework/uinput.jar	uinput shell command classes (uinput)	inferred
+system_a	system/framework/oat/arm64/com.android.future.usb.accessory.odex	precompiled ODEX (AOT code, ELF container, arm64) for com.android.future.usb.accessory.jar	observed
+system_a	system/framework/oat/arm64/abx.vdex	VDEX dex and verification data (arm64) for abx.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/org.apache.http.legacy.vdex	VDEX dex and verification data (arm64) for org.apache.http.legacy.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/javax.obex.vdex	VDEX dex and verification data (arm64) for javax.obex.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/com.android.location.provider.vdex	VDEX dex and verification data (arm64) for com.android.location.provider.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/uinput.vdex	VDEX dex and verification data (arm64) for uinput.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/javax.obex.odex	precompiled ODEX (AOT code, ELF container, arm64) for javax.obex.jar	observed
+system_a	system/framework/oat/arm64/telecom.vdex	VDEX dex and verification data (arm64) for telecom.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/bu.vdex	VDEX dex and verification data (arm64) for bu.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/uiautomator.odex	precompiled ODEX (AOT code, ELF container, arm64) for uiautomator.jar	observed
+system_a	system/framework/oat/arm64/appwidget.vdex	VDEX dex and verification data (arm64) for appwidget.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/locksettings.vdex	VDEX dex and verification data (arm64) for locksettings.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/android.test.runner.vdex	VDEX dex and verification data (arm64) for android.test.runner.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/android.hidl.manager-V1.0-java.vdex	VDEX dex and verification data (arm64) for android.hidl.manager-V1.0-java.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/requestsync.vdex	VDEX dex and verification data (arm64) for requestsync.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/android.test.base.vdex	VDEX dex and verification data (arm64) for android.test.base.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/svc.odex	precompiled ODEX (AOT code, ELF container, arm64) for svc.jar	observed
+system_a	system/framework/oat/arm64/services.vdex	VDEX dex and verification data (arm64) for services.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/ethernet-service.vdex	VDEX dex and verification data (arm64) for ethernet-service.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/android.test.mock.odex	precompiled ODEX (AOT code, ELF container, arm64) for android.test.mock.jar	observed
+system_a	system/framework/oat/arm64/android.test.runner.odex	precompiled ODEX (AOT code, ELF container, arm64) for android.test.runner.jar	observed
+system_a	system/framework/oat/arm64/android.test.base.odex	precompiled ODEX (AOT code, ELF container, arm64) for android.test.base.jar	observed
+system_a	system/framework/oat/arm64/svc.vdex	VDEX dex and verification data (arm64) for svc.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/requestsync.odex	precompiled ODEX (AOT code, ELF container, arm64) for requestsync.jar	observed
+system_a	system/framework/oat/arm64/am.vdex	VDEX dex and verification data (arm64) for am.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/hid.odex	precompiled ODEX (AOT code, ELF container, arm64) for hid.jar	observed
+system_a	system/framework/oat/arm64/content.vdex	VDEX dex and verification data (arm64) for content.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/am.odex	precompiled ODEX (AOT code, ELF container, arm64) for am.jar	observed
+system_a	system/framework/oat/arm64/bmgr.odex	precompiled ODEX (AOT code, ELF container, arm64) for bmgr.jar	observed
+system_a	system/framework/oat/arm64/content.odex	precompiled ODEX (AOT code, ELF container, arm64) for content.jar	observed
+system_a	system/framework/oat/arm64/telecom.odex	precompiled ODEX (AOT code, ELF container, arm64) for telecom.jar	observed
+system_a	system/framework/oat/arm64/ethernet-service.odex	precompiled ODEX (AOT code, ELF container, arm64) for ethernet-service.jar	observed
+system_a	system/framework/oat/arm64/com.android.media.remotedisplay.odex	precompiled ODEX (AOT code, ELF container, arm64) for com.android.media.remotedisplay.jar	observed
+system_a	system/framework/oat/arm64/android.hidl.base-V1.0-java.vdex	VDEX dex and verification data (arm64) for android.hidl.base-V1.0-java.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/bmgr.vdex	VDEX dex and verification data (arm64) for bmgr.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/monkey.vdex	VDEX dex and verification data (arm64) for monkey.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/incident-helper-cmd.odex	precompiled ODEX (AOT code, ELF container, arm64) for incident-helper-cmd.jar	observed
+system_a	system/framework/oat/arm64/android.hidl.manager-V1.0-java.odex	precompiled ODEX (AOT code, ELF container, arm64) for android.hidl.manager-V1.0-java.jar	observed
+system_a	system/framework/oat/arm64/uiautomator.vdex	VDEX dex and verification data (arm64) for uiautomator.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/sm.vdex	VDEX dex and verification data (arm64) for sm.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/com.android.future.usb.accessory.vdex	VDEX dex and verification data (arm64) for com.android.future.usb.accessory.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/services.art	ART image file (arm64) for services.jar	observed
+system_a	system/framework/oat/arm64/incident-helper-cmd.vdex	VDEX dex and verification data (arm64) for incident-helper-cmd.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/appwidget.odex	precompiled ODEX (AOT code, ELF container, arm64) for appwidget.jar	observed
+system_a	system/framework/oat/arm64/abx.odex	precompiled ODEX (AOT code, ELF container, arm64) for abx.jar	observed
+system_a	system/framework/oat/arm64/uinput.odex	precompiled ODEX (AOT code, ELF container, arm64) for uinput.jar	observed
+system_a	system/framework/oat/arm64/com.android.location.provider.odex	precompiled ODEX (AOT code, ELF container, arm64) for com.android.location.provider.jar	observed
+system_a	system/framework/oat/arm64/sm.odex	precompiled ODEX (AOT code, ELF container, arm64) for sm.jar	observed
+system_a	system/framework/oat/arm64/android.test.mock.vdex	VDEX dex and verification data (arm64) for android.test.mock.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/locksettings.odex	precompiled ODEX (AOT code, ELF container, arm64) for locksettings.jar	observed
+system_a	system/framework/oat/arm64/monkey.odex	precompiled ODEX (AOT code, ELF container, arm64) for monkey.jar	observed
+system_a	system/framework/oat/arm64/android.hidl.base-V1.0-java.odex	precompiled ODEX (AOT code, ELF container, arm64) for android.hidl.base-V1.0-java.jar	observed
+system_a	system/framework/oat/arm64/hid.vdex	VDEX dex and verification data (arm64) for hid.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/services.odex	precompiled ODEX (AOT code, ELF container, arm64) for services.jar	observed
+system_a	system/framework/oat/arm64/com.android.media.remotedisplay.vdex	VDEX dex and verification data (arm64) for com.android.media.remotedisplay.jar; magic vdex027	observed
+system_a	system/framework/oat/arm64/org.apache.http.legacy.odex	precompiled ODEX (AOT code, ELF container, arm64) for org.apache.http.legacy.jar	observed
+system_a	system/framework/oat/arm64/bu.odex	precompiled ODEX (AOT code, ELF container, arm64) for bu.jar	observed
+system_a	system/framework/oat/arm/com.android.future.usb.accessory.odex	precompiled ODEX (AOT code, ELF container, arm) for com.android.future.usb.accessory.jar	observed
+system_a	system/framework/oat/arm/abx.vdex	VDEX dex and verification data (arm) for abx.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/org.apache.http.legacy.vdex	VDEX dex and verification data (arm) for org.apache.http.legacy.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/javax.obex.vdex	VDEX dex and verification data (arm) for javax.obex.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/com.android.location.provider.vdex	VDEX dex and verification data (arm) for com.android.location.provider.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/uinput.vdex	VDEX dex and verification data (arm) for uinput.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/javax.obex.odex	precompiled ODEX (AOT code, ELF container, arm) for javax.obex.jar	observed
+system_a	system/framework/oat/arm/telecom.vdex	VDEX dex and verification data (arm) for telecom.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/bu.vdex	VDEX dex and verification data (arm) for bu.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/uiautomator.odex	precompiled ODEX (AOT code, ELF container, arm) for uiautomator.jar	observed
+system_a	system/framework/oat/arm/appwidget.vdex	VDEX dex and verification data (arm) for appwidget.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/locksettings.vdex	VDEX dex and verification data (arm) for locksettings.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/android.test.runner.vdex	VDEX dex and verification data (arm) for android.test.runner.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/android.hidl.manager-V1.0-java.vdex	VDEX dex and verification data (arm) for android.hidl.manager-V1.0-java.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/requestsync.vdex	VDEX dex and verification data (arm) for requestsync.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/android.test.base.vdex	VDEX dex and verification data (arm) for android.test.base.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/svc.odex	precompiled ODEX (AOT code, ELF container, arm) for svc.jar	observed
+system_a	system/framework/oat/arm/android.test.mock.odex	precompiled ODEX (AOT code, ELF container, arm) for android.test.mock.jar	observed
+system_a	system/framework/oat/arm/android.test.runner.odex	precompiled ODEX (AOT code, ELF container, arm) for android.test.runner.jar	observed
+system_a	system/framework/oat/arm/android.test.base.odex	precompiled ODEX (AOT code, ELF container, arm) for android.test.base.jar	observed
+system_a	system/framework/oat/arm/svc.vdex	VDEX dex and verification data (arm) for svc.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/requestsync.odex	precompiled ODEX (AOT code, ELF container, arm) for requestsync.jar	observed
+system_a	system/framework/oat/arm/am.vdex	VDEX dex and verification data (arm) for am.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/hid.odex	precompiled ODEX (AOT code, ELF container, arm) for hid.jar	observed
+system_a	system/framework/oat/arm/content.vdex	VDEX dex and verification data (arm) for content.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/am.odex	precompiled ODEX (AOT code, ELF container, arm) for am.jar	observed
+system_a	system/framework/oat/arm/bmgr.odex	precompiled ODEX (AOT code, ELF container, arm) for bmgr.jar	observed
+system_a	system/framework/oat/arm/content.odex	precompiled ODEX (AOT code, ELF container, arm) for content.jar	observed
+system_a	system/framework/oat/arm/telecom.odex	precompiled ODEX (AOT code, ELF container, arm) for telecom.jar	observed
+system_a	system/framework/oat/arm/com.android.media.remotedisplay.odex	precompiled ODEX (AOT code, ELF container, arm) for com.android.media.remotedisplay.jar	observed
+system_a	system/framework/oat/arm/android.hidl.base-V1.0-java.vdex	VDEX dex and verification data (arm) for android.hidl.base-V1.0-java.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/bmgr.vdex	VDEX dex and verification data (arm) for bmgr.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/monkey.vdex	VDEX dex and verification data (arm) for monkey.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/incident-helper-cmd.odex	precompiled ODEX (AOT code, ELF container, arm) for incident-helper-cmd.jar	observed
+system_a	system/framework/oat/arm/android.hidl.manager-V1.0-java.odex	precompiled ODEX (AOT code, ELF container, arm) for android.hidl.manager-V1.0-java.jar	observed
+system_a	system/framework/oat/arm/uiautomator.vdex	VDEX dex and verification data (arm) for uiautomator.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/sm.vdex	VDEX dex and verification data (arm) for sm.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/com.android.future.usb.accessory.vdex	VDEX dex and verification data (arm) for com.android.future.usb.accessory.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/incident-helper-cmd.vdex	VDEX dex and verification data (arm) for incident-helper-cmd.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/appwidget.odex	precompiled ODEX (AOT code, ELF container, arm) for appwidget.jar	observed
+system_a	system/framework/oat/arm/abx.odex	precompiled ODEX (AOT code, ELF container, arm) for abx.jar	observed
+system_a	system/framework/oat/arm/uinput.odex	precompiled ODEX (AOT code, ELF container, arm) for uinput.jar	observed
+system_a	system/framework/oat/arm/com.android.location.provider.odex	precompiled ODEX (AOT code, ELF container, arm) for com.android.location.provider.jar	observed
+system_a	system/framework/oat/arm/sm.odex	precompiled ODEX (AOT code, ELF container, arm) for sm.jar	observed
+system_a	system/framework/oat/arm/android.test.mock.vdex	VDEX dex and verification data (arm) for android.test.mock.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/locksettings.odex	precompiled ODEX (AOT code, ELF container, arm) for locksettings.jar	observed
+system_a	system/framework/oat/arm/monkey.odex	precompiled ODEX (AOT code, ELF container, arm) for monkey.jar	observed
+system_a	system/framework/oat/arm/android.hidl.base-V1.0-java.odex	precompiled ODEX (AOT code, ELF container, arm) for android.hidl.base-V1.0-java.jar	observed
+system_a	system/framework/oat/arm/hid.vdex	VDEX dex and verification data (arm) for hid.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/com.android.media.remotedisplay.vdex	VDEX dex and verification data (arm) for com.android.media.remotedisplay.jar; magic vdex027	observed
+system_a	system/framework/oat/arm/org.apache.http.legacy.odex	precompiled ODEX (AOT code, ELF container, arm) for org.apache.http.legacy.jar	observed
+system_a	system/framework/oat/arm/bu.odex	precompiled ODEX (AOT code, ELF container, arm) for bu.jar	observed
+system_a	system/framework/boot-ext.vdex	VDEX file for boot image part boot-ext; magic vdex027	observed
+system_a	system/framework/arm64/boot-framework-graphics.art	ART boot image part (arm64) for boot-framework-graphics	observed
+system_a	system/framework/arm64/boot-ims-common.art	ART boot image part (arm64) for boot-ims-common	observed
+system_a	system/framework/arm64/boot-core-icu4j.art	ART boot image part (arm64) for boot-core-icu4j	observed
+system_a	system/framework/arm64/boot-ocui.oat	OAT code file for boot image part boot-ocui (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-ext.oat	OAT code file for boot image part boot-ext (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-core-icu4j.vdex	ISA-specific symlink to boot image VDEX boot-core-icu4j.vdex	verified
+system_a	system/framework/arm64/boot-ext.vdex	ISA-specific symlink to boot image VDEX boot-ext.vdex	verified
+system_a	system/framework/arm64/boot-telephony-common.oat	OAT code file for boot image part boot-telephony-common (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-vros-framework.art	ART boot image part (arm64) for boot-vros-framework	observed
+system_a	system/framework/arm64/boot-vros-framework.oat	OAT code file for boot image part boot-vros-framework (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-voip-common.vdex	ISA-specific symlink to boot image VDEX boot-voip-common.vdex	verified
+system_a	system/framework/arm64/boot-ims-common.vdex	ISA-specific symlink to boot image VDEX boot-ims-common.vdex	verified
+system_a	system/framework/arm64/boot-ext.art	ART boot image part (arm64) for boot-ext	observed
+system_a	system/framework/arm64/boot-ims-common.oat	OAT code file for boot image part boot-ims-common (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-framework-graphics.oat	OAT code file for boot image part boot-framework-graphics (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-core-icu4j.oat	OAT code file for boot image part boot-core-icu4j (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-voip-common.art	ART boot image part (arm64) for boot-voip-common	observed
+system_a	system/framework/arm64/boot-vros-framework.vdex	ISA-specific symlink to boot image VDEX boot-vros-framework.vdex	verified
+system_a	system/framework/arm64/boot-telephony-common.art	ART boot image part (arm64) for boot-telephony-common	observed
+system_a	system/framework/arm64/boot-ocui.vdex	ISA-specific symlink to boot image VDEX boot-ocui.vdex	verified
+system_a	system/framework/arm64/boot-ocui.art	ART boot image part (arm64) for boot-ocui	observed
+system_a	system/framework/arm64/boot-framework.oat	OAT code file for boot image part boot-framework (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-telephony-common.vdex	ISA-specific symlink to boot image VDEX boot-telephony-common.vdex	verified
+system_a	system/framework/arm64/boot-framework.art	ART boot image part (arm64) for boot-framework	observed
+system_a	system/framework/arm64/boot-framework.vdex	ISA-specific symlink to boot image VDEX boot-framework.vdex	verified
+system_a	system/framework/arm64/boot-voip-common.oat	OAT code file for boot image part boot-voip-common (arm64; ELF container)	observed
+system_a	system/framework/arm64/boot-framework-graphics.vdex	ISA-specific symlink to boot image VDEX boot-framework-graphics.vdex	verified
+system_a	system/framework/android.hidl.base-V1.0-java.jar	HIDL base Java library (android.hidl.base@1.0), boot-list library	inferred
+system_a	system/framework/lockagent.jar	lock agent classes (used by start_with_lockagent)	inferred
+system_a	system/framework/framework.jar	core framework classes; unzip lists classes.dex to classes4.dex and res/*.mime.types (45 entries)	verified
+system_a	system/framework/incident-helper-cmd.jar	incident helper shell command classes	inferred
+system_a	system/framework/boot-voip-common.vdex	VDEX file for boot image part boot-voip-common; magic vdex027	observed
+system_a	system/framework/framework-res.apk	framework resource package (res/ with 3259 entries); no classes.dex	verified
+system_a	system/framework/com.android.location.provider.jar	location provider shared library	inferred
+system_a	system/framework/arm/boot-framework-graphics.art	ART boot image part (arm) for boot-framework-graphics	observed
+system_a	system/framework/arm/boot-ims-common.art	ART boot image part (arm) for boot-ims-common	observed
+system_a	system/framework/arm/boot-core-icu4j.art	ART boot image part (arm) for boot-core-icu4j	observed
+system_a	system/framework/arm/boot-ocui.oat	OAT code file for boot image part boot-ocui (arm; ELF container)	observed
+system_a	system/framework/arm/boot-ext.oat	OAT code file for boot image part boot-ext (arm; ELF container)	observed
+system_a	system/framework/arm/boot-core-icu4j.vdex	ISA-specific symlink to boot image VDEX boot-core-icu4j.vdex	verified
+system_a	system/framework/arm/boot-ext.vdex	ISA-specific symlink to boot image VDEX boot-ext.vdex	verified
+system_a	system/framework/arm/boot-telephony-common.oat	OAT code file for boot image part boot-telephony-common (arm; ELF container)	observed
+system_a	system/framework/arm/boot-vros-framework.art	ART boot image part (arm) for boot-vros-framework	observed
+system_a	system/framework/arm/boot-vros-framework.oat	OAT code file for boot image part boot-vros-framework (arm; ELF container)	observed
+system_a	system/framework/arm/boot-voip-common.vdex	ISA-specific symlink to boot image VDEX boot-voip-common.vdex	verified
+system_a	system/framework/arm/boot-ims-common.vdex	ISA-specific symlink to boot image VDEX boot-ims-common.vdex	verified
+system_a	system/framework/arm/boot-ext.art	ART boot image part (arm) for boot-ext	observed
+system_a	system/framework/arm/boot-ims-common.oat	OAT code file for boot image part boot-ims-common (arm; ELF container)	observed
+system_a	system/framework/arm/boot-framework-graphics.oat	OAT code file for boot image part boot-framework-graphics (arm; ELF container)	observed
+system_a	system/framework/arm/boot-core-icu4j.oat	OAT code file for boot image part boot-core-icu4j (arm; ELF container)	observed
+system_a	system/framework/arm/boot-voip-common.art	ART boot image part (arm) for boot-voip-common	observed
+system_a	system/framework/arm/boot-vros-framework.vdex	ISA-specific symlink to boot image VDEX boot-vros-framework.vdex	verified
+system_a	system/framework/arm/boot-telephony-common.art	ART boot image part (arm) for boot-telephony-common	observed
+system_a	system/framework/arm/boot-ocui.vdex	ISA-specific symlink to boot image VDEX boot-ocui.vdex	verified
+system_a	system/framework/arm/boot-ocui.art	ART boot image part (arm) for boot-ocui	observed
+system_a	system/framework/arm/boot-framework.oat	OAT code file for boot image part boot-framework (arm; ELF container)	observed
+system_a	system/framework/arm/boot-telephony-common.vdex	ISA-specific symlink to boot image VDEX boot-telephony-common.vdex	verified
+system_a	system/framework/arm/boot-framework.art	ART boot image part (arm) for boot-framework	observed
+system_a	system/framework/arm/boot-framework.vdex	ISA-specific symlink to boot image VDEX boot-framework.vdex	verified
+system_a	system/framework/arm/boot-voip-common.oat	OAT code file for boot image part boot-voip-common (arm; ELF container)	observed
+system_a	system/framework/arm/boot-framework-graphics.vdex	ISA-specific symlink to boot image VDEX boot-framework-graphics.vdex	verified
+system_a	system/framework/android.hidl.manager-V1.0-java.jar	HIDL service manager Java library (android.hidl.manager@1.0)	inferred
+system_a	system/framework/boot-ims-common.vdex	VDEX file for boot image part boot-ims-common; magic vdex027	observed
+system_a	system/framework/abx.jar	ABX binary XML command classes (abx, xml2abx)	inferred
+system_a	system/framework/svc.jar	svc shell command classes (svc)	inferred
+system_a	system/framework/locksettings.jar	locksettings shell command classes	inferred
+system_a	system/framework/telecom.jar	telecom service classes (telecom shell)	inferred
+system_a	system/framework/ims-common.jar	IMS common classes on the boot classpath	inferred
+system_a	system/framework/uiautomator.jar	UiAutomator library classes	inferred
+system_a	system/framework/services.jar.bprof	boot profile for services.jar; begins 0x1e then /system/framework/services.jar dex locations	observed
+system_a	system/framework/monkey.jar	UI/Monkey exerciser classes (monkey)	inferred
+system_a	system/framework/appwidget.jar	appwidget shell command classes (appwidget)	inferred
+system_a	system/framework/javax.obex.jar	javax.obex shared library (OBEX)	inferred
+system_a	system/framework/ext.jar	extension classes on the boot classpath (ext)	inferred
+system_a	system/framework/boot-vros-framework.vdex	VDEX file for boot image part boot-vros-framework; magic vdex027	observed
+system_a	system/framework/com.android.media.remotedisplay.jar	media remote display shared library	inferred
+system_a	system/framework/telephony-common.jar	telephony common classes on the boot classpath	inferred
+system_a	system/framework/hid.jar	HID shell command classes (hid)	inferred
+system_a	system/framework/requestsync.jar	requestsync shell command classes	inferred
+system_a	system/framework/boot-ocui.vdex	VDEX file for boot image part boot-ocui; magic vdex027	observed
+system_a	system/framework/am.jar	activity manager shell command classes (am)	inferred
+system_a	system/framework/boot-telephony-common.vdex	VDEX file for boot image part boot-telephony-common; magic vdex027	observed
+system_a	system/framework/android.test.mock.jar	android.test.mock shared library (mock objects)	inferred
+system_a	system/framework/android.test.base.jar	android.test.base shared library (test framework)	inferred
+system_a	system/framework/sm.jar	storage manager shell command classes (sm)	inferred
+system_a	system/framework/boot-framework.vdex	VDEX file for boot image part boot-framework; magic vdex027	observed
+system_a	system/framework/services.jar.prof	ART profile for services.jar (version 015 profile) (file(1) reports Android ART profile)	observed
+system_a	system/framework/boot-framework-graphics.vdex	VDEX file for boot image part boot-framework-graphics; magic vdex027	observed
+system_a	system/framework/bu.jar	backup utility shell command classes (bu)	inferred
+system_a	system/framework/org.apache.http.legacy.jar.prof	ART profile for org.apache.http.legacy.jar (file(1) reports Android ART profile)	observed
+system_a	system/framework/com.android.future.usb.accessory.jar	USB accessory shared library	inferred
+system_a	system/framework/ethernet-service.jar	Ethernet service classes	inferred
+system_a	system/bin/VRStool	VR tool command-line executable (Meta-specific name; 7.4 MB PIE)	inferred
+system_a	system/bin/[	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/abb	binder bridge command (abb) for running binder transactions from the shell	inferred
+system_a	system/bin/abx	wrapper: app_process runs com.android.commands.abx.Abx with CLASSPATH abx.jar	verified
+system_a	system/bin/abx2xml	wrapper: same app_process/abx.jar entry as abx (xml to ABX conversion)	verified
+system_a	system/bin/acpi	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/am	activity manager wrapper: 'cmd activity' for all verbs except instrument, which uses the instrumentation path	verified
+system_a	system/bin/apexd	APEX package manager daemon (apexd); links apex AIDL and libbinder	observed
+system_a	system/bin/app_process	alias to app_process64 (zygote launcher)	verified
+system_a	system/bin/app_process32	32-bit zygote/app launcher (app_process32); links libandroid_runtime	observed
+system_a	system/bin/app_process64	64-bit zygote/app launcher (app_process64); init runs it with -Xzygote, --zygote, --start-system-server	observed
+system_a	system/bin/appops	wrapper: cmd appops	verified
+system_a	system/bin/appwidget	wrapper: app_process runs com.android.commands.appwidget.AppWidget with appwidget.jar	verified
+system_a	system/bin/arping	ARP ping utility (arping)	inferred
+system_a	system/bin/atrace	atrace system trace capture client	inferred
+system_a	system/bin/auditctl	Linux audit control utility (auditctl)	inferred
+system_a	system/bin/awk	awk text-processing interpreter	inferred
+system_a	system/bin/badblocks	ext2/3/4 bad-block scanner (badblocks); links libext2fs	observed
+system_a	system/bin/base64	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/basename	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/bc	arbitrary-precision calculator (bc)	inferred
+system_a	system/bin/bcc	BCC bitcode compiler (bcc); links libbcc and libLLVM_android	observed
+system_a	system/bin/blank_screen	display blanking utility; links android.hardware.light@2.0	observed
+system_a	system/bin/blkid	block device identification tool (blkid); links libext2fs	observed
+system_a	system/bin/blkiomon	blktrace block I/O monitor (blkiomon)	inferred
+system_a	system/bin/blkparse	blktrace trace parser (blkparse)	inferred
+system_a	system/bin/blkrawverify	blktrace raw data verifier (blkrawverify)	inferred
+system_a	system/bin/blktrace	block I/O trace capture (blktrace)	inferred
+system_a	system/bin/blockdev	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/bmgr	wrapper: app_process runs com.android.commands.bmgr.Bmgr with bmgr.jar	verified
+system_a	system/bin/bootstat	boot-time statistics recorder (bootstat); links android.frameworks.stats@1.0	observed
+system_a	system/bin/bootstrap/linker_asan	bootstrap linker alias (points to linker)	verified
+system_a	system/bin/bootstrap/linkerconfig	bootstrap linkerconfig executable (ARM ELF, not PIE)	observed
+system_a	system/bin/bootstrap/linker64	64-bit bootstrap dynamic linker (ELF shared object)	observed
+system_a	system/bin/bootstrap/linker_asan64	bootstrap linker alias (points to linker64)	verified
+system_a	system/bin/bootstrap/linker	32-bit bootstrap dynamic linker (ELF shared object)	observed
+system_a	system/bin/boringssl_self_test32	BoringSSL power-on self-test (32-bit); links libcrypto	observed
+system_a	system/bin/boringssl_self_test64	BoringSSL power-on self-test (64-bit); links libcrypto	observed
+system_a	system/bin/bpfloader	eBPF program loader (bpfloader); links libbpf_android	observed
+system_a	system/bin/btrecord	blktrace recorder (btrecord)	inferred
+system_a	system/bin/btreplay	blktrace replay tool (btreplay)	inferred
+system_a	system/bin/btt	blktrace trace analysis tool (btt)	inferred
+system_a	system/bin/bu	wrapper: app_process runs com.android.commands.bu.Backup with bu.jar	verified
+system_a	system/bin/bugreport	bug report entry command (bugreport)	inferred
+system_a	system/bin/bugreportz	zipped bug report command (bugreportz); links libcutils and libbase	observed
+system_a	system/bin/bunzip2	bzip2 alias (points to bzip2)	verified
+system_a	system/bin/bzcat	bzip2 alias (points to bzip2)	verified
+system_a	system/bin/bzip2	bzip2 compressor/decompressor (bzip2)	inferred
+system_a	system/bin/cal	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/cat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chattr	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chcon	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chgrp	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chmod	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chown	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chroot	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/chrt	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/cksum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/clatd	464XLAT CLAT daemon (clatd) for IPv4-over-IPv6 translation	inferred
+system_a	system/bin/clean_scratch_files	scratch partition cleanup tool (clean_scratch_files); links libfs_mgr_binder	observed
+system_a	system/bin/clear	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/cmd	binder service shell client (cmd); strings include the message Can't find service	observed
+system_a	system/bin/cmp	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/comm	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/content	wrapper: app_process runs com.android.commands.content.Content with content.jar	verified
+system_a	system/bin/cp	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/cpio	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/cpueater	CPU load generator test tool (cpueater)	inferred
+system_a	system/bin/crasher	crash-generation test program, 32-bit (crasher)	inferred
+system_a	system/bin/crasher64	crash-generation test program, 64-bit (crasher64)	inferred
+system_a	system/bin/credstore	credential store service (credstore); links keymaster HAL and libcredstore_aidl	observed
+system_a	system/bin/curl	curl HTTP client; links libcrypto, libssl, libz	observed
+system_a	system/bin/cut	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dalvikvm	alias into com.android.art APEX (/apex/com.android.art/bin/dalvikvm)	verified
+system_a	system/bin/date	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dd	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/debuggerd	native crash dump daemon (debuggerd); links libdebuggerd_client	observed
+system_a	system/bin/defrag.f2fs	F2FS tool alias (points to fsck.f2fs)	verified
+system_a	system/bin/device_config	wrapper: cmd device_config	verified
+system_a	system/bin/devmem	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dex2oat	alias into com.android.art APEX (/apex/com.android.art/bin/dex2oat64)	verified
+system_a	system/bin/df	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/diff	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dirname	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dmabuf_dump	dma-buf memory accounting dump (dmabuf_dump)	inferred
+system_a	system/bin/dmctl	device-mapper control utility (dmctl)	inferred
+system_a	system/bin/dmesg	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dmuserd	dm-user userspace block daemon (dmuserd)	inferred
+system_a	system/bin/dnsmasq	DNS/DHCP forwarder used for tethering (dnsmasq)	inferred
+system_a	system/bin/dos2unix	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dpm	wrapper: cmd device_policy	verified
+system_a	system/bin/du	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/dump.f2fs	F2FS tool alias (points to fsck.f2fs)	verified
+system_a	system/bin/dumpstate	bug report collector (dumpstate); links dumpstate HAL 1.0 and 1.1	observed
+system_a	system/bin/dumpsys	binder service dump client (dumpsys); links libbinderdebug	observed
+system_a	system/bin/e2freefrag	ext2/3/4 free-space fragmentation report (e2freefrag); links libext2fs	observed
+system_a	system/bin/e2fsck	ext2/3/4 filesystem checker (e2fsck); links libext2fs	observed
+system_a	system/bin/e2fsdroid	e2fsprogs variant for building Android ext4 images with SELinux labels; links libselinux	observed
+system_a	system/bin/echo	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/egrep	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/env	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/expand	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/expr	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/fallocate	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/false	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/fgrep	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/file	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/find	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/flags_health_check	server configurable flags health check; links server_configurable_flags	observed
+system_a	system/bin/flock	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/fmt	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/free	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/fsck.f2fs	F2FS filesystem checker (fsck.f2fs); also target of defrag/dump/resize.f2fs	observed
+system_a	system/bin/fsck_msdos	FAT filesystem checker (fsck_msdos)	inferred
+system_a	system/bin/fsync	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/gdbserver	gdb remote stub, 32-bit ARM static executable (not PIE)	observed
+system_a	system/bin/gdbserver64	gdb remote stub, 64-bit static executable (not PIE)	observed
+system_a	system/bin/getconf	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/getenforce	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/getevent	toolbox applet symlink (points to toolbox multi-call binary)	verified
+system_a	system/bin/getprop	toolbox applet symlink (points to toolbox multi-call binary)	verified
+system_a	system/bin/grep	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/groups	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/gsi_tool	Generic System Image install/status tool (gsi_tool); links gsi AIDL	observed
+system_a	system/bin/gsid	Generic System Image service daemon (gsid)	inferred
+system_a	system/bin/gunzip	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/gzip	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/head	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/heapprofd	heap profiler daemon (heapprofd); links libunwindstack	observed
+system_a	system/bin/hid	wrapper: LD_PRELOAD libhidcommand_jni.so, CLASSPATH hid.jar, app_process runs com.android.commands.hid.Hid	verified
+system_a	system/bin/hostname	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/hw/android.system.suspend@1.0-service	system suspend HAL service (android.system.suspend@1.0)	inferred
+system_a	system/bin/hw/android.hidl.allocator@1.0-service	HIDL allocator HAL service (android.hidl.allocator@1.0)	inferred
+system_a	system/bin/hwservicemanager	HIDL hwbinder service manager daemon (hwservicemanager); links android.hidl.token@1.0, libvintf and libhidlbase	observed
+system_a	system/bin/i2cdetect	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/i2cdump	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/i2cget	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/i2cset	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/i2ctransfer	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/iconv	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/id	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/idlcli	HAL command-line client (idlcli); links vibrator HAL 1.0 and 1.1 and vibrator V2 NDK	observed
+system_a	system/bin/idmap2	runtime resource overlay idmap generator (idmap2); links libidmap2	observed
+system_a	system/bin/idmap2d	idmap2 daemon (idmap2d); links libbinder and libidmap2	observed
+system_a	system/bin/ifconfig	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/ime	wrapper: cmd input_method ime	verified
+system_a	system/bin/incident	incident report client (incident); links libincidentpriv	observed
+system_a	system/bin/incident-helper-cmd	wrapper: app_process runs com.android.commands.incident.IncidentHelper with incident-helper-cmd.jar	verified
+system_a	system/bin/incident_helper	incident section helper (incident_helper); links libprotoutil	observed
+system_a	system/bin/incidentd	incident report collection daemon (incidentd); links libincidentpriv	observed
+system_a	system/bin/inotifyd	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/input	wrapper: cmd input	verified
+system_a	system/bin/insmod	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/install	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/installd	package install and app data directory daemon (installd); links libprocessgroup	observed
+system_a	system/bin/ionice	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/iorap.cmd.compiler	iorap command: prefetch trace compiler (iorap.cmd.compiler)	inferred
+system_a	system/bin/iorap.cmd.maintenance	iorap command: maintenance tasks (iorap.cmd.maintenance)	inferred
+system_a	system/bin/iorap.inode2filename	iorap command: inode-to-filename mapper (iorap.inode2filename)	inferred
+system_a	system/bin/iorap.prefetcherd	iorap prefetch daemon (iorap.prefetcherd)	inferred
+system_a	system/bin/iorapd	app launch I/O prefetch daemon (iorapd); links libsqlite and libperfetto	observed
+system_a	system/bin/iorenice	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/iostat	sysstat I/O statistics (iostat)	inferred
+system_a	system/bin/iotop	per-process I/O monitor (iotop); links libnl	observed
+system_a	system/bin/ip	iproute2 ip command; links libiprouteutil and libnetlink	observed
+system_a	system/bin/ip-wrapper-1.0	netutils wrapper alias (points to netutils-wrapper-1.0)	verified
+system_a	system/bin/ip6tables	iptables alias symlink (points to iptables)	verified
+system_a	system/bin/ip6tables-restore	iptables alias symlink (points to iptables)	verified
+system_a	system/bin/ip6tables-save	iptables alias symlink (points to iptables)	verified
+system_a	system/bin/ip6tables-wrapper-1.0	netutils wrapper alias (points to netutils-wrapper-1.0)	verified
+system_a	system/bin/iperf3	network throughput test (iperf3)	inferred
+system_a	system/bin/iptables	iptables firewall command; target of iptables-save/restore and ip6tables aliases	observed
+system_a	system/bin/iptables-restore	iptables alias symlink (points to iptables)	verified
+system_a	system/bin/iptables-save	iptables alias symlink (points to iptables)	verified
+system_a	system/bin/iptables-wrapper-1.0	netutils wrapper alias (points to netutils-wrapper-1.0)	verified
+system_a	system/bin/iw	nl80211 wireless configuration tool (iw); links libnl	observed
+system_a	system/bin/kill	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/killall	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/latencytop	scheduler latency tracer (latencytop)	inferred
+system_a	system/bin/ld.mc	LLVM-based linker (ld.mc); links libLLVM_android	observed
+system_a	system/bin/ldd	dispatcher script: selects ldd or ldd64 behaviour from the argument	verified
+system_a	system/bin/librank	per-library memory ranking (librank); links libmeminfo	observed
+system_a	system/bin/linker	alias into com.android.runtime APEX (/apex/com.android.runtime/bin/linker)	verified
+system_a	system/bin/linker64	alias into com.android.runtime APEX (/apex/com.android.runtime/bin/linker64)	verified
+system_a	system/bin/linker_asan	alias into com.android.runtime APEX (/apex/com.android.runtime/bin/linker)	verified
+system_a	system/bin/linker_asan64	alias into com.android.runtime APEX (/apex/com.android.runtime/bin/linker64)	verified
+system_a	system/bin/linkerconfig	alias into com.android.runtime APEX (/apex/com.android.runtime/bin/linkerconfig)	verified
+system_a	system/bin/llkd	live-lock / hung-process watchdog (llkd)	inferred
+system_a	system/bin/lmkd	low memory killer daemon (lmkd); links libprocessgroup and libpsi	observed
+system_a	system/bin/ln	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/load_policy	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lockagent_crasher	lock agent crash test program (lockagent_crasher)	inferred
+system_a	system/bin/locksettings	wrapper: app_process runs com.android.commands.locksettings.LockSettingsCmd with locksettings.jar	verified
+system_a	system/bin/log	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/logcat	logcat log reader command	inferred
+system_a	system/bin/logcatd	init service script: reads last logcat to persistent storage with -L, then runs logcat for current buffers	verified
+system_a	system/bin/logd	system log daemon (logd); links libsysutils and libpackagelistparser	observed
+system_a	system/bin/logname	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/logpersist.cat	logpersist command alias (points to logpersist.start)	verified
+system_a	system/bin/logpersist.start	logpersist cat/start/stop handler script; refuses unless ro.debuggable is set	verified
+system_a	system/bin/logpersist.stop	logpersist command alias (points to logpersist.start)	verified
+system_a	system/bin/logwrapper	command wrapper that routes stdout/stderr to logd (logwrapper); links liblog	observed
+system_a	system/bin/losetup	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lpdump	dynamic partition metadata dump (lpdump); links liblp	observed
+system_a	system/bin/lpdumpd	dynamic partition metadata dump service (lpdumpd); links liblp and liblpdump	observed
+system_a	system/bin/ls	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lsattr	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lshal	HAL service list tool (lshal); links libhidl-gen-utils	observed
+system_a	system/bin/lsmod	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lsof	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lspci	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/lsusb	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/make_f2fs	F2FS filesystem formatter (make_f2fs); links libsparse	observed
+system_a	system/bin/md5sum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mdnsd	multicast DNS responder daemon (mdnsd)	inferred
+system_a	system/bin/memeater	memory consumption test program (memeater)	inferred
+system_a	system/bin/memtester	memory tester (memtester)	inferred
+system_a	system/bin/microcom	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/migrate_legacy_obb_data.sh	script: probes /data/media/0/Android/obb for unshared_obb support and migrates legacy OBB data	verified
+system_a	system/bin/mini-keyctl	keyring control utility (mini-keyctl); links libkeyutils	observed
+system_a	system/bin/mkdir	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mke2fs	ext2/3/4 filesystem creator (mke2fs); links libext2fs	observed
+system_a	system/bin/mkfifo	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mkfs.ext2	mkfs.ext2/3/4 alias (points to mke2fs)	verified
+system_a	system/bin/mkfs.ext3	mkfs.ext2/3/4 alias (points to mke2fs)	verified
+system_a	system/bin/mkfs.ext4	mkfs.ext2/3/4 alias (points to mke2fs)	verified
+system_a	system/bin/mknod	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mkswap	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mktemp	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mm_events	script: starts a perfetto trace with an embedded DEFAULT_TRACE_CONFIG for memory-management events	verified
+system_a	system/bin/modinfo	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/modprobe	toolbox applet symlink (points to toolbox multi-call binary)	verified
+system_a	system/bin/monkey	Monkey exerciser launcher: exec app_process com.android.commands.monkey.Monkey with monkey.jar	verified
+system_a	system/bin/more	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mount	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mountpoint	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/mpstat	sysstat CPU statistics (mpstat)	inferred
+system_a	system/bin/mtpd	MTP / VPN helper daemon (mtpd); links libcrypto and libnetd_client	inferred
+system_a	system/bin/mv	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/nc	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/ndc	netd command client (ndc); links libnetdutils	observed
+system_a	system/bin/ndc-wrapper-1.0	netutils wrapper alias (points to netutils-wrapper-1.0)	verified
+system_a	system/bin/netcat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/netd	network management daemon (netd); links netd HAL 1.0 and 1.1 and libbpf_android	observed
+system_a	system/bin/netstat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/netutils-wrapper-1.0	netutils wrapper binary; ip, iptables, ip6tables, ndc and tc wrapper symlinks point here	observed
+system_a	system/bin/newfs_msdos	FAT filesystem formatter (newfs_msdos)	inferred
+system_a	system/bin/nice	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/nl	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/nohup	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/nproc	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/nsenter	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/od	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/odsign	on-device signing service (odsign); links keystore2 and keymint	observed
+system_a	system/bin/paste	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/patch	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/perfetto	perfetto tracing command-line client; links liblog and libz	observed
+system_a	system/bin/pgrep	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/pidof	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/pidstat	sysstat per-process statistics (pidstat)	inferred
+system_a	system/bin/ping	ICMP echo client (ping)	inferred
+system_a	system/bin/ping6	IPv6 ICMP echo client (ping6); links libcrypto	observed
+system_a	system/bin/pkill	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/pm	wrapper: cmd package	verified
+system_a	system/bin/pmap	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/pppd	PPP daemon (pppd); links libcrypto	observed
+system_a	system/bin/printenv	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/printf	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/procmem	per-process memory map summary (procmem); links libmeminfo	observed
+system_a	system/bin/procrank	proportional set size ranking (procrank); links libmeminfo and libprocinfo	observed
+system_a	system/bin/profcollectctl	profile collection control client (profcollectctl); Rust binary linking libprofcollectd dylib	observed
+system_a	system/bin/profcollectd	profile collection daemon (profcollectd); Rust binary linking libprofcollectd dylib	observed
+system_a	system/bin/ps	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/pwd	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/racoon	IKE key exchange daemon (racoon); links libkeystore-engine	observed
+system_a	system/bin/readelf	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/readlink	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/realpath	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/reboot	reboot command (reboot); links libcutils	observed
+system_a	system/bin/record_and_sense.sh	script: records a VRS file on device and runs sensor validation on it	verified
+system_a	system/bin/recovery-persist	recovery persistence service (recovery-persist)	inferred
+system_a	system/bin/recovery-refresh	recovery data refresh service (recovery-refresh)	inferred
+system_a	system/bin/remount	partition remount utility (remount); links libfs_mgr and libfec	observed
+system_a	system/bin/renice	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/requestsync	wrapper: app_process runs com.android.commands.requestsync.RequestSync with requestsync.jar	verified
+system_a	system/bin/resize.f2fs	F2FS tool alias (points to fsck.f2fs)	verified
+system_a	system/bin/resize2fs	ext2/3/4 resize tool (resize2fs); links libext2fs	observed
+system_a	system/bin/resource_control	resource control command-line tool (resource_control); Rust binary	observed
+system_a	system/bin/resource_load	resource loader test tool (resource_load); links only libc and libdl	observed
+system_a	system/bin/restorecon	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/rm	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/rmdir	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/rmmod	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/rss_hwm_reset	RSS high-water-mark reset tool (rss_hwm_reset)	inferred
+system_a	system/bin/rtcwake	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/run-as	run-as command for debuggable apps (run-as); links libpackagelistparser and libminijail	observed
+system_a	system/bin/runcon	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/runtimeipcbroker	runtime IPC broker (runtimeipcbroker); links libgui and libruntimeipcbroker_interface	observed
+system_a	system/bin/sadc	sysstat data collector (sadc)	inferred
+system_a	system/bin/sadf	sysstat data formatter (sadf)	inferred
+system_a	system/bin/sanitizer-status	sanitizer status reporter (sanitizer-status)	inferred
+system_a	system/bin/sar	sysstat system activity reporter (sar)	inferred
+system_a	system/bin/schedtest	scheduler test program (schedtest)	inferred
+system_a	system/bin/screenrecord	screen recording client (screenrecord); links libstagefright and libmedia	observed
+system_a	system/bin/sdcard	FUSE sdcard daemon (sdcard); links libminijail	observed
+system_a	system/bin/secdiscard	secure discard tool (secdiscard)	inferred
+system_a	system/bin/secilc	SELinux policy compiler (secilc); run through bootstrap/linker64	observed
+system_a	system/bin/sed	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sendevent	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/seq	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/service	binder service list/check client (service); usage: 'service list' and 'service check SERVICE'	observed
+system_a	system/bin/servicemanager	binder service manager daemon (servicemanager); defines IServiceManager	observed
+system_a	system/bin/setenforce	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/setprop	toolbox applet symlink (points to toolbox multi-call binary)	verified
+system_a	system/bin/setsid	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/settings	wrapper: cmd settings	verified
+system_a	system/bin/sgdisk	GPT partition table editor (sgdisk); links libext2_uuid	observed
+system_a	system/bin/sh	mksh shell (sh); links only libc	observed
+system_a	system/bin/sha1sum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sha224sum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sha256sum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sha384sum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sha512sum	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/showmap	per-process memory map summary (showmap); links libmeminfo	observed
+system_a	system/bin/showslab	kernel slab usage report (showslab)	inferred
+system_a	system/bin/simpleperf	simpleperf profiler (simpleperf); links libprotobuf and libziparchive	observed
+system_a	system/bin/simpleperf_app_runner	simpleperf app profiling runner (simpleperf_app_runner)	observed
+system_a	system/bin/sleep	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sload_f2fs	F2FS image loader (sload_f2fs); links libsparse	observed
+system_a	system/bin/sm	wrapper: app_process runs com.android.commands.sm.Sm with sm.jar	verified
+system_a	system/bin/snapshotctl	virtual A/B snapshot control (snapshotctl); links boot HAL 1.0 and 1.1	observed
+system_a	system/bin/snapuserd	snapshot user-space daemon for virtual A/B (snapuserd); ARM static executable (not PIE)	observed
+system_a	system/bin/sort	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/split	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sqlite3	SQLite command-line shell (sqlite3); links libsqlite and libandroidicu	observed
+system_a	system/bin/ss	socket statistics command (ss); links libnetlink	observed
+system_a	system/bin/start	toolbox applet symlink (points to toolbox multi-call binary)	verified
+system_a	system/bin/start_with_lockagent	script: parses --agent-options and starts an application process with the lock agent	observed
+system_a	system/bin/stat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/stop	toolbox applet symlink (points to toolbox multi-call binary)	verified
+system_a	system/bin/storaged	storage statistics daemon (storaged); links health HAL 1.0 and 2.0	observed
+system_a	system/bin/strace	system call tracer (strace)	inferred
+system_a	system/bin/stream-publisher	camera stream publisher (stream-publisher); links libcameramuxmodemonitor	observed
+system_a	system/bin/strings	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/stty	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/stub_zygote	stub launcher for secondary zygote; init runs it before app_process32	observed
+system_a	system/bin/svc	wrapper: svc command; 'svc wifi' is translated to 'cmd wifi set-wifi-enabled'	verified
+system_a	system/bin/svt.sh	SVT runner script (default 90 s duration, forces display on, loop count 1)	verified
+system_a	system/bin/swapoff	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/swapon	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sync	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/sysctl	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/tac	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/tail	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/tar	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/taskset	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/taskstats	task statistics client (taskstats); links libnl	observed
+system_a	system/bin/tc	traffic control command (tc); links libiprouteutil and libnetlink	observed
+system_a	system/bin/tc-wrapper-1.0	netutils wrapper alias (points to netutils-wrapper-1.0)	verified
+system_a	system/bin/tcpdump	packet capture tool (tcpdump); links libpcap and libssl	observed
+system_a	system/bin/telecom	wrapper: app_process runs com.android.commands.telecom.Telecom with telecom.jar	verified
+system_a	system/bin/test	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/time	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/timeout	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/tinymix	ALSA mixer control (tinymix); links libtinyalsa	observed
+system_a	system/bin/tombstoned	crash tombstone manager daemon (tombstoned)	inferred
+system_a	system/bin/toolbox	toolbox multi-call binary; getprop, setprop, start, stop, modprobe and others are symlinks to it	observed
+system_a	system/bin/top	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/toybox	toybox multi-call binary; most system/bin applet names are symlinks to it	observed
+system_a	system/bin/tr	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/traced	perfetto tracing daemon (traced); links libperfetto	observed
+system_a	system/bin/traced_perf	perfetto perf sampling producer (traced_perf); links libunwindstack	observed
+system_a	system/bin/traced_probes	perfetto ftrace probes producer (traced_probes); links libperfetto	observed
+system_a	system/bin/tracepath	path MTU tracer (tracepath)	inferred
+system_a	system/bin/tracepath6	IPv6 path MTU tracer (tracepath6)	inferred
+system_a	system/bin/traceroute6	IPv6 traceroute (traceroute6)	inferred
+system_a	system/bin/trigger_perfetto	perfetto trigger client (trigger_perfetto); links liblog	observed
+system_a	system/bin/true	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/truncate	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/tty	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/tune2fs	ext2/3/4 tuning tool (tune2fs); links libext2fs	observed
+system_a	system/bin/tzdatacheck	time zone data validator (tzdatacheck)	observed
+system_a	system/bin/uiautomator	UiAutomator launcher script (sets run_base=/data/local/tmp and ANDROID_DATA)	observed
+system_a	system/bin/uinput	wrapper: LD_PRELOAD libuinputcommand_jni.so, uinput command entry point	verified
+system_a	system/bin/ulimit	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/umount	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/uname	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/uncrypt	OTA uncrypt tool (uncrypt); links libbootloader_message and libfs_mgr	observed
+system_a	system/bin/uniq	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/unix2dos	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/unlink	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/unshare	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/unwind	libunwindstack command-line unwinder (unwind)	observed
+system_a	system/bin/unwind_info	libunwindstack command (unwind_info)	observed
+system_a	system/bin/unwind_reg_info	libunwindstack command (unwind_reg_info)	observed
+system_a	system/bin/unwind_symbols	libunwindstack command (unwind_symbols)	observed
+system_a	system/bin/unzip	zip/unzip alias (points to ziptool)	verified
+system_a	system/bin/update_engine	OTA update engine daemon (update_engine); links boot HAL and liblp	observed
+system_a	system/bin/update_engine_client	update_engine command-line client (update_engine_client)	observed
+system_a	system/bin/update_verifier	A/B update verifier (update_verifier); links boot HAL 1.0	observed
+system_a	system/bin/uptime	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/usbd	USB gadget HAL daemon (usbd); links usb gadget HAL 1.0	observed
+system_a	system/bin/usleep	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/uudecode	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/uuencode	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/uuidgen	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/vdc	vold command client (vdc); links libselinux and libutils	observed
+system_a	system/bin/verify_blkparse	blktrace output verifier (verify_blkparse)	inferred
+system_a	system/bin/viewcompiler	view resource compiler (viewcompiler); links slicer and libandroidfw	observed
+system_a	system/bin/vmstat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/vold	volume manager daemon (vold); links libdiskconfig and libcrypto_utils	observed
+system_a	system/bin/vold_prepare_subdirs	vold subdirectory preparation tool (vold_prepare_subdirs)	observed
+system_a	system/bin/vrfocusserver	VR focus service (vrfocusserver); links libjsoncpp and libosutils	inferred
+system_a	system/bin/vrs-recorder	VRS recorder (vrs-recorder); links libvrsdevicetools and libtokaido_device_features	observed
+system_a	system/bin/vrs-recorder2	VRS recorder, second variant (vrs-recorder2); same NEEDED set as vrs-recorder	observed
+system_a	system/bin/vrsbuilder	VRS file builder (vrsbuilder); links libvrsbuilder	observed
+system_a	system/bin/watch	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/watchdogd	software watchdog daemon (watchdogd)	inferred
+system_a	system/bin/wattsdown	power measurement helper (wattsdown); links only libc and libdl	unverified
+system_a	system/bin/wc	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/which	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/whoami	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/wm	wrapper: cmd window	verified
+system_a	system/bin/xargs	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/xml2abx	wrapper: app_process runs com.android.commands.abx.Abx (XML to ABX), with abx.jar	verified
+system_a	system/bin/xrspd	XR service daemon (xrspd); links libmdnssd, libmros_vendor_sysprops, libusbhost and libxrspdhelper	observed
+system_a	system/bin/xxd	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/xzcat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/yes	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/zcat	toybox applet symlink (points to toybox multi-call binary)	verified
+system_a	system/bin/zipinfo	zip/unzip alias (points to ziptool)	verified
+system_a	system/bin/ziptool	zip/unzip multi-call binary; unzip and zipinfo symlinks point here	observed
+system_a	system/etc/preloaded-classes	zygote preload class list (2482 lines of class names)	verified
+system_a	system/etc/sysconfig/preinstalled-packages-com.android.providers.media.module.xml	preinstalled packages list for the com.android.providers.media module (XML-style text with leading comment)	verified
+system_a	system/etc/sysconfig/preinstalled-packages-platform.xml	preinstalled packages per user type: 2 install-in-user-type entries (placeholder com.android.example)	verified
+system_a	system/etc/sysconfig/framework-sysconfig.xml	framework sysconfig: 23 allow-implicit-broadcast, 2 backup-transport-whitelisted-service, 1 bugreport-whitelisted, 1 app-link	verified
+system_a	system/etc/sysconfig/hiddenapi-package-whitelist.xml	hidden API whitelist: 36 hidden-api-whitelisted-app entries	verified
+system_a	system/etc/permissions/com.android.location.provider.xml	shared library declaration com.android.location.provider	verified
+system_a	system/etc/permissions/com.android.media.remotedisplay.xml	shared library declaration com.android.media.remotedisplay	verified
+system_a	system/etc/permissions/android.test.runner.xml	shared library declaration android.test.runner (depends on test.base and test.mock)	verified
+system_a	system/etc/permissions/android.software.webview.xml	feature declaration android.software.webview	verified
+system_a	system/etc/permissions/android.test.base.xml	shared library declaration android.test.base	verified
+system_a	system/etc/permissions/com.android.future.usb.accessory.xml	shared library declaration com.android.future.usb.accessory	verified
+system_a	system/etc/permissions/platform.xml	core platform permission file: 20 permission, 45 assign-permission, 13 split-permission, 5 library and allow-in-power-save declarations	verified
+system_a	system/etc/permissions/org.apache.http.legacy.xml	shared library declaration org.apache.http.legacy	verified
+system_a	system/etc/permissions/javax.obex.xml	shared library declaration javax.obex	verified
+system_a	system/etc/permissions/privapp-permissions-platform.xml	privileged-app permission allowlist: 35 privapp-permissions packages	verified
+system_a	system/etc/permissions/com.android.documentsui.xml	privileged-app permission grants for package com.android.documentsui	verified
+system_a	system/etc/permissions/android.test.mock.xml	shared library declaration android.test.mock	verified
+system_a	system/etc/default-permissions/default-permissions.xml	default runtime-permission grants for 32 exception packages	verified
+system_ext_a	bin/vold_bench	volume daemon benchmark tool (vold_bench) from system_ext	inferred
+system_ext_a	bin/logdumpd	log dump daemon (logdumpd) from system_ext	inferred
+system_ext_a	etc/sysconfig/android.software.slices_disabled.xml	feature declaration android.software.slices_disabled (no app slices)	verified
+system_ext_a	etc/permissions/com.meta.automation.pauldron.vr.xml	privileged-app permission grants for package com.meta.automation.pauldron.vr	verified
+system_ext_a	etc/permissions/com.facebook.wearable.system.location.service.xml	privileged-app permission grants for package com.facebook.wearable.system.location.service	verified
+system_ext_a	etc/permissions/com.android.settings.xml	privileged-app permission grants for package com.android.settings	verified
+system_ext_a	etc/permissions/com.facebook.spatial_persistence_service.xml	privileged-app permission grants for package com.facebook.spatial_persistence_service	verified
+system_ext_a	etc/permissions/com.meta.wearable.emginput.xml	privileged-app permission grants for package com.meta.wearable.emginput	verified
+system_ext_a	etc/permissions/com.facebook.wearable.system.location.proxy.xml	privileged-app permission grants for package com.facebook.wearable.system.location.proxy	verified
+system_ext_a	etc/permissions/com.meta.pclinkservice.server.xml	privileged-app permission grants for package com.meta.pclinkservice.server	verified
+system_ext_a	etc/permissions/com.android.storagemanager.xml	privileged-app permission grants for package com.android.storagemanager	verified
+system_ext_a	etc/default-permissions/com.facebook.wearable.system.location.service.xml	default runtime-permission grant exception for com.facebook.wearable.system.location.service	verified
+system_ext_a	etc/default-permissions/com.facebook.wearable.system.location.proxy.xml	default runtime-permission grant exception for com.facebook.wearable.system.location.proxy	verified
+system_ext_a	framework/ocui.jar	Meta OCUI framework library in system_ext (name-based)	inferred
+system_ext_a	framework/vros-framework.jar	Meta VROS framework library in system_ext (name-based)	inferred

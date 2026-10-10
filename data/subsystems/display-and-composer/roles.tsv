@@ -1,0 +1,133 @@
+partition	path	role	confidence
+odm_a	lib/vendor.oculus.hardware.graphics.composer@1.0.so	32-bit Oculus HWComposer HIDL 1.0 interface library; SONAME matches; NEEDED libhidlbase.so	verified
+odm_a	lib/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so	32-bit anorak implementation of Oculus IComposer 1.1 HAL; exports HIDL_FETCH_IComposer; NEEDED libdisplayconfig.qti.so and libdrm.so	verified
+odm_a	lib/vendor.oculus.hardware.graphics.composer@1.1.so	32-bit Oculus HWComposer HIDL 1.1 interface library; SONAME matches; NEEDED 1.0 interface and libhidlbase.so	verified
+odm_a	lib64/vendor.oculus.hardware.graphics.composer@1.0.so	64-bit Oculus HWComposer HIDL 1.0 interface library; SONAME matches	verified
+odm_a	lib64/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so	64-bit anorak implementation of Oculus IComposer 1.1 HAL; exports HIDL_FETCH_IComposer	verified
+odm_a	lib64/vendor.oculus.hardware.graphics.composer@1.1.so	64-bit Oculus HWComposer HIDL 1.1 interface library; SONAME matches	verified
+system_a	system/framework/oat/arm64/com.android.mediadrm.signer.vdex	arm64 AOT verifier-dependency file (vdex, format 027) for the mediadrm signer jar	verified
+system_a	system/framework/oat/arm64/com.android.mediadrm.signer.odex	arm64 AOT-compiled code (odex, SONAME javalib.odex) for the mediadrm signer jar	verified
+system_a	system/framework/oat/arm/com.android.mediadrm.signer.vdex	32-bit arm AOT verifier-dependency file (vdex, format 027); byte-identical to the arm64 vdex	verified
+system_a	system/framework/oat/arm/com.android.mediadrm.signer.odex	32-bit arm AOT-compiled code (odex, SONAME javalib.odex) for the mediadrm signer jar	verified
+system_a	system/framework/com.android.mediadrm.signer.jar	Java library jar for the mediadrm signer (classes.dex and MANIFEST.MF only)	verified
+system_a	system/bin/drmserver	DRM framework daemon (32-bit PIE); started by drmserver.rc when drm.service.enabled is set; NEEDED libdrmframeworkcommon.so, libbinder.so, libselinux.so	verified
+system_a	system/bin/hwclock	symlink to toybox, the multi-call binary that provides the hwclock applet	verified
+system_a	system/bin/surfaceflinger	Android surface compositor service (64-bit PIE); 43 NEEDED entries including composer HIDL 2.1 to 2.4 clients; started by surfaceflinger.rc	verified
+system_a	system/etc/display.conf	JSON display tuning file: DIRECTION 3, SHUTTER_TYPE 0, SWAP_TIMING arrays, night-display colour temperature 2220 min, 2856 default, 6504 max	observed
+system_a	system/etc/permissions/com.android.mediadrm.signer.xml	permissions XML registering the com.android.mediadrm.signer library at /system/framework/com.android.mediadrm.signer.jar	verified
+system_a	system/lib/android.hardware.drm@1.0.so	32-bit DRM HAL HIDL 1.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.drm@1.1.so	32-bit DRM HAL HIDL 1.1 interface library; SONAME matches; chains to 1.0	verified
+system_a	system/lib/android.hardware.drm@1.2.so	32-bit DRM HAL HIDL 1.2 interface library; SONAME matches; chains to 1.0 and 1.1	verified
+system_a	system/lib/android.hardware.drm@1.3.so	32-bit DRM HAL HIDL 1.3 interface library; SONAME matches; chains to 1.0 to 1.2	verified
+system_a	system/lib/android.hardware.drm@1.4.so	32-bit DRM HAL HIDL 1.4 interface library; SONAME matches; chains to 1.0 to 1.3	verified
+system_a	system/lib/android.hardware.graphics.allocator@2.0.so	32-bit gralloc allocator HIDL 2.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.graphics.allocator@3.0.so	32-bit gralloc allocator HIDL 3.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.graphics.allocator@4.0.so	32-bit gralloc allocator HIDL 4.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.graphics.mapper@2.0.so	32-bit gralloc mapper HIDL 2.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.graphics.mapper@2.1.so	32-bit gralloc mapper HIDL 2.1 interface library; SONAME matches; chains to 2.0	verified
+system_a	system/lib/android.hardware.graphics.mapper@3.0.so	32-bit gralloc mapper HIDL 3.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.graphics.mapper@4.0.so	32-bit gralloc mapper HIDL 4.0 interface library; SONAME matches	verified
+system_a	system/lib/android.hardware.memtrack-V1-ndk_platform.so	32-bit AIDL NDK library for android.hardware.memtrack; NEEDED libbinder_ndk.so	verified
+system_a	system/lib/android.hardware.memtrack@1.0.so	32-bit memtrack HIDL 1.0 interface library; SONAME matches	verified
+system_a	system/lib/drm/libfwdlockengine.so	32-bit forward-lock DRM engine plugin; exports FwdLockEngine and FwdLockConv_OpenSession	verified
+system_a	system/lib/libdrm.so	32-bit libdrm userspace library; exports drmGetDevice2; SONAME matches	verified
+system_a	system/lib/libdrmframework.so	32-bit Android DRM framework core; NEEDED libbinder.so and libdrmframeworkcommon.so	verified
+system_a	system/lib/libdrmframework_jni.so	32-bit JNI bridge for the Android DRM framework; NEEDED libandroid_runtime.so and libnativehelper.so	verified
+system_a	system/lib/libdrmframeworkcommon.so	32-bit Android DRM framework common code; NEEDED libbinder.so	verified
+system_a	system/lib/libmediadrm.so	32-bit MediaDrm native client library; NEEDED libmedia.so, libmediadrmmetrics_lite.so and drm HAL 1.0 to 1.2 libraries	verified
+system_a	system/lib/libmediadrmmetrics_consumer.so	32-bit MediaDrm metrics consumer; NEEDED libmediadrm.so and libmediadrmmetrics_full.so	verified
+system_a	system/lib/libmediadrmmetrics_full.so	32-bit MediaDrm metrics backend (full variant); NEEDED libprotobuf-cpp-full.so	verified
+system_a	system/lib/libmediadrmmetrics_lite.so	32-bit MediaDrm metrics backend (lite variant); NEEDED libprotobuf-cpp-lite.so	verified
+system_a	system/lib/libmemtrack.so	32-bit memtrack HAL client library; NEEDED libhardware.so, memtrack HIDL 1.0 and memtrack NDK library	verified
+system_a	system/lib/libmemtrackproxy.so	32-bit memtrack proxy library; NEEDED memtrack HIDL 1.0 and memtrack NDK library	inferred
+system_a	system/lib64/android.hardware.drm@1.0.so	64-bit DRM HAL HIDL 1.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.drm@1.1.so	64-bit DRM HAL HIDL 1.1 interface library; SONAME matches; chains to 1.0	verified
+system_a	system/lib64/android.hardware.drm@1.2.so	64-bit DRM HAL HIDL 1.2 interface library; SONAME matches; chains to 1.0 and 1.1	verified
+system_a	system/lib64/android.hardware.drm@1.3.so	64-bit DRM HAL HIDL 1.3 interface library; SONAME matches; chains to 1.0 to 1.2	verified
+system_a	system/lib64/android.hardware.drm@1.4.so	64-bit DRM HAL HIDL 1.4 interface library; SONAME matches; chains to 1.0 to 1.3	verified
+system_a	system/lib64/android.hardware.graphics.allocator@2.0.so	64-bit gralloc allocator HIDL 2.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.graphics.allocator@3.0.so	64-bit gralloc allocator HIDL 3.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.graphics.allocator@4.0.so	64-bit gralloc allocator HIDL 4.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.graphics.composer@2.1.so	64-bit IComposer HIDL 2.1 client/interface library; SONAME matches; NEEDED android.hardware.graphics.common@1.0.so	verified
+system_a	system/lib64/android.hardware.graphics.composer@2.2.so	64-bit IComposer HIDL 2.2 client/interface library; SONAME matches; chains to 2.1	verified
+system_a	system/lib64/android.hardware.graphics.composer@2.3.so	64-bit IComposer HIDL 2.3 client/interface library; SONAME matches; chains to 2.2	verified
+system_a	system/lib64/android.hardware.graphics.composer@2.4.so	64-bit IComposer HIDL 2.4 client/interface library; exports V2_4 IComposerClient and IComposerCallback Bp/Bn classes	verified
+system_a	system/lib64/android.hardware.graphics.mapper@2.0.so	64-bit gralloc mapper HIDL 2.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.graphics.mapper@2.1.so	64-bit gralloc mapper HIDL 2.1 interface library; SONAME matches; chains to 2.0	verified
+system_a	system/lib64/android.hardware.graphics.mapper@3.0.so	64-bit gralloc mapper HIDL 3.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.graphics.mapper@4.0.so	64-bit gralloc mapper HIDL 4.0 interface library; SONAME matches	verified
+system_a	system/lib64/android.hardware.memtrack-V1-ndk_platform.so	64-bit AIDL NDK library for android.hardware.memtrack; NEEDED libbinder_ndk.so	verified
+system_a	system/lib64/android.hardware.memtrack@1.0.so	64-bit memtrack HIDL 1.0 interface library; SONAME matches	verified
+system_a	system/lib64/drm/libfwdlockengine.so	64-bit forward-lock DRM engine plugin; exports FwdLockEngine, FwdLockConv_* and FwdLockFile_* symbols	verified
+system_a	system/lib64/libdisplayservicehidl.so	android.frameworks.displayservice@1.0 HIDL implementation (DisplayService, DisplayEventReceiver with vsync request); NEEDED libgui.so	verified
+system_a	system/lib64/libdrm.so	64-bit libdrm userspace library; exports drmAddBufs and drmGetDevice2	verified
+system_a	system/lib64/libdrmframework.so	64-bit Android DRM framework core; NEEDED libbinder.so and libdrmframeworkcommon.so	verified
+system_a	system/lib64/libdrmframework_jni.so	64-bit JNI bridge for the Android DRM framework; NEEDED libandroid_runtime.so and libnativehelper.so	verified
+system_a	system/lib64/libdrmframeworkcommon.so	64-bit Android DRM framework common code; NEEDED libbinder.so	verified
+system_a	system/lib64/libmediadrm.so	64-bit MediaDrm native client library; NEEDED libmedia.so, libmediadrmmetrics_lite.so and drm HAL 1.0 to 1.2 libraries	verified
+system_a	system/lib64/libmediadrmmetrics_consumer.so	64-bit MediaDrm metrics consumer; NEEDED libmediadrm.so and libmediadrmmetrics_full.so	verified
+system_a	system/lib64/libmediadrmmetrics_full.so	64-bit MediaDrm metrics backend (full variant); NEEDED libprotobuf-cpp-full.so	verified
+system_a	system/lib64/libmediadrmmetrics_lite.so	64-bit MediaDrm metrics backend (lite variant); NEEDED libprotobuf-cpp-lite.so	verified
+system_a	system/lib64/libmemtrack.so	64-bit memtrack HAL client library; NEEDED libhardware.so, memtrack HIDL 1.0 and memtrack NDK library	verified
+system_a	system/lib64/libmemtrackproxy.so	64-bit memtrack proxy library; NEEDED memtrack HIDL 1.0 and memtrack NDK library	inferred
+system_ext_a	bin/display_tool	command-line display utility (brightness, CAC, CABC gray interpolation, DCS read and write, refresh rate, power); needs root; NEEDED vendor.oculus composer 1.1	observed
+system_ext_a	bin/display_validator	small utility that prints framebuffer width and height (gr_fb_width, gr_fb_height from minui)	observed
+system_ext_a	bin/hw/vendor.oculus.hardware.composer-service	StrataComposer (VROS HWComposer) HAL service, IComposer 2.4 instance display; disabled by default in init; enabled by a persist.device_config property	verified
+system_ext_a	lib/vendor.oculus.hardware.graphics.composer@1.0.so	32-bit Oculus composer HIDL 1.0 interface library; SONAME matches	verified
+system_ext_a	lib/vendor.oculus.hardware.graphics.composer@1.1.so	32-bit Oculus composer HIDL 1.1 interface library; SONAME matches	verified
+system_ext_a	lib64/vendor.oculus.hardware.graphics.composer@1.0.so	64-bit Oculus composer HIDL 1.0 interface library; SONAME matches	verified
+system_ext_a	lib64/vendor.oculus.hardware.graphics.composer@1.1.so	64-bit Oculus composer HIDL 1.1 interface library; SONAME matches	verified
+vendor_a	lib/android.hardware.drm@1.0.so	32-bit DRM HAL HIDL 1.0 interface library; SONAME matches	verified
+vendor_a	lib/hw/android.hardware.drm@1.0-impl.so	32-bit DRM HAL 1.0 implementation; exports HIDL_FETCH_IDrmFactory and HIDL_FETCH_ICryptoFactory	verified
+vendor_a	lib/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so	32-bit QTI gralloc mapper 4.0 implementation; exports HIDL_FETCH_IMapper and HIDL_FETCH_IQtiMapper	verified
+vendor_a	lib/hw/gralloc.default.so	32-bit gralloc HAL module; exports fb_device_open, mapFrameBufferLocked and gralloc register and unregister functions	verified
+vendor_a	lib/libdisp-aba.so	32-bit adaptive backlight library; exports CABL, FOSS, SVI and ABA symbols (210 exports)	verified
+vendor_a	lib/libdisplayconfig.qti.so	32-bit DisplayConfig client library; exports DisplayConfig::ClientImpl methods; NEEDED vendor.display.config@2.0.so	verified
+vendor_a	lib/libdisplaydebug.so	32-bit display debug handler library; exports display::DebugHandler (6 exports)	verified
+vendor_a	lib/libdisplayqos.so	32-bit display QoS XML parser library; NEEDED libdisplaydebug.so and libtinyxml2_1.so	observed
+vendor_a	lib/libdisplayskuutils.so	32-bit display SKU utilities library; exports DisplaySkuUtils frame-rate and feature queries (87 exports)	verified
+vendor_a	lib/libdrm.so	32-bit libdrm userspace library; SONAME matches	verified
+vendor_a	lib/libdrmfs.so	32-bit DRM file-system helper; NEEDED libdiag.so, libQSEEComAPI.so and libxml2.so	inferred
+vendor_a	lib/libdrmtime.so	32-bit DRM time helper; NEEDED libtime_genoff.so and libQSEEComAPI.so	inferred
+vendor_a	lib/libdrmutils.so	32-bit DRM utilities; exports drm_utils DRMLibLoader and DRMMaster::Init; NEEDED libdrm.so and libdisplaydebug.so	verified
+vendor_a	lib/libhdr_tm.so	32-bit HDR tone-mapping library; NEEDED libsdm-color.so, libtinyxml2_1.so and libdisplayskuutils.so	observed
+vendor_a	lib/libsdedrm.so	32-bit SDE DRM manager library; NEEDED libdrm.so, libdrmutils.so and libdisplaydebug.so	observed
+vendor_a	lib/mediadrm/libdrmclearkeyplugin.so	32-bit ClearKey DRM plugin; exports createDrmFactory and createCryptoFactory	verified
+vendor_a	lib/mediadrm/libwvdrmengine.so	32-bit Widevine DRM engine; NEEDED libprotobuf-cpp-lite-3.9.1.so, libcrypto.so and libhidlbase.so	observed
+vendor_a	etc/display/DPU930.xml	Qualcomm SDE930 display parameter table: 74 numeric Param entries (Param0 to Param73) and a commented Overrides example; copyright 2022	observed
+vendor_a	lib64/android.hardware.drm@1.0.so	64-bit DRM HAL HIDL 1.0 interface library; SONAME matches	verified
+vendor_a	lib64/android.hardware.drm@1.1.so	64-bit DRM HAL HIDL 1.1 interface library; SONAME matches; chains to 1.0	verified
+vendor_a	lib64/android.hardware.drm@1.2.so	64-bit DRM HAL HIDL 1.2 interface library; SONAME matches; chains to 1.0 and 1.1	verified
+vendor_a	lib64/android.hardware.drm@1.3.so	64-bit DRM HAL HIDL 1.3 interface library; SONAME matches; chains to 1.0 to 1.2	verified
+vendor_a	lib64/android.hardware.drm@1.4.so	64-bit DRM HAL HIDL 1.4 interface library; SONAME matches; chains to 1.0 to 1.3	verified
+vendor_a	lib64/android.hardware.graphics.composer@2.1.so	64-bit vendor IComposer HIDL 2.1 library; SONAME matches	verified
+vendor_a	lib64/android.hardware.graphics.composer@2.2.so	64-bit vendor IComposer HIDL 2.2 library; SONAME matches; chains to 2.1	verified
+vendor_a	lib64/android.hardware.graphics.composer@2.3.so	64-bit vendor IComposer HIDL 2.3 library; SONAME matches; chains to 2.2	verified
+vendor_a	lib64/android.hardware.graphics.composer@2.4.so	64-bit vendor IComposer HIDL 2.4 library; 345 defined dynamic symbols	verified
+vendor_a	lib64/camera/components/com.meta.hwcfg.node.mctf3d.so	64-bit Meta hardware-configuration node for the camera MCTF 3D component; exports ChiHwCfgUtils functions	observed
+vendor_a	lib64/hw/android.hardware.drm@1.0-impl.so	64-bit DRM HAL 1.0 implementation; NEEDED android.hardware.drm@1.0.so, android.hidl.memory@1.0.so and libhidlmemory.so	observed
+vendor_a	lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so	64-bit QTI gralloc mapper 4.0 implementation; exports HIDL_FETCH_IMapper, HIDL_FETCH_IQtiMapper and QtiMapperExtensions	verified
+vendor_a	lib64/hw/gralloc.default.so	64-bit gralloc HAL module; exports HMI module info and gralloc_lock, gralloc_unlock, gralloc_register_buffer	verified
+vendor_a	lib64/libdisp-aba.so	64-bit adaptive backlight library; exports Aba* and Cabl* functions	verified
+vendor_a	lib64/libdisplayconfig.qti.so	64-bit DisplayConfig client library; exports DisplayConfig::ClientImpl methods (SetActiveConfig, SetPowerMode, IsHDRSupported)	verified
+vendor_a	lib64/libdisplaydebug.so	64-bit display debug handler library; exports display::DebugHandler	verified
+vendor_a	lib64/libdisplayqos.so	64-bit display QoS XML parser library; exports QOSParserImpl and QosOpen	verified
+vendor_a	lib64/libdisplayskuutils.so	64-bit display SKU utilities library; exports DisplaySkuUtils functions	verified
+vendor_a	lib64/libdrm.so	64-bit libdrm userspace library; exports drmAddBufs and drmGetDevice2	verified
+vendor_a	lib64/libdrmfs.so	64-bit DRM file-system helper; NEEDED libdiag.so, libQSEEComAPI.so and libxml2.so	inferred
+vendor_a	lib64/libdrmtime.so	64-bit DRM time helper; exports smci_dispatch; NEEDED libtime_genoff.so and libQSEEComAPI.so	observed
+vendor_a	lib64/libdrmutils.so	64-bit DRM utilities; exports DRMLibLoader, DRMMaster and DRMResMgr classes; NEEDED libdrm.so and libdisplaydebug.so	verified
+vendor_a	lib64/libhdr_tm.so	64-bit HDR tone-mapping library; exports GetHdrInterface, HDR_load_tone_mapping_xml and ST2084, HLG and BT.709 transfer functions	verified
+vendor_a	lib64/libsdedrm.so	64-bit SDE DRM manager library; exports sde_drm::DRMManager, GetDRMManager and DRMAtomicReq	verified
+vendor_a	lib64/mediadrm/libdrmclearkeyplugin.so	64-bit ClearKey DRM plugin; exports createDrmFactory and createCryptoFactory	verified
+vendor_a	lib64/mediadrm/libwvdrmengine.so	64-bit Widevine DRM engine; NEEDED libprotobuf-cpp-lite-3.9.1.so, libcrypto.so and libhidlbase.so	observed
+vendor_a	lib64/vendor.qti.hardware.display.composer@3.0.so	64-bit QTI composer HIDL 3.0 interface library; SONAME matches	verified
+vendor_a	lib64/vendor.qti.hardware.display.composer@3.1.so	64-bit QTI composer HIDL 3.1 interface library; SONAME matches; chains to 3.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.composer@3.2.so	64-bit QTI composer HIDL 3.2 interface library; exports IQtiComposer and IQtiComposerClient	verified
+vendor_a	bin/display_property_handler	64-bit one-shot helper started by display_property_handler.rc with display.enable_ddic_cac; opens the DRM render node and issues DRM_IOCTL_MSM_DISPLAY_CAC	observed
+vendor_a	bin/hw/android.hardware.drm@1.4-service-lazy.widevine	Widevine DRM HAL service; registers widevine DRM and crypto factories (interfaces 1.0 to 1.4); lazy and disabled until started by init	verified
+vendor_a	bin/hw/vendor.qti.hardware.display.composer-service	QTI display HWC HAL service; registers IQtiComposer 3.2, IComposer 2.4 and the DisplayConfig AIDL; SDM core; vendor.display.* properties	verified
+vendor_a	bin/hw/vendor.qti.hardware.memtrack-service	memtrack HAL service; AIDL IMemtrack instance default; class hal, user nobody, group system	verified
+vendor_a	bin/hw/android.hardware.drm@1.0-service-lazy	DRM HAL 1.0 service; serves IDrmFactory and ICryptoFactory instance default; lazy and disabled until started by init	verified
+vendor_a	bin/hw/android.hardware.drm@1.4-service-lazy.clearkey	ClearKey DRM HAL service; registers clearkey DRM and crypto factories (interfaces 1.0 to 1.4); lazy and disabled until started by init	verified
+vendor_a	bin/hwclock	symlink to toybox_vendor, the vendor multi-call binary that provides the hwclock applet	verified

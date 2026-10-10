@@ -1,0 +1,307 @@
+partition	path	role	confidence
+odm_dlkm_a	etc/fs_config_dirs	empty file (0 bytes): fs_config directory-permission list, no entries	verified
+odm_dlkm_a	etc/fs_config_files	empty file (0 bytes): fs_config file-permission list, no entries	verified
+odm_dlkm_a	etc/NOTICE.xml.gz	gzip-compressed license notice file; decompresses to an empty <licenses/> XML document	verified
+odm_dlkm_a	etc/build.prop	build properties of the odm_dlkm image (ro.product.odm_dlkm.*, ro.odm_dlkm.build.*), device eureka, build SQ3A.220605.009.A1	verified
+odm_dlkm_a	lib/modules/pdfu_initiator.ko	loadable kernel module (aarch64 ELF): PDFU Initiator driver	verified
+odm_dlkm_a	lib/modules/as5510.ko	loadable kernel module (aarch64 ELF): Driver for AS5510 I2C Hall Effect Sensor	verified
+odm_dlkm_a	lib/modules/modules.alias	kmod alias table for odm modules (27 alias lines, OF compatible and platform/i2c aliases)	verified
+odm_dlkm_a	lib/modules/usbvdm.ko	loadable kernel module (aarch64 ELF): Meta USB VDM abstraction library	verified
+odm_dlkm_a	lib/modules/syncboss_spi.ko	loadable kernel module (aarch64 ELF): Syncboss SPI communication driver	verified
+odm_dlkm_a	lib/modules/virtual_sensor.ko	loadable kernel module (aarch64 ELF): virtual sensor driver for the oculus,virtual-sensor devicetree node (alias)	inferred
+odm_dlkm_a	lib/modules/external_battery.ko	loadable kernel module (aarch64 ELF): External battery driver	verified
+odm_dlkm_a	lib/modules/modules.dep	depmod dependency map for odm modules (27 entries, /odm/lib/modules paths)	verified
+odm_dlkm_a	lib/modules/tps65132-regulator.ko	loadable kernel module (aarch64 ELF): tps65132 regulator driver	verified
+odm_dlkm_a	lib/modules/sgm62110-regulator.ko	loadable kernel module (aarch64 ELF): SGM62110 BUCK-BOOST regulator driver	verified
+odm_dlkm_a	lib/modules/snd-soc-max98388.ko	loadable kernel module (aarch64 ELF): ALSA SoC MAX98388 driver	verified
+odm_dlkm_a	lib/modules/vd6281_adapter.ko	loadable kernel module (aarch64 ELF): vd6281 adapter driver	verified
+odm_dlkm_a	lib/modules/blu_fw_driver.ko	loadable kernel module (aarch64 ELF): firmware-update driver for a BLU peripheral (name only)	unverified
+odm_dlkm_a	lib/modules/modules.load	ordered list of 27 odm modules loaded by modprobe (init.insmod.charger.cfg and -b *)	verified
+odm_dlkm_a	lib/modules/mp3314.ko	loadable kernel module (aarch64 ELF): MP3314 I2C driver	verified
+odm_dlkm_a	lib/modules/pwm-tach-fan.ko	loadable kernel module (aarch64 ELF): PWM TACH FAN driver	verified
+odm_dlkm_a	lib/modules/usbvdm-cypd.ko	loadable kernel module (aarch64 ELF): Meta USBVDM CYPD driver	verified
+odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	loadable kernel module (aarch64 ELF): ASoC ak4333 codec driver	verified
+odm_dlkm_a	lib/modules/syncboss_powerstate.ko	loadable kernel module (aarch64 ELF): Syncboss Powerstate Event Driver	verified
+odm_dlkm_a	lib/modules/meta_swd.ko	loadable kernel module (aarch64 ELF): Meta SWD FW-Update driver	verified
+odm_dlkm_a	lib/modules/miscfifo.ko	loadable kernel module (aarch64 ELF): General purpose chardev fifo implementation	verified
+odm_dlkm_a	lib/modules/modules.softdep	soft-dependency rule file for odm modules; contains only a comment header, no rules	verified
+odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	loadable kernel module (aarch64 ELF): Syncboss Direct Channel Interface Driver	verified
+odm_dlkm_a	lib/modules/syncboss_nsync.ko	loadable kernel module (aarch64 ELF): Syncboss Nsync Event Driver	verified
+odm_dlkm_a	lib/modules/charging_dock.ko	loadable kernel module (aarch64 ELF): Charging dock driver	verified
+odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	loadable kernel module (aarch64 ELF): Syncboss MiscFIFO Event Driver	verified
+odm_dlkm_a	lib/modules/sensorlock.ko	loadable kernel module (aarch64 ELF): Sensorlock interrupt handler for trustzone input signals	verified
+odm_dlkm_a	lib/modules/uefi_logs.ko	loadable kernel module (aarch64 ELF): Map UEFI logs memory region to userspace	verified
+odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	loadable kernel module (aarch64 ELF): Miscfifo Bench Driver	verified
+odm_dlkm_a	lib/modules/usbvdm-glink.ko	loadable kernel module (aarch64 ELF): Meta USBVDM Glink driver	verified
+odm_dlkm_a	lib/modules/nautilus.ko	loadable kernel module (aarch64 ELF): device driver for the oculus,nautilus devicetree node (alias)	inferred
+vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	loadable kernel module (aarch64 ELF): ADSP Loader module	verified
+vendor_dlkm_a	lib/modules/ak09973.ko	loadable kernel module (aarch64 ELF): AK09973 magnetometer driver	verified
+vendor_dlkm_a	lib/modules/altmode-glink.ko	loadable kernel module (aarch64 ELF): QTI Type-C Alt Mode over GLINK	verified
+vendor_dlkm_a	lib/modules/arm_smmu.ko	loadable kernel module (aarch64 ELF): IOMMU API for ARM architected SMMU implementations	verified
+vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	loadable kernel module (aarch64 ELF): MSM Audio Packet Driver	verified
+vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	loadable kernel module (aarch64 ELF): audio prm	verified
+vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	loadable kernel module (aarch64 ELF): MSM Audio ION module	verified
+vendor_dlkm_a	lib/modules/bam_dma.ko	loadable kernel module (aarch64 ELF): QCOM BAM DMA engine driver	verified
+vendor_dlkm_a	lib/modules/bcl_pmic5.ko	loadable kernel module (aarch64 ELF): battery current limit (BCL) monitor on PMIC5 (name only)	inferred
+vendor_dlkm_a	lib/modules/bcl_soc.ko	loadable kernel module (aarch64 ELF): battery current limit (BCL) SoC-side monitor (name only)	inferred
+vendor_dlkm_a	lib/modules/boot_stats.ko	loadable kernel module (aarch64 ELF): MSM boot stats info driver	verified
+vendor_dlkm_a	lib/modules/bt_fm_slim.ko	loadable kernel module (aarch64 ELF): BTFM Slimbus Slave driver	verified
+vendor_dlkm_a	lib/modules/btpower.ko	loadable kernel module (aarch64 ELF): MSM Bluetooth power control driver	verified
+vendor_dlkm_a	lib/modules/bwmon.ko	loadable kernel module (aarch64 ELF): QCOM BWMON driver	verified
+vendor_dlkm_a	lib/modules/bwprof.ko	loadable kernel module (aarch64 ELF): QCOM BWPROF driver	verified
+vendor_dlkm_a	lib/modules/camcc-anorak.ko	loadable kernel module (aarch64 ELF): QTI CAM_CC ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/camera.ko	loadable kernel module (aarch64 ELF): Camera Request Manager	verified
+vendor_dlkm_a	lib/modules/cdsp-loader.ko	loadable kernel module (aarch64 ELF): CDSP Loader module	verified
+vendor_dlkm_a	lib/modules/cfg80211.ko	loadable kernel module (aarch64 ELF): wireless configuration support	verified
+vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	loadable kernel module (aarch64 ELF): QTI charger ulog glink driver	verified
+vendor_dlkm_a	lib/modules/clk-dummy.ko	loadable kernel module (aarch64 ELF): QTI Dummy Clock Driver	verified
+vendor_dlkm_a	lib/modules/clk-qcom.ko	loadable kernel module (aarch64 ELF): Common QCOM clock control library	verified
+vendor_dlkm_a	lib/modules/clk-rpmh.ko	loadable kernel module (aarch64 ELF): QCOM RPMh Clock Driver	verified
+vendor_dlkm_a	lib/modules/cmd-db.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Command DB Driver	verified
+vendor_dlkm_a	lib/modules/cnss2.ko	loadable kernel module (aarch64 ELF): CNSS2 Platform Driver	verified
+vendor_dlkm_a	lib/modules/cnss_nl.ko	loadable kernel module (aarch64 ELF): CNSS generic netlink module	verified
+vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	loadable kernel module (aarch64 ELF): CNSS Platform IPC QMI Service	verified
+vendor_dlkm_a	lib/modules/cnss_prealloc.ko	loadable kernel module (aarch64 ELF): CNSS prealloc driver	verified
+vendor_dlkm_a	lib/modules/cnss_utils.ko	loadable kernel module (aarch64 ELF): CNSS Utilities Driver	verified
+vendor_dlkm_a	lib/modules/core_hang_detect.ko	loadable kernel module (aarch64 ELF): MSM Core Hang Detect Driver	verified
+vendor_dlkm_a	lib/modules/coresight-csr.ko	loadable kernel module (aarch64 ELF): CoreSight CSR driver	verified
+vendor_dlkm_a	lib/modules/coresight-etm4x.ko	loadable kernel module (aarch64 ELF): Arm CoreSight Program Flow Trace v4.x driver	verified
+vendor_dlkm_a	lib/modules/coresight-funnel.ko	loadable kernel module (aarch64 ELF): Arm CoreSight Funnel Driver	verified
+vendor_dlkm_a	lib/modules/coresight-replicator.ko	loadable kernel module (aarch64 ELF): Arm CoreSight Replicator Driver	verified
+vendor_dlkm_a	lib/modules/coresight-tmc.ko	loadable kernel module (aarch64 ELF): Arm CoreSight Trace Memory Controller driver	verified
+vendor_dlkm_a	lib/modules/coresight.ko	loadable kernel module (aarch64 ELF): Arm CoreSight tracer driver	verified
+vendor_dlkm_a	lib/modules/crypto-qti-common.ko	loadable kernel module (aarch64 ELF): Common crypto library for storage encryption	verified
+vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	loadable kernel module (aarch64 ELF): Crypto HWKM library for storage encryption	verified
+vendor_dlkm_a	lib/modules/dcc_v2.ko	loadable kernel module (aarch64 ELF): MSM data capture and compare engine	verified
+vendor_dlkm_a	lib/modules/dcvs_fp.ko	loadable kernel module (aarch64 ELF): QCOM DCVS FP Driver	verified
+vendor_dlkm_a	lib/modules/ddr_cdev.ko	loadable kernel module (aarch64 ELF): DDR cooling device (name only)	inferred
+vendor_dlkm_a	lib/modules/debug-regulator.ko	loadable kernel module (aarch64 ELF): Regulator debug control library	verified
+vendor_dlkm_a	lib/modules/debugcc-anorak.ko	loadable kernel module (aarch64 ELF): QTI DEBUG CC ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	loadable kernel module (aarch64 ELF): QTI DISP_CC_0 ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	loadable kernel module (aarch64 ELF): QTI DISP_CC_1 ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/dwc3-msm.ko	loadable kernel module (aarch64 ELF): DesignWare USB3 MSM Glue Layer	verified
+vendor_dlkm_a	lib/modules/eud.ko	loadable kernel module (aarch64 ELF): QTI EUD driver	verified
+vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	loadable kernel module (aarch64 ELF): FastRPC driver over rpmsg, msm-fastrpc-rpmsg alias, exports fastrpc_driver_* (alias/exports)	inferred
+vendor_dlkm_a	lib/modules/gcc-anorak.ko	loadable kernel module (aarch64 ELF): QTI GCC ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/gdsc-regulator.ko	loadable kernel module (aarch64 ELF): GDSC regulator control library	verified
+vendor_dlkm_a	lib/modules/gh_msgq.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Gunyah Message Queue Driver	verified
+vendor_dlkm_a	lib/modules/gh_rm_drv.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Gunyah Resource Mgr. Driver	verified
+vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	loadable kernel module (aarch64 ELF): QCOM Gunyah Watchdog Driver	verified
+vendor_dlkm_a	lib/modules/glink_pkt.ko	loadable kernel module (aarch64 ELF): MSM G-Link Packet Port	verified
+vendor_dlkm_a	lib/modules/glink_probe.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. GLINK probe helper driver	verified
+vendor_dlkm_a	lib/modules/gpi.ko	loadable kernel module (aarch64 ELF): QCOM GPI DMA engine driver	verified
+vendor_dlkm_a	lib/modules/gpr_dlkm.ko	loadable kernel module (aarch64 ELF): QTI GPR Bus	verified
+vendor_dlkm_a	lib/modules/gpucc-anorak.ko	loadable kernel module (aarch64 ELF): QTI GPU_CC ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/hdcp.ko	loadable kernel module (aarch64 ELF): HDCP driver	verified
+vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	loadable kernel module (aarch64 ELF): MSM External Display Audio CODEC Driver	verified
+vendor_dlkm_a	lib/modules/hwkm.ko	loadable kernel module (aarch64 ELF): QTI Hardware Key Manager library	verified
+vendor_dlkm_a	lib/modules/i2c-dev.ko	loadable kernel module (aarch64 ELF): I2C /dev entries driver	verified
+vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	loadable kernel module (aarch64 ELF): I2C controller driver for GENI serial engines, platform alias i2c_geni (alias)	inferred
+vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	loadable kernel module (aarch64 ELF): Qualcomm BCM Voter interconnect driver	verified
+vendor_dlkm_a	lib/modules/icc-debug.ko	loadable kernel module (aarch64 ELF): QCOM ICC debug library	verified
+vendor_dlkm_a	lib/modules/icc-rpmh.ko	loadable kernel module (aarch64 ELF): RPMh interconnect (ICC) provider, exports qcom_icc_aggregate (exports)	inferred
+vendor_dlkm_a	lib/modules/icc-test.ko	loadable kernel module (aarch64 ELF): interconnect test module (name only)	inferred
+vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	loadable kernel module (aarch64 ELF): IIO helper functions for setting up triggered buffers	verified
+vendor_dlkm_a	lib/modules/iommu-logger.ko	loadable kernel module (aarch64 ELF): QTI IOMMU SUPPORT	verified
+vendor_dlkm_a	lib/modules/ipclite.ko	loadable kernel module (aarch64 ELF): IPCLite Driver	verified
+vendor_dlkm_a	lib/modules/kfifo_buf.ko	loadable kernel module (aarch64 ELF): IIO kfifo buffer helper library, exports iio_kfifo_allocate (exports)	inferred
+vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	loadable kernel module (aarch64 ELF): Kryo EDAC driver	verified
+vendor_dlkm_a	lib/modules/leds-gpio.ko	loadable kernel module (aarch64 ELF): GPIO LED driver	verified
+vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	loadable kernel module (aarch64 ELF): QTI TRI_LED driver	verified
+vendor_dlkm_a	lib/modules/llcc-qcom.ko	loadable kernel module (aarch64 ELF): Qualcomm Last Level Cache Controller	verified
+vendor_dlkm_a	lib/modules/llcc_perfmon.ko	loadable kernel module (aarch64 ELF): QCOM LLCC PMU MONITOR	verified
+vendor_dlkm_a	lib/modules/log_gpu_error.ko	loadable kernel module (aarch64 ELF): Log GPU Errors Driver	verified
+vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	loadable kernel module (aarch64 ELF): LPASS Codec driver	verified
+vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	loadable kernel module (aarch64 ELF): RX macro driver	verified
+vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	loadable kernel module (aarch64 ELF): TX macro driver	verified
+vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	loadable kernel module (aarch64 ELF): LPASS codec VA macro driver	verified
+vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	loadable kernel module (aarch64 ELF): WSA2 macro driver	verified
+vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	loadable kernel module (aarch64 ELF): WSA macro driver	verified
+vendor_dlkm_a	lib/modules/lvstest.ko	loadable kernel module (aarch64 ELF): Link Layer Validation System Driver	verified
+vendor_dlkm_a	lib/modules/lzo-rle.ko	loadable kernel module (aarch64 ELF): LZO-RLE Compression Algorithm	verified
+vendor_dlkm_a	lib/modules/lzo.ko	loadable kernel module (aarch64 ELF): LZO Compression Algorithm	verified
+vendor_dlkm_a	lib/modules/lzo_compress.ko	loadable kernel module (aarch64 ELF): LZO1X-1 Compressor	verified
+vendor_dlkm_a	lib/modules/lzo_decompress.ko	loadable kernel module (aarch64 ELF): LZO1X Decompressor	verified
+vendor_dlkm_a	lib/modules/mac80211.ko	loadable kernel module (aarch64 ELF): IEEE 802.11 subsystem	verified
+vendor_dlkm_a	lib/modules/machine_dlkm.ko	loadable kernel module (aarch64 ELF): ALSA SoC msm	verified
+vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	loadable kernel module (aarch64 ELF): wcd MBHC v2 module	verified
+vendor_dlkm_a	lib/modules/mdt_loader.ko	loadable kernel module (aarch64 ELF): Firmware parser for Qualcomm MDT format	verified
+vendor_dlkm_a	lib/modules/mem-hooks.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Memory Trace Hook Call-Back Registration	verified
+vendor_dlkm_a	lib/modules/mem_buf.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Memory Buffer Sharing driver	verified
+vendor_dlkm_a	lib/modules/mem_buf_dev.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Memory Buffer Sharing driver	verified
+vendor_dlkm_a	lib/modules/memlat.ko	loadable kernel module (aarch64 ELF): QCOM MEMLAT Driver	verified
+vendor_dlkm_a	lib/modules/memory_dump_v2.ko	loadable kernel module (aarch64 ELF): Memory Dump V2 Driver	verified
+vendor_dlkm_a	lib/modules/mhi.ko	loadable kernel module (aarch64 ELF): MHI Host Interface	verified
+vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	loadable kernel module (aarch64 ELF): MHI DTR Driver	verified
+vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	loadable kernel module (aarch64 ELF): MHI NETDEV Network Interface	verified
+vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	loadable kernel module (aarch64 ELF): MHI UCI Driver	verified
+vendor_dlkm_a	lib/modules/modules.alias	kmod alias table for vendor modules (841 lines including header; OF compatible, platform and MHI aliases)	verified
+vendor_dlkm_a	lib/modules/modules.blocklist	blocklist for modprobe -b: 69 blocklist lines (68 unique names, e.g. wlan, sched-walt, llcc_perfmon, usbip-vudc)	verified
+vendor_dlkm_a	lib/modules/modules.dep	depmod dependency map for vendor modules (262 entries, /vendor/lib/modules paths, transitive closure)	verified
+vendor_dlkm_a	lib/modules/modules.load	ordered list of all 262 vendor modules loaded by modprobe (-b * from init.insmod.cfg)	verified
+vendor_dlkm_a	lib/modules/modules.softdep	soft-dependency rules (16 softdep lines, pre/post module ordering) with a header comment	verified
+vendor_dlkm_a	lib/modules/msm-eva.ko	loadable kernel module (aarch64 ELF): computer-vision (CVP/EVA) accelerator driver, msm-cvp alias (alias/exports)	inferred
+vendor_dlkm_a	lib/modules/msm-mmrm.ko	loadable kernel module (aarch64 ELF): QTI MMRM Driver	verified
+vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	loadable kernel module (aarch64 ELF): DMA-to-IOMMU mapping library, exports msm_dma_map_sg_attrs (exports)	inferred
+vendor_dlkm_a	lib/modules/msm_drm.ko	loadable kernel module (aarch64 ELF): MSM DRM Driver	verified
+vendor_dlkm_a	lib/modules/msm_ext_display.ko	loadable kernel module (aarch64 ELF): MSM External Display	verified
+vendor_dlkm_a	lib/modules/msm_kgsl.ko	loadable kernel module (aarch64 ELF): 3D Graphics driver	verified
+vendor_dlkm_a	lib/modules/msm_qmp.ko	loadable kernel module (aarch64 ELF): MSM QTI Mailbox Protocol	verified
+vendor_dlkm_a	lib/modules/msm_rng.ko	loadable kernel module (aarch64 ELF): QTI MSM Random Number Driver	verified
+vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. IRQ Logging driver	verified
+vendor_dlkm_a	lib/modules/msm_video.ko	loadable kernel module (aarch64 ELF): video codec (vidc) driver, msm-vidc alias, exports msm_vidc_* (alias/exports)	inferred
+vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	loadable kernel module (aarch64 ELF): QCOM SPMI SDAM driver	verified
+vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	loadable kernel module (aarch64 ELF): Qualcomm QFPROM driver	verified
+vendor_dlkm_a	lib/modules/panel_event_notifier.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Panel event notifier	verified
+vendor_dlkm_a	lib/modules/pci-msm-drv.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. PCIe RC driver	verified
+vendor_dlkm_a	lib/modules/pdr_interface.ko	loadable kernel module (aarch64 ELF): Qualcomm Protection Domain Restart helpers	verified
+vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	loadable kernel module (aarch64 ELF): MSM USB HS PHY driver	verified
+vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	loadable kernel module (aarch64 ELF): MSM USB SS QMP PHY driver	verified
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	loadable kernel module (aarch64 ELF): Universal Flash Storage (UFS) QCOM PHY QMP 14nm	verified
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	loadable kernel module (aarch64 ELF): Universal Flash Storage (UFS) QCOM PHY QMP v3	verified
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	loadable kernel module (aarch64 ELF): Universal Flash Storage (UFS) QCOM PHY QMP v4 ANAROK	verified
+vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	loadable kernel module (aarch64 ELF): Universal Flash Storage (UFS) QCOM PHY	verified
+vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	loadable kernel module (aarch64 ELF): QTI anorak pinctrl driver	verified
+vendor_dlkm_a	lib/modules/pinctrl-msm.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. pinctrl-msm driver	verified
+vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	loadable kernel module (aarch64 ELF): Qualcomm SPMI PMIC GPIO pin control driver	verified
+vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	loadable kernel module (aarch64 ELF): Qualcomm SPMI PMIC MPP pin control driver	verified
+vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	loadable kernel module (aarch64 ELF): QTI LPI GPIO pin control driver	verified
+vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	loadable kernel module (aarch64 ELF): PM8941 Power Key driver	verified
+vendor_dlkm_a	lib/modules/pmic-pon-log.ko	loadable kernel module (aarch64 ELF): QTI PMIC PON log driver	verified
+vendor_dlkm_a	lib/modules/pmic_glink.ko	loadable kernel module (aarch64 ELF): QTI PMIC Glink driver	verified
+vendor_dlkm_a	lib/modules/pmu_scmi.ko	loadable kernel module (aarch64 ELF): ARM SCMI PMU driver	verified
+vendor_dlkm_a	lib/modules/pmu_vendor.ko	loadable kernel module (aarch64 ELF): SCMI PMU vendor Protocol	verified
+vendor_dlkm_a	lib/modules/powerstate_mgr.ko	loadable kernel module (aarch64 ELF): POWERSTATE_MANAGER	verified
+vendor_dlkm_a	lib/modules/proxy-consumer.ko	loadable kernel module (aarch64 ELF): Regulator proxy consumer library	verified
+vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	loadable kernel module (aarch64 ELF): QTI LPG driver	verified
+vendor_dlkm_a	lib/modules/q6_dlkm.ko	loadable kernel module (aarch64 ELF): Q6 module	verified
+vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	loadable kernel module (aarch64 ELF): Audio notifier driver	verified
+vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	loadable kernel module (aarch64 ELF): PDR framework driver	verified
+vendor_dlkm_a	lib/modules/qce50.ko	loadable kernel module (aarch64 ELF): Crypto Engine driver	verified
+vendor_dlkm_a	lib/modules/qcedev-mod.ko	loadable kernel module (aarch64 ELF): QTI DEV Crypto driver	verified
+vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	loadable kernel module (aarch64 ELF): QTI clock driver for CPUFREQ HW debug	verified
+vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	loadable kernel module (aarch64 ELF): QCOM CPUFREQ HW Driver	verified
+vendor_dlkm_a	lib/modules/qcom-dcvs.ko	loadable kernel module (aarch64 ELF): QCOM DCVS Driver	verified
+vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	loadable kernel module (aarch64 ELF): MSM Download Mode Driver	verified
+vendor_dlkm_a	lib/modules/qcom-pdc.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Power Domain Controller	verified
+vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	loadable kernel module (aarch64 ELF): QCOM PMU Driver	verified
+vendor_dlkm_a	lib/modules/qcom-pon.ko	loadable kernel module (aarch64 ELF): pm8916 Power On driver	verified
+vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	loadable kernel module (aarch64 ELF): MSM Reboot Reason Driver	verified
+vendor_dlkm_a	lib/modules/qcom-scm.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. SCM driver	verified
+vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies Inc. PMIC5 Gen3 ADC driver	verified
+vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	loadable kernel module (aarch64 ELF): Qualcomm SPMI PMIC driver	verified
+vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	loadable kernel module (aarch64 ELF): QPNP PMIC Temperature Alarm driver	verified
+vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	loadable kernel module (aarch64 ELF): Qualcomm ADC common functionality	verified
+vendor_dlkm_a	lib/modules/qcom_aoss.ko	loadable kernel module (aarch64 ELF): Qualcomm AOSS QMP driver	verified
+vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	loadable kernel module (aarch64 ELF): QCOM CPU Vendor Hooks Driver	verified
+vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. (QTI) CPUSS sleep stats driver	verified
+vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	loadable kernel module (aarch64 ELF): DMA-BUF heap allocator (carveout and secure system heaps), exports carveout_heap_add_memory (exports)	inferred
+vendor_dlkm_a	lib/modules/qcom_edac.ko	loadable kernel module (aarch64 ELF): QCOM EDAC driver	verified
+vendor_dlkm_a	lib/modules/qcom_glink.ko	loadable kernel module (aarch64 ELF): Qualcomm GLINK driver	verified
+vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	loadable kernel module (aarch64 ELF): Qualcomm GLINK SMEM driver	verified
+vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	loadable kernel module (aarch64 ELF): QTI GLINK SPSS driver	verified
+vendor_dlkm_a	lib/modules/qrtr.ko	loadable kernel module (aarch64 ELF): Qualcomm IPC-router driver	verified
+vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	loadable kernel module (aarch64 ELF): Hardware spinlock driver for Qualcomm SoCs	verified
+vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	loadable kernel module (aarch64 ELF): IOMMU debug support (name only)	inferred
+vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	loadable kernel module (aarch64 ELF): IOMMU utility library, iommu-dma alias, exports fast_smmu_* (alias/exports)	inferred
+vendor_dlkm_a	lib/modules/qcom_ipcc.ko	loadable kernel module (aarch64 ELF): Qualcomm IPCC Driver	verified
+vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	loadable kernel module (aarch64 ELF): QCOM LLCC PMU	verified
+vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	loadable kernel module (aarch64 ELF): QCOM Logbuf Vendor Hooks Driver	verified
+vendor_dlkm_a	lib/modules/qcom_lpm.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. cpuidle LPM governor	verified
+vendor_dlkm_a	lib/modules/qcom_pil_info.ko	loadable kernel module (aarch64 ELF): Qualcomm PIL relocation info	verified
+vendor_dlkm_a	lib/modules/qcom_q6v5.ko	loadable kernel module (aarch64 ELF): Qualcomm Peripheral Image Loader for Q6V5	verified
+vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	loadable kernel module (aarch64 ELF): Qualcomm Hexagon v5 Peripheral Authentication Service driver	verified
+vendor_dlkm_a	lib/modules/qcom_ramdump.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. Ramdump driver	verified
+vendor_dlkm_a	lib/modules/qcom_rimps.ko	loadable kernel module (aarch64 ELF): QTI RIMPS Driver	verified
+vendor_dlkm_a	lib/modules/qcom_rpmh.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. RPMh Driver	verified
+vendor_dlkm_a	lib/modules/qcom_smd.ko	loadable kernel module (aarch64 ELF): Qualcomm Shared Memory Driver	verified
+vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	loadable kernel module (aarch64 ELF): QCOM Soc Watchdog Driver	verified
+vendor_dlkm_a	lib/modules/qcom_spss.ko	loadable kernel module (aarch64 ELF): QTI Peripheral Image Loader for Secure Subsystem	verified
+vendor_dlkm_a	lib/modules/qcom_sync_file.ko	loadable kernel module (aarch64 ELF): QCOM Speculative Sync Driver	verified
+vendor_dlkm_a	lib/modules/qcom_sysmon.ko	loadable kernel module (aarch64 ELF): Qualcomm sysmon driver	verified
+vendor_dlkm_a	lib/modules/qcom_tsens.ko	loadable kernel module (aarch64 ELF): QCOM Temperature Sensor driver	verified
+vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	loadable kernel module (aarch64 ELF): QCOM Watchdog Driver Core	verified
+vendor_dlkm_a	lib/modules/qfprom-sys.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. QFPROM_SYS driver	verified
+vendor_dlkm_a	lib/modules/qmi_helpers.ko	loadable kernel module (aarch64 ELF): QMI encoder/decoder helper	verified
+vendor_dlkm_a	lib/modules/qnoc-anorak.ko	loadable kernel module (aarch64 ELF): Anorak NoC driver	verified
+vendor_dlkm_a	lib/modules/qnoc-qos.ko	loadable kernel module (aarch64 ELF): NoC QoS register and ops provider (qnoc4), exports qcom_qnoc4_ops (exports)	inferred
+vendor_dlkm_a	lib/modules/qrtr-mhi.ko	loadable kernel module (aarch64 ELF): Qualcomm IPC-Router MHI interface driver	verified
+vendor_dlkm_a	lib/modules/qrtr-smd.ko	loadable kernel module (aarch64 ELF): Qualcomm IPC-Router SMD interface driver	verified
+vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	loadable kernel module (aarch64 ELF): QSEE IPC interrupt bridge	verified
+vendor_dlkm_a	lib/modules/qseecom-mod.ko	loadable kernel module (aarch64 ELF): QTI Secure Execution Environment Communicator	verified
+vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	loadable kernel module (aarch64 ELF): Fixed voltage regulator	verified
+vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	loadable kernel module (aarch64 ELF): QTI Regulator OCP Notifier Driver	verified
+vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	loadable kernel module (aarch64 ELF): Regmap QTI debugfs library	verified
+vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	loadable kernel module (aarch64 ELF): QTI Glink battery charger driver	verified
+vendor_dlkm_a	lib/modules/qti_battery_debug.ko	loadable kernel module (aarch64 ELF): QTI Glink battery debug driver	verified
+vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. cpufreq cooling driver	verified
+vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. devfreq cooling device driver	verified
+vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. EPM Hardware driver	verified
+vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	loadable kernel module (aarch64 ELF): QTI QMI cooling device driver	verified
+vendor_dlkm_a	lib/modules/qti_qmi_sensor_v2.ko	loadable kernel module (aarch64 ELF): QMI-based sensor client (name only)	inferred
+vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	loadable kernel module (aarch64 ELF): Userspace cooling device driver	verified
+vendor_dlkm_a	lib/modules/rdbg.ko	loadable kernel module (aarch64 ELF): rdbg module	verified
+vendor_dlkm_a	lib/modules/reboot-mode.ko	loadable kernel module (aarch64 ELF): System reboot mode core library	verified
+vendor_dlkm_a	lib/modules/regmap-spmi.ko	loadable kernel module (aarch64 ELF): regmap backend for the SPMI bus, exports __devm_regmap_init_spmi_base (exports)	inferred
+vendor_dlkm_a	lib/modules/rimps_log.ko	loadable kernel module (aarch64 ELF): RIMPS log helper, companion of qcom_rimps (name only)	inferred
+vendor_dlkm_a	lib/modules/rpmh-regulator.ko	loadable kernel module (aarch64 ELF): RPMh regulator driver	verified
+vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	loadable kernel module (aarch64 ELF): Qualcomm Remoteproc helper driver	verified
+vendor_dlkm_a	lib/modules/rq_stats.ko	loadable kernel module (aarch64 ELF): QCOM Run Queue Stats	verified
+vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	loadable kernel module (aarch64 ELF): PMIC8xxx RTC driver	verified
+vendor_dlkm_a	lib/modules/sched-walt.ko	loadable kernel module (aarch64 ELF): WALT scheduler extension: core control notifiers, boost and CPU pause (exports)	inferred
+vendor_dlkm_a	lib/modules/secure_buffer.ko	loadable kernel module (aarch64 ELF): secure buffer VMID assignment (hyp_assign_* exports), secure-buffer alias	inferred
+vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	loadable kernel module (aarch64 ELF): Qualcomm SLIMBus NGD controller	verified
+vendor_dlkm_a	lib/modules/slimbus.ko	loadable kernel module (aarch64 ELF): SLIMbus core	verified
+vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	loadable kernel module (aarch64 ELF): SMC Invoke driver	verified
+vendor_dlkm_a	lib/modules/smp2p.ko	loadable kernel module (aarch64 ELF): Qualcomm Shared Memory Point to Point driver	verified
+vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	loadable kernel module (aarch64 ELF): SMP2P SLEEP STATE	verified
+vendor_dlkm_a	lib/modules/snd-usb-audio-qmi.ko	loadable kernel module (aarch64 ELF): USB AUDIO QMI Service Driver	verified
+vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	loadable kernel module (aarch64 ELF): SND event module	verified
+vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. (QTI) SoC Sleep Stats driver	verified
+vendor_dlkm_a	lib/modules/socinfo.ko	loadable kernel module (aarch64 ELF): Qualcomm SoCinfo driver	verified
+vendor_dlkm_a	lib/modules/spcom.ko	loadable kernel module (aarch64 ELF): Secure Processor Communication	verified
+vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	loadable kernel module (aarch64 ELF): q6 core	verified
+vendor_dlkm_a	lib/modules/spi-msm-geni.ko	loadable kernel module (aarch64 ELF): SPI controller driver for GENI serial engines, platform alias spi_geni (alias)	inferred
+vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	loadable kernel module (aarch64 ELF): SPMI Glink Debug Driver	verified
+vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	loadable kernel module (aarch64 ELF): SPMI PMIC arbiter debug driver (alias)	inferred
+vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	loadable kernel module (aarch64 ELF): SPMI PMIC arbiter driver, exports spmi_pmic_arb_map_address (alias/exports)	inferred
+vendor_dlkm_a	lib/modules/sps_drv.ko	loadable kernel module (aarch64 ELF): Smart Peripheral Switch (SPS)	verified
+vendor_dlkm_a	lib/modules/spss_utils.ko	loadable kernel module (aarch64 ELF): Secure Processor Utilities	verified
+vendor_dlkm_a	lib/modules/stub_dlkm.ko	loadable kernel module (aarch64 ELF): Generic MSM CODEC driver	verified
+vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. (QTI) subsystem sleep stats driver	verified
+vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	loadable kernel module (aarch64 ELF): SoundWire Master Controller	verified
+vendor_dlkm_a	lib/modules/swr_dlkm.ko	loadable kernel module (aarch64 ELF): Soundwire module	verified
+vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	loadable kernel module (aarch64 ELF): SWR DMIC driver	verified
+vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	loadable kernel module (aarch64 ELF): SWR haptics driver	verified
+vendor_dlkm_a	lib/modules/synx-driver-v2.ko	loadable kernel module (aarch64 ELF): Global Synx Driver	verified
+vendor_dlkm_a	lib/modules/sys_pm_vx.ko	loadable kernel module (aarch64 ELF): Qualcomm Technologies, Inc. (QTI) System PM Violators driver	verified
+vendor_dlkm_a	lib/modules/thermal_config.ko	loadable kernel module (aarch64 ELF): ThermalZone config debug driver	verified
+vendor_dlkm_a	lib/modules/tmecom-intf.ko	loadable kernel module (aarch64 ELF): MSM TMECom QTI mailbox protocol client	verified
+vendor_dlkm_a	lib/modules/tz_log.ko	loadable kernel module (aarch64 ELF): TZ Log driver	verified
+vendor_dlkm_a	lib/modules/ucsi_glink.ko	loadable kernel module (aarch64 ELF): QTI UCSI Glink driver	verified
+vendor_dlkm_a	lib/modules/ufs_qcom.ko	loadable kernel module (aarch64 ELF): UFS host controller driver for Qualcomm SoCs, ufshc alias (alias)	inferred
+vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	loadable kernel module (aarch64 ELF): UFS Crypto ops QTI implementation	verified
+vendor_dlkm_a	lib/modules/usb_f_ccid.ko	loadable kernel module (aarch64 ELF): USB CCID function Driver	verified
+vendor_dlkm_a	lib/modules/usb_f_cdev.ko	loadable kernel module (aarch64 ELF): USB Serial Character Driver	verified
+vendor_dlkm_a	lib/modules/usb_f_diag.ko	loadable kernel module (aarch64 ELF): Diag function driver	verified
+vendor_dlkm_a	lib/modules/usb_f_gsi.ko	loadable kernel module (aarch64 ELF): GSI function driver	verified
+vendor_dlkm_a	lib/modules/usb_f_qdss.ko	loadable kernel module (aarch64 ELF): USB QDSS Function Driver	verified
+vendor_dlkm_a	lib/modules/usbip-core.ko	loadable kernel module (aarch64 ELF): USB/IP Core	verified
+vendor_dlkm_a	lib/modules/usbip-vudc.ko	loadable kernel module (aarch64 ELF): USB over IP Device Controller	verified
+vendor_dlkm_a	lib/modules/userspace-consumer.ko	loadable kernel module (aarch64 ELF): Userspace consumer for voltage and current regulators	verified
+vendor_dlkm_a	lib/modules/videocc-anorak.ko	loadable kernel module (aarch64 ELF): QTI VIDEO_CC ANORAK Driver	verified
+vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	loadable kernel module (aarch64 ELF): WCD937X Codec driver	verified
+vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	loadable kernel module (aarch64 ELF): WCD937X Swr Slave driver	verified
+vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	loadable kernel module (aarch64 ELF): WCD938X Codec driver	verified
+vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	loadable kernel module (aarch64 ELF): WCD938X Swr Slave driver	verified
+vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	loadable kernel module (aarch64 ELF): WCD Class-H Driver	verified
+vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	loadable kernel module (aarch64 ELF): WCD9XXX CODEC core init driver	verified
+vendor_dlkm_a	lib/modules/wlan.ko	loadable kernel module (aarch64 ELF): WLAN HOST DEVICE DRIVER	verified
+vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	loadable kernel module (aarch64 ELF): WLAN FW QMI service	verified
+vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	loadable kernel module (aarch64 ELF): WSA883x codec driver	verified
+vendor_dlkm_a	lib/modules/zram.ko	loadable kernel module (aarch64 ELF): Compressed RAM Block Device	verified
+vendor_dlkm_a	lib/modules/zsmalloc.ko	loadable kernel module (aarch64 ELF): zsmalloc allocator for compressed pages, exports zs_create_pool (exports)	inferred
+vendor_dlkm_a	etc/fs_config_files	empty file (0 bytes): fs_config file-permission list, no entries	verified
+vendor_dlkm_a	etc/build.prop	build properties of the vendor_dlkm image (ro.product.vendor_dlkm.*, ro.vendor_dlkm.build.*), device eureka	verified
+vendor_dlkm_a	etc/fs_config_dirs	empty file (0 bytes): fs_config directory-permission list, no entries	verified
+vendor_dlkm_a	etc/NOTICE.xml.gz	gzip-compressed license notice file; decompresses to an empty <licenses/> XML document	verified

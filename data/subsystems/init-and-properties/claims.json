@@ -1,0 +1,464 @@
+{
+ "key": "init-and-properties",
+ "summary": "The init-and-properties group covers 183 manifest rows (181 regular files, 2 symlinks) across five partitions (odm_a 24, product_a 2, system_a 80, system_ext_a 31, vendor_a 46). It contains the init executable and its two symlinks, the main system init script with zygote and USB variants, 170 .rc files defining 191 services and 371 on-triggers, vendor init scripts for the anorak SoC and eureka device, three vendor shell helpers, two fstab files, two ueventd.rc rule files, and five build.prop files holding 395 distinct property keys. Boot flow as declared by the files: the init binary reads /system/etc/init/hw/init.rc, which imports /init.environ.rc, the USB scripts, /vendor/etc/init/hw/init.${ro.hardware}.rc (init.eureka.rc, which imports init.anorak.rc) and /system/etc/init/hw/init.${ro.zygote}.rc (init.zygote64_stub32.rc, selected by ro.zygote=zygote64_stub32 in the vendor build.prop). The fstab selected by ro.hardware is /vendor/etc/fstab.eureka, loaded by mount_all in init.anorak.rc. The ro.hardware value itself is not in any build.prop of this group.",
+ "rowsExpected": 183,
+ "rowsListed": 183,
+ "claims": [
+  {
+   "id": "C01",
+   "claim": "The group has 183 rows: 181 regular files and 2 symlinks, split odm_a 24, product_a 2, system_a 80, system_ext_a 31, vendor_a 46.",
+   "label": "verified",
+   "file": "<image>/classified.tsv",
+   "evidence": "cd <scratch>/eureka && awk -F'\\t' '$1==\"init-and-properties\"' classified.tsv | wc -l -> 183; ... | cut -f4 | sort | uniq -c -> 181 file, 2 symlink; ... | cut -f2 | sort | uniq -c -> 24 odm_a, 2 product_a, 80 system_a, 31 system_ext_a, 46 vendor_a",
+   "verdict": "confirmed",
+   "reason": "Command: awk -F'\\t' '$1==\"init-and-properties\"' classified.tsv | wc -l -> 183. Same filter piped to cut -f4 | sort | uniq -c -> 181 file, 2 symlink. cut -f2 | sort | uniq -c -> 24 odm_a, 2 product_a, 80 system_a, 31 system_ext_a, 46 vendor_a. The group input_rows.tsv has 183 rows of 7 fields with no header row; its per-partition counts match the claim.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C02",
+   "claim": "All 181 regular files match their manifest sha256 values; the two symlink rows carry no hash ('-').",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/init-and-properties/input_rows.tsv",
+   "evidence": "loop over input_rows.tsv: if kind=file, got=$(sha256sum mnt/$part/$path | cut -d' ' -f1), compare with column 7 -> output: rows=183 mismatches=0; cat -A on symlink rows ends with ^I-$",
+   "verdict": "confirmed",
+   "reason": "Command: while IFS=$'\\t' read -r sub part path kind size mime sha; do if kind is file, got=$(sha256sum mnt/$part/$path | cut -d' ' -f1) and compare with column 7; done < input_rows.tsv -> rows=183 files=181 mismatches=0. Command: awk -F'\\t' '$4==\"symlink\"' input_rows.tsv | cat -A -> system_a^Iinit^Isymlink^I-$ and system_a^Isystem/bin/ueventd^Isymlink^I-$. Both symlink rows carry '-' in the hash column; no file row does.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C03",
+   "claim": "The 170 .rc files contain 191 service definitions in 145 files and 371 on-triggers; 23 odm_a, 1 product_a, 76 system_a, 30 system_ext_a, 40 vendor_a rc files.",
+   "label": "verified",
+   "file": "<image>/mnt",
+   "evidence": "cat <rc files> | grep -cE '^[[:space:]]*service ' -> 191; cat <rc files> | grep -cE '^on ' summed per file -> 371; files with >=1 service -> 145; rc count per partition via awk on input_rows.tsv -> 23, 1, 76, 30, 40",
+   "verdict": "confirmed",
+   "reason": "Command: xargs -d '\\n' cat < rc_files.list | grep -cE '^[[:space:]]*service ' -> 191. Same with grep -cE '^on ' -> 371. Per-file grep -cE '^[[:space:]]*service ' greater than 0 -> 145 files. rc_files.list built from input_rows.tsv (kind=file, path ending .rc) -> 170 files; per-partition counts -> 23 odm_a, 1 product_a, 76 system_a, 30 system_ext_a, 40 vendor_a.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C04",
+   "claim": "Text files in the group are LF-terminated with no CR bytes; the only file without a trailing newline is the init binary.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/init",
+   "evidence": "tail -c1 <file> | od -An -c for each file kind=file -> '\\n' for all except system_a/system/bin/init (last byte \\0); grep -q $'\\r' per file -> only system_a/system/bin/init matched",
+   "verdict": "confirmed",
+   "reason": "Command: tail -c1 <file> | od -An -c for all 181 regular files -> newline for 180 text/plain files. The only other ending is a NUL byte in system_a/system/bin/init (mime application/x-pie-executable). Command: LC_ALL=C grep -q $'\\r' per file -> only system_a/system/bin/init matched. The 180 text files contain no CR bytes and end in LF.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C05",
+   "claim": "Six service names are each defined in two or more rc files: zygote (4 files), zygote_secondary, surfaceflinger, health-hal-2-1, vendor.audio-hal, vendor.qti.hardware.display.composer (2 files each). 183 distinct service names exist.",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/init-and-properties/service_index.tsv",
+   "evidence": "cut -f1 service_index.tsv | sort | uniq -c | awk '$1>1' -> 4 zygote, 2 zygote_secondary, 2 vendor.qti.hardware.display.composer, 2 vendor.audio-hal, 2 surfaceflinger, 2 health-hal-2-1; cut -f1 service_index.tsv | sort -u | wc -l -> 183",
+   "verdict": "confirmed",
+   "reason": "Command: cut -f1 service_index.tsv | sort | uniq -c | awk '$1>1' -> 4 zygote, 2 zygote_secondary, 2 vendor.qti.hardware.display.composer, 2 vendor.audio-hal, 2 surfaceflinger, 2 health-hal-2-1. Command: cut -f1 service_index.tsv | sort -u | wc -l -> 183. Independent re-derivation from the rc files (grep -HE '^[[:space:]]*service ' then sed name extraction) gives 191 lines, 183 distinct, identical to the index. Each duplicated name is defined in distinct files (zygote in init.zygote64.rc, init.zygote32.rc, init.zygote64_32.rc, init.zygote64_stub32.rc).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C06",
+   "claim": "The init binary is an aarch64 ELF64 PIE, dynamically linked with interpreter /system/bin/bootstrap/linker64, stripped, 12 program headers and 30 section headers, entry point 0xac000.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/init",
+   "evidence": "file mnt/system_a/system/bin/init -> ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/bootstrap/linker64, BuildID[md5/uuid]=ab61af44159984e98f5fa1da776a36db, stripped; readelf -h init -> Type DYN, Entry point address 0xac000, Number of program headers 12, Number of section headers 30",
+   "verdict": "confirmed",
+   "reason": "Command: file mnt/system_a/system/bin/init -> ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/bootstrap/linker64, BuildID[md5/uuid]=ab61af44159984e98f5fa1da776a36db, stripped. Command: readelf -h init -> Class ELF64, Type DYN (Position-Independent Executable file), Machine AArch64, Entry point address 0xac000, Number of program headers 12, Number of section headers 30. Program-header type rows from readelf -lW, excluding the column-header row: 12 (DYNAMIC, GNU_EH_FRAME, GNU_RELRO, GNU_STACK, INTERP, LOAD x4, NOTE, PHDR, TLS).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C07",
+   "claim": "The init binary's GNU build ID is ab61af44159984e98f5fa1da776a36db and its Android ident note carries the value 0x20 (32), matching ro.build.version.sdk=32 in the system build.prop.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/init",
+   "evidence": "readelf -n init -> Owner GNU, NT_GNU_BUILD_ID, Build ID: ab61af44159984e98f5fa1da776a36db; Owner Android, NT_VERSION, description data: 20 00 00 00. grep -n ro.build.version.sdk= system/build.prop -> ro.build.version.sdk=32",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -n init -> Owner GNU, NT_GNU_BUILD_ID, Build ID: ab61af44159984e98f5fa1da776a36db. Owner Android, NT_VERSION, description data: 20 00 00 00 (little-endian 0x20 = 32). Command: grep -n ro.build.version.sdk= system/build.prop -> 31:ro.build.version.sdk=32.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C08",
+   "claim": "The init binary lists 20 NEEDED shared libraries, including libselinux.so, libfs_mgr.so, libprocessgroup.so, libcutils.so, liblog.so, libbase.so, libutils.so, libc++.so, libc.so, libm.so and libdl.so.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/init",
+   "evidence": "readelf -d init | grep NEEDED -> libbacktrace.so, libbase.so, libbootloader_message.so, libcutils.so, libext4_utils.so, libfs_mgr.so, libgsi.so, libhidl-gen-utils.so, libkeyutils.so, liblog.so, liblogwrap.so, liblp.so, libprocessgroup.so, libprocessgroup_setup.so, libselinux.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -d init | grep NEEDED | wc -l -> 20. Listed: libbacktrace.so, libbase.so, libbootloader_message.so, libcutils.so, libext4_utils.so, libfs_mgr.so, libgsi.so, libhidl-gen-utils.so, libkeyutils.so, liblog.so, liblogwrap.so, liblp.so, libprocessgroup.so, libprocessgroup_setup.so, libselinux.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so. Every library the claim names appears in this list.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C09",
+   "claim": "The init binary exports 124 defined dynamic symbols and imports 534 undefined ones. The defined set includes fs_mgr fstab and boot-config functions; the imported set includes the bionic property API and selinux_* functions. The binary exports no stable command-line interface through these symbols.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/init",
+   "evidence": "readelf --dyn-syms -W init | awk '$7!=\"UND\" && NR>3' | wc -l -> 124; awk '$7==\"UND\" && NR>3' -> 534. Defined: _ZN7android6fs_mgr17ReadFstabFromFile..., _ZN7android6fs_mgr14GetBootDevicesEv, _Z28fs_mgr_get_other_slot_suffixv, _Z28fs_mgr_parse_proc_bootconfig... Undefined: __system_property_find, __system_property_set, __system_property_foreach, selinux_android_restorecon, selinux_check_access, selinux_set_callback, __android_log_write",
+   "verdict": "refuted",
+   "reason": "Command: readelf --dyn-syms -W init | grep -E '^ +[0-9]+:' -> 658 rows, matching the header 'contains 658 entries'. awk '$7!=\"UND\"' -> 124 defined (claim matches). awk '$7==\"UND\"' -> 534, but this includes entry 0, the reserved null symbol (Ndx UND, no name; awk 'NF<8' -> 1 row). Excluding entry 0 gives 533 named undefined symbols. Defined names include _ZN7android6fs_mgr14GetBootDevicesEv and _Z28fs_mgr_parse_proc_bootconfig...; undefined names include __system_property_find, __system_property_set, __system_property_foreach, selinux_android_restorecon, selinux_check_access, selinux_set_callback, __android_log_write. The last sentence (no stable command-line interface) is an interpretation, not a measured result.",
+   "corrected_claim": "The init binary exports 124 defined dynamic symbols and imports 533 named undefined dynamic symbols (readelf lists 534 UND-index rows because entry 0 is a reserved null symbol). The defined set includes fs_mgr fstab and boot-config functions; the imported set includes the bionic property API and selinux_* functions. Whether the binary offers a command-line interface is not determined from these symbols."
+  },
+  {
+   "id": "C10",
+   "claim": "The init binary embeds the paths it searches: /system/etc/init/hw/init.rc, the per-partition init directories (/product, /system, /system_ext, /vendor, /odm), fstab search prefixes (/system/etc/fstab., /vendor/etc/fstab., /odm/etc/fstab., /first_stage_ramdisk/fstab.), ueventd rule paths (/system/etc/ueventd.rc, /vendor/ueventd.rc, /odm/ueventd.rc, /ueventd.), and the property store paths /dev/__properties__ and /data/property/persistent_properties.",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/init-and-properties/init_strings.txt",
+   "evidence": "strings -n 4 init > init_strings.txt; grep -nE '/system/etc/init/hw/init.rc|/vendor/etc/init|/vendor/etc/fstab[.]|/system/etc/ueventd[.]rc|/odm/ueventd[.]rc|/vendor/ueventd[.]rc|/dev/__properties__$|persistent_properties' -> 727:/system/etc/init/hw/init.rc, 2695:/vendor/etc/init, 3043:/vendor/etc/fstab., 2095:/system/etc/ueventd.rc, 2533:/odm/ueventd.rc, 2718:/vendor/ueventd.rc, 2170:/dev/__properties__, persistent_properties present",
+   "verdict": "confirmed",
+   "reason": "Command: strings -n 4 init, regenerated and identical to the existing init_strings.txt (9874 lines). grep -nE for the paths -> 727:/system/etc/init/hw/init.rc; per-partition init directories 1046:/product/etc/init, 1291:/system/etc/init, 1526:/system_ext/etc/init, 1995:/odm/etc/init, 2695:/vendor/etc/init; fstab prefixes 1161:/system/etc/fstab., 3043:/vendor/etc/fstab., 1648:/odm/etc/fstab., 2272:/first_stage_ramdisk/fstab.; ueventd paths 2095:/system/etc/ueventd.rc, 2533:/odm/ueventd.rc, 2718:/vendor/ueventd.rc, 2346:/ueventd.; property stores 2170:/dev/__properties__, 3272:/data/property/persistent_properties.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C11",
+   "claim": "The init binary contains the string ro.hardware and the string ueventd started!, so one binary provides the init role and a ueventd role.",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/init-and-properties/init_strings.txt",
+   "evidence": "grep -nE '^ro[.]hardware$|ueventd started' init_strings.txt -> 2006:ro.hardware ; 1395:ueventd started!",
+   "verdict": "confirmed",
+   "reason": "Command: grep -nE '^ro[.]hardware$|ueventd started' init_strings.txt -> 1395:ueventd started! and 2006:ro.hardware (both standalone lines).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C12",
+   "claim": "Built-in command names appear as standalone strings in the init binary, including setprop, class_start, class_reset, mount_all, restorecon, start, stop, trigger, writepid, load_persist_props, load_system_props, symlink, mkdir, write, chmod, chown, insmod, export and swapon_all. verity_load_state and rm are not standalone strings.",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/init-and-properties/init_strings.txt",
+   "evidence": "for k in setprop class_start mount_all trigger load_persist_props ... verity_load_state rm; do grep -cx $k init_strings.txt -> setprop=1 class_start=1 class_reset=1 mount_all=1 trigger=1 load_persist_props=1 swapon_all=1 mkdir=2 write=2 chmod=2 chown=2 insmod=1 export=1 verity_load_state=0 rm=0",
+   "verdict": "confirmed",
+   "reason": "Command: for k in ...; do grep -cx -- $k init_strings.txt; done -> setprop=1 class_start=1 class_reset=1 mount_all=1 restorecon=1 start=1 stop=1 trigger=1 writepid=1 load_persist_props=1 load_system_props=1 symlink=2 mkdir=2 write=2 chmod=2 chown=2 insmod=1 export=1 swapon_all=1 verity_load_state=0 rm=0. Every name the claim lists as present has at least one exact line match; the two named absent names have zero.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C13",
+   "claim": "The init binary's property-service strings include init.svc. prefixes, ro.boottime.init, ro.cold_boot_done, persist. and ro. prefixes, and /dev/__properties__/property_info, showing that init publishes init.svc.<name> state properties.",
+   "label": "observed",
+   "file": "<image>-tools/work/subsystems/init-and-properties/init_strings.txt",
+   "evidence": "grep -E '^(ro|persist|sys|init)[.]' init_strings.txt | sort -u -> init.svc., init.svc.adbd, init.svc.odm., init.svc.vendor., ro.boottime.init, ro.cold_boot_done, persist., ro.build.fingerprint, ro.product.device, /dev/__properties__/property_info (strings-derived, not run-time confirmed)",
+   "verdict": "needs_change",
+   "reason": "Command: grep -E '^(ro|persist|sys|init)[.]' init_strings.txt | sort -u -> init.svc., init.svc.adbd, init.svc.odm., init.svc.vendor., persist., ro.boot., ro.boottime., ro.boottime.init (line 2694), ro.cold_boot_done (line 2437), persist.sys.usb.config and others. /dev/__properties__/property_info appears at lines 2103 and 3344. The strings are present. The phrase 'showing that init publishes init.svc.<name> state properties' is a conclusion drawn from names, which is the 'inferred' label, not 'observed'; the strings do not show runtime writes.",
+   "corrected_claim": "The init binary's property-service strings include init.svc. prefixes, ro.boottime.init, ro.cold_boot_done, persist. and ro. prefixes (for example ro.boot. and ro.boottime.), and /dev/__properties__/property_info. These strings are consistent with init setting init.svc.<name> state properties (inferred; runtime writes were not observed)."
+  },
+  {
+   "id": "C14",
+   "claim": "system_a/init is a symlink to /system/bin/init, and system_a/system/bin/ueventd is a symlink to init (relative target).",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/init",
+   "evidence": "ls -la mnt/system_a/init mnt/system_a/system/bin/ueventd -> lrwxr-x---. ... mnt/system_a/init -> /system/bin/init ; lrwxr-xr-x. ... mnt/system_a/system/bin/ueventd -> init",
+   "verdict": "confirmed",
+   "reason": "Command: ls -la mnt/system_a/init mnt/system_a/system/bin/ueventd -> lrwxr-x---. ... mnt/system_a/init -> /system/bin/init; lrwxr-xr-x. ... mnt/system_a/system/bin/ueventd -> init. Command: readlink returns the same targets.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C15",
+   "claim": "system_a/system/etc/init/hw/init.rc imports six files: /init.environ.rc, /system/etc/init/hw/init.usb.rc, /init.${ro.hardware}.rc, /vendor/etc/init/hw/init.${ro.hardware}.rc, /system/etc/init/hw/init.usb.configfs.rc and /system/etc/init/hw/init.${ro.zygote}.rc.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.rc",
+   "evidence": "grep -nE '^[[:space:]]*import ' system_a/system/etc/init/hw/init.rc -> 7:import /init.environ.rc ; 8:import /system/etc/init/hw/init.usb.rc ; 9:import /init.${ro.hardware}.rc ; 10:import /vendor/etc/init/hw/init.${ro.hardware}.rc ; 11:import /system/etc/init/hw/init.usb.configfs.rc ; 12:import /system/etc/init/hw/init.${ro.zygote}.rc",
+   "verdict": "confirmed",
+   "reason": "Command: grep -nE '^[[:space:]]*import ' system_a/system/etc/init/hw/init.rc -> 7:import /init.environ.rc; 8:import /system/etc/init/hw/init.usb.rc; 9:import /init.${ro.hardware}.rc; 10:import /vendor/etc/init/hw/init.${ro.hardware}.rc; 11:import /system/etc/init/hw/init.usb.configfs.rc; 12:import /system/etc/init/hw/init.${ro.zygote}.rc. Six imports, matching the claim.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C16",
+   "claim": "init.rc contains 51 on-blocks, 6 service definitions (boringssl_self_test32, boringssl_self_test64, boringssl_self_test_apex32, boringssl_self_test_apex64, ueventd, console) and 23 setprop lines. Its early-init block starts ueventd, and late-init triggers the fs, post-fs, post-fs-data and zygote-start stages.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.rc",
+   "evidence": "grep -cE '^on ' -> 51 ; grep -cE '^[[:space:]]*service ' -> 6 ; grep -cE '^[[:space:]]+setprop ' -> 23 ; grep -nE '^on |start ueventd|trigger zygote-start' -> 15:on early-init, 67: start ueventd, 524:on late-init, 552: trigger zygote-start",
+   "verdict": "confirmed",
+   "reason": "Command: grep -cE '^on ' init.rc -> 51; grep -cE '^[[:space:]]*service ' -> 6 (boringssl_self_test32 line 99, boringssl_self_test64 line 104, boringssl_self_test_apex32 line 109, boringssl_self_test_apex64 line 114, ueventd line 1263, console line 1269); grep -cE '^[[:space:]]+setprop ' -> 23. 'on early-init' at line 15 runs to line 89 (next on-block at 90) and contains 'start ueventd' at line 67. 'on late-init' at line 524 contains trigger fs (531), trigger post-fs (532), trigger post-fs-data (543) and trigger zygote-start (552).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C17",
+   "claim": "init.zygote64_stub32.rc defines zygote (app_process64, sockets zygote and usap_pool_primary) and zygote_secondary (stub_zygote wrapping app_process32). Class main, priority -20, root user. It is selected by ro.zygote=zygote64_stub32, which vendor build.prop sets.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.zygote64_stub32.rc",
+   "evidence": "cat init.zygote64_stub32.rc -> service zygote /system/bin/app_process64 -Xzygote /system/bin --zygote --start-system-server --socket-name=zygote ; socket zygote stream 660 root system ; service zygote_secondary /system/bin/stub_zygote /system/bin/app_process32 ... ; grep -n ro.zygote vendor_a/build.prop -> ro.zygote=zygote64_stub32",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n init.zygote64_stub32.rc -> line 1 service zygote /system/bin/app_process64 ...; line 6 socket zygote stream 660 root system; line 7 socket usap_pool_primary; lines 2-4 class main, priority -20, user root. Line 18 service zygote_secondary /system/bin/stub_zygote /system/bin/app_process32 ...; lines 19-21 class main, priority -20, user root. Command: grep -n ro.zygote vendor_a/build.prop -> 103:ro.zygote=zygote64_stub32. Selection is by init.rc line 12 import /system/etc/init/hw/init.${ro.zygote}.rc.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C18",
+   "claim": "init.anorak.rc imports four debug, cgroup, power and usb scripts, defines 23 services and 36 on-blocks, and calls mount_all on /vendor/etc/fstab.persist (early) and /vendor/etc/fstab.${ro.hardware} (early and late).",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "evidence": "grep -nE '^import ' -> 1-4 import anorak.debug/cgroup/power/usb .rc ; grep -cE '^[[:space:]]*service ' -> 23 ; grep -cE '^on ' -> 36 ; grep -n mount_all -> 29: mount_all /vendor/etc/fstab.persist --early ; 55: mount_all /vendor/etc/fstab.${ro.hardware} --early ; 63: mount_all /vendor/etc/fstab.${ro.hardware} --late",
+   "verdict": "confirmed",
+   "reason": "Command: grep -nE '^import ' init.anorak.rc -> lines 1-4: anorak.debug, anorak.cgroup, anorak.power, anorak.usb .rc. grep -cE '^[[:space:]]*service ' -> 23. grep -cE '^on ' -> 36. grep -n mount_all -> 29: mount_all /vendor/etc/fstab.persist --early; 55: mount_all /vendor/etc/fstab.${ro.hardware} --early; 63: mount_all /vendor/etc/fstab.${ro.hardware} --late.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C19",
+   "claim": "The ro.hardware value that selects init.eureka.rc and fstab.eureka is inferred to be eureka. It is not set in any of the five build.prop files of this group, and its source is outside the group.",
+   "label": "inferred",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.eureka.rc",
+   "evidence": "grep -c '^ro[.]hardware=' odm_a/etc/build.prop product_a/etc/build.prop system_a/system/build.prop system_ext_a/etc/build.prop vendor_a/build.prop -> 0 for each; file names init.eureka.rc and fstab.eureka match the device name eureka in ro.product.device=eureka",
+   "verdict": "needs_change",
+   "reason": "Command: grep -c '^ro[.]hardware=' on the five build.prop files -> 0 for each. Command: grep -nH '^ro[.]product[.]device=' on the same files -> no match. The device key exists only with a partition infix: odm_a/etc/build.prop line 6 ro.product.odm.device=eureka; product_a/etc/build.prop line 6 ro.product.product.device=eureka; system_a/system/build.prop line 6 ro.product.system.device=eureka; system_ext_a/etc/build.prop line 6 ro.product.system_ext.device=eureka; vendor_a/build.prop line 6 ro.product.vendor.device=eureka. vendor_a/build.prop line 96 has ro.product.board=eureka.",
+   "corrected_claim": "The ro.hardware value that selects init.eureka.rc and fstab.eureka is inferred to be eureka. It is not set in any of the five build.prop files of this group, and its source is outside the group. The name is consistent with ro.product.<partition>.device=eureka in each build.prop (for example ro.product.vendor.device=eureka) and with ro.product.board=eureka in the vendor build.prop."
+  },
+  {
+   "id": "C20",
+   "claim": "init.eureka.rc imports init.anorak.rc and adds a post-fs step that waits for vendor.all.modules.ready=1 and writes 1 to a nautilus enable node. It has two sys.hmt.mounted triggers that write external_battery mount_state, and a factorytest trigger that writes a charge_capacity_limit of 75.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.eureka.rc",
+   "evidence": "cat init.eureka.rc -> import /vendor/etc/init/hw/init.anorak.rc ; on post-fs: wait_for_prop vendor.all.modules.ready 1 ; write /sys/devices/platform/vendor/vendor:oculus,nautilus/nautilus/enable 1 ; on property:sys.hmt.mounted=1 -> write .../external_battery/mount_state 1 ; on factorytest -> write /sys/class/qcom-battery/charge_capacity_limit 75",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n init.eureka.rc -> line 1 import /vendor/etc/init/hw/init.anorak.rc; lines 3-10 on post-fs with wait_for_prop vendor.all.modules.ready 1 and write /sys/devices/platform/vendor/vendor:oculus,nautilus/nautilus/enable 1; lines 12-13 on property:sys.hmt.mounted=1 writing external_battery mount_state 1; lines 15-16 on property:sys.hmt.mounted=0 writing mount_state 0; lines 18-19 on factorytest writing /sys/class/qcom-battery/charge_capacity_limit 75.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C21",
+   "claim": "The vendor build.prop sets ro.zygote=zygote64_stub32, ro.board.platform=anorak, ro.product.board=eureka and ro.soc.model=SXR2230P, which together select the zygote script and the anorak platform script.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/build.prop",
+   "evidence": "grep -H -E '^(ro[.]zygote|ro[.]board[.]platform|ro[.]product[.]board|ro[.]soc[.]model)=' vendor_a/build.prop -> ro.product.board=eureka ; ro.board.platform=anorak ; ro.soc.model=SXR2230P ; ro.zygote=zygote64_stub32",
+   "verdict": "needs_change",
+   "reason": "Command: grep -H -E '^(ro[.]zygote|ro[.]board[.]platform|ro[.]product[.]board|ro[.]soc[.]model)=' vendor_a/build.prop -> ro.soc.model=SXR2230P, ro.product.board=eureka, ro.board.platform=anorak, ro.zygote=zygote64_stub32. The values hold. Command: grep -rlE 'ro[.]board[.]platform|ro[.]product[.]board|ro[.]soc[.]model' --include='*.rc' -> no file. Only ro.zygote is consumed by an import (init.rc line 12, init.${ro.zygote}.rc). The anorak script is imported by fixed path from init.eureka.rc line 1, not selected through ro.board.platform.",
+   "corrected_claim": "The vendor build.prop sets ro.zygote=zygote64_stub32, ro.board.platform=anorak, ro.product.board=eureka and ro.soc.model=SXR2230P. ro.zygote selects init.zygote64_stub32.rc through the import /system/etc/init/hw/init.${ro.zygote}.rc. The anorak script is imported by fixed path from init.eureka.rc. No rc file in the group references ro.board.platform, ro.product.board or ro.soc.model, so those three keys have no selecting role in this group."
+  },
+  {
+   "id": "C22",
+   "claim": "The system ueventd.rc imports /vendor/etc/ueventd.rc and /odm/etc/ueventd.rc, declares subsystems graphics, drm, input, sound and dma_heap, and has 31 /dev permission rules in the format devname mode uid gid. The /odm/etc/ueventd.rc file it imports is not present in the mounted tree.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/ueventd.rc",
+   "evidence": "grep -nE '^import|^subsystem' system_a/system/etc/ueventd.rc -> 1:import /vendor/etc/ueventd.rc ; 2:import /odm/etc/ueventd.rc ; 7:subsystem graphics ... 23:subsystem dma_heap ; grep -cE '^/dev' -> 31 ; ls odm_a/etc/ueventd.rc -> No such file or directory",
+   "verdict": "confirmed",
+   "reason": "Command: grep -nE '^import|^subsystem' system_a/system/etc/ueventd.rc -> 1 import /vendor/etc/ueventd.rc; 2 import /odm/etc/ueventd.rc; subsystem lines 7 graphics, 11 drm, 15 input, 19 sound, 23 dma_heap. Command: grep -cE '^/dev' -> 31. Line 29 comment: 'format for /dev rules: devname mode uid gid'. Command: ls odm_a/etc/ueventd.rc -> No such file or directory.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C23",
+   "claim": "The vendor ueventd.rc has 248 lines starting with / (device and sysfs rules) and one subsystem entry, mem_buf_vm.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/ueventd.rc",
+   "evidence": "grep -cE '^/' vendor_a/etc/ueventd.rc -> 248 ; grep -E '^subsystem' -> 36:subsystem mem_buf_vm ; grep -E '^/' | head -3 -> /dev/diag 0660 system oem_2901 ; /dev/kgsl 0666 system system",
+   "verdict": "confirmed",
+   "reason": "Command: grep -cE '^/' vendor_a/etc/ueventd.rc -> 248. Command: grep -nE '^subsystem' vendor_a/etc/ueventd.rc -> 36:subsystem mem_buf_vm (the only subsystem line).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C24",
+   "claim": "fstab.eureka has 14 entries. The seven logical partitions (system, system_ext, vendor, odm, vendor_dlkm, odm_dlkm, product) use ext4 with avb and logical flags, and the data partition sets fileencryption, metadata_encryption, quota, reservedsize=128M and checkpoint=block. A 4 GiB zram swap entry (zramsize=4294967296) is present.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/fstab.eureka",
+   "evidence": "awk '$1!~/^#/ && NF>=5 {print $1, $2, $3, $5}' vendor_a/etc/fstab.eureka -> 14 lines; NF distribution: 13 with 5 fields, 1 with 6 fields (zram line with trailing #4GiB); system ... /system ext4 ... avb=vbmeta_system,logical,first_stage_mount ; /dev/block/bootdevice/by-name/userdata /data ext4 ... fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,...,reservedsize=128M,...,checkpoint=block ; /dev/block/zram0 none swap ... zramsize=4294967296",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n vendor_a/etc/fstab.eureka -> data rows at lines 6-19; awk '$1!~/^#/ && NF>=5' -> 14. NF distribution: 13 rows with 5 fields, 1 with 6 (line 19, zram, with trailing '#4GiB'). Lines 6-12 are system, system_ext, vendor, odm, vendor_dlkm, odm_dlkm, product: all ext4 with avb or avb=... and logical. Line 14 (userdata) has fileencryption=, metadata_encryption=, quota, reservedsize=128M, checkpoint=block. Line 19 has zramsize=4294967296 (4 GiB).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C25",
+   "claim": "fstab.persist has one entry: /persist (ext4) with flags noatime, noexec, nosuid, nodev, nosymfollow, barrier=1, sync and the fs_mgr flag wait. init.anorak.rc mounts it early with mount_all.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/fstab.persist",
+   "evidence": "cat vendor_a/etc/fstab.persist -> /dev/block/bootdevice/by-name/persist /persist ext4 noatime,noexec,nosuid,nodev,nosymfollow,barrier=1,sync wait ; grep -n mount_all vendor_a/etc/init/hw/init.anorak.rc -> 29: mount_all /vendor/etc/fstab.persist --early",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n vendor_a/etc/fstab.persist -> line 6: /dev/block/bootdevice/by-name/persist /persist ext4 noatime,noexec,nosuid,nodev,nosymfollow,barrier=1,sync wait. Command: grep -n mount_all vendor_a/etc/init/hw/init.anorak.rc -> 29: mount_all /vendor/etc/fstab.persist --early.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C26",
+   "claim": "The system build.prop has 226 lines and 173 keys, in sections generated by generate-common-build-props: a buildinfo.prop block, device/meta anorak-common and eureka system.prop, and PRODUCT_SYSTEM_PROPERTIES. It sets ro.build.version.sdk=32, ro.build.version.release=12 and ro.build.type=userdebug.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/build.prop",
+   "evidence": "wc -l -> 226 ; grep -cE '^[^#].*=' -> 173 ; grep -n '^# from\\|^# begin\\|^# end' -> 2:# from generate-common-build-props ; 24:# from ...buildinfo.prop ; 59:# from device/meta/anorak-common/system.prop ; 62:# from device/meta/eureka/system.prop ; 140:# from variable PRODUCT_SYSTEM_PROPERTIES ; ro.build.version.sdk=32 ; ro.build.version.release=12 ; ro.build.type=userdebug",
+   "verdict": "confirmed",
+   "reason": "Command: wc -l system_a/system/build.prop -> 226; grep -cE '^[^#].*=' -> 173; grep -n '^# from\\|^# begin\\|^# end' -> line 2 generate-common-build-props; 24 buildinfo.prop; 59 anorak-common/system.prop; 62 eureka/system.prop; 140 PRODUCT_SYSTEM_PROPERTIES. grep -nE '^ro[.]build[.]version[.](sdk|release)=|^ro[.]build[.]type=' -> 31 sdk=32, 36 release=12, 43 type=userdebug.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C27",
+   "claim": "The vendor build.prop has 143 lines and 96 keys, with sections for anorak-common and eureka vendor.prop, android_info.prop, and PRODUCT_VENDOR_PROPERTIES. It sets ro.vendor.build.fingerprint and the ro.vendor.product.cpu.abilist list.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/build.prop",
+   "evidence": "wc -l -> 143 ; grep -cE '^[^#].*=' -> 96 ; grep -n '^# from' -> 24 anorak-common/vendor.prop ; 66 eureka/vendor.prop ; 77 android_info.prop ; 80 ADDITIONAL_VENDOR_PROPERTIES ; 101 PRODUCT_VENDOR_PROPERTIES ; 136 PRODUCT_DEFAULT_PROPERTY_OVERRIDES ; 139 PRODUCT_PROPERTY_OVERRIDES",
+   "verdict": "confirmed",
+   "reason": "Command: wc -l vendor_a/build.prop -> 143; grep -cE '^[^#].*=' -> 96. grep -n '^# from' -> 24 anorak-common/vendor.prop; 66 eureka/vendor.prop; 77 android_info.prop; 80 ADDITIONAL_VENDOR_PROPERTIES; 101 PRODUCT_VENDOR_PROPERTIES; 136 PRODUCT_DEFAULT_PROPERTY_OVERRIDES; 139 PRODUCT_PROPERTY_OVERRIDES. Line 10 ro.vendor.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi; line 15 ro.vendor.build.fingerprint=oculus/eureka/eureka:12/SQ3A.220605.009.A1/50352750111100511:userdebug/test-keys.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C28",
+   "claim": "The ODM build.prop has 86 lines and 63 keys; the product build.prop has 90 lines and 52 keys; the system_ext build.prop has 31 lines and 22 keys. Each has a generate-common-build-props header and its own partition identity keys.",
+   "label": "verified",
+   "file": "<image>/mnt/odm_a/etc/build.prop",
+   "evidence": "wc -l and grep -cE '^[^#].*=' per file -> odm_a 86/63 ; product_a 90/52 ; system_ext_a 31/22 ; odm sections: 24 anorak-common/odm.prop, 35 eureka/odm.prop, 78 ADDITIONAL_ODM_PROPERTIES, 81 PRODUCT_ODM_PROPERTIES",
+   "verdict": "confirmed",
+   "reason": "Command: wc -l and grep -cE '^[^#].*=' per file -> odm_a 86 lines / 63 keys; product_a 90 / 52; system_ext_a 31 / 22. Each file has '# from generate-common-build-props' at line 2. odm_a section headers: 24 anorak-common/odm.prop, 35 eureka/odm.prop, 78 ADDITIONAL_ODM_PROPERTIES, 81 PRODUCT_ODM_PROPERTIES. Each file carries its own partition identity keys (see C29).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C29",
+   "claim": "Identity keys are consistent across partitions: brand oculus, device eureka, model Quest 3, name eureka, and the same build fingerprint oculus/eureka/eureka:12/SQ3A.220605.009.A1/50352750111100511:userdebug/test-keys in each partition under its own key name.",
+   "label": "verified",
+   "file": "<image>/mnt/odm_a/etc/build.prop",
+   "evidence": "grep -H -E '^ro[.]product[.](odm|product|vendor|system_ext|system)[.](brand|device|model|name)=|fingerprint=' */etc/build.prop */build.prop system_a/system/build.prop -> ro.product.odm.device=eureka ; ro.product.product.model=Quest 3 ; ro.product.vendor.brand=oculus ; ro.system_ext.build.fingerprint=oculus/eureka/eureka:12/SQ3A.220605.009.A1/50352750111100511:userdebug/test-keys ; ro.odm.build.fingerprint=... ; ro.vendor.build.fingerprint=...",
+   "verdict": "confirmed",
+   "reason": "Command: grep -H -E '^ro[.]product[.](odm|product|vendor|system_ext|system)[.](brand|device|model|name)=|fingerprint=' on the five files -> brand oculus, device eureka, model Quest 3, name eureka in odm, product, system, system_ext and vendor. Fingerprints under ro.odm.build.fingerprint, ro.product.build.fingerprint, ro.system.build.fingerprint, ro.system_ext.build.fingerprint and ro.vendor.build.fingerprint are all oculus/eureka/eureka:12/SQ3A.220605.009.A1/50352750111100511:userdebug/test-keys.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C30",
+   "claim": "Eight property keys appear in more than one build.prop: six dalvik.vm.heap* and heaptargetutilization keys (2 files each), ro.control_privapp_permissions (system_ext and vendor, value enforce), and persist.sys.usb.config (5 files, value none in odm, product, system_ext and vendor, adb in system). The 395 distinct keys in the union are not merged by the group's files.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/build.prop",
+   "evidence": "cat keys_*.txt | sort | uniq -c | awk '$1>1' -> 2 dalvik.vm.heapgrowthlimit ; 2 dalvik.vm.heapmaxfree ; 2 dalvik.vm.heapminfree ; 2 dalvik.vm.heapsize ; 2 dalvik.vm.heapstartsize ; 2 dalvik.vm.heaptargetutilization ; 5 persist.sys.usb.config ; 2 ro.control_privapp_permissions ; cat keys_*.txt | sort -u | wc -l -> 395 ; grep -H persist.sys.usb.config -> system_a/system/build.prop:persist.sys.usb.config=adb ; odm_a/etc/build.prop:persist.sys.usb.config=none",
+   "verdict": "needs_change",
+   "reason": "Command: grep -E '^[^#].*=' on the five build.prop files | cut -d= -f1 | sort | uniq -c | awk '$1>1' -> 2 each for dalvik.vm.heapgrowthlimit, dalvik.vm.heapmaxfree, dalvik.vm.heapminfree, dalvik.vm.heapsize, dalvik.vm.heapstartsize, dalvik.vm.heaptargetutilization; 2 ro.control_privapp_permissions; 5 persist.sys.usb.config. Values: ro.control_privapp_permissions=enforce in system_ext and vendor; persist.sys.usb.config=none in odm, product, system_ext and vendor, adb in system. Distinct keys over all five files: 395 (406 key lines). The six dalvik keys include dalvik.vm.heaptargetutilization; the claim's wording lists it a second time, so the sentence reads as nine items, not eight.",
+   "corrected_claim": "Eight property keys appear in more than one build.prop: six dalvik.vm.heap* keys (heapgrowthlimit, heapmaxfree, heapminfree, heapsize, heapstartsize and heaptargetutilization, 2 files each), ro.control_privapp_permissions (system_ext and vendor, value enforce), and persist.sys.usb.config (5 files, value none in odm, product, system_ext and vendor, adb in system). The 395 distinct keys in the union are not merged by the group's files."
+  },
+  {
+   "id": "C31",
+   "claim": "The system build.prop has 85 ro. keys, 17 persist. keys, 4 debug. keys and 69 keys with other prefixes (for example dalvik., aaudio., audio., af.). Prefix counts for the other four build.prop files are odm 25/36/0/2, product 39/8/1/4, system_ext 19/2/0/1, vendor 50/11/3/32.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/build.prop",
+   "evidence": "for f in <five build.prop>; do echo f ro.=$(grep -cE '^ro[.]' $f) persist.=$(grep -cE '^persist[.]' $f) debug.=$(grep -cE '^debug[.]' $f) other=$(grep -cvE '^(ro[.]|persist[.]|debug[.]|#|$)' $f); done -> system_a 85/17/4/69 ; odm_a 25/36/0/2 ; product_a 39/8/1/4 ; system_ext_a 19/2/0/1 ; vendor_a 50/11/3/32",
+   "verdict": "needs_change",
+   "reason": "Command: grep -cE '^ro[.]' / '^persist[.]' / '^debug[.]' / -cvE '^(ro[.]|persist[.]|debug[.]|#|$)' per file -> system_a 85 / 17 / 4 / 69; odm_a 25 / 36 / 0 / 2; product_a 39 / 8 / 1 / 4; system_ext_a 19 / 2 / 0 / 1; vendor_a 50 / 11 / 3 / 32. The four non-system files match the claim. For system, the persist count of 17 includes two lines without '=': 'persist.bluetooth.bqr.event_mask 4' (line 83) and 'persist.bluetooth.bqr.min_interval_ms 65535' (line 84). Persist key=value entries number 15, so 85 + 15 + 4 + 69 = 173, the key count in C26. The 'other' roots include dalvik (22), config (19), pm (14), aaudio (3), audio (2), af (1), and others.",
+   "corrected_claim": "The system build.prop has 85 ro. keys, 15 persist. key=value entries (17 persist.-prefixed lines, two of which use a space separator and are not key=value), 4 debug. keys and 69 keys with other prefixes (for example dalvik., aaudio., audio., af.). Prefix counts for the other four build.prop files are odm 25/36/0/2, product 39/8/1/4, system_ext 19/2/0/1, vendor 50/11/3/32."
+  },
+  {
+   "id": "C32",
+   "claim": "Property contexts give exact-match labels to several keys: ro.build.fingerprint (fingerprint_prop), ro.zygote (dalvik_config_prop), ro.hardware (bootloader_prop), ro.control_privapp_permissions (enum disable enforce log), ro.product.board and ro.vendor.build.fingerprint (build_vendor_prop), ro.odm.build.fingerprint (build_odm_prop). vendor.all.modules.ready and vendor.all.devices.ready are exact entries (vendor_init_prop).",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_property_contexts",
+   "evidence": "grep -n 'ro.build.fingerprint\\|^ro.zygote\\|^ro.hardware ' plat_property_contexts -> 136: ro.build.fingerprint u:object_r:fingerprint_prop:s0 exact string ; 349: ro.zygote u:object_r:dalvik_config_prop:s0 exact string ; 691: ro.hardware u:object_r:bootloader_prop:s0 exact string ; grep -rhE 'vendor.all.modules.ready' --include='*property_contexts' -> vendor.all.modules.ready vendor.all.modules.ready u:object_r:vendor_init_prop:s0",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n in plat_property_contexts -> 136 ro.build.fingerprint fingerprint_prop exact string; 349 ro.zygote dalvik_config_prop exact string; 691 ro.hardware bootloader_prop exact string; 500 ro.control_privapp_permissions packagemanager_config_prop exact enum disable enforce log; 874 ro.product.board build_vendor_prop exact string; 859 ro.vendor.build.fingerprint build_vendor_prop exact string; 813 ro.odm.build.fingerprint build_odm_prop exact string. Command: grep -rhE 'vendor.all.modules.ready' --include='*property_contexts' -> vendor_property_contexts lines 11-12: vendor.all.modules.ready and vendor.all.devices.ready, vendor_init_prop. These two lines carry no explicit exact keyword; their names have no trailing dot, so they are exact under the default rule (the rule itself was not read from parser source; see gaps).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C33",
+   "claim": "Prefix-based property labels cover the other props set by vendor init: vendor. maps to vendor_default_prop, sys. to system_prop, and persist.device_config.oculus_shared_os_services. to device_config_vros_shared_services_prop.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_property_contexts",
+   "evidence": "grep -rhE '^vendor[.]skip[.]init|^sys[.]|^persist[.]device_config[.]oculus_shared_os_services[.]' --include='*property_contexts' -> vendor. u:object_r:vendor_default_prop:s0 ; sys. u:object_r:system_prop:s0 ; persist.device_config.oculus_shared_os_services. u:object_r:device_config_vros_shared_services_prop:s0",
+   "verdict": "confirmed",
+   "reason": "Command: grep -rhE '^vendor[.] |^sys[.] |^persist[.]device_config[.]oculus_shared_os_services[.] ' --include='*property_contexts' -> plat_property_contexts line 24 'sys. system_prop'; line 229 'vendor. vendor_default_prop'; system_ext_property_contexts line 28 'persist.device_config.oculus_shared_os_services. device_config_vros_shared_services_prop'. The entries sit in plat_property_contexts and system_ext_property_contexts, not in vendor_property_contexts.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C34",
+   "claim": "The init binary's own labels are declared in SELinux source: /system/bin/init is labelled init_exec, and the init helper scripts in /vendor/bin each have a dedicated exec type with the matching type declarations in vendor_sepolicy.cil.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
+   "evidence": "sed -n '421p' plat_file_contexts -> /system/bin/init u:object_r:init_exec:s0 ; sed -n '433,434p;466p' vendor_file_contexts -> /vendor/bin/init.insmod.sh u:object_r:init-insmod-sh_exec:s0 ; /vendor/bin/init.kswapd.sh u:object_r:init-kswapd-sh_exec:s0 ; /vendor/bin/init.set_secnvm_perms.sh u:object_r:init-set-secnvm-perms-sh_exec:s0 ; grep -n '(type init-' vendor_sepolicy.cil -> 1003 init-insmod-sh ; 1005 init-insmod-sh_exec ; 1007 init-kswapd-sh ; 1009 init-kswapd-sh_exec ; 1011 init-set-secnvm-perms-sh ; 1013 init-set-secnvm-perms-sh_exec",
+   "verdict": "confirmed",
+   "reason": "Command: sed -n '421p' plat_file_contexts -> /system/bin/init (tab) u:object_r:init_exec:s0. Command: sed -n '433,434p;466p' vendor_file_contexts -> /vendor/bin/init\\.insmod\\.sh init-insmod-sh_exec; /vendor/bin/init\\.kswapd\\.sh init-kswapd-sh_exec; /vendor/bin/init\\.set_secnvm_perms\\.sh init-set-secnvm-perms-sh_exec. Command: grep -n '(type init-' vendor_sepolicy.cil -> 1003 init-insmod-sh; 1005 init-insmod-sh_exec; 1007 init-kswapd-sh; 1009 init-kswapd-sh_exec; 1011 init-set-secnvm-perms-sh; 1013 init-set-secnvm-perms-sh_exec.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C35",
+   "claim": "The file_contexts files in the group do not contain entries for init .rc files, the fstab files, the build.prop files or init.environ.rc. The only ueventd entry is a /ueventd\\..* rule labelled rootfs. Labels for those paths come from directory-level rules that were not examined.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "evidence": "grep -rnE 'bin/init|init[.]kswapd|init[.]insmod|set_secnvm|init[.]environ|/init[.]|fstab[.]|ueventd|build[.]prop|init[.]rc|/etc/init' --include='*file_contexts' -> vendor_file_contexts:433,434,466 ; plat_file_contexts:95 /ueventd\\..* u:object_r:rootfs:s0 ; plat_file_contexts:421 /system/bin/init ; system_ext_file_contexts:8 /system/bin/init.vision.sh (not in group)",
+   "verdict": "needs_change",
+   "reason": "Command: grep -rnE 'bin/init|init[.]kswapd|init[.]insmod|set_secnvm|init[.]environ|/init[.]|fstab[.]|ueventd|build[.]prop|init[.]rc|/etc/init' --include='*file_contexts' -> only vendor_file_contexts lines 433, 434, 466 (helper scripts), plat_file_contexts line 421 (/system/bin/init), plat_file_contexts line 95 (/ueventd\\..* rule labelled rootfs) and system_ext_file_contexts line 8 (/system/bin/init.vision.sh, not in group). No entry for init .rc, fstab, build.prop or init.environ.rc. Command: grep -nE '^/system\\(/\\.\\*\\)\\?' plat_file_contexts -> line 88: /system(/.*)? u:object_r:system_file:s0. So the /system paths are covered by that directory rule; the statement that the labels come from unexamined rules is no longer a gap for /system.",
+   "corrected_claim": "The file_contexts files in the group do not contain entries for init .rc files, the fstab files, the build.prop files or init.environ.rc. The only ueventd entry is a /ueventd\\..* rule labelled rootfs (plat_file_contexts line 95). Paths under /system are covered by the directory rule /system(/.*)? labelled system_file (plat_file_contexts line 88). Labels for the vendor-side paths were not traced (inferred to come from directory rules; not verified)."
+  },
+  {
+   "id": "C36",
+   "claim": "init.insmod.sh reads a config file whose lines are action|argument, dispatching insmod, setprop, enable, modprobe and wait. It ends by setting vendor.all.modules.ready=1 and vendor.all.devices.ready=1 unconditionally. The insmod_sh service runs it with /vendor/etc/init.insmod.cfg.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/init.insmod.sh",
+   "evidence": "cat init.insmod.sh -> while IFS=\"|\" read -r action arg; case $action in insmod|setprop|enable|modprobe|wait) ... ; setprop vendor.all.modules.ready 1 ; setprop vendor.all.devices.ready 1 ; init.anorak.rc:246 service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.cfg",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n vendor_a/bin/init.insmod.sh -> lines 31-47: while IFS=\"|\" read -r action arg, case over insmod, setprop, enable, modprobe and wait; lines 52-53: setprop vendor.all.modules.ready 1 and setprop vendor.all.devices.ready 1, placed after the config-file block and not inside it. Command: grep -n insmod_sh init.anorak.rc -> 246:service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.cfg. Nuance: the script exits at line 26 when the argument count is not one, before the two setprop lines.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C37",
+   "claim": "init.insmod.cfg (13 lines) holds 1 modprobe, 2 setprop and 3 enable actions. init.insmod.charger.cfg (48 lines) lists modprobe lines for charge-mode .ko modules. Both are in the mounted tree; the .ko modules they name are not.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init.insmod.cfg",
+   "evidence": "awk -F'|' 'NF>=2{print $1}' vendor_a/etc/init.insmod.cfg | sort | uniq -c -> 3 enable, 1 modprobe, 2 setprop ; cat -> modprobe|-b * ; setprop|vendor.all.modules.ready ; enable|/sys/kernel/boot_adsp/boot ; wc -l init.insmod.charger.cfg -> 48 ; first lines modprobe|adsp_loader_dlkm.ko ; modprobe|ak09973.ko",
+   "verdict": "refuted",
+   "reason": "Command: awk -F'|' 'NF>=2' on init.insmod.cfg and init.insmod.charger.cfg -> init.insmod.cfg has 1 modprobe (-b *, names no module), 2 setprop, 3 enable; both files are present in vendor_a/etc. Command: find . -name '<module>' for the 37 distinct .ko names in the modprobe lines -> 36 found (28 under vendor_dlkm_a, 8 under odm_dlkm_a); pmic-glink.ko not found. The claim that the .ko modules they name are not in the mounted tree is wrong for 36 of 37.",
+   "corrected_claim": "init.insmod.cfg (13 lines) holds 1 modprobe, 2 setprop and 3 enable actions; init.insmod.charger.cfg (48 lines) holds 37 modprobe lines, each naming a distinct .ko module. Both config files are in the mounted tree, and 36 of the 37 named .ko modules are also in the mounted tree (28 under vendor_dlkm_a, 8 under odm_dlkm_a); pmic-glink.ko is absent."
+  },
+  {
+   "id": "C38",
+   "claim": "init.kswapd.sh takes one argument, scans PIDs 1 to 499 for the kernel thread named kswapd0 through /proc/<pid>/comm, and writes that PID into /dev/cpuset/<arg>/tasks. init.anorak.rc calls it with the arguments system-background (on the oculus_kswapd_affinity=true trigger) and '.' (on the false trigger).",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/init.kswapd.sh",
+   "evidence": "cat init.kswapd.sh -> while [ $pid -lt 500 ]; read comm < /proc/${pid}/comm ; if comm == kswapd0 echo pid ; /vendor/bin/echo ${kswapd_pid} > /dev/cpuset/${cgroup}/tasks ; grep -n kswapd init.anorak.rc -> 260: service kswapd_affinity_system_sh /vendor/bin/init.kswapd.sh system-background ; 267: service kswapd_affinity_normal_sh /vendor/bin/init.kswapd.sh . ; 440/443: start kswapd_affinity_*",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n vendor_a/bin/init.kswapd.sh -> line 16 pid=1; line 17 while [ $pid -lt 500 ] (PIDs 1 to 499); line 19 read comm < /proc/${pid}/comm; line 20 match on kswapd0; line 36 writes the PID to /dev/cpuset/${cgroup}/tasks; exit 1 unless one argument. Command: grep -n kswapd init.anorak.rc -> 260 service kswapd_affinity_system_sh ... system-background; 267 service kswapd_affinity_normal_sh ... '.'; lines 439-443 on property:persist.device_config.oculus_shared_os_services.oculus_kswapd_affinity=true (start system) and =false (start normal).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C39",
+   "claim": "init.set_secnvm_perms.sh runs two commands: chown system:system and chmod 0600 on /persist/secnvm/*. It runs as the set_secnvm_perms_sh oneshot service and is started from init.anorak.rc.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/init.set_secnvm_perms.sh",
+   "evidence": "cat init.set_secnvm_perms.sh -> chown system:system /persist/secnvm/* ; chmod 0600 /persist/secnvm/* ; grep -n set_secnvm init.anorak.rc -> 44: start set_secnvm_perms_sh ; 274: service set_secnvm_perms_sh /vendor/bin/init.set_secnvm_perms.sh",
+   "verdict": "confirmed",
+   "reason": "Command: cat init.set_secnvm_perms.sh -> line 3: chown system:system /persist/secnvm/*; line 4: chmod 0600 /persist/secnvm/*. Command: sed -n '274,279p' init.anorak.rc -> line 274 service set_secnvm_perms_sh /vendor/bin/init.set_secnvm_perms.sh; line 277 group root system; line 278 disabled; line 279 oneshot. grep -n set_secnvm -> 44: start set_secnvm_perms_sh.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C40",
+   "claim": "init.environ.rc has one early-init action that exports 10 environment variables: ANDROID_BOOTLOGO, ANDROID_ROOT, ANDROID_ASSETS, ANDROID_DATA, ANDROID_STORAGE, ANDROID_ART_ROOT, ANDROID_I18N_ROOT, ANDROID_TZDATA_ROOT, EXTERNAL_STORAGE and ASEC_MOUNTPOINT.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/init.environ.rc",
+   "evidence": "cat init.environ.rc -> on early-init ; export ANDROID_BOOTLOGO 1 ; export ANDROID_ROOT /system ; export ANDROID_ASSETS /system/app ; export ANDROID_DATA /data ; ... export ASEC_MOUNTPOINT /mnt/asec ; grep -c '^[[:space:]]*export ' -> 10",
+   "verdict": "confirmed",
+   "reason": "Command: cat -n system_a/init.environ.rc -> line 2 on early-init; lines 3-12 export ANDROID_BOOTLOGO, ANDROID_ROOT, ANDROID_ASSETS, ANDROID_DATA, ANDROID_STORAGE, ANDROID_ART_ROOT, ANDROID_I18N_ROOT, ANDROID_TZDATA_ROOT, EXTERNAL_STORAGE, ASEC_MOUNTPOINT. grep -cE '^on ' -> 1; grep -cE '^[[:space:]]*export ' -> 10.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C41",
+   "claim": "The anorak cgroup script creates /dev/cpuctl groups (background, dex2oat, foreground, idle, immersive, other, rt, soft-rt, system and others) with 23 mkdir, 17 write and 66 chown lines across 3 on-blocks.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.cgroup.rc",
+   "evidence": "grep -cE '^on ' -> 3 ; grep -cE '^[[:space:]]+mkdir ' -> 23 ; grep -cE '^[[:space:]]+write ' -> 17 ; grep -cE '^[[:space:]]+chown ' -> 66 ; head -14 -> on early-init ; mkdir /dev/cpuctl/other ; on init ; mkdir /dev/cpuctl/background ; mkdir /dev/cpuctl/dex2oat",
+   "verdict": "confirmed",
+   "reason": "Command: grep -cE '^on ' init.anorak.cgroup.rc -> 3 (lines 1 on early-init, 8 on init, 215 on property:persist.device_config.oculus_shared_os_services.oculus_non_guaranteed_cpu=true). grep -cE '^[[:space:]]+mkdir ' -> 23; write -> 17; chown -> 66. Distinct /dev/cpuctl groups from the mkdir lines -> 12: background, dex2oat, foreground, idle, immersive, other, rt, soft-rt, system, system-background, top-app, xr.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C42",
+   "claim": "The USB scripts are split between vendor and system: init.anorak.usb.rc has 7 on-blocks and 24 write lines and defines set_usb_cdc_mac, and system init.usb.configfs.rc has 25 on-blocks and 34 write lines that switch sys.usb.config among adb, mtp, ptp and combinations.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.usb.rc",
+   "evidence": "grep -cE '^on ' init.anorak.usb.rc -> 7 ; grep -cE '^[[:space:]]+write ' -> 24 ; grep -cE '^on ' system_a/system/etc/init/hw/init.usb.configfs.rc -> 25 ; grep -cE '^[[:space:]]+write ' -> 34 ; on property:sys.usb.config=mtp && property:sys.usb.configfs=1 ; service set_usb_cdc_mac /vendor/bin/set_usb_cdc_mac.sh",
+   "verdict": "confirmed",
+   "reason": "Command: grep -cE '^on ' vendor_a/etc/init/hw/init.anorak.usb.rc -> 7; grep -cE '^[[:space:]]+write ' -> 24; line 156 service set_usb_cdc_mac /vendor/bin/set_usb_cdc_mac.sh (start at line 168). Command: grep -cE '^on ' system_a/system/etc/init/hw/init.usb.configfs.rc -> 25; write lines -> 34. Triggers switch on sys.usb.config values adb, mtp, ptp, accessory, audio_source, midi, rndis, none and combinations with adb.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C43",
+   "claim": "Several script or config targets named by the init scripts are absent from the mounted tree: /vendor/bin/install-recovery.sh, /system/bin/move_widevine_data.sh and /system/bin/linkerconfig, plus the /odm/etc/ueventd.rc named by the system ueventd.rc import. The other referenced targets checked are present, including the three helper scripts, both insmod cfg files, /odm/bin/flashswap.sh and /odm/bin/board_init.",
+   "label": "verified",
+   "file": "<image>/mnt",
+   "evidence": "for p in vendor_a/bin/install-recovery.sh system_a/system/bin/move_widevine_data.sh system_a/system/bin/linkerconfig odm_a/etc/ueventd.rc; do test -e $p -> absent ; vendor_a/etc/init.insmod.cfg, vendor_a/bin/init.kswapd.sh, odm_a/bin/flashswap.sh, odm_a/bin/board_init -> PRESENT",
+   "verdict": "needs_change",
+   "reason": "Command: test -e for vendor_a/bin/install-recovery.sh, system_a/system/bin/move_widevine_data.sh and odm_a/etc/ueventd.rc -> absent. Command: ls -la system_a/system/bin/linkerconfig -> lrwxr-xr-x symlink to /apex/com.android.runtime/bin/linkerconfig; test -e is false because the target is not in the mounted tree. No rc file names /system/bin/linkerconfig; the only init reference is /system/bin/bootstrap/linkerconfig (init.rc line 59), which is present. Install-recovery is referenced by vendor_flash_recovery.rc line 1 and move_widevine_data by android.hardware.drm@1.4-service-lazy.widevine.rc line 5. Present: vendor_a/etc/init.insmod.cfg, vendor_a/etc/init.insmod.charger.cfg, the three vendor helper scripts, odm_a/bin/flashswap.sh (a shell script), odm_a/bin/board_init (an ELF executable).",
+   "corrected_claim": "Several script or config targets named by the init scripts are absent from the mounted tree: /vendor/bin/install-recovery.sh (named by vendor_flash_recovery.rc), /system/bin/move_widevine_data.sh (named by the widevine drm rc), and the /odm/etc/ueventd.rc imported by the system ueventd.rc. /system/bin/linkerconfig is a symlink whose target /apex/com.android.runtime/bin/linkerconfig is outside the mounted tree; no init script names it. The init-referenced /system/bin/bootstrap/linkerconfig is present. The other referenced targets checked are present, including the three vendor helper scripts, both insmod cfg files, /odm/bin/flashswap.sh and /odm/bin/board_init."
+  },
+  {
+   "id": "C44",
+   "claim": "The group's line-level role labels are 178 verified and 5 observed. The five observed rows are rc files whose content was only sampled by trigger lines (flags_health_check.rc, atrace_userdebug.rc, wifi.rc, oculus.perfetto.rc, bootstat.rc).",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/init-and-properties/roles.tsv",
+   "evidence": "awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c -> 5 observed, 178 verified ; data rows excluding header -> 183",
+   "verdict": "needs_change",
+   "reason": "Command: awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c -> 5 observed, 178 verified; the table has 183 data rows plus one header line. The five observed rows are system_a rc files: flags_health_check.rc, atrace_userdebug.rc, wifi.rc, oculus.perfetto.rc, bootstat.rc. Each has zero service definitions (grep -cE '^[[:space:]]*service ' -> 0). Their role text describes trigger-driven actions; atrace_userdebug.rc's role is a post-fs action rather than a trigger. Files contain action lines (wifi.rc 54, bootstat.rc 36), so 'only sampled by trigger lines' is not supported.",
+   "corrected_claim": "The group's line-level role labels are 178 verified and 5 observed (183 rows). The five observed rows are system_a rc files with no service definitions: flags_health_check.rc, atrace_userdebug.rc, wifi.rc, oculus.perfetto.rc and bootstat.rc. Their role text describes trigger-driven actions."
+  }
+ ],
+ "gaps": [
+  "ro.hardware is not set in any build.prop in this group and is not present in the mounted tree; the eureka selection of init.eureka.rc and fstab.eureka is inferred from file names. Its source (kernel command line or bootloader) was not examined.",
+  "Precedence when the same property key is set in several build.prop files (persist.sys.usb.config, dalvik.vm.heap*, ro.control_privapp_permissions) was not determined; the init loader logic is not in the tree and the binary was not disassembled.",
+  "The built-in command table and the ueventd-versus-init mode selection were checked only by exact-string presence in the init binary; no disassembly or control-flow analysis was done. verity_load_state and rm are absent as standalone strings.",
+  "The init binary's version or build banner string was not identified.",
+  "The first-stage ramdisk init.rc (first_stage_ramdisk) and the boot image were not in this group; only the system and vendor copies were examined.",
+  "Service binaries named by the rc files (under /vendor/bin, /system/bin, /system_ext/bin, /product/bin, /odm/bin) belong to other subsystems and were not inspected; only what the scripts declare is recorded.",
+  "Full text was not read line by line for the larger scripts: init.rc (55,112 bytes), atrace.rc (24,276), init.anorak.rc (18,409 read in part), init.anorak.cgroup.rc (9,637), init.anorak.usb.rc (8,663), init.usb.configfs.rc (7,690), wifi.rc (5,715), perfetto.rc (4,858). Their structure was taken from service, trigger, import and count extraction.",
+  "Absent from the mounted tree: /vendor/bin/install-recovery.sh, /system/bin/move_widevine_data.sh, /system/bin/linkerconfig (the bootstrap/linkerconfig variant is present), /odm/etc/ueventd.rc. The .ko modules named in init.insmod.cfg and init.insmod.charger.cfg are not in the group.",
+  "The 2 symlink rows have no sha256 in the manifest; their targets were checked by readlink only.",
+  "The compiled SELinux policy (precompiled_sepolicy in odm_a) was not decoded; SELinux evidence comes from source-form file_contexts, property_contexts and CIL. Labels for the rc files and build.prop files inherit from directory-level rules that were not examined.",
+  "Which duplicate service definition is active at runtime (for example, the four zygote variants, or surfaceflinger and health-hal-2-1 in two files) depends on ro.zygote and ro.hardware values and on the import order; only the zygote selection logic was checked.",
+  "The property semantics (what each build.prop key does at run time) were not checked; the roles describe grouping and content only.",
+  "Working files are in <tools>/work/subsystems/init-and-properties: input_rows.tsv, role_map.txt, rc_summary.txt, rc_cmds.txt, service_index.tsv, init_strings.txt, keys_*.txt."
+ ],
+ "rolesFile": "data/subsystems/init-and-properties/roles.tsv"
+}

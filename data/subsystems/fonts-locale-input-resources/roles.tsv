@@ -1,0 +1,449 @@
+partition	path	role	confidence
+odm_a	usr/idc/Vendor_2833_Product_0160.idc	input device configuration (.idc) for USB 2833:0160 (VR peripheral): keyboard.layout and keyboard.characterMap set to oculus-device, device.internal=1, device.type=vrPeripheral	verified
+odm_a	usr/keylayout/Vendor_045e_Product_0b13.kl	key layout (.kl) for USB 045e:0b13 XBox X/S wireless controller - Model 1914 QAU-00002; 12 key lines	observed
+odm_a	usr/keylayout/Vendor_045e_Product_0b0c.kl	key layout (.kl) for USB 045e:0b0c XBox One Adaptive Controller; 12 key lines	observed
+odm_a	usr/keylayout/Vendor_057e_Product_2009.kl	key layout (.kl) for USB 057e:2009 Nintendo Switch Pro Controller - HAC-013 - Bluetooth; 14 key lines	observed
+odm_a	usr/keylayout/Vendor_046d_Product_b335.kl	key layout (.kl) for USB 046d:b335 Logitech K830; 240 key lines	observed
+odm_a	usr/keylayout/Vendor_045e_Product_0b05.kl	key layout (.kl) for USB 045e:0b05 XBox Elite Series 2 Gamepad - Model 1797; 12 key lines	observed
+odm_a	usr/keylayout/Vendor_045e_Product_0b00.kl	key layout (.kl) for USB 045e:0b00 XBox Elite Series 2 Gamepad USB - Model 1797; 12 key lines	observed
+odm_a	usr/keylayout/gpio-keys.kl	key layout (.kl) for the gpio-keys platform input device (VOLUME_UP, VOLUME_DOWN, HOME, TV_INPUT, FOCUS, CAMERA); 6 key lines	verified
+product_a	fonts/OptimisticText-Black.ttf	Optimistic Text App ExtraBold TrueType font (430 glyphs); listed in product_a/etc/fonts_customization.xml as family 'optimistic' (weight 900)	verified
+product_a	fonts/OptimisticText-Medium.ttf	Optimistic Text App Medium TrueType font (430 glyphs); listed in product_a/etc/fonts_customization.xml as family 'optimistic' (weight 500)	verified
+product_a	fonts/OptimisticText-Bold.ttf	Optimistic Text App Bold TrueType font (430 glyphs); listed in product_a/etc/fonts_customization.xml as family 'optimistic' (weight 700)	verified
+product_a	fonts/OptimisticDisplay-VF.ttf	Optimistic Disp VF Cyrl Md TrueType font (341 glyphs, axes wght:200-800); listed in product_a/etc/fonts_customization.xml as family 'optimistic display' (weights 300-900)	verified
+product_a	fonts/OptimisticText-Regular.ttf	Optimistic Text App TrueType font (430 glyphs); listed in product_a/etc/fonts_customization.xml as family 'optimistic' (weight 400)	verified
+product_a	fonts/OptimisticText-Light.ttf	Optimistic Text App Light TrueType font (430 glyphs); listed in product_a/etc/fonts_customization.xml as family 'optimistic' (weight 300)	verified
+system_a	system/fonts/AndroidClock.ttf	AndroidClock Regular TrueType (16 glyphs); not referenced by fonts.xml; clock-digit font by name	inferred
+system_a	system/fonts/CarroisGothicSC-Regular.ttf	Carrois Gothic SC TrueType font (264 glyphs); fonts.xml: sans-serif-smallcaps	verified
+system_a	system/fonts/ComingSoon.ttf	Coming Soon TrueType font (228 glyphs); fonts.xml: casual	verified
+system_a	system/fonts/CutiveMono.ttf	Cutive Mono TrueType font (441 glyphs); fonts.xml: serif-monospace	verified
+system_a	system/fonts/DancingScript-Bold.ttf	Dancing Script Bold TrueType font (239 glyphs); fonts.xml: cursive	verified
+system_a	system/fonts/DancingScript-Regular.ttf	Dancing Script TrueType font (239 glyphs); fonts.xml: cursive	verified
+system_a	system/fonts/DroidSans-Bold.ttf	symlink alias to Roboto-Regular.ttf	verified
+system_a	system/fonts/DroidSans.ttf	symlink alias to Roboto-Regular.ttf	verified
+system_a	system/fonts/DroidSansMono.ttf	Droid Sans Mono TrueType font (895 glyphs); fonts.xml: monospace	verified
+system_a	system/fonts/FacebookEmoji64.ttf	Facebook Emoji Regular TrueType/CBDT colour-bitmap font (3902 glyphs); not referenced by fonts.xml; target of NotoColorEmoji symlinks	verified
+system_a	system/fonts/MSNeoGothic.ttf	Microsoft NeoGothic Regular TrueType (14606 glyphs); not referenced by fonts.xml; referenced by product_a fonts_customization.xml family 'ms-neo-gothic'	verified
+system_a	system/fonts/NotoColorEmoji.lnk	symlink alias to FacebookEmoji64.ttf; resolves to Facebook Emoji font file (name table 'Facebook Emoji')	verified
+system_a	system/fonts/NotoColorEmoji.ttf	symlink alias to FacebookEmoji64.ttf; resolves to Facebook Emoji font file (name table 'Facebook Emoji')	verified
+system_a	system/fonts/NotoColorEmojiFlags.ttf	Noto Color Emoji Flags TrueType font (278 glyphs); fonts.xml: lang=und-Zsye	verified
+system_a	system/fonts/NotoNaskhArabic-Bold.ttf	Noto Naskh Arabic Bold TrueType font (1540 glyphs); fonts.xml: lang=und-Arab/elegant	verified
+system_a	system/fonts/NotoNaskhArabic-Regular.ttf	Noto Naskh Arabic TrueType font (1533 glyphs); fonts.xml: lang=und-Arab/elegant	verified
+system_a	system/fonts/NotoNaskhArabicUI-Bold.ttf	Noto Naskh Arabic UI Bold TrueType font (1545 glyphs); fonts.xml: lang=und-Arab/compact	verified
+system_a	system/fonts/NotoNaskhArabicUI-Regular.ttf	Noto Naskh Arabic UI TrueType font (1541 glyphs); fonts.xml: lang=und-Arab/compact	verified
+system_a	system/fonts/NotoSansAdlam-VF.ttf	Noto Sans Adlam Regular TrueType variable font (361 glyphs); fonts.xml: lang=und-Adlm; axes wght:400-700	verified
+system_a	system/fonts/NotoSansAhom-Regular.otf	Noto Sans Ahom Regular OpenType/CFF font (79 glyphs); fonts.xml: lang=und-Ahom	verified
+system_a	system/fonts/NotoSansAnatolianHieroglyphs-Regular.otf	Noto Sans Anatolian Hieroglyphs Regular OpenType/CFF font (589 glyphs); fonts.xml: lang=und-Hluw	verified
+system_a	system/fonts/NotoSansArmenian-VF.ttf	Noto Sans Armenian Regular TrueType variable font (107 glyphs); fonts.xml: lang=und-Armn; axes wght:400-700	verified
+system_a	system/fonts/NotoSansAvestan-Regular.ttf	Noto Sans Avestan TrueType font (73 glyphs); fonts.xml: lang=und-Avst	verified
+system_a	system/fonts/NotoSansBalinese-Regular.ttf	Noto Sans Balinese TrueType font (182 glyphs); fonts.xml: lang=und-Bali	verified
+system_a	system/fonts/NotoSansBamum-Regular.ttf	Noto Sans Bamum TrueType font (661 glyphs); fonts.xml: lang=und-Bamu	verified
+system_a	system/fonts/NotoSansBassaVah-Regular.otf	Noto Sans Bassa Vah Regular OpenType/CFF font (45 glyphs); fonts.xml: lang=und-Bass	verified
+system_a	system/fonts/NotoSansBatak-Regular.ttf	Noto Sans Batak TrueType font (61 glyphs); fonts.xml: lang=und-Batk	verified
+system_a	system/fonts/NotoSansBengali-VF.ttf	Noto Sans Bengali Regular TrueType variable font (695 glyphs); fonts.xml: lang=und-Beng/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansBengaliUI-VF.ttf	Noto Sans Bengali UI Regular TrueType variable font (695 glyphs); fonts.xml: lang=und-Beng/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansBhaiksuki-Regular.otf	Noto Sans Bhaiksuki Regular OpenType/CFF font (858 glyphs); fonts.xml: lang=und-Bhks	verified
+system_a	system/fonts/NotoSansBrahmi-Regular.ttf	Noto Sans Brahmi TrueType font (182 glyphs); fonts.xml: lang=und-Brah	verified
+system_a	system/fonts/NotoSansBuginese-Regular.ttf	Noto Sans Buginese TrueType font (63 glyphs); fonts.xml: lang=und-Bugi	verified
+system_a	system/fonts/NotoSansBuhid-Regular.ttf	Noto Sans Buhid TrueType font (39 glyphs); fonts.xml: lang=und-Buhd	verified
+system_a	system/fonts/NotoSansCJK-Regular.ttc	TrueType/OpenType collection (Noto Sans CJK) of CJK Noto fonts; fonts.xml lang contexts: lang=ja, lang=ko, lang=zh-Hans	verified
+system_a	system/fonts/NotoSansCanadianAboriginal-Regular.ttf	Noto Sans Canadian Aboriginal TrueType font (744 glyphs); fonts.xml: lang=und-Cans	verified
+system_a	system/fonts/NotoSansCarian-Regular.ttf	Noto Sans Carian TrueType font (53 glyphs); fonts.xml: lang=und-Cari	verified
+system_a	system/fonts/NotoSansChakma-Regular.otf	Noto Sans Chakma Regular OpenType/CFF font (212 glyphs); fonts.xml: lang=und-Cakm	verified
+system_a	system/fonts/NotoSansCham-Bold.ttf	Noto Sans Cham Bold TrueType font (125 glyphs); fonts.xml: lang=und-Cham	verified
+system_a	system/fonts/NotoSansCham-Regular.ttf	Noto Sans Cham TrueType font (125 glyphs); fonts.xml: lang=und-Cham	verified
+system_a	system/fonts/NotoSansCherokee-Regular.ttf	Noto Sans Cherokee TrueType font (273 glyphs); fonts.xml: lang=und-Cher	verified
+system_a	system/fonts/NotoSansCoptic-Regular.ttf	Noto Sans Coptic TrueType font (192 glyphs); fonts.xml: lang=und-Copt	verified
+system_a	system/fonts/NotoSansCuneiform-Regular.ttf	Noto Sans Cuneiform TrueType font (986 glyphs); fonts.xml: lang=und-Xsux	verified
+system_a	system/fonts/NotoSansCypriot-Regular.ttf	Noto Sans Cypriot TrueType font (59 glyphs); fonts.xml: lang=und-Cprt	verified
+system_a	system/fonts/NotoSansDeseret-Regular.ttf	Noto Sans Deseret TrueType font (84 glyphs); fonts.xml: lang=und-Dsrt	verified
+system_a	system/fonts/NotoSansDevanagari-VF.ttf	Noto Sans Devanagari Regular TrueType variable font (1006 glyphs); fonts.xml: lang=und-Deva/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansDevanagariUI-VF.ttf	Noto Sans Devanagari UI Regular TrueType variable font (1006 glyphs); fonts.xml: lang=und-Deva/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansEgyptianHieroglyphs-Regular.ttf	Noto Sans Egyptian Hieroglyphs TrueType font (1075 glyphs); fonts.xml: lang=und-Egyp	verified
+system_a	system/fonts/NotoSansElbasan-Regular.otf	Noto Sans Elbasan Regular OpenType/CFF font (79 glyphs); fonts.xml: lang=und-Elba	verified
+system_a	system/fonts/NotoSansEthiopic-VF.ttf	Noto Sans Ethiopic Regular TrueType variable font (566 glyphs); fonts.xml: lang=und-Ethi; axes wght:400-700	verified
+system_a	system/fonts/NotoSansGeorgian-VF.ttf	Noto Sans Georgian Regular TrueType variable font (225 glyphs); fonts.xml: lang=und-Geor,und-Geok; axes wght:400-700	verified
+system_a	system/fonts/NotoSansGlagolitic-Regular.ttf	Noto Sans Glagolitic TrueType font (98 glyphs); fonts.xml: lang=und-Glag	verified
+system_a	system/fonts/NotoSansGothic-Regular.ttf	Noto Sans Gothic TrueType font (43 glyphs); fonts.xml: lang=und-Goth	verified
+system_a	system/fonts/NotoSansGrantha-Regular.ttf	Noto Sans Grantha Regular TrueType font (478 glyphs); fonts.xml: lang=und-Gran	verified
+system_a	system/fonts/NotoSansGujarati-Bold.ttf	Noto Sans Gujarati Bold TrueType font (740 glyphs); fonts.xml: lang=und-Gujr/elegant	verified
+system_a	system/fonts/NotoSansGujarati-Regular.ttf	Noto Sans Gujarati TrueType font (741 glyphs); fonts.xml: lang=und-Gujr/elegant	verified
+system_a	system/fonts/NotoSansGujaratiUI-Bold.ttf	Noto Sans Gujarati UI Bold TrueType font (721 glyphs); fonts.xml: lang=und-Gujr/compact	verified
+system_a	system/fonts/NotoSansGujaratiUI-Regular.ttf	Noto Sans Gujarati UI TrueType font (722 glyphs); fonts.xml: lang=und-Gujr/compact	verified
+system_a	system/fonts/NotoSansGunjalaGondi-Regular.otf	Noto Sans Gunjala Gondi Regular OpenType/CFF font (253 glyphs); fonts.xml: lang=und-Gong	verified
+system_a	system/fonts/NotoSansGurmukhi-VF.ttf	Noto Sans Gurmukhi Regular TrueType variable font (344 glyphs); fonts.xml: lang=und-Guru/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansGurmukhiUI-VF.ttf	Noto Sans Gurmukhi UI Regular TrueType variable font (344 glyphs); fonts.xml: lang=und-Guru/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansHanifiRohingya-Regular.otf	Noto Sans Hanifi Rohingya Regular OpenType/CFF font (169 glyphs); fonts.xml: lang=und-Rohg	verified
+system_a	system/fonts/NotoSansHanunoo-Regular.ttf	Noto Sans Hanunoo TrueType font (43 glyphs); fonts.xml: lang=und-Hano	verified
+system_a	system/fonts/NotoSansHatran-Regular.otf	Noto Sans Hatran Regular OpenType/CFF font (32 glyphs); fonts.xml: lang=und-Hatr	verified
+system_a	system/fonts/NotoSansHebrew-Bold.ttf	Noto Sans Hebrew Bold TrueType font (155 glyphs); fonts.xml: lang=und-Hebr	verified
+system_a	system/fonts/NotoSansHebrew-Regular.ttf	Noto Sans Hebrew TrueType font (155 glyphs); fonts.xml: lang=und-Hebr	verified
+system_a	system/fonts/NotoSansImperialAramaic-Regular.ttf	Noto Sans Imperial Aramaic TrueType font (35 glyphs); fonts.xml: lang=und-Armi	verified
+system_a	system/fonts/NotoSansInscriptionalPahlavi-Regular.ttf	Noto Sans Inscriptional Pahlavi TrueType font (34 glyphs); fonts.xml: lang=und-Phli	verified
+system_a	system/fonts/NotoSansInscriptionalParthian-Regular.ttf	Noto Sans Inscriptional Parthian TrueType font (45 glyphs); fonts.xml: lang=und-Prti	verified
+system_a	system/fonts/NotoSansJavanese-Regular.otf	Noto Sans Javanese Regular OpenType/CFF font (405 glyphs); fonts.xml: lang=und-Java	verified
+system_a	system/fonts/NotoSansKaithi-Regular.ttf	Noto Sans Kaithi TrueType font (314 glyphs); fonts.xml: lang=und-Kthi	verified
+system_a	system/fonts/NotoSansKannada-VF.ttf	Noto Sans Kannada Regular TrueType variable font (655 glyphs); fonts.xml: lang=und-Knda/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansKannadaUI-VF.ttf	Noto Sans Kannada UI Regular TrueType variable font (655 glyphs); fonts.xml: lang=und-Knda/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansKayahLi-Regular.ttf	Noto Sans Kayah Li TrueType font (54 glyphs); fonts.xml: lang=und-Kali	verified
+system_a	system/fonts/NotoSansKharoshthi-Regular.ttf	Noto Sans Kharoshthi TrueType font (133 glyphs); fonts.xml: lang=und-Khar	verified
+system_a	system/fonts/NotoSansKhmer-VF.ttf	Noto Sans Khmer TrueType variable font (370 glyphs); fonts.xml: lang=und-Khmr/elegant; axes wght:26-190;wdth:70-100	verified
+system_a	system/fonts/NotoSansKhmerUI-Bold.ttf	Noto Sans Khmer UI Bold TrueType font (295 glyphs); fonts.xml: lang=und-Khmr/compact	verified
+system_a	system/fonts/NotoSansKhmerUI-Regular.ttf	Noto Sans Khmer UI TrueType font (295 glyphs); fonts.xml: lang=und-Khmr/compact	verified
+system_a	system/fonts/NotoSansKhojki-Regular.otf	Noto Sans Khojki Regular OpenType/CFF font (177 glyphs); fonts.xml: lang=und-Khoj	verified
+system_a	system/fonts/NotoSansLao-Bold.ttf	Noto Sans Lao Bold TrueType font (154 glyphs); fonts.xml: lang=und-Laoo/elegant	verified
+system_a	system/fonts/NotoSansLao-Regular.ttf	Noto Sans Lao TrueType font (154 glyphs); fonts.xml: lang=und-Laoo/elegant	verified
+system_a	system/fonts/NotoSansLaoUI-Bold.ttf	Noto Sans Lao UI Bold TrueType font (154 glyphs); fonts.xml: lang=und-Laoo/compact	verified
+system_a	system/fonts/NotoSansLaoUI-Regular.ttf	Noto Sans Lao UI TrueType font (154 glyphs); fonts.xml: lang=und-Laoo/compact	verified
+system_a	system/fonts/NotoSansLepcha-Regular.ttf	Noto Sans Lepcha TrueType font (1471 glyphs); fonts.xml: lang=und-Lepc	verified
+system_a	system/fonts/NotoSansLimbu-Regular.ttf	Noto Sans Limbu TrueType font (73 glyphs); fonts.xml: lang=und-Limb	verified
+system_a	system/fonts/NotoSansLinearA-Regular.otf	Noto Sans Linear A Regular OpenType/CFF font (346 glyphs); fonts.xml: lang=und-Lina	verified
+system_a	system/fonts/NotoSansLinearB-Regular.ttf	Noto Sans Linear B TrueType font (272 glyphs); fonts.xml: lang=und-Linb	verified
+system_a	system/fonts/NotoSansLisu-Regular.ttf	Noto Sans Lisu TrueType font (54 glyphs); fonts.xml: lang=und-Lisu	verified
+system_a	system/fonts/NotoSansLycian-Regular.ttf	Noto Sans Lycian TrueType font (33 glyphs); fonts.xml: lang=und-Lyci	verified
+system_a	system/fonts/NotoSansLydian-Regular.ttf	Noto Sans Lydian TrueType font (31 glyphs); fonts.xml: lang=und-Lydi	verified
+system_a	system/fonts/NotoSansMalayalam-VF.ttf	Noto Sans Malayalam Regular TrueType variable font (364 glyphs); fonts.xml: lang=und-Mlym/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansMalayalamUI-VF.ttf	Noto Sans Malayalam UI Regular TrueType variable font (364 glyphs); fonts.xml: lang=und-Mlym/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansMandaic-Regular.ttf	Noto Sans Mandaic TrueType font (128 glyphs); fonts.xml: lang=und-Mand	verified
+system_a	system/fonts/NotoSansManichaean-Regular.otf	Noto Sans Manichaean Regular OpenType/CFF font (153 glyphs); fonts.xml: lang=und-Mani	verified
+system_a	system/fonts/NotoSansMarchen-Regular.otf	Noto Sans Marchen Regular OpenType/CFF font (748 glyphs); fonts.xml: lang=und-Marc	verified
+system_a	system/fonts/NotoSansMasaramGondi-Regular.otf	Noto Sans Masaram Gondi Regular OpenType/CFF font (186 glyphs); fonts.xml: lang=und-Gonm	verified
+system_a	system/fonts/NotoSansMedefaidrin-VF.ttf	Noto Sans Medefaidrin Regular TrueType variable font (95 glyphs); fonts.xml: lang=und-Medf; axes wght:400-700	verified
+system_a	system/fonts/NotoSansMeeteiMayek-Regular.ttf	Noto Sans Meetei Mayek TrueType font (91 glyphs); fonts.xml: lang=und-Mtei	verified
+system_a	system/fonts/NotoSansMeroitic-Regular.otf	Noto Sans Meroitic Regular OpenType/CFF font (133 glyphs); fonts.xml: lang=und-Merc	verified
+system_a	system/fonts/NotoSansMiao-Regular.otf	Noto Sans Miao Regular OpenType/CFF font (312 glyphs); fonts.xml: lang=und-Plrd	verified
+system_a	system/fonts/NotoSansModi-Regular.ttf	Noto Sans Modi Regular TrueType font (209 glyphs); fonts.xml: lang=und-Modi	verified
+system_a	system/fonts/NotoSansMongolian-Regular.ttf	Noto Sans Mongolian TrueType font (1511 glyphs); fonts.xml: lang=und-Mong	verified
+system_a	system/fonts/NotoSansMro-Regular.otf	Noto Sans Mro Regular OpenType/CFF font (48 glyphs); fonts.xml: lang=und-Mroo	verified
+system_a	system/fonts/NotoSansMultani-Regular.otf	Noto Sans Multani Regular OpenType/CFF font (53 glyphs); fonts.xml: lang=und-Mult	verified
+system_a	system/fonts/NotoSansMyanmar-Bold.otf	Noto Sans Myanmar Bold OpenType/CFF font (610 glyphs); fonts.xml: lang=und-Mymr/elegant	verified
+system_a	system/fonts/NotoSansMyanmar-Medium.otf	Noto Sans Myanmar Medium OpenType/CFF font (610 glyphs); fonts.xml: lang=und-Mymr/elegant	verified
+system_a	system/fonts/NotoSansMyanmar-Regular.otf	Noto Sans Myanmar Regular OpenType/CFF font (610 glyphs); fonts.xml: lang=und-Mymr/elegant	verified
+system_a	system/fonts/NotoSansMyanmarUI-Bold.otf	Noto Sans Myanmar UI Bold OpenType/CFF font (610 glyphs); fonts.xml: lang=und-Mymr/compact	verified
+system_a	system/fonts/NotoSansMyanmarUI-Medium.otf	Noto Sans Myanmar UI Medium OpenType/CFF font (610 glyphs); fonts.xml: lang=und-Mymr/compact	verified
+system_a	system/fonts/NotoSansMyanmarUI-Regular.otf	Noto Sans Myanmar UI Regular OpenType/CFF font (610 glyphs); fonts.xml: lang=und-Mymr/compact	verified
+system_a	system/fonts/NotoSansNKo-Regular.ttf	Noto Sans NKo TrueType font (174 glyphs); fonts.xml: lang=und-Nkoo	verified
+system_a	system/fonts/NotoSansNabataean-Regular.otf	Noto Sans Nabataean Regular OpenType/CFF font (45 glyphs); fonts.xml: lang=und-Nbat	verified
+system_a	system/fonts/NotoSansNewTaiLue-Regular.ttf	Noto Sans New Tai Lue TrueType font (91 glyphs); fonts.xml: lang=und-Talu	verified
+system_a	system/fonts/NotoSansNewa-Regular.otf	Noto Sans Newa Regular OpenType/CFF font (452 glyphs); fonts.xml: lang=und-Newa	verified
+system_a	system/fonts/NotoSansOgham-Regular.ttf	Noto Sans Ogham TrueType font (33 glyphs); fonts.xml: lang=und-Ogam	verified
+system_a	system/fonts/NotoSansOlChiki-Regular.ttf	Noto Sans Ol Chiki TrueType font (52 glyphs); fonts.xml: lang=und-Olck	verified
+system_a	system/fonts/NotoSansTakri-VF.ttf	Noto Sans Takri Regular TrueType variable font (95 glyphs); fonts.xml: lang=und-Takr; axes wght:400-700	verified
+system_a	system/fonts/NotoSansOldItalic-Regular.ttf	Noto Sans Old Italic TrueType font (39 glyphs); fonts.xml: lang=und-Ital	verified
+system_a	system/fonts/NotoSansOldNorthArabian-Regular.otf	Noto Sans Old North Arabian Regular OpenType/CFF font (37 glyphs); fonts.xml: lang=und-Narb	verified
+system_a	system/fonts/NotoSansOldPermic-Regular.otf	Noto Sans Old Permic Regular OpenType/CFF font (56 glyphs); fonts.xml: lang=und-Perm	verified
+system_a	system/fonts/NotoSansOldPersian-Regular.ttf	Noto Sans Old Persian TrueType font (54 glyphs); fonts.xml: lang=und-Xpeo	verified
+system_a	system/fonts/NotoSansOldSouthArabian-Regular.ttf	Noto Sans Old South Arabian TrueType font (36 glyphs); fonts.xml: lang=und-Sarb	verified
+system_a	system/fonts/NotoSansOldTurkic-Regular.ttf	Noto Sans Old Turkic TrueType font (77 glyphs); fonts.xml: lang=und-Orkh	verified
+system_a	system/fonts/NotoSansOriya-Bold.ttf	Noto Sans Oriya Bold TrueType font (671 glyphs); fonts.xml: lang=und-Orya/elegant	verified
+system_a	system/fonts/NotoSansOriya-Regular.ttf	Noto Sans Oriya TrueType font (671 glyphs); fonts.xml: lang=und-Orya/elegant	verified
+system_a	system/fonts/NotoSansOriyaUI-Bold.ttf	Noto Sans Oriya UI Bold TrueType font (624 glyphs); fonts.xml: lang=und-Orya/compact	verified
+system_a	system/fonts/NotoSansOriyaUI-Regular.ttf	Noto Sans Oriya UI TrueType font (624 glyphs); fonts.xml: lang=und-Orya/compact	verified
+system_a	system/fonts/NotoSansOsage-Regular.ttf	Noto Sans Osage Regular TrueType font (85 glyphs); fonts.xml: lang=und-Osge	verified
+system_a	system/fonts/NotoSansOsmanya-Regular.ttf	Noto Sans Osmanya TrueType font (44 glyphs); fonts.xml: lang=und-Osma	verified
+system_a	system/fonts/NotoSansPahawhHmong-Regular.otf	Noto Sans Pahawh Hmong Regular OpenType/CFF font (135 glyphs); fonts.xml: lang=und-Hmng	verified
+system_a	system/fonts/NotoSansPalmyrene-Regular.otf	Noto Sans Palmyrene Regular OpenType/CFF font (57 glyphs); fonts.xml: lang=und-Palm	verified
+system_a	system/fonts/NotoSansPauCinHau-Regular.otf	Noto Sans Pau Cin Hau Regular OpenType/CFF font (62 glyphs); fonts.xml: lang=und-Pauc	verified
+system_a	system/fonts/NotoSansPhagsPa-Regular.ttf	Noto Sans Phags Pa TrueType font (382 glyphs); fonts.xml: lang=und-Phag	verified
+system_a	system/fonts/NotoSansPhoenician-Regular.ttf	Noto Sans Phoenician TrueType font (33 glyphs); fonts.xml: lang=und-Phnx	verified
+system_a	system/fonts/NotoSansRejang-Regular.ttf	Noto Sans Rejang TrueType font (41 glyphs); fonts.xml: lang=und-Rjng	verified
+system_a	system/fonts/NotoSansRunic-Regular.ttf	Noto Sans Runic TrueType font (85 glyphs); fonts.xml: lang=und-Runr	verified
+system_a	system/fonts/NotoSansSamaritan-Regular.ttf	Noto Sans Samaritan TrueType font (67 glyphs); fonts.xml: lang=und-Samr	verified
+system_a	system/fonts/NotoSansSaurashtra-Regular.ttf	Noto Sans Saurashtra TrueType font (93 glyphs); fonts.xml: lang=und-Saur	verified
+system_a	system/fonts/NotoSansSharada-Regular.otf	Noto Sans Sharada Regular OpenType/CFF font (211 glyphs); fonts.xml: lang=und-Shrd	verified
+system_a	system/fonts/NotoSansShavian-Regular.ttf	Noto Sans Shavian TrueType font (52 glyphs); fonts.xml: lang=und-Shaw	verified
+system_a	system/fonts/NotoSansSinhala-VF.ttf	Noto Sans Sinhala Regular TrueType variable font (645 glyphs); fonts.xml: lang=und-Sinh/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansSinhalaUI-VF.ttf	Noto Sans Sinhala UI Regular TrueType variable font (645 glyphs); fonts.xml: lang=und-Sinh/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansSoraSompeng-Regular.otf	Noto Sans Sora Sompeng Regular OpenType/CFF font (42 glyphs); fonts.xml: lang=und-Sora	verified
+system_a	system/fonts/NotoSansSoyombo-VF.ttf	Noto Sans Soyombo Regular TrueType variable font (323 glyphs); fonts.xml: lang=und-Soyo; axes wght:400-700	verified
+system_a	system/fonts/NotoSansSundanese-Regular.ttf	Noto Sans Sundanese TrueType font (79 glyphs); fonts.xml: lang=und-Sund	verified
+system_a	system/fonts/NotoSansSylotiNagri-Regular.ttf	Noto Sans Syloti Nagri TrueType font (85 glyphs); fonts.xml: lang=und-Sylo	verified
+system_a	system/fonts/NotoSansSymbols-Regular-Subsetted.ttf	Noto Sans Symbols TrueType font (4825 glyphs); fonts.xml: lang=-	verified
+system_a	system/fonts/NotoSansSymbols-Regular-Subsetted2.ttf	Noto Sans Symbols TrueType font (125 glyphs); fonts.xml: lang=und-Zsym	verified
+system_a	system/fonts/NotoSansSyriacEastern-Regular.ttf	Noto Sans Syriac Eastern TrueType font (319 glyphs); fonts.xml: lang=und-Syrn	verified
+system_a	system/fonts/NotoSansSyriacEstrangela-Regular.ttf	Noto Sans Syriac Estrangela TrueType font (306 glyphs); fonts.xml: lang=und-Syre	verified
+system_a	system/fonts/NotoSansSyriacWestern-Regular.ttf	Noto Sans Syriac Western TrueType font (313 glyphs); fonts.xml: lang=und-Syrj	verified
+system_a	system/fonts/NotoSansTagalog-Regular.ttf	Noto Sans Tagalog TrueType font (26 glyphs); fonts.xml: lang=und-Tglg	verified
+system_a	system/fonts/NotoSansTagbanwa-Regular.ttf	Noto Sans Tagbanwa TrueType font (24 glyphs); fonts.xml: lang=und-Tagb	verified
+system_a	system/fonts/NotoSansTaiLe-Regular.ttf	Noto Sans Tai Le TrueType font (66 glyphs); fonts.xml: lang=und-Tale	verified
+system_a	system/fonts/NotoSansTaiTham-Regular.ttf	Noto Sans Tai Tham TrueType font (232 glyphs); fonts.xml: lang=und-Lana	verified
+system_a	system/fonts/NotoSansTaiViet-Regular.ttf	Noto Sans Tai Viet TrueType font (81 glyphs); fonts.xml: lang=und-Tavt	verified
+system_a	system/fonts/NotoSansTamil-VF.ttf	Noto Sans Tamil Regular TrueType variable font (244 glyphs); fonts.xml: lang=und-Taml/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansTamilUI-VF.ttf	Noto Sans Tamil UI Regular TrueType variable font (244 glyphs); fonts.xml: lang=und-Taml/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansTelugu-VF.ttf	Noto Sans Telugu Regular TrueType variable font (958 glyphs); fonts.xml: lang=und-Telu/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSansTeluguUI-VF.ttf	Noto Sans Telugu UI Regular TrueType variable font (958 glyphs); fonts.xml: lang=und-Telu/compact; axes wght:400-700	verified
+system_a	system/fonts/NotoSansThaana-Bold.ttf	Noto Sans Thaana Bold TrueType font (95 glyphs); fonts.xml: lang=und-Thaa	verified
+system_a	system/fonts/NotoSansThaana-Regular.ttf	Noto Sans Thaana TrueType font (95 glyphs); fonts.xml: lang=und-Thaa	verified
+system_a	system/fonts/NotoSansThai-Bold.ttf	Noto Sans Thai Bold TrueType font (108 glyphs); fonts.xml: lang=und-Thai/elegant	verified
+system_a	system/fonts/NotoSansThai-Regular.ttf	Noto Sans Thai TrueType font (108 glyphs); fonts.xml: lang=und-Thai/elegant	verified
+system_a	system/fonts/NotoSansThaiUI-Bold.ttf	Noto Sans Thai UI Bold TrueType font (110 glyphs); fonts.xml: lang=und-Thai/compact	verified
+system_a	system/fonts/NotoSansThaiUI-Regular.ttf	Noto Sans Thai UI TrueType font (110 glyphs); fonts.xml: lang=und-Thai/compact	verified
+system_a	system/fonts/NotoSansTifinagh-Regular.otf	Noto Sans Tifinagh Regular OpenType/CFF font (164 glyphs); fonts.xml: lang=und-Tfng	verified
+system_a	system/fonts/NotoSansUgaritic-Regular.ttf	Noto Sans Ugaritic TrueType font (35 glyphs); fonts.xml: lang=und-Ugar	verified
+system_a	system/fonts/NotoSansVai-Regular.ttf	Noto Sans Vai TrueType font (304 glyphs); fonts.xml: lang=und-Vaii	verified
+system_a	system/fonts/NotoSansWancho-Regular.otf	Noto Sans Wancho Regular OpenType/CFF font (95 glyphs); fonts.xml: lang=und-Wcho	verified
+system_a	system/fonts/NotoSansWarangCiti-Regular.otf	Noto Sans Warang Citi Regular OpenType/CFF font (181 glyphs); fonts.xml: lang=und-Wara	verified
+system_a	system/fonts/NotoSansYi-Regular.ttf	Noto Sans Yi TrueType font (1251 glyphs); fonts.xml: lang=und-Yiii	verified
+system_a	system/fonts/NotoSerif-Bold.ttf	Noto Serif Bold TrueType font (2409 glyphs); fonts.xml: serif	verified
+system_a	system/fonts/NotoSerif-BoldItalic.ttf	Noto Serif Bold Italic TrueType font (2409 glyphs); fonts.xml: serif	verified
+system_a	system/fonts/NotoSerif-Italic.ttf	Noto Serif Italic TrueType font (2409 glyphs); fonts.xml: serif	verified
+system_a	system/fonts/NotoSerif-Regular.ttf	Noto Serif TrueType font (2409 glyphs); fonts.xml: serif	verified
+system_a	system/fonts/NotoSerifArmenian-VF.ttf	Noto Serif Armenian Regular TrueType variable font (107 glyphs); fonts.xml: lang=und-Armn; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifBengali-VF.ttf	Noto Serif Bengali Regular TrueType variable font (640 glyphs); fonts.xml: lang=und-Beng/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifCJK-Regular.ttc	TrueType/OpenType collection (Noto Serif CJK) of CJK Noto fonts; fonts.xml lang contexts: lang=ja, lang=ko, lang=zh-Hans	verified
+system_a	system/fonts/NotoSerifDevanagari-VF.ttf	Noto Serif Devanagari Regular TrueType variable font (871 glyphs); fonts.xml: lang=und-Deva/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifDogra-Regular.ttf	Noto Serif Dogra Regular TrueType font (142 glyphs); fonts.xml: lang=und-Dogr	verified
+system_a	system/fonts/NotoSerifEthiopic-VF.ttf	Noto Serif Ethiopic Regular TrueType variable font (566 glyphs); fonts.xml: lang=und-Ethi; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifGeorgian-VF.ttf	Noto Serif Georgian Regular TrueType variable font (225 glyphs); fonts.xml: lang=und-Geor,und-Geok; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifGujarati-VF.ttf	Noto Serif Gujarati Regular TrueType variable font (456 glyphs); fonts.xml: lang=und-Gujr/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifGurmukhi-VF.ttf	Noto Serif Gurmukhi Regular TrueType variable font (294 glyphs); fonts.xml: lang=und-Guru/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifHebrew-Bold.ttf	Noto Serif Hebrew Bold TrueType font (150 glyphs); fonts.xml: lang=und-Hebr	verified
+system_a	system/fonts/NotoSerifHebrew-Regular.ttf	Noto Serif Hebrew TrueType font (150 glyphs); fonts.xml: lang=und-Hebr	verified
+system_a	system/fonts/NotoSerifKannada-VF.ttf	Noto Serif Kannada Regular TrueType variable font (417 glyphs); fonts.xml: lang=und-Knda/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifKhmer-Bold.otf	Noto Serif Khmer Bold OpenType/CFF font (361 glyphs); fonts.xml: lang=und-Khmr/elegant	verified
+system_a	system/fonts/NotoSerifKhmer-Regular.otf	Noto Serif Khmer Regular OpenType/CFF font (361 glyphs); fonts.xml: lang=und-Khmr/elegant	verified
+system_a	system/fonts/NotoSerifLao-Bold.ttf	Noto Serif Lao Bold TrueType font (154 glyphs); fonts.xml: lang=und-Laoo/elegant	verified
+system_a	system/fonts/NotoSerifLao-Regular.ttf	Noto Serif Lao TrueType font (154 glyphs); fonts.xml: lang=und-Laoo/elegant	verified
+system_a	system/fonts/NotoSerifMalayalam-VF.ttf	Noto Serif Malayalam Regular TrueType variable font (354 glyphs); fonts.xml: lang=und-Mlym/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifMyanmar-Bold.otf	Noto Serif Myanmar Bold OpenType/CFF font (725 glyphs); fonts.xml: lang=und-Mymr/elegant	verified
+system_a	system/fonts/NotoSerifMyanmar-Regular.otf	Noto Serif Myanmar Regular OpenType/CFF font (725 glyphs); fonts.xml: lang=und-Mymr/elegant	verified
+system_a	system/fonts/NotoSerifNyiakengPuachueHmong-VF.ttf	Noto Serif Nyiakeng Puachue Hmong Regular TrueType variable font (75 glyphs); fonts.xml: lang=und-Hmnp; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifSinhala-VF.ttf	Noto Serif Sinhala Regular TrueType variable font (645 glyphs); fonts.xml: lang=und-Sinh/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifTamil-VF.ttf	Noto Serif Tamil Regular TrueType variable font (222 glyphs); fonts.xml: lang=und-Taml/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifTelugu-VF.ttf	Noto Serif Telugu Regular TrueType variable font (728 glyphs); fonts.xml: lang=und-Telu/elegant; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifThai-Bold.ttf	Noto Serif Thai Bold TrueType font (108 glyphs); fonts.xml: lang=und-Thai/elegant	verified
+system_a	system/fonts/NotoSerifThai-Regular.ttf	Noto Serif Thai TrueType font (108 glyphs); fonts.xml: lang=und-Thai/elegant	verified
+system_a	system/fonts/NotoSerifTibetan-VF.ttf	Noto Serif Tibetan Regular TrueType variable font (1891 glyphs); fonts.xml: lang=und-Tibt; axes wght:400-700	verified
+system_a	system/fonts/NotoSerifYezidi-VF.ttf	Noto Serif Yezidi Regular TrueType variable font (55 glyphs); fonts.xml: lang=und-Yezi; axes wght:400-700	verified
+system_a	system/fonts/Roboto-Regular.ttf	Roboto TrueType variable font (3362 glyphs); fonts.xml: sans-serif, sans-serif-condensed; axes wght:100-900;wdth:75-100;ital:0-1	verified
+system_a	system/fonts/RobotoStatic-Regular.ttf	RobotoStatic TrueType font (3359 glyphs); fonts.xml: sans-serif	verified
+system_a	system/fonts/SourceSansPro-Bold.ttf	Source Sans Pro Bold TrueType font (1942 glyphs); fonts.xml: source-sans-pro	verified
+system_a	system/fonts/SourceSansPro-BoldItalic.ttf	Source Sans Pro Bold Italic TrueType font (857 glyphs); fonts.xml: source-sans-pro	verified
+system_a	system/fonts/SourceSansPro-Italic.ttf	Source Sans Pro Italic TrueType font (857 glyphs); fonts.xml: source-sans-pro	verified
+system_a	system/fonts/SourceSansPro-Regular.ttf	Source Sans Pro Regular TrueType font (1942 glyphs); fonts.xml: source-sans-pro	verified
+system_a	system/fonts/SourceSansPro-SemiBold.ttf	Source Sans Pro SemiBold TrueType font (1942 glyphs); fonts.xml: source-sans-pro	verified
+system_a	system/fonts/SourceSansPro-SemiBoldItalic.ttf	Source Sans Pro SemiBold Italic TrueType font (857 glyphs); fonts.xml: source-sans-pro	verified
+system_a	system/usr/icu	symlink to /apex/com.android.i18n/etc/icu (ICU data directory supplied by the i18n APEX)	verified
+system_a	system/usr/hyphen-data/hyph-sl.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Slovenian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-nb.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Norwegian Bokmal; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-pt.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Portuguese; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-or.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Oriya; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-cy.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Welsh; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-ga.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Irish; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-ml.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Malayalam; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-be.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Belarusian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-fr.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for French; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-pa.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Punjabi; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-gu.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Gujarati; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-te.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Telugu; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-de-1996.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for German (1996 orthography); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-ta.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Tamil; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-bg.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Bulgarian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-mr.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Marathi; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-mn-cyrl.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Mongolian (Cyrillic); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-bn.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Bengali; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-tk.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Turkmen; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-nn.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Norwegian Nynorsk; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-hy.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Armenian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-hu.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Hungarian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-en-gb.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for English (GB); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-cu.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Church Slavonic; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-da.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Danish; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-hi.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Hindi; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-la.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Latin; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-eu.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Basque; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-as.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Assamese; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-kn.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Kannada; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-de-ch-1901.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for German (Swiss, 1901); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-und-ethi.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Ethiopic (script-generic); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-en-us.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for English (US); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-de-1901.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for German (1901); read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-es.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Spanish; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-et.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Estonian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/hyphen-data/hyph-hr.hyb	hyphenation pattern table (hyb binary, magic 0x62ad7968) for Croatian; read via /system/usr/hyphen-data/hyph- path in libandroid_runtime.so	verified
+system_a	system/usr/keylayout/AVRCP.kl	key layout (.kl) for Bluetooth AVRCP support; 7 key lines	observed
+system_a	system/usr/keylayout/Generic.kl	key layout (.kl) for full alphabetic US English PC style external keyboards; 254 key lines	observed
+system_a	system/usr/keylayout/Vendor_0079_Product_0011.kl	key layout (.kl) for USB 0079:0011 Classic [S]NES Controller; 8 key lines	observed
+system_a	system/usr/keylayout/Vendor_0079_Product_18d4.kl	key layout (.kl) for USB 0079:18d4 GPD Win 2 X-Box Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_044f_Product_b326.kl	key layout (.kl) for USB 044f:b326 Thrustmaster Gamepad GP XID; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_028e.kl	key layout (.kl) for USB 045e:028e XBox 360 USB Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_028f.kl	key layout (.kl) for USB 045e:028f Microsoft X-Box 360 pad v2; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02a1.kl	key layout (.kl) for USB 045e:02a1 XBox 360 Wireless Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02d1.kl	key layout (.kl) for USB 045e:02d1 XBox One Controller - Model 1537 - USB; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02dd.kl	key layout (.kl) for USB 045e:02dd XBox One Controller - Model 1697 - USB; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02e0.kl	key layout (.kl) for USB 045e:02e0 Xbox Wireless Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02e3.kl	key layout (.kl) for USB 045e:02e3 Microsoft X-Box One Elite Pad - Model 1698 - USB; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02ea.kl	key layout (.kl) for USB 045e:02ea XBox One Controller - Model 1708 - USB; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_02fd.kl	key layout (.kl) for USB 045e:02fd XBox One Controller - Model 1708 - Bluetooth; 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_045e_Product_0b12.kl	key layout (.kl) for USB 045e:0b12 XBox USB Controller; 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_b501.kl	key layout (.kl) for USB 046d:b501 Logitech Bluetooth wireless gamepad (RedHawk); 30 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c216.kl	key layout (.kl) for USB 046d:c216 Logitech Dual Action Controller; 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c219.kl	key layout (.kl) for USB 046d:c219 Logitech Logitech Cordless RumblePad 2; 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c21d.kl	key layout (.kl) for USB 046d:c21d Logitech F310; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c21e.kl	key layout (.kl) for USB 046d:c21e Logitech Gamepad F510; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c21f.kl	key layout (.kl) for USB 046d:c21f Logitech Wireless Gamepad F710; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c242.kl	key layout (.kl) for USB 046d:c242 Logitech Chillstream Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c294.kl	key layout (.kl) for USB 046d:c294 Logitech G25 Racing Wheel (in Compatibility Mode); 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c299.kl	key layout (.kl) for USB 046d:c299 Logitech G25 Racing Wheel (in Native Mode); 19 key lines	observed
+system_a	system/usr/keylayout/Vendor_046d_Product_c532.kl	key layout (.kl) for USB 046d:c532 Logitech Revue Wireless keyboard; 104 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0268.kl	key layout (.kl) for USB 054c:0268 Sony Playstation(R)3 Controller; 17 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0268_Version_8000.kl	key layout (.kl) for USB 054c:0268 Sony Playstation(R)3 Controller; 17 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0268_Version_8100.kl	key layout (.kl) for USB 054c:0268 Sony Playstation(R)3 Controller; 17 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0268_Version_8111.kl	key layout (.kl) for USB 054c:0268 Sony Playstation(R)3 Controller; 17 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_05c4.kl	key layout (.kl) for USB 054c:05c4 Sony Playstation(R) DualShock 4 Controller; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_05c4_Version_8000.kl	key layout (.kl) for USB 054c:05c4 Sony Playstation(R) DualShock 4 Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_05c4_Version_8100.kl	key layout (.kl) for USB 054c:05c4 Sony Playstation(R) DualShock 4 Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_05c4_Version_8111.kl	key layout (.kl) for USB 054c:05c4 Sony Playstation(R) DualShock 4 Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_09cc.kl	key layout (.kl) for USB 054c:09cc Sony Playstation(R) DualShock 4 Controller; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_09cc_Version_8000.kl	key layout (.kl) for USB 054c:09cc Sony Playstation(R) DualShock 4 Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_09cc_Version_8100.kl	key layout (.kl) for USB 054c:09cc Sony Playstation(R) DualShock 4 Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_09cc_Version_8111.kl	key layout (.kl) for USB 054c:09cc Sony Playstation(R) DualShock 4 Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0ba0.kl	key layout (.kl) for USB 054c:0ba0 Sony Playstation(R) DualShock 4 USB Dongle; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0ba0_Version_8111.kl	key layout (.kl) for USB 054c:0ba0 Sony Playstation(R) DualShock 4 USB Dongle; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0ce6.kl	key layout (.kl) for USB 054c:0ce6 Sony Playstation(R) DualSense Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_054c_Product_0df2.kl	key layout (.kl) for USB 054c:0df2 Sony Playstation(R) DualSense Edge Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_056e_Product_2004.kl	key layout (.kl) for USB 056e:2004 Elecom JC-U3613M; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_056e_Product_2010.kl	key layout (.kl) for USB 056e:2010 Elecom JC-U4113S in DirectInput Mode (D mode); 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_056e_Product_2013.kl	key layout (.kl) for USB 056e:2013 Elecom JC-U4113S in XInput Mode (X mode); 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_057e_Product_2009.kl	key layout (.kl) for USB 057e:2009 Nintendo Switch Pro Controller - HAC-013 - Bluetooth; 18 key lines	observed
+system_a	system/usr/keylayout/Vendor_0583_Product_2060.kl	key layout (.kl) for USB 0583:2060 ION GO PAD; 8 key lines	observed
+system_a	system/usr/keylayout/Vendor_05ac_Product_0239.kl	key layout (.kl) for USB 05ac:0239 Apple Wireless Keyboard; 93 key lines	observed
+system_a	system/usr/keylayout/Vendor_06a3_Product_f51a.kl	key layout (.kl) for USB 06a3:f51a Saitek P3600; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_4716.kl	key layout (.kl) for USB 0738:4716 Mad Catz Wired Xbox 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_4718.kl	key layout (.kl) for USB 0738:4718 Mad Catz Street Fighter IV FightStick SE; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_4726.kl	key layout (.kl) for USB 0738:4726 Mad Catz Xbox 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_4736.kl	key layout (.kl) for USB 0738:4736 Mad Catz MicroCon Gamepad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_4740.kl	key layout (.kl) for USB 0738:4740 Mad Catz Beat Pad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_9871.kl	key layout (.kl) for USB 0738:9871 Mad Catz Portable Drum; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_b726.kl	key layout (.kl) for USB 0738:b726 Mad Catz Xbox controller - MW2; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_beef.kl	key layout (.kl) for USB 0738:beef Mad Catz JOYTECH NEO SE Advanced GamePad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_cb02.kl	key layout (.kl) for USB 0738:cb02 Saitek Cyborg Rumble Pad - PC/Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_cb03.kl	key layout (.kl) for USB 0738:cb03 Saitek P3200 Rumble Pad - PC/Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_cb29.kl	key layout (.kl) for USB 0738:cb29 Saitek Aviator Stick AV8R02; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0738_Product_f738.kl	key layout (.kl) for USB 0738:f738 Super SFIV FightStick TE S; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_07ff_Product_ffff.kl	key layout (.kl) for USB 07ff:ffff Mad Catz GamePad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0957_Product_0001.kl	key layout (.kl) for USB 0957:0001 Key Layout file for Google Reference RCU Remote; 45 key lines	observed
+system_a	system/usr/keylayout/Vendor_0b05_Product_4500.kl	key layout (.kl) for USB 0b05:4500 Asus Gamepad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0113.kl	key layout (.kl) for USB 0e6f:0113 Afterglow AX.1 Gamepad for Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_011f.kl	key layout (.kl) for USB 0e6f:011f Rock Candy Gamepad Wired Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0131.kl	key layout (.kl) for USB 0e6f:0131 PDP EA Sports Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0133.kl	key layout (.kl) for USB 0e6f:0133 Xbox 360 Wired Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0139.kl	key layout (.kl) for USB 0e6f:0139 Afterglow Prismatic Wired Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_013a.kl	key layout (.kl) for USB 0e6f:013a PDP Xbox One Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0146.kl	key layout (.kl) for USB 0e6f:0146 Rock Candy Wired Controller for Xbox One; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0147.kl	key layout (.kl) for USB 0e6f:0147 PDP Marvel Xbox One Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0161.kl	key layout (.kl) for USB 0e6f:0161 PDP Xbox One Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0162.kl	key layout (.kl) for USB 0e6f:0162 PDP Xbox One Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0163.kl	key layout (.kl) for USB 0e6f:0163 PDP Xbox One Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0164.kl	key layout (.kl) for USB 0e6f:0164 PDP Battlefield One; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0165.kl	key layout (.kl) for USB 0e6f:0165 PDP Titanfall 2; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0201.kl	key layout (.kl) for USB 0e6f:0201 Pelican PL-3601 'TSZ' Wired Xbox 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0213.kl	key layout (.kl) for USB 0e6f:0213 Afterglow Gamepad for Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_021f.kl	key layout (.kl) for USB 0e6f:021f Rock Candy Gamepad for Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0246.kl	key layout (.kl) for USB 0e6f:0246 Rock Candy Gamepad for Xbox One 2015; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_02a4.kl	key layout (.kl) for USB 0e6f:02a4 PDP Wired Controller for Xbox One - Stealth Series; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_02a6.kl	key layout (.kl) for USB 0e6f:02a6 PDP Wired Controller for Xbox One - Camo Series; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_02ab.kl	key layout (.kl) for USB 0e6f:02ab PDP Controller for Xbox One; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0301.kl	key layout (.kl) for USB 0e6f:0301 Logic3 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0346.kl	key layout (.kl) for USB 0e6f:0346 Rock Candy Gamepad for Xbox One 2016; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0401.kl	key layout (.kl) for USB 0e6f:0401 Logic3 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0413.kl	key layout (.kl) for USB 0e6f:0413 Afterglow AX.1 Gamepad for Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_0501.kl	key layout (.kl) for USB 0e6f:0501 PDP Xbox 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0e6f_Product_f900.kl	key layout (.kl) for USB 0e6f:f900 PDP Afterglow AX.1; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0f0d_Product_000a.kl	key layout (.kl) for USB 0f0d:000a Hori Co. DOA4 FightStick; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0f0d_Product_000c.kl	key layout (.kl) for USB 0f0d:000c Hori PadEX Turbo; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0f0d_Product_0067.kl	key layout (.kl) for USB 0f0d:0067 HORIPAD ONE; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_0f0d_Product_00c1.kl	key layout (.kl) for USB 0f0d:00c1 Device name: HORI CO.,LTD. HORIPAD S; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_1038_Product_1412.kl	key layout (.kl) for USB 1038:1412 Steelseries Free; 8 key lines	observed
+system_a	system/usr/keylayout/Vendor_1038_Product_1430.kl	key layout (.kl) for USB 1038:1430 SteelSeries Stratus Duo; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1038_Product_1431.kl	key layout (.kl) for USB 1038:1431 SteelSeries Stratus Duo; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_11c9_Product_55f0.kl	key layout (.kl) for USB 11c9:55f0 Nacon GC-100XF; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_12ab_Product_0301.kl	key layout (.kl) for USB 12ab:0301 PDP AFTERGLOW AX.1; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_12bd_Product_d015.kl	key layout (.kl) for USB 12bd:d015 Hitgaming SNES Retro; 8 key lines	observed
+system_a	system/usr/keylayout/Vendor_1430_Product_4748.kl	key layout (.kl) for USB 1430:4748 RedOctane Guitar Hero X-plorer; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1430_Product_f801.kl	key layout (.kl) for USB 1430:f801 RedOctane Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_146b_Product_0601.kl	key layout (.kl) for USB 146b:0601 BigBen Interactive XBOX 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_0037.kl	key layout (.kl) for USB 1532:0037 Razer Sabertooth; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_0705.kl	key layout (.kl) for USB 1532:0705 Razer Raiju Mobile Controller with wired USB interface; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_0707.kl	key layout (.kl) for USB 1532:0707 Razer Raiju Mobile Controller with wireless Bluetooth interface; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_0709.kl	key layout (.kl) for USB 1532:0709 Razer Junglecat Controller with wireless Bluetooth interface; 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_0900.kl	key layout (.kl) for USB 1532:0900 Razer Serval; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_0a03.kl	key layout (.kl) for USB 1532:0a03 Razer Wildcat; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_1004.kl	key layout (.kl) for USB 1532:1004 Razer Raiju Ultimate Edition Controller with wired USB interface; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_1007.kl	key layout (.kl) for USB 1532:1007 Razer Raiju Tournament Edition Controller with wired USB interface; 14 key lines	observed
+system_a	system/usr/keylayout/idroid_con.kl	key layout (.kl) for SnakeByte iDroid:con; 12 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_1009.kl	key layout (.kl) for USB 1532:1009 Razer Raiju Ultimate Edition Controller with wireless Bluetooth interface; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_1532_Product_100a.kl	key layout (.kl) for USB 1532:100a Razer Raiju Tournament Edition Controller with wireless Bluetooth interface; 14 key lines	observed
+system_a	system/usr/keylayout/Vendor_15e4_Product_3f00.kl	key layout (.kl) for USB 15e4:3f00 Power A Mini Pro Elite; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_15e4_Product_3f0a.kl	key layout (.kl) for USB 15e4:3f0a Xbox Airflo wired controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_15e4_Product_3f10.kl	key layout (.kl) for USB 15e4:3f10 Batarang Xbox 360 controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_162e_Product_beef.kl	key layout (.kl) for USB 162e:beef Joytech Neo-Se Take2; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1689_Product_fd00.kl	key layout (.kl) for USB 1689:fd00 Razer Onza Tournament Edition; 15 key lines	observed
+system_a	system/usr/keylayout/Vendor_1689_Product_fd01.kl	key layout (.kl) for USB 1689:fd01 Razer Xbox 360 Gamepad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1689_Product_fe00.kl	key layout (.kl) for USB 1689:fe00 Razer Sabertooth Elite; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_18d1_Product_0200.kl	key layout (.kl) for USB 18d1:0200 the android virtual remote running as a gamepad; 35 key lines	observed
+system_a	system/usr/keylayout/Vendor_18d1_Product_2c40.kl	key layout (.kl) for USB 18d1:2c40 Odie; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_18d1_Product_5018.kl	key layout (.kl) for USB 18d1:5018 Key layout for Google Pixel C Keyboard; 57 key lines	observed
+system_a	system/usr/keylayout/Vendor_1949_Product_0401.kl	key layout (.kl) for USB 1949:0401 Amazon Fire TV remote; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_0002.kl	key layout (.kl) for USB 1bad:0002 Harmonix Rock Band Guitar; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f016.kl	key layout (.kl) for USB 1bad:f016 Madcatz Gamepad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f021.kl	key layout (.kl) for USB 1bad:f021 Mad Cats Ghost Recon FS GamePad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f023.kl	key layout (.kl) for USB 1bad:f023 Mad Catz MLG GamePad for Xbox 360; 10 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f025.kl	key layout (.kl) for USB 1bad:f025 Mad Catz Call Of Duty; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f027.kl	key layout (.kl) for USB 1bad:f027 MadCatz FPS Pro; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f028.kl	key layout (.kl) for USB 1bad:f028 Street Fighter IV FightPad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f036.kl	key layout (.kl) for USB 1bad:f036 MadCatz Generic XBox Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f038.kl	key layout (.kl) for USB 1bad:f038 Street Fighter IV FightStick TE; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f501.kl	key layout (.kl) for USB 1bad:f501 HoriPad EX2 Turbo; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f506.kl	key layout (.kl) for USB 1bad:f506 Hori Real Arcade Pro.EX Premium VLX; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f900.kl	key layout (.kl) for USB 1bad:f900 Harmonix Xbox 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f901.kl	key layout (.kl) for USB 1bad:f901 Gamestop Xbox 360 Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f903.kl	key layout (.kl) for USB 1bad:f903 Tron Xbox 360 controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_f904.kl	key layout (.kl) for USB 1bad:f904 PDP Versus Fighting Pad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_fa01.kl	key layout (.kl) for USB 1bad:fa01 MadCatz GamePad; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_fd00.kl	key layout (.kl) for USB 1bad:fd00 Razer Onza TE; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1bad_Product_fd01.kl	key layout (.kl) for USB 1bad:fd01 Razer Onza; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_1d79_Product_0009.kl	key layout (.kl) for USB 1d79:0009 Nyko Playpad / Playpad Pro; 15 key lines	observed
+system_a	system/usr/keylayout/Vendor_22b8_Product_093d.kl	key layout (.kl) for USB 22b8:093d Motorola Bluetooth Wireless Keyboard; 86 key lines	observed
+system_a	system/usr/keylayout/Vendor_2378_Product_1008.kl	key layout (.kl) for USB 2378:1008 OnLive, Inc. OnLive Wireless Controller, USB adapter; 15 key lines	observed
+system_a	system/usr/keylayout/Vendor_2378_Product_100a.kl	key layout (.kl) for USB 2378:100a OnLive, Inc. OnLive Wireless Controller; 15 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5300.kl	key layout (.kl) for USB 24c6:5300 PowerA MINI PROEX Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5303.kl	key layout (.kl) for USB 24c6:5303 Xbox Airflo wired controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_530a.kl	key layout (.kl) for USB 24c6:530a Xbox 360 Pro EX Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_531a.kl	key layout (.kl) for USB 24c6:531a PowerA Pro Ex; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5397.kl	key layout (.kl) for USB 24c6:5397 FUS1ON Tournament Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_541a.kl	key layout (.kl) for USB 24c6:541a PowerA Xbox One Mini Wired Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_542a.kl	key layout (.kl) for USB 24c6:542a Xbox ONE spectra; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_543a.kl	key layout (.kl) for USB 24c6:543a PowerA Xbox One wired controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5500.kl	key layout (.kl) for USB 24c6:5500 Hori XBOX 360 EX 2 with Turbo; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5501.kl	key layout (.kl) for USB 24c6:5501 Hori Real Arcade Pro VX-SA; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5506.kl	key layout (.kl) for USB 24c6:5506 Hori SOULCALIBUR V Stick; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_550d.kl	key layout (.kl) for USB 24c6:550d Hori GEM Xbox controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_551a.kl	key layout (.kl) for USB 24c6:551a PowerA FUSION Pro Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_561a.kl	key layout (.kl) for USB 24c6:561a PowerA FUSION Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5b02.kl	key layout (.kl) for USB 24c6:5b02 Thrustmaster, Inc. GPX Controller; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_5d04.kl	key layout (.kl) for USB 24c6:5d04 Razer Sabertooth; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_24c6_Product_fafe.kl	key layout (.kl) for USB 24c6:fafe Rock Candy Gamepad for Xbox 360; 11 key lines	observed
+system_a	system/usr/keylayout/Vendor_27f8_Product_0bbe.kl	key layout (.kl) for USB 27f8:0bbe Gamevice GV186 Mobile Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_27f8_Product_0bbf.kl	key layout (.kl) for USB 27f8:0bbf Razer Kishi Mobile Controller; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_28de_Product_1102.kl	key layout (.kl) for USB 28de:1102 Steam Controller - Model 1001 - USB; 21 key lines	observed
+system_a	system/usr/keylayout/Vendor_2dc8_Product_6101.kl	key layout (.kl) for USB 2dc8:6101 8BitDo - SN30 Pro gamepad in Android (D-Input) mode; 13 key lines	observed
+system_a	system/usr/keylayout/Vendor_2e95_Product_7725.kl	key layout (.kl) for USB 2e95:7725 Scuf Vantage Controller; 14 key lines	observed
+system_a	system/usr/keylayout/qwerty.kl	key layout (.kl) for Emulator keyboard layout #1; 98 key lines	observed
+system_a	system/usr/idc/Vendor_054c_Product_09cc.idc	input device configuration (.idc) for Sony DS4 motion sensor configuration file	observed
+system_a	system/usr/idc/Vendor_054c_Product_05c4.idc	input device configuration (.idc) for Sony DS4 motion sensor configuration file	observed
+system_a	system/usr/idc/AVRCP.idc	input device configuration (.idc) for the AVRCP (Bluetooth remote-control) input device	observed
+system_a	system/usr/idc/qwerty2.idc	input device configuration (.idc) for Emulator keyboard configuration file #2	observed
+system_a	system/usr/idc/Vendor_0957_Product_0001.idc	input device configuration (.idc) for Google Reference RCU Remote	observed
+system_a	system/usr/idc/qwerty.idc	input device configuration (.idc) for Emulator keyboard configuration file #1	observed
+system_a	system/usr/idc/Vendor_248a_Product_8266.idc	input device configuration (.idc) for Google Reference RCU Remote	observed
+system_a	system/usr/keychars/Virtual.kcm	key character map (.kcm) for a built-in generic virtual keyboard primarily used; type FULL	observed
+system_a	system/usr/keychars/Generic.kcm	key character map (.kcm) for full alphabetic US English PC style external keyboards; type FULL	observed
+system_a	system/usr/keychars/Vendor_18d1_Product_5018.kcm	key character map (.kcm) for Google Pixel C Keyboard; type FULL	observed
+system_a	system/usr/keychars/qwerty2.kcm	key character map (.kcm) for Emulator keyboard character map #2; type ALPHA	observed
+system_a	system/usr/keychars/qwerty.kcm	key character map (.kcm) for Emulator keyboard character map #1; type ALPHA	observed
+system_a	system/usr/keychars/Vendor_18d1_Product_0200.kcm	key character map (.kcm) for device 18d1:0200 (keyboard map for the Android virtual remote gamepad per matching key layout); type FULL	inferred
+system_a	system/usr/share/bmd/RFFstd_501.bmd	binary data table (bmd) RFF standard set 501; path string found in libFFTEm.so	verified
+system_a	system/usr/share/bmd/RFFspeed_501.bmd	binary data table (bmd) RFF speed set 501; same header layout as RFFstd_501.bmd (first u32 x2 = file size)	inferred
+system_a	system/usr/share/zoneinfo/tz_version	tz version string 005.001|2021a|001 for the bundled tzdata	verified
+system_a	system/usr/share/zoneinfo/tzdata	IANA time-zone database bundle (tzdata2021a, 593 zone index records) at the /system/usr/share/zoneinfo/tzdata path searched by libc	verified

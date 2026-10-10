@@ -1,0 +1,432 @@
+partition	path	role	confidence
+product_a	overlay/PlatformRRO.apk	Runtime resource overlay (RRO) targeting package android (framework resources); static overlay	verified
+product_a	overlay/PermissionControllerRRO.apk	Runtime resource overlay (RRO) targeting com.android.permissioncontroller (PermissionControllerRoles); static overlay	verified
+product_a	app/ModuleMetadata/ModuleMetadata.apk	Mainline module metadata app (package com.android.modulemetadata)	inferred
+product_a	app/Q4BMdm/oat/arm64/Q4BMdm.vdex	ART verified-dex container (vdex header version 027) for Q4BMdm.apk	verified
+product_a	app/Q4BMdm/oat/arm64/Q4BMdm.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Q4BMdm.apk	verified
+product_a	app/Q4BMdm/Q4BMdm.apk	Quest for Business device-management (MDM) app with admin receiver (package com.oculus.q4b.mdm)	inferred
+product_a	app/SystemWebView/oat/arm64/SystemWebView.vdex	ART verified-dex container (vdex header version 027) for SystemWebView.apk	verified
+product_a	app/SystemWebView/oat/arm64/SystemWebView.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SystemWebView.apk	verified
+product_a	app/SystemWebView/SystemWebView.apk	Android System WebView app: com.android.webview; sharedUserId none; 61 components; 6 permissions; versionName 126.0.6478.122	verified
+product_a	priv-app/OneTimeInitializer/OneTimeInitializer.apk	One-time initializer receiver app (package com.android.onetimeinitializer)	inferred
+product_a	priv-app/OneTimeInitializer/oat/arm64/OneTimeInitializer.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OneTimeInitializer.apk	verified
+product_a	priv-app/OneTimeInitializer/oat/arm64/OneTimeInitializer.vdex	ART verified-dex container (vdex header version 027) for OneTimeInitializer.apk	verified
+product_a	priv-app/OemConfig/OemConfig.apk	OEM configuration stub app (package com.oculus.oemconfig)	inferred
+product_a	priv-app/OemConfig/oat/arm64/OemConfig.vdex	ART verified-dex container (vdex header version 027) for OemConfig.apk	verified
+product_a	priv-app/OemConfig/oat/arm64/OemConfig.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OemConfig.apk	verified
+product_a	priv-app/Q4BService/Q4BService.apk	Quest for Business service (enrollment, notification and job services) (package com.oculus.q4bservice)	inferred
+product_a	priv-app/Q4BService/oat/arm64/Q4BService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Q4BService.apk	verified
+product_a	priv-app/Q4BService/oat/arm64/Q4BService.vdex	ART verified-dex container (vdex header version 027) for Q4BService.apk	verified
+product_a	priv-app/KioskHome/KioskHome.apk	Kiosk home panel app (KioskHome) (package com.oculus.panelapp.kiosk)	inferred
+product_a	priv-app/KioskHome/oat/arm64/KioskHome.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for KioskHome.apk	verified
+product_a	priv-app/KioskHome/oat/arm64/KioskHome.vdex	ART verified-dex container (vdex header version 027) for KioskHome.apk	verified
+product_a	priv-app/SpgoUploader/SpgoUploader.apk	Background uploader job service and receiver (SPGO) (package com.oculus.spgouploader)	inferred
+product_a	priv-app/SpgoUploader/oat/arm64/SpgoUploader.vdex	ART verified-dex container (vdex header version 027) for SpgoUploader.apk	verified
+product_a	priv-app/SpgoUploader/oat/arm64/SpgoUploader.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SpgoUploader.apk	verified
+product_a	priv-app/BugReportUploaderService/oat/arm64/BugReportUploaderService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BugReportUploaderService.apk	verified
+product_a	priv-app/BugReportUploaderService/oat/arm64/BugReportUploaderService.vdex	ART verified-dex container (vdex header version 027) for BugReportUploaderService.apk	verified
+product_a	priv-app/BugReportUploaderService/BugReportUploaderService.apk	Background bug-report uploader job service and receiver (package com.oculus.bugreportuploader)	inferred
+system_a	system/app/CertInstaller/CertInstaller.apk	Certificate installer app (package com.android.certinstaller)	inferred
+system_a	system/app/CertInstaller/oat/arm64/CertInstaller.vdex	ART verified-dex container (vdex header version 027) for CertInstaller.apk	verified
+system_a	system/app/CertInstaller/oat/arm64/CertInstaller.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for CertInstaller.apk	verified
+system_a	system/app/PlatformCaptivePortalLogin/oat/arm64/PlatformCaptivePortalLogin.vdex	ART verified-dex container (vdex header version 027) for PlatformCaptivePortalLogin.apk	verified
+system_a	system/app/PlatformCaptivePortalLogin/oat/arm64/PlatformCaptivePortalLogin.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PlatformCaptivePortalLogin.apk	verified
+system_a	system/app/PlatformCaptivePortalLogin/PlatformCaptivePortalLogin.apk	Captive portal login activity and download service (package com.android.captiveportallogin)	inferred
+system_a	system/app/FirstTimeNuxEureka/FirstTimeNuxEureka.apk	First-time user experience (NUX) app, React Native based (package com.oculus.firsttimenux)	inferred
+system_a	system/app/FirstTimeNuxEureka/oat/arm64/FirstTimeNuxEureka.vdex	ART verified-dex container (vdex header version 027) for FirstTimeNuxEureka.apk	verified
+system_a	system/app/FirstTimeNuxEureka/oat/arm64/FirstTimeNuxEureka.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for FirstTimeNuxEureka.apk	verified
+system_a	system/app/HTMLViewer/oat/arm64/HTMLViewer.vdex	ART verified-dex container (vdex header version 027) for HTMLViewer.apk	verified
+system_a	system/app/HTMLViewer/oat/arm64/HTMLViewer.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for HTMLViewer.apk	verified
+system_a	system/app/HTMLViewer/HTMLViewer.apk	HTML viewer activity (package com.android.htmlviewer)	inferred
+system_a	system/app/CompanionDeviceManager/oat/arm64/CompanionDeviceManager.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for CompanionDeviceManager.apk	verified
+system_a	system/app/CompanionDeviceManager/oat/arm64/CompanionDeviceManager.vdex	ART verified-dex container (vdex header version 027) for CompanionDeviceManager.apk	verified
+system_a	system/app/CompanionDeviceManager/CompanionDeviceManager.apk	Companion device manager pairing UI and discovery service (package com.android.companiondevicemanager)	inferred
+system_a	system/app/GuardianResourcesEureka/GuardianResourcesEureka.apk	Guardian resources-only app (no components) (package com.oculus.guardianresources)	inferred
+system_a	system/app/GuardianResourcesEureka/oat/arm64/GuardianResourcesEureka.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for GuardianResourcesEureka.apk	verified
+system_a	system/app/GuardianResourcesEureka/oat/arm64/GuardianResourcesEureka.vdex	ART verified-dex container (vdex header version 027) for GuardianResourcesEureka.apk	verified
+system_a	system/app/EnvironmentNuxD/oat/arm64/EnvironmentNuxD.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for EnvironmentNuxD.apk	verified
+system_a	system/app/EnvironmentNuxD/oat/arm64/EnvironmentNuxD.vdex	ART verified-dex container (vdex header version 027) for EnvironmentNuxD.apk	verified
+system_a	system/app/EnvironmentNuxD/EnvironmentNuxD.apk	Environment NUX (setup) app, production variant (package com.meta.environment.prod.nuxd)	inferred
+system_a	system/app/Bluetooth/oat/arm64/Bluetooth.vdex	ART verified-dex container (vdex header version 027) for Bluetooth.apk	verified
+system_a	system/app/Bluetooth/oat/arm64/Bluetooth.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Bluetooth.apk	verified
+system_a	system/app/Bluetooth/Bluetooth.apk	Bluetooth stack app: com.android.bluetooth; sharedUserId android.uid.bluetooth; 40 components; 61 permissions; versionName 12	verified
+system_a	system/app/ExtShared/ExtShared.apk	Shared extension library package (no components) (package android.ext.shared)	inferred
+system_a	system/app/ExtShared/oat/arm64/ExtShared.vdex	ART verified-dex container (vdex header version 027) for ExtShared.apk	verified
+system_a	system/app/ExtShared/oat/arm64/ExtShared.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ExtShared.apk	verified
+system_a	system/app/xrstreamingclient/oat/arm64/xrstreamingclient.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for xrstreamingclient.apk	verified
+system_a	system/app/xrstreamingclient/oat/arm64/xrstreamingclient.vdex	ART verified-dex container (vdex header version 027) for xrstreamingclient.apk	verified
+system_a	system/app/xrstreamingclient/xrstreamingclient.apk	XR streaming client (speed test, highwind services) (package com.oculus.xrstreamingclient)	inferred
+system_a	system/app/KeyChain/oat/arm64/KeyChain.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for KeyChain.apk	verified
+system_a	system/app/KeyChain/oat/arm64/KeyChain.vdex	ART verified-dex container (vdex header version 027) for KeyChain.apk	verified
+system_a	system/app/KeyChain/KeyChain.apk	KeyChain service and certificate-selection activity (package com.android.keychain)	inferred
+system_a	system/app/BookmarkProvider/oat/arm64/BookmarkProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BookmarkProvider.apk	verified
+system_a	system/app/BookmarkProvider/oat/arm64/BookmarkProvider.vdex	ART verified-dex container (vdex header version 027) for BookmarkProvider.apk	verified
+system_a	system/app/BookmarkProvider/BookmarkProvider.apk	Bookmark content provider (package com.android.bookmarkprovider)	inferred
+system_a	system/app/PacProcessor/oat/arm64/PacProcessor.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PacProcessor.apk	verified
+system_a	system/app/PacProcessor/oat/arm64/PacProcessor.vdex	ART verified-dex container (vdex header version 027) for PacProcessor.apk	verified
+system_a	system/app/PacProcessor/PacProcessor.apk	Proxy auto-config (PAC) processor service (package com.android.pacprocessor)	inferred
+system_a	system/priv-app/PlatformNetworkPermissionConfig/oat/arm64/PlatformNetworkPermissionConfig.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PlatformNetworkPermissionConfig.apk	verified
+system_a	system/priv-app/PlatformNetworkPermissionConfig/oat/arm64/PlatformNetworkPermissionConfig.vdex	ART verified-dex container (vdex header version 027) for PlatformNetworkPermissionConfig.apk	verified
+system_a	system/priv-app/PlatformNetworkPermissionConfig/PlatformNetworkPermissionConfig.apk	NetworkStack permission configuration app (no components) (package com.android.networkstack.permissionconfig)	inferred
+system_a	system/priv-app/InProcessNetworkStack/oat/arm64/InProcessNetworkStack.vdex	ART verified-dex container (vdex header version 027) for InProcessNetworkStack.apk	verified
+system_a	system/priv-app/InProcessNetworkStack/oat/arm64/InProcessNetworkStack.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for InProcessNetworkStack.apk	verified
+system_a	system/priv-app/InProcessNetworkStack/InProcessNetworkStack.apk	In-process NetworkStack service (package com.android.networkstack.inprocess)	inferred
+system_a	system/priv-app/BlockedNumberProvider/BlockedNumberProvider.apk	Blocked numbers content provider (package com.android.providers.blockednumber)	inferred
+system_a	system/priv-app/BlockedNumberProvider/oat/arm64/BlockedNumberProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BlockedNumberProvider.apk	verified
+system_a	system/priv-app/BlockedNumberProvider/oat/arm64/BlockedNumberProvider.vdex	ART verified-dex container (vdex header version 027) for BlockedNumberProvider.apk	verified
+system_a	system/priv-app/MtpService/oat/arm64/MtpService.vdex	ART verified-dex container (vdex header version 027) for MtpService.apk	verified
+system_a	system/priv-app/MtpService/oat/arm64/MtpService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MtpService.apk	verified
+system_a	system/priv-app/MtpService/MtpService.apk	MTP media transfer document provider and service (package com.android.mtp)	inferred
+system_a	system/priv-app/MrServiceEureka/oat/arm64/MrServiceEureka.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MrServiceEureka.apk	verified
+system_a	system/priv-app/MrServiceEureka/oat/arm64/MrServiceEureka.vdex	ART verified-dex container (vdex header version 027) for MrServiceEureka.apk	verified
+system_a	system/priv-app/MrServiceEureka/MrServiceEureka.apk	Mixed-reality (MR) service and start activity (package com.oculus.mrservice)	inferred
+system_a	system/priv-app/StatementService/oat/arm64/StatementService.vdex	ART verified-dex container (vdex header version 027) for StatementService.apk	verified
+system_a	system/priv-app/StatementService/oat/arm64/StatementService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for StatementService.apk	verified
+system_a	system/priv-app/StatementService/StatementService.apk	Digital asset links statement service (domain verification) (package com.android.statementservice)	inferred
+system_a	system/priv-app/SharedStorageBackup/oat/arm64/SharedStorageBackup.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SharedStorageBackup.apk	verified
+system_a	system/priv-app/SharedStorageBackup/oat/arm64/SharedStorageBackup.vdex	ART verified-dex container (vdex header version 027) for SharedStorageBackup.apk	verified
+system_a	system/priv-app/SharedStorageBackup/SharedStorageBackup.apk	OBB backup service (package com.android.sharedstoragebackup)	inferred
+system_a	system/priv-app/Shell/oat/arm64/Shell.vdex	ART verified-dex container (vdex header version 027) for Shell.apk	verified
+system_a	system/priv-app/Shell/oat/arm64/Shell.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Shell.apk	verified
+system_a	system/priv-app/Shell/Shell.apk	Shell app with bugreport and heap-dump providers (package com.android.shell)	inferred
+system_a	system/priv-app/InputDevices/InputDevices.apk	Input device configuration receiver (package com.android.inputdevices)	inferred
+system_a	system/priv-app/InputDevices/oat/arm64/InputDevices.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for InputDevices.apk	verified
+system_a	system/priv-app/InputDevices/oat/arm64/InputDevices.vdex	ART verified-dex container (vdex header version 027) for InputDevices.apk	verified
+system_a	system/priv-app/DownloadProvider/oat/arm64/DownloadProvider.vdex	ART verified-dex container (vdex header version 027) for DownloadProvider.apk	verified
+system_a	system/priv-app/DownloadProvider/oat/arm64/DownloadProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for DownloadProvider.apk	verified
+system_a	system/priv-app/DownloadProvider/DownloadProvider.apk	Downloads content provider and job service (package com.android.providers.downloads)	inferred
+system_a	system/priv-app/LocalTransport/LocalTransport.apk	Local backup transport service (package com.android.localtransport)	inferred
+system_a	system/priv-app/LocalTransport/oat/arm64/LocalTransport.vdex	ART verified-dex container (vdex header version 027) for LocalTransport.apk	verified
+system_a	system/priv-app/LocalTransport/oat/arm64/LocalTransport.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LocalTransport.apk	verified
+system_a	system/priv-app/ProxyHandler/ProxyHandler.apk	Proxy handler service (package com.android.proxyhandler)	inferred
+system_a	system/priv-app/ProxyHandler/oat/arm64/ProxyHandler.vdex	ART verified-dex container (vdex header version 027) for ProxyHandler.apk	verified
+system_a	system/priv-app/ProxyHandler/oat/arm64/ProxyHandler.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ProxyHandler.apk	verified
+system_a	system/priv-app/SoundPicker/oat/arm64/SoundPicker.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SoundPicker.apk	verified
+system_a	system/priv-app/SoundPicker/oat/arm64/SoundPicker.vdex	ART verified-dex container (vdex header version 027) for SoundPicker.apk	verified
+system_a	system/priv-app/SoundPicker/SoundPicker.apk	Ringtone and sound picker app (package com.android.soundpicker)	inferred
+system_a	system/priv-app/BluetoothConnectivityService/oat/arm64/BluetoothConnectivityService.vdex	ART verified-dex container (vdex header version 027) for BluetoothConnectivityService.apk	verified
+system_a	system/priv-app/BluetoothConnectivityService/oat/arm64/BluetoothConnectivityService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BluetoothConnectivityService.apk	verified
+system_a	system/priv-app/BluetoothConnectivityService/BluetoothConnectivityService.apk	VR Bluetooth connectivity service (package com.oculus.vrbluetooth)	inferred
+system_a	system/priv-app/CalendarProvider/oat/arm64/CalendarProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for CalendarProvider.apk	verified
+system_a	system/priv-app/CalendarProvider/oat/arm64/CalendarProvider.vdex	ART verified-dex container (vdex header version 027) for CalendarProvider.apk	verified
+system_a	system/priv-app/CalendarProvider/CalendarProvider.apk	Calendar content provider (package com.android.providers.calendar)	inferred
+system_a	system/priv-app/MediaProviderLegacy/MediaProviderLegacy.apk	Legacy media content provider (MediaProvider) (package com.android.providers.media)	inferred
+system_a	system/priv-app/MediaProviderLegacy/oat/arm64/MediaProviderLegacy.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MediaProviderLegacy.apk	verified
+system_a	system/priv-app/MediaProviderLegacy/oat/arm64/MediaProviderLegacy.vdex	ART verified-dex container (vdex header version 027) for MediaProviderLegacy.apk	verified
+system_a	system/priv-app/VpnDialogs/oat/arm64/VpnDialogs.vdex	ART verified-dex container (vdex header version 027) for VpnDialogs.apk	verified
+system_a	system/priv-app/VpnDialogs/oat/arm64/VpnDialogs.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VpnDialogs.apk	verified
+system_a	system/priv-app/VpnDialogs/VpnDialogs.apk	VPN confirmation and management dialogs (package com.android.vpndialogs)	inferred
+system_a	system/priv-app/DocumentsUI/DocumentsUI.apk	Documents UI (Storage Access Framework picker) (package com.android.documentsui)	inferred
+system_a	system/priv-app/DocumentsUI/oat/arm64/DocumentsUI.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for DocumentsUI.apk	verified
+system_a	system/priv-app/DocumentsUI/oat/arm64/DocumentsUI.vdex	ART verified-dex container (vdex header version 027) for DocumentsUI.apk	verified
+system_a	system/priv-app/SettingsProvider/SettingsProvider.apk	Settings provider app: com.android.providers.settings; sharedUserId android.uid.system; 2 components; 0 permissions; versionName 12	verified
+system_a	system/priv-app/SettingsProvider/oat/arm64/SettingsProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SettingsProvider.apk	verified
+system_a	system/priv-app/SettingsProvider/oat/arm64/SettingsProvider.vdex	ART verified-dex container (vdex header version 027) for SettingsProvider.apk	verified
+system_a	system/priv-app/Telecom/Telecom.apk	Telecom service app: com.android.server.telecom; sharedUserId android.uid.system; 15 components; 28 permissions; versionName 12	verified
+system_a	system/priv-app/Telecom/oat/arm64/Telecom.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Telecom.apk	verified
+system_a	system/priv-app/Telecom/oat/arm64/Telecom.vdex	ART verified-dex container (vdex header version 027) for Telecom.apk	verified
+system_a	system/priv-app/NuxOta/oat/arm64/NuxOta.vdex	ART verified-dex container (vdex header version 027) for NuxOta.apk	verified
+system_a	system/priv-app/NuxOta/oat/arm64/NuxOta.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for NuxOta.apk	verified
+system_a	system/priv-app/NuxOta/NuxOta.apk	NUX over-the-air update service (package com.oculus.nux.ota)	inferred
+system_a	system/priv-app/PackageInstaller/oat/arm64/PackageInstaller.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PackageInstaller.apk	verified
+system_a	system/priv-app/PackageInstaller/oat/arm64/PackageInstaller.vdex	ART verified-dex container (vdex header version 027) for PackageInstaller.apk	verified
+system_a	system/priv-app/PackageInstaller/PackageInstaller.apk	Package installer app: com.android.packageinstaller; sharedUserId none; 17 components; 15 permissions; versionName 12	verified
+system_a	system/priv-app/ContactsProvider/ContactsProvider.apk	Contacts provider (contacts, call log) (package com.android.providers.contacts)	inferred
+system_a	system/priv-app/ContactsProvider/oat/arm64/ContactsProvider.vdex	ART verified-dex container (vdex header version 027) for ContactsProvider.apk	verified
+system_a	system/priv-app/ContactsProvider/oat/arm64/ContactsProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ContactsProvider.apk	verified
+system_a	system/priv-app/FusedLocation/FusedLocation.apk	Fused location provider service (package com.android.location.fused)	inferred
+system_a	system/priv-app/FusedLocation/oat/arm64/FusedLocation.vdex	ART verified-dex container (vdex header version 027) for FusedLocation.apk	verified
+system_a	system/priv-app/FusedLocation/oat/arm64/FusedLocation.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for FusedLocation.apk	verified
+system_a	system/priv-app/UserDictionaryProvider/oat/arm64/UserDictionaryProvider.vdex	ART verified-dex container (vdex header version 027) for UserDictionaryProvider.apk	verified
+system_a	system/priv-app/UserDictionaryProvider/oat/arm64/UserDictionaryProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for UserDictionaryProvider.apk	verified
+system_a	system/priv-app/UserDictionaryProvider/UserDictionaryProvider.apk	User dictionary content provider (package com.android.providers.userdictionary)	inferred
+system_a	system/priv-app/BackupRestoreConfirmation/oat/arm64/BackupRestoreConfirmation.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BackupRestoreConfirmation.apk	verified
+system_a	system/priv-app/BackupRestoreConfirmation/oat/arm64/BackupRestoreConfirmation.vdex	ART verified-dex container (vdex header version 027) for BackupRestoreConfirmation.apk	verified
+system_a	system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk	Backup and restore confirmation dialog (package com.android.backupconfirm)	inferred
+system_a	system/priv-app/VrDriver/oat/arm64/VrDriver.vdex	ART verified-dex container (vdex header version 027) for VrDriver.apk	verified
+system_a	system/priv-app/VrDriver/oat/arm64/VrDriver.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrDriver.apk	verified
+system_a	system/priv-app/VrDriver/VrDriver.apk	VR runtime driver app (VrRuntimeApplication) (package com.oculus.systemdriver)	inferred
+system_a	system/priv-app/ExternalStorageProvider/oat/arm64/ExternalStorageProvider.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ExternalStorageProvider.apk	verified
+system_a	system/priv-app/ExternalStorageProvider/oat/arm64/ExternalStorageProvider.vdex	ART verified-dex container (vdex header version 027) for ExternalStorageProvider.apk	verified
+system_a	system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk	External storage documents provider (removable storage) (package com.android.externalstorage)	inferred
+system_ext_a	app/OVRMetricsTool/oat/arm64/OVRMetricsTool.vdex	ART verified-dex container (vdex header version 027) for OVRMetricsTool.apk	verified
+system_ext_a	app/OVRMetricsTool/oat/arm64/OVRMetricsTool.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OVRMetricsTool.apk	verified
+system_ext_a	app/OVRMetricsTool/OVRMetricsTool.apk	OVR monitor metrics service stub (no components) (package com.oculus.ovrmonitormetricsservice)	inferred
+system_ext_a	app/ExploreApp/oat/arm64/ExploreApp.vdex	ART verified-dex container (vdex header version 027) for ExploreApp.apk	verified
+system_ext_a	app/ExploreApp/oat/arm64/ExploreApp.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ExploreApp.apk	verified
+system_ext_a	app/ExploreApp/ExploreApp.apk	Explore app (ExploreApplication) (package com.oculus.explore)	inferred
+system_ext_a	app/OculusXrCvpPlugin/OculusXrCvpPlugin.apk	CVP plugin service (package com.oculus.cvp)	inferred
+system_ext_a	app/OculusXrCvpPlugin/oat/arm64/OculusXrCvpPlugin.vdex	ART verified-dex container (vdex header version 027) for OculusXrCvpPlugin.apk	verified
+system_ext_a	app/OculusXrCvpPlugin/oat/arm64/OculusXrCvpPlugin.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OculusXrCvpPlugin.apk	verified
+system_ext_a	app/PresenceTester/PresenceTester.apk	Presence test app (no components) (package com.oculus.presence.test)	inferred
+system_ext_a	app/PresenceTester/oat/arm64/PresenceTester.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PresenceTester.apk	verified
+system_ext_a	app/PresenceTester/oat/arm64/PresenceTester.vdex	ART verified-dex container (vdex header version 027) for PresenceTester.apk	verified
+system_ext_a	app/DeviceIdentityTest/DeviceIdentityTest.apk	Device identity test activity and service (package com.oculus.deviceidentitytest)	inferred
+system_ext_a	app/OculusQuickPromotionsService/oat/arm64/OculusQuickPromotionsService.vdex	ART verified-dex container (vdex header version 027) for OculusQuickPromotionsService.apk	verified
+system_ext_a	app/OculusQuickPromotionsService/oat/arm64/OculusQuickPromotionsService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OculusQuickPromotionsService.apk	verified
+system_ext_a	app/OculusQuickPromotionsService/OculusQuickPromotionsService.apk	Quick promotions service (package com.oculus.quickpromotionservice)	inferred
+system_ext_a	app/Carmel/Carmel.apk	Oculus browser app (Carmel): com.oculus.browser; sharedUserId none; 138 components; 73 permissions; versionName 35.1.0.78.167.646680531	verified
+system_ext_a	app/Carmel/oat/arm64/Carmel.vdex	ART verified-dex container (vdex header version 027) for Carmel.apk	verified
+system_ext_a	app/Carmel/oat/arm64/Carmel.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Carmel.apk	verified
+system_ext_a	app/FitnessTracker/oat/arm64/FitnessTracker.vdex	ART verified-dex container (vdex header version 027) for FitnessTracker.apk	verified
+system_ext_a	app/FitnessTracker/oat/arm64/FitnessTracker.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for FitnessTracker.apk	verified
+system_ext_a	app/FitnessTracker/FitnessTracker.apk	Fitness tracker app (FitnessDataProvider) (package com.oculus.fitnesstracker)	inferred
+system_ext_a	app/SystemActivities/SystemActivities.apk	System activities app (PlatformActivity) (package com.oculus.systemactivities)	inferred
+system_ext_a	app/SystemActivities/oat/arm64/SystemActivities.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SystemActivities.apk	verified
+system_ext_a	app/SystemActivities/oat/arm64/SystemActivities.vdex	ART verified-dex container (vdex header version 027) for SystemActivities.apk	verified
+system_ext_a	app/SystemResource/oat/arm64/SystemResource.vdex	ART verified-dex container (vdex header version 027) for SystemResource.apk	verified
+system_ext_a	app/SystemResource/oat/arm64/SystemResource.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SystemResource.apk	verified
+system_ext_a	app/SystemResource/SystemResource.apk	System resource service and activity (package com.oculus.systemresource)	inferred
+system_ext_a	app/AccountsCenterPWA/oat/arm64/AccountsCenterPWA.vdex	ART verified-dex container (vdex header version 027) for AccountsCenterPWA.apk	verified
+system_ext_a	app/AccountsCenterPWA/oat/arm64/AccountsCenterPWA.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for AccountsCenterPWA.apk	verified
+system_ext_a	app/AccountsCenterPWA/AccountsCenterPWA.apk	Accounts Center web-app wrapper (no components) (package com.meta.AccountsCenter.pwa)	inferred
+system_ext_a	app/LineFrequencyService/oat/arm64/LineFrequencyService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LineFrequencyService.apk	verified
+system_ext_a	app/LineFrequencyService/oat/arm64/LineFrequencyService.vdex	ART verified-dex container (vdex header version 027) for LineFrequencyService.apk	verified
+system_ext_a	app/LineFrequencyService/LineFrequencyService.apk	Line frequency service (package com.oculus.linefrequencyservice)	inferred
+system_ext_a	app/MrdsService/oat/arm64/MrdsService.vdex	ART verified-dex container (vdex header version 027) for MrdsService.apk	verified
+system_ext_a	app/MrdsService/oat/arm64/MrdsService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MrdsService.apk	verified
+system_ext_a	app/MrdsService/MrdsService.apk	MRDS service (MrdsApplication) (package com.oculus.mrds)	inferred
+system_ext_a	app/AvatarEditor/oat/arm64/AvatarEditor.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for AvatarEditor.apk	verified
+system_ext_a	app/AvatarEditor/oat/arm64/AvatarEditor.vdex	ART verified-dex container (vdex header version 027) for AvatarEditor.apk	verified
+system_ext_a	app/AvatarEditor/AvatarEditor.apk	Avatar editor app (React Native based services) (package com.oculus.avatareditor)	inferred
+system_ext_a	app/OculusAppAutomationTREX/OculusAppAutomationTREX.apk	App automation harness (no components) (package com.oculus.appautomation)	inferred
+system_ext_a	app/OculusAppAutomationTREX/oat/arm64/OculusAppAutomationTREX.vdex	ART verified-dex container (vdex header version 027) for OculusAppAutomationTREX.apk	verified
+system_ext_a	app/OculusAppAutomationTREX/oat/arm64/OculusAppAutomationTREX.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OculusAppAutomationTREX.apk	verified
+system_ext_a	app/VrCastService/VrCastService.apk	VR cast service and Wi-Fi P2P proxy (package com.oculus.vrcast)	inferred
+system_ext_a	app/VrCastService/oat/arm64/VrCastService.vdex	ART verified-dex container (vdex header version 027) for VrCastService.apk	verified
+system_ext_a	app/VrCastService/oat/arm64/VrCastService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrCastService.apk	verified
+system_ext_a	app/VrCastService/lib/arm64/libjdns_sd.so	Symlink to /system_ext/lib64/libjdns_sd.so (native library shipped in system_ext lib64)	verified
+system_ext_a	app/QplService/oat/arm64/QplService.vdex	ART verified-dex container (vdex header version 027) for QplService.apk	verified
+system_ext_a	app/QplService/oat/arm64/QplService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for QplService.apk	verified
+system_ext_a	app/QplService/QplService.apk	QPL (quick performance logger) service (package com.oculus.qplservice)	inferred
+system_ext_a	app/ExtraPermissions/oat/arm64/ExtraPermissions.vdex	ART verified-dex container (vdex header version 027) for ExtraPermissions.apk	verified
+system_ext_a	app/ExtraPermissions/oat/arm64/ExtraPermissions.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ExtraPermissions.apk	verified
+system_ext_a	app/ExtraPermissions/ExtraPermissions.apk	Extra permissions activities and consent screens (package com.oculus.extrapermissions)	inferred
+system_ext_a	app/Guidebook/oat/arm64/Guidebook.vdex	ART verified-dex container (vdex header version 027) for Guidebook.apk	verified
+system_ext_a	app/Guidebook/oat/arm64/Guidebook.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Guidebook.apk	verified
+system_ext_a	app/Guidebook/Guidebook.apk	Guidebook app (no components) (package com.oculus.guidebook)	inferred
+system_ext_a	app/LogViewer/oat/arm64/LogViewer.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LogViewer.apk	verified
+system_ext_a	app/LogViewer/oat/arm64/LogViewer.vdex	ART verified-dex container (vdex header version 027) for LogViewer.apk	verified
+system_ext_a	app/LogViewer/LogViewer.apk	Log viewer app (package com.oculus.os.logviewer)	inferred
+system_ext_a	app/Metacam/oat/arm64/Metacam.vdex	ART verified-dex container (vdex header version 027) for Metacam.apk	verified
+system_ext_a	app/Metacam/oat/arm64/Metacam.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Metacam.apk	verified
+system_ext_a	app/Metacam/Metacam.apk	MetaCam camera app (MetaCamApplication) (package com.oculus.metacam)	inferred
+system_ext_a	app/ChargeControl/oat/arm64/ChargeControl.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ChargeControl.apk	verified
+system_ext_a	app/ChargeControl/oat/arm64/ChargeControl.vdex	ART verified-dex container (vdex header version 027) for ChargeControl.apk	verified
+system_ext_a	app/ChargeControl/ChargeControl.apk	Charge control service and charge monitor (package com.oculus.os.chargecontrol)	inferred
+system_ext_a	app/TV/TV.apk	TV app (no components) (package com.oculus.tv)	inferred
+system_ext_a	app/TV/oat/arm64/TV.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for TV.apk	verified
+system_ext_a	app/TV/oat/arm64/TV.vdex	ART verified-dex container (vdex header version 027) for TV.apk	verified
+system_ext_a	app/VrFrameworkPackageStubs/oat/arm64/VrFrameworkPackageStubs.vdex	ART verified-dex container (vdex header version 027) for VrFrameworkPackageStubs.apk	verified
+system_ext_a	app/VrFrameworkPackageStubs/oat/arm64/VrFrameworkPackageStubs.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrFrameworkPackageStubs.apk	verified
+system_ext_a	app/VrFrameworkPackageStubs/VrFrameworkPackageStubs.apk	Framework package stubs (media, clock, calendar) (package com.meta.frameworkpackagestubs)	inferred
+system_ext_a	app/ExternalStorage/oat/arm64/ExternalStorage.vdex	ART verified-dex container (vdex header version 027) for ExternalStorage.apk	verified
+system_ext_a	app/ExternalStorage/oat/arm64/ExternalStorage.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ExternalStorage.apk	verified
+system_ext_a	app/ExternalStorage/ExternalStorage.apk	External storage launcher and OTG receiver (package com.oculus.externalstorage)	inferred
+system_ext_a	app/SocialPlatform/SocialPlatform.apk	Social platform app (SocialPlatformApplication) (package com.oculus.socialplatform)	inferred
+system_ext_a	app/SocialPlatform/oat/arm64/SocialPlatform.vdex	ART verified-dex container (vdex header version 027) for SocialPlatform.apk	verified
+system_ext_a	app/SocialPlatform/oat/arm64/SocialPlatform.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SocialPlatform.apk	verified
+system_ext_a	app/JavaService/JavaService.apk	Java service (package com.oculus.javaservice)	inferred
+system_ext_a	app/JavaService/oat/arm64/JavaService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for JavaService.apk	verified
+system_ext_a	app/JavaService/oat/arm64/JavaService.vdex	ART verified-dex container (vdex header version 027) for JavaService.apk	verified
+system_ext_a	app/GamingActivity/oat/arm64/GamingActivity.vdex	ART verified-dex container (vdex header version 027) for GamingActivity.apk	verified
+system_ext_a	app/GamingActivity/oat/arm64/GamingActivity.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for GamingActivity.apk	verified
+system_ext_a	app/GamingActivity/GamingActivity.apk	Gaming activity app (React Native based) (package com.oculus.gamingactivity)	inferred
+system_ext_a	app/Horizon/Horizon.apk	Horizon platform app: com.oculus.horizon; sharedUserId com.oculus.uid; 108 components; 61 permissions; versionName 71.0.0.894.253	verified
+system_ext_a	app/Horizon/oat/arm/Horizon.odex	AOT-compiled ART code (oat header version 199) in an ELF ARM32 shared object, for Horizon.apk	verified
+system_ext_a	app/Horizon/oat/arm/Horizon.vdex	ART verified-dex container (vdex header version 027) for Horizon.apk	verified
+system_ext_a	app/Horizon/oat/arm64/Horizon.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Horizon.apk	verified
+system_ext_a	app/Horizon/oat/arm64/Horizon.vdex	ART verified-dex container (vdex header version 027) for Horizon.apk	verified
+system_ext_a	app/Store/Store.apk	Horizon Store app: com.oculus.store; sharedUserId none; 34 components; 21 permissions; versionName 228.0.0.19.109	verified
+system_ext_a	app/Store/oat/arm64/Store.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Store.apk	verified
+system_ext_a	app/Store/oat/arm64/Store.vdex	ART verified-dex container (vdex header version 027) for Store.apk	verified
+system_ext_a	priv-app/QrCodeReader/oat/arm64/QrCodeReader.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for QrCodeReader.apk	verified
+system_ext_a	priv-app/QrCodeReader/oat/arm64/QrCodeReader.vdex	ART verified-dex container (vdex header version 027) for QrCodeReader.apk	verified
+system_ext_a	priv-app/QrCodeReader/QrCodeReader.apk	QR code reader app (ScannerActivity) (package com.oculus.os.qrcodereader)	inferred
+system_ext_a	priv-app/QrCodeReader/lib/arm64/libqrcodereader_jni.so	Symlink to /system_ext/lib64/libqrcodereader_jni.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/VrBluetoothControlService/VrBluetoothControlService.apk	VR Bluetooth control service (package com.oculus.vrbtcontrol)	inferred
+system_ext_a	priv-app/VrBluetoothControlService/oat/arm64/VrBluetoothControlService.vdex	ART verified-dex container (vdex header version 027) for VrBluetoothControlService.apk	verified
+system_ext_a	priv-app/VrBluetoothControlService/oat/arm64/VrBluetoothControlService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrBluetoothControlService.apk	verified
+system_ext_a	priv-app/BugReportService/oat/arm64/BugReportService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BugReportService.apk	verified
+system_ext_a	priv-app/BugReportService/oat/arm64/BugReportService.vdex	ART verified-dex container (vdex header version 027) for BugReportService.apk	verified
+system_ext_a	priv-app/BugReportService/BugReportService.apk	Bug report and log service (package com.oculus.bugreportservice)	inferred
+system_ext_a	priv-app/MagicIslandCastingService/oat/arm64/MagicIslandCastingService.vdex	ART verified-dex container (vdex header version 027) for MagicIslandCastingService.apk	verified
+system_ext_a	priv-app/MagicIslandCastingService/oat/arm64/MagicIslandCastingService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MagicIslandCastingService.apk	verified
+system_ext_a	priv-app/MagicIslandCastingService/MagicIslandCastingService.apk	Casting service (CastingService) (package com.oculus.magicislandcastingservice)	inferred
+system_ext_a	priv-app/PauldronVr/PauldronVr.apk	Pauldron VR automation app (no components) (package com.meta.automation.pauldron.vr)	inferred
+system_ext_a	priv-app/PauldronVr/oat/arm64/PauldronVr.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PauldronVr.apk	verified
+system_ext_a	priv-app/PauldronVr/oat/arm64/PauldronVr.vdex	ART verified-dex container (vdex header version 027) for PauldronVr.apk	verified
+system_ext_a	priv-app/WISInputDeviceService/oat/arm64/WISInputDeviceService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for WISInputDeviceService.apk	verified
+system_ext_a	priv-app/WISInputDeviceService/oat/arm64/WISInputDeviceService.vdex	ART verified-dex container (vdex header version 027) for WISInputDeviceService.apk	verified
+system_ext_a	priv-app/WISInputDeviceService/WISInputDeviceService.apk	EMG input device service (WISInputDeviceService) (package com.meta.wearable.emginput)	inferred
+system_ext_a	priv-app/WISInputDeviceService/lib/arm64/libwis_input_device.so	Symlink to /system_ext/lib64/libwis_input_device.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/SystemPermissions/SystemPermissions.apk	System permissions consent app: com.oculus.systempermissions; sharedUserId none; 3 components; 16 permissions; versionName 12	verified
+system_ext_a	priv-app/SystemPermissions/oat/arm64/SystemPermissions.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SystemPermissions.apk	verified
+system_ext_a	priv-app/SystemPermissions/oat/arm64/SystemPermissions.vdex	ART verified-dex container (vdex header version 027) for SystemPermissions.apk	verified
+system_ext_a	priv-app/LocationService/LocationService.apk	Location SDK service (LocationSDKService) (package com.facebook.wearable.system.location.service)	inferred
+system_ext_a	priv-app/LocationService/oat/arm64/LocationService.vdex	ART verified-dex container (vdex header version 027) for LocationService.apk	verified
+system_ext_a	priv-app/LocationService/oat/arm64/LocationService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LocationService.apk	verified
+system_ext_a	priv-app/Assistant/Assistant.apk	Assistant app (AssistantApplication) (package com.oculus.assistant)	inferred
+system_ext_a	priv-app/Assistant/oat/arm64/Assistant.vdex	ART verified-dex container (vdex header version 027) for Assistant.apk	verified
+system_ext_a	priv-app/Assistant/oat/arm64/Assistant.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Assistant.apk	verified
+system_ext_a	priv-app/LocationServiceProxy/oat/arm64/LocationServiceProxy.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LocationServiceProxy.apk	verified
+system_ext_a	priv-app/LocationServiceProxy/oat/arm64/LocationServiceProxy.vdex	ART verified-dex container (vdex header version 027) for LocationServiceProxy.apk	verified
+system_ext_a	priv-app/LocationServiceProxy/LocationServiceProxy.apk	Location provider proxy service (package com.facebook.wearable.system.location.proxy)	inferred
+system_ext_a	priv-app/Guardian/oat/arm64/Guardian.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Guardian.apk	verified
+system_ext_a	priv-app/Guardian/oat/arm64/Guardian.vdex	ART verified-dex container (vdex header version 027) for Guardian.apk	verified
+system_ext_a	priv-app/Guardian/Guardian.apk	Guardian service (VrGuardianService, user service) (package com.oculus.guardian)	inferred
+system_ext_a	priv-app/OCMS/OCMS.apk	OCMS system app (cloud backup pre-shutdown tasks, app listeners) (package com.oculus.ocms)	inferred
+system_ext_a	priv-app/OCMS/oat/arm64/OCMS.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OCMS.apk	verified
+system_ext_a	priv-app/OCMS/oat/arm64/OCMS.vdex	ART verified-dex container (vdex header version 027) for OCMS.apk	verified
+system_ext_a	priv-app/LabService/oat/arm64/LabService.vdex	ART verified-dex container (vdex header version 027) for LabService.apk	verified
+system_ext_a	priv-app/LabService/oat/arm64/LabService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LabService.apk	verified
+system_ext_a	priv-app/LabService/LabService.apk	Lab service (package com.oculus.labservice)	inferred
+system_ext_a	priv-app/NotificationProxy/oat/arm64/NotificationProxy.vdex	ART verified-dex container (vdex header version 027) for NotificationProxy.apk	verified
+system_ext_a	priv-app/NotificationProxy/oat/arm64/NotificationProxy.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for NotificationProxy.apk	verified
+system_ext_a	priv-app/NotificationProxy/NotificationProxy.apk	Notification proxy application (no components) (package com.oculus.notification_proxy)	inferred
+system_ext_a	priv-app/VoidActivity/VoidActivity.apk	Void activity app (package com.oculus.os.voidactivity)	inferred
+system_ext_a	priv-app/VoidActivity/oat/arm64/VoidActivity.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VoidActivity.apk	verified
+system_ext_a	priv-app/VoidActivity/oat/arm64/VoidActivity.vdex	ART verified-dex container (vdex header version 027) for VoidActivity.apk	verified
+system_ext_a	priv-app/VoidActivity/lib/arm64/libvoidactivity_jni.so	Symlink to /system_ext/lib64/libvoidactivity_jni.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/SystemUX/SystemUX.apk.prof	ART baseline profile (pro header version 015) for SystemUX.apk	verified
+system_ext_a	priv-app/SystemUX/oat/arm64/SystemUX.art	ART app image (art header version 099) for SystemUX.apk	verified
+system_ext_a	priv-app/SystemUX/oat/arm64/SystemUX.vdex	ART verified-dex container (vdex header version 027) for SystemUX.apk	verified
+system_ext_a	priv-app/SystemUX/oat/arm64/SystemUX.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SystemUX.apk	verified
+system_ext_a	priv-app/SystemUX/SystemUX.apk	System UX app: com.oculus.systemux; sharedUserId none; 70 components; 108 permissions; versionName 71.0.0.605.522	verified
+system_ext_a	priv-app/SkyguardService/SkyguardService.apk	Skyguard service (BootReceiver, SkyguardService) (package com.meta.internal.skyguard)	inferred
+system_ext_a	priv-app/SkyguardService/oat/arm64/SkyguardService.vdex	ART verified-dex container (vdex header version 027) for SkyguardService.apk	verified
+system_ext_a	priv-app/SkyguardService/oat/arm64/SkyguardService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SkyguardService.apk	verified
+system_ext_a	priv-app/LibraryPanelApp/oat/arm64/LibraryPanelApp.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for LibraryPanelApp.apk	verified
+system_ext_a	priv-app/LibraryPanelApp/oat/arm64/LibraryPanelApp.vdex	ART verified-dex container (vdex header version 027) for LibraryPanelApp.apk	verified
+system_ext_a	priv-app/LibraryPanelApp/LibraryPanelApp.apk	Library panel app (LibraryStandaloneApplication) (package com.oculus.panelapp.library)	inferred
+system_ext_a	priv-app/RLTrustService/oat/arm64/RLTrustService.vdex	ART verified-dex container (vdex header version 027) for RLTrustService.apk	verified
+system_ext_a	priv-app/RLTrustService/oat/arm64/RLTrustService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for RLTrustService.apk	verified
+system_ext_a	priv-app/RLTrustService/RLTrustService.apk	RL trust service (RLTSApplication, consent activities) (package com.meta.rl.trust.service)	inferred
+system_ext_a	priv-app/Preloader/Preloader.apk	Preloader service (package com.oculus.preloader)	inferred
+system_ext_a	priv-app/Preloader/oat/arm64/Preloader.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Preloader.apk	verified
+system_ext_a	priv-app/Preloader/oat/arm64/Preloader.vdex	ART verified-dex container (vdex header version 027) for Preloader.apk	verified
+system_ext_a	priv-app/Preloader/lib/arm64/libpreloader.so	Symlink to /system_ext/lib64/libpreloader.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/MetaSystemUI/oat/arm64/MetaSystemUI.vdex	ART verified-dex container (vdex header version 027) for MetaSystemUI.apk	verified
+system_ext_a	priv-app/MetaSystemUI/oat/arm64/MetaSystemUI.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MetaSystemUI.apk	verified
+system_ext_a	priv-app/MetaSystemUI/MetaSystemUI.apk	Meta system UI app: com.meta.systemui; sharedUserId none; 2 components; 8 permissions; versionName 12	verified
+system_ext_a	priv-app/StorageManager/oat/arm64/StorageManager.vdex	ART verified-dex container (vdex header version 027) for StorageManager.apk	verified
+system_ext_a	priv-app/StorageManager/oat/arm64/StorageManager.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for StorageManager.apk	verified
+system_ext_a	priv-app/StorageManager/StorageManager.apk	Storage manager (automatic storage management) (package com.android.storagemanager)	inferred
+system_ext_a	priv-app/MicService/oat/arm64/MicService.vdex	ART verified-dex container (vdex header version 027) for MicService.apk	verified
+system_ext_a	priv-app/MicService/oat/arm64/MicService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MicService.apk	verified
+system_ext_a	priv-app/MicService/MicService.apk	Microphone service (package com.oculus.micservice)	inferred
+system_ext_a	priv-app/PreShutdownTaskService/oat/arm64/PreShutdownTaskService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PreShutdownTaskService.apk	verified
+system_ext_a	priv-app/PreShutdownTaskService/oat/arm64/PreShutdownTaskService.vdex	ART verified-dex container (vdex header version 027) for PreShutdownTaskService.apk	verified
+system_ext_a	priv-app/PreShutdownTaskService/PreShutdownTaskService.apk	Pre-shutdown task service (package com.oculus.preshutdowntaskservice)	inferred
+system_ext_a	priv-app/VrShell/VrShell.apk	VR shell app: com.oculus.vrshell; sharedUserId none; 122 components; 115 permissions; versionName 71.0.0.612.529	verified
+system_ext_a	priv-app/VrShell/oat/arm64/VrShell.vdex	ART verified-dex container (vdex header version 027) for VrShell.apk	verified
+system_ext_a	priv-app/VrShell/oat/arm64/VrShell.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrShell.apk	verified
+system_ext_a	priv-app/StatsCollector/oat/arm64/StatsCollector.vdex	ART verified-dex container (vdex header version 027) for StatsCollector.apk	verified
+system_ext_a	priv-app/StatsCollector/oat/arm64/StatsCollector.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for StatsCollector.apk	verified
+system_ext_a	priv-app/StatsCollector/StatsCollector.apk	Stats collector service (PowerStatsCollector) (package com.oculus.statscollector)	inferred
+system_ext_a	priv-app/StatsCollector/lib/arm64/libpowerstatscollector.so	Symlink to /system_ext/lib64/libpowerstatscollector.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/StatsCollector/lib/arm64/libfetchstats.so	Symlink to /system_ext/lib64/libfetchstats.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/Settings/Settings.apk	Settings app: com.android.settings; sharedUserId android.uid.system; 343 components; 105 permissions; versionName 12	verified
+system_ext_a	priv-app/Settings/oat/arm64/Settings.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Settings.apk	verified
+system_ext_a	priv-app/Settings/oat/arm64/Settings.vdex	ART verified-dex container (vdex header version 027) for Settings.apk	verified
+system_ext_a	priv-app/ShellEnv/ShellEnv.apk	Shell environment app (ShellEnv) (package com.oculus.shellenv)	inferred
+system_ext_a	priv-app/ShellEnv/oat/arm64/ShellEnv.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ShellEnv.apk	verified
+system_ext_a	priv-app/ShellEnv/oat/arm64/ShellEnv.vdex	ART verified-dex container (vdex header version 027) for ShellEnv.apk	verified
+system_ext_a	priv-app/VrBtTest/VrBtTest.apk	VR Bluetooth test app (package com.oculus.vrbttest)	inferred
+system_ext_a	priv-app/VrBtTest/oat/arm64/VrBtTest.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrBtTest.apk	verified
+system_ext_a	priv-app/VrBtTest/oat/arm64/VrBtTest.vdex	ART verified-dex container (vdex header version 027) for VrBtTest.apk	verified
+system_ext_a	priv-app/ReprojectedAndroidPanelApp/oat/arm64/ReprojectedAndroidPanelApp.vdex	ART verified-dex container (vdex header version 027) for ReprojectedAndroidPanelApp.apk	verified
+system_ext_a	priv-app/ReprojectedAndroidPanelApp/oat/arm64/ReprojectedAndroidPanelApp.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ReprojectedAndroidPanelApp.apk	verified
+system_ext_a	priv-app/ReprojectedAndroidPanelApp/ReprojectedAndroidPanelApp.apk	VR shell desktop panel (ReprojectedAndroidPanelApp) (package com.oculus.vrshell.desktop)	inferred
+system_ext_a	priv-app/PCLinkService/oat/arm64/PCLinkService.vdex	ART verified-dex container (vdex header version 027) for PCLinkService.apk	verified
+system_ext_a	priv-app/PCLinkService/oat/arm64/PCLinkService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for PCLinkService.apk	verified
+system_ext_a	priv-app/PCLinkService/PCLinkService.apk	PC link server service (package com.meta.pclinkservice.server)	inferred
+system_ext_a	priv-app/MaintenanceBoot/oat/arm64/MaintenanceBoot.vdex	ART verified-dex container (vdex header version 027) for MaintenanceBoot.apk	verified
+system_ext_a	priv-app/MaintenanceBoot/oat/arm64/MaintenanceBoot.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for MaintenanceBoot.apk	verified
+system_ext_a	priv-app/MaintenanceBoot/MaintenanceBoot.apk	Maintenance boot app (package com.oculus.maintenanceboot)	inferred
+system_ext_a	priv-app/Integrity/oat/arm64/Integrity.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Integrity.apk	verified
+system_ext_a	priv-app/Integrity/oat/arm64/Integrity.vdex	ART verified-dex container (vdex header version 027) for Integrity.apk	verified
+system_ext_a	priv-app/Integrity/Integrity.apk	Integrity app: com.oculus.integrity; sharedUserId none; 30 components; 33 permissions; versionName 71.0.0.618.530	verified
+system_ext_a	priv-app/QuickPlayService/QuickPlayService.apk	QuickPlay service (data loader) (package com.oculus.quickplayservice)	inferred
+system_ext_a	priv-app/QuickPlayService/lib/arm64/libquickplaydataloader-jni.so	Symlink to /system_ext/lib64/libquickplaydataloader-jni.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/AppSafety/oat/arm64/AppSafety.vdex	ART verified-dex container (vdex header version 027) for AppSafety.apk	verified
+system_ext_a	priv-app/AppSafety/oat/arm64/AppSafety.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for AppSafety.apk	verified
+system_ext_a	priv-app/AppSafety/AppSafety.apk	App safety service (package com.oculus.appsafety)	inferred
+system_ext_a	priv-app/VrUsbApp/oat/arm64/VrUsbApp.vdex	ART verified-dex container (vdex header version 027) for VrUsbApp.apk	verified
+system_ext_a	priv-app/VrUsbApp/oat/arm64/VrUsbApp.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrUsbApp.apk	verified
+system_ext_a	priv-app/VrUsbApp/VrUsbApp.apk	VR USB app (package com.oculus.os.vrusb)	inferred
+system_ext_a	priv-app/VrAlertService/VrAlertService.apk	VR alert service (package com.oculus.vralertservice)	inferred
+system_ext_a	priv-app/VrAlertService/oat/arm64/VrAlertService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrAlertService.apk	verified
+system_ext_a	priv-app/VrAlertService/oat/arm64/VrAlertService.vdex	ART verified-dex container (vdex header version 027) for VrAlertService.apk	verified
+system_ext_a	priv-app/WebSafety/oat/arm64/WebSafety.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for WebSafety.apk	verified
+system_ext_a	priv-app/WebSafety/oat/arm64/WebSafety.vdex	ART verified-dex container (vdex header version 027) for WebSafety.apk	verified
+system_ext_a	priv-app/WebSafety/WebSafety.apk	Web safety service (package com.oculus.websafety)	inferred
+system_ext_a	priv-app/AudioLatencyTester/oat/arm64/AudioLatencyTester.vdex	ART verified-dex container (vdex header version 027) for AudioLatencyTester.apk	verified
+system_ext_a	priv-app/AudioLatencyTester/oat/arm64/AudioLatencyTester.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for AudioLatencyTester.apk	verified
+system_ext_a	priv-app/AudioLatencyTester/AudioLatencyTester.apk	Audio latency tester app (package com.oculus.audio.latencytester)	inferred
+system_ext_a	priv-app/BodyApiService/BodyApiService.apk	Body API service (package com.oculus.bodyapiservice)	inferred
+system_ext_a	priv-app/BodyApiService/oat/arm/BodyApiService.odex	AOT-compiled ART code (oat header version 199) in an ELF ARM32 shared object, for BodyApiService.apk	verified
+system_ext_a	priv-app/BodyApiService/oat/arm/BodyApiService.vdex	ART verified-dex container (vdex header version 027) for BodyApiService.apk	verified
+system_ext_a	priv-app/IdentityManagement/oat/arm64/IdentityManagement.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for IdentityManagement.apk	verified
+system_ext_a	priv-app/IdentityManagement/oat/arm64/IdentityManagement.vdex	ART verified-dex container (vdex header version 027) for IdentityManagement.apk	verified
+system_ext_a	priv-app/IdentityManagement/IdentityManagement.apk	Identity management service (package com.oculus.identitymanagement.service)	inferred
+system_ext_a	priv-app/OculusFederatedComputing/oat/arm64/OculusFederatedComputing.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OculusFederatedComputing.apk	verified
+system_ext_a	priv-app/OculusFederatedComputing/oat/arm64/OculusFederatedComputing.vdex	ART verified-dex container (vdex header version 027) for OculusFederatedComputing.apk	verified
+system_ext_a	priv-app/OculusFederatedComputing/OculusFederatedComputing.apk	Federated computing service (package com.meta.federatedcomputing.oculus)	inferred
+system_ext_a	priv-app/VrosConfigWriterDeprecated/oat/arm64/VrosConfigWriterDeprecated.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrosConfigWriterDeprecated.apk	verified
+system_ext_a	priv-app/VrosConfigWriterDeprecated/oat/arm64/VrosConfigWriterDeprecated.vdex	ART verified-dex container (vdex header version 027) for VrosConfigWriterDeprecated.apk	verified
+system_ext_a	priv-app/VrosConfigWriterDeprecated/VrosConfigWriterDeprecated.apk	VR OS config writer (deprecated) (package com.oculus.vrosconfigwriterdeprecated)	inferred
+system_ext_a	priv-app/VrLockscreen/oat/arm64/VrLockscreen.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for VrLockscreen.apk	verified
+system_ext_a	priv-app/VrLockscreen/oat/arm64/VrLockscreen.vdex	ART verified-dex container (vdex header version 027) for VrLockscreen.apk	verified
+system_ext_a	priv-app/VrLockscreen/VrLockscreen.apk	VR lockscreen app (package com.oculus.os.vrlockscreen)	inferred
+system_ext_a	priv-app/CompanionServer/CompanionServer.apk	Companion server app (package com.oculus.companion.server)	inferred
+system_ext_a	priv-app/CompanionServer/oat/arm64/CompanionServer.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for CompanionServer.apk	verified
+system_ext_a	priv-app/CompanionServer/oat/arm64/CompanionServer.vdex	ART verified-dex container (vdex header version 027) for CompanionServer.apk	verified
+system_ext_a	priv-app/CompanionServer/lib/arm64/libcrypoimpl.so	Symlink to /system_ext/lib64/libcrypoimpl.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/CompanionServer/lib/arm64/libtourguideapi.so	Symlink to /system_ext/lib64/libtourguideapi.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/SystemUtilities/oat/arm64/SystemUtilities.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SystemUtilities.apk	verified
+system_ext_a	priv-app/SystemUtilities/oat/arm64/SystemUtilities.vdex	ART verified-dex container (vdex header version 027) for SystemUtilities.apk	verified
+system_ext_a	priv-app/SystemUtilities/SystemUtilities.apk	System utilities app (package com.oculus.systemutilities)	inferred
+system_ext_a	priv-app/UserServer2/oat/arm64/UserServer2.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for UserServer2.apk	verified
+system_ext_a	priv-app/UserServer2/oat/arm64/UserServer2.vdex	ART verified-dex container (vdex header version 027) for UserServer2.apk	verified
+system_ext_a	priv-app/UserServer2/UserServer2.apk	User server service (package com.oculus.userserver2)	inferred
+system_ext_a	priv-app/AssetDeliveryService/oat/arm64/AssetDeliveryService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for AssetDeliveryService.apk	verified
+system_ext_a	priv-app/AssetDeliveryService/oat/arm64/AssetDeliveryService.vdex	ART verified-dex container (vdex header version 027) for AssetDeliveryService.apk	verified
+system_ext_a	priv-app/AssetDeliveryService/AssetDeliveryService.apk	Asset delivery service (package com.oculus.assetdelivery)	inferred
+system_ext_a	priv-app/CMSHeadset/CMSHeadset.apk	CM headset service (CMSHeadset) (package com.oculus.os.cm)	inferred
+system_ext_a	priv-app/CMSHeadset/oat/arm64/CMSHeadset.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for CMSHeadset.apk	verified
+system_ext_a	priv-app/CMSHeadset/oat/arm64/CMSHeadset.vdex	ART verified-dex container (vdex header version 027) for CMSHeadset.apk	verified
+system_ext_a	priv-app/CMSHeadset/lib/arm64/libcmsservice-headset.so	Symlink to /system_ext/lib64/libcmsservice-headset.so (native library shipped in system_ext lib64)	verified
+system_ext_a	priv-app/GatekeeperService/GatekeeperService.apk	Gatekeeper service (package com.oculus.gatekeeperservice)	inferred
+system_ext_a	priv-app/GatekeeperService/oat/arm64/GatekeeperService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for GatekeeperService.apk	verified
+system_ext_a	priv-app/GatekeeperService/oat/arm64/GatekeeperService.vdex	ART verified-dex container (vdex header version 027) for GatekeeperService.apk	verified
+system_ext_a	priv-app/CaptionService/oat/arm64/CaptionService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for CaptionService.apk	verified
+system_ext_a	priv-app/CaptionService/oat/arm64/CaptionService.vdex	ART verified-dex container (vdex header version 027) for CaptionService.apk	verified
+system_ext_a	priv-app/CaptionService/CaptionService.apk	Caption service (package com.oculus.captionservice)	inferred
+system_ext_a	priv-app/DeviceAuthServer/DeviceAuthServer.apk	Device auth server service (package com.oculus.deviceauthserver)	inferred
+system_ext_a	priv-app/ClearActivity/ClearActivity.apk	Clear activity app (package com.oculus.os.clearactivity)	inferred
+system_ext_a	priv-app/ClearActivity/oat/arm64/ClearActivity.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for ClearActivity.apk	verified
+system_ext_a	priv-app/ClearActivity/oat/arm64/ClearActivity.vdex	ART verified-dex container (vdex header version 027) for ClearActivity.apk	verified
+system_ext_a	priv-app/Configuration/Configuration.apk	Configuration app (package com.oculus.configuration)	inferred
+system_ext_a	priv-app/Configuration/oat/arm64/Configuration.vdex	ART verified-dex container (vdex header version 027) for Configuration.apk	verified
+system_ext_a	priv-app/Configuration/oat/arm64/Configuration.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for Configuration.apk	verified
+system_ext_a	priv-app/SpatialPersistenceService/SpatialPersistenceService.apk	Spatial persistence service (package com.facebook.spatial_persistence_service)	inferred
+system_ext_a	priv-app/SpatialPersistenceService/oat/arm64/SpatialPersistenceService.vdex	ART verified-dex container (vdex header version 027) for SpatialPersistenceService.apk	verified
+system_ext_a	priv-app/SpatialPersistenceService/oat/arm64/SpatialPersistenceService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SpatialPersistenceService.apk	verified
+system_ext_a	priv-app/SettingsPanelApp/SettingsPanelApp.apk	Settings panel app (SettingsPanelApp) (package com.oculus.panelapp.settings)	inferred
+system_ext_a	priv-app/SettingsPanelApp/oat/arm64/SettingsPanelApp.vdex	ART verified-dex container (vdex header version 027) for SettingsPanelApp.apk	verified
+system_ext_a	priv-app/SettingsPanelApp/oat/arm64/SettingsPanelApp.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for SettingsPanelApp.apk	verified
+system_ext_a	priv-app/SettingsPanelApp/oat/arm64/SettingsPanelApp.art	ART app image (art header version 099) for SettingsPanelApp.apk	verified
+system_ext_a	priv-app/SettingsPanelApp/SettingsPanelApp.apk.prof	ART baseline profile (pro header version 015) for SettingsPanelApp.apk	verified
+system_ext_a	priv-app/BackupTransportService/oat/arm64/BackupTransportService.vdex	ART verified-dex container (vdex header version 027) for BackupTransportService.apk	verified
+system_ext_a	priv-app/BackupTransportService/oat/arm64/BackupTransportService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for BackupTransportService.apk	verified
+system_ext_a	priv-app/BackupTransportService/BackupTransportService.apk	Backup transport service (package com.oculus.backuptransportservice)	inferred
+system_ext_a	priv-app/WearableInputService/WearableInputService.apk	Wearable input service (package com.oculus.wearableinputservice)	inferred
+system_ext_a	priv-app/WearableInputService/oat/arm64/WearableInputService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for WearableInputService.apk	verified
+system_ext_a	priv-app/WearableInputService/oat/arm64/WearableInputService.vdex	ART verified-dex container (vdex header version 027) for WearableInputService.apk	verified
+system_ext_a	priv-app/OSUpdater/oat/arm64/OSUpdater.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for OSUpdater.apk	verified
+system_ext_a	priv-app/OSUpdater/oat/arm64/OSUpdater.vdex	ART verified-dex container (vdex header version 027) for OSUpdater.apk	verified
+system_ext_a	priv-app/OSUpdater/OSUpdater.apk	OS updater app: com.oculus.updater; sharedUserId none; 24 components; 30 permissions; versionName 71.0.0.890.252	verified
+vendor_a	app/TimeService/oat/arm64/TimeService.odex	AOT-compiled ART code (oat header version 199) in an ELF AArch64 shared object, for TimeService.apk	verified
+vendor_a	app/TimeService/oat/arm64/TimeService.vdex	ART verified-dex container (vdex header version 027) for TimeService.apk	verified
+vendor_a	app/TimeService/TimeService.apk	Qualcomm time service (vendor app) (package com.qualcomm.timeservice)	inferred

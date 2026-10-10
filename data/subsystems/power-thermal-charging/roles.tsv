@@ -1,0 +1,22 @@
+partition	path	role	confidence
+product_a	etc/res/images/charger/battery_fail.png	Charger-mode failure icon, 96x96 4-bit palette PNG (battery outline in a circle); built-in fallback exists when the custom file fails to load	observed
+product_a	etc/res/images/charger/battery_scale.png	Charger battery-level animation sprite sheet, 120x1440 8-bit palette PNG holding 12 stacked 120x120 frames	verified
+product_a	etc/res/values/charger/animation.txt	Charger animation description: one animation directive, 12 frame directives (display time and battery-level range), one percent_display directive	verified
+system_a	system/bin/charger	Android charger-mode executable, AArch64 PIE, started by the init service "charger" for boot-time charging UI	observed
+system_a	system/lib/android.hardware.thermal@1.0.so	32-bit HIDL thermal HAL 1.0 interface library (IThermal stub and proxy)	verified
+system_a	system/lib/android.hardware.thermal@2.0.so	32-bit HIDL thermal HAL 2.0 interface library (IThermal and IThermalChangedCallback), depends on @1.0	verified
+system_a	system/lib/libbatterystats_aidl.so	32-bit AIDL library for com.android.internal.app.IBatteryStats (client proxy and stub)	verified
+system_a	system/lib64/android.hardware.thermal@1.0.so	64-bit HIDL thermal HAL 1.0 interface library; code identical to the vendor copy, differing only in build-id	verified
+system_a	system/lib64/android.hardware.thermal@2.0.so	64-bit HIDL thermal HAL 2.0 interface library (IThermal and IThermalChangedCallback), depends on @1.0	verified
+system_a	system/lib64/libbatterystats_aidl.so	64-bit AIDL library for com.android.internal.app.IBatteryStats (client proxy and stub)	verified
+vendor_a	lib/libbatterylistener.so	32-bit battery-properties listener: C API over health HAL 2.0 and 2.1 callbacks, loaded by dlopen from the audio HAL	verified
+vendor_a	lib/libexternalbattery.so	32-bit client library for vendor.oculus.hardware.externalbattery@1.0 IExternalBattery plus ExternalBattery wrapper class	verified
+vendor_a	etc/thermal_info_config.json	Thermal sensor and cooling-device configuration (53 sensors, 6 cooling devices) for the thermal HAL parser	verified
+vendor_a	etc/powerhint_holdout.cfg	TOML power-hint table set (27 tables): holdout copy of the 1/1/2024 powerhint.cfg with experiments removed	verified
+vendor_a	etc/init.insmod.charger.cfg	Charger-class init list of 37 modprobe, 2 setprop and 1 enable actions, run by init.insmod.sh	verified
+vendor_a	etc/powerhint.cfg	TOML power-hint configuration (108 tables) for the power HAL: CPU and GPU clock levels, sysfs and cpuset writes	verified
+vendor_a	lib64/android.hardware.thermal@1.0.so	64-bit vendor copy of HIDL thermal HAL 1.0 interface library; differs from the system copy only in build-id	verified
+vendor_a	lib64/android.hardware.thermal@2.0.so	64-bit vendor copy of HIDL thermal HAL 2.0 interface library; differs from the system copy only in build-id	verified
+vendor_a	lib64/libbatterylistener.so	64-bit battery-properties listener: C API over health HAL 2.0 and 2.1 callbacks, loaded by dlopen from the audio HAL	verified
+vendor_a	lib64/libexternalbattery.so	64-bit client library for IExternalBattery 1.0 plus ExternalBattery wrapper; linked by the health HAL implementation	verified
+vendor_a	lib64/libthermalhalutils.so	Thermal helper library: JSON config parser (jsoncpp), sensor and cooling-device parsing, thermal sysfs file access; linked by perf_service	verified

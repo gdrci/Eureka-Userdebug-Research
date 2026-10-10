@@ -1,0 +1,1372 @@
+partition	path	role	confidence
+odm_a	lib/libbtatomreport.so	Bluetooth atomic report (telemetry) library	inferred
+odm_a	lib/libmaintenanceboot.so	Oculus/Meta maintenance-boot library (OVR::OS misc writer, bootloader message, fstab reader)	verified
+odm_a	lib/modules	symbolic link to /odm_dlkm/lib/modules	verified
+odm_a	lib64/libflickerdetector.so	display/camera flicker detector library	inferred
+odm_a	lib64/libgammacorrection.so	gamma correction (display) library	inferred
+odm_a	lib64/libgammacompression.so	gamma compression (display) library	inferred
+odm_a	lib64/libtelemetryproto_hal.so	telemetry libraryproto_hal	inferred
+odm_a	lib64/libpdfu.so	PDF utility library (name-based)	unverified
+odm_a	lib64/libwavreader.so	WAV file reader library	inferred
+odm_a	lib64/libtdigesttelemetry.so	t-digest telemetry library	inferred
+odm_a	lib64/libmaintenancebootutils.so	maintenance boot utilities library	inferred
+odm_a	lib64/libeventflaghelper.so	event-flag helper library	inferred
+odm_a	lib64/libcalibrationstore.so	calibration store library	inferred
+odm_a	lib64/libclocksync.so	clock synchronization library	inferred
+odm_a	lib64/libnativewakelock.so	native wakelock library	inferred
+odm_a	lib64/libovrfwupdate.so	Oculus firmware-update library	inferred
+odm_a	lib64/libiad.so	IAD library (name-based)	unverified
+odm_a	lib64/libbtatomreport.so	Bluetooth atomic report (telemetry) library	inferred
+odm_a	lib64/libeyetrackingisp.so	eye-tracking ISP library	inferred
+odm_a	lib64/libiad-utils.so	IAD utilities library (name-based)	unverified
+odm_a	lib64/libimagebuffer.so	image buffer library	inferred
+odm_a	lib64/libpowerstats.so	power stats library	inferred
+odm_a	lib64/libstals.so	STALS library (name-based)	unverified
+odm_a	lib64/libmaintenanceboot.so	Oculus/Meta maintenance-boot library (OVR::OS misc writer, bootloader message, fstab reader)	verified
+odm_a	lib64/libsyncboss.so	syncboss sensor-sync library	inferred
+odm_a	lib64/libsyncbossmock.so	syncboss mock library	inferred
+odm_a	lib64/libinstsampd_interface-V2-ndk_platform.so	AIDL NDK-backend library for libinstsampd_interface (interface V2)	verified
+product_a	lib64/crashuploader-aidl-V1-ndk_platform.so	AIDL NDK-backend library for crashuploader (interface V1)	verified
+product_a	lib64/libkvstore.so	key-value store library (kvstore)	inferred
+product_a	lib64/ICompanionServer-ndk_platform.so	AIDL NDK-backend library for ICompanionServer	verified
+product_a	lib64/libext2_uuid.so	UUID library (e2fsprogs libuuid)	inferred
+product_a	lib64/crashtelemetry-aidl-V1-ndk_platform.so	AIDL NDK-backend library for crashtelemetry (interface V1)	verified
+product_a	lib64/libosutils_diagnostics.so	OS utilities diagnostics library	inferred
+product_a	lib64/libovr_crashuploader.so	Oculus/Meta crashuploader library	inferred
+product_a	lib64/libdeviceid.so	device identifier library	inferred
+product_a	lib64/libovr_diagnosticdata.so	Oculus/Meta diagnosticdata library	inferred
+product_a	lib64/libtelemetry.so	Android C++ framework library (android:: API)	verified
+product_a	lib/crashuploader-aidl-V1-ndk_platform.so	AIDL NDK-backend library for crashuploader (interface V1)	verified
+product_a	lib/libkvstore.so	key-value store library (kvstore)	inferred
+product_a	lib/ICompanionServer-ndk_platform.so	AIDL NDK-backend library for ICompanionServer	verified
+product_a	lib/libext2_uuid.so	UUID library (e2fsprogs libuuid)	inferred
+product_a	lib/crashtelemetry-aidl-V1-ndk_platform.so	AIDL NDK-backend library for crashtelemetry (interface V1)	verified
+product_a	lib/libosutils_diagnostics.so	OS utilities diagnostics library	inferred
+product_a	lib/libovr_crashuploader.so	Oculus/Meta crashuploader library	inferred
+product_a	lib/libdeviceid.so	device identifier library	inferred
+product_a	lib/libovr_diagnosticdata.so	Oculus/Meta diagnosticdata library	inferred
+product_a	lib/libtelemetry.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/ICompanionServer-ndk.so	AIDL NDK-backend library for ICompanionServer	verified
+system_a	system/lib/ICompanionServer-ndk_platform.so	AIDL NDK-backend library for ICompanionServer	verified
+system_a	system/lib/android.frameworks.bufferhub@1.0.so	HIDL interface library android.frameworks.bufferhub v1.0	verified
+system_a	system/lib/android.frameworks.schedulerservice@1.0.so	HIDL interface library android.frameworks.schedulerservice v1.0	verified
+system_a	system/lib/android.frameworks.stats-V1-ndk_platform.so	AIDL NDK-backend library for android.frameworks.stats (interface V1)	verified
+system_a	system/lib/android.frameworks.stats@1.0.so	HIDL interface library android.frameworks.stats v1.0	verified
+system_a	system/lib/android.hardware.broadcastradio@1.0.so	HIDL interface library android.hardware.broadcastradio v1.0	verified
+system_a	system/lib/android.hardware.broadcastradio@1.1.so	HIDL interface library android.hardware.broadcastradio v1.1	verified
+system_a	system/lib/android.hardware.cas.native@1.0.so	HIDL interface library android.hardware.cas.native v1.0	verified
+system_a	system/lib/android.hardware.cas@1.0.so	HIDL interface library android.hardware.cas v1.0	verified
+system_a	system/lib/android.hardware.common-V2-ndk_platform.so	AIDL NDK-backend library for android.hardware.common (interface V2)	verified
+system_a	system/lib/android.hardware.common.fmq-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.common.fmq (interface V1)	verified
+system_a	system/lib/android.hardware.configstore-utils.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/android.hardware.configstore@1.0.so	HIDL interface library android.hardware.configstore v1.0	verified
+system_a	system/lib/android.hardware.configstore@1.1.so	HIDL interface library android.hardware.configstore v1.1	verified
+system_a	system/lib/android.hardware.contexthub@1.0.so	HIDL interface library android.hardware.contexthub v1.0	verified
+system_a	system/lib/android.hardware.gnss-V1-cpp.so	AIDL C++-backend library for android.hardware.gnss (interface V1)	inferred
+system_a	system/lib/android.hardware.gnss.measurement_corrections@1.0.so	HIDL interface library android.hardware.gnss.measurement_corrections v1.0	verified
+system_a	system/lib/android.hardware.gnss.measurement_corrections@1.1.so	HIDL interface library android.hardware.gnss.measurement_corrections v1.1	verified
+system_a	system/lib/android.hardware.gnss.visibility_control@1.0.so	HIDL interface library android.hardware.gnss.visibility_control v1.0	verified
+system_a	system/lib/android.hardware.gnss@1.0.so	HIDL interface library android.hardware.gnss v1.0	verified
+system_a	system/lib/android.hardware.gnss@1.1.so	HIDL interface library android.hardware.gnss v1.1	verified
+system_a	system/lib/android.hardware.gnss@2.0.so	HIDL interface library android.hardware.gnss v2.0	verified
+system_a	system/lib/android.hardware.gnss@2.1.so	HIDL interface library android.hardware.gnss v2.1	verified
+system_a	system/lib/android.hardware.graphics.bufferqueue@1.0.so	HIDL interface library android.hardware.graphics.bufferqueue v1.0	verified
+system_a	system/lib/android.hardware.graphics.bufferqueue@2.0.so	HIDL interface library android.hardware.graphics.bufferqueue v2.0	verified
+system_a	system/lib/android.hardware.graphics.common-V2-ndk_platform.so	AIDL NDK-backend library for android.hardware.graphics.common (interface V2)	verified
+system_a	system/lib/android.hardware.graphics.common@1.0.so	HIDL interface library android.hardware.graphics.common v1.0	inferred
+system_a	system/lib/android.hardware.graphics.common@1.1.so	HIDL interface library android.hardware.graphics.common v1.1	inferred
+system_a	system/lib/android.hardware.graphics.common@1.2.so	HIDL interface library android.hardware.graphics.common v1.2	verified
+system_a	system/lib/android.hardware.health@1.0.so	HIDL interface library android.hardware.health v1.0	verified
+system_a	system/lib/android.hardware.health@2.0.so	HIDL interface library android.hardware.health v2.0	verified
+system_a	system/lib/android.hardware.input.classifier@1.0.so	HIDL interface library android.hardware.input.classifier v1.0	verified
+system_a	system/lib/android.hardware.input.common@1.0.so	HIDL interface library android.hardware.input.common v1.0	verified
+system_a	system/lib/android.hardware.ir@1.0.so	HIDL interface library android.hardware.ir v1.0	verified
+system_a	system/lib/android.hardware.light@2.0.so	HIDL interface library android.hardware.light v2.0	verified
+system_a	system/lib/android.hardware.media.bufferpool@2.0.so	HIDL interface library android.hardware.media.bufferpool v2.0	verified
+system_a	system/lib/android.hardware.media.c2@1.0.so	HIDL interface library android.hardware.media.c2 v1.0	verified
+system_a	system/lib/android.hardware.media.c2@1.1.so	HIDL interface library android.hardware.media.c2 v1.1	verified
+system_a	system/lib/android.hardware.media.c2@1.2.so	HIDL interface library android.hardware.media.c2 v1.2	verified
+system_a	system/lib/android.hardware.media.omx@1.0.so	HIDL interface library android.hardware.media.omx v1.0	verified
+system_a	system/lib/android.hardware.media@1.0.so	HIDL interface library android.hardware.media v1.0	verified
+system_a	system/lib/android.hardware.power-V2-cpp.so	AIDL C++-backend library for android.hardware.power (interface V2)	inferred
+system_a	system/lib/android.hardware.power.stats-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.power.stats (interface V1)	verified
+system_a	system/lib/android.hardware.power.stats@1.0.so	HIDL interface library android.hardware.power.stats v1.0	verified
+system_a	system/lib/android.hardware.power@1.0.so	HIDL interface library android.hardware.power v1.0	verified
+system_a	system/lib/android.hardware.power@1.1.so	HIDL interface library android.hardware.power v1.1	verified
+system_a	system/lib/android.hardware.renderscript@1.0.so	HIDL interface library android.hardware.renderscript v1.0	verified
+system_a	system/lib/android.hardware.tv.input@1.0.so	HIDL interface library android.hardware.tv.input v1.0	verified
+system_a	system/lib/android.hardware.vibrator-V2-cpp.so	AIDL C++-backend library for android.hardware.vibrator (interface V2)	inferred
+system_a	system/lib/android.hardware.vibrator@1.0.so	HIDL interface library android.hardware.vibrator v1.0	verified
+system_a	system/lib/android.hardware.vibrator@1.1.so	HIDL interface library android.hardware.vibrator v1.1	verified
+system_a	system/lib/android.hardware.vibrator@1.2.so	HIDL interface library android.hardware.vibrator v1.2	verified
+system_a	system/lib/android.hardware.vibrator@1.3.so	HIDL interface library android.hardware.vibrator v1.3	verified
+system_a	system/lib/android.hardware.vr@1.0.so	HIDL interface library android.hardware.vr v1.0	verified
+system_a	system/lib/android.hidl.allocator@1.0.so	HIDL interface library android.hidl.allocator v1.0	verified
+system_a	system/lib/android.hidl.memory.token@1.0.so	HIDL interface library android.hidl.memory.token v1.0	verified
+system_a	system/lib/android.hidl.memory@1.0.so	HIDL interface library android.hidl.memory v1.0	verified
+system_a	system/lib/android.hidl.safe_union@1.0.so	HIDL interface library android.hidl.safe_union v1.0	inferred
+system_a	system/lib/android.hidl.token@1.0-utils.so	HIDL interface library android.hidl.token v1.0	inferred
+system_a	system/lib/android.hidl.token@1.0.so	HIDL interface library android.hidl.token v1.0	verified
+system_a	system/lib/android.system.suspend.control-V1-cpp.so	AIDL C++-backend library for android.system.suspend.control (interface V1)	inferred
+system_a	system/lib/android.system.suspend.control-V1-ndk.so	AIDL NDK-backend library for android.system.suspend.control (interface V1)	verified
+system_a	system/lib/android.system.suspend.control.internal-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/android.system.suspend@1.0.so	HIDL interface library android.system.suspend v1.0	verified
+system_a	system/lib/av-types-aidl-cpp.so	AIDL cpp-backend library for av-types	inferred
+system_a	system/lib/bootstrap/libdl_android.so	bionic libdl_android bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib/bootstrap/libdl.so	bionic libdl bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib/bootstrap/libc.so	bionic libc bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib/bootstrap/libm.so	bionic libm bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib/capture_state_listener-aidl-cpp.so	AIDL cpp-backend library for capture_state_listener	inferred
+system_a	system/lib/effect-aidl-cpp.so	AIDL cpp-backend library for effect	inferred
+system_a	system/lib/framework-permission-aidl-cpp.so	AIDL cpp-backend library for framework-permission	inferred
+system_a	system/lib/heapprofd_client.so	heapprofd heap-profiler client library	inferred
+system_a	system/lib/heapprofd_client_api.so	heapprofd client API library	inferred
+system_a	system/lib/hw/android.hidl.memory@1.0-impl.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/ld-android.so	bionic dynamic linker runtime (ld-android)	inferred
+system_a	system/lib/lib-platform-compat-native-api.so	platform compat change-ID native API library	inferred
+system_a	system/lib/libETC1.so	ETC1 texture codec library	inferred
+system_a	system/lib/libFFTEm.so	FFT emulation library	inferred
+system_a	system/lib/libInputFlingerProperties.so	InputFlinger system-property accessor library	inferred
+system_a	system/lib/libOpenMAXAL.so	OpenMAX AL API library	inferred
+system_a	system/lib/libOpenSLES.so	OpenSL ES audio API library	inferred
+system_a	system/lib/libRS.so	RenderScript runtime library	inferred
+system_a	system/lib/libRSCacheDir.so	RenderScript cache-directory helper	inferred
+system_a	system/lib/libRSCpuRef.so	RenderScript CPU reference driver	inferred
+system_a	system/lib/libRSDriver.so	RenderScript driver library	inferred
+system_a	system/lib/libRS_internal.so	RenderScript internal library	inferred
+system_a	system/lib/libRScpp.so	RenderScript C++ API library	inferred
+system_a	system/lib/libSurfaceFlingerProp.so	SurfaceFlinger system-property accessor library	inferred
+system_a	system/lib/libactivitymanager_aidl.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libadbd_auth.so	adbd authentication library	inferred
+system_a	system/lib/libadbd_fs.so	adbd filesystem helper library	inferred
+system_a	system/lib/libalarm_jni.so	alarm service JNI library	inferred
+system_a	system/lib/libamidi.so	NDK AMidi MIDI API library	inferred
+system_a	system/lib/libandroid.so	NDK android API (native activity, window, asset)	inferred
+system_a	system/lib/libandroid_net.so	NDK network API library	inferred
+system_a	system/lib/libandroid_runtime.so	Android runtime JNI glue library	inferred
+system_a	system/lib/libandroid_runtime_lazy.so	lazy Android runtime JNI glue library	inferred
+system_a	system/lib/libandroid_servers.so	system_server native services library	inferred
+system_a	system/lib/libandroidfw.so	Android framework resource and asset library (ResTable, AssetManager)	verified
+system_a	system/lib/libappfuse.so	AppFuse storage FUSE library	inferred
+system_a	system/lib/libartpalette-system.so	ART palette (system-side) helper library	inferred
+system_a	system/lib/libasyncio.so	asyncio helper library	inferred
+system_a	system/lib/libbacktrace.so	stack backtrace library	inferred
+system_a	system/lib/libbase.so	Android base library (logging, properties, files)	verified
+system_a	system/lib/libbcinfo.so	RenderScript bitcode info library	inferred
+system_a	system/lib/libbinder.so	Binder IPC runtime (libbinder)	verified
+system_a	system/lib/libbinder_ndk.so	NDK Binder API (AIBinder_, AServiceManager_)	inferred
+system_a	system/lib/libblas.so	BLAS linear-algebra library	inferred
+system_a	system/lib/libbpf.so	libbpf BPF loader library	verified
+system_a	system/lib/libbpf_android.so	Android BPF loader helper library	inferred
+system_a	system/lib/libbufferhub.so	BufferHub buffer-sharing library	inferred
+system_a	system/lib/libbufferhubqueue.so	BufferHub queue library	inferred
+system_a	system/lib/libc++.so	LLVM libc++ C++ standard library	verified
+system_a	system/lib/libc.so	bionic C library (symlink into APEX runtime) -> /apex/com.android.runtime/lib/bionic/libc.so	verified
+system_a	system/lib/libcap.so	POSIX capabilities library	verified
+system_a	system/lib/libcgrouprc.so	cgroup resource-config parser library	inferred
+system_a	system/lib/libchrome.so	Chromium base library (libchrome)	inferred
+system_a	system/lib/libclang_rt.asan-arm-android.so	AddressSanitizer runtime (arm)	inferred
+system_a	system/lib/libclcore.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant generic	inferred
+system_a	system/lib/libclcore_debug.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant debug	inferred
+system_a	system/lib/libclcore_debug_g.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant debug_g	inferred
+system_a	system/lib/libclcore_g.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant g	inferred
+system_a	system/lib/libclcore_neon.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant neon	inferred
+system_a	system/lib/libcompiler_rt.so	compiler-rt builtins runtime	inferred
+system_a	system/lib/libcurl.so	libcurl HTTP/HTTPS client library	verified
+system_a	system/lib/libcutils.so	Android C utilities library (properties, sockets, ashmem)	verified
+system_a	system/lib/libdataloader.so	incremental data loader library	inferred
+system_a	system/lib/libdatasource.so	data source library (name-based)	unverified
+system_a	system/lib/libdebuggerd_client.so	debuggerd client library (crash dumps)	inferred
+system_a	system/lib/libdl.so	bionic dynamic loader API (symlink into APEX runtime) -> /apex/com.android.runtime/lib/bionic/libdl.so	verified
+system_a	system/lib/libdl_android.so	bionic Android dl extensions (symlink into APEX runtime) -> /apex/com.android.runtime/lib/bionic/libdl_android.so	verified
+system_a	system/lib/libdmabufheap.so	DMA-BUF heap allocator library	inferred
+system_a	system/lib/libdng_sdk.so	Adobe DNG SDK library	inferred
+system_a	system/lib/libepsclient.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libepscommon.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libepsmessagechannel.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libepstelemetry.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libevent.so	libevent event-notification library	verified
+system_a	system/lib/libexpat.so	expat XML parser	verified
+system_a	system/lib/libext2_uuid.so	UUID library (e2fsprogs libuuid)	inferred
+system_a	system/lib/libfdtrack.so	file-descriptor tracking library	inferred
+system_a	system/lib/libfilterfw.so	filterfw media filter framework library	inferred
+system_a	system/lib/libfilterpack_imageproc.so	filterpack image-processing library	inferred
+system_a	system/lib/libflatbuffers-cpp.so	FlatBuffers C++ runtime library	inferred
+system_a	system/lib/libfmq.so	fast message queue (FMQ) library	inferred
+system_a	system/lib/libft2.so	FreeType 2 font rasterizer	verified
+system_a	system/lib/libgflags.so	gflags command-line flags library	verified
+system_a	system/lib/libgralloctypes.so	gralloc types library	verified
+system_a	system/lib/libgraphicsenv.so	graphics environment library (GPU driver selection)	inferred
+system_a	system/lib/libgrpc++.so	gRPC C++ library	inferred
+system_a	system/lib/libgrpc_wrap.so	gRPC wrapper library	inferred
+system_a	system/lib/libgui.so	Surface/BufferQueue client library (libgui)	verified
+system_a	system/lib/libhardware.so	HAL module loader library (hw_get_module)	inferred
+system_a	system/lib/libhardware_legacy.so	legacy HAL wrapper library	inferred
+system_a	system/lib/libharfbuzz_ng.so	HarfBuzz text-shaping library	inferred
+system_a	system/lib/libheif.so	HEIF image codec library	inferred
+system_a	system/lib/libhidl-gen-utils.so	HIDL build-time code-generation utilities	verified
+system_a	system/lib/libhidlallocatorutils.so	HIDL allocator utilities library	inferred
+system_a	system/lib/libhidlbase.so	HIDL base runtime (hidl_string, hidl_vec, transport)	verified
+system_a	system/lib/libhidlmemory.so	HIDL shared-memory library	inferred
+system_a	system/lib/libhidltransport.so	HIDL transport library (legacy hwservice client)	inferred
+system_a	system/lib/libhwui.so	HWUI hardware-accelerated 2D renderer library	inferred
+system_a	system/lib/libiad-utils.so	IAD utilities library (name-based)	unverified
+system_a	system/lib/libimg_utils.so	image utilities library	inferred
+system_a	system/lib/libincfs.so	IncFS incremental filesystem library	inferred
+system_a	system/lib/libincident.so	incident report library	inferred
+system_a	system/lib/libincidentpriv.so	incident report private library	inferred
+system_a	system/lib/libinput.so	input library (InputManager client API)	inferred
+system_a	system/lib/libinputflinger.so	InputFlinger library	inferred
+system_a	system/lib/libinputflinger_base.so	InputFlinger base library	inferred
+system_a	system/lib/libinputreader.so	input reader library	inferred
+system_a	system/lib/libinputreporter.so	input reporter library	inferred
+system_a	system/lib/libinputservice.so	input service library	verified
+system_a	system/lib/libion.so	ION buffer allocator wrapper library	verified
+system_a	system/lib/libiprouteutil.so	iproute2 utilities library	inferred
+system_a	system/lib/libjnigraphics.so	NDK jnigraphics bitmap API	inferred
+system_a	system/lib/libjpeg.so	libjpeg JPEG codec library	verified
+system_a	system/lib/libjsoncpp.so	JsonCpp JSON library	verified
+system_a	system/lib/libkll.so	kll library (name-based)	unverified
+system_a	system/lib/libldacBT_abr.so	LDAC Bluetooth audio ABR library	inferred
+system_a	system/lib/libldacBT_enc.so	LDAC Bluetooth audio encoder library	inferred
+system_a	system/lib/liblog.so	Android logging library (liblog)	verified
+system_a	system/lib/liblogwrap.so	logwrap library (fork/exec output logging)	inferred
+system_a	system/lib/liblz4.so	LZ4 compression library	inferred
+system_a	system/lib/liblzma.so	XZ/LZMA compression library	inferred
+system_a	system/lib/libm.so	bionic math library (symlink into APEX runtime) -> /apex/com.android.runtime/lib/bionic/libm.so	verified
+system_a	system/lib/libmbedtls.so	mbed TLS cryptography library	verified
+system_a	system/lib/libmdnssd.so	mDNS service discovery library	verified
+system_a	system/lib/libmedia.so	libmedia audio/video client library	inferred
+system_a	system/lib/libmedia_helper.so	libmedia helper library	inferred
+system_a	system/lib/libmedia_jni.so	media JNI bridge library	inferred
+system_a	system/lib/libmedia_jni_utils.so	media JNI utilities library	inferred
+system_a	system/lib/libmedia_omx.so	OpenMAX IL media codec library	inferred
+system_a	system/lib/libmedia_omx_client.so	OpenMAX IL media client library	inferred
+system_a	system/lib/libmediametrics.so	media metrics library	inferred
+system_a	system/lib/libmediandk.so	NDK media API (AMediaCodec, AMediaExtractor)	inferred
+system_a	system/lib/libmediandk_utils.so	NDK media utilities library	inferred
+system_a	system/lib/libmediaplayerservice.so	media player service library	inferred
+system_a	system/lib/libmediautils.so	media utilities library	inferred
+system_a	system/lib/libmeminfo.so	memory accounting library (procmem, PSS)	verified
+system_a	system/lib/libmemunreachable.so	memunreachable leak-detection library	inferred
+system_a	system/lib/libminikin.so	Minikin text layout library	inferred
+system_a	system/lib/libminui.so	minui recovery-UI library	inferred
+system_a	system/lib/libmtp.so	MTP media-transfer library	inferred
+system_a	system/lib/libnativebridge_lazy.so	lazy native-bridge library	inferred
+system_a	system/lib/libnativedisplay.so	NDK native display API library	inferred
+system_a	system/lib/libnativeloader_lazy.so	lazy native-loader library	inferred
+system_a	system/lib/libnativewindow.so	NDK native-window and AHardwareBuffer API	verified
+system_a	system/lib/libnblog.so	NBLog non-blocking logging library	inferred
+system_a	system/lib/libnetd_client.so	netd client library	inferred
+system_a	system/lib/libnetdbpf.so	netd BPF helper library	inferred
+system_a	system/lib/libnetdutils.so	netd utilities library	inferred
+system_a	system/lib/libnetlink.so	netlink helper library	verified
+system_a	system/lib/libnetutils.so	network utilities library	inferred
+system_a	system/lib/libneuralnetworks_packageinfo.so	neural networks package-info library	inferred
+system_a	system/lib/libnl.so	netlink (libnl) library	verified
+system_a	system/lib/libnng.so	NNG (nanomsg-next-gen) messaging library	inferred
+system_a	system/lib/libosutils.so	OS utilities library	inferred
+system_a	system/lib/libosutils_diagnostics.so	OS utilities diagnostics library	inferred
+system_a	system/lib/libpackagelistparser.so	packages.list parser library	inferred
+system_a	system/lib/libpcre2.so	PCRE2 regular-expression library	verified
+system_a	system/lib/libpdfium.so	PDFium PDF rendering library	verified
+system_a	system/lib/libpdx_default_transport.so	PDX default IPC transport library	inferred
+system_a	system/lib/libperfettoutils.so	Perfetto utilities library	inferred
+system_a	system/lib/libpermission.so	permission native library	inferred
+system_a	system/lib/libpiex.so	PIEX preview-image extractor library	inferred
+system_a	system/lib/libpng.so	libpng PNG codec library	verified
+system_a	system/lib/libposeprediction.so	pose prediction library	inferred
+system_a	system/lib/libpower.so	power HAL client library	inferred
+system_a	system/lib/libpowermanager.so	power manager client library	inferred
+system_a	system/lib/libprocessgroup.so	process group and task-profile library	verified
+system_a	system/lib/libprocinfo.so	/proc process-info library	inferred
+system_a	system/lib/libprotobuf-cpp-full.so	Protocol Buffers C++ runtime (full)	verified
+system_a	system/lib/libprotobuf-cpp-lite.so	Protocol Buffers C++ runtime (lite)	verified
+system_a	system/lib/libprotoutil.so	protobuf utility library	inferred
+system_a	system/lib/libpsi.so	pressure stall information (PSI) library	inferred
+system_a	system/lib/libradio_metadata.so	radio metadata library	inferred
+system_a	system/lib/libremoteservice.so	remote service library	inferred
+system_a	system/lib/libreportstatsevent.so	report stats event library	inferred
+system_a	system/lib/libresourcemanagerservice.so	resource manager service library	inferred
+system_a	system/lib/librs_jni.so	RenderScript JNI bridge library	inferred
+system_a	system/lib/librtp_jni.so	RTP JNI bridge library	inferred
+system_a	system/lib/libruntimeipcbroker_interface-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libruntimeipcbroker_interface-ndk_platform.so	AIDL NDK-backend library for libruntimeipcbroker_interface	verified
+system_a	system/lib/libruntimeipchelper_interface-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libschedulerservicehidl.so	scheduler service HIDL library	inferred
+system_a	system/lib/libseccomp_policy.so	seccomp policy loader library	inferred
+system_a	system/lib/libselinux.so	SELinux userspace library	verified
+system_a	system/lib/libshared_os_services_sysprops.so	shared OS services system-property accessor	inferred
+system_a	system/lib/libshmemcompat.so	shared-memory compatibility library	inferred
+system_a	system/lib/libshmemutil.so	shared-memory utilities library	inferred
+system_a	system/lib/libsonic.so	Sonic speech-rate library	inferred
+system_a	system/lib/libsonivox.so	Sonivox EAS MIDI synthesizer library	verified
+system_a	system/lib/libui.so	graphics UI primitives library (Rect, Region, GraphicBuffer)	verified
+system_a	system/lib/libsoundpool.so	SoundPool audio library	inferred
+system_a	system/lib/libspeexresampler.so	Speex resampler library	inferred
+system_a	system/lib/libsqlite.so	SQLite database library	verified
+system_a	system/lib/libssl.so	SSL/TLS library	verified
+system_a	system/lib/libstats_proto.so	stats protobuf definitions library	inferred
+system_a	system/lib/libstatshidl.so	statsd HIDL client library	inferred
+system_a	system/lib/libstatslog.so	statsd logging client library	inferred
+system_a	system/lib/libstdc++.so	GNU libstdc++ compatibility library	inferred
+system_a	system/lib/libsync.so	sync fence API library	verified
+system_a	system/lib/libsysutils.so	system utilities library (netlink and framework listeners)	inferred
+system_a	system/lib/libtdigesttelemetry.so	t-digest telemetry library	inferred
+system_a	system/lib/libtelemetry.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libtimeinstate.so	time-in-state (cpufreq) library	inferred
+system_a	system/lib/libtimestats_atoms_proto.so	TimeStats atoms protobuf library	inferred
+system_a	system/lib/libtinyalsa.so	tinyalsa ALSA access library	inferred
+system_a	system/lib/libtinyxml2.so	TinyXML-2 XML parser	verified
+system_a	system/lib/libtombstoned_client.so	tombstoned client library	inferred
+system_a	system/lib/libtrackingutils.so	tracking subsystem library: trackingutils	inferred
+system_a	system/lib/libtrackingvendorutils.so	tracking subsystem library: trackingvendorutils	inferred
+system_a	system/lib/libunwindstack.so	unwindstack stack unwinder library	verified
+system_a	system/lib/libusbhost.so	USB host library	inferred
+system_a	system/lib/libutils.so	Android utilities library (RefBase, String, Looper, threads)	verified
+system_a	system/lib/libutilscallstack.so	callstack utilities library	inferred
+system_a	system/lib/libvibrator.so	vibrator library	inferred
+system_a	system/lib/libvibratorservice.so	vibrator service library	inferred
+system_a	system/lib/libvintf.so	VINTF manifest and compatibility-matrix library	inferred
+system_a	system/lib/libvndksupport.so	VNDK support library (vendor/system bridging)	verified
+system_a	system/lib/libvrapi.so	VrApi VR runtime library	inferred
+system_a	system/lib/libvrfocus_interface-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/libvrui_jni.so	VR UI JNI library	inferred
+system_a	system/lib/libwakelock.so	wakelock library	inferred
+system_a	system/lib/libwebviewchromium_loader.so	WebView Chromium loader library	inferred
+system_a	system/lib/libwebviewchromium_plat_support.so	WebView Chromium platform support library	inferred
+system_a	system/lib/libwilhelm.so	Wilhelm (OpenSL ES implementation) library	verified
+system_a	system/lib/libxml2.so	libxml2 XML parser	verified
+system_a	system/lib/libxrapp.so	XR application library	inferred
+system_a	system/lib/libz.so	zlib compression library	verified
+system_a	system/lib/libziparchive.so	ZipArchive library (APK/zip access)	inferred
+system_a	system/lib/packagemanager_aidl-cpp.so	AIDL C++ library for the PackageManager service	inferred
+system_a	system/lib/server_configurable_flags.so	server-configurable flags library	inferred
+system_a	system/lib/service.incremental.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib/shared-file-region-aidl-cpp.so	AIDL cpp-backend library for shared-file-region	inferred
+system_a	system/lib/spatializer-aidl-cpp.so	AIDL cpp-backend library for spatializer	inferred
+system_a	system/lib/statsd-aidl-ndk.so	AIDL ndk-backend library for statsd	inferred
+system_a	system/lib64/ICompanionServer-ndk.so	AIDL NDK-backend library for ICompanionServer	verified
+system_a	system/lib64/ICompanionServer-ndk_platform.so	AIDL NDK-backend library for ICompanionServer	verified
+system_a	system/lib64/android.frameworks.bufferhub@1.0.so	HIDL interface library android.frameworks.bufferhub v1.0	verified
+system_a	system/lib64/android.frameworks.displayservice@1.0.so	HIDL interface library android.frameworks.displayservice v1.0	verified
+system_a	system/lib64/android.frameworks.schedulerservice@1.0.so	HIDL interface library android.frameworks.schedulerservice v1.0	verified
+system_a	system/lib64/android.frameworks.stats-V1-ndk_platform.so	AIDL NDK-backend library for android.frameworks.stats (interface V1)	verified
+system_a	system/lib64/android.frameworks.stats@1.0.so	HIDL interface library android.frameworks.stats v1.0	verified
+system_a	system/lib64/android.hardware.atrace@1.0.so	HIDL interface library android.hardware.atrace v1.0	verified
+system_a	system/lib64/android.hardware.boot@1.0.so	HIDL interface library android.hardware.boot v1.0	verified
+system_a	system/lib64/android.hardware.boot@1.1.so	HIDL interface library android.hardware.boot v1.1	verified
+system_a	system/lib64/android.hardware.broadcastradio@1.0.so	HIDL interface library android.hardware.broadcastradio v1.0	verified
+system_a	system/lib64/android.hardware.broadcastradio@1.1.so	HIDL interface library android.hardware.broadcastradio v1.1	verified
+system_a	system/lib64/android.hardware.cas.native@1.0.so	HIDL interface library android.hardware.cas.native v1.0	verified
+system_a	system/lib64/android.hardware.cas@1.0.so	HIDL interface library android.hardware.cas v1.0	verified
+system_a	system/lib64/android.hardware.common-V2-ndk_platform.so	AIDL NDK-backend library for android.hardware.common (interface V2)	verified
+system_a	system/lib64/android.hardware.common.fmq-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.common.fmq (interface V1)	verified
+system_a	system/lib64/android.hardware.configstore-utils.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/android.hardware.configstore@1.0.so	HIDL interface library android.hardware.configstore v1.0	verified
+system_a	system/lib64/android.hardware.configstore@1.1.so	HIDL interface library android.hardware.configstore v1.1	verified
+system_a	system/lib64/android.hardware.confirmationui@1.0.so	HIDL interface library android.hardware.confirmationui v1.0	verified
+system_a	system/lib64/android.hardware.contexthub@1.0.so	HIDL interface library android.hardware.contexthub v1.0	verified
+system_a	system/lib64/android.hardware.dumpstate@1.0.so	HIDL interface library android.hardware.dumpstate v1.0	verified
+system_a	system/lib64/android.hardware.dumpstate@1.1.so	HIDL interface library android.hardware.dumpstate v1.1	verified
+system_a	system/lib64/android.hardware.gnss-V1-cpp.so	AIDL C++-backend library for android.hardware.gnss (interface V1)	inferred
+system_a	system/lib64/android.hardware.gnss.measurement_corrections@1.0.so	HIDL interface library android.hardware.gnss.measurement_corrections v1.0	verified
+system_a	system/lib64/android.hardware.gnss.measurement_corrections@1.1.so	HIDL interface library android.hardware.gnss.measurement_corrections v1.1	verified
+system_a	system/lib64/android.hardware.gnss.visibility_control@1.0.so	HIDL interface library android.hardware.gnss.visibility_control v1.0	verified
+system_a	system/lib64/android.hardware.gnss@1.0.so	HIDL interface library android.hardware.gnss v1.0	verified
+system_a	system/lib64/android.hardware.gnss@1.1.so	HIDL interface library android.hardware.gnss v1.1	verified
+system_a	system/lib64/android.hardware.gnss@2.0.so	HIDL interface library android.hardware.gnss v2.0	verified
+system_a	system/lib64/android.hardware.gnss@2.1.so	HIDL interface library android.hardware.gnss v2.1	verified
+system_a	system/lib64/android.hardware.graphics.bufferqueue@1.0.so	HIDL interface library android.hardware.graphics.bufferqueue v1.0	verified
+system_a	system/lib64/android.hardware.graphics.bufferqueue@2.0.so	HIDL interface library android.hardware.graphics.bufferqueue v2.0	verified
+system_a	system/lib64/android.hardware.graphics.common-V2-ndk_platform.so	AIDL NDK-backend library for android.hardware.graphics.common (interface V2)	verified
+system_a	system/lib64/android.hardware.graphics.common@1.0.so	HIDL interface library android.hardware.graphics.common v1.0	inferred
+system_a	system/lib64/android.hardware.graphics.common@1.1.so	HIDL interface library android.hardware.graphics.common v1.1	inferred
+system_a	system/lib64/android.hardware.graphics.common@1.2.so	HIDL interface library android.hardware.graphics.common v1.2	verified
+system_a	system/lib64/android.hardware.health.storage-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.health.storage (interface V1)	verified
+system_a	system/lib64/android.hardware.health.storage@1.0.so	HIDL interface library android.hardware.health.storage v1.0	verified
+system_a	system/lib64/android.hardware.health@1.0.so	HIDL interface library android.hardware.health v1.0	verified
+system_a	system/lib64/android.hardware.health@2.0.so	HIDL interface library android.hardware.health v2.0	verified
+system_a	system/lib64/android.hardware.health@2.1.so	HIDL interface library android.hardware.health v2.1	verified
+system_a	system/lib64/android.hardware.identity-support-lib.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/android.hardware.input.classifier@1.0.so	HIDL interface library android.hardware.input.classifier v1.0	verified
+system_a	system/lib64/android.hardware.input.common@1.0.so	HIDL interface library android.hardware.input.common v1.0	verified
+system_a	system/lib64/android.hardware.ir@1.0.so	HIDL interface library android.hardware.ir v1.0	verified
+system_a	system/lib64/android.hardware.light@2.0.so	HIDL interface library android.hardware.light v2.0	verified
+system_a	system/lib64/android.hardware.media.bufferpool@2.0.so	HIDL interface library android.hardware.media.bufferpool v2.0	verified
+system_a	system/lib64/android.hardware.media.c2@1.0.so	HIDL interface library android.hardware.media.c2 v1.0	verified
+system_a	system/lib64/android.hardware.media.c2@1.1.so	HIDL interface library android.hardware.media.c2 v1.1	verified
+system_a	system/lib64/android.hardware.media.c2@1.2.so	HIDL interface library android.hardware.media.c2 v1.2	verified
+system_a	system/lib64/android.hardware.media.omx@1.0.so	HIDL interface library android.hardware.media.omx v1.0	verified
+system_a	system/lib64/android.hardware.media@1.0.so	HIDL interface library android.hardware.media v1.0	verified
+system_a	system/lib64/android.hardware.power-V1-cpp.so	AIDL C++-backend library for android.hardware.power (interface V1)	inferred
+system_a	system/lib64/android.hardware.power-V2-cpp.so	AIDL C++-backend library for android.hardware.power (interface V2)	inferred
+system_a	system/lib64/android.hardware.power.stats-V1-cpp.so	AIDL C++-backend library for android.hardware.power.stats (interface V1)	inferred
+system_a	system/lib64/android.hardware.power.stats-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.power.stats (interface V1)	verified
+system_a	system/lib64/android.hardware.power.stats@1.0.so	HIDL interface library android.hardware.power.stats v1.0	verified
+system_a	system/lib64/android.hardware.power@1.0.so	HIDL interface library android.hardware.power v1.0	verified
+system_a	system/lib64/android.hardware.power@1.1.so	HIDL interface library android.hardware.power v1.1	verified
+system_a	system/lib64/android.hardware.power@1.2.so	HIDL interface library android.hardware.power v1.2	verified
+system_a	system/lib64/android.hardware.power@1.3.so	HIDL interface library android.hardware.power v1.3	verified
+system_a	system/lib64/android.hardware.renderscript@1.0.so	HIDL interface library android.hardware.renderscript v1.0	verified
+system_a	system/lib64/android.hardware.security.keymint-V1-cpp.so	AIDL C++-backend library for android.hardware.security.keymint (interface V1)	inferred
+system_a	system/lib64/android.hardware.security.keymint-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.security.keymint (interface V1)	verified
+system_a	system/lib64/android.hardware.security.secureclock-V1-cpp.so	AIDL C++-backend library for android.hardware.security.secureclock (interface V1)	inferred
+system_a	system/lib64/android.hardware.security.secureclock-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.security.secureclock (interface V1)	verified
+system_a	system/lib64/android.hardware.security.sharedsecret-V1-ndk_platform.so	AIDL NDK-backend library for android.hardware.security.sharedsecret (interface V1)	verified
+system_a	system/lib64/android.hardware.tv.input@1.0.so	HIDL interface library android.hardware.tv.input v1.0	verified
+system_a	system/lib64/android.hardware.usb.gadget@1.0.so	HIDL interface library android.hardware.usb.gadget v1.0	verified
+system_a	system/lib64/android.hardware.vibrator-V2-cpp.so	AIDL C++-backend library for android.hardware.vibrator (interface V2)	inferred
+system_a	system/lib64/android.hardware.vibrator-V2-ndk_platform.so	AIDL NDK-backend library for android.hardware.vibrator (interface V2)	verified
+system_a	system/lib64/android.hardware.vibrator@1.0.so	HIDL interface library android.hardware.vibrator v1.0	verified
+system_a	system/lib64/android.hardware.vibrator@1.1.so	HIDL interface library android.hardware.vibrator v1.1	verified
+system_a	system/lib64/android.hardware.vibrator@1.2.so	HIDL interface library android.hardware.vibrator v1.2	verified
+system_a	system/lib64/android.hardware.vibrator@1.3.so	HIDL interface library android.hardware.vibrator v1.3	verified
+system_a	system/lib64/android.hardware.vr@1.0.so	HIDL interface library android.hardware.vr v1.0	verified
+system_a	system/lib64/android.hidl.allocator@1.0.so	HIDL interface library android.hidl.allocator v1.0	verified
+system_a	system/lib64/android.hidl.memory.token@1.0.so	HIDL interface library android.hidl.memory.token v1.0	verified
+system_a	system/lib64/android.hidl.memory@1.0.so	HIDL interface library android.hidl.memory v1.0	verified
+system_a	system/lib64/android.hidl.safe_union@1.0.so	HIDL interface library android.hidl.safe_union v1.0	inferred
+system_a	system/lib64/android.hidl.token@1.0-utils.so	HIDL interface library android.hidl.token v1.0	inferred
+system_a	system/lib64/android.hidl.token@1.0.so	HIDL interface library android.hidl.token v1.0	verified
+system_a	system/lib64/android.security.apc-ndk_platform.so	AIDL NDK-backend library for android.security.apc	verified
+system_a	system/lib64/android.security.authorization-ndk_platform.so	AIDL NDK-backend library for android.security.authorization	verified
+system_a	system/lib64/android.security.compat-ndk_platform.so	AIDL NDK-backend library for android.security.compat	verified
+system_a	system/lib64/android.security.maintenance-ndk_platform.so	AIDL NDK-backend library for android.security.maintenance	verified
+system_a	system/lib64/android.system.net.netd@1.0.so	HIDL interface library android.system.net.netd v1.0	verified
+system_a	system/lib64/android.system.net.netd@1.1.so	HIDL interface library android.system.net.netd v1.1	verified
+system_a	system/lib64/android.system.suspend.control-V1-cpp.so	AIDL C++-backend library for android.system.suspend.control (interface V1)	inferred
+system_a	system/lib64/android.system.suspend.control-V1-ndk.so	AIDL NDK-backend library for android.system.suspend.control (interface V1)	verified
+system_a	system/lib64/android.system.suspend.control.internal-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/android.system.suspend@1.0.so	HIDL interface library android.system.suspend v1.0	verified
+system_a	system/lib64/apex_aidl_interface-cpp.so	AIDL interface library for apex (cpp backend)	inferred
+system_a	system/lib64/av-types-aidl-cpp.so	AIDL cpp-backend library for av-types	inferred
+system_a	system/lib64/bootstrap/libdl_android.so	bionic libdl_android bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib64/bootstrap/libdl.so	bionic libdl bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib64/bootstrap/libc.so	bionic libc bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib64/bootstrap/libm.so	bionic libm bootstrap build (ELF, bootstrap linker namespace)	inferred
+system_a	system/lib64/capture_state_listener-aidl-cpp.so	AIDL cpp-backend library for capture_state_listener	inferred
+system_a	system/lib64/dnsresolver_aidl_interface-V7-cpp.so	AIDL C++-backend library for dnsresolver_aidl_interface (interface V7)	verified
+system_a	system/lib64/effect-aidl-cpp.so	AIDL cpp-backend library for effect	inferred
+system_a	system/lib64/eps-aidl-cpp.so	AIDL cpp-backend library for eps	inferred
+system_a	system/lib64/framework-permission-aidl-cpp.so	AIDL cpp-backend library for framework-permission	inferred
+system_a	system/lib64/gsi_aidl_interface-cpp.so	AIDL interface library for gsi (cpp backend)	inferred
+system_a	system/lib64/heapprofd_client.so	heapprofd heap-profiler client library	inferred
+system_a	system/lib64/heapprofd_client_api.so	heapprofd client API library	inferred
+system_a	system/lib64/hw/android.hidl.memory@1.0-impl.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/ld-android.so	bionic dynamic linker runtime (ld-android)	inferred
+system_a	system/lib64/lib-platform-compat-native-api.so	platform compat change-ID native API library	inferred
+system_a	system/lib64/libETC1.so	ETC1 texture codec library	inferred
+system_a	system/lib64/libFFTEm.so	FFT emulation library	inferred
+system_a	system/lib64/libOpenMAXAL.so	OpenMAX AL API library	inferred
+system_a	system/lib64/libInputFlingerProperties.so	InputFlinger system-property accessor library	inferred
+system_a	system/lib64/libLLVM_android.so	LLVM library (Android build)	inferred
+system_a	system/lib64/libOpenSLES.so	OpenSL ES audio API library	inferred
+system_a	system/lib64/libRS.so	RenderScript runtime library	inferred
+system_a	system/lib64/libRSCacheDir.so	RenderScript cache-directory helper	inferred
+system_a	system/lib64/libRSCpuRef.so	RenderScript CPU reference driver	inferred
+system_a	system/lib64/libRSDriver.so	RenderScript driver library	inferred
+system_a	system/lib64/libRS_internal.so	RenderScript internal library	inferred
+system_a	system/lib64/libRScpp.so	RenderScript C++ API library	inferred
+system_a	system/lib64/libSurfaceFlingerProp.so	SurfaceFlinger system-property accessor library	inferred
+system_a	system/lib64/libSuspendProperties.so	suspend system-property accessor library	inferred
+system_a	system/lib64/libactivitymanager_aidl.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libadbd_auth.so	adbd authentication library	inferred
+system_a	system/lib64/libadbd_fs.so	adbd filesystem helper library	inferred
+system_a	system/lib64/libaho_corasick.dylib.so	Rust crate dylib aho-corasick	verified
+system_a	system/lib64/libaio.so	Linux native async I/O library	verified
+system_a	system/lib64/libalarm_jni.so	alarm service JNI library	inferred
+system_a	system/lib64/libamidi.so	NDK AMidi MIDI API library	inferred
+system_a	system/lib64/libandroid.so	NDK android API (native activity, window, asset)	inferred
+system_a	system/lib64/libandroid_log_sys.dylib.so	Rust crate dylib android_log_sys	verified
+system_a	system/lib64/libandroid_logger.dylib.so	Rust crate dylib android_logger	verified
+system_a	system/lib64/libandroid_net.so	NDK network API library	inferred
+system_a	system/lib64/libandroid_runtime.so	Android runtime JNI glue library	inferred
+system_a	system/lib64/libandroid_runtime_lazy.so	lazy Android runtime JNI glue library	inferred
+system_a	system/lib64/libandroid_servers.so	system_server native services library	inferred
+system_a	system/lib64/libandroidfw.so	Android framework resource and asset library (ResTable, AssetManager)	verified
+system_a	system/lib64/libanyhow.dylib.so	Rust crate dylib anyhow	verified
+system_a	system/lib64/libappfuse.so	AppFuse storage FUSE library	inferred
+system_a	system/lib64/libartpalette-system.so	ART palette (system-side) helper library	inferred
+system_a	system/lib64/libasyncio.so	asyncio helper library	inferred
+system_a	system/lib64/libavservices_minijail.so	minijail wrapper for AV services	inferred
+system_a	system/lib64/libbacktrace.so	stack backtrace library	inferred
+system_a	system/lib64/libbase.so	Android base library (logging, properties, files)	verified
+system_a	system/lib64/libbcc.so	RenderScript bitcode compiler (bcc) library	inferred
+system_a	system/lib64/libbcinfo.so	RenderScript bitcode info library	inferred
+system_a	system/lib64/libbinder.so	Binder IPC runtime (libbinder)	verified
+system_a	system/lib64/libbinder_ndk.so	NDK Binder API (AIBinder_, AServiceManager_)	inferred
+system_a	system/lib64/libbinder_ndk_sys.dylib.so	Rust crate dylib binder_ndk_sys	verified
+system_a	system/lib64/libbinder_rs.dylib.so	Rust crate dylib binder_rs (Binder bindings)	verified
+system_a	system/lib64/libbinderdebug.so	binder debugging helper library	inferred
+system_a	system/lib64/libbinderwrapper.so	binder wrapper library	inferred
+system_a	system/lib64/libbitflags.dylib.so	Rust crate dylib bitflags	inferred
+system_a	system/lib64/libblas.so	BLAS linear-algebra library	inferred
+system_a	system/lib64/libbootloader_message.so	bootloader message (BCB) read/write library	inferred
+system_a	system/lib64/libbpf.so	libbpf BPF loader library	verified
+system_a	system/lib64/libbpf_android.so	Android BPF loader helper library	inferred
+system_a	system/lib64/libbrillo-binder.so	Brillo binder helper library	inferred
+system_a	system/lib64/libbrillo-stream.so	Brillo stream helper library	inferred
+system_a	system/lib64/libbrillo.so	Chromium Brillo base library	inferred
+system_a	system/lib64/libbufferhub.so	BufferHub buffer-sharing library	inferred
+system_a	system/lib64/libbufferhubqueue.so	BufferHub queue library	inferred
+system_a	system/lib64/libbyteorder.dylib.so	Rust crate dylib byteorder	verified
+system_a	system/lib64/libc++.so	LLVM libc++ C++ standard library	verified
+system_a	system/lib64/libc.so	bionic C library (symlink into APEX runtime) -> /apex/com.android.runtime/lib64/bionic/libc.so	verified
+system_a	system/lib64/libcap.so	POSIX capabilities library	verified
+system_a	system/lib64/libcfg_if.dylib.so	Rust crate dylib cfg-if	inferred
+system_a	system/lib64/libcgrouprc.so	cgroup resource-config parser library	inferred
+system_a	system/lib64/libchrome.so	Chromium base library (libchrome)	inferred
+system_a	system/lib64/libchrono.dylib.so	Rust crate dylib chrono	verified
+system_a	system/lib64/libclang_rt.asan-aarch64-android.so	AddressSanitizer runtime (aarch64)	inferred
+system_a	system/lib64/libclang_rt.ubsan_standalone-aarch64-android.so	UBSan standalone runtime (aarch64)	inferred
+system_a	system/lib64/libclap.dylib.so	Rust crate dylib clap	verified
+system_a	system/lib64/libclcore.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant generic	inferred
+system_a	system/lib64/libclcore_debug.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant debug	inferred
+system_a	system/lib64/libclcore_debug_g.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant debug_g	inferred
+system_a	system/lib64/libclcore_g.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant g	inferred
+system_a	system/lib64/libclcore_neon.bc	libclc built-in bitcode library (OpenCL/RenderScript builtins), variant neon	inferred
+system_a	system/lib64/libcompiler_rt.so	compiler-rt builtins runtime	inferred
+system_a	system/lib64/libcppbor_external.so	CBOR (cppbor) C++ library	inferred
+system_a	system/lib64/libcppcose_rkp.so	COSE and remote-key-provisioning C++ library	inferred
+system_a	system/lib64/libcrc32fast.dylib.so	Rust crate dylib crc32fast	verified
+system_a	system/lib64/libcredstore_aidl.so	credstore AIDL client library	inferred
+system_a	system/lib64/libcurl.so	libcurl HTTP/HTTPS client library	verified
+system_a	system/lib64/libcutils.so	Android C utilities library (properties, sockets, ashmem)	verified
+system_a	system/lib64/libdataloader.so	incremental data loader library	inferred
+system_a	system/lib64/libdatasource.so	data source library (name-based)	unverified
+system_a	system/lib64/libdebuggerd_client.so	debuggerd client library (crash dumps)	inferred
+system_a	system/lib64/libdiskconfig.so	disk configuration (partition table) library	inferred
+system_a	system/lib64/libdl.so	bionic dynamic loader API (symlink into APEX runtime) -> /apex/com.android.runtime/lib64/bionic/libdl.so	verified
+system_a	system/lib64/libdl_android.so	bionic Android dl extensions (symlink into APEX runtime) -> /apex/com.android.runtime/lib64/bionic/libdl_android.so	verified
+system_a	system/lib64/libdmabufheap.so	DMA-BUF heap allocator library	inferred
+system_a	system/lib64/libdng_sdk.so	Adobe DNG SDK library	inferred
+system_a	system/lib64/libdumpstateaidl.so	dumpstate AIDL client library	inferred
+system_a	system/lib64/libdumpstateutil.so	dumpstate utilities library	inferred
+system_a	system/lib64/libdumputils.so	dump utilities library	inferred
+system_a	system/lib64/libeffectsconfig.so	audio effects configuration parser	inferred
+system_a	system/lib64/libenv_logger.dylib.so	Rust crate dylib env_logger	verified
+system_a	system/lib64/libeps.so	EPS library (name-based)	unverified
+system_a	system/lib64/libeps_sysprops.so	EPS system-property accessor library	inferred
+system_a	system/lib64/libepsclient.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libepscommon.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libepsengine.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libepsmessagechannel.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libepstelemetry.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libevent.so	libevent event-notification library	verified
+system_a	system/lib64/libexpat.so	expat XML parser	verified
+system_a	system/lib64/libext2_blkid.so	e2fsprogs blkid library	inferred
+system_a	system/lib64/libext2_com_err.so	e2fsprogs com_err library	inferred
+system_a	system/lib64/libext2_e2p.so	e2fsprogs e2p library	inferred
+system_a	system/lib64/libext2_misc.so	e2fsprogs misc library	inferred
+system_a	system/lib64/libext2_quota.so	e2fsprogs quota library	inferred
+system_a	system/lib64/libext2_uuid.so	UUID library (e2fsprogs libuuid)	inferred
+system_a	system/lib64/libext2fs.so	ext2/3/4 filesystem library (e2fsprogs libext2fs)	inferred
+system_a	system/lib64/libext4_utils.so	ext4 image utilities library	verified
+system_a	system/lib64/libf2fs_sparseblock.so	F2FS sparse-block helper library	inferred
+system_a	system/lib64/libfdtrack.so	file-descriptor tracking library	inferred
+system_a	system/lib64/libfec.so	forward error correction library (dm-verity)	inferred
+system_a	system/lib64/libfilterfw.so	filterfw media filter framework library	inferred
+system_a	system/lib64/libfilterpack_imageproc.so	filterpack image-processing library	inferred
+system_a	system/lib64/libflatbuffers-cpp.so	FlatBuffers C++ runtime library	inferred
+system_a	system/lib64/libflate2.dylib.so	Rust crate dylib flate2	verified
+system_a	system/lib64/libfmq.so	fast message queue (FMQ) library	inferred
+system_a	system/lib64/libfruit.so	fruit library (name-based)	unverified
+system_a	system/lib64/libfs_mgr.so	fs_mgr library (fstab handling, mounts)	inferred
+system_a	system/lib64/libfs_mgr_binder.so	fs_mgr binder client library	inferred
+system_a	system/lib64/libft2.so	FreeType 2 font rasterizer	verified
+system_a	system/lib64/libgetrandom.dylib.so	Rust crate dylib getrandom	verified
+system_a	system/lib64/libgflags.so	gflags command-line flags library	verified
+system_a	system/lib64/libgfxstats.so	graphics stats library	inferred
+system_a	system/lib64/libglob.dylib.so	Rust crate dylib glob	verified
+system_a	system/lib64/libgpumem.so	GPU memory accounting library	inferred
+system_a	system/lib64/libgpumemtracer.so	GPU memory tracer library	inferred
+system_a	system/lib64/libgralloctypes.so	gralloc types library	verified
+system_a	system/lib64/libgraphicsenv.so	graphics environment library (GPU driver selection)	inferred
+system_a	system/lib64/libgrpc++.so	gRPC C++ library	inferred
+system_a	system/lib64/libgrpc_wrap.so	gRPC wrapper library	inferred
+system_a	system/lib64/libgsi.so	GSI (generic system image) install library	inferred
+system_a	system/lib64/libgui.so	Surface/BufferQueue client library (libgui)	verified
+system_a	system/lib64/libhardware.so	HAL module loader library (hw_get_module)	inferred
+system_a	system/lib64/libhardware_legacy.so	legacy HAL wrapper library	inferred
+system_a	system/lib64/libharfbuzz_ng.so	HarfBuzz text-shaping library	inferred
+system_a	system/lib64/libheadtracking-binding.so	head tracking binding library	inferred
+system_a	system/lib64/libheadtracking.so	head tracking library	inferred
+system_a	system/lib64/libheif.so	HEIF image codec library	inferred
+system_a	system/lib64/libhidcommand_jni.so	HID command JNI library	inferred
+system_a	system/lib64/libhidl-gen-hash.so	HIDL build-time interface hash helper	inferred
+system_a	system/lib64/libhidl-gen-utils.so	HIDL build-time code-generation utilities	verified
+system_a	system/lib64/libhidlallocatorutils.so	HIDL allocator utilities library	inferred
+system_a	system/lib64/libhidlbase.so	HIDL base runtime (hidl_string, hidl_vec, transport)	verified
+system_a	system/lib64/libhidlmemory.so	HIDL shared-memory library	inferred
+system_a	system/lib64/libhidltransport.so	HIDL transport library (legacy hwservice client)	inferred
+system_a	system/lib64/libhwui.so	HWUI hardware-accelerated 2D renderer library	inferred
+system_a	system/lib64/libiad-utils.so	IAD utilities library (name-based)	unverified
+system_a	system/lib64/libidmap2.so	idmap2 resource overlay library	inferred
+system_a	system/lib64/libidmap2_policies.so	idmap2 overlay policies library	inferred
+system_a	system/lib64/libimg_utils.so	image utilities library	inferred
+system_a	system/lib64/libincfs.so	IncFS incremental filesystem library	inferred
+system_a	system/lib64/libincident.so	incident report library	inferred
+system_a	system/lib64/libincidentpriv.so	incident report private library	inferred
+system_a	system/lib64/libinput.so	input library (InputManager client API)	inferred
+system_a	system/lib64/libinputflinger.so	InputFlinger library	inferred
+system_a	system/lib64/libinputflinger_base.so	InputFlinger base library	inferred
+system_a	system/lib64/libinputreader.so	input reader library	inferred
+system_a	system/lib64/libinputreporter.so	input reporter library	inferred
+system_a	system/lib64/libinputservice.so	input service library	verified
+system_a	system/lib64/libinstant.dylib.so	Rust crate dylib instant	inferred
+system_a	system/lib64/libion.so	ION buffer allocator wrapper library	verified
+system_a	system/lib64/libiprouteutil.so	iproute2 utilities library	inferred
+system_a	system/lib64/libitoa.dylib.so	Rust crate dylib itoa	inferred
+system_a	system/lib64/libjnigraphics.so	NDK jnigraphics bitmap API	inferred
+system_a	system/lib64/libjpeg.so	libjpeg JPEG codec library	verified
+system_a	system/lib64/libjsoncpp.so	JsonCpp JSON library	verified
+system_a	system/lib64/libkeymint.so	KeyMint crypto HAL library	inferred
+system_a	system/lib64/libkeymint_support.so	KeyMint support library	inferred
+system_a	system/lib64/libkeyutils.so	kernel keyring (keyutils) library	verified
+system_a	system/lib64/libkll.so	kll library (name-based)	unverified
+system_a	system/lib64/libkm_compat.so	keymaster compatibility library	inferred
+system_a	system/lib64/libkm_compat_service.so	keymaster compatibility service library	inferred
+system_a	system/lib64/liblayers_proto.so	layers protobuf definitions library	inferred
+system_a	system/lib64/liblazy_static.dylib.so	Rust crate dylib lazy_static	inferred
+system_a	system/lib64/libldacBT_abr.so	LDAC Bluetooth audio ABR library	inferred
+system_a	system/lib64/libldacBT_enc.so	LDAC Bluetooth audio encoder library	inferred
+system_a	system/lib64/liblibc.dylib.so	Rust crate dylib libc	verified
+system_a	system/lib64/liblibprofcollectd.dylib.so	Rust crate dylib for profile collection daemon	verified
+system_a	system/lib64/liblibz_sys.dylib.so	Rust crate dylib libz_sys	inferred
+system_a	system/lib64/liblock_api.dylib.so	Rust crate dylib lock_api	verified
+system_a	system/lib64/liblockagent.so	lock agent library	inferred
+system_a	system/lib64/liblog.dylib.so	Rust crate dylib log	verified
+system_a	system/lib64/liblog.so	Android logging library (liblog)	verified
+system_a	system/lib64/liblogwrap.so	logwrap library (fork/exec output logging)	inferred
+system_a	system/lib64/liblp.so	logical partitions (dynamic partitions) library	inferred
+system_a	system/lib64/liblpdump.so	logical partition dump library	inferred
+system_a	system/lib64/liblpdump_interface-cpp.so	logical partition dump AIDL/IPC interface library	inferred
+system_a	system/lib64/liblz4.so	LZ4 compression library	inferred
+system_a	system/lib64/liblzma.so	XZ/LZMA compression library	inferred
+system_a	system/lib64/libm.so	bionic math library (symlink into APEX runtime) -> /apex/com.android.runtime/lib64/bionic/libm.so	verified
+system_a	system/lib64/libmacaddr.dylib.so	Rust crate dylib macaddr	verified
+system_a	system/lib64/libmbedtls.so	mbed TLS cryptography library	verified
+system_a	system/lib64/libmdnssd.so	mDNS service discovery library	verified
+system_a	system/lib64/libmedia.so	libmedia audio/video client library	inferred
+system_a	system/lib64/libmedia_helper.so	libmedia helper library	inferred
+system_a	system/lib64/libmedia_jni.so	media JNI bridge library	inferred
+system_a	system/lib64/libmedia_jni_utils.so	media JNI utilities library	inferred
+system_a	system/lib64/libmedia_omx.so	OpenMAX IL media codec library	inferred
+system_a	system/lib64/libmedia_omx_client.so	OpenMAX IL media client library	inferred
+system_a	system/lib64/libmediaextractorservice.so	media extractor service library	inferred
+system_a	system/lib64/libmedialogservice.so	media log service library	inferred
+system_a	system/lib64/libmediametrics.so	media metrics library	inferred
+system_a	system/lib64/libmediandk.so	NDK media API (AMediaCodec, AMediaExtractor)	inferred
+system_a	system/lib64/libmediandk_utils.so	NDK media utilities library	inferred
+system_a	system/lib64/libmediautils.so	media utilities library	inferred
+system_a	system/lib64/libmemchr.dylib.so	Rust crate dylib memchr	verified
+system_a	system/lib64/libmeminfo.so	memory accounting library (procmem, PSS)	verified
+system_a	system/lib64/libmemory.so	memory library (name-based)	unverified
+system_a	system/lib64/libmemunreachable.so	memunreachable leak-detection library	inferred
+system_a	system/lib64/libminijail.so	minijail process-sandbox library	verified
+system_a	system/lib64/libminikin.so	Minikin text layout library	inferred
+system_a	system/lib64/libminui.so	minui recovery-UI library	inferred
+system_a	system/lib64/libmros_vendor_sysprops.so	MROS system-property accessor library	inferred
+system_a	system/lib64/libmtp.so	MTP media-transfer library	inferred
+system_a	system/lib64/libmxrplugins_deviceinfo.so	MXR device-info plugin library	inferred
+system_a	system/lib64/libnativebridge_lazy.so	lazy native-bridge library	inferred
+system_a	system/lib64/libnativedisplay.so	NDK native display API library	inferred
+system_a	system/lib64/libnativeloader_lazy.so	lazy native-loader library	inferred
+system_a	system/lib64/libnativewindow.so	NDK native-window and AHardwareBuffer API	verified
+system_a	system/lib64/libnbaio.so	audio NBAIO (non-blocking audio I/O) library	inferred
+system_a	system/lib64/libnblog.so	NBLog non-blocking logging library	inferred
+system_a	system/lib64/libnetd_client.so	netd client library	inferred
+system_a	system/lib64/libnetdbpf.so	netd BPF helper library	inferred
+system_a	system/lib64/libnetdutils.so	netd utilities library	inferred
+system_a	system/lib64/libnetlink.so	netlink helper library	verified
+system_a	system/lib64/libnetutils.so	network utilities library	inferred
+system_a	system/lib64/libneuralnetworks_packageinfo.so	neural networks package-info library	inferred
+system_a	system/lib64/libnl.so	netlink (libnl) library	verified
+system_a	system/lib64/libnng.so	NNG (nanomsg-next-gen) messaging library	inferred
+system_a	system/lib64/libnum_integer.dylib.so	Rust crate dylib num-integer	verified
+system_a	system/lib64/libnum_traits.dylib.so	Rust crate dylib num_traits	verified
+system_a	system/lib64/libonce_cell.dylib.so	Rust crate dylib once_cell	verified
+system_a	system/lib64/libosutils.so	OS utilities library	inferred
+system_a	system/lib64/libosutils_diagnostics.so	OS utilities diagnostics library	inferred
+system_a	system/lib64/libpackagelistparser.so	packages.list parser library	inferred
+system_a	system/lib64/libpcap.so	libpcap packet-capture library	inferred
+system_a	system/lib64/libparking_lot.dylib.so	Rust crate dylib parking_lot	verified
+system_a	system/lib64/libparking_lot_core.dylib.so	Rust crate dylib parking_lot_core	verified
+system_a	system/lib64/libpcre2.so	PCRE2 regular-expression library	verified
+system_a	system/lib64/libpdfium.so	PDFium PDF rendering library	verified
+system_a	system/lib64/libpdx_default_transport.so	PDX default IPC transport library	inferred
+system_a	system/lib64/libperfetto.so	Perfetto tracing client library	inferred
+system_a	system/lib64/libperfetto_android_internal.so	Perfetto Android-internal tracing library	inferred
+system_a	system/lib64/libperfettoutils.so	Perfetto utilities library	inferred
+system_a	system/lib64/libpermission.so	permission native library	inferred
+system_a	system/lib64/libpiex.so	PIEX preview-image extractor library	inferred
+system_a	system/lib64/libpng.so	libpng PNG codec library	verified
+system_a	system/lib64/libposeprediction.so	pose prediction library	inferred
+system_a	system/lib64/libpower.so	power HAL client library	inferred
+system_a	system/lib64/libpowermanager.so	power manager client library	inferred
+system_a	system/lib64/libppv_lite86.dylib.so	Rust crate dylib ppv_lite86	verified
+system_a	system/lib64/libprocessgroup.so	process group and task-profile library	verified
+system_a	system/lib64/libprocessgroup_setup.so	process group setup library	inferred
+system_a	system/lib64/libprocinfo.so	/proc process-info library	inferred
+system_a	system/lib64/libprocmemoryfootprint.so	process memory-footprint library	inferred
+system_a	system/lib64/libprofcollectd_aidl_interface.dylib.so	Rust crate dylib for profcollectd AIDL interface	verified
+system_a	system/lib64/libprotobuf-cpp-full.so	Protocol Buffers C++ runtime (full)	verified
+system_a	system/lib64/libprotobuf-cpp-lite.so	Protocol Buffers C++ runtime (lite)	verified
+system_a	system/lib64/libprotoutil.so	protobuf utility library	inferred
+system_a	system/lib64/libpsi.so	pressure stall information (PSI) library	inferred
+system_a	system/lib64/libqtaguid.so	qtaguid network-accounting library	inferred
+system_a	system/lib64/libradio_metadata.so	radio metadata library	inferred
+system_a	system/lib64/librand.dylib.so	Rust crate dylib rand	verified
+system_a	system/lib64/librand_chacha.dylib.so	Rust crate dylib rand_chacha	verified
+system_a	system/lib64/librand_core.dylib.so	Rust crate dylib rand_core	verified
+system_a	system/lib64/libregex.dylib.so	Rust crate dylib regex	verified
+system_a	system/lib64/libregex_syntax.dylib.so	Rust crate dylib regex_syntax	verified
+system_a	system/lib64/libremoteservice.so	remote service library	inferred
+system_a	system/lib64/libreportstatsevent.so	report stats event library	inferred
+system_a	system/lib64/libresourcecontrol.dylib.so	Rust crate dylib resourcecontrol	verified
+system_a	system/lib64/librs_jni.so	RenderScript JNI bridge library	inferred
+system_a	system/lib64/librtp_jni.so	RTP JNI bridge library	inferred
+system_a	system/lib64/libruntimeipcbroker_interface-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libruntimeipcbroker_interface-ndk_platform.so	AIDL NDK-backend library for libruntimeipcbroker_interface	verified
+system_a	system/lib64/libruntimeipchelper_interface-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libruntimeipcservice.so	runtime IPC service library	inferred
+system_a	system/lib64/libryu.dylib.so	Rust crate dylib ryu	verified
+system_a	system/lib64/libschedulerservicehidl.so	scheduler service HIDL library	inferred
+system_a	system/lib64/libscopeguard.dylib.so	Rust crate dylib scopeguard	inferred
+system_a	system/lib64/libseccomp_policy.so	seccomp policy loader library	inferred
+system_a	system/lib64/libselinux.so	SELinux userspace library	verified
+system_a	system/lib64/libserde.dylib.so	Rust crate dylib serde	verified
+system_a	system/lib64/libserde_json.dylib.so	Rust crate dylib serde_json	verified
+system_a	system/lib64/libservices.so	services library (name-based)	unverified
+system_a	system/lib64/libshared_os_services_sysprops.so	shared OS services system-property accessor	inferred
+system_a	system/lib64/libshmemcompat.so	shared-memory compatibility library	inferred
+system_a	system/lib64/libshmemutil.so	shared-memory utilities library	inferred
+system_a	system/lib64/libsimpleperf_profcollect.so	simpleperf profile-collection library	verified
+system_a	system/lib64/libsmallvec.dylib.so	Rust crate dylib smallvec	verified
+system_a	system/lib64/libsoft_attestation_cert.so	soft attestation certificate library	inferred
+system_a	system/lib64/libsonic.so	Sonic speech-rate library	inferred
+system_a	system/lib64/libsonivox.so	Sonivox EAS MIDI synthesizer library	verified
+system_a	system/lib64/libsoundpool.so	SoundPool audio library	inferred
+system_a	system/lib64/libsparse.so	Android sparse image format library	verified
+system_a	system/lib64/libspeexresampler.so	Speex resampler library	inferred
+system_a	system/lib64/libsqlite.so	SQLite database library	verified
+system_a	system/lib64/libsquashfs_utils.so	squashfs utilities library	inferred
+system_a	system/lib64/libssl.so	SSL/TLS library	verified
+system_a	system/lib64/libstats_proto.so	stats protobuf definitions library	inferred
+system_a	system/lib64/libstatshidl.so	statsd HIDL client library	inferred
+system_a	system/lib64/libstatslog.so	statsd logging client library	inferred
+system_a	system/lib64/libstd.dylib.so	Rust standard-library dylib (std)	inferred
+system_a	system/lib64/libstdc++.so	GNU libstdc++ compatibility library	inferred
+system_a	system/lib64/libstreampublisher.so	stream publisher library	inferred
+system_a	system/lib64/libstructopt.dylib.so	Rust crate dylib structopt	inferred
+system_a	system/lib64/libsync.so	sync fence API library	verified
+system_a	system/lib64/libsysutils.so	system utilities library (netlink and framework listeners)	inferred
+system_a	system/lib64/libtdigesttelemetry.so	t-digest telemetry library	inferred
+system_a	system/lib64/libtelemetry.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libtextwrap.dylib.so	Rust crate dylib textwrap	verified
+system_a	system/lib64/libthiserror.dylib.so	Rust crate dylib thiserror	inferred
+system_a	system/lib64/libtimeinstate.so	time-in-state (cpufreq) library	inferred
+system_a	system/lib64/libtimestats.so	TimeStats frame-timing statistics library	inferred
+system_a	system/lib64/libtimestats_atoms_proto.so	TimeStats atoms protobuf library	inferred
+system_a	system/lib64/libtimestats_proto.so	TimeStats protobuf definitions library	inferred
+system_a	system/lib64/libtinyalsa.so	tinyalsa ALSA access library	inferred
+system_a	system/lib64/libtinyxml2.so	TinyXML-2 XML parser	verified
+system_a	system/lib64/libtokaido_device_features.so	device feature flags library (name-based)	unverified
+system_a	system/lib64/libtombstoned_client.so	tombstoned client library	inferred
+system_a	system/lib64/libtracingproxy.so	tracing proxy library	inferred
+system_a	system/lib64/libtrackingengines.so	tracking subsystem library: trackingengines	inferred
+system_a	system/lib64/libtrackingutils.so	tracking subsystem library: trackingutils	inferred
+system_a	system/lib64/libtrackingvendorutils.so	tracking subsystem library: trackingvendorutils	inferred
+system_a	system/lib64/libui.so	graphics UI primitives library (Rect, Region, GraphicBuffer)	verified
+system_a	system/lib64/libuinputcommand_jni.so	uinput command JNI library	inferred
+system_a	system/lib64/libunwindstack.so	unwindstack stack unwinder library	verified
+system_a	system/lib64/libupdate_engine_stable-V1-cpp.so	AIDL C++-backend library for libupdate_engine_stable (interface V1)	inferred
+system_a	system/lib64/libusbhost.so	USB host library	inferred
+system_a	system/lib64/libuserutil.so	user utility library	inferred
+system_a	system/lib64/libutils.so	Android utilities library (RefBase, String, Looper, threads)	verified
+system_a	system/lib64/libutilscallstack.so	callstack utilities library	inferred
+system_a	system/lib64/libuuid.dylib.so	Rust crate dylib uuid	verified
+system_a	system/lib64/libvibrator.so	vibrator library	inferred
+system_a	system/lib64/libvibratorservice.so	vibrator service library	inferred
+system_a	system/lib64/libvintf.so	VINTF manifest and compatibility-matrix library	inferred
+system_a	system/lib64/libvkjson.so	Vulkan JSON capability library	inferred
+system_a	system/lib64/libvndksupport.so	VNDK support library (vendor/system bridging)	verified
+system_a	system/lib64/libvolumetricwindow.so	volumetric window library	inferred
+system_a	system/lib64/libvrapi.so	VrApi VR runtime library	inferred
+system_a	system/lib64/libvrfocus_interface-cpp.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/libvrpowermanager_aidl-V2-cpp.so	AIDL C++-backend library for libvrpowermanager_aidl (interface V2)	inferred
+system_a	system/lib64/libvrsbuilder.so	VR system library: builder	inferred
+system_a	system/lib64/libvrsdevicetools.so	VR system library: devicetools	inferred
+system_a	system/lib64/libvrsrecorder.so	VR system recorder library	inferred
+system_a	system/lib64/libvrsrecorder_plugin_colorrecorder.so	VR system recorder plugin (colorrecorder)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_imurecorder.so	VR system recorder plugin (imurecorder)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_constellationimustreamrecorder.so	VR system recorder plugin (constellationimustreamrecorder)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_faceeyerecorder.so	VR system recorder plugin (faceeyerecorder)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_hapticsrecorder.so	VR system recorder plugin (hapticsrecorder)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_led.so	VR system recorder plugin (led)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_magrecorder.so	VR system recorder plugin (magrecorder)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_temperaturereader.so	VR system recorder plugin (temperaturereader)	inferred
+system_a	system/lib64/libvrsrecorder_plugin_worldtrackingrecorder.so	VR system recorder plugin (worldtrackingrecorder)	inferred
+system_a	system/lib64/libvrsrecorder_utils_common.so	VR system recorder library_utils_common	inferred
+system_a	system/lib64/libvrui_jni.so	VR UI JNI library	inferred
+system_a	system/lib64/libwakelock.so	wakelock library	inferred
+system_a	system/lib64/libwebviewchromium_loader.so	WebView Chromium loader library	inferred
+system_a	system/lib64/libwebviewchromium_plat_support.so	WebView Chromium platform support library	inferred
+system_a	system/lib64/libwilhelm.so	Wilhelm (OpenSL ES implementation) library	verified
+system_a	system/lib64/libxml2.so	libxml2 XML parser	verified
+system_a	system/lib64/libxrapp.so	XR application library	inferred
+system_a	system/lib64/libxrspdhelper.so	XR SPD helper library	inferred
+system_a	system/lib64/libz.so	zlib compression library	verified
+system_a	system/lib64/libzip.dylib.so	Rust crate dylib zip	verified
+system_a	system/lib64/libziparchive.so	ZipArchive library (APK/zip access)	inferred
+system_a	system/lib64/netd_aidl_interface-V6-cpp.so	AIDL C++-backend library for netd_aidl_interface (interface V6)	inferred
+system_a	system/lib64/netd_aidl_interface-V7-cpp.so	AIDL C++-backend library for netd_aidl_interface (interface V7)	verified
+system_a	system/lib64/netd_event_listener_interface-V1-cpp.so	AIDL C++-backend library for netd_event_listener_interface (interface V1)	inferred
+system_a	system/lib64/oemnetd_aidl_interface-cpp.so	AIDL interface library for oemnetd (cpp backend)	inferred
+system_a	system/lib64/packagemanager_aidl-cpp.so	AIDL C++ library for the PackageManager service	inferred
+system_a	system/lib64/pppol2tp-android.so	pppd L2TP plugin (Android build)	inferred
+system_a	system/lib64/pppopptp-android.so	pppd PPTP plugin (Android build)	inferred
+system_a	system/lib64/server_configurable_flags.so	server-configurable flags library	inferred
+system_a	system/lib64/service.incremental.so	Android C++ framework library (android:: API)	verified
+system_a	system/lib64/shared-file-region-aidl-cpp.so	AIDL cpp-backend library for shared-file-region	inferred
+system_a	system/lib64/slicer.so	slicer library (name-based)	unverified
+system_a	system/lib64/spatializer-aidl-cpp.so	AIDL cpp-backend library for spatializer	inferred
+system_a	system/lib64/statsd-aidl-ndk.so	AIDL ndk-backend library for statsd	inferred
+system_ext_a	lib/parfait-aidl-V2-ndk_platform.so	AIDL NDK-backend library for parfait (interface V2)	verified
+system_ext_a	lib/libtelemetryproto_hal.so	telemetry libraryproto_hal	inferred
+system_ext_a	lib/libcrashreporter_sysprops.so	crash reporter system-property accessor library	inferred
+system_ext_a	lib/libinstsampd_interface-V1-ndk.so	AIDL NDK-backend library for libinstsampd_interface (interface V1)	verified
+system_ext_a	lib/libinputsettingsservice.so	input settings service library	inferred
+system_ext_a	lib/libovr_crashreporter.so	Oculus/Meta crashreporter library	inferred
+system_ext_a	lib/libfaceeyetrackingservice_interfaces-V2-ndk.so	AIDL NDK-backend library for libfaceeyetrackingservice_interfaces (interface V2)	verified
+system_ext_a	lib/libkvstore.so	key-value store library (kvstore)	inferred
+system_ext_a	lib/memorybrokerservice-aidl-V2-ndk_platform.so	AIDL NDK-backend library for memorybrokerservice (interface V2)	verified
+system_ext_a	lib/libhzos.meta.so	HZOS meta library	inferred
+system_ext_a	lib/libxrfury.so	XR runtime library (name-based)	unverified
+system_ext_a	lib/ihandtrackingservice-aidl-V2-ndk_platform.so	AIDL NDK-backend library for ihandtrackingservice (interface V2)	verified
+system_ext_a	lib/libinstsampd_interface-V1-ndk_platform.so	AIDL NDK-backend library for libinstsampd_interface (interface V1)	verified
+system_ext_a	lib/libeventflaghelper.so	event-flag helper library	inferred
+system_ext_a	lib/libnativewakelock.so	native wakelock library	inferred
+system_ext_a	lib/libtrackingserviceinterface_aidl-ndk_platform.so	AIDL library for trackingserviceinterface (ndk_platform backend)	inferred
+system_ext_a	lib/libqpl.so	QPL library (name-based)	unverified
+system_ext_a	lib/libnotificationproxyclient.so	notification proxy client library	inferred
+system_ext_a	lib/libinsights.so	insights library	inferred
+system_ext_a	lib/libhaptics_jni.so	haptics JNI library	inferred
+system_ext_a	lib/libosndk.lazy.so	lazy NDK OS API library	inferred
+system_ext_a	lib/iinsideoutbodytrackingservice-aidl-V2-ndk_platform.so	AIDL NDK-backend library for iinsideoutbodytrackingservice (interface V2)	verified
+system_ext_a	lib/libgammacorrection.so	gamma correction (display) library	inferred
+system_ext_a	lib/libcontrollers_jni.so	controllers JNI library	inferred
+system_ext_a	lib/libsurfaceforge.so	SurfaceForge library (name-based)	unverified
+system_ext_a	lib/libhzos_tracking.meta.so	HZOS tracking meta library	inferred
+system_ext_a	lib/libcmsservice-headset.so	headset CMS service library (name-based)	unverified
+system_ext_a	lib/libinstsampd_interface-V2-ndk_platform.so	AIDL NDK-backend library for libinstsampd_interface (interface V2)	verified
+system_ext_a	lib/libscads_aidl-V1-cpp.so	AIDL C++-backend library for libscads_aidl (interface V1)	inferred
+system_ext_a	lib/libcalibrationstore.so	calibration store library	inferred
+system_ext_a	lib/libtrackinginjection-service.so	tracking subsystem library: trackinginjection-service	inferred
+system_ext_a	lib/telemetryservice-aidl-cpp.so	AIDL cpp-backend library for telemetryservice	inferred
+system_ext_a	lib/iinsideoutbodytrackingservice-aidl-V2-cpp.so	AIDL C++-backend library for iinsideoutbodytrackingservice (interface V2)	inferred
+system_ext_a	lib/libovr_crashreporter_utils.so	Oculus/Meta crashreporter_utils library	inferred
+system_ext_a	lib/libglcompat.so	GL compatibility library	inferred
+system_ext_a	lib/libmemorybrokerclient.so	memory broker client library	inferred
+system_ext_a	lib/crashtelemetry-aidl-V1-ndk_platform.so	AIDL NDK-backend library for crashtelemetry (interface V1)	verified
+system_ext_a	lib/libVkLayer_ADRENO_qprofiler.so	Adreno Vulkan profiler layer	inferred
+system_ext_a	lib/libdeviceconfig.so	DeviceConfig flags native library	inferred
+system_ext_a	lib/libinstsampd_interface-V2-ndk.so	AIDL NDK-backend library for libinstsampd_interface (interface V2)	verified
+system_ext_a	lib/bpfagent_interface-V1-ndk_platform.so	AIDL NDK-backend library for bpfagent_interface (interface V1)	verified
+system_ext_a	lib/libimagebuffer.so	image buffer library	inferred
+system_ext_a	lib/libdeviceid.so	device identifier library	inferred
+system_ext_a	lib/libVkLayer_meta_intercept.so	Vulkan meta intercept layer	verified
+system_ext_a	lib/libdumpsyslogger.so	dump syslogger library	inferred
+system_ext_a	lib/libopenxr_loader.so	OpenXR loader library	verified
+system_ext_a	lib/libfaceeyetrackingservice.so	face and eye tracking library: faceeyetrackingservice	inferred
+system_ext_a	lib/libinsights_jni.so	insights JNI bridge library	inferred
+system_ext_a	lib/libovr_diagnosticdata.so	Oculus/Meta diagnosticdata library	inferred
+system_ext_a	lib/libtrackingserviceclients.so	tracking subsystem library: trackingserviceclients	inferred
+system_ext_a	lib/libmaintenancebootutils.so	maintenance boot utilities library	inferred
+system_ext_a	lib64/bpfagent_interface-V1-ndk_platform.so	AIDL NDK-backend library for bpfagent_interface (interface V1)	verified
+system_ext_a	lib64/crashtelemetry-aidl-V1-ndk.so	AIDL NDK-backend library for crashtelemetry (interface V1)	verified
+system_ext_a	lib64/crashtelemetry-aidl-V1-ndk_platform.so	AIDL NDK-backend library for crashtelemetry (interface V1)	verified
+system_ext_a	lib64/ihandtrackingservice-aidl-V2-ndk_platform.so	AIDL NDK-backend library for ihandtrackingservice (interface V2)	verified
+system_ext_a	lib64/iinsideoutbodytrackingservice-aidl-V2-cpp.so	AIDL C++-backend library for iinsideoutbodytrackingservice (interface V2)	inferred
+system_ext_a	lib64/iinsideoutbodytrackingservice-aidl-V2-ndk_platform.so	AIDL NDK-backend library for iinsideoutbodytrackingservice (interface V2)	verified
+system_ext_a	lib64/libQProfilerInterface.so	Qualcomm GPU profiler interface library	inferred
+system_ext_a	lib64/libVkLayer_ADRENO_qprofiler.so	Adreno Vulkan profiler layer	inferred
+system_ext_a	lib64/libVkLayer_khronos_validation.so	Khronos Vulkan validation layer	verified
+system_ext_a	lib64/libVkLayer_meta_intercept.so	Vulkan meta intercept layer	verified
+system_ext_a	lib64/libcalibrationstore.so	calibration store library	inferred
+system_ext_a	lib64/libcmsservice-headset.so	headset CMS service library (name-based)	unverified
+system_ext_a	lib64/libcontrollers_jni.so	controllers JNI library	inferred
+system_ext_a	lib64/libcrashreporter_sysprops.so	crash reporter system-property accessor library	inferred
+system_ext_a	lib64/libcrypoimpl.so	crypto implementation library (name-based)	unverified
+system_ext_a	lib64/libdasmanager.so	DAS manager library (name-based)	unverified
+system_ext_a	lib64/libdemoservice-aidl-cpp.so	AIDL cpp-backend library for libdemoservice	inferred
+system_ext_a	lib64/libdeviceconfig.so	DeviceConfig flags native library	inferred
+system_ext_a	lib64/libdeviceid.so	device identifier library	inferred
+system_ext_a	lib64/libdumpsyslogger.so	dump syslogger library	inferred
+system_ext_a	lib64/libemgexperience_shared.meta.so	EMG experience shared library (meta)	inferred
+system_ext_a	lib64/libemgservice.so	EMG service library	inferred
+system_ext_a	lib64/libemgservice_aidl.meta.so	EMG service AIDL meta library	inferred
+system_ext_a	lib64/libeventflaghelper.so	event-flag helper library	inferred
+system_ext_a	lib64/libfaceeyetrackingledprovider.so	face and eye tracking library: faceeyetrackingledprovider	inferred
+system_ext_a	lib64/libfaceeyetrackingservice.so	face and eye tracking library: faceeyetrackingservice	inferred
+system_ext_a	lib64/libfaceeyetrackingservice_interfaces-V2-ndk.so	AIDL NDK-backend library for libfaceeyetrackingservice_interfaces (interface V2)	verified
+system_ext_a	lib64/libfetchstats.so	stats fetch library	inferred
+system_ext_a	lib64/libffloggerwrapper.so	FFLogger wrapper library	inferred
+system_ext_a	lib64/libframeratemanager.so	frame rate manager library	inferred
+system_ext_a	lib64/libgammacorrection.so	gamma correction (display) library	inferred
+system_ext_a	lib64/libglcompat.so	GL compatibility library	inferred
+system_ext_a	lib64/libgpuprofilingservice.so	GPU profiling service library	inferred
+system_ext_a	lib64/libhaptics_jni.so	haptics JNI library	inferred
+system_ext_a	lib64/libhzos.meta.so	HZOS meta library	inferred
+system_ext_a	lib64/libhzos_tracking.meta.so	HZOS tracking meta library	inferred
+system_ext_a	lib64/libimagebuffer.so	image buffer library	inferred
+system_ext_a	lib64/libinputsettingsservice.so	input settings service library	inferred
+system_ext_a	lib64/libinsights.so	insights library	inferred
+system_ext_a	lib64/libinsights_jni.so	insights JNI bridge library	inferred
+system_ext_a	lib64/libinstsampd_interface-V1-ndk.so	AIDL NDK-backend library for libinstsampd_interface (interface V1)	verified
+system_ext_a	lib64/libinstsampd_interface-V1-ndk_platform.so	AIDL NDK-backend library for libinstsampd_interface (interface V1)	verified
+system_ext_a	lib64/libinstsampd_interface-V2-ndk.so	AIDL NDK-backend library for libinstsampd_interface (interface V2)	verified
+system_ext_a	lib64/libinstsampd_interface-V2-ndk_platform.so	AIDL NDK-backend library for libinstsampd_interface (interface V2)	verified
+system_ext_a	lib64/libjdns_sd.so	jdns_sd mDNS responder library	inferred
+system_ext_a	lib64/libkvstore.so	key-value store library (kvstore)	inferred
+system_ext_a	lib64/libkwsengine.so	keyword-spotting engine library	inferred
+system_ext_a	lib64/libmaintenancebootutils.so	maintenance boot utilities library	inferred
+system_ext_a	lib64/libmemorybrokerclient.so	memory broker client library	inferred
+system_ext_a	lib64/libmrengine.so	MR engine library	inferred
+system_ext_a	lib64/libnativewakelock.so	native wakelock library	inferred
+system_ext_a	lib64/libncurses.so	ncurses terminal library	inferred
+system_ext_a	lib64/libnotificationproxyclient.so	notification proxy client library	inferred
+system_ext_a	lib64/libopenxr_loader.so	OpenXR loader library	verified
+system_ext_a	lib64/libosndk.lazy.so	lazy NDK OS API library	inferred
+system_ext_a	lib64/libovr_crashreporter.so	Oculus/Meta crashreporter library	inferred
+system_ext_a	lib64/libovr_crashreporter_utils.so	Oculus/Meta crashreporter_utils library	inferred
+system_ext_a	lib64/libovr_diagnosticdata.so	Oculus/Meta diagnosticdata library	inferred
+system_ext_a	lib64/libparfaithelper_aidl-cpp.so	parfait AIDL helper library	inferred
+system_ext_a	lib64/libperfstream-aidl-cpp.so	AIDL cpp-backend library for libperfstream	inferred
+system_ext_a	lib64/libperfstreamclient.so	performance stream library: perfstreamclient	inferred
+system_ext_a	lib64/libperfstreamcore.so	performance stream library: perfstreamcore	inferred
+system_ext_a	lib64/libperfstreamprovider.so	performance stream library: perfstreamprovider	inferred
+system_ext_a	lib64/libpowerstatscollector.so	power stats collector library	inferred
+system_ext_a	lib64/libpreferencesservice.so	preferences service library	inferred
+system_ext_a	lib64/libpreloader.so	preloader library	inferred
+system_ext_a	lib64/libqpl.so	QPL library (name-based)	unverified
+system_ext_a	lib64/libqrcodereader_jni.so	QR code reader JNI library	inferred
+system_ext_a	lib64/libquickplaydataloader-jni.so	quickplay data loader JNI library	inferred
+system_ext_a	lib64/libscads_aidl-V1-cpp.so	AIDL C++-backend library for libscads_aidl (interface V1)	inferred
+system_ext_a	lib64/libstatscollector.so	stats collector library	inferred
+system_ext_a	lib64/libsurfaceforge.so	SurfaceForge library (name-based)	unverified
+system_ext_a	lib64/libtelemetry_base64utils.so	telemetry subsystem component: base64utils	inferred
+system_ext_a	lib64/libtelemetry_cpp_protos.so	telemetry subsystem component: cpp_protos	inferred
+system_ext_a	lib64/libtelemetry_curlrequester.so	telemetry subsystem component: curlrequester	inferred
+system_ext_a	lib64/libtelemetry_dictionary.so	telemetry subsystem component: dictionary	inferred
+system_ext_a	lib64/libtelemetry_dynamictelemetry.so	telemetry subsystem component: dynamictelemetry	inferred
+system_ext_a	lib64/libtelemetry_eventfiltering.so	telemetry subsystem component: eventfiltering	inferred
+system_ext_a	lib64/libtelemetry_eventtracing.so	telemetry subsystem component: eventtracing	inferred
+system_ext_a	lib64/libtelemetry_healthcountersmanager.so	telemetry subsystem component: healthcountersmanager	inferred
+system_ext_a	lib64/libtelemetry_historystore.so	telemetry subsystem component: historystore	inferred
+system_ext_a	lib64/libtelemetry_identitymanager.so	telemetry subsystem component: identitymanager	inferred
+system_ext_a	lib64/libtelemetry_jsonutils.so	telemetry subsystem component: jsonutils	inferred
+system_ext_a	lib64/libtelemetry_ondemandmanager.so	telemetry subsystem component: ondemandmanager	inferred
+system_ext_a	lib64/libtelemetry_packageinfomanager.so	telemetry subsystem component: packageinfomanager	inferred
+system_ext_a	lib64/libtelemetry_ratelimitermanager.so	telemetry subsystem component: ratelimitermanager	inferred
+system_ext_a	lib64/libtelemetry_sessionmanager.so	telemetry subsystem component: sessionmanager	inferred
+system_ext_a	lib64/libtelemetry_settingsmanager.so	telemetry subsystem component: settingsmanager	inferred
+system_ext_a	lib64/libtelemetry_statsd_collector.so	telemetry subsystem component: statsd_collector	inferred
+system_ext_a	lib64/libtelemetry_statsd_config.so	telemetry subsystem component: statsd_config	inferred
+system_ext_a	lib64/libtelemetry_statsd_manager.so	telemetry subsystem component: statsd_manager	inferred
+system_ext_a	lib64/libtelemetry_statsdutil.so	telemetry subsystem component: statsdutil	inferred
+system_ext_a	lib64/libtelemetry_useragentbuilder.so	telemetry subsystem component: useragentbuilder	inferred
+system_ext_a	lib64/libtelemetrykvstore.so	telemetry librarykvstore	inferred
+system_ext_a	lib64/libtelemetryprocessor.so	telemetry libraryprocessor	inferred
+system_ext_a	lib64/libtelemetryproto_hal.so	telemetry libraryproto_hal	inferred
+system_ext_a	lib64/libtourguideapi.so	tour guide API library	inferred
+system_ext_a	lib64/libtrackinginjection-client.so	tracking subsystem library: trackinginjection-client	inferred
+system_ext_a	lib64/libtrackingserviceclients.so	tracking subsystem library: trackingserviceclients	inferred
+system_ext_a	lib64/libtrackinginjection-cmdlineutils.so	tracking subsystem library: trackinginjection-cmdlineutils	inferred
+system_ext_a	lib64/libtrackinginjection-service.so	tracking subsystem library: trackinginjection-service	inferred
+system_ext_a	lib64/libtrackingserviceinterface_aidl-ndk_platform.so	AIDL library for trackingserviceinterface (ndk_platform backend)	inferred
+system_ext_a	lib64/libtrackingserviceservers.so	tracking subsystem library: trackingserviceservers	inferred
+system_ext_a	lib64/libvcclientinterface.so	VC client interface library	inferred
+system_ext_a	lib64/libvoiceassistantnativeservice.so	voice assistant native service library	inferred
+system_ext_a	lib64/libvoidactivity_jni.so	void activity JNI library	inferred
+system_ext_a	lib64/libwakeword.so	wake-word detection library	inferred
+system_ext_a	lib64/libwis_input_device.so	JNI bridge library (exports Java_ or JNI_OnLoad)	verified
+system_ext_a	lib64/libxrfury.so	XR runtime library (name-based)	unverified
+system_ext_a	lib64/memorybrokerservice-aidl-V2-ndk_platform.so	AIDL NDK-backend library for memorybrokerservice (interface V2)	verified
+system_ext_a	lib64/parfait-aidl-V1-cpp.so	AIDL C++-backend library for parfait (interface V1)	inferred
+system_ext_a	lib64/parfait-aidl-V2-ndk_platform.so	AIDL NDK-backend library for parfait (interface V2)	verified
+system_ext_a	lib64/parfait-aidl-V3-cpp.so	AIDL C++-backend library for parfait (interface V3)	inferred
+system_ext_a	lib64/statsd_proto.so	statsd protobuf definitions library	inferred
+system_ext_a	lib64/telemetryservice-aidl-cpp.so	AIDL cpp-backend library for telemetryservice	inferred
+system_ext_a	lib64/vendor.qti.hardware.display.mapper@4.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v4.0	verified
+system_ext_a	lib64/vendor.qti.hardware.display.mapperextensions@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.0	verified
+system_ext_a	lib64/wis_handlers.so	WIS handlers library	inferred
+vendor_a	lib/android.frameworks.stats@1.0.so	HIDL interface library android.frameworks.stats v1.0	verified
+vendor_a	lib/android.hardware.boot@1.0.so	HIDL interface library android.hardware.boot v1.0	verified
+vendor_a	lib/android.hardware.boot@1.1.so	HIDL interface library android.hardware.boot v1.1	verified
+vendor_a	lib/android.hardware.boot@1.2.so	HIDL interface library android.hardware.boot v1.2	verified
+vendor_a	lib/android.hardware.cas.native@1.0.so	HIDL interface library android.hardware.cas.native v1.0	verified
+vendor_a	lib/android.hardware.cas@1.0.so	HIDL interface library android.hardware.cas v1.0	verified
+vendor_a	lib/android.hardware.cas@1.1.so	HIDL interface library android.hardware.cas v1.1	verified
+vendor_a	lib/android.hardware.cas@1.2.so	HIDL interface library android.hardware.cas v1.2	verified
+vendor_a	lib/android.hardware.health@1.0.so	HIDL interface library android.hardware.health v1.0	verified
+vendor_a	lib/android.hardware.health@2.0.so	HIDL interface library android.hardware.health v2.0	verified
+vendor_a	lib/android.hardware.health@2.1.so	HIDL interface library android.hardware.health v2.1	verified
+vendor_a	lib/android.hardware.power@1.0.so	HIDL interface library android.hardware.power v1.0	verified
+vendor_a	lib/android.hardware.power@1.1.so	HIDL interface library android.hardware.power v1.1	verified
+vendor_a	lib/android.hardware.power@1.2.so	HIDL interface library android.hardware.power v1.2	verified
+vendor_a	lib/android.hidl.allocator@1.0.so	HIDL interface library android.hidl.allocator v1.0	verified
+vendor_a	lib/hw/android.hardware.boot@1.0-impl-1.2-qti.so	HIDL HAL implementation for android.hardware.boot v1.0 (variant -impl-1.2-qti)	verified
+vendor_a	lib/hw/vendor.qti.hardware.qseecom@1.0-impl.so	Qualcomm HIDL implementation for vendor.qti.hardware.qseecom v1.0	inferred
+vendor_a	lib/hw/android.hardware.health@2.0-impl-2.1-anorak.so	HIDL HAL implementation for android.hardware.health v2.0 (variant -impl-2.1-anorak)	verified
+vendor_a	lib/hw/local_time.default.so	HAL module implementation (hw_module_t HMI symbol exported): local_time.default.so	verified
+vendor_a	lib/hw/bootctrl.anorak.so	HAL module implementation (hw_module_t HMI symbol exported): bootctrl.anorak.so	verified
+vendor_a	lib/hw/android.hardware.renderscript@1.0-impl.so	HIDL HAL implementation for android.hardware.renderscript v1.0 (variant -impl)	verified
+vendor_a	lib/libCB.so	CB library (name-based)	unverified
+vendor_a	lib/libFastvdStub.so	FastVD stub library	inferred
+vendor_a	lib/libGPreqcancel.so	GlobalPlatform TEE request-cancel client library	inferred
+vendor_a	lib/libGPreqcancel_svc.so	GlobalPlatform TEE request-cancel service library	inferred
+vendor_a	lib/libQSEEComAPI.so	Qualcomm QSEE (TrustZone) client communication API	inferred
+vendor_a	lib/libadsp_default_listener.so	ADSP default FastRPC listener library	inferred
+vendor_a	lib/libadsprpc.so	FastRPC user-space library for ADSP (audio DSP)	verified
+vendor_a	lib/libadsptelemetry_handler.so	ADSP telemetry handler library	inferred
+vendor_a	lib/libagm.so	Qualcomm AGM (audio graph manager) library	inferred
+vendor_a	lib/libagmclient.so	Qualcomm AGM client library	inferred
+vendor_a	lib/libalsautils.so	ALSA utilities library	inferred
+vendor_a	lib/libar-acdb.so	Qualcomm ACDB audio calibration library	inferred
+vendor_a	lib/libar-gpr.so	Qualcomm GPR generic packet router client library	inferred
+vendor_a	lib/libar-pal.so	Qualcomm PAL audio platform abstraction library	inferred
+vendor_a	lib/libats.so	ATS library (name-based)	unverified
+vendor_a	lib/libavservices_minijail.so	minijail wrapper for AV services	inferred
+vendor_a	lib/libbase64.so	base64 codec library	inferred
+vendor_a	lib/libbtnv.so	Bluetooth non-volatile configuration library	inferred
+vendor_a	lib/libc2plugin_store.so	Codec2 plugin store library	inferred
+vendor_a	lib/libcdsp_default_listener.so	CDSP default FastRPC listener library	inferred
+vendor_a	lib/libcdsprpc.so	FastRPC user-space library for CDSP (compute DSP)	verified
+vendor_a	lib/libcld80211.so	Qualcomm cld80211 nl80211 helper library	inferred
+vendor_a	lib/libcpion.so	cpion library (name-based)	unverified
+vendor_a	lib/libcv_common.so	computer vision common library	inferred
+vendor_a	lib/libdiag.so	Qualcomm diag (QXDM logging) library	inferred
+vendor_a	lib/libdigital-dimming.so	digital dimming (display) library	inferred
+vendor_a	lib/libdpps.so	Qualcomm DPPS display post-processing library	inferred
+vendor_a	lib/libeffects.so	audio effects library	inferred
+vendor_a	lib/libeffectsconfig.so	audio effects configuration parser	inferred
+vendor_a	lib/libeva.so	EVA library (name-based)	unverified
+vendor_a	lib/libext2_uuid.so	UUID library (e2fsprogs libuuid)	inferred
+vendor_a	lib/libfastcvdsp_stub.so	FastCV DSP stub library	inferred
+vendor_a	lib/libfastcvopt.so	FastCV optimized vision library	inferred
+vendor_a	lib/libfastvd.so	FastVD vision library (FastRPC based)	verified
+vendor_a	lib/libfilefinder.so	file finder library	inferred
+vendor_a	lib/libgralloc.qti.so	Qualcomm gralloc graphics-allocator library	inferred
+vendor_a	lib/libgralloccore.so	gralloc core library	inferred
+vendor_a	lib/libgrallocutils.so	gralloc utilities library	inferred
+vendor_a	lib/libhdcpsrm.so	HDCP SRM (system renewability message) library	inferred
+vendor_a	lib/libhealthstorage.so	health storage library	inferred
+vendor_a	lib/libhealthtelemetry.so	health telemetry library	inferred
+vendor_a	lib/libhexagon.so	Hexagon DSP support library	inferred
+vendor_a	lib/libhidltransport.so	HIDL transport library (legacy hwservice client)	inferred
+vendor_a	lib/libjson.so	JSON helper library	inferred
+vendor_a	lib/libkcl.so	kcl library (name-based)	unverified
+vendor_a	lib/libkernelmanager.so	kernel manager library	inferred
+vendor_a	lib/libllvm-glnext.so	Qualcomm LLVM shader-compiler library (glnext)	inferred
+vendor_a	lib/libllvm-qcom.so	Qualcomm LLVM library	inferred
+vendor_a	lib/libllvm-qgl.so	Qualcomm LLVM shader-compiler library (qgl)	inferred
+vendor_a	lib/liblx-ar_util.so	LX AR utility library (name-based)	unverified
+vendor_a	lib/liblx-osal.so	LX OS abstraction library (name-based)	unverified
+vendor_a	lib/libmc2.so	MC2 library (name-based)	unverified
+vendor_a	lib/libmdmdetect.so	modem detection library	inferred
+vendor_a	lib/libmdsprpc.so	FastRPC user-space library for MDSP (modem DSP)	verified
+vendor_a	lib/libmemutils.so	memory utilities library	inferred
+vendor_a	lib/libminkdescriptor.so	Minkipc descriptor library	inferred
+vendor_a	lib/libnbaio_mono.so	audio NBAIO mono library	inferred
+vendor_a	lib/libminksocket_vendor.so	Minkipc socket library (vendor)	inferred
+vendor_a	lib/libmros_vendor_sysprops.so	MROS system-property accessor library	inferred
+vendor_a	lib/libops.so	ops library (name-based)	unverified
+vendor_a	lib/libopus.so	Opus audio codec library	verified
+vendor_a	lib/libos.so	OS abstraction library (name-based)	unverified
+vendor_a	lib/libosutils.so	OS utilities library	inferred
+vendor_a	lib/libovr_crashreporter_remote.so	Oculus/Meta crashreporter_remote library	inferred
+vendor_a	lib/libpdmapper.so	pulse-density microphone mapper library	inferred
+vendor_a	lib/libpdnotifier.so	USB power-delivery notifier library	inferred
+vendor_a	lib/libperipheral_client.so	peripheral client library	inferred
+vendor_a	lib/libprotobuf-cpp-full-3.9.1.so	Protocol Buffers C++ runtime (full-3.9.1)	verified
+vendor_a	lib/libprotobuf-cpp-lite-3.9.1.so	Protocol Buffers C++ runtime (lite-3.9.1)	verified
+vendor_a	lib/libqcbor.so	CBOR library (Qualcomm)	inferred
+vendor_a	lib/libqdMetaData.so	Qualcomm graphics metadata library	inferred
+vendor_a	lib/libqdutils.so	Qualcomm graphics utilities library	inferred
+vendor_a	lib/libqisl.so	Qualcomm ISL library (name-based)	unverified
+vendor_a	lib/libqmi_cci.so	QMI (Qualcomm modem IPC) cci library	inferred
+vendor_a	lib/libqmi_common_so.so	QMI (Qualcomm modem IPC) common_so library	inferred
+vendor_a	lib/libqmi_encdec.so	QMI (Qualcomm modem IPC) encdec library	inferred
+vendor_a	lib/libqrtr.so	QRTR (Qualcomm IPC router) library	inferred
+vendor_a	lib/libqrtrclient.so	QRTR (Qualcomm IPC router) libraryclient	inferred
+vendor_a	lib/libqseed3.so	QSEED3 image scaler library	inferred
+vendor_a	lib/libqservice.so	Qualcomm QService display service library	inferred
+vendor_a	lib/libqsocket.so	Qualcomm QMI socket library	inferred
+vendor_a	lib/librpmb.so	RPMB (replay-protected memory block) library	inferred
+vendor_a	lib/libsdm-color.so	Qualcomm SDM color library	inferred
+vendor_a	lib/libsdm-colormgr-algo.so	Qualcomm SDM color-manager algorithm library	inferred
+vendor_a	lib/libsdm-disp-vndapis.so	Qualcomm SDM display vendor API library	inferred
+vendor_a	lib/libsdmextension.so	Qualcomm SDM display extension library	inferred
+vendor_a	lib/libsdmutils.so	Qualcomm SDM display utilities library	inferred
+vendor_a	lib/libsdsprpc.so	FastRPC user-space library for SDSP (sensors DSP)	verified
+vendor_a	lib/libsecureui_svcsock.so	secure UI service socket library	inferred
+vendor_a	lib/libsnapdragoncolor-manager.so	Snapdragon color manager library	inferred
+vendor_a	lib/libsoc_helper.so	SoC helper library	inferred
+vendor_a	lib/libspcom.so	Qualcomm secure-processor communication (SPCOM) library	inferred
+vendor_a	lib/libspl.so	SPL library (name-based)	unverified
+vendor_a	lib/libssd.so	SSD library (name-based)	unverified
+vendor_a	lib/libsynx.so	Qualcomm synx synchronization library	inferred
+vendor_a	lib/libtestutils.so	test utilities library	inferred
+vendor_a	lib/libthreadutils.so	thread utilities library	inferred
+vendor_a	lib/libtime_genoff.so	time genoff (RTC offset) library	inferred
+vendor_a	lib/libtinyxml2_1.so	TinyXML-2 XML parser (second copy)	inferred
+vendor_a	lib/libtrustedapploader.so	trusted application loader library	inferred
+vendor_a	lib/libvibrator.so	vibrator library	inferred
+vendor_a	lib/libvideotxr.so	video transmitter library	inferred
+vendor_a	lib/libvmmem.so	vmmem library	inferred
+vendor_a	lib/libvorbisidec.so	Vorbis integer decoder library	inferred
+vendor_a	lib/libvpx.so	libvpx VP8/VP9 video codec library	verified
+vendor_a	lib/modules	symbolic link to /vendor_dlkm/lib/modules	verified
+vendor_a	lib/qti.video.utils.videobufferlayout.so	Qualcomm video buffer-layout utility library	inferred
+vendor_a	lib/vendor.display.config@2.0.so	Qualcomm HIDL interface library vendor.display.config v2.0	verified
+vendor_a	lib/vendor.qti.hardware.AGMIPC@1.0-impl.so	Qualcomm HIDL implementation for vendor.qti.hardware.AGMIPC v1.0	inferred
+vendor_a	lib/vendor.qti.hardware.AGMIPC@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.AGMIPC v1.0	verified
+vendor_a	lib/vendor.qti.hardware.display.demura@2.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.demura v2.0	verified
+vendor_a	lib/vendor.qti.hardware.display.mapper@2.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v2.0	verified
+vendor_a	lib/vendor.qti.hardware.display.mapper@3.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v3.0	verified
+vendor_a	lib/vendor.qti.hardware.display.mapper@4.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v4.0	verified
+vendor_a	lib/vendor.qti.hardware.display.mapperextensions@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.0	verified
+vendor_a	lib/vendor.qti.hardware.display.mapperextensions@1.1.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.1	verified
+vendor_a	lib/vendor.qti.hardware.display.mapperextensions@1.2.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.2	verified
+vendor_a	lib/vendor.qti.hardware.dsp@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.dsp v1.0	verified
+vendor_a	lib/vendor.qti.hardware.pal@1.0-impl.so	Qualcomm HIDL implementation for vendor.qti.hardware.pal v1.0	inferred
+vendor_a	lib/vendor.qti.hardware.pal@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.pal v1.0	verified
+vendor_a	lib/vendor.qti.hardware.qseecom@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.qseecom v1.0	verified
+vendor_a	lib/vendor.qti.hardware.tui_comm@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.tui_comm v1.0	verified
+vendor_a	lib/vendor.qti.qspmhal@1.0.so	Qualcomm HIDL interface library vendor.qti.qspmhal v1.0	verified
+vendor_a	lib64/android.frameworks.stats@1.0.so	HIDL interface library android.frameworks.stats v1.0	verified
+vendor_a	lib64/android.hardware.atrace@1.0.so	HIDL interface library android.hardware.atrace v1.0	verified
+vendor_a	lib64/android.hardware.boot@1.0.so	HIDL interface library android.hardware.boot v1.0	verified
+vendor_a	lib64/android.hardware.boot@1.1.so	HIDL interface library android.hardware.boot v1.1	verified
+vendor_a	lib64/android.hardware.boot@1.2.so	HIDL interface library android.hardware.boot v1.2	verified
+vendor_a	lib64/android.hardware.dumpstate@1.0.so	HIDL interface library android.hardware.dumpstate v1.0	verified
+vendor_a	lib64/android.hardware.dumpstate@1.1.so	HIDL interface library android.hardware.dumpstate v1.1	verified
+vendor_a	lib64/android.hardware.health@1.0.so	HIDL interface library android.hardware.health v1.0	verified
+vendor_a	lib64/android.hardware.health@2.0.so	HIDL interface library android.hardware.health v2.0	verified
+vendor_a	lib64/android.hardware.health@2.1.so	HIDL interface library android.hardware.health v2.1	verified
+vendor_a	lib64/android.hardware.light@2.0.so	HIDL interface library android.hardware.light v2.0	verified
+vendor_a	lib64/android.hardware.media.c2@1.0.so	HIDL interface library android.hardware.media.c2 v1.0	verified
+vendor_a	lib64/android.hardware.power.stats@1.0.so	HIDL interface library android.hardware.power.stats v1.0	verified
+vendor_a	lib64/android.hardware.power@1.0.so	HIDL interface library android.hardware.power v1.0	verified
+vendor_a	lib64/android.hardware.power@1.1.so	HIDL interface library android.hardware.power v1.1	verified
+vendor_a	lib64/android.hardware.power@1.2.so	HIDL interface library android.hardware.power v1.2	verified
+vendor_a	lib64/android.hardware.power@1.3.so	HIDL interface library android.hardware.power v1.3	verified
+vendor_a	lib64/android.hardware.usb.gadget@1.0.so	HIDL interface library android.hardware.usb.gadget v1.0	verified
+vendor_a	lib64/android.hardware.usb.gadget@1.1.so	HIDL interface library android.hardware.usb.gadget v1.1	verified
+vendor_a	lib64/android.hardware.usb.gadget@1.2.so	HIDL interface library android.hardware.usb.gadget v1.2	verified
+vendor_a	lib64/android.hardware.usb@1.0.so	HIDL interface library android.hardware.usb v1.0	verified
+vendor_a	lib64/android.hardware.usb@1.1.so	HIDL interface library android.hardware.usb v1.1	verified
+vendor_a	lib64/android.hardware.usb@1.2.so	HIDL interface library android.hardware.usb v1.2	verified
+vendor_a	lib64/android.hidl.allocator@1.0.so	HIDL interface library android.hidl.allocator v1.0	verified
+vendor_a	lib64/com.qti.chiusecaseselector.so	Qualcomm CHI use-case selector library	inferred
+vendor_a	lib64/com.qti.settings.halliday.so	Qualcomm settings component library (name-based)	unverified
+vendor_a	lib64/com.qti.stats.common.so	Qualcomm stats common library (name-based)	unverified
+vendor_a	lib64/hw/com.qti.chi.override.so	Qualcomm CHI override module (camera HAL)	inferred
+vendor_a	lib64/hw/android.hardware.boot@1.0-impl-1.2-qti.so	HIDL HAL implementation for android.hardware.boot v1.0 (variant -impl-1.2-qti)	verified
+vendor_a	lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so	Qualcomm HIDL implementation for vendor.qti.hardware.qseecom v1.0	inferred
+vendor_a	lib64/hw/android.hardware.health@2.0-impl-2.1-anorak.so	HIDL HAL implementation for android.hardware.health v2.0 (variant -impl-2.1-anorak)	verified
+vendor_a	lib64/hw/local_time.default.so	HAL module implementation (hw_module_t HMI symbol exported): local_time.default.so	verified
+vendor_a	lib64/hw/bootctrl.anorak.so	HAL module implementation (hw_module_t HMI symbol exported): bootctrl.anorak.so	verified
+vendor_a	lib64/hw/android.hardware.renderscript@1.0-impl.so	HIDL HAL implementation for android.hardware.renderscript v1.0 (variant -impl)	verified
+vendor_a	lib64/libCB.so	CB library (name-based)	unverified
+vendor_a	lib64/libFastvdStub.so	FastVD stub library	inferred
+vendor_a	lib64/libGPreqcancel.so	GlobalPlatform TEE request-cancel client library	inferred
+vendor_a	lib64/libGPreqcancel_svc.so	GlobalPlatform TEE request-cancel service library	inferred
+vendor_a	lib64/libQSEEComAPI.so	Qualcomm QSEE (TrustZone) client communication API	inferred
+vendor_a	lib64/libadsp_default_listener.so	ADSP default FastRPC listener library	inferred
+vendor_a	lib64/libadsprpc.so	FastRPC user-space library for ADSP (audio DSP)	verified
+vendor_a	lib64/libadsptelemetry_handler.so	ADSP telemetry handler library	inferred
+vendor_a	lib64/libagm.so	Qualcomm AGM (audio graph manager) library	inferred
+vendor_a	lib64/libagm_compress_plugin.so	Qualcomm AGM compress plugin library	inferred
+vendor_a	lib64/libagm_mixer_plugin.so	Qualcomm AGM mixer plugin library	inferred
+vendor_a	lib64/libagm_pcm_plugin.so	Qualcomm AGM PCM plugin library	inferred
+vendor_a	lib64/libagmclient.so	Qualcomm AGM client library	inferred
+vendor_a	lib64/libagmmixer.so	Qualcomm AGM mixer library	inferred
+vendor_a	lib64/libalsautils.so	ALSA utilities library	inferred
+vendor_a	lib64/libar-acdb.so	Qualcomm ACDB audio calibration library	inferred
+vendor_a	lib64/libar-gpr.so	Qualcomm GPR generic packet router client library	inferred
+vendor_a	lib64/libar-pal.so	Qualcomm PAL audio platform abstraction library	inferred
+vendor_a	lib64/libats.so	ATS library (name-based)	unverified
+vendor_a	lib64/libavservices_minijail.so	minijail wrapper for AV services	inferred
+vendor_a	lib64/libbase64.so	base64 codec library	inferred
+vendor_a	lib64/libbinderdebug.so	binder debugging helper library	inferred
+vendor_a	lib64/libbitmlenginev2.so	ML engine v2 library (name-based)	unverified
+vendor_a	lib64/libbt-hidlclient.so	Bluetooth HIDL client library	inferred
+vendor_a	lib64/libbtnv.so	Bluetooth non-volatile configuration library	inferred
+vendor_a	lib64/libos.so	OS abstraction library (name-based)	unverified
+vendor_a	lib64/libc2plugin_store.so	Codec2 plugin store library	inferred
+vendor_a	lib64/libcamxcommonutils.so	Qualcomm CamX common utilities library	inferred
+vendor_a	lib64/libcamxcsl.so	Qualcomm CamX CSL (camera sensor layer) library	inferred
+vendor_a	lib64/libcamxexternalformatutils.so	Qualcomm CamX external format utilities library	inferred
+vendor_a	lib64/libcamxfacialfeatures.so	Qualcomm CamX facial features library	inferred
+vendor_a	lib64/libcamxfdalgo.so	Qualcomm CamX face-detection algorithm library	inferred
+vendor_a	lib64/libcamxfdengine.so	Qualcomm CamX face-detection engine library	inferred
+vendor_a	lib64/libcamxfilemanager.so	Qualcomm CamX file manager library	inferred
+vendor_a	lib64/libcamxhalbuffermanager.so	Qualcomm CamX HAL buffer manager library	inferred
+vendor_a	lib64/libcamxhwnodecontext.so	Qualcomm CamX hardware node context library	inferred
+vendor_a	lib64/libcamximageformatutils.so	Qualcomm CamX image-format utilities library	inferred
+vendor_a	lib64/libcamxsettingsmanager.so	Qualcomm CamX settings manager library	inferred
+vendor_a	lib64/libcamxstatscore.so	Qualcomm CamX stats core library	inferred
+vendor_a	lib64/libcamxtintlessalgo.so	Qualcomm CamX tintless algorithm library	inferred
+vendor_a	lib64/libcdsp_default_listener.so	CDSP default FastRPC listener library	inferred
+vendor_a	lib64/libcdsprpc.so	FastRPC user-space library for CDSP (compute DSP)	verified
+vendor_a	lib64/libchilog.so	Qualcomm CHI logging library (name-based)	unverified
+vendor_a	lib64/libcld80211.so	Qualcomm cld80211 nl80211 helper library	inferred
+vendor_a	lib64/libcom.qti.chinodeutils.so	Qualcomm CHI node utilities library	inferred
+vendor_a	lib64/libcpion.so	cpion library (name-based)	unverified
+vendor_a	lib64/libcv_common.so	computer vision common library	inferred
+vendor_a	lib64/libdeviceid.so	device identifier library	inferred
+vendor_a	lib64/libdiag.so	Qualcomm diag (QXDM logging) library	inferred
+vendor_a	lib64/libdigital-dimming.so	digital dimming (display) library	inferred
+vendor_a	lib64/libdpps.so	Qualcomm DPPS display post-processing library	inferred
+vendor_a	lib64/libdumpsyslogger.so	dump syslogger library	inferred
+vendor_a	lib64/libeffects.so	audio effects library	inferred
+vendor_a	lib64/libeffectsconfig.so	audio effects configuration parser	inferred
+vendor_a	lib64/libeva.so	EVA library (name-based)	unverified
+vendor_a	lib64/libext2_uuid.so	UUID library (e2fsprogs libuuid)	inferred
+vendor_a	lib64/libfastcvdsp_stub.so	FastCV DSP stub library	inferred
+vendor_a	lib64/libfastcvopt.so	FastCV optimized vision library	inferred
+vendor_a	lib64/libfastvd.so	FastVD vision library (FastRPC based)	verified
+vendor_a	lib64/libfilefinder.so	file finder library	inferred
+vendor_a	lib64/libgflags.so	gflags command-line flags library	verified
+vendor_a	lib64/libgipp.so	gipp library (name-based)	unverified
+vendor_a	lib64/libgralloc.qti.so	Qualcomm gralloc graphics-allocator library	inferred
+vendor_a	lib64/libgralloccore.so	gralloc core library	inferred
+vendor_a	lib64/libgrallocutils.so	gralloc utilities library	inferred
+vendor_a	lib64/libhdcpsrm.so	HDCP SRM (system renewability message) library	inferred
+vendor_a	lib64/libhealthstorage.so	health storage library	inferred
+vendor_a	lib64/libhealthtelemetry.so	health telemetry library	inferred
+vendor_a	lib64/libhexagon.so	Hexagon DSP support library	inferred
+vendor_a	lib64/libhexagon_shim.so	Hexagon shim library	inferred
+vendor_a	lib64/libhidltransport.so	HIDL transport library (legacy hwservice client)	inferred
+vendor_a	lib64/libhistogram.so	histogram helper library	inferred
+vendor_a	lib64/libhwbinder.so	hwbinder transport runtime	inferred
+vendor_a	lib64/libimuacquisition.so	IMU acquisition library	inferred
+vendor_a	lib64/libipebpsstriping.so	IPE/BPS striping library (Qualcomm camera)	inferred
+vendor_a	lib64/libispcontroller-internal.so	ISP controller internal library (camera)	inferred
+vendor_a	lib64/libispcontroller-utility.so	ISP controller utility library (camera)	inferred
+vendor_a	lib64/libispcontroller.so	ISP controller library (camera)	inferred
+vendor_a	lib64/libjson.so	JSON helper library	inferred
+vendor_a	lib64/libkcl.so	kcl library (name-based)	unverified
+vendor_a	lib64/libkernelmanager.so	kernel manager library	inferred
+vendor_a	lib64/libllvm-glnext.so	Qualcomm LLVM shader-compiler library (glnext)	inferred
+vendor_a	lib64/libllvm-qcom.so	Qualcomm LLVM library	inferred
+vendor_a	lib64/libllvm-qgl.so	Qualcomm LLVM shader-compiler library (qgl)	inferred
+vendor_a	lib64/liblogstream.so	log stream redirection library	inferred
+vendor_a	lib64/liblx-ar_util.so	LX AR utility library (name-based)	unverified
+vendor_a	lib64/liblx-osal.so	LX OS abstraction library (name-based)	unverified
+vendor_a	lib64/libmc2.so	MC2 library (name-based)	unverified
+vendor_a	lib64/libmcs.so	MCS library (name-based)	unverified
+vendor_a	lib64/libmdmdetect.so	modem detection library	inferred
+vendor_a	lib64/libmdsprpc.so	FastRPC user-space library for MDSP (modem DSP)	verified
+vendor_a	lib64/libmediautils_vendor.so	vendor media utilities library	inferred
+vendor_a	lib64/libmeminfo.so	memory accounting library (procmem, PSS)	verified
+vendor_a	lib64/libmemunreachable.so	memunreachable leak-detection library	inferred
+vendor_a	lib64/libmemutils.so	memory utilities library	inferred
+vendor_a	lib64/libminkdescriptor.so	Minkipc descriptor library	inferred
+vendor_a	lib64/libminksocket_vendor.so	Minkipc socket library (vendor)	inferred
+vendor_a	lib64/libmros_vendor_sysprops.so	MROS system-property accessor library	inferred
+vendor_a	lib64/libnbaio_mono.so	audio NBAIO mono library	inferred
+vendor_a	lib64/libopencv3a.so	OpenCV 3A (AE/AWB/AF) library	inferred
+vendor_a	lib64/libops.so	ops library (name-based)	unverified
+vendor_a	lib64/libopus.so	Opus audio codec library	verified
+vendor_a	lib64/libosutils.so	OS utilities library	inferred
+vendor_a	lib64/libosutils_diagnostics.so	OS utilities diagnostics library	inferred
+vendor_a	lib64/libovr_crashreporter_remote.so	Oculus/Meta crashreporter_remote library	inferred
+vendor_a	lib64/libpdmapper.so	pulse-density microphone mapper library	inferred
+vendor_a	lib64/libpdnotifier.so	USB power-delivery notifier library	inferred
+vendor_a	lib64/libperfettoutils.so	Perfetto utilities library	inferred
+vendor_a	lib64/libperipheral_client.so	peripheral client library	inferred
+vendor_a	lib64/libprotobuf-cpp-full-3.9.1.so	Protocol Buffers C++ runtime (full-3.9.1)	verified
+vendor_a	lib64/libprotobuf-cpp-lite-3.9.1.so	Protocol Buffers C++ runtime (lite-3.9.1)	verified
+vendor_a	lib64/libqcbor.so	CBOR library (Qualcomm)	inferred
+vendor_a	lib64/libqdMetaData.so	Qualcomm graphics metadata library	inferred
+vendor_a	lib64/libqdutils.so	Qualcomm graphics utilities library	inferred
+vendor_a	lib64/libqisl.so	Qualcomm ISL library (name-based)	unverified
+vendor_a	lib64/libqmi_cci.so	QMI (Qualcomm modem IPC) cci library	inferred
+vendor_a	lib64/libqmi_common_so.so	QMI (Qualcomm modem IPC) common_so library	inferred
+vendor_a	lib64/libqmi_csi.so	QMI (Qualcomm modem IPC) csi library	inferred
+vendor_a	lib64/libqmi_encdec.so	QMI (Qualcomm modem IPC) encdec library	inferred
+vendor_a	lib64/libqrtr.so	QRTR (Qualcomm IPC router) library	inferred
+vendor_a	lib64/libqrtrclient.so	QRTR (Qualcomm IPC router) libraryclient	inferred
+vendor_a	lib64/libqseed3.so	QSEED3 image scaler library	inferred
+vendor_a	lib64/libqservice.so	Qualcomm QService display service library	inferred
+vendor_a	lib64/libqsocket.so	Qualcomm QMI socket library	inferred
+vendor_a	lib64/libqtigefar.so	Qualcomm GEFAR library (name-based)	unverified
+vendor_a	lib64/libqtikeymint.so	Qualcomm KeyMint implementation library	inferred
+vendor_a	lib64/librpmb.so	RPMB (replay-protected memory block) library	inferred
+vendor_a	lib64/libsdm-color.so	Qualcomm SDM color library	inferred
+vendor_a	lib64/libsdm-colormgr-algo.so	Qualcomm SDM color-manager algorithm library	inferred
+vendor_a	lib64/libsdm-disp-vndapis.so	Qualcomm SDM display vendor API library	inferred
+vendor_a	lib64/libsdmcore.so	Qualcomm SDM display core library	inferred
+vendor_a	lib64/libsdmextension.so	Qualcomm SDM display extension library	inferred
+vendor_a	lib64/libsdmutils.so	Qualcomm SDM display utilities library	inferred
+vendor_a	lib64/libsdsprpc.so	FastRPC user-space library for SDSP (sensors DSP)	verified
+vendor_a	lib64/libsecureui_svcsock.so	secure UI service socket library	inferred
+vendor_a	lib64/libsmcihandler.so	Qualcomm SMC handler library	inferred
+vendor_a	lib64/libsnapdragoncolor-manager.so	Snapdragon color manager library	inferred
+vendor_a	lib64/libsndcardparser.so	sound card configuration parser library	inferred
+vendor_a	lib64/libsns_direct_channel_stub.so	SNS direct-channel stub library	inferred
+vendor_a	lib64/libsnsapi.so	sensors (SNS) API library	inferred
+vendor_a	lib64/libsoc_helper.so	SoC helper library	inferred
+vendor_a	lib64/libspcom.so	Qualcomm secure-processor communication (SPCOM) library	inferred
+vendor_a	lib64/libspl.so	SPL library (name-based)	unverified
+vendor_a	lib64/libssd.so	SSD library (name-based)	unverified
+vendor_a	lib64/libsvartalf.so	svartalf library (name-based)	unverified
+vendor_a	lib64/libsynx.so	Qualcomm synx synchronization library	inferred
+vendor_a	lib64/libtelemetry.so	Android C++ framework library (android:: API)	verified
+vendor_a	lib64/libtestutils.so	test utilities library	inferred
+vendor_a	lib64/libthreadutils.so	thread utilities library	inferred
+vendor_a	lib64/libtime_genoff.so	time genoff (RTC offset) library	inferred
+vendor_a	lib64/libtinyxml2_1.so	TinyXML-2 XML parser (second copy)	inferred
+vendor_a	lib64/libtrackingvendorutils.so	tracking subsystem library: trackingvendorutils	inferred
+vendor_a	lib64/libtrustedapploader.so	trusted application loader library	inferred
+vendor_a	lib64/libvibrator.so	vibrator library	inferred
+vendor_a	lib64/libvideotxr.so	video transmitter library	inferred
+vendor_a	lib64/libvmmem.so	vmmem library	inferred
+vendor_a	lib64/libvpx.so	libvpx VP8/VP9 video codec library	verified
+vendor_a	lib64/libvros_vendor_sessionless_sysprops.so	sessionless system-property accessor library (vros)	inferred
+vendor_a	lib64/libwvhidl.so	Widevine HIDL library	inferred
+vendor_a	lib64/libxrfury.so	XR runtime library (name-based)	unverified
+vendor_a	lib64/libz_stable.so	zlib compression library (stable ABI copy)	verified
+vendor_a	lib64/peripheralconfig/server-plugins/peripheralconfig-plugin-camx-adapter-system.so	peripheral configuration CamX system adapter plugin	inferred
+vendor_a	lib64/peripheralconfig/server-plugins/peripheralconfig-plugin-camx-adapter.so	peripheral configuration CamX adapter plugin	inferred
+vendor_a	lib64/peripheralconfig-adapter-interface.so	peripheral configuration adapter interface library	inferred
+vendor_a	lib64/peripheralconfig-common.so	peripheral configuration common library	inferred
+vendor_a	lib64/peripheralconfig-protobuf.so	peripheral configuration protobuf library	inferred
+vendor_a	lib64/peripheralconfig.so	peripheral configuration library	inferred
+vendor_a	lib64/qti.video.utils.videobufferlayout.so	Qualcomm video buffer-layout utility library	inferred
+vendor_a	lib64/vendor.display.config@2.0.so	Qualcomm HIDL interface library vendor.display.config v2.0	verified
+vendor_a	lib64/vendor.qti.diaghal@1.0.so	Qualcomm HIDL interface library vendor.qti.diaghal v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so	Qualcomm HIDL implementation for vendor.qti.hardware.AGMIPC v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.AGMIPC@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.AGMIPC v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.display.allocator@3.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.allocator v3.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.allocator@4.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.allocator v4.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.config-V10-ndk_platform.so	AIDL NDK-backend library for vendor.qti.hardware.display.config (interface V10)	verified
+vendor_a	lib64/vendor.qti.hardware.display.config-V2-ndk_platform.so	AIDL NDK-backend library for vendor.qti.hardware.display.config (interface V2)	verified
+vendor_a	lib64/vendor.qti.hardware.display.demura@2.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.demura v2.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.mapper@2.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v2.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.mapper@3.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v3.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.mapper@4.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapper v4.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.mapperextensions@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.0	verified
+vendor_a	lib64/vendor.qti.hardware.display.mapperextensions@1.1.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.1	verified
+vendor_a	lib64/vendor.qti.hardware.display.mapperextensions@1.2.so	Qualcomm HIDL interface library vendor.qti.hardware.display.mapperextensions v1.2	verified
+vendor_a	lib64/vendor.qti.hardware.dsp@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.dsp v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.fm@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.fm v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.pal@1.0-impl.so	Qualcomm HIDL implementation for vendor.qti.hardware.pal v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.pal@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.pal v1.0	inferred
+vendor_a	lib64/vendor.qti.hardware.qseecom@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.qseecom v1.0	verified
+vendor_a	lib64/vendor.qti.hardware.tui_comm@1.0.so	Qualcomm HIDL interface library vendor.qti.hardware.tui_comm v1.0	inferred
+vendor_a	lib64/vendor.qti.qspmhal@1.0.so	Qualcomm HIDL interface library vendor.qti.qspmhal v1.0	inferred

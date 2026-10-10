@@ -1,0 +1,323 @@
+{
+ "key": "unclassified",
+ "summary": "The unclassified group has 13 rows from two partitions: 12 symbolic links (11 in system_a, 1 in vendor_a) and one regular file, system/xbin/su. The links are absolute-path aliases to /data/cache, /system/bin, /system/etc, /storage/self/primary, /sys/kernel/debug, /odm/odm_dlkm/etc, /vendor/vendor_dlkm/etc, a shell bugreports directory under /data, and the /system_ext, /vendor, /product and /odm partition roots. plat_file_contexts labels these paths as rootfs, cache_file, vendor_file or system_file. The su file is a stripped AArch64 PIE ELF with interpreter /system/bin/linker64. It needs libc.so, libc++.so, libm.so and libdl.so, and the libc, libm and libdl names resolve through symlinks into the com.android.runtime APEX. Its usage text is \"su [WHO [COMMAND...]]\" with default shell /system/bin/sh, its mode bits are 4750 with owner 0:2000, and its file_contexts label is su_exec. The policy declares su and su_exec and contains a shell-to-su process transition. The system build.prop in the image reports Android release 12 and build type userdebug.",
+ "rowsExpected": 13,
+ "rowsListed": 13,
+ "claims": [
+  {
+   "id": "U01",
+   "claim": "The group holds 13 rows: 12 symbolic links and 1 regular file. Split by partition: system_a has 11 links and 1 file, vendor_a has 1 link.",
+   "label": "verified",
+   "evidence": "cd <image> && awk -F'\\t' '$1~/^unclassified$/' classified.tsv | wc -l -> 13 ; awk -F'\\t' '$1~/^unclassified$/{print $2, $4}' classified.tsv | sort | uniq -c -> '1 system_a file', '11 system_a symlink', '1 vendor_a symlink'",
+   "file": "<image>/classified.tsv",
+   "verdict": "confirmed",
+   "reason": "The role table has 13 data rows (14 lines with header). classified.tsv has 13 unclassified rows. Split by partition and kind: 1 system_a file, 11 system_a symlink, 1 vendor_a symlink. Matches the claim.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U02",
+   "claim": "The file row system_a/system/xbin/su has size 11088 bytes and sha256 9ec7f36532bfbc20bd9702897a10cba7f8d78b54b24a64d836e6d9d2db3fafb6, equal to the value recorded in classified.tsv.",
+   "label": "verified",
+   "evidence": "cd <image> && sha256sum mnt/system_a/system/xbin/su -> 9ec7f36532bfbc20bd9702897a10cba7f8d78b54b24a64d836e6d9d2db3fafb6  mnt/system_a/system/xbin/su ; grep -P '\\tsystem_a\\tsystem/xbin/su\\t' classified.tsv | cut -f7 -> 9ec7f36532bfbc20bd9702897a10cba7f8d78b54b24a64d836e6d9d2db3fafb6 ; stat -c '%n size=%s' mnt/system_a/system/xbin/su -> mnt/system_a/system/xbin/su size=11088",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "sha256sum mnt/system_a/system/xbin/su gives 9ec7f36532bfbc20bd9702897a10cba7f8d78b54b24a64d836e6d9d2db3fafb6. The sha256 field of the xbin/su row in classified.tsv is identical. stat -c %s gives 11088, equal to the TSV size field.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U03",
+   "claim": "su is a stripped 64-bit little-endian AArch64 ELF of type DYN (PIE), with 11 program headers, 25 section headers and entry point 0x1000. Its interpreter is /system/bin/linker64 and its build ID is 0a22c7e5ae892af0d48d6a83b14ea2fd.",
+   "label": "verified",
+   "evidence": "file mnt/system_a/system/xbin/su -> setuid ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, BuildID[md5/uuid]=0a22c7e5ae892af0d48d6a83b14ea2fd, stripped ; readelf -h mnt/system_a/system/xbin/su -> Class: ELF64; Data: 2's complement, little endian; Type: DYN (Position-Independent Executable file); Machine: AArch64; Entry point address: 0x1000; Number of program headers: 11; Number of section headers: 25",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "file: setuid ELF 64-bit LSB pie executable, ARM aarch64, dynamically linked, interpreter /system/bin/linker64, BuildID 0a22c7e5ae892af0d48d6a83b14ea2fd, stripped. ELF header: Class ELF64, 2's complement little endian, Type DYN, Machine AArch64, Entry point 0x1000, 11 program headers, 25 section headers.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U04",
+   "claim": "su has three LOAD segments (R, R+E, RW, alignment 0x1000), plus INTERP, TLS, DYNAMIC, GNU_RELRO, GNU_EH_FRAME, GNU_STACK (RW) and NOTE. A non-allocated .gnu_debugdata section sits at file offset 0x23de with size 0x130.",
+   "label": "verified",
+   "evidence": "readelf -lW mnt/system_a/system/xbin/su -> INTERP 0x0002a8 ... [Requesting program interpreter: /system/bin/linker64]; LOAD 0x000000 R; LOAD 0x001000 R E; LOAD 0x002000 RW; TLS; DYNAMIC 0x002030 RW; GNU_RELRO; GNU_EH_FRAME; GNU_STACK RW ; readelf -SW mnt/system_a/system/xbin/su -> [24] .gnu_debugdata PROGBITS 0000000000000000 0023de 000130 00 0 0 1",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "needs_change",
+   "reason": "The three LOAD segments (R, R E, RW, align 0x1000), TLS, DYNAMIC, GNU_RELRO, GNU_EH_FRAME, GNU_STACK (RW), NOTE and INTERP are present. The claim omits PHDR (offset 0x40), so its list does not account for all 11 program headers. The .gnu_debugdata section [24] is PROGBITS at offset 0x0023de, size 0x000130, with no alloc flag. Only the completeness of the list is wrong.",
+   "corrected_claim": "su has 11 program headers: PHDR, INTERP, three LOAD segments (R, R+E, RW; alignment 0x1000), TLS, DYNAMIC, GNU_RELRO, GNU_EH_FRAME, GNU_STACK (RW) and NOTE. A non-allocated .gnu_debugdata section sits at file offset 0x23de with size 0x130."
+  },
+  {
+   "id": "U05",
+   "claim": "The dynamic section lists four NEEDED libraries (libc++.so, libc.so, libm.so, libdl.so), flags BIND_NOW and NOW PIE, and no RPATH or RUNPATH entry.",
+   "label": "verified",
+   "evidence": "readelf -dW mnt/system_a/system/xbin/su -> 0x1 (NEEDED) Shared library: [libc++.so]; (NEEDED) [libc.so]; (NEEDED) [libm.so]; (NEEDED) [libdl.so]; 0x1e (FLAGS) BIND_NOW; 0x6ffffffb (FLAGS_1) Flags: NOW PIE; 30 entries in total, none tagged RPATH or RUNPATH",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "DT_NEEDED entries: libc++.so, libc.so, libm.so, libdl.so. FLAGS BIND_NOW. FLAGS_1 Flags: NOW PIE. Of the 30 dynamic entries, none is RPATH or RUNPATH.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U06",
+   "claim": "su imports 22 undefined dynamic symbols, all versioned against LIBC (version 2) from libc.so: __libc_init, __errno, __stack_chk_fail, error, execvp, free, fwrite, getpwnam, getpwuid, getuid, memset, setenv, setgid, setgroups, setuid, stderr (OBJECT), strcmp, strcpy, strdup, strsep, strtoul, unsetenv.",
+   "label": "verified",
+   "evidence": "readelf -sW --dyn-syms mnt/system_a/system/xbin/su -> Symbol table '.dynsym' contains 23 entries; entries 1-22 are UND FUNC GLOBAL DEFAULT ...@LIBC (2), entry 16 is stderr@LIBC (2) OBJECT ; readelf -VW mnt/system_a/system/xbin/su -> Version needs: File: libc.so Cnt: 1 ; Name: LIBC Flags: none Version: 2",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": ".dynsym has 23 entries. Entry 0 is the null symbol, and entries 1-22 are the undefined imports listed in the claim (__libc_init through unsetenv). All carry version LIBC (2), and the version-needs table lists libc.so, LIBC, version 2. stderr is type OBJECT.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U07",
+   "claim": "The ELF notes contain an Android NT_VERSION note whose description data is 20 00 00 00 and a GNU build-id note with value 0a22c7e5ae892af0d48d6a83b14ea2fd.",
+   "label": "verified",
+   "evidence": "readelf -nW mnt/system_a/system/xbin/su -> Owner Android, Data size 0x00000004, NT_VERSION (version), description data: 20 00 00 00 ; Owner GNU, Data size 0x00000010, NT_GNU_BUILD_ID, Build ID: 0a22c7e5ae892af0d48d6a83b14ea2fd",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "Owner Android, data size 0x4, NT_VERSION, description data 20 00 00 00. Owner GNU, data size 0x10, NT_GNU_BUILD_ID, Build ID 0a22c7e5ae892af0d48d6a83b14ea2fd.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U08",
+   "claim": "In the extracted tree su has mode bits 4750 (-rwsr-x---) with owner 0 and group 2000, and its parent directory xbin has mode 750 with owner 0:2000.",
+   "label": "verified",
+   "evidence": "stat -c '%n | type=%F | mode=%a (%A) | uid:gid=%u:%g | size=%s' mnt/system_a/system/xbin/su mnt/system_a/system/xbin -> mnt/system_a/system/xbin/su | type=regular file | mode=4750 (-rwsr-x---) | uid:gid=0:2000 | size=11088 ; mnt/system_a/system/xbin | type=directory | mode=750 (drwxr-x---) | uid:gid=0:2000 | size=4096",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "stat on xbin/su: regular file, mode 4750 (-rwsr-x---), uid:gid 0:2000, size 11088. stat on xbin: directory, mode 750 (drwxr-x---), uid:gid 0:2000.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U09",
+   "claim": "The binary embeds the usage text 'usage: su [WHO [COMMAND...]]', a description that WHO defaults to 'root' and COMMAND defaults to sh, and a note that WHO is a comma-separated list of user, group and supplementary groups in that order.",
+   "label": "verified",
+   "evidence": "strings -n 4 mnt/system_a/system/xbin/su | grep -nE 'usage|Switch|WHO' -> 40:usage: su [WHO [COMMAND...]] ; 41:Switch to WHO (default 'root') and run the given COMMAND (default sh). ; 42:WHO is a comma-separated list of user, group, and supplementary groups ; 43:in that order.",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "strings lines 40-43: 'usage: su [WHO [COMMAND...]]'; 'Switch to WHO (default 'root') and run the given COMMAND (default sh).'; 'WHO is a comma-separated list of user, group, and supplementary groups' followed by 'in that order.'. The claim's omitted serial comma is cosmetic.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U10",
+   "claim": "Embedded diagnostic and environment strings include: --help, setuid failed, setgid failed, invalid uid/gid '%s', setgroups failed, not allowed, too many group ids, failed to exec %s. Environment names read are PATH, USER and LOGNAME. The default shell path is /system/bin/sh, and a default PATH literal is embedded.",
+   "label": "verified",
+   "evidence": "strings -n 4 mnt/system_a/system/xbin/su | grep -nE '^--help|failed|invalid|not allowed|too many|^PATH|^USER|^LOGNAME|^/system/bin/sh|^/product/bin' -> 30:--help ; 31:setuid failed ; 32:setgid failed ; 33:invalid uid/gid '%s' ; 34:/system/bin/sh ; 35:setgroups failed ; 36:not allowed ; 37:too many group ids ; 38:PATH ; 39:USER ; 44:/product/bin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/system_ext/bin:/system/bin:/system/xbin:/odm/bin:/vendor/bin:/vendor/xbin ; 45:failed to exec %s ; 46:LOGNAME",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "needs_change",
+   "reason": "All listed strings are present at the stated lines, and the default shell path (0x8ca) and default PATH literal (0x9d9) are embedded. The 'read' part is wrong. The binary imports setenv and unsetenv but no getenv. Disassembly shows PATH (0x911), USER (0x916) and LOGNAME (0xa7b) passed as the name argument to setenv with overwrite 1 (calls at 0x14d0, 0x1500, 0x1514), and the default PATH literal as its value. IFS (0x8d9) is passed to unsetenv (0x14dc), and LOGNAME and USER are passed to unsetenv at 0x1538 and 0x1544. So the names are set or cleared, not read. Gap: runtime behaviour was not run.",
+   "corrected_claim": "The binary embeds --help, setuid failed, setgid failed, invalid uid/gid '%s', setgroups failed, not allowed, too many group ids and failed to exec %s, plus the environment names PATH, USER, LOGNAME, IFS. The default shell path /system/bin/sh and a default PATH literal (/product/bin:/apex/com.android.runtime/bin:...:/vendor/xbin) are embedded. The binary passes PATH, USER and LOGNAME to setenv (PATH with the default literal as value), and clears IFS, USER and LOGNAME with unsetenv at separate call sites. It imports no getenv, so these names are set or cleared rather than read."
+  },
+  {
+   "id": "U11",
+   "claim": "The .gnu_debugdata section is an xz stream that decompresses to a 64-bit AArch64 ELF object with five FUNC symbols: _start (20 bytes), _start_main (64), main (672), pwtoid (220) and extract_uidgids (592). Demangled, the two helpers are pwtoid(char const*, unsigned int*, unsigned int*) and extract_uidgids(char const*, unsigned int*, unsigned int*, unsigned int*, int*).",
+   "label": "verified",
+   "evidence": "dd if=mnt/system_a/system/xbin/su of=su_extract/gnu_debugdata.xz bs=1 skip=$((0x23de)) count=$((0x130)) && xz -dc su_extract/gnu_debugdata.xz > su_extract/gnu_debugdata.elf ; file su_extract/gnu_debugdata.elf -> ELF 64-bit LSB shared object, ARM aarch64, version 1 (GNU/Linux), no program header, not stripped ; readelf -sW su_extract/gnu_debugdata.elf -> 2: _start 20 FUNC GLOBAL ; 3: _start_main 64 FUNC ; 4: _Z6pwtoidPKcPjS1_ 220 FUNC ; 5: _Z15extract_uidgidsPKcPjS1_S1_Pi 592 FUNC ; 6: main 672 FUNC ; printf ... | c++filt -> pwtoid(char const*, unsigned int*, unsigned int*) ; extract_uidgids(char const*, unsigned int*, unsigned int*, unsigned int*, int*)",
+   "file": "<image>-tools/work/subsystems/unclassified/su_extract/gnu_debugdata.elf",
+   "verdict": "confirmed",
+   "reason": "xz -t passes on the 0x130-byte slice, and decompression gives a 768-byte ELF. file: ELF 64-bit LSB shared object, ARM aarch64, not stripped. .symtab FUNC symbols: _start 20, _start_main 64, _Z6pwtoidPKcPjS1_ 220, _Z15extract_uidgidsPKcPjS1_S1_Pi 592, main 672. c++filt gives pwtoid(char const*, unsigned int*, unsigned int*) and extract_uidgids(char const*, unsigned int*, unsigned int*, unsigned int*, int*).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U12",
+   "claim": "plat_file_contexts maps /system/xbin/su to the label u:object_r:su_exec:s0. No other line in the file mentions xbin.",
+   "label": "verified",
+   "evidence": "sed -n '411p' mnt/system_a/system/etc/selinux/plat_file_contexts -> /system/xbin/su<TAB><TAB>u:object_r:su_exec:s0 ; grep -n xbin mnt/system_a/system/etc/selinux/plat_file_contexts -> 411:/system/xbin/su u:object_r:su_exec:s0",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "verdict": "confirmed",
+   "reason": "Line 411 of plat_file_contexts: '/system/xbin/su<TAB><TAB>u:object_r:su_exec:s0'. grep -n xbin returns only line 411.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U13",
+   "claim": "plat_sepolicy.cil declares type su and type su_exec, each with an object_r role. su is declared typepermissive.",
+   "label": "verified",
+   "evidence": "sed -n '3775,3779p' mnt/system_a/system/etc/selinux/plat_sepolicy.cil -> (type su) ; (roletype object_r su) ; (typepermissive su) ; (type su_exec) ; (roletype object_r su_exec)",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil",
+   "verdict": "confirmed",
+   "reason": "Lines 3775-3779 of plat_sepolicy.cil: (type su), (roletype object_r su), (typepermissive su), (type su_exec), (roletype object_r su_exec).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U14",
+   "claim": "su_exec is a member of the attribute sets file_type (line 738), exec_type (line 740) and system_file_type (line 751) in plat_sepolicy.cil.",
+   "label": "verified",
+   "evidence": "grep -n su_exec mnt/system_a/system/etc/selinux/plat_sepolicy.cil | cut -c1-60 -> 738:(typeattributeset file_type (adbd_exec ... su_exec ...)) ; 740:(typeattributeset exec_type (adbd_exec ... su_exec ...)) ; 751:(typeattributeset system_file_type (adbd_exec ... su_exec ...))",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil",
+   "verdict": "confirmed",
+   "reason": "Word-boundary matches for su_exec: line 738 in typeattributeset file_type, line 740 in exec_type, line 751 in system_file_type. Lines 3778-3779 are the declarations. The matches are exact tokens, not substrings such as su_exec_32_0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U15",
+   "claim": "plat_sepolicy.cil contains policy statements naming su or su_exec: a neverallow on base_typeattr_283 for execute and execute_no_trans on su_exec, allow rules from shell and su to su_exec for file execute and read, and a typetransition from shell executing su_exec to process su.",
+   "label": "verified",
+   "evidence": "sed -n '8439p;24124,24132p' mnt/system_a/system/etc/selinux/plat_sepolicy.cil -> 8439: (neverallow base_typeattr_283 su_exec (file (execute execute_no_trans))) ; 24125: (allow shell su_exec (file (read getattr map execute open))) ; 24126: (allow shell su (process (transition))) ; 24127: (allow su su_exec (file (read getattr map execute open entrypoint))) ; 24131: (typetransition shell su_exec process su)",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil",
+   "verdict": "confirmed",
+   "reason": "Line 8439: (neverallow base_typeattr_283 su_exec (file (execute execute_no_trans))). Line 24125: (allow shell su_exec (file (read getattr map execute open))). Line 24127: (allow su su_exec (file (read getattr map execute open entrypoint))). Line 24131: (typetransition shell su_exec process su).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U16",
+   "claim": "su_exec also appears in the vendor and system_ext policy files and in the versioned mapping files. The vendor public policy redeclares it as su_exec_32_0, and the compiled odm precompiled_sepolicy contains the string.",
+   "label": "verified",
+   "evidence": "grep -n su_exec mnt/vendor_a/etc/selinux/vendor_sepolicy.cil -> 204 and 205 (attribute lists with su_exec_32_0) ; grep -n '(type su_exec)' mnt/vendor_a/etc/selinux/plat_pub_versioned.cil -> 4253:(type su_exec) ; 4254:(typeattribute su_exec_32_0) ; 4255:(roletype object_r su_exec_32_0) ; grep -n su_exec mnt/system_ext_a/etc/selinux/system_ext_sepolicy.cil -> lines 14, 15 and 18 (attribute lists) ; grep -c -a su_exec mnt/odm_a/etc/selinux/precompiled_sepolicy -> 1 ; grep -l su_exec mnt/system_a/system/etc/selinux/mapping/*.cil -> 26.0.cil through 32.0.cil",
+   "file": "<image>/mnt/vendor_a/etc/selinux/plat_pub_versioned.cil",
+   "verdict": "needs_change",
+   "reason": "The matches hold: vendor_sepolicy.cil lines 204-205 (attribute lists with su_exec_32_0); plat_pub_versioned.cil lines 4253-4255 ((type su_exec), (typeattribute su_exec_32_0), (roletype object_r su_exec_32_0)); system_ext_sepolicy.cil lines 14, 15, 18; precompiled_sepolicy contains su_exec once; mapping files 26.0.cil to 32.0.cil. The label is wrong: the file that redeclares the type is plat_pub_versioned.cil, the platform public versioned policy, stored on vendor_a. Calling it the vendor public policy misnames it.",
+   "corrected_claim": "su_exec also appears in the vendor and system_ext policy files and in the versioned mapping files. The platform public versioned policy file stored on vendor_a (plat_pub_versioned.cil, lines 4253-4255) redeclares it as su_exec_32_0, and the compiled odm precompiled_sepolicy contains the string."
+  },
+  {
+   "id": "U17",
+   "claim": "The dynamic-linker and bionic dependencies of su resolve through symlinks. linker64 points to /apex/com.android.runtime/bin/linker64, and libc.so, libm.so and libdl.so point to /apex/com.android.runtime/lib64/bionic/. libc++.so is present in system/lib64 as a file of 686024 bytes, and /system/bin/sh is present as a file of 316024 bytes.",
+   "label": "verified",
+   "evidence": "ls -l mnt/system_a/system/bin/linker64 mnt/system_a/system/lib64/libc.so mnt/system_a/system/lib64/libm.so mnt/system_a/system/lib64/libdl.so -> bin/linker64 -> /apex/com.android.runtime/bin/linker64 ; lib64/libc.so -> /apex/com.android.runtime/lib64/bionic/libc.so ; lib64/libm.so -> /apex/com.android.runtime/lib64/bionic/libm.so ; lib64/libdl.so -> /apex/com.android.runtime/lib64/bionic/libdl.so ; stat -c '%s bytes' mnt/system_a/system/lib64/libc++.so -> 686024 bytes ; stat -c '%s bytes' mnt/system_a/system/bin/sh -> 316024 bytes",
+   "file": "<image>/mnt/system_a/system/lib64",
+   "verdict": "confirmed",
+   "reason": "ls -l: bin/linker64 -> /apex/com.android.runtime/bin/linker64. lib64/libc.so, libm.so, libdl.so -> /apex/com.android.runtime/lib64/bionic/<name>.so. stat: lib64/libc++.so is a regular file of 686024 bytes. bin/sh is a regular file of 316024 bytes.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U18",
+   "claim": "The APEX archive com.android.runtime.apex is a zip of 8955305 bytes whose payload is apex_payload.img (8880128 bytes), together with apex_manifest.pb, apex_pubkey, apex_build_info.pb, resources and META-INF. The payload was not unpacked in this group.",
+   "label": "verified",
+   "evidence": "unzip -l mnt/system_a/system/apex/com.android.runtime.apex -> 8880128 apex_payload.img ; 2011 apex_build_info.pb ; 49 apex_manifest.pb ; 1032 apex_pubkey ; 10 files ; file mnt/system_a/system/apex/com.android.runtime.apex -> Java archive data (JAR)",
+   "file": "<image>/mnt/system_a/system/apex/com.android.runtime.apex",
+   "verdict": "needs_change",
+   "reason": "Archive is a regular file of 8955305 bytes; file reports Java archive data (JAR), which is zip-based. unzip -l lists 10 entries: apex_payload.img 8880128, apex_build_info.pb 2011, apex_manifest.pb 49, apex_pubkey 1032, assets/NOTICE.html.gz 24505, resources.arsc 40, AndroidManifest.xml 1336, META-INF/CERT.SF 779, META-INF/CERT.RSA 2271, META-INF/MANIFEST.MF 644. The claim omits assets/NOTICE.html.gz and AndroidManifest.xml, and says 'resources' where the entry is resources.arsc. Gap: the payload was not unpacked, as stated.",
+   "corrected_claim": "The APEX archive com.android.runtime.apex is a zip (JAR) of 8955305 bytes whose payload is apex_payload.img (8880128 bytes). It also holds apex_manifest.pb, apex_pubkey, apex_build_info.pb, resources.arsc, AndroidManifest.xml, assets/NOTICE.html.gz and META-INF (CERT.SF, CERT.RSA, MANIFEST.MF), 10 entries in all. The payload was not unpacked in this group."
+  },
+  {
+   "id": "U19",
+   "claim": "No .rc file in the mounted tree contains the string xbin, so no init script references the /system/xbin directory or su.",
+   "label": "verified",
+   "evidence": "grep -rl xbin mnt --include='*.rc' -> no output (exit status 1)",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.rc",
+   "verdict": "confirmed",
+   "reason": "grep -rl xbin mnt --include='*.rc' gives no output and exit status 1.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U20",
+   "claim": "Eight links at the root of system_a point to absolute targets: cache to /data/cache, bin to /system/bin, sdcard to /storage/self/primary, vendor_dlkm/etc to /vendor/vendor_dlkm/etc, d to /sys/kernel/debug, etc to /system/etc, odm_dlkm/etc to /odm/odm_dlkm/etc, bugreports to /data/user_de/0/com.android.shell/files/bugreports.",
+   "label": "verified",
+   "evidence": "readlink mnt/system_a/cache -> /data/cache ; readlink mnt/system_a/bin -> /system/bin ; readlink mnt/system_a/sdcard -> /storage/self/primary ; readlink mnt/system_a/vendor_dlkm/etc -> /vendor/vendor_dlkm/etc ; readlink mnt/system_a/d -> /sys/kernel/debug ; readlink mnt/system_a/etc -> /system/etc ; readlink mnt/system_a/odm_dlkm/etc -> /odm/odm_dlkm/etc ; readlink mnt/system_a/bugreports -> /data/user_de/0/com.android.shell/files/bugreports",
+   "file": "<image>/mnt/system_a",
+   "verdict": "needs_change",
+   "reason": "All eight targets match readlink output (/data/cache, /system/bin, /storage/self/primary, /vendor/vendor_dlkm/etc, /sys/kernel/debug, /system/etc, /odm/odm_dlkm/etc, /data/user_de/0/com.android.shell/files/bugreports). Only six of the eight sit at the root of system_a (cache, bin, sdcard, d, etc, bugreports). vendor_dlkm/etc and odm_dlkm/etc are one level down, inside the real directories mnt/system_a/vendor_dlkm and mnt/system_a/odm_dlkm. The root also has init -> /system/bin/init, which is outside this group.",
+   "corrected_claim": "Eight links in system_a point to absolute targets: six at the root (cache -> /data/cache, bin -> /system/bin, sdcard -> /storage/self/primary, d -> /sys/kernel/debug, etc -> /system/etc, bugreports -> /data/user_de/0/com.android.shell/files/bugreports), and two one level down inside the directories vendor_dlkm/ and odm_dlkm/ (vendor_dlkm/etc -> /vendor/vendor_dlkm/etc, odm_dlkm/etc -> /odm/odm_dlkm/etc). The system_a root also holds init -> /system/bin/init, which is not in this group."
+  },
+  {
+   "id": "U21",
+   "claim": "Four further links point to partition roots: system/system_ext to /system_ext, system/vendor to /vendor, system/product to /product (all in system_a), and odm in vendor_a to /odm.",
+   "label": "verified",
+   "evidence": "readlink mnt/system_a/system/system_ext -> /system_ext ; readlink mnt/system_a/system/vendor -> /vendor ; readlink mnt/system_a/system/product -> /product ; readlink mnt/vendor_a/odm -> /odm",
+   "file": "<image>/mnt/system_a/system",
+   "verdict": "confirmed",
+   "reason": "system/system_ext -> /system_ext, system/vendor -> /vendor, system/product -> /product (all in system_a). vendor_a odm -> /odm.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U22",
+   "claim": "Every link in the group is mode 644 (lrw-r--r--), owned by root:root, and its st_size equals the length of its target string (for example 11 for /data/cache, 21 for /storage/self/primary, 50 for the bugreports path).",
+   "label": "verified",
+   "evidence": "stat -c '%n | type=%F | mode=%a (%A) | uid:gid=%u:%g | size=%s' mnt/system_a/cache mnt/system_a/sdcard mnt/system_a/bugreports -> mnt/system_a/cache | type=symbolic link | mode=644 (lrw-r--r--) | uid:gid=0:0 | size=11 ; mnt/system_a/sdcard | ... | size=21 ; mnt/system_a/bugreports | ... | size=50",
+   "file": "<image>/mnt/system_a",
+   "verdict": "confirmed",
+   "reason": "All 12 group links are symbolic links with mode 644 (lrw-r--r--) and owner root:root. st_size equals the length of the readlink target for every link: cache 11, bin 11, sdcard 21, vendor_dlkm/etc 23, d 17, etc 11, odm_dlkm/etc 17, bugreports 50, system/system_ext 11, system/vendor 7, system/product 8, vendor_a odm 4. The example lengths 11, 21 and 50 are correct.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U23",
+   "claim": "The absolute targets of the two dlkm links are not present under the vendor_a or odm_a trees. The dlkm directories exist only in the separate vendor_dlkm_a and odm_dlkm_a trees.",
+   "label": "verified",
+   "evidence": "ls -la mnt/vendor_a | grep -E 'dlkm|odm' -> only 'odm -> /odm' ; test -e mnt/vendor_a/vendor_dlkm/etc -> ABSENT ; test -e mnt/vendor_dlkm_a/etc -> PRESENT ; test -e mnt/odm_a/odm_dlkm/etc -> ABSENT ; test -e mnt/odm_dlkm_a/etc -> PRESENT",
+   "file": "<image>/mnt",
+   "verdict": "needs_change",
+   "reason": "The existence results match: vendor_a/vendor_dlkm/etc ABSENT, vendor_dlkm_a/etc PRESENT, odm_a/odm_dlkm/etc ABSENT, odm_dlkm_a/etc PRESENT. The 'exist only in' clause is false. mnt/system_a/vendor_dlkm and mnt/system_a/odm_dlkm are real directories, each holding only the etc link. mnt/scratch/overlay also has vendor_dlkm and odm_dlkm directories, without etc. Only the etc directories are confined to vendor_dlkm_a and odm_dlkm_a.",
+   "corrected_claim": "The link targets /vendor/vendor_dlkm/etc and /odm/odm_dlkm/etc are absent under vendor_a and odm_a. The etc directories exist as real directories only in vendor_dlkm_a and odm_dlkm_a. The directories vendor_dlkm and odm_dlkm also exist at the root of system_a (each holding only the etc link) and under mnt/scratch/overlay (without etc)."
+  },
+  {
+   "id": "U24",
+   "claim": "plat_file_contexts labels the link paths. The partition-root links are matched by patterns on lines 1 (vendor), 23 (odm), 43 (product), 55 (system_ext), 70 (vendor_dlkm) and 71 (odm_dlkm). Literal path rules cover /cache on line 86, /data/cache on line 125, and /d, /bin, /etc, /sdcard and /bugreports on lines 351, 354, 355, 362 and 384, all labelled rootfs.",
+   "label": "verified",
+   "evidence": "grep -n -E 'cache|^/d |^/bin|^/etc|^/sdcard|^/bugreports|dlkm|vendor|odm|product|system_ext' mnt/system_a/system/etc/selinux/plat_file_contexts -> 1:/(vendor|system/vendor)(/.*)?  u:object_r:vendor_file:s0 ; 23:/(odm|vendor/odm)(/.*)?  u:object_r:vendor_file:s0 ; 43:/(product|system/product)(/.*)?  u:object_r:system_file:s0 ; 55:/(system_ext|system/system_ext)(/.*)?  u:object_r:system_file:s0 ; 70:/(vendor_dlkm|vendor/vendor_dlkm|system/vendor/vendor_dlkm)(/.*)?  u:object_r:vendor_file:s0 ; 71:/(odm_dlkm|vendor/odm_dlkm|system/vendor/odm_dlkm)(/.*)?  u:object_r:vendor_file:s0 ; 86:/cache(/.*)?  u:object_r:cache_file:s0 ; 125:/data/cache(/.*)?  u:object_r:cache_file:s0 ; 351:/d  u:object_r:rootfs:s0 ; 354:/bin  u:object_r:rootfs:s0 ; 355:/etc  u:object_r:rootfs:s0 ; 362:/sdcard  u:object_r:rootfs:s0 ; 384:/bugreports  u:object_r:rootfs:s0",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "verdict": "needs_change",
+   "reason": "Line numbers and labels match for the partition-root patterns on lines 1 (vendor), 23 (odm), 43 (product), 55 (system_ext), 70 (vendor_dlkm) and 71 (odm_dlkm), and for the plain path rules /d (351), /bin (354), /etc (355), /sdcard (362) and /bugreports (384), all rootfs. Two errors: /cache (line 86) and /data/cache (line 125) are regex pattern rules, not literal rules, and they are labelled cache_file, not rootfs.",
+   "corrected_claim": "plat_file_contexts labels the link paths. Partition-root links are matched by pattern rules on lines 1 (vendor), 23 (odm), 43 (product), 55 (system_ext), 70 (vendor_dlkm) and 71 (odm_dlkm). Pattern rules /cache(/.*)? on line 86 and /data/cache(/.*)? on line 125 are labelled cache_file. Plain path rules for /d, /bin, /etc, /sdcard and /bugreports on lines 351, 354, 355, 362 and 384 are labelled rootfs."
+  },
+  {
+   "id": "U25",
+   "claim": "Init and property scripts reference the link paths or their targets. /cache is used by chown, chmod, restorecon_recursive and mkdir at init.rc lines 580-587. /bin/rm is used at line 1203. /sdcard is exported as EXTERNAL_STORAGE in init.environ.rc line 11. /d/mmc0 is read by storaged.rc line 5. /system/vendor/bin/cnss-daemon is started at vendor init.anorak.rc line 227. The bugreports target path is used by the bugreport service at vendor init.anorak.rc line 210.",
+   "label": "verified",
+   "evidence": "grep -n -E '/cache|/bin/rm|/sdcard|/d/mmc0|/system/vendor/bin|bugreports' mnt/system_a/system/etc/init/hw/init.rc mnt/system_a/init.environ.rc mnt/system_a/system/etc/init/storaged.rc mnt/vendor_a/etc/init/hw/init.anorak.rc -> init.rc:580 chown system cache /cache ; init.rc:581 chmod 0770 /cache ; init.rc:583 restorecon_recursive /cache ; init.rc:587 mkdir /cache/recovery 0770 system cache ; init.rc:1203 exec - system system -- /bin/rm -rf /data/per_boot ; init.environ.rc:11 export EXTERNAL_STORAGE /sdcard ; storaged.rc:5 file /d/mmc0/mmc0:0001/ext_csd r ; init.anorak.rc:227 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l ; init.anorak.rc:210 service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.rc",
+   "verdict": "needs_change",
+   "reason": "Verified: init.rc lines 580 (chown system cache /cache), 581 (chmod 0770 /cache), 583 (restorecon_recursive /cache), 587 (mkdir /cache/recovery); init.rc 1203 (exec - system system -- /bin/rm); init.environ.rc 11 (export EXTERNAL_STORAGE /sdcard); storaged.rc 5 (file /d/mmc0/mmc0:0001/ext_csd r, inside service storaged, class main); init.anorak.rc 210 (bugreport service using the target path). The cnss-daemon entry is only a service definition at line 227, with class late_start. It starts when that class starts, not at line 227. Gap: the start sequence for class late_start was not traced.",
+   "corrected_claim": "Init and property scripts reference the link paths or their targets. /cache is used by chown, chmod, restorecon_recursive and mkdir at init.rc lines 580-587. /bin/rm is used at init.rc line 1203. /sdcard is exported as EXTERNAL_STORAGE in init.environ.rc line 11. /d/mmc0 is declared with read mode in the storaged service (storaged.rc line 5). /system/vendor/bin/cnss-daemon is defined as a service in class late_start at vendor init.anorak.rc line 227. The bugreports target path is used by the bugreport service at vendor init.anorak.rc line 210."
+  },
+  {
+   "id": "U26",
+   "claim": "The symlink statements in init.rc create none of the group's link names. They create /dev/net/tun, /dev/stdin, /dev/stdout, /dev/stderr, /dev/binder, /dev/hwbinder, /dev/vndbinder, /mnt/sdcard, /mnt/runtime/default/self/primary and /dev/fd.",
+   "label": "verified",
+   "evidence": "grep -n symlink mnt/system_a/system/etc/init/hw/init.rc -> 42: symlink ../tun /dev/net/tun ; 126: symlink /proc/self/fd/0 /dev/stdin ; 127: symlink /proc/self/fd/1 /dev/stdout ; 128: symlink /proc/self/fd/2 /dev/stderr ; 280: symlink /dev/binderfs/binder /dev/binder ; 281: symlink /dev/binderfs/hwbinder /dev/hwbinder ; 282: symlink /dev/binderfs/vndbinder /dev/vndbinder ; 321: symlink /storage/self/primary /mnt/sdcard ; 322: symlink /mnt/user/0/primary /mnt/runtime/default/self/primary ; 470: symlink /proc/self/fd /dev/fd",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.rc",
+   "verdict": "needs_change",
+   "reason": "The claim holds that none of the init.rc symlink statements creates a group link name. The list is incomplete, though. Excluding the comment on line 40, init.rc has 12 symlink statements: lines 42, 126, 127, 128, 280, 281, 282, 321, 322, 470, 1073 and 1077. The claim's list omits line 1073 (/dev/sys/fs/by-name/userdata) and line 1077 (/dev/sys/block/by-name/userdata).",
+   "corrected_claim": "The symlink statements in init.rc create none of the group's link names. They create /dev/net/tun, /dev/stdin, /dev/stdout, /dev/stderr, /dev/binder, /dev/hwbinder, /dev/vndbinder, /mnt/sdcard, /mnt/runtime/default/self/primary, /dev/fd, /dev/sys/fs/by-name/userdata and /dev/sys/block/by-name/userdata."
+  },
+  {
+   "id": "U27",
+   "claim": "The 12 links are most likely static content of the partition images, created when the images were built, rather than links made by init at boot. This is inferred from the absence of any init statement that creates them and from the identical 2009-01-01 timestamps on all entries.",
+   "label": "inferred",
+   "evidence": "Basis: U26 (no init symlink statement creates a group link name) and U22 (stat mtime fields of the links show the same 2009-01-01 date across partitions); the build step that created them was not located.",
+   "file": "<image>/mnt/system_a/system/etc/init/hw/init.rc",
+   "verdict": "confirmed",
+   "reason": "stat shows mtime 2009-01-01 00:00:00 UTC for all 12 group links. A search across all .rc files under mnt finds 42 symlink statements, and none creates a group link name. The inferred basis holds. Gap: the build step that created the links was not located.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U28",
+   "claim": "The system build.prop in the image reports ro.build.version.release=12 and ro.build.type=userdebug.",
+   "label": "verified",
+   "evidence": "grep -E '^ro\\.(build\\.version\\.release|build\\.type)=' mnt/system_a/system/build.prop -> ro.build.version.release=12 ; ro.build.type=userdebug",
+   "file": "<image>/mnt/system_a/system/build.prop",
+   "verdict": "confirmed",
+   "reason": "grep on system/build.prop: ro.build.version.release=12 and ro.build.type=userdebug.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U29",
+   "claim": "The su binary is a switch-user command. From its strings and imports it takes an optional WHO and COMMAND, sets the group and user IDs and the supplementary group list, and executes COMMAND or /system/bin/sh. The helper names suggest that one helper parses the WHO string into IDs and another extracts UID, GID and group list.",
+   "label": "inferred",
+   "evidence": "Basis: U09 (usage text), U10 (setuid failed, setgid failed, setgroups failed, failed to exec %s, /system/bin/sh), U06 (setuid, setgid, setgroups, execvp imports) and U11 (helper names pwtoid and extract_uidgids). Behaviour was not run.",
+   "file": "<image>/mnt/system_a/system/xbin/su",
+   "verdict": "confirmed",
+   "reason": "The imports include setuid, setgid, setgroups, execvp, setenv and unsetenv. The strings include the usage text and /system/bin/sh, and the helper names are pwtoid and extract_uidgids, so the inferred label is right. Gaps: behaviour was not run, and control flow between the call sites was not traced. The role table row for su is labelled 'verified', but 'switch-user command' is an inference from the usage text; 'inferred' would fit better.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "U30",
+   "claim": "Each of the 12 links is a plain alias for its target path. Its role is limited to the target path verified in U20, U21 and the arrival of the target in other partitions; the naming-based purposes (cache, sdcard, dlkm etc, bugreports) are not confirmed by any consumer.",
+   "label": "inferred",
+   "evidence": "Basis: U20 and U21 (readlink targets) and U24 (labels). No program was run to confirm the purpose of each alias.",
+   "file": "<image>-tools/work/subsystems/unclassified/roles.tsv",
+   "verdict": "needs_change",
+   "reason": "The inferred label holds, but 'not confirmed by any consumer' is contradicted by U25. Init scripts reference cache (/cache), sdcard (/sdcard), bin (/bin/rm), d (/d/mmc0) and system/vendor (/system/vendor/bin/cnss-daemon) through the link paths. The consumers of the bugreports and dlkm links were not found in the files checked. The bugreport service uses the full target path, not the link name.",
+   "corrected_claim": "Each of the 12 links is a plain alias for its target path. Its role is limited to the target path verified in U20 and U21 and the arrival of the target in other partitions. Init scripts reference cache, sdcard, bin, d and system/vendor through their link paths (see U25), so those purposes have observed path references. The purposes of the bugreports, dlkm, etc, product, system_ext and odm links have no consumer confirmed in the files checked."
+  }
+ ],
+ "gaps": [
+  "The payload apex_payload.img inside com.android.runtime.apex was not unpacked. The contents of linker64, libc.so, libm.so and libdl.so, and their symbol versions, were not examined because they belong to another subsystem.",
+  "The su machine code was not disassembled: the available objdump reported \"can't disassemble for architecture UNKNOWN!\" for this AArch64 file. Control flow, the exact system calls and the run-time behaviour of su were not established, and su was not executed.",
+  "The embedded debug data holds five FUNC symbols only, with no DWARF or type information. Local functions, data objects and string-to-code cross-references are unresolved.",
+  "Extended attributes and SELinux labels on the symlink inodes and on the su inode were not read. The labels given here come from file_contexts patterns only, and the effective label of each path was not confirmed.",
+  "The runtime targets /data/cache, /data/user_de/0/com.android.shell/files/bugreports, /storage/self/primary and /sys/kernel/debug are outside the mounted set, so their existence and contents were not verified.",
+  "The vendor_dlkm/etc and odm_dlkm/etc targets are not present under the vendor_a or odm_a trees. Their resolution through the separate dlkm partitions is inferred from the partition names and was not verified against an fstab.",
+  "The device mount points for system_a, vendor_a, odm_a, product_a and system_ext_a were inferred from the link targets. The fstab or init mount entries were not read.",
+  "The compiled policy odm_a/etc/selinux/precompiled_sepolicy was checked only for the presence of the string su_exec. It was not decoded, and effective access rules for su and su_exec were not computed.",
+  "Only the policy statements that name su or su_exec were listed. The full rule set for the su domain and the su_exec type was not enumerated.",
+  "The build step or manifest that created the 12 links was not located, so the origin of the links is inferred only.",
+  "The mode and ownership values come from the extracted tree (stat on the mounted copy), not from the original image's inode metadata.",
+  "The roles given for the symlinks describe their targets. Their purposes (aliases, legacy paths, compatibility) are inferred from names and were not confirmed by a consumer of each link."
+ ],
+ "rolesFile": "data/subsystems/unclassified/roles.tsv"
+}

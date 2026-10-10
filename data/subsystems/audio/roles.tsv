@@ -1,0 +1,240 @@
+partition	path	role	confidence
+product_a	media/audio/ui/KeypressSpacebar.ogg	Vorbis-in-Ogg UI sound clip 'KeypressSpacebar' (media/audio/ui)	verified
+product_a	media/audio/ui/LowBattery.ogg	Vorbis-in-Ogg UI sound clip 'LowBattery' (media/audio/ui)	verified
+product_a	media/audio/ui/KeypressStandard.ogg	Vorbis-in-Ogg UI sound clip 'KeypressStandard' (media/audio/ui)	verified
+product_a	media/audio/ui/ChargingStarted.ogg	Vorbis-in-Ogg UI sound clip 'ChargingStarted' (media/audio/ui)	verified
+product_a	media/audio/ui/KeypressReturn.ogg	Vorbis-in-Ogg UI sound clip 'KeypressReturn' (media/audio/ui)	verified
+product_a	media/audio/ui/Lock.ogg	Vorbis-in-Ogg UI sound clip 'Lock' (media/audio/ui)	verified
+product_a	media/audio/ui/WirelessChargingStarted.ogg	Vorbis-in-Ogg UI sound clip 'WirelessChargingStarted' (media/audio/ui)	verified
+product_a	media/audio/ui/KeypressInvalid.ogg	Vorbis-in-Ogg UI sound clip 'KeypressInvalid' (media/audio/ui)	verified
+product_a	media/audio/ui/InCallNotification.ogg	Vorbis-in-Ogg UI sound clip 'InCallNotification' (media/audio/ui)	verified
+product_a	media/audio/ui/Effect_Tick.ogg	Vorbis-in-Ogg UI sound clip 'Effect_Tick' (media/audio/ui)	verified
+product_a	media/audio/ui/KeypressDelete.ogg	Vorbis-in-Ogg UI sound clip 'KeypressDelete' (media/audio/ui)	verified
+product_a	media/audio/ui/Undock.ogg	Vorbis-in-Ogg UI sound clip 'Undock' (media/audio/ui)	verified
+product_a	media/audio/ui/VideoRecord.ogg	Vorbis-in-Ogg UI sound clip 'VideoRecord' (media/audio/ui)	verified
+product_a	media/audio/ui/Unlock.ogg	Vorbis-in-Ogg UI sound clip 'Unlock' (media/audio/ui)	verified
+product_a	media/audio/ui/VideoStop.ogg	Vorbis-in-Ogg UI sound clip 'VideoStop' (media/audio/ui)	verified
+product_a	media/audio/ui/Dock.ogg	Vorbis-in-Ogg UI sound clip 'Dock' (media/audio/ui)	verified
+product_a	media/audio/ui/Trusted.ogg	Vorbis-in-Ogg UI sound clip 'Trusted' (media/audio/ui)	verified
+product_a	media/audio/alarms/Osmium.ogg	Vorbis-in-Ogg alarm sound clip 'Osmium' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Timer.ogg	Vorbis-in-Ogg alarm sound clip 'Timer' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Argon.ogg	Vorbis-in-Ogg alarm sound clip 'Argon' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Helium.ogg	Vorbis-in-Ogg alarm sound clip 'Helium' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Platinum.ogg	Vorbis-in-Ogg alarm sound clip 'Platinum' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Oxygen.ogg	Vorbis-in-Ogg alarm sound clip 'Oxygen' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Carbon.ogg	Vorbis-in-Ogg alarm sound clip 'Carbon' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Krypton.ogg	Vorbis-in-Ogg alarm sound clip 'Krypton' (media/audio/alarms)	verified
+product_a	media/audio/alarms/Neon.ogg	Vorbis-in-Ogg alarm sound clip 'Neon' (media/audio/alarms)	verified
+product_a	media/audio/notifications/Europa.ogg	Vorbis-in-Ogg notification sound clip 'Europa' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Tethys.ogg	Vorbis-in-Ogg notification sound clip 'Tethys' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Iapetus.ogg	Vorbis-in-Ogg notification sound clip 'Iapetus' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Carme.ogg	Vorbis-in-Ogg notification sound clip 'Carme' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Ariel.ogg	Vorbis-in-Ogg notification sound clip 'Ariel' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Elara.ogg	Vorbis-in-Ogg notification sound clip 'Elara' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Io.ogg	Vorbis-in-Ogg notification sound clip 'Io' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Salacia.ogg	Vorbis-in-Ogg notification sound clip 'Salacia' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Ceres.ogg	Vorbis-in-Ogg notification sound clip 'Ceres' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Titan.ogg	Vorbis-in-Ogg notification sound clip 'Titan' (media/audio/notifications)	verified
+product_a	media/audio/notifications/Rhea.ogg	Vorbis-in-Ogg notification sound clip 'Rhea' (media/audio/notifications)	verified
+product_a	media/audio/ringtones/Oberon.ogg	Vorbis-in-Ogg ringtone clip 'Oberon' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Atria.ogg	Vorbis-in-Ogg ringtone clip 'Atria' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Titania.ogg	Vorbis-in-Ogg ringtone clip 'Titania' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Sedna.ogg	Vorbis-in-Ogg ringtone clip 'Sedna' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Callisto.ogg	Vorbis-in-Ogg ringtone clip 'Callisto' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Dione.ogg	Vorbis-in-Ogg ringtone clip 'Dione' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Phobos.ogg	Vorbis-in-Ogg ringtone clip 'Phobos' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Luna.ogg	Vorbis-in-Ogg ringtone clip 'Luna' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Pyxis.ogg	Vorbis-in-Ogg ringtone clip 'Pyxis' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Triton.ogg	Vorbis-in-Ogg ringtone clip 'Triton' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Ganymede.ogg	Vorbis-in-Ogg ringtone clip 'Ganymede' (media/audio/ringtones)	verified
+product_a	media/audio/ringtones/Umbriel.ogg	Vorbis-in-Ogg ringtone clip 'Umbriel' (media/audio/ringtones)	verified
+product_a	etc/permissions/android.hardware.audio.low_latency.xml	Feature declaration XML: android.hardware.audio.low_latency (no other elements)	verified
+product_a	etc/permissions/android.hardware.audio.pro.xml	Feature declaration XML: android.hardware.audio.pro (no other elements)	verified
+system_a	system/bin/audioserver	AArch64 PIE audio server process; imports AudioFlinger::instantiate and AudioPolicyService constructor; NEEDED libaudioflinger, libaudiopolicyservice, libaaudioservice; started by audioserver.rc	verified
+system_a	system/etc/audio_effects.conf	Legacy effects config: libraries block (bundle, reverb, visualizer, downmix, loudness_enhancer, dynamics_processing) and effects block with 12 uuid entries	verified
+system_a	system/lib/aaudio-aidl-cpp.so	AIDL C++ stubs for AAudio service interfaces (IAAudioService, IAAudioClient)	verified
+system_a	system/lib/android.hardware.audio.common-util.so	HAL common utility library: EffectMap singleton and effect_interface key-value helpers	verified
+system_a	system/lib/android.hardware.audio.common@2.0.so	HIDL audio common types 2.0 (2 exported functions)	verified
+system_a	system/lib/android.hardware.audio.common@4.0-util.so	HIDL audio common 4.0 utility library (audio::common helpers)	verified
+system_a	system/lib/android.hardware.audio.common@4.0.so	HIDL audio common types 4.0 (generated types)	verified
+system_a	system/lib/android.hardware.audio.common@5.0-util.so	HIDL audio common 5.0 utility library	verified
+system_a	system/lib/android.hardware.audio.common@5.0.so	HIDL audio common types 5.0 (generated types)	verified
+system_a	system/lib/android.hardware.audio.common@6.0-util.so	HIDL audio common 6.0 utility library	verified
+system_a	system/lib/android.hardware.audio.common@6.0.so	HIDL audio common types 6.0 (generated types)	verified
+system_a	system/lib/android.hardware.audio.common@7.0-enums.so	HIDL audio common 7.0 enum definitions (audio::policy and common enums)	verified
+system_a	system/lib/android.hardware.audio.common@7.0-util.so	HIDL audio common 7.0 utility library (audio::common helpers)	verified
+system_a	system/lib/android.hardware.audio.common@7.0.so	HIDL audio common types 7.0 (308 exported audio::common symbols)	verified
+system_a	system/lib/android.hardware.audio.effect@4.0-util.so	HIDL audio effect 4.0 utility library	verified
+system_a	system/lib/android.hardware.audio.effect@4.0.so	HIDL audio effect interface 4.0 (audio::effect generated code)	verified
+system_a	system/lib/android.hardware.audio.effect@5.0-util.so	HIDL audio effect 5.0 utility library	verified
+system_a	system/lib/android.hardware.audio.effect@5.0.so	HIDL audio effect interface 5.0 (audio::effect generated code)	verified
+system_a	system/lib/android.hardware.audio.effect@6.0-util.so	HIDL audio effect 6.0 utility library	verified
+system_a	system/lib/android.hardware.audio.effect@6.0.so	HIDL audio effect interface 6.0 (audio::effect generated code)	verified
+system_a	system/lib/android.hardware.audio.effect@7.0-util.so	HIDL audio effect 7.0 utility library	verified
+system_a	system/lib/android.hardware.audio.effect@7.0.so	HIDL audio effect interface 7.0 (1272 exported audio::effect symbols)	verified
+system_a	system/lib/android.hardware.audio@4.0-util.so	HIDL audio 4.0 utility library (audio::V4_0 helpers)	verified
+system_a	system/lib/android.hardware.audio@4.0.so	HIDL audio device and stream interface 4.0 (audio::V4_0 generated code)	verified
+system_a	system/lib/android.hardware.audio@5.0-util.so	HIDL audio 5.0 utility library (audio::V5_0 helpers)	verified
+system_a	system/lib/android.hardware.audio@5.0.so	HIDL audio device and stream interface 5.0 (audio::V5_0 generated code)	verified
+system_a	system/lib/android.hardware.audio@6.0-util.so	HIDL audio 6.0 utility library (audio::V6_0 helpers)	verified
+system_a	system/lib/android.hardware.audio@6.0.so	HIDL audio device and stream interface 6.0 (audio::V6_0 generated code)	verified
+system_a	system/lib/android.hardware.audio@7.0-util.so	HIDL audio 7.0 utility library (audio::V7_0 helpers)	verified
+system_a	system/lib/android.hardware.audio@7.0.so	HIDL audio device and stream interface 7.0: IDevice, IDevicesFactory, IPrimaryDevice, IStream, IStreamIn, IStreamOut	verified
+system_a	system/lib/audio_common-aidl-cpp.so	AIDL C++ generated types for media.audio common definitions	verified
+system_a	system/lib/audioclient-types-aidl-cpp.so	AIDL C++ types for audio client (TrackSecondaryOutputInfo, ExtraAudioDescriptor, EffectDescriptor)	verified
+system_a	system/lib/audioflinger-aidl-cpp.so	AIDL C++ client stubs for IAudioFlingerService and IAudioTrack	verified
+system_a	system/lib/audiopolicy-aidl-cpp.so	AIDL C++ client stubs for IAudioPolicyService	verified
+system_a	system/lib/audiopolicy-types-aidl-cpp.so	AIDL C++ types for audio policy (AudioVolumeGroup, SoundTriggerSession)	verified
+system_a	system/lib/hw/audio.a2dp.default.so	32-bit A2DP audio HAL module (exports HMI); contains Rust cxxbridge and bluetooth shim code	verified
+system_a	system/lib/libaaudio.so	AAudio public NDK C API (AAudioStream_* and AAudio_getMMapPolicy exports)	verified
+system_a	system/lib/libaaudio_internal.so	AAudio client implementation (AudioStream, AudioStreamInternal, AudioStreamTrack)	verified
+system_a	system/lib/libaudio-resampler.so	Audio sample-rate resampler (readResamplerCoefficients and FIR coefficient readers)	verified
+system_a	system/lib/libaudioclient.so	Client-side AudioTrack, AudioRecord and AudioSystem library linked by app and framework processes	verified
+system_a	system/lib/libaudioclient_aidl_conversion.so	Conversion helpers between legacy audio enums and AIDL types (enumToMask and indexToEnum)	verified
+system_a	system/lib/libaudioeffect_jni.so	JNI bridge for android.media.audiofx effects (AudioEffectJni)	verified
+system_a	system/lib/libaudiofoundation.so	Shared device and profile descriptors (DeviceDescriptorBase, AudioProfile)	verified
+system_a	system/lib/libaudiohal.so	Legacy audio HAL client wrapper (EffectsFactoryHalInterface::create, createPreferredImpl)	verified
+system_a	system/lib/libaudiohal@4.0.so	Client wrapper for audio HAL 4.0 interfaces (no class exports identified)	inferred
+system_a	system/lib/libaudiohal@5.0.so	Client wrapper for audio HAL 5.0 interfaces (no class exports identified)	inferred
+system_a	system/lib/libaudiohal@6.0.so	Client wrapper for audio HAL 6.0 interfaces (no class exports identified)	inferred
+system_a	system/lib/libaudiohal@7.0.so	Client wrapper for audio HAL 7.0 interfaces (exports createIDevicesFactory and createIEffectsFactory)	verified
+system_a	system/lib/libaudiohal_deathhandler.so	HAL death-notification handler singleton (HalDeathHandler)	verified
+system_a	system/lib/libaudiomanager.so	IAudioManager AIDL client stubs (android.media.IAudioManager)	verified
+system_a	system/lib/libaudiopolicy.so	Audio policy core shared library (AudioMixMatchCriterion, enum helpers)	verified
+system_a	system/lib/libaudioroute.so	ALSA mixer path routing library (audio_route_init, audio_route_apply_path, audio_route_reset)	verified
+system_a	system/lib/libaudioutils.so	Audio utility library (audio_utils namespace: format and timing helpers)	verified
+system_a	system/lib64/aaudio-aidl-cpp.so	AIDL C++ stubs for AAudio service interfaces (IAAudioService, IAAudioClient)	verified
+system_a	system/lib64/android.hardware.audio.common-util.so	HAL common utility library: EffectMap singleton and effect_interface key-value helpers	verified
+system_a	system/lib64/android.hardware.audio.common@2.0.so	HIDL audio common types 2.0 (2 exported functions)	verified
+system_a	system/lib64/android.hardware.audio.common@4.0-util.so	HIDL audio common 4.0 utility library (audio::common helpers)	verified
+system_a	system/lib64/android.hardware.audio.common@4.0.so	HIDL audio common types 4.0 (generated types)	verified
+system_a	system/lib64/android.hardware.audio.common@5.0-util.so	HIDL audio common 5.0 utility library	verified
+system_a	system/lib64/android.hardware.audio.common@5.0.so	HIDL audio common types 5.0 (generated types)	verified
+system_a	system/lib64/android.hardware.audio.common@6.0-util.so	HIDL audio common 6.0 utility library	verified
+system_a	system/lib64/android.hardware.audio.common@6.0.so	HIDL audio common types 6.0 (generated types)	verified
+system_a	system/lib64/android.hardware.audio.common@7.0-enums.so	HIDL audio common 7.0 enum definitions (audio::policy and common enums)	verified
+system_a	system/lib64/android.hardware.audio.common@7.0-util.so	HIDL audio common 7.0 utility library (audio::common helpers)	verified
+system_a	system/lib64/android.hardware.audio.common@7.0.so	HIDL audio common types 7.0 (audio::common generated types)	verified
+system_a	system/lib64/android.hardware.audio.effect@4.0-util.so	HIDL audio effect 4.0 utility library	verified
+system_a	system/lib64/android.hardware.audio.effect@4.0.so	HIDL audio effect interface 4.0 (audio::effect generated code)	verified
+system_a	system/lib64/android.hardware.audio.effect@5.0-util.so	HIDL audio effect 5.0 utility library	verified
+system_a	system/lib64/android.hardware.audio.effect@5.0.so	HIDL audio effect interface 5.0 (audio::effect generated code)	verified
+system_a	system/lib64/android.hardware.audio.effect@6.0-util.so	HIDL audio effect 6.0 utility library	verified
+system_a	system/lib64/android.hardware.audio.effect@6.0.so	HIDL audio effect interface 6.0 (audio::effect generated code)	verified
+system_a	system/lib64/android.hardware.audio.effect@7.0-util.so	HIDL audio effect 7.0 utility library	verified
+system_a	system/lib64/android.hardware.audio.effect@7.0.so	HIDL audio effect interface 7.0 (audio::effect generated code)	verified
+system_a	system/lib64/android.hardware.audio@4.0-util.so	HIDL audio 4.0 utility library (audio::V4_0 helpers)	verified
+system_a	system/lib64/android.hardware.audio@4.0.so	HIDL audio device and stream interface 4.0 (audio::V4_0 generated code)	verified
+system_a	system/lib64/android.hardware.audio@5.0-util.so	HIDL audio 5.0 utility library (audio::V5_0 helpers)	verified
+system_a	system/lib64/android.hardware.audio@5.0.so	HIDL audio device and stream interface 5.0 (audio::V5_0 generated code)	verified
+system_a	system/lib64/android.hardware.audio@6.0-util.so	HIDL audio 6.0 utility library (audio::V6_0 helpers)	verified
+system_a	system/lib64/android.hardware.audio@6.0.so	HIDL audio device and stream interface 6.0 (audio::V6_0 generated code)	verified
+system_a	system/lib64/android.hardware.audio@7.0-util.so	HIDL audio 7.0 utility library (audio::V7_0 helpers)	verified
+system_a	system/lib64/android.hardware.audio@7.0.so	HIDL audio device and stream interface 7.0: IDevice, IDevicesFactory, IPrimaryDevice, IStream, IStreamIn, IStreamOut	verified
+system_a	system/lib64/audio_common-aidl-cpp.so	AIDL C++ generated types for media.audio common definitions	verified
+system_a	system/lib64/audioclient-types-aidl-cpp.so	AIDL C++ types for audio client (TrackSecondaryOutputInfo, ExtraAudioDescriptor, EffectDescriptor)	verified
+system_a	system/lib64/audioflinger-aidl-cpp.so	AIDL C++ client stubs for IAudioFlingerService and IAudioTrack	verified
+system_a	system/lib64/audiopolicy-aidl-cpp.so	AIDL C++ client stubs for IAudioPolicyService	verified
+system_a	system/lib64/audiopolicy-types-aidl-cpp.so	AIDL C++ types for audio policy (AudioVolumeGroup, AudioProductStrategy, SoundTriggerSession)	verified
+system_a	system/lib64/hw/audio.a2dp.default.so	64-bit A2DP audio HAL module (exports HMI); contains Rust cxxbridge and bluetooth shim code	verified
+system_a	system/lib64/libaaudio.so	AAudio public NDK C API (AAudioStream_* and AAudio_getMMapPolicy exports)	verified
+system_a	system/lib64/libaaudio_internal.so	AAudio client implementation (AudioStream, AudioStreamInternal, AudioStreamTrack)	verified
+system_a	system/lib64/libaaudioservice.so	AAudio service-side implementation (AAudioServiceStreamBase, AAudioServiceEndpointMMAP)	verified
+system_a	system/lib64/libaudio-resampler.so	Audio sample-rate resampler (readResamplerCoefficients and FIR coefficient readers)	verified
+system_a	system/lib64/libaudioclient.so	Client-side AudioTrack, AudioRecord and AudioSystem library linked by app and framework processes	verified
+system_a	system/lib64/libaudioclient_aidl_conversion.so	Conversion helpers between legacy audio enums and AIDL types (enumToMask and indexToEnum)	verified
+system_a	system/lib64/libaudioeffect_jni.so	JNI bridge for android.media.audiofx effects (AudioEffectJni)	verified
+system_a	system/lib64/libaudioflinger.so	AudioFlinger server implementation; exports AudioFlinger::instantiate, which audioserver imports	verified
+system_a	system/lib64/libaudiofoundation.so	Shared device and profile descriptors (DeviceDescriptorBase, AudioProfile)	verified
+system_a	system/lib64/libaudiohal.so	Legacy audio HAL client wrapper (EffectsFactoryHalInterface::create, createPreferredImpl)	verified
+system_a	system/lib64/libaudiohal@4.0.so	Client wrapper for audio HAL 4.0 interfaces (no class exports identified)	inferred
+system_a	system/lib64/libaudiohal@5.0.so	Client wrapper for audio HAL 5.0 interfaces (no class exports identified)	inferred
+system_a	system/lib64/libaudiohal@6.0.so	Client wrapper for audio HAL 6.0 interfaces (no class exports identified)	inferred
+system_a	system/lib64/libaudiohal@7.0.so	Client wrapper for audio HAL 7.0 interfaces (exports createIDevicesFactory and createIEffectsFactory)	verified
+system_a	system/lib64/libaudiohal_deathhandler.so	HAL death-notification handler singleton (HalDeathHandler)	verified
+system_a	system/lib64/libaudiomanager.so	IAudioManager AIDL client stubs (android.media.IAudioManager)	verified
+system_a	system/lib64/libaudiopolicy.so	Audio policy core shared library (AudioMixMatchCriterion, enum helpers)	verified
+system_a	system/lib64/libaudiopolicyenginedefault.so	Default audio policy engine (audio_policy::EngineBase: strategies, routing and volume logic)	verified
+system_a	system/lib64/libaudiopolicymanagerdefault.so	Default AudioPolicyManager; string reference to audio_policy_configuration.xml under /vendor/etc	verified
+system_a	system/lib64/libaudiopolicyservice.so	AudioPolicyService binder implementation; string references to /system/etc/audio_effects.conf and /vendor/etc/audio_effects.conf	verified
+system_a	system/lib64/libaudioprocessing.so	Audio processing library (AudioResamplerDyn and processing helpers)	verified
+system_a	system/lib64/libaudioroute.so	ALSA mixer path routing library (audio_route_init, audio_route_apply_path, audio_route_reset)	verified
+system_a	system/lib64/libaudiospdif.so	S/PDIF encoder and frame scanners (SPDIFEncoder, DTSFrameScanner)	verified
+system_a	system/lib64/libaudioutils.so	Audio utility library (audio_utils namespace: format and timing helpers)	verified
+system_ext_a	bin/audio_capture	AArch64 PIE command-line capture test tool (NEEDED libaaudio, libaudioclient, libaudiolatencytester_engine)	verified
+system_ext_a	bin/audiotapperhost	AArch64 PIE audiotapper host service executable (IAudioTapperHostService); started by audiotapperhost.rc	verified
+system_ext_a	bin/audio_tool	AArch64 PIE audio test and XRA parameter CLI (AAudio stress and latency options, --config_file, --getparam, --setparam)	verified
+system_ext_a	bin/audiomonitor	Shell wrapper script: runs 'dumpsys -t 20 media.audiotapperhost monitor' with start and stop argument handling	verified
+system_ext_a	bin/audiotapper	AArch64 PIE audiotapper service executable; NEEDED libaudiotapperservice.so; started by audiotapper.rc	verified
+system_ext_a	lib/libaudiotapper.oculus.so	32-bit audiotapper client library: ITapPoint and ITapClientSubscriberProc interfaces	verified
+system_ext_a	priv-app/AudioLatencyTester/lib/arm64/libaudiolatencytester_jni.so	Symbolic link to /system_ext/lib64/libaudiolatencytester_jni.so (JNI library for the AudioLatencyTester app)	verified
+system_ext_a	lib64/libaudiolatencytester_engine.so	Latency tester engine library (fmt-based); NEEDED by audio_tool and audio_capture	verified
+system_ext_a	lib64/libaudiolatencytester_jni.so	JNI library for the AudioLatencyTester app (no class exports identified)	inferred
+system_ext_a	lib64/libaudiotapper.oculus.so	64-bit audiotapper client library: ITapPoint and ITapClient interfaces	verified
+system_ext_a	lib64/libaudiotapperhostservice.so	audiotapper host service library (vros::audiotapper host implementation)	verified
+system_ext_a	lib64/libaudiotapperservice.so	audiotapper service library (vros::audiotapper service implementation)	verified
+vendor_a	lib/android.hardware.audio.common@5.0.so	32-bit HIDL audio common types 5.0 (audio::common, 36 exported symbols)	verified
+vendor_a	lib/hw/audio.r_submix.default.so	32-bit remote-submix HAL module (exports HMI); MonoPipe reader and writer	verified
+vendor_a	lib/hw/audio.primary.default.so	32-bit generic primary audio HAL module (exports HMI)	verified
+vendor_a	lib/hw/audio.usb.default.so	32-bit USB audio HAL module (exports HMI)	verified
+vendor_a	lib/hw/audio.primary.anorak.so	32-bit Qualcomm-platform primary audio HAL module for anorak (exports HMI; PAL and AGM client code)	verified
+vendor_a	lib/libaudio_log_utils.so	Audio logging utilities (parse_log_xml, register_for_dynamic_logging, log_utils_init)	verified
+vendor_a	lib/libtinycompress.so	Compressed-audio ALSA interface library (compress_open family, compress_set_codec_params)	verified
+vendor_a	lib/soundfx/libbundlewrapper.so	Effect library exporting AELI: bundle wrapper for bassboost, virtualizer, equalizer, volume	verified
+vendor_a	lib/soundfx/libvolumelistener.so	Effect library exporting AELI; name indicates a volume listener effect	verified
+vendor_a	lib/soundfx/libvisualizer.so	Effect library exporting AELI: visualizer	verified
+vendor_a	lib/soundfx/libldnhncr.so	Effect library exporting AELI: loudness enhancer	verified
+vendor_a	lib/soundfx/libqcomvisualizer.so	Effect library exporting AELI: Qualcomm visualizer	verified
+vendor_a	lib/soundfx/libqcompostprocbundle.so	Effect library exporting AELI: Qualcomm post-processing bundle	verified
+vendor_a	lib/soundfx/libdynproc.so	Effect library exporting AELI: dynamics processing	verified
+vendor_a	lib/soundfx/libdownmix.so	Effect library exporting AELI: downmix	verified
+vendor_a	lib/soundfx/libqcomvoiceprocessing.so	Effect library exporting AELI: Qualcomm voice processing	verified
+vendor_a	lib/soundfx/libeffectproxy.so	Effect proxy library exporting AELI for offloadable effects	verified
+vendor_a	lib/soundfx/libaudiopreprocessing.so	Pre-processing effect library exporting AELI; embeds WebRTC AudioProcessing classes (EchoCanceller, AudioProcessingImpl, rnn_vad)	verified
+vendor_a	lib/soundfx/libreverbwrapper.so	Effect library exporting AELI: reverb	verified
+vendor_a	lib/soundfx/libhapticgenerator.so	Effect library exporting AELI: haptic generator	verified
+vendor_a	etc/audio_policy_configuration.xml	Primary audio policy configuration: module 'primary' (halVersion 2.0) with 12 mixPorts, 13 devicePorts and 13 routes; XInclude of usb, r_submix and bluetooth policy XML	verified
+vendor_a	etc/oculus_audio_configuration.xml	Bus-to-use-case map: bus1_default=media, bus2_voice=voice, bus3_assistant=assistant, bus4_earcons=earcons	verified
+vendor_a	etc/audio_policy_engine_stream_volumes.xml	Policy engine stream volume configuration (volume and point elements; XInclude target of audio_policy_engine_configuration.xml)	observed
+vendor_a	etc/mixer_paths_anorak_max98388.xml	ALSA mixer path definitions for anorak with MAX98388 codec: 190 path blocks and 493 ctl entries	verified
+vendor_a	etc/audio_effects.xml	Audio effects config v2.0: 8 active libraries (bundle, reverb, visualizer, downmix, loudness_enhancer, dynamics_processing, haptic_generator, noise_suppressor) and 14 active effect entries; pre_processing library, agc/aec/ns entries and pre/postprocess examples are inside XML comments	verified
+vendor_a	etc/audio_io_policy.conf	IO profile config: outputs section (11 profiles, e.g. default, proaudio, voip_rx, deep_buffer, direct_pcm_16, compress_offload_16) and inputs section (record_16bit, record_24bit, record_32bit) with flags, formats, sampling_rates, bit_width and app_type	verified
+vendor_a	etc/mixer_paths_sound_trigger.xml	ALSA mixer path definitions for the sound-trigger (hotword) HAL, including path 'software-sound-trigger-hal'	observed
+vendor_a	etc/audio_policy_engine_product_strategies.xml	Policy engine product strategy definitions (9 ProductStrategy entries with Attributes and Usage)	verified
+vendor_a	etc/audio_policy_volumes.xml	Volume curve definitions (71 volume elements, 22 point elements)	verified
+vendor_a	etc/r_submix_audio_policy_configuration.xml	Remote-submix policy module 'r_submix': mixPort output and input, devicePorts Remote Submix Out and In	verified
+vendor_a	etc/media_codecs_google_audio.xml	Codec declarations for OMX.google mp3, amrwb, aac, vorbis and opus decoders	verified
+vendor_a	etc/usb_audio_policy_configuration.xml	USB policy module 'usb': USB Host Out, USB Device In and USB Headset In devicePorts with routes	verified
+vendor_a	etc/audio_policy_engine_configuration.xml	Policy engine root config: XInclude of product strategies, stream volumes and default volume tables	verified
+vendor_a	lib64/android.hardware.audio.common-util.so	HAL common utility library: EffectMap singleton and effect_interface key-value helpers	verified
+vendor_a	lib64/android.hardware.audio.common@5.0.so	HIDL audio common types 5.0 (audio::common, 36 exported symbols)	verified
+vendor_a	lib64/android.hardware.audio.common@7.0-enums.so	HIDL audio common 7.0 enum definitions (audio::policy and common enums)	verified
+vendor_a	lib64/android.hardware.audio.common@7.0-util.so	HIDL audio common 7.0 utility library (audio::common helpers)	verified
+vendor_a	lib64/android.hardware.audio.common@7.0.so	HIDL audio common types 7.0 (audio::common generated types)	verified
+vendor_a	lib64/android.hardware.audio.effect@7.0-util.so	HIDL audio effect 7.0 utility library	verified
+vendor_a	lib64/android.hardware.audio.effect@7.0.so	HIDL audio effect interface 7.0 (audio::effect generated code)	verified
+vendor_a	lib64/android.hardware.audio@7.0-util.so	HIDL audio 7.0 utility library (audio::V7_0 helpers)	verified
+vendor_a	lib64/android.hardware.audio@7.0.so	HIDL audio device and stream interface 7.0: IDevice, IDevicesFactory, IPrimaryDevice, IStream, IStreamIn, IStreamOut	verified
+vendor_a	lib64/hw/audio.r_submix.default.so	64-bit remote-submix HAL module (exports HMI); MonoPipe reader and writer	verified
+vendor_a	lib64/hw/android.hardware.audio@7.0-impl.so	IDevicesFactory 7.0 implementation (audio::V7_0 classes); loads a primary HAL module via hw_get_module_by_class	verified
+vendor_a	lib64/hw/audio.primary.default.so	64-bit generic primary audio HAL module (exports HMI)	verified
+vendor_a	lib64/hw/audio.usb.default.so	64-bit USB audio HAL module (exports HMI)	verified
+vendor_a	lib64/hw/audio.primary.anorak.so	64-bit Qualcomm-platform primary audio HAL module for anorak (exports HMI; PAL and AGM client code)	verified
+vendor_a	lib64/hw/android.hardware.audio.effect@7.0-impl.so	IEffectsFactory 7.0 implementation (audio::effect classes); imports libeffects.so	verified
+vendor_a	lib64/libaudio_log_utils.so	Audio logging utilities (parse_log_xml, register_for_dynamic_logging, log_utils_init)	verified
+vendor_a	lib64/libtinycompress.so	Compressed-audio ALSA interface library (compress_open family, compress_set_codec_params)	verified
+vendor_a	lib64/soundfx/libbundlewrapper.so	Effect library exporting AELI: bundle wrapper for bassboost, virtualizer, equalizer, volume	verified
+vendor_a	lib64/soundfx/libvolumelistener.so	Effect library exporting AELI; name indicates a volume listener effect	verified
+vendor_a	lib64/soundfx/libvisualizer.so	Effect library exporting AELI: visualizer	verified
+vendor_a	lib64/soundfx/libldnhncr.so	Effect library exporting AELI: loudness enhancer	verified
+vendor_a	lib64/soundfx/libqcomvisualizer.so	Effect library exporting AELI: Qualcomm visualizer	verified
+vendor_a	lib64/soundfx/libqcompostprocbundle.so	Effect library exporting AELI: Qualcomm post-processing bundle	verified
+vendor_a	lib64/soundfx/libdynproc.so	Effect library exporting AELI: dynamics processing	verified
+vendor_a	lib64/soundfx/libdownmix.so	Effect library exporting AELI: downmix	verified
+vendor_a	lib64/soundfx/libqcomvoiceprocessing.so	Effect library exporting AELI: Qualcomm voice processing	verified
+vendor_a	lib64/soundfx/libeffectproxy.so	Effect proxy library exporting AELI for offloadable effects	verified
+vendor_a	lib64/soundfx/libaudiopreprocessing.so	Pre-processing effect library exporting AELI; embeds WebRTC AudioProcessing classes (EchoCanceller, AudioProcessingImpl, rnn_vad)	verified
+vendor_a	lib64/soundfx/libreverbwrapper.so	Effect library exporting AELI: reverb	verified
+vendor_a	lib64/soundfx/libhapticgenerator.so	Effect library exporting AELI: haptic generator	verified
+vendor_a	bin/audioadsprpcd	AArch64 PIE Qualcomm audio ADSP RPC daemon; started by vendor.qti.audio-adsprpc-service.rc as vendor.audioadsprpcd_audiopd	verified
+vendor_a	bin/hw/android.hardware.audio.service_64	AArch64 PIE audio HAL service process (service vendor.audio-hal); registers IDevicesFactory, IEffectsFactory, ISoundTriggerHw and IBluetoothAudioProvidersFactory	verified

@@ -1,0 +1,63 @@
+partition	path	role	confidence
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.wifi@1.0-service.xml	VINTF device fragment declaring vendor.oculus.hardware.wifi@1.0 IWifi (hwbinder, instance default); paired with odm wifi init rc	verified
+odm_a	etc/vintf/manifest/android.hardware.sensors@2.0-service.xml	VINTF device fragment declaring android.hardware.sensors@2.0 ISensors (hwbinder, instance default)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.dock@1.0-service.xml	VINTF device fragment declaring vendor.oculus.hardware.dock@1.0 IDock (hwbinder, instance default)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.sensors_java@1.0-service.xml	VINTF device fragment declaring vendor.oculus.hardware.sensors_java@1.0 IPowerstate (hwbinder)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.xml	VINTF device fragment declaring vendor.oculus.hardware.graphics.composer@1.1 IComposer (passthrough, arch 32+64)	verified
+odm_a	etc/vintf/manifest/android.hardware.usb@1.2-service.xml	VINTF device fragment declaring android.hardware.usb@1.2 IUsb and android.hardware.usb.gadget@1.2 IUsbGadget (hwbinder)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.devicecert@1.0-service.anorak.xml	VINTF device fragment declaring vendor.oculus.hardware.devicecert@1.0 IDeviceCert (hwbinder); device certificate HAL	inferred
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.sensors@1.0-service.xml	VINTF device fragment declaring vendor.oculus.hardware.sensors@1.0 with 10 interfaces (IImu, IMag, IIad, IFlickerSensor, IZapper and others); sensor HAL	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.externalbattery@1.0-service.xml	VINTF device fragment declaring vendor.oculus.hardware.externalbattery@1.0 IExternalBattery (hwbinder)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service.xml	VINTF device fragment declaring AIDL vendor.oculus.hardware.maintenanceboot IMaintenanceBoot/default	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.keyboxinstaller@1.0-service.anorak.xml	VINTF device fragment declaring vendor.oculus.hardware.keyboxinstaller@1.0 IDeviceKeyboxInstaller (hwbinder)	verified
+odm_a	etc/vintf/manifest/android.hardware.dumpstate@1.1-service.ovr.xml	VINTF device fragment declaring android.hardware.dumpstate@1.1 IDumpstateDevice (hwbinder)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.catty@1.0-service.xml	VINTF device fragment declaring vendor.oculus.hardware.catty@1.0 ICatty (hwbinder)	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.pdfu-service.xml	VINTF device fragment declaring AIDL vendor.oculus.hardware.pdfu IPdfu/default	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.sensorlock-service.xml	VINTF device fragment declaring AIDL vendor.oculus.hardware.sensorlock ISensorLock/default	verified
+odm_a	etc/vintf/manifest/vendor.oculus.hardware.graphics.gpucontrol@1.0-impl-anorak.xml	VINTF device fragment declaring vendor.oculus.hardware.graphics.gpucontrol@1.0 IGpuControl (passthrough, arch 32+64)	verified
+odm_a	etc/vintf/manifest/perfservice.xml	VINTF device fragment declaring android.hardware.power@1.3 IPower, android.hardware.thermal IThermal and vendor.oculus.hardware.clocks@1.0 IClocks; matches odm perfservice init rc	verified
+odm_a	etc/vintf/manifest/android.hardware.power.stats@1.0-service.anorak.xml	VINTF device fragment declaring android.hardware.power.stats@1.0 IPowerStats (hwbinder)	verified
+product_a	etc/vintf/manifest/crashuploaderservice-default.xml	framework VINTF fragment declaring AIDL meta.internal.diagnostics ICrashUploaderService/default; crash uploader purpose inferred from file name	inferred
+system_a	system/etc/vintf/compatibility_matrix.3.xml	framework compatibility matrix for level 3 (57 HAL requirement entries, kernel 4.4/4.9/4.14 requirements)	verified
+system_a	system/etc/vintf/compatibility_matrix.device.xml	framework device compatibility matrix (30 HAL requirements, sepolicy 26.0 to 32.0, avb vbmeta 1.0)	verified
+system_a	system/etc/vintf/compatibility_matrix.5.xml	framework compatibility matrix for level 5 (66 HAL requirement entries, kernel 4.14/4.19/5.4 requirements)	verified
+system_a	system/etc/vintf/manifest.xml	framework VINTF manifest v4.0 (9 HAL declarations such as IServiceManager, ISensorManager, INetd; system-sdk 28 to 32)	verified
+system_a	system/etc/vintf/compatibility_matrix.6.xml	framework compatibility matrix for level 6 (78 HAL requirement entries, kernel 4.19/5.4/5.10 requirements)	verified
+system_a	system/etc/vintf/compatibility_matrix.4.xml	framework compatibility matrix for level 4 (61 HAL requirement entries, kernel 4.9/4.14/4.19 requirements)	verified
+system_a	system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml	framework VINTF fragment declaring android.frameworks.stats IStats (hidl 1.0 and aidl IStats/default)	verified
+system_a	system/etc/vintf/manifest/android.system.suspend@1.0-service.xml	framework VINTF fragment declaring android.system.suspend@1.0 ISystemSuspend (hwbinder)	verified
+system_a	system/etc/vintf/manifest/android.hidl.allocator@1.0-service.xml	framework VINTF fragment declaring android.hidl.allocator@1.0 IAllocator, instance ashmem	verified
+system_a	system/etc/vintf/manifest/manifest_media_c2_software.xml	framework VINTF fragment declaring android.hardware.media.c2@1.2 IComponentStore, instance software	verified
+system_a	system/etc/vintf/manifest/android.system.keystore2-service.xml	framework VINTF fragment declaring AIDL android.system.keystore2 IKeystoreService/default	verified
+system_ext_a	etc/vintf/manifest.xml	device VINTF manifest v4.0 target-level 4 (8 HAL declarations such as IBluetoothHci, IOmx, IQSEECom; sepolicy 32.0, kernel level 6)	verified
+system_ext_a	etc/vintf/manifest/tracking_manifest.xml	system_ext framework fragment declaring four optional AIDL oculus.internal.tracking services (face/eye, hand, inside-out body, memory broker)	verified
+system_ext_a	etc/vintf/manifest/instsampd_manifest.xml	system_ext framework fragment declaring optional AIDL oculus.internal IInstructionSampler/default (instsampd)	verified
+system_ext_a	etc/vintf/manifest/bpfagent_manifest.xml	system_ext framework fragment declaring AIDL vendor.oculus.hardware.bpfagent IConfigurator/default and IStrobemeta/default	verified
+system_ext_a	etc/vintf/manifest/vrpowermanager.xml	system_ext framework fragment declaring optional AIDL oculus.internal.power IVrPowerManager/default	verified
+system_ext_a	etc/vintf/manifest/emgservice_manifest.xml	system_ext framework fragment (manifest v2.0) declaring optional AIDL com.meta.wearable.emg IEmgService/default with override=true	verified
+system_ext_a	etc/vintf/manifest/parfait.xml	system_ext framework fragment declaring AIDL vendor.meta.parfait ITrigger and IConfigQuery (default)	verified
+system_ext_a	etc/vintf/manifest/trackingfidelity_manifest.xml	system_ext framework fragment declaring optional AIDL oculus.internal ITrackingFidelityService/default	verified
+system_ext_a	etc/vintf/manifest/vendor.oculus.hardware.mixedreality-service.xml	system_ext framework fragment declaring AIDL vendor.oculus.hardware.mixedreality.camerawarpgridprovider ICameraWarpGridProvider/default	verified
+system_ext_a	etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml	system_ext framework fragment overriding android.hardware.graphics.composer@2.4 IComposer for instance display	verified
+system_ext_a	etc/vintf/manifest/crashtelemetryservice-default.xml	system_ext framework fragment declaring AIDL crashuploader.internal ICrashTelemetryService/default	verified
+system_ext_a	etc/vintf/manifest/vendor.oculus.hardware.telemetry@1.0-service.xml	system_ext framework fragment declaring vendor.oculus.hardware.telemetry@1.0 IDeviceTelemetry (hwbinder)	verified
+vendor_a	etc/vintf/manifest/vendor.qti.diag.hal.service.xml	device VINTF fragment declaring vendor.qti.diaghal@1.0 Idiag (hwbinder); diagnostic HAL	verified
+vendor_a	etc/vintf/manifest/android.hardware.boot@1.2.xml	device VINTF fragment declaring android.hardware.boot@1.2 IBootControl (fqname only)	verified
+vendor_a	etc/vintf/manifest/android.hardware.wifi.hostapd.xml	device VINTF fragment declaring android.hardware.wifi.hostapd@1.3 IHostapd (hwbinder)	verified
+vendor_a	etc/vintf/manifest/android.hardware.atrace@1.0-service.xml	device VINTF fragment declaring android.hardware.atrace@1.0 IAtraceDevice (hwbinder)	verified
+vendor_a	etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml	device VINTF fragment declaring AIDL keymint IKeyMintDevice, ISharedSecret, ISecureClock and IRemotelyProvisionedComponent	verified
+vendor_a	etc/vintf/manifest/android.hardware.wifi@1.0-service.xml	device VINTF fragment declaring android.hardware.wifi@1.5 IWifi (hwbinder)	verified
+vendor_a	etc/vintf/manifest/android.hardware.cas@1.2-service-lazy.xml	device VINTF fragment declaring android.hardware.cas@1.2 IMediaCasService (hwbinder); lazy-service role inferred from file name	inferred
+vendor_a	etc/vintf/manifest/android.hardware.light@2.0-service.anorak.xml	device VINTF fragment declaring android.hardware.light@2.0 ILight and vendor.oculus.hardware.light@2.0 ILight; matches vendor light init rc	verified
+vendor_a	etc/vintf/manifest/memtrack_qti.xml	device VINTF fragment declaring AIDL android.hardware.memtrack IMemtrack/default	verified
+vendor_a	etc/vintf/manifest/android.hardware.wifi.supplicant.xml	device VINTF fragment declaring android.hardware.wifi.supplicant@1.4 ISupplicant (hwbinder)	verified
+vendor_a	etc/vintf/manifest/c2_manifest_vendor.xml	device VINTF fragment declaring android.hardware.media.c2@1.0 IComponentStore, instance default (Codec2 HAL)	verified
+vendor_a	etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.clearkey.xml	device VINTF fragment declaring android.hardware.drm@1.4 IDrmFactory and ICryptoFactory, instance clearkey	verified
+vendor_a	etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml	device VINTF fragment declaring vendor.qti.hardware.display.mapper@4.0 IQtiMapper and android.hardware.graphics.mapper@4.0 IMapper (passthrough)	verified
+vendor_a	etc/vintf/manifest/android.hardware.health@2.1.xml	device VINTF fragment declaring android.hardware.health@2.1 IHealth (fqname only)	verified
+vendor_a	etc/vintf/manifest/manifest_non_qmaa.xml	device VINTF fragment declaring vendor.qti.hardware.AGMIPC@1.0 IAGM and vendor.qti.hardware.pal@1.0 IPAL (audio PAL)	verified
+vendor_a	etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml	device VINTF fragment declaring android.hardware.drm@1.4 IDrmFactory and ICryptoFactory, instance widevine	verified
+vendor_a	etc/vintf/manifest/vendor.qti.hardware.display.allocator-service.xml	device VINTF fragment declaring android.hardware.graphics.allocator@4.0 IAllocator and vendor.qti.hardware.display.allocator@4.0 IQtiAllocator	verified
+vendor_a	etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml	device VINTF fragment declaring vendor.qti.hardware.display.composer@3.2 IQtiComposer, graphics composer 2.4, vendor.display.config 2.0 and AIDL display config v10	verified
+vendor_a	etc/vintf/compatibility_matrix.xml	device compatibility matrix v4.0 (6 HAL requirements, vendor-ndk 32, system-sdk 32)	verified
+vendor_a	etc/vintf/manifest.xml	device VINTF manifest v4.0 target-level 4 (8 HAL declarations such as IBluetoothHci, IOmx, IQSEECom; sepolicy 32.0, kernel level 6)	verified

@@ -1,0 +1,347 @@
+partition	path	role	confidence
+odm_a	bin/syncboss_rf_blocklist_tool	SyncBoss RF blocklist tool (SO-format executable); strings reference vendor.syncbosshal.pulsar_blocklist	observed
+odm_a	bin/fw_init	fw_init oneshot service: SyncBoss (nRF) firmware init and SWD/SPL update driver; reads /odm/etc/fw_init.cfg; init fw_init.rc	observed
+odm_a	bin/syncboss_powerstate_tool	SyncBoss powerstate query and watch tool (--get, --watch)	observed
+odm_a	bin/vendor_input_tool	SyncBoss input-device tool (SO-format, shares libsyncboss strings)	inferred
+odm_a	bin/bpftool_full_meta	bpftool build with metadata; usage text 'show or list' and 'object OUTPUT_FILE INPUT_FILE'	observed
+odm_a	bin/syncboss_sm_unit_tests	SyncBoss state-machine gtest unit test binary (googletest sources in strings)	observed
+odm_a	bin/syncboss_unit_tests	SyncBoss gtest unit test binary (googletest sources in strings)	observed
+odm_a	bin/board_init	board_init oneshot service (class core); sets ro.product.device, ro.vendor.hw.deviceid, ro.vendor.product.model_extended with --setprops	observed
+odm_a	bin/syncboss_consumers_ctl	shell script: starts, stops or restarts SyncBoss consumer services in order with --exclude; flock on /data/local/tmp/fw-init-syncboss.lck	observed
+odm_a	bin/ovrfwupdatetest	firmware update test tool; usage '<int:fw_id_type> <firmware_file_path>'	observed
+odm_a	bin/syncboss_rftest	SyncBoss RF test tool (SO-format), name-based	inferred
+odm_a	bin/set_hint	power/performance hint setter (--hint NAME); touches cpufreq scaling_governor, walt sched_upmigrate/downmigrate, /dev/cpu_dma_latency; invoked from init.anorak.power.rc	observed
+odm_a	bin/dhrystone-2.2	Dhrystone 2.2 CPU benchmark; usage '[number of loops]'	observed
+odm_a	bin/qsyncctl	qsync control utility; usage '[-h] [-p ms] [-r min,max]'	observed
+odm_a	bin/syncboss_getstatus	SyncBoss status query tool; prints 'SyncBoss status:'; exports main	observed
+odm_a	bin/flashswap.sh	shell script: creates or resizes a 512 MB swap file at /data/vendor/flashswap/swap.dat, mkswap and swapon -p 5; init flashswap.rc	observed
+odm_a	bin/peripheralconfig-tool	peripheral configuration tool; reads /vendor/etc/peripheralconfig; property persist.vendor.peripheralconfig.load_adapters	observed
+odm_a	bin/syncboss_print_fw_version	SyncBoss firmware version and flavor printer (--check-fw-version, --check-fw-flavor, --short, --build-flavor)	observed
+odm_a	bin/syncboss_streammag	SyncBoss magnetometer stream tool (SO-format), name-based; usage '[options]'	inferred
+odm_a	bin/dramstress	DRAM stress tool; usage '[options]'; name-based	inferred
+odm_a	bin/pdfu_depot-meta	PDFU depot metadata executable; references /odm/etc/firmware/PDFU/	observed
+odm_a	bin/hw/android.hardware.dumpstate@1.1-service.ovr	HIDL dumpstate HAL service (IDumpstateDevice V1_0/V1_1), ovr variant; init vendor.dumpstate-1.1	observed
+odm_a	bin/hw/perf_service	HIDL power HAL service (IPower V1_0 to V1_2) started as perfservice with --schedutil; reads /vendor/etc/irqhint.cfg path	observed
+odm_a	bin/hw/android.hardware.usb@1.2-service.ovr	HIDL USB HAL 1.2 service (IUsb V1_0/V1_1/V1_2); manages configfs under /config/usb_gadget/g1	observed
+odm_a	bin/hw/android.hardware.power.stats@1.0-service.anorak	HIDL power-stats HAL 1.0 service (IPowerStats); reads /dev/stats and /sys/kernel/wifi/power_stats	observed
+odm_a	bin/wattsup	power and DSP telemetry reader; references /data/misc/dsp/HexagonTelemetrySharedFIFO and IIO device3	observed
+odm_a	bin/syncboss_streamimu	SyncBoss IMU stream tool (SO-format), name-based	inferred
+odm_a	bin/pdfu_test	shell script: looping PDFU firmware-update test harness for accessory charger and battery devices; logs to /data/pdfu/log.txt	observed
+odm_a	bin/syncboss_per_tool	SyncBoss utility 'per' (purpose not determined from name or strings)	unverified
+odm_a	bin/UsbGadgetClient	USB HAL client; error string 'Error while invoking usb hal'	observed
+odm_a	bin/syncboss_input_tool	SyncBoss input tool (SO-format); output strings include RF power, frequency and modulated fields	observed
+odm_a	bin/syncboss_crashdumper	SyncBoss crash-dump tool (--help); writes /data/local/tmp/syncboss_crash.dump	observed
+odm_a	bin/catty	catty pipe tool (-p PIPE); registers a log pipe; init vendor.catty-1-0 uses a sibling service	observed
+odm_a	bin/syncboss_perf_tool	SyncBoss performance tool (SO-format), name-based	inferred
+odm_a	bin/syncboss_prox_tool	SyncBoss proximity-sensor tool (--get, --get-raw, --watch, --run-calibration)	observed
+odm_a	bin/syncboss_catty	SyncBoss catty variant (SO-format); usage '[options]'	inferred
+odm_a	bin/update_blu_fw	Bluetooth (BLU) firmware update tool; uses /dev/ttyHS13 and /sys/devices/platform/vendor:oculus	observed
+odm_a	bin/syncboss_blob_tool	SyncBoss blob and pulsar input-cache tool (pulsar_input_cache source strings)	observed
+product_a	bin/ovr_crashuploader64	crash uploader (64-bit); usage 'crash_uploader [-hs]'; init service crashuploader in product_a/etc/init	observed
+product_a	bin/ovr_crashuploader	crash uploader (32-bit variant); usage 'crash_uploader [-hs]'	observed
+system_a	odm/framework	compatibility symlink from system partition to /vendor/odm/framework (odm partition subdirectory)	verified
+system_a	odm/bin	compatibility symlink from system partition to /vendor/odm/bin (odm partition subdirectory)	verified
+system_a	odm/app	compatibility symlink from system partition to /vendor/odm/app (odm partition subdirectory)	verified
+system_a	odm/etc	compatibility symlink from system partition to /vendor/odm/etc (odm partition subdirectory)	verified
+system_a	odm/firmware	compatibility symlink from system partition to /vendor/odm/firmware (odm partition subdirectory)	verified
+system_a	odm/priv-app	compatibility symlink from system partition to /vendor/odm/priv-app (odm partition subdirectory)	verified
+system_a	odm/usr	compatibility symlink from system partition to /vendor/odm/usr (odm partition subdirectory)	verified
+system_a	odm/lib	compatibility symlink from system partition to /vendor/odm/lib (odm partition subdirectory)	verified
+system_a	odm/overlay	compatibility symlink from system partition to /vendor/odm/overlay (odm partition subdirectory)	verified
+system_a	odm/lib64	compatibility symlink from system partition to /vendor/odm/lib64 (odm partition subdirectory)	verified
+system_ext_a	bin/vrdevicemanagerserver	VR device manager server; init service vrdevice; reads /system/etc/device_props.json and /system/etc/display.conf	observed
+system_ext_a	bin/pairing_ctl	pairing control CLI; reads ro.serialno and ro.product.model	observed
+system_ext_a	bin/assetdelivery_cli	asset delivery CLI, name-based	inferred
+system_ext_a	bin/parfait	Parfait tracing and performance agent; config under /data/oculus/parfait/config; init service parfait	observed
+system_ext_a	bin/perfstream_cli	perfstream client CLI; writes events to /data/oculus/perfstream/event.log when enabled	observed
+system_ext_a	bin/draw_frame	frame draw test tool; references /system/fonts/Roboto-Regular.ttf and the graphics composer service name	observed
+system_ext_a	bin/gpuprofserver	GPU profiling server; init service gpuprofserver; property persist.vr.pil.highfrequencypoll	observed
+system_ext_a	bin/virtualcontroller_ctl	shell script: switches the sensor HAL between the real and mock service and restarts client services; requires root	observed
+system_ext_a	bin/uevent_monitor	kernel uevent monitor, name-based	inferred
+system_ext_a	bin/vr_bootanimation	VR boot animation; init service bootanim; properties ro.boot.bootanimation_overrun_timeout and ro.ovr.hwc_service_name	observed
+system_ext_a	bin/rstest	device-service test client; error strings refer to a device type for the service	observed
+system_ext_a	bin/vraccountmanager_cli	VR account manager CLI, name-based	inferred
+system_ext_a	bin/schedcmd	scheduler command utility; usage text 'usage:'	observed
+system_ext_a	bin/network_impairment_tool	network impairment test tool, name-based; strings include mutex and broadcast error messages	inferred
+system_ext_a	bin/mrsystemservice	mixed-reality system service; init service mrsystemservice; properties under vendor.oculus.hardware.sensors	observed
+system_ext_a	bin/crashtelemetry	crash telemetry service; init service crashtelemetry	observed
+system_ext_a	bin/demoserviced	demo service daemon; paired with democlient (demoserviced_ripc)	observed
+system_ext_a	bin/telemetry	telemetry service; usage text sets a timeout in seconds for the doff or shutdown case; data under /data/oculus/telemetry; init service telemetry	observed
+system_ext_a	bin/btcontrol.sh	shell script: Bluetooth control wrapper (discover, connect, pair, ble_scan, ble_adv, gatt server)	observed
+system_ext_a	bin/trigger_parfait	Parfait trigger client; usage 'start, stop or cancel'	observed
+system_ext_a	bin/calibration_manager_ctl	calibration manager control CLI; usage '--start'	observed
+system_ext_a	bin/bpfagent	BPF agent; init service bpfagent; embedded BPF programs (binder_tracker, profiler)	observed
+system_ext_a	bin/trackinginterface_cli	tracking interface CLI; prints hand and microgesture state	observed
+system_ext_a	bin/killtop.sh	shell script: finds the top activity from dumpsys activity and runs am force-stop	observed
+system_ext_a	bin/gpumeminfo	GPU memory information reader; reads /proc/kgsl	observed
+system_ext_a	bin/diagnosticscollector	diagnostics collector service; init service diagnosticscollector; reads /proc/meminfo and /proc/pressure	observed
+system_ext_a	bin/perfstream	perfstream service; init service perfstream	observed
+system_ext_a	bin/ovrgpuprofiler	GPU profiler client (ovr), name-based	inferred
+system_ext_a	bin/voiceassistantserver	voice assistant server; init service voiceassistantserver	observed
+system_ext_a	bin/bpftrace	bpftrace BPF tracing front-end; usage strings for --no-feature	observed
+system_ext_a	bin/gpustats	GPU statistics reader; reads /sys/class/kgsl/kgsl-3d0 clock_mhz and gpubusy_accum	observed
+system_ext_a	bin/unifiedtelemetry_cli	unified telemetry CLI, name-based	inferred
+system_ext_a	bin/trackingservice	tracking service; init service trackingservice; uses /dev/uinput; properties persist.ovr.tracking.*	observed
+system_ext_a	bin/instsampd	instruction-sampling daemon; init service instsampd; reads /proc/kallsyms and /proc/cpuinfo	observed
+system_ext_a	bin/vrbttestcli	VR Bluetooth test CLI; invokes /system/bin/am	observed
+system_ext_a	bin/controller_input_settings	controller input settings CLI; usage '--get <settingname> (<deviceType>)'	observed
+system_ext_a	bin/trackingservice_ctl	shell script: start, stop or restart trackingservice; sends SIGHUP before stop	observed
+system_ext_a	bin/trackingfidelity_cli	tracking fidelity CLI, name-based	inferred
+system_ext_a	bin/configbootfreeze	config boot-freeze tool; init service configbootfreeze	observed
+system_ext_a	bin/trackinject-cli	tracking injection CLI; usage text 'Usage:'	observed
+system_ext_a	bin/mem-measure	memory measurement tool; reads /proc/meminfo and oom_score_adj	observed
+system_ext_a	bin/instsamp_top	instsamp top-style viewer; usage '[options]'	observed
+system_ext_a	bin/catcal	catcal calibration CLI; usage text 'Usage:'	observed
+system_ext_a	bin/calibrationserver	calibration server; init service calibration_svr	observed
+system_ext_a	bin/htop	htop process viewer; reads /proc/%d/autogroup and /proc/%d/environ	observed
+system_ext_a	bin/vc-client	virtual controller client; prints WorldFromImu and RecenteredFromWorld fields	observed
+system_ext_a	bin/democlient	demo client; usage '[OPTION]'; invokes demoserviced	observed
+system_ext_a	bin/bpfagent_lume_bridge	BPF agent Lume bridge; init service bpfagent_lume_bridge	observed
+system_ext_a	bin/emgservice	EMG service; init service emgservice; references libemgservice.so	observed
+system_ext_a	bin/ovr_crashreporter	crash reporter (32-bit, interpreter /system/bin/linker)	observed
+system_ext_a	bin/stress	stress load generator; usage '[OPTION [ARG]] ...'	observed
+system_ext_a	bin/screencap	symlink to meta_screencap (screen capture executable in system_ext_a/bin)	verified
+system_ext_a	bin/ovr_crashreporter64	crash reporter (64-bit); init services minidumpd64 (-m), crashreporterd (-c), panicreporter (-k)	observed
+system_ext_a	bin/trackingfidelityservice	tracking fidelity service; init service trackingfidelityservice	observed
+system_ext_a	bin/settingsserver	settings server; init service settingsserver from preferencesserver.rc	observed
+vendor_a	bin/stty	symlink to toybox_vendor multi-call binary; applet 'stty' (name found in toybox strings)	verified
+vendor_a	bin/whoami	symlink to toybox_vendor multi-call binary; applet 'whoami' (name found in toybox strings)	verified
+vendor_a	bin/cut	symlink to toybox_vendor multi-call binary; applet 'cut' (name found in toybox strings)	verified
+vendor_a	bin/sendevent	symlink to toybox_vendor multi-call binary; applet 'sendevent' (name found in toybox strings)	verified
+vendor_a	bin/sigma_dut	Wi-Fi Alliance Sigma DUT control agent; usage 'sigma_dut [-aABdfG...]'	observed
+vendor_a	bin/nativehaltest	native HAL test program; gralloc usage flags; camera metadata under /data/vendor/camera	observed
+vendor_a	bin/iwlist	wireless scan list tool; usage 'iwlist'; reads /proc/net/wireless	observed
+vendor_a	bin/netstat	symlink to toybox_vendor multi-call binary; applet 'netstat' (name found in toybox strings)	verified
+vendor_a	bin/boringssl_self_test64	BoringSSL self-test (64-bit); init boringssl_self_test64_vendor	observed
+vendor_a	bin/hal_proxy_daemon	Wi-Fi vendor HAL proxy daemon; wifi_* HAL function table and WifiLogger command strings; links libwifi-hal-qcom.so	observed
+vendor_a	bin/printenv	symlink to toybox_vendor multi-call binary; applet 'printenv' (name found in toybox strings)	verified
+vendor_a	bin/gpioinfo	libgpiod gpioinfo; reads /dev/gpiochip and /sys/bus/gpio	observed
+vendor_a	bin/time	symlink to toybox_vendor multi-call binary; applet 'time' (name found in toybox strings)	verified
+vendor_a	bin/pm-proxy	peripheral manager proxy; init service vendor.per_proxy; selinux label vendor_per_proxy_exec	observed
+vendor_a	bin/inotifyd	symlink to toybox_vendor multi-call binary; applet 'inotifyd' (name found in toybox strings)	verified
+vendor_a	bin/ctrlapp_dut	Wi-Fi DUT control application; writes /data/vendor/wifi/controlappc_DUT.log	observed
+vendor_a	bin/nl	symlink to toybox_vendor multi-call binary; applet 'nl' (name found in toybox strings)	verified
+vendor_a	bin/ls	symlink to toybox_vendor multi-call binary; applet 'ls' (name found in toybox strings)	verified
+vendor_a	bin/readlink	symlink to toybox_vendor multi-call binary; applet 'readlink' (name found in toybox strings)	verified
+vendor_a	bin/wdsdaemon	wireless data service daemon over SMD ports /dev/smd1 to /dev/smd5; Bluetooth SoC property	observed
+vendor_a	bin/mkswap	symlink to toybox_vendor multi-call binary; applet 'mkswap' (name found in toybox strings)	verified
+vendor_a	bin/ionice	symlink to toybox_vendor multi-call binary; applet 'ionice' (name found in toybox strings)	verified
+vendor_a	bin/acpi	symlink to toybox_vendor multi-call binary; applet 'acpi' (name found in toybox strings)	verified
+vendor_a	bin/dd	symlink to toybox_vendor multi-call binary; applet 'dd' (name found in toybox strings)	verified
+vendor_a	bin/cplay	compressed-audio playback tool; usage 'cplay [OPTIONS] filename'	observed
+vendor_a	bin/chcon	symlink to toybox_vendor multi-call binary; applet 'chcon' (name found in toybox strings)	verified
+vendor_a	bin/awk	awk text-processing interpreter (PIE copy in vendor partition)	observed
+vendor_a	bin/mountpoint	symlink to toybox_vendor multi-call binary; applet 'mountpoint' (name found in toybox strings)	verified
+vendor_a	bin/sort	symlink to toybox_vendor multi-call binary; applet 'sort' (name found in toybox strings)	verified
+vendor_a	bin/pwd	symlink to toybox_vendor multi-call binary; applet 'pwd' (name found in toybox strings)	verified
+vendor_a	bin/fallocate	symlink to toybox_vendor multi-call binary; applet 'fallocate' (name found in toybox strings)	verified
+vendor_a	bin/ps	symlink to toybox_vendor multi-call binary; applet 'ps' (name found in toybox strings)	verified
+vendor_a	bin/vmstat	symlink to toybox_vendor multi-call binary; applet 'vmstat' (name found in toybox strings)	verified
+vendor_a	bin/chown	symlink to toybox_vendor multi-call binary; applet 'chown' (name found in toybox strings)	verified
+vendor_a	bin/setprop	symlink to toolbox multi-call binary; applet 'setprop'	verified
+vendor_a	bin/lsmod	symlink to toybox_vendor multi-call binary; applet 'lsmod' (name found in toybox strings)	verified
+vendor_a	bin/watch	symlink to toybox_vendor multi-call binary; applet 'watch' (name found in toybox strings)	verified
+vendor_a	bin/i2cdump	symlink to toybox_vendor multi-call binary; applet 'i2cdump' (name found in toybox strings)	verified
+vendor_a	bin/iwconfig	wireless configuration tool; reads /proc/net/wireless	observed
+vendor_a	bin/grep	symlink to toybox_vendor multi-call binary; applet 'grep' (name found in toybox strings)	verified
+vendor_a	bin/sha1sum	symlink to toybox_vendor multi-call binary; applet 'sha1sum' (name found in toybox strings)	verified
+vendor_a	bin/clear	symlink to toybox_vendor multi-call binary; applet 'clear' (name found in toybox strings)	verified
+vendor_a	bin/zcat	symlink to toybox_vendor multi-call binary; applet 'zcat' (name found in toybox strings)	verified
+vendor_a	bin/applypatch	OTA applypatch utility; usage text 'Usage:'	observed
+vendor_a	bin/sh	MirBSD KSH R59 (mksh) shell; KSH_VERSION string; default ENV /vendor/etc/mkshrc	observed
+vendor_a	bin/strings	symlink to toybox_vendor multi-call binary; applet 'strings' (name found in toybox strings)	verified
+vendor_a	bin/umount	symlink to toybox_vendor multi-call binary; applet 'umount' (name found in toybox strings)	verified
+vendor_a	bin/mknod	symlink to toybox_vendor multi-call binary; applet 'mknod' (name found in toybox strings)	verified
+vendor_a	bin/agmhostless	AGM (audio graph manager) hostless client; reads /vendor/etc/backend_conf.xml	observed
+vendor_a	bin/uname	symlink to toybox_vendor multi-call binary; applet 'uname' (name found in toybox strings)	verified
+vendor_a	bin/subsystem_ramdump	subsystem ramdump collector; init service vendor.ss_ramdump	observed
+vendor_a	bin/netcat	symlink to toybox_vendor multi-call binary; applet 'netcat' (name found in toybox strings)	verified
+vendor_a	bin/cksum	symlink to toybox_vendor multi-call binary; applet 'cksum' (name found in toybox strings)	verified
+vendor_a	bin/cp	symlink to toybox_vendor multi-call binary; applet 'cp' (name found in toybox strings)	verified
+vendor_a	bin/install	symlink to toybox_vendor multi-call binary; applet 'install' (name found in toybox strings)	verified
+vendor_a	bin/seq	symlink to toybox_vendor multi-call binary; applet 'seq' (name found in toybox strings)	verified
+vendor_a	bin/rtcwake	symlink to toybox_vendor multi-call binary; applet 'rtcwake' (name found in toybox strings)	verified
+vendor_a	bin/sg_write_buffer	SCSI WRITE BUFFER utility; usage with --bpw, --id, --in options	observed
+vendor_a	bin/cmp	symlink to toybox_vendor multi-call binary; applet 'cmp' (name found in toybox strings)	verified
+vendor_a	bin/pd-mapper	protection-domain mapper; init service vendor.pd_mapper; selinux label vendor_pd_mapper_exec	observed
+vendor_a	bin/setsid	symlink to toybox_vendor multi-call binary; applet 'setsid' (name found in toybox strings)	verified
+vendor_a	bin/logname	symlink to toybox_vendor multi-call binary; applet 'logname' (name found in toybox strings)	verified
+vendor_a	bin/swapoff	symlink to toybox_vendor multi-call binary; applet 'swapoff' (name found in toybox strings)	verified
+vendor_a	bin/iconv	symlink to toybox_vendor multi-call binary; applet 'iconv' (name found in toybox strings)	verified
+vendor_a	bin/du	symlink to toybox_vendor multi-call binary; applet 'du' (name found in toybox strings)	verified
+vendor_a	bin/basename	symlink to toybox_vendor multi-call binary; applet 'basename' (name found in toybox strings)	verified
+vendor_a	bin/sed	symlink to toybox_vendor multi-call binary; applet 'sed' (name found in toybox strings)	verified
+vendor_a	bin/lspci	symlink to toybox_vendor multi-call binary; applet 'lspci' (name found in toybox strings)	verified
+vendor_a	bin/rmdir	symlink to toybox_vendor multi-call binary; applet 'rmdir' (name found in toybox strings)	verified
+vendor_a	bin/nproc	symlink to toybox_vendor multi-call binary; applet 'nproc' (name found in toybox strings)	verified
+vendor_a	bin/sysctl	symlink to toybox_vendor multi-call binary; applet 'sysctl' (name found in toybox strings)	verified
+vendor_a	bin/id	symlink to toybox_vendor multi-call binary; applet 'id' (name found in toybox strings)	verified
+vendor_a	bin/set_usb_cdc_mac.sh	shell script: sets the USB CDC-ECM ethernet MAC from persist.vendor.usb.ethernet.cdc.macaddr using ifconfig; init set_usb_cdc_mac	observed
+vendor_a	bin/stat	symlink to toybox_vendor multi-call binary; applet 'stat' (name found in toybox strings)	verified
+vendor_a	bin/setenforce	symlink to toybox_vendor multi-call binary; applet 'setenforce' (name found in toybox strings)	verified
+vendor_a	bin/tar	symlink to toybox_vendor multi-call binary; applet 'tar' (name found in toybox strings)	verified
+vendor_a	bin/fgrep	symlink to toybox_vendor multi-call binary; applet 'fgrep' (name found in toybox strings)	verified
+vendor_a	bin/fsync	symlink to toybox_vendor multi-call binary; applet 'fsync' (name found in toybox strings)	verified
+vendor_a	bin/diag_mdlog	diag mdlog logger; opens /dev/diag	observed
+vendor_a	bin/i2cset	symlink to toybox_vendor multi-call binary; applet 'i2cset' (name found in toybox strings)	verified
+vendor_a	bin/boringssl_self_test32	BoringSSL self-test (32-bit); interpreter /system/bin/linker	observed
+vendor_a	bin/uuencode	symlink to toybox_vendor multi-call binary; applet 'uuencode' (name found in toybox strings)	verified
+vendor_a	bin/dirname	symlink to toybox_vendor multi-call binary; applet 'dirname' (name found in toybox strings)	verified
+vendor_a	bin/nsenter	symlink to toybox_vendor multi-call binary; applet 'nsenter' (name found in toybox strings)	verified
+vendor_a	bin/gpiodetect	libgpiod gpiodetect; usage 'Usage: %s [OPTIONS]'	observed
+vendor_a	bin/log	symlink to toybox_vendor multi-call binary; applet 'log' (name found in toybox strings)	verified
+vendor_a	bin/diff	symlink to toybox_vendor multi-call binary; applet 'diff' (name found in toybox strings)	verified
+vendor_a	bin/split	symlink to toybox_vendor multi-call binary; applet 'split' (name found in toybox strings)	verified
+vendor_a	bin/iwpriv	wireless private-command tool; usage 'iwpriv interface [private-command]'	observed
+vendor_a	bin/time_daemon	time services daemon; uses /dev/rtc0 and MHI time nodes; init service time_daemon	observed
+vendor_a	bin/tail	symlink to toybox_vendor multi-call binary; applet 'tail' (name found in toybox strings)	verified
+vendor_a	bin/true	symlink to toybox_vendor multi-call binary; applet 'true' (name found in toybox strings)	verified
+vendor_a	bin/lsattr	symlink to toybox_vendor multi-call binary; applet 'lsattr' (name found in toybox strings)	verified
+vendor_a	bin/top	symlink to toybox_vendor multi-call binary; applet 'top' (name found in toybox strings)	verified
+vendor_a	bin/mkdir	symlink to toybox_vendor multi-call binary; applet 'mkdir' (name found in toybox strings)	verified
+vendor_a	bin/sha256sum	symlink to toybox_vendor multi-call binary; applet 'sha256sum' (name found in toybox strings)	verified
+vendor_a	bin/tty	symlink to toybox_vendor multi-call binary; applet 'tty' (name found in toybox strings)	verified
+vendor_a	bin/dos2unix	symlink to toybox_vendor multi-call binary; applet 'dos2unix' (name found in toybox strings)	verified
+vendor_a	bin/killall	symlink to toybox_vendor multi-call binary; applet 'killall' (name found in toybox strings)	verified
+vendor_a	bin/toolbox	toolbox multi-call binary; applets getprop, setprop, start, stop, getevent, modprobe found in its strings; interpreter /system/bin/linker64	verified
+vendor_a	bin/taskset	symlink to toybox_vendor multi-call binary; applet 'taskset' (name found in toybox strings)	verified
+vendor_a	bin/pkill	symlink to toybox_vendor multi-call binary; applet 'pkill' (name found in toybox strings)	verified
+vendor_a	bin/modprobe	symlink to toolbox multi-call binary; applet 'modprobe'	verified
+vendor_a	bin/ftmdaemon	factory test mode daemon; uses /dev/btfmslim and persist.vendor.service.bdroid.snooplog	observed
+vendor_a	bin/blockdev	symlink to toybox_vendor multi-call binary; applet 'blockdev' (name found in toybox strings)	verified
+vendor_a	bin/sha224sum	symlink to toybox_vendor multi-call binary; applet 'sha224sum' (name found in toybox strings)	verified
+vendor_a	bin/[	symlink to toybox_vendor (applet '[' test command); exact name not found in toybox strings	inferred
+vendor_a	bin/ssr_setup	subsystem restart level setup; init service vendor.ssr_setup; property persist.vendor.ssr.restart_level	observed
+vendor_a	bin/i2cget	symlink to toybox_vendor multi-call binary; applet 'i2cget' (name found in toybox strings)	verified
+vendor_a	bin/gunzip	symlink to toybox_vendor multi-call binary; applet 'gunzip' (name found in toybox strings)	verified
+vendor_a	bin/dumpsys	dumpsys service dump client; usage 'dumpsys'	observed
+vendor_a	bin/comm	symlink to toybox_vendor multi-call binary; applet 'comm' (name found in toybox strings)	verified
+vendor_a	bin/gzip	symlink to toybox_vendor multi-call binary; applet 'gzip' (name found in toybox strings)	verified
+vendor_a	bin/kill	symlink to toybox_vendor multi-call binary; applet 'kill' (name found in toybox strings)	verified
+vendor_a	bin/toybox_vendor	toybox 0.8.4-android multi-call binary; 171 of 172 applet symlink names found in its strings	verified
+vendor_a	bin/i2cdetect	symlink to toybox_vendor multi-call binary; applet 'i2cdetect' (name found in toybox strings)	verified
+vendor_a	bin/paste	symlink to toybox_vendor multi-call binary; applet 'paste' (name found in toybox strings)	verified
+vendor_a	bin/patch	symlink to toybox_vendor multi-call binary; applet 'patch' (name found in toybox strings)	verified
+vendor_a	bin/sha512sum	symlink to toybox_vendor multi-call binary; applet 'sha512sum' (name found in toybox strings)	verified
+vendor_a	bin/pmap	symlink to toybox_vendor multi-call binary; applet 'pmap' (name found in toybox strings)	verified
+vendor_a	bin/uniq	symlink to toybox_vendor multi-call binary; applet 'uniq' (name found in toybox strings)	verified
+vendor_a	bin/xxd	symlink to toybox_vendor multi-call binary; applet 'xxd' (name found in toybox strings)	verified
+vendor_a	bin/stop	symlink to toolbox multi-call binary; applet 'stop'	verified
+vendor_a	bin/xrframeconverter	XR frame converter tool, name-based	inferred
+vendor_a	bin/logwrapper	logwrapper; runs a binary with output routed to the log; usage 'logwrapper [-a] [-d] [-k] BINARY'	observed
+vendor_a	bin/getconf	symlink to toybox_vendor multi-call binary; applet 'getconf' (name found in toybox strings)	verified
+vendor_a	bin/rm	symlink to toybox_vendor multi-call binary; applet 'rm' (name found in toybox strings)	verified
+vendor_a	bin/set_blu_current	Bluetooth (BLU) current setter; uses /dev/ttyHS13; init service set_blu_current	observed
+vendor_a	bin/runcon	symlink to toybox_vendor multi-call binary; applet 'runcon' (name found in toybox strings)	verified
+vendor_a	bin/ulimit	symlink to toybox_vendor multi-call binary; applet 'ulimit' (name found in toybox strings)	verified
+vendor_a	bin/microcom	symlink to toybox_vendor multi-call binary; applet 'microcom' (name found in toybox strings)	verified
+vendor_a	bin/printf	symlink to toybox_vendor multi-call binary; applet 'printf' (name found in toybox strings)	verified
+vendor_a	bin/agmcompressplay	AGM compressed playback tool; usage 'cplay'	observed
+vendor_a	bin/losetup	symlink to toybox_vendor multi-call binary; applet 'losetup' (name found in toybox strings)	verified
+vendor_a	bin/swapon	symlink to toybox_vendor multi-call binary; applet 'swapon' (name found in toybox strings)	verified
+vendor_a	bin/chroot	symlink to toybox_vendor multi-call binary; applet 'chroot' (name found in toybox strings)	verified
+vendor_a	bin/ssr_diag	subsystem restart diagnostics; reads /sys/bus/msm_subsys and /sys/bus/pil	observed
+vendor_a	bin/diag-router	diag router; uses /dev/ffs-diag and MHI pipes; init service vendor.diag-router	observed
+vendor_a	bin/expr	symlink to toybox_vendor multi-call binary; applet 'expr' (name found in toybox strings)	verified
+vendor_a	bin/env	symlink to toybox_vendor multi-call binary; applet 'env' (name found in toybox strings)	verified
+vendor_a	bin/xargs	symlink to toybox_vendor multi-call binary; applet 'xargs' (name found in toybox strings)	verified
+vendor_a	bin/md5sum	symlink to toybox_vendor multi-call binary; applet 'md5sum' (name found in toybox strings)	verified
+vendor_a	bin/false	symlink to toybox_vendor multi-call binary; applet 'false' (name found in toybox strings)	verified
+vendor_a	bin/modinfo	symlink to toybox_vendor multi-call binary; applet 'modinfo' (name found in toybox strings)	verified
+vendor_a	bin/chgrp	symlink to toybox_vendor multi-call binary; applet 'chgrp' (name found in toybox strings)	verified
+vendor_a	bin/expand	symlink to toybox_vendor multi-call binary; applet 'expand' (name found in toybox strings)	verified
+vendor_a	bin/cat	symlink to toybox_vendor multi-call binary; applet 'cat' (name found in toybox strings)	verified
+vendor_a	bin/ln	symlink to toybox_vendor multi-call binary; applet 'ln' (name found in toybox strings)	verified
+vendor_a	bin/lsusb	symlink to toybox_vendor multi-call binary; applet 'lsusb' (name found in toybox strings)	verified
+vendor_a	bin/agmcap	AGM capture client; reads /vendor/etc/backend_conf.xml	observed
+vendor_a	bin/uptime	symlink to toybox_vendor multi-call binary; applet 'uptime' (name found in toybox strings)	verified
+vendor_a	bin/diag_socket_log	diag socket logger; writes under /data/diag_logs	observed
+vendor_a	bin/sync	symlink to toybox_vendor multi-call binary; applet 'sync' (name found in toybox strings)	verified
+vendor_a	bin/restorecon	symlink to toybox_vendor multi-call binary; applet 'restorecon' (name found in toybox strings)	verified
+vendor_a	bin/i2ctransfer	symlink to toybox_vendor multi-call binary; applet 'i2ctransfer' (name found in toybox strings)	verified
+vendor_a	bin/getprop	symlink to toolbox multi-call binary; applet 'getprop'	verified
+vendor_a	bin/chattr	symlink to toybox_vendor multi-call binary; applet 'chattr' (name found in toybox strings)	verified
+vendor_a	bin/realpath	symlink to toybox_vendor multi-call binary; applet 'realpath' (name found in toybox strings)	verified
+vendor_a	bin/tac	symlink to toybox_vendor multi-call binary; applet 'tac' (name found in toybox strings)	verified
+vendor_a	bin/which	symlink to toybox_vendor multi-call binary; applet 'which' (name found in toybox strings)	verified
+vendor_a	bin/getenforce	symlink to toybox_vendor multi-call binary; applet 'getenforce' (name found in toybox strings)	verified
+vendor_a	bin/sleep	symlink to toybox_vendor multi-call binary; applet 'sleep' (name found in toybox strings)	verified
+vendor_a	bin/insmod	symlink to toybox_vendor multi-call binary; applet 'insmod' (name found in toybox strings)	verified
+vendor_a	bin/egrep	symlink to toybox_vendor multi-call binary; applet 'egrep' (name found in toybox strings)	verified
+vendor_a	bin/rmmod	symlink to toybox_vendor multi-call binary; applet 'rmmod' (name found in toybox strings)	verified
+vendor_a	bin/base64	symlink to toybox_vendor multi-call binary; applet 'base64' (name found in toybox strings)	verified
+vendor_a	bin/uuidgen	symlink to toybox_vendor multi-call binary; applet 'uuidgen' (name found in toybox strings)	verified
+vendor_a	bin/hostname	symlink to toybox_vendor multi-call binary; applet 'hostname' (name found in toybox strings)	verified
+vendor_a	bin/vndservicemanager	vendor service manager on /dev/vndbinder; init service vndservicemanager; SELinux vndservice_contexts	observed
+vendor_a	bin/hw/android.hardware.media.omx@1.0-service	HIDL OMX HAL 1.0 service (IOmx, IOmxStore); init service vendor.media.omx	observed
+vendor_a	bin/hw/android.hardware.cas@1.2-service-lazy	HIDL CAS HAL 1.2 lazy service (ICas V1_0 to V1_2); init service vendor.cas-hal-1-2	observed
+vendor_a	bin/hw/android.hardware.boot@1.2-service	HIDL boot-control HAL 1.2 service (IBootControl V1_0 and V1_2); init service vendor.boot-hal-1-2	observed
+vendor_a	bin/hw/android.hardware.atrace@1.0-service	HIDL atrace HAL 1.0 service (IAtraceDevice); init service vendor.atrace-hal-1-0	observed
+vendor_a	bin/hw/android.hardware.light@2.0-service.anorak	HIDL light HAL 2.0 service (android.hardware.light ILight and vendor.oculus.hardware.light@2.0 ILight); LED sysfs; init service light-hal-2-0	observed
+vendor_a	bin/hw/vendor.qti.hardware.qseecom@1.0-service	QTI QSEECom HAL 1.0 service (IQSEECom); init service qseecom-service	observed
+vendor_a	bin/hw/vendor.qti.hardware.display.allocator-service	QTI display allocator HAL service (IQtiAllocator V4_0); init service vendor.qti.hardware.display.allocator	observed
+vendor_a	bin/hw/vendor.qti.media.c2@1.0-service	Codec2 component-store HAL service (IComponentStore); init service vendor-qti-media-c2-hal-1-0	observed
+vendor_a	bin/hw/android.hardware.health@2.1-service	HIDL health HAL 2.1 service (IHealth V2_0 and 2.1); init service health-hal-2-1	observed
+vendor_a	bin/hw/android.hardware.security.keymint-service-qti	AIDL KeyMint service (IKeyMintDevice, IRemotelyProvisionedComponent), QTI build; init service vendor.keymint-qti	observed
+vendor_a	bin/lsof	symlink to toybox_vendor multi-call binary; applet 'lsof' (name found in toybox strings)	verified
+vendor_a	bin/sec_nvm	secure NVM daemon; init service vendor.sec_nvm; SELinux vendor_sec_nvm_exec	observed
+vendor_a	bin/unix2dos	symlink to toybox_vendor multi-call binary; applet 'unix2dos' (name found in toybox strings)	verified
+vendor_a	bin/nc	symlink to toybox_vendor multi-call binary; applet 'nc' (name found in toybox strings)	verified
+vendor_a	bin/more	symlink to toybox_vendor multi-call binary; applet 'more' (name found in toybox strings)	verified
+vendor_a	bin/devmem	symlink to toybox_vendor multi-call binary; applet 'devmem' (name found in toybox strings)	verified
+vendor_a	bin/wc	symlink to toybox_vendor multi-call binary; applet 'wc' (name found in toybox strings)	verified
+vendor_a	bin/qrtr-ns	QRTR name service; init service vendor.qrtr-ns -f	observed
+vendor_a	bin/fmt	symlink to toybox_vendor multi-call binary; applet 'fmt' (name found in toybox strings)	verified
+vendor_a	bin/dmesg	symlink to toybox_vendor multi-call binary; applet 'dmesg' (name found in toybox strings)	verified
+vendor_a	bin/nice	symlink to toybox_vendor multi-call binary; applet 'nice' (name found in toybox strings)	verified
+vendor_a	bin/start	symlink to toolbox multi-call binary; applet 'start'	verified
+vendor_a	bin/find	symlink to toybox_vendor multi-call binary; applet 'find' (name found in toybox strings)	verified
+vendor_a	bin/pgrep	symlink to toybox_vendor multi-call binary; applet 'pgrep' (name found in toybox strings)	verified
+vendor_a	bin/pidof	symlink to toybox_vendor multi-call binary; applet 'pidof' (name found in toybox strings)	verified
+vendor_a	bin/uudecode	symlink to toybox_vendor multi-call binary; applet 'uudecode' (name found in toybox strings)	verified
+vendor_a	bin/free	symlink to toybox_vendor multi-call binary; applet 'free' (name found in toybox strings)	verified
+vendor_a	bin/xzcat	symlink to toybox_vendor multi-call binary; applet 'xzcat' (name found in toybox strings)	verified
+vendor_a	bin/head	symlink to toybox_vendor multi-call binary; applet 'head' (name found in toybox strings)	verified
+vendor_a	bin/gpioget	libgpiod gpioget; usage '<chip> <offset> ...'	observed
+vendor_a	bin/file	symlink to toybox_vendor multi-call binary; applet 'file' (name found in toybox strings)	verified
+vendor_a	bin/mkfifo	symlink to toybox_vendor multi-call binary; applet 'mkfifo' (name found in toybox strings)	verified
+vendor_a	bin/yes	symlink to toybox_vendor multi-call binary; applet 'yes' (name found in toybox strings)	verified
+vendor_a	bin/getevent	symlink to toolbox multi-call binary; applet 'getevent'	verified
+vendor_a	bin/mktemp	symlink to toybox_vendor multi-call binary; applet 'mktemp' (name found in toybox strings)	verified
+vendor_a	bin/mount	symlink to toybox_vendor multi-call binary; applet 'mount' (name found in toybox strings)	verified
+vendor_a	bin/cal	symlink to toybox_vendor multi-call binary; applet 'cal' (name found in toybox strings)	verified
+vendor_a	bin/spdaemon	secure processor daemon over /dev/spcom; init service vendor.spdaemon	observed
+vendor_a	bin/readelf	symlink to toybox_vendor multi-call binary; applet 'readelf' (name found in toybox strings)	verified
+vendor_a	bin/sha384sum	symlink to toybox_vendor multi-call binary; applet 'sha384sum' (name found in toybox strings)	verified
+vendor_a	bin/irsc_util	IRSC tool; requires a file name argument; init service vendor.irsc_util with /vendor/etc/sec_config	observed
+vendor_a	bin/flock	symlink to toybox_vendor multi-call binary; applet 'flock' (name found in toybox strings)	verified
+vendor_a	bin/renice	symlink to toybox_vendor multi-call binary; applet 'renice' (name found in toybox strings)	verified
+vendor_a	bin/pm-service	peripheral manager service; usage '--off or -o ms, --ack or -a ms'; init service vendor.per_mgr	observed
+vendor_a	bin/od	symlink to toybox_vendor multi-call binary; applet 'od' (name found in toybox strings)	verified
+vendor_a	bin/agmvoiceui	AGM voice UI; references sound_model, buffer_config and engine_reset under /vendor/etc	observed
+vendor_a	bin/vndservice	vendor service CLI; subcommands list, check and call	observed
+vendor_a	bin/myftm	factory test tool for WLAN calibration files under /persist/factory/wlan	observed
+vendor_a	bin/unshare	symlink to toybox_vendor multi-call binary; applet 'unshare' (name found in toybox strings)	verified
+vendor_a	bin/iorenice	symlink to toybox_vendor multi-call binary; applet 'iorenice' (name found in toybox strings)	verified
+vendor_a	bin/unlink	symlink to toybox_vendor multi-call binary; applet 'unlink' (name found in toybox strings)	verified
+vendor_a	bin/agmcompresscap	AGM compressed capture (crec usage)	observed
+vendor_a	bin/gpioset	libgpiod gpioset; usage '<chip> <offset>=<value>'	observed
+vendor_a	bin/chrt	symlink to toybox_vendor multi-call binary; applet 'chrt' (name found in toybox strings)	verified
+vendor_a	bin/load_policy	symlink to toybox_vendor multi-call binary; applet 'load_policy' (name found in toybox strings)	verified
+vendor_a	bin/btconfig	Bluetooth configuration tool; uses persist.vendor.qcom.bluetooth.soc	observed
+vendor_a	bin/test	symlink to toybox_vendor multi-call binary; applet 'test' (name found in toybox strings)	verified
+vendor_a	bin/mv	symlink to toybox_vendor multi-call binary; applet 'mv' (name found in toybox strings)	verified
+vendor_a	bin/tftp_server	TFTP server for RFS tombstones; init service vendor.tftp_server	observed
+vendor_a	bin/chmod	symlink to toybox_vendor multi-call binary; applet 'chmod' (name found in toybox strings)	verified
+vendor_a	bin/msm_irqbalance	IRQ balancer; init service vendor.msm_irqbalance with -f /vendor/etc/msm_irqbalance.conf	observed
+vendor_a	bin/agmplay	AGM playback CLI	observed
+vendor_a	bin/echo	symlink to toybox_vendor multi-call binary; applet 'echo' (name found in toybox strings)	verified
+vendor_a	bin/tr	symlink to toybox_vendor multi-call binary; applet 'tr' (name found in toybox strings)	verified
+vendor_a	bin/ifconfig	symlink to toybox_vendor multi-call binary; applet 'ifconfig' (name found in toybox strings)	verified
+vendor_a	bin/cpio	symlink to toybox_vendor multi-call binary; applet 'cpio' (name found in toybox strings)	verified
+vendor_a	bin/nohup	symlink to toybox_vendor multi-call binary; applet 'nohup' (name found in toybox strings)	verified
+vendor_a	bin/date	symlink to toybox_vendor multi-call binary; applet 'date' (name found in toybox strings)	verified
+vendor_a	bin/usleep	symlink to toybox_vendor multi-call binary; applet 'usleep' (name found in toybox strings)	verified
+vendor_a	bin/timeout	symlink to toybox_vendor multi-call binary; applet 'timeout' (name found in toybox strings)	verified
+vendor_a	bin/df	symlink to toybox_vendor multi-call binary; applet 'df' (name found in toybox strings)	verified
+vendor_a	bin/truncate	symlink to toybox_vendor multi-call binary; applet 'truncate' (name found in toybox strings)	verified

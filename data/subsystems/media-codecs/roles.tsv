@@ -1,0 +1,164 @@
+partition	path	role	confidence
+system_a	system/apex/com.android.media.swcodec.capex	APEX container of the swcodec module: mediaswcodec service binary, Codec2 software codec plugins, Codec2 HIDL/VNDK libraries, init.rc, seccomp policy	verified
+system_a	system/bin/mediaextractor	media.extractor service executable (MediaExtractorService, minijail setup, memory-limit setup, binder thread pool)	verified
+system_a	system/bin/mediaserver	media service executable (MediaPlayerService, ResourceManagerService, HIDL RPC thread pool for android.hardware.media.omx@1.0)	verified
+system_a	system/etc/media_profiles_V1_0.dtd	DTD for media_profiles XML (MediaSettings, CamcorderProfiles, EncoderProfile, VideoEncoderCap, AudioEncoderCap, Video/Audio elements)	observed
+system_a	system/etc/seccomp_policy/mediacodec.policy	seccomp syscall allow-list (per-process filter) for the mediacodec service, system copy	observed
+system_a	system/etc/seccomp_policy/mediaextractor.policy	seccomp syscall allow-list (per-process filter) for the mediaextractor service	observed
+system_a	system/lib/libcodec2.so	Codec2 SONAME stub with no exported dynamic symbols [32-bit]	verified
+system_a	system/lib/libcodec2_client.so	Codec2Client: client wrapper over Codec2 HIDL component stores (CreateFromAllServices, Component queue/start/stop) [32-bit]	observed
+system_a	system/lib/libcodec2_hidl_client@1.0.so	HIDL client adapter for android.hardware.media.c2@1.0 (component store and component proxies) [32-bit]	observed
+system_a	system/lib/libcodec2_hidl_client@1.1.so	HIDL client adapter for android.hardware.media.c2@1.1 [32-bit]	observed
+system_a	system/lib/libcodec2_hidl_client@1.2.so	HIDL client adapter for android.hardware.media.c2@1.2 [32-bit]	observed
+system_a	system/lib/libcodec2_vndk.so	Codec2 VNDK framework (C2 buffer/block/store APIs, platform store plugin loader, DMA-heap and ION allocators) [32-bit]	observed
+system_a	system/lib/libmedia_codeclist.so	IMediaCodecList binder interface, BnMediaCodecList and MediaCodecInfo parcelable (codec list publication) [32-bit]	observed
+system_a	system/lib/libsfplugin_ccodec.so	CCodec plugin: bridges the stagefright MediaCodec path to Codec2 components; names media_codecs.xml, media_codecs_c2.xml, media_codecs_performance*.xml, media_codecs_shaping.xml and /apex/com.android.media.swcodec/etc [32-bit]	observed
+system_a	system/lib/libsfplugin_ccodec_utils.so	CCodec utilities: C2Mapper, MemoryBlock and MemoryBlockPool helpers, YUV420 checks [32-bit]	observed
+system_a	system/lib/libstagefright.so	core Stagefright library: MediaCodec, ACodec state machine, NuMediaExtractor, MPEG4Writer, MediaSync, CameraSource [32-bit]	observed
+system_a	system/lib/libstagefright_amrnb_common.so	AMR-NB common DSP routines (VAD tone detection, window tables) [32-bit]	inferred
+system_a	system/lib/libstagefright_bufferpool@2.0.1.so	buffer pool implementation for android.hardware.media.bufferpool@2.0 [32-bit]	observed
+system_a	system/lib/libstagefright_bufferqueue_helper.so	GraphicBufferSource and FrameDropper helpers for surface-based encoder input [32-bit]	observed
+system_a	system/lib/libstagefright_codecbase.so	CodecBase interface plus SkipCutBuffer, FrameRenderTracker and MediaCodecListWriter helpers [32-bit]	observed
+system_a	system/lib/libstagefright_foundation.so	stagefright foundation utilities (AMessage, AString, ABuffer, MetaData, ColorUtils) [32-bit]	observed
+system_a	system/lib/libstagefright_framecapture_utils.so	frame capture utilities (FrameCaptureProcessor, FrameCaptureLayer) for thumbnail extraction [32-bit]	observed
+system_a	system/lib/libstagefright_http_support.so	HTTP service factory (CreateHTTPServiceInCurrentJavaContext) [32-bit]	observed
+system_a	system/lib/libstagefright_httplive.so	HTTP Live Streaming support (LiveDataSource, AnotherPacketSource) for HLS playback [32-bit]	observed
+system_a	system/lib/libstagefright_omx.so	OMX node layer: OMXNodeInstance, OMXStore, callback dispatcher, OMX graphic buffer source [32-bit]	observed
+system_a	system/lib/libstagefright_omx_utils.so	OMX helpers: color-format descriptions, OMX error to status mapping, component role setup [32-bit]	observed
+system_a	system/lib/libstagefright_xmlparser.so	MediaCodecsXmlParser: expat-based parser for media_codecs*.xml (Include, Settings, Decoders, Encoders, MediaCodec, Alias, Limit, Feature, Quirk, Variant) [32-bit]	observed
+system_a	system/lib/mediametricsservice-aidl-cpp.so	AIDL client library for the mediametrics service [32-bit]	observed
+system_a	system/lib64/libcodec2.so	Codec2 SONAME stub with no exported dynamic symbols [64-bit]	verified
+system_a	system/lib64/libcodec2_client.so	Codec2Client: client wrapper over Codec2 HIDL component stores (CreateFromAllServices, Component queue/start/stop) [64-bit]	verified
+system_a	system/lib64/libcodec2_hidl_client@1.0.so	HIDL client adapter for android.hardware.media.c2@1.0 (component store and component proxies) [64-bit]	observed
+system_a	system/lib64/libcodec2_hidl_client@1.1.so	HIDL client adapter for android.hardware.media.c2@1.1 [64-bit]	observed
+system_a	system/lib64/libcodec2_hidl_client@1.2.so	HIDL client adapter for android.hardware.media.c2@1.2 [64-bit]	observed
+system_a	system/lib64/libcodec2_vndk.so	Codec2 VNDK framework (C2 buffer/block/store APIs, platform store plugin loader, DMA-heap and ION allocators) [64-bit]	verified
+system_a	system/lib64/libmedia_codeclist.so	IMediaCodecList binder interface, BnMediaCodecList and MediaCodecInfo parcelable (codec list publication) [64-bit]	observed
+system_a	system/lib64/libsfplugin_ccodec.so	CCodec plugin: bridges the stagefright MediaCodec path to Codec2 components; names media_codecs.xml, media_codecs_c2.xml, media_codecs_performance*.xml, media_codecs_shaping.xml and /apex/com.android.media.swcodec/etc [64-bit]	verified
+system_a	system/lib64/libsfplugin_ccodec_utils.so	CCodec utilities: C2Mapper, MemoryBlock and MemoryBlockPool helpers, YUV420 checks [64-bit]	observed
+system_a	system/lib64/libstagefright.so	core Stagefright library: MediaCodec, ACodec state machine, NuMediaExtractor, MPEG4Writer, MediaSync, CameraSource [64-bit]	verified
+system_a	system/lib64/libstagefright_amrnb_common.so	AMR-NB common DSP routines (VAD tone detection, window tables) [64-bit]	inferred
+system_a	system/lib64/libstagefright_bufferpool@2.0.1.so	buffer pool implementation for android.hardware.media.bufferpool@2.0 [64-bit]	observed
+system_a	system/lib64/libstagefright_bufferqueue_helper.so	GraphicBufferSource and FrameDropper helpers for surface-based encoder input [64-bit]	observed
+system_a	system/lib64/libstagefright_codecbase.so	CodecBase interface plus SkipCutBuffer, FrameRenderTracker and MediaCodecListWriter helpers [64-bit]	observed
+system_a	system/lib64/libstagefright_foundation.so	stagefright foundation utilities (AMessage, AString, ABuffer, MetaData, ColorUtils) [64-bit]	observed
+system_a	system/lib64/libstagefright_framecapture_utils.so	frame capture utilities (FrameCaptureProcessor, FrameCaptureLayer) for thumbnail extraction [64-bit]	observed
+system_a	system/lib64/libstagefright_http_support.so	HTTP service factory (CreateHTTPServiceInCurrentJavaContext) [64-bit]	observed
+system_a	system/lib64/libstagefright_omx.so	OMX node layer: OMXNodeInstance, OMXStore, callback dispatcher, OMX graphic buffer source [64-bit]	verified
+system_a	system/lib64/libstagefright_omx_utils.so	OMX helpers: color-format descriptions, OMX error to status mapping, component role setup [64-bit]	observed
+system_a	system/lib64/libstagefright_xmlparser.so	MediaCodecsXmlParser: expat-based parser for media_codecs*.xml (Include, Settings, Decoders, Encoders, MediaCodec, Alias, Limit, Feature, Quirk, Variant) [64-bit]	verified
+system_a	system/lib64/mediametricsservice-aidl-cpp.so	AIDL client library for the mediametrics service [64-bit]	observed
+system_ext_a	lib64/libcodecwrapper.so	NOT a media codec: protobuf message encode/decode wrapper (codec_lib::decode*/Serialize* for wearable input telemetry), used by WearableInputService libraries	verified
+vendor_a	lib/libcodec2_soft_aacdec.so	Codec2 software component plugin for aacdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_aacenc.so	Codec2 software component plugin for aacenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_amrnbdec.so	Codec2 software component plugin for amrnbdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_amrnbenc.so	Codec2 software component plugin for amrnbenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_amrwbdec.so	Codec2 software component plugin for amrwbdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_amrwbenc.so	Codec2 software component plugin for amrwbenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_avcdec.so	Codec2 software component plugin for avcdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_avcenc.so	Codec2 software component plugin for avcenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_common.so	Codec2 software component plugin for common (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_flacdec.so	Codec2 software component plugin for flacdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_flacenc.so	Codec2 software component plugin for flacenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_g711alawdec.so	Codec2 software component plugin for g711alawdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_g711mlawdec.so	Codec2 software component plugin for g711mlawdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_gsmdec.so	Codec2 software component plugin for gsmdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_h263dec.so	Codec2 software component plugin for h263dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_h263enc.so	Codec2 software component plugin for h263enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_hevcdec.so	Codec2 software component plugin for hevcdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_hevcenc.so	Codec2 software component plugin for hevcenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_mp3dec.so	Codec2 software component plugin for mp3dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_mpeg2dec.so	Codec2 software component plugin for mpeg2dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_mpeg4dec.so	Codec2 software component plugin for mpeg4dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_mpeg4enc.so	Codec2 software component plugin for mpeg4enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_opusdec.so	Codec2 software component plugin for opusdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_opusenc.so	Codec2 software component plugin for opusenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_rawdec.so	Codec2 software component plugin for rawdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_vorbisdec.so	Codec2 software component plugin for vorbisdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_vp8dec.so	Codec2 software component plugin for vp8dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_vp8enc.so	Codec2 software component plugin for vp8enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_vp9dec.so	Codec2 software component plugin for vp9dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_soft_vp9enc.so	Codec2 software component plugin for vp9enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib/libcodec2_vndk.so	vendor Codec2 VNDK framework library (same role as the system copy; DMA-heap and ION allocators, store plugin loader)	observed
+vendor_a	lib/libqcodec2_base.so	QC2 base utilities (EventHandler, Bundle, BufFlag)	observed
+vendor_a	lib/libqcodec2_basecodec.so	QC2 base codec framework (pipeline, PipelineStatsHandler, C2 value structs)	observed
+vendor_a	lib/libqcodec2_core.so	QC2 core component library: QC2ComponentStoreFactoryGetter, QC2Component state machine	observed
+vendor_a	lib/libqcodec2_hooks.so	QC2 component observer hooks (perf lock and FPS change callbacks), NEEDED android.hardware.power@1.0/1.1	observed
+vendor_a	lib/libqcodec2_platform.so	QC2 platform configuration: reads /vendor/etc/media_<variant>/video_system_specs.json through jsoncpp	observed
+vendor_a	lib/libqcodec2_utils.so	QC2 utilities (gralloc and display mapping, config strings, default_primaries_override key)	observed
+vendor_a	lib/libqcodec2_v4l2codec.so	QC2 V4L2 codec plugin (exports QC2Codec_GetPlugin; V4L2 device nodes /dev/video32, /dev/media%d)	observed
+vendor_a	lib/libsfplugin_ccodec_utils.so	copy of the CCodec utilities library (C2Mapper, MemoryBlock helpers)	observed
+vendor_a	lib/libstagefright_amrnb_common.so	AMR-NB common DSP routines (vendor copy)	inferred
+vendor_a	lib/libstagefright_bufferpool@2.0.1.so	buffer pool implementation for android.hardware.media.bufferpool@2.0 (vendor copy)	observed
+vendor_a	lib/libstagefright_enc_common.so	encoder common memory helper library (cmnMemAlloc, cmnMemCopy and related functions)	observed
+vendor_a	lib/libstagefright_flacdec.so	FLAC decoder library (FLAC__ entropy and format symbols, Ogg-FLAC API macro), used by the FLAC soft codec plugins	observed
+vendor_a	lib/libstagefright_soft_aacdec.so	legacy OMX software component plugin for aacdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_aacenc.so	legacy OMX software component plugin for aacenc (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_amrdec.so	legacy OMX software component plugin for amrdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_amrwbenc.so	legacy OMX software component plugin for amrwbenc (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_flacdec.so	legacy OMX software component plugin for flacdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_flacenc.so	legacy OMX software component plugin for flacenc (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_mp3dec.so	legacy OMX software component plugin for mp3dec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_mpeg4dec.so	legacy OMX software component plugin for mpeg4dec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_mpeg4enc.so	legacy OMX software component plugin for mpeg4enc (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_opusdec.so	legacy OMX software component plugin for opusdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_rawdec.so	legacy OMX software component plugin for rawdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_vorbisdec.so	legacy OMX software component plugin for vorbisdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_vpxdec.so	legacy OMX software component plugin for vpxdec (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_soft_vpxenc.so	legacy OMX software component plugin for vpxenc (exports createSoftOMXComponent)	verified
+vendor_a	lib/libstagefright_softomx.so	SimpleSoftOMXComponent base class for legacy software OMX components	verified
+vendor_a	lib/libstagefright_softomx_plugin.so	SoftOMXPlugin: exports createOMXPlugin and enumerates the legacy software OMX components	verified
+vendor_a	lib/mediacas/libclearkeycasplugin.so	ClearKey MediaCas plugin (ClearKeyCasPlugin with openSession and processEcm; protobuf license messages)	observed
+vendor_a	etc/media_codecs_performance_anorak.xml	performance overlay for Codec2 entries: 15 MediaCodec elements with update="true" and measured-frame-rate limits	verified
+vendor_a	etc/media_profiles_V1_0.xml	media profiles XML: CamcorderProfiles for cameraId 0 and 1, 25 EncoderProfile entries, encoder and decoder caps	verified
+vendor_a	etc/media_anorak/video_system_specs.json	video system specs JSON for the Qualcomm codec platform: Features, Presets, QC2CodecPlugins, QC2PreProcessingFilters, QC2PostProcessingFilters	verified
+vendor_a	etc/media_profiles_anorak.xml	media profiles XML variant (anorak): CamcorderProfiles, VideoEditorCap, ExportVideoProfile; internal DTD reports validity errors	verified
+vendor_a	etc/seccomp_policy/codec2.vendor.ext-arm64.policy	seccomp syscall allow-list for the vendor Codec2 HAL (extension set)	observed
+vendor_a	etc/seccomp_policy/codec2.vendor.base-arm64.policy	seccomp syscall allow-list for the vendor Codec2 HAL (base set)	observed
+vendor_a	etc/media_codecs_anorak.xml	vendor Codec2 codec list: 12 decoders (avc, hevc, vp9, av1 with low_latency and secure variants), 4 encoders; includes media_codecs_google_audio.xml and media_codecs_google_c2.xml	verified
+vendor_a	lib64/libcodec2_hidl@1.0.so	vendor Codec2 HIDL server implementation (android.hardware.media.c2@1.0 utils::ComponentStore, Component, CachedConfigurable)	verified
+vendor_a	lib64/libcodec2_hidl_plugin.so	Codec2 filter plugin implementation (DefaultFilterPlugin, FilterWrapper; exports CreateFilterPlugin and DestroyFilterPlugin)	verified
+vendor_a	lib64/libcodec2_soft_aacdec.so	Codec2 software component plugin for aacdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_aacenc.so	Codec2 software component plugin for aacenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_amrnbdec.so	Codec2 software component plugin for amrnbdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_amrnbenc.so	Codec2 software component plugin for amrnbenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_amrwbdec.so	Codec2 software component plugin for amrwbdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_amrwbenc.so	Codec2 software component plugin for amrwbenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_avcdec.so	Codec2 software component plugin for avcdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_avcenc.so	Codec2 software component plugin for avcenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_common.so	Codec2 software component plugin for common (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_flacdec.so	Codec2 software component plugin for flacdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_flacenc.so	Codec2 software component plugin for flacenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_g711alawdec.so	Codec2 software component plugin for g711alawdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_g711mlawdec.so	Codec2 software component plugin for g711mlawdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_gsmdec.so	Codec2 software component plugin for gsmdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_h263dec.so	Codec2 software component plugin for h263dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_h263enc.so	Codec2 software component plugin for h263enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_hevcdec.so	Codec2 software component plugin for hevcdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_hevcenc.so	Codec2 software component plugin for hevcenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_mp3dec.so	Codec2 software component plugin for mp3dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_mpeg2dec.so	Codec2 software component plugin for mpeg2dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_mpeg4dec.so	Codec2 software component plugin for mpeg4dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_mpeg4enc.so	Codec2 software component plugin for mpeg4enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_opusdec.so	Codec2 software component plugin for opusdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_opusenc.so	Codec2 software component plugin for opusenc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_rawdec.so	Codec2 software component plugin for rawdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_vorbisdec.so	Codec2 software component plugin for vorbisdec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_vp8dec.so	Codec2 software component plugin for vp8dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_vp8enc.so	Codec2 software component plugin for vp8enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_vp9dec.so	Codec2 software component plugin for vp9dec (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_soft_vp9enc.so	Codec2 software component plugin for vp9enc (exports CreateCodec2Factory/DestroyCodec2Factory)	verified
+vendor_a	lib64/libcodec2_vndk.so	vendor Codec2 VNDK framework library (same role as the system copy; DMA-heap and ION allocators, store plugin loader)	observed
+vendor_a	lib64/libqcodec2_base.so	QC2 base utilities (EventHandler, Bundle, BufFlag)	verified
+vendor_a	lib64/libqcodec2_basecodec.so	QC2 base codec framework (pipeline, PipelineStatsHandler, C2 value structs)	verified
+vendor_a	lib64/libqcodec2_core.so	QC2 core component library: QC2ComponentStoreFactoryGetter, QC2Component state machine	verified
+vendor_a	lib64/libqcodec2_hooks.so	QC2 component observer hooks (perf lock and FPS change callbacks), NEEDED android.hardware.power@1.0/1.1	verified
+vendor_a	lib64/libqcodec2_platform.so	QC2 platform configuration: reads /vendor/etc/media_<variant>/video_system_specs.json through jsoncpp	observed
+vendor_a	lib64/libqcodec2_utils.so	QC2 utilities (gralloc and display mapping, config strings, default_primaries_override key)	observed
+vendor_a	lib64/libqcodec2_v4l2codec.so	QC2 V4L2 codec plugin (exports QC2Codec_GetPlugin; V4L2 device nodes /dev/video32, /dev/media%d)	verified
+vendor_a	lib64/libsfplugin_ccodec_utils.so	copy of the CCodec utilities library (C2Mapper, MemoryBlock helpers)	observed
+vendor_a	lib64/libstagefright_amrnb_common.so	AMR-NB common DSP routines (vendor copy)	inferred
+vendor_a	lib64/libstagefright_bufferpool@2.0.1.so	buffer pool implementation for android.hardware.media.bufferpool@2.0 (vendor copy)	observed
+vendor_a	lib64/libstagefright_enc_common.so	encoder common memory helper library (cmnMemAlloc, cmnMemCopy and related functions)	verified
+vendor_a	lib64/libstagefright_flacdec.so	FLAC decoder library (FLAC__ entropy and format symbols, Ogg-FLAC API macro), used by the FLAC soft codec plugins	verified
+vendor_a	lib64/mediacas/libclearkeycasplugin.so	ClearKey MediaCas plugin (ClearKeyCasPlugin with openSession and processEcm; protobuf license messages)	verified

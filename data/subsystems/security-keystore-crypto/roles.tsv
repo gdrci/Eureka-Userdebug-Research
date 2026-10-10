@@ -1,0 +1,61 @@
+partition	path	role	confidence
+system_a	system/bin/disable-verity	symlink to set-verity-state (disable-verity entry name)	verified
+system_a	system/bin/enable-verity	symlink to set-verity-state (enable-verity entry name)	verified
+system_a	system/bin/fsverity_init	fs-verity keyring tool: loads verified keys, locks the .fs-verity keyring, loads extra keys	observed
+system_a	system/bin/gatekeeperd	gatekeeper daemon exposing android.service.gatekeeper.IGateKeeperService over binder	observed
+system_a	system/bin/gatekeeperserver	OVR gatekeeper native service host (createProdInstance, ServiceHost)	verified
+system_a	system/bin/keystore2	keystore2 daemon (Rust); serves android.system.keystore2.IKeystoreService/default; database under /data/misc/keystore	observed
+system_a	system/bin/keystore_cli_v2	keystore2 client CLI (generate, list, delete, encrypt, decrypt, sign-verify, confirmation)	observed
+system_a	system/bin/set-verity-state	dm-verity / AVB managed verity mode toggle (usage [1|0]; enable-verity and disable-verity names)	observed
+system_a	system/bin/tee	symlink to toybox multi-call binary (tee applet)	verified
+system_a	system/bin/wait_for_keymaster	boot-time waiter for keystore2 IKeystoreService/default and keymaster readiness (source system/vold/wait_for_keymaster.cpp)	observed
+system_a	system/etc/security/fsverity/fsverity-release.x509.der	DER X.509 v3 CA certificate (CN=Android, RSA 4096, valid 2020-2050); fs-verity trust anchor	verified
+system_a	system/lib/libcrypto.so	32-bit BoringSSL libcrypto (ARM EABI5)	verified
+system_a	system/lib/libgatekeeper.so	32-bit gatekeeper core library (GateKeeper Enroll, Verify, MintAuthToken)	verified
+system_a	system/lib/libgatekeeperclient.so	32-bit OVR gatekeeper client (oculus::internal::IGatekeeperService proxy)	verified
+system_a	system/lib64/android.hardware.gatekeeper@1.0.so	64-bit HIDL IGatekeeper 1.0 library	inferred
+system_a	system/lib64/android.hardware.keymaster@3.0.so	64-bit HIDL IKeymasterDevice 3.0 interface library	verified
+system_a	system/lib64/android.hardware.keymaster@4.0.so	64-bit HIDL IKeymasterDevice 4.0 interface library	verified
+system_a	system/lib64/android.hardware.keymaster@4.1.so	64-bit HIDL IKeymasterDevice 4.1 interface library	verified
+system_a	system/lib64/android.security.legacykeystore-ndk_platform.so	NDK AIDL stub for ILegacyKeystore (android.security.legacykeystore)	verified
+system_a	system/lib64/android.system.keystore2-V1-cpp.so	C++ AIDL stub for keystore2 V1 interfaces (IKeystoreService, IKeystoreSecurityLevel, IKeystoreOperation)	verified
+system_a	system/lib64/android.system.keystore2-V1-ndk_platform.so	NDK AIDL stub for keystore2 V1 interfaces	verified
+system_a	system/lib64/lib_android_keymaster_keymint_utils.so	KeyMint/keymaster conversion helpers (km_utils: kmParam2Aidl, aidlKeyParams2Km, authToken2AidlVec)	verified
+system_a	system/lib64/libcrypto.so	64-bit BoringSSL libcrypto	verified
+system_a	system/lib64/libcrypto_utils.so	Android public key encode/decode helpers (android_pubkey_encode, android_pubkey_decode)	verified
+system_a	system/lib64/libfsverity.so	fs-verity userspace library (libfsverity_enable, _enable_with_sig, _sign_digest, hash helpers)	verified
+system_a	system/lib64/libgatekeeper.so	64-bit gatekeeper core library (GateKeeper Enroll, Verify, MintAuthToken, password handles)	verified
+system_a	system/lib64/libgatekeeper_aidl.so	AIDL glue for android.service.gatekeeper.IGateKeeperService (Bp/Bn proxies)	verified
+system_a	system/lib64/libgatekeeperclient.so	OVR gatekeeper client library (OVR::OS::Gatekeeper settings, IGatekeeperService proxy)	verified
+system_a	system/lib64/libgatekeepernativeservice.so	OVR gatekeeper native service implementation (override and clear gatekeepers, dump; /data/oculus/gatekeepers/gks.db)	verified
+system_a	system/lib64/libkeymaster4_1support.so	keymaster 4.1 support layer (V4_1::support Keymaster, Keymaster3 and Keymaster4 adapters)	verified
+system_a	system/lib64/libkeymaster4support.so	keymaster 4.0 support library (AuthorizationSet and helpers)	verified
+system_a	system/lib64/libkeymaster_messages.so	keymaster request and response message serialization (Serialize, NonErrorDeserialize per message)	verified
+system_a	system/lib64/libkeymaster_portable.so	portable software keymaster implementation (AndroidKeymaster, RSA and symmetric operations, ae_* helpers)	verified
+system_a	system/lib64/libkeystore-attestation-application-id.so	attestation application ID builder (KeyAttestationApplicationId, android.content.pm.Signature)	verified
+system_a	system/lib64/libkeystore-engine.so	OpenSSL-engine style bridge exporting EVP_PKEY_from_keystore	verified
+system_a	system/lib64/libkeystore2_aaid.so	attestation application ID helper (aaid_keystore_attestation_id)	verified
+system_a	system/lib64/libkeystore2_apc_compat.so	APC (user confirmation) compatibility client (promptUserConfirmation, tryGetUserConfirmationService)	verified
+system_a	system/lib64/libkeystore2_crypto.so	keystore2 crypto helpers (AES-GCM, HKDF, EC key marshalling, X.509 certificate construction)	verified
+system_a	system/lib64/libkeystore2_vintf_cpp.so	VINTF HAL instance enumeration helpers (getHidlInstances, getAidlInstances)	verified
+system_a	system/lib64/libpuresoftkeymasterdevice.so	software-only keymaster HAL device (keymaster::ConfigureDevice, OS version and patch-level helpers)	verified
+system_ext_a	lib64/libtelemetry_gatekeeperwrapper.so	OVR telemetry wrapper for gatekeeper settings (GatekeeperWrapper isEnabled, getAsString)	verified
+vendor_a	lib/android.hardware.gatekeeper@1.0.so	32-bit HIDL IGatekeeper 1.0 library	inferred
+vendor_a	lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so	32-bit Qualcomm gatekeeper HAL implementation module	inferred
+vendor_a	lib/libkeymasterdeviceutils.so	32-bit Qualcomm keymaster device helper library	inferred
+vendor_a	lib/liboemcrypto.so	32-bit OEMCrypto implementation (Widevine DRM crypto, vendor.wv.oemcrypto.* keys)	observed
+vendor_a	lib64/android.hardware.gatekeeper@1.0.so	64-bit HIDL IGatekeeper 1.0 library (vendor copy)	inferred
+vendor_a	lib64/android.hardware.keymaster@3.0.so	64-bit HIDL IKeymasterDevice 3.0 library (vendor copy)	inferred
+vendor_a	lib64/android.hardware.keymaster@4.0.so	64-bit HIDL IKeymasterDevice 4.0 library (vendor copy)	inferred
+vendor_a	lib64/android.hardware.keymaster@4.1.so	64-bit HIDL IKeymasterDevice 4.1 library (vendor copy)	verified
+vendor_a	lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so	64-bit Qualcomm gatekeeper HAL implementation (GatekeeperHalDevice enroll and verify)	verified
+vendor_a	lib64/libkeymaster4support.so	keymaster 4.0 support library (vendor copy)	inferred
+vendor_a	lib64/libkeymaster_messages.so	keymaster message serialization library (vendor copy)	inferred
+vendor_a	lib64/libkeymasterdeviceutils.so	Qualcomm keymaster device utilities (KeymasterBuffer)	verified
+vendor_a	lib64/libkeymasterutils.so	Qualcomm keymaster utilities (cppbor CBOR encoding helpers)	verified
+vendor_a	lib64/liboemcrypto.so	64-bit OEMCrypto implementation (Widevine DRM crypto)	verified
+vendor_a	lib64/libqtikeymaster4.so	Qualcomm keymaster 4.x backend library	observed
+vendor_a	bin/tee	symlink to toybox_vendor multi-call binary (tee applet)	verified
+vendor_a	bin/hw/android.hardware.gatekeeper@1.0-service-qti	Qualcomm gatekeeper HAL service process (gatekeeper-1-0 init service, early_hal class)	observed
+vendor_a	bin/hw/android.hardware.keymaster@4.1-service-qti	Qualcomm keymaster 4.1 HAL service process (IKeymasterDevice 4.1 registerAsService; vendor.keymaster-4-1 init service)	observed
+vendor_a	bin/qseecomd	QSEECom daemon (vendor.qseecomd init service; /dev/smcinvoke; listener services)	observed

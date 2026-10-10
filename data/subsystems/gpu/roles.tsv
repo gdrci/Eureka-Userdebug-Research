@@ -1,0 +1,68 @@
+partition	path	role	confidence
+odm_a	lib/vendor.oculus.hardware.graphics.gpucontrol@1.0.so	32-bit HIDL IGpuControl 1.0 interface library (SONAME vendor.oculus.hardware.graphics.gpucontrol@1.0.so, 81 defined dynamic symbols)	verified
+odm_a	lib/hw/vendor.oculus.hardware.graphics.gpucontrol@1.0-impl-anorak.so	32-bit passthrough implementation of IGpuControl for anorak (HIDL_FETCH_IGpuControl export)	observed
+odm_a	lib64/vendor.oculus.hardware.graphics.gpucontrol@1.0.so	64-bit HIDL IGpuControl 1.0 interface library (SONAME vendor.oculus.hardware.graphics.gpucontrol@1.0.so)	verified
+odm_a	lib64/hw/vendor.oculus.hardware.graphics.gpucontrol@1.0-impl-anorak.so	64-bit passthrough implementation of IGpuControl for anorak (HIDL_FETCH_IGpuControl; opens /dev/kgsl-3d0 and issues ioctls)	verified
+product_a	etc/permissions/android.hardware.vulkan.compute-0.xml	Permission feature XML declaring android.hardware.vulkan.compute version 0	verified
+product_a	etc/permissions/android.software.vulkan.deqp.level.xml	Permission feature XML declaring android.software.vulkan.deqp.level version 132449025 (dEQP date 2021-03-01)	verified
+product_a	etc/permissions/android.hardware.opengles.aep.xml	Permission feature XML declaring android.hardware.opengles.aep (Android Extension Pack)	verified
+product_a	etc/permissions/android.hardware.vulkan.version-1_1.xml	Permission feature XML declaring android.hardware.vulkan.version 4198400 (Vulkan 1.1.0)	verified
+product_a	etc/permissions/android.software.opengles.deqp.level.xml	Permission feature XML declaring android.software.opengles.deqp.level version 132449025	verified
+product_a	etc/permissions/android.hardware.vulkan.level-1.xml	Permission feature XML declaring android.hardware.vulkan.level version 1	verified
+system_a	system/bin/gpuservice	64-bit AArch64 PIE native daemon for GpuService, started by init service gpu	verified
+system_a	system/etc/bpf/gpu_mem.o	eBPF object: tracepoint program on gpu_mem/gpu_mem_total maintaining gpu_mem_total_map	verified
+system_a	system/etc/security/cacerts/a7605362.0	PEM system trust-store root CA certificate (Sonera Class2 CA); not GPU-specific	verified
+system_a	system/etc/security/cacerts/a3896b44.0	PEM system trust-store root CA certificate (SECOM Security Communication RootCA1); not GPU-specific	verified
+system_a	system/lib/libEGL.so	32-bit system EGL loader library (SONAME libEGL.so, 125 defined dynamic symbols)	verified
+system_a	system/lib/libGLESv1_CM.so	32-bit system OpenGL ES 1.x (CM) API library	observed
+system_a	system/lib/libGLESv2.so	32-bit system OpenGL ES 2.x API library	observed
+system_a	system/lib/libGLESv3.so	32-bit system OpenGL ES 3.x API library (SONAME libGLESv3.so, 846 defined dynamic symbols)	verified
+system_a	system/lib/libvulkan.so	32-bit system Vulkan loader library (SONAME libvulkan.so, 197 defined dynamic symbols)	verified
+system_a	system/lib64/libEGL.so	64-bit system EGL loader library; reads ro.hardware.egl and ro.board.platform	verified
+system_a	system/lib64/libGLESv1_CM.so	64-bit system OpenGL ES 1.x (CM) API library (SONAME libGLESv1_CM.so, 278 defined dynamic symbols)	verified
+system_a	system/lib64/libGLESv2.so	64-bit system OpenGL ES 2.x API library (SONAME libGLESv2.so, 846 defined dynamic symbols)	verified
+system_a	system/lib64/libGLESv3.so	64-bit system OpenGL ES 3.x API library (SONAME libGLESv3.so, 846 defined dynamic symbols)	verified
+system_a	system/lib64/libgpuservice.so	64-bit GpuService implementation library (GpuStats, GpuMem, PriorityDumper, IGpuService binder stub)	verified
+system_a	system/lib64/libvulkan.so	64-bit system Vulkan loader library (SONAME libvulkan.so, 197 defined dynamic symbols)	verified
+system_ext_a	lib/vendor.oculus.hardware.graphics.gpucontrol@1.0.so	32-bit copy of the IGpuControl 1.0 interface library (81 defined dynamic symbols, same count as odm copy; sha256 differs)	verified
+system_ext_a	lib64/vendor.oculus.hardware.graphics.gpucontrol@1.0.so	64-bit copy of the IGpuControl 1.0 interface library (HIDL passthrough strings present)	verified
+vendor_a	lib/egl/libGLESv2_adreno.so	32-bit Adreno OpenGL ES 2.x driver	observed
+vendor_a	lib/egl/libGLESv1_CM_adreno.so	32-bit Adreno OpenGL ES 1.x (CM) driver	observed
+vendor_a	lib/egl/libEGL_adreno.so	32-bit Adreno EGL driver (SONAME libEGL_adreno.so, 152 defined dynamic symbols)	verified
+vendor_a	lib/egl/libq3dtools_esx.so	32-bit Qualcomm graphics profiling/tooling library (esx variant)	observed
+vendor_a	lib/egl/eglSubDriverAndroid.so	32-bit Android EGL sub-driver (exports CreateSubDriver, GetSubDriverVersion)	observed
+vendor_a	lib/egl/libq3dtools_adreno.so	32-bit Adreno graphics profiling/tooling library (debug.egl.profiler keys)	observed
+vendor_a	lib/hw/vulkan.adreno.so	32-bit Adreno Vulkan HAL driver (hw_module id vulkan)	observed
+vendor_a	lib/libEGL_adreno.so	Symlink to egl/libEGL_adreno.so	verified
+vendor_a	lib/libGLESv2_adreno.so	Symlink to egl/libGLESv2_adreno.so	verified
+vendor_a	lib/libOpenCL.so	32-bit Khronos OpenCL ICD loader library (192 defined dynamic symbols)	verified
+vendor_a	lib/libOpenCL_adreno.so	32-bit Adreno OpenCL ICD library	observed
+vendor_a	lib/libadreno_app_profiles.so	32-bit Adreno application-profile library (exports ApplyApplicationProfile)	observed
+vendor_a	lib/libadreno_utils.so	32-bit Adreno utility library (surface alignment, mip-level and format helpers)	observed
+vendor_a	lib/libar-gsl.so	32-bit Qualcomm audio Graph Service Layer library (name collision with GSL; audio, not GPU)	observed
+vendor_a	lib/libgsl.so	32-bit KGSL user-space library (ioctl wrappers for /dev/kgsl-3d0; 580 defined dynamic symbols)	verified
+vendor_a	lib/libq3dtools_adreno.so	Symlink to egl/libq3dtools_adreno.so	verified
+vendor_a	lib64/egl/libGLESv2_adreno.so	64-bit Adreno OpenGL ES 2.x driver (538 defined dynamic symbols; NEEDED libgsl.so, libllvm-glnext.so)	verified
+vendor_a	lib64/egl/libGLESv1_CM_adreno.so	64-bit Adreno OpenGL ES 1.x (CM) driver (484 defined dynamic symbols)	verified
+vendor_a	lib64/egl/libEGL_adreno.so	64-bit Adreno EGL driver (151 defined dynamic symbols, includes eglGpuPerfHintQCOM)	verified
+vendor_a	lib64/egl/libq3dtools_esx.so	64-bit Qualcomm graphics profiling/tooling library (esx variant; debug.egl.profiler.* keys)	verified
+vendor_a	lib64/egl/eglSubDriverAndroid.so	64-bit Android EGL sub-driver (exports CreateSubDriver, GetSubDriverVersion; loads QTI mapper HALs)	verified
+vendor_a	lib64/egl/libq3dtools_adreno.so	64-bit Adreno graphics profiling/tooling library (debug.egl.profiler.gpuscope)	verified
+vendor_a	lib64/hw/vulkan.adreno.so	64-bit Adreno Vulkan HAL driver (hw_module id vulkan via HMI symbol; 394 defined dynamic symbols)	verified
+vendor_a	lib64/libEGL_adreno.so	Symlink to egl/libEGL_adreno.so	verified
+vendor_a	lib64/libGLESv2_adreno.so	Symlink to egl/libGLESv2_adreno.so	verified
+vendor_a	lib64/libOpenCL.so	64-bit Khronos OpenCL ICD loader library (191 cl/khr-prefixed exports)	verified
+vendor_a	lib64/libOpenCL_adreno.so	64-bit Adreno OpenCL ICD library (clIcdGetPlatformIDsKHR, clQueryMLInterfaceVersionsQCOM; 444 defined dynamic symbols)	verified
+vendor_a	lib64/libadreno_app_profiles.so	64-bit Adreno application-profile library (exports ApplyApplicationProfile; NEEDED vendor.qti.qspmhal@1.0)	verified
+vendor_a	lib64/libadreno_utils.so	64-bit Adreno utility library (a6x_get_additional_pixel_alignment, compute_num_mip_levels, isFormatSampleableByGpu)	verified
+vendor_a	lib64/libar-gsl.so	64-bit Qualcomm audio Graph Service Layer library (ACDB/GPR; /data/vendor/audio/gsl_log.bin); name collision, not GPU	verified
+vendor_a	lib64/libgsl.so	64-bit KGSL user-space library (ioctl wrappers for /dev/kgsl-3d0; GPU debug dump paths; 580 defined dynamic symbols)	verified
+vendor_a	lib64/libq3dtools_adreno.so	Symlink to egl/libq3dtools_adreno.so	verified
+vendor_a	firmware/a740v3_zap.b01	ZAP firmware segment 1 (1072 bytes): payload of the RWE LOAD segment at image offset 0x1000	verified
+vendor_a	firmware/a740v3_zap.mbn	Reassembled single-file ZAP image (14328 bytes): segment 0 at 0, segment 1 at 0x1000, segment 2 at 0x2000	verified
+vendor_a	firmware/a740v3_zap.elf	Single-LOAD ELF32 QDSP6 variant of the ZAP image (5168 bytes, one program header)	verified
+vendor_a	firmware/gmu_gen70200.bin	GMU firmware image for the gen 7.02.00 class GPU, named in the msm_kgsl.ko firmware table	inferred
+vendor_a	firmware/a740v3_sqe.fw	SQE microcode firmware for a740 v3 (dword array), named in the msm_kgsl.ko firmware table	inferred
+vendor_a	firmware/a740v3_zap.b00	ZAP firmware segment 0 (148 bytes): ELF32 QDSP6 header and program headers, identical to first 148 bytes of the .mdt	verified
+vendor_a	firmware/a740v3_zap.b02	ZAP firmware segment 2 (6136 bytes): embedded X.509 certificate chain (Eureka signing certificate and Eureka_FW_Root certificates)	verified
+vendor_a	firmware/a740v3_zap.mdt	Split-format ZAP header file: 148-byte ELF header and program headers followed by segment 2 payload (6284 bytes)	verified

@@ -1,0 +1,84 @@
+partition	path	role	confidence
+odm_a	bin/cameratool	Camera bring-up and capture test CLI (frame streaming, metadata dump, per-camera-set selection flags); links libcamerahal, libcameracontrol and libsyncboss	observed
+odm_a	bin/syncboss_camera_tests	Test executable for the SyncBoss camera path; links libcamerahal and carries SyncBoss log text	observed
+odm_a	lib64/libcamerahal.so	CameraHalC_Init, CameraHalC_Start, CameraHalC_Stop and CameraHalC_Deinit shim that dlopens a camera HAL implementation	observed
+odm_a	lib64/vendor.oculus.hardware.mixedreality.camerawarpgridprovider-V1-ndk_platform.so	NDK stub for the ICameraWarpGridProvider AIDL interface and its parcelable types	observed
+product_a	media/audio/ui/camera_click.ogg	Camera shutter click UI sound, Ogg Vorbis stereo 44.1 kHz	inferred
+product_a	media/audio/ui/camera_focus.ogg	Camera focus UI sound, Ogg Vorbis stereo 44.1 kHz	inferred
+product_a	etc/cameramuxmode/config.json	Legacy (v1) camera mux-mode table: named modes mapping consumers to GENERIC_SLOT frame types and frame types to exposure algorithms; read by cameramuxmodeservice	verified
+product_a	etc/cameramuxmode/configv2.json	Camera mux-mode config version 3 with cameraSystems worldTracking and color; byte-identical to the vendor_a copy	verified
+system_a	system/lib/android.hardware.camera.common@1.0.so	HIDL camera common types library, 32-bit build	observed
+system_a	system/lib/android.hardware.camera.device@3.2.so	HIDL camera device 3.2 stub library (ICameraDevice, ICameraDeviceSession, ICameraDeviceCallback), 32-bit build	observed
+system_a	system/lib/libcamera2ndk.so	Camera2 NDK library (ACameraManager, ACameraDevice, ACaptureRequest and ACaptureSession APIs), 32-bit build	observed
+system_a	system/lib/libcamera_client.so	Framework camera client library (android::Camera, BpCameraService, ICameraClient), 32-bit build	observed
+system_a	system/lib/libcamera_metadata.so	Camera metadata helper library (allocate, append, find and copy metadata entries), 32-bit build	observed
+system_a	system/lib64/android.hardware.camera.common@1.0.so	HIDL camera common types library, 64-bit build	observed
+system_a	system/lib64/android.hardware.camera.device@3.2.so	HIDL camera device 3.2 stub library (ICameraDevice, ICameraDeviceSession, ICameraDeviceCallback), 64-bit build	observed
+system_a	system/lib64/libcamera2ndk.so	Camera2 NDK library, 64-bit build	observed
+system_a	system/lib64/libcamera_client.so	Framework camera client library, 64-bit build	observed
+system_a	system/lib64/libcamera_metadata.so	Camera metadata helper library, 64-bit build	observed
+system_a	system/lib64/libmxrcamera_image_provider.so	Image provider library exporting mxrCameraCreate, mxrCameraConfigure, mxrCameraStartCamera, mxrCameraStopCamera and mxrCameraGetDeviceInfo; NEEDs libcameramuxmodereader.so	observed
+system_a	system/lib64/libvrsrecorder_utils_camera.so	VR recorder camera utilities (slot and sync logging); NEEDs libcameramuxmodemonitor.so and libcameramuxmodereader.so	observed
+system_ext_a	bin/cameramuxmodeservice	Camera mux-mode daemon: registers the cameramuxmodeservice binder service, reads /product/etc/cameramuxmode/config.json, started by init at late_start	verified
+system_ext_a	bin/cameramuxmodeservice_tool	Command-line client for the mux-mode service (-info, -set_active)	observed
+system_ext_a	lib/libcameramuxmodemonitor.so	32-bit build of the mux-mode monitor client library	observed
+system_ext_a	lib64/libcameramuxmodemonitor.so	Client library exporting CameraMuxModeMonitor and the ICameraMuxModeClient and ICameraMuxModeService binder interfaces; NEEDed by mrsystemservice, trackingservice, sensorproxy, trackingfidelityservice and the tool	verified
+system_ext_a	lib64/libcameramuxmodereader.so	JSON reader exporting OVR::OS::getCameraMuxModeConfigJsonFileContent(const char*)	verified
+system_ext_a	lib64/vendor.oculus.hardware.mixedreality.camerawarpgridprovider-V1-ndk_platform.so	Copy of the camera warp grid provider NDK stub; same file size as the odm_a copy, different build ID	observed
+vendor_a	etc/cameramuxmode/configv2.json	Same mux-mode v3 config as the product_a copy (identical sha256); the odm sensor service reads it from /vendor/etc/cameramuxmode/configv2.json	verified
+vendor_a	etc/camera/AECoreTuning_imx471_v2.bin	AEC core tuning table, IMX471 v2 (trigger names invalidTrigger, luxIndexTrigger, gyroSqrTrigger, combinedLumaTrigger)	observed
+vendor_a	etc/camera/AECoreTuning_imx471.bin	AEC core tuning table, IMX471 (InvalidTriggerID, LuxIndex, CurrentExposureIndex, CurrentGain)	observed
+vendor_a	etc/camera/com.qti.sensormodule.cam01_none_eureka_og01a1b_right_csi1.bin	Chromatix sensor-module block for camera 1: OG01A1B, right side, CSI1	verified
+vendor_a	etc/camera/cvaectuning_slam.json	CVA auto-exposure tuning JSON (top-level keys basic, metering, convergence, factorization); identical to cvaectuning_ht.json	verified
+vendor_a	etc/camera/AWBCoreTuning_imx471_CIQ_Vivid.bin	AWB core tuning table, IMX471 CIQ Vivid variant (magic-based detection reports a Targa image; the content is a tuning table)	observed
+vendor_a	etc/camera/depthaectuning.json	Depth-path auto-exposure tuning JSON (same top-level keys as the CVA files)	verified
+vendor_a	etc/camera/com.qti.tuned.eureka_imx471_right.bin	Chromatix tuned parameter file, IMX471 right	verified
+vendor_a	etc/camera/com.qti.sensormodule.cam04_none_eureka_imx471_left_csi0.bin	Chromatix sensor-module block for camera 4: IMX471, left side, CSI0	verified
+vendor_a	etc/camera/cvaectuning_ht.json	CVA auto-exposure tuning JSON, identical to cvaectuning_slam.json	verified
+vendor_a	etc/camera/com.qti.sensormodule.cam05_none_eureka_imx471_right_csi3.bin	Chromatix sensor-module block for camera 5: IMX471, right side, CSI3	verified
+vendor_a	etc/camera/com.qti.tuned.eureka_imx471_left.bin	Chromatix tuned parameter file, IMX471 left; trailing CRC32 verified	verified
+vendor_a	etc/camera/com.qti.tuned.default.bin	Chromatix tuned default parameter file	verified
+vendor_a	etc/camera/AWBCoreTuning_imx471.bin	AWB core tuning table, IMX471 (same size as the CIQ_Vivid variant, different bytes)	observed
+vendor_a	etc/camera/com.qti.sensormodule.cam00_none_eureka_og01a1b_left_csi4.bin	Chromatix sensor-module block for camera 0: OG01A1B, left side, CSI4	verified
+vendor_a	etc/camera/com.qti.sensormodule.cam03_liteon_eureka_ov7251_right_csi2.bin	Chromatix sensor-module block for camera 3: OV7251 (liteon module), right side, CSI2	verified
+vendor_a	etc/camera/com.qti.sensormodule.cam02_liteon_eureka_ov7251_left_csi5.bin	Chromatix sensor-module block for camera 2: OV7251 (liteon module), left side, CSI5	verified
+vendor_a	lib64/camera/components/com.meta.node.foveation.fusion.so	CHI pipeline node FoveationBlend (foveation fusion of image buffers)	observed
+vendor_a	lib64/camera/components/libcorepi_3a_v2.so	CorePi 3A library v2 exporting createCorePiAWBInterface and createCorePiAEInterface	observed
+vendor_a	lib64/camera/components/com.meta.node.fastAI.so	CHI pipeline node FastAI denoiser (FastAINodeProcRequest)	observed
+vendor_a	lib64/camera/components/com.qti.eisv3.so	Electronic image stabilization v3 component (eis_* utilities and chromatix info converters)	observed
+vendor_a	lib64/camera/components/com.meta.node.gipp.so	CHI pipeline node GIPP (GIPPNodeCreate, gipp algorithm wrapper)	observed
+vendor_a	lib64/camera/components/libcorepi_3a_v1.so	CorePi 3A library v1 (createCorePiAWBInterface, AEC debug data)	observed
+vendor_a	lib64/camera/components/com.qti.stats.aecxcore.so	AEC X-core statistics algorithm component (CreateAecXCoreAlgo)	observed
+vendor_a	lib64/camera/components/com.qti.stats.aec.so	AEC statistics algorithm component (CreateAECAlgorithm, ChiAECAlgorithmEntry)	observed
+vendor_a	lib64/camera/components/com.qti.stats.awb.so	AWB statistics algorithm component (CreateAWBAlgorithm, ChiAWBAlgorithmEntry), 5.2 MB	observed
+vendor_a	lib64/hw/camera.qcom.so	QTI Camera HAL3 module: hw_module_t id "camera", name "QTI Camera HAL", module API 3.0	verified
+vendor_a	lib64/libcameracontrol.so	SyncBoss camera control layer (syncboss_camera_v2_init, start_streaming, stop_streaming, deinit)	observed
+vendor_a	lib64/libcamerafencewrapper.so	Fence manager wrapper (CameraFenceManager, CreateFence, CancelFenceHandle, camera_fencewrapper_entry)	observed
+vendor_a	lib64/libcamerawarpgridproviderclient.so	Client for the warp grid provider (computeWarpGrid binder calls, shared-memory mapping)	observed
+vendor_a	lib64/liblokicamera.so	Loki camera HAL implementation (text "Loki Camera HAL" and "====[LOKI]====", vendor tag ops)	observed
+vendor_a	lib64/libmonocameracontrol.so	ISP monochrome camera control module (exports GetIspMonoCameraControlCreator)	observed
+vendor_a	lib64/libxrcamerahal.so	XR camera HAL implementation (exports CreateCameraHal; XrCameraLogical and XrCameraPhysical classes; persist.vendor.camera.* properties)	observed
+vendor_a	lib64/vendor.qti.hardware.camera.postproc@1.0-service-impl.so	Service implementation of vendor.qti.hardware.camera.postproc@1.0 (RegisterIPostProcService, CameraPostProc_Create)	observed
+vendor_a	lib64/vendor.qti.hardware.camera.postproc@1.0.so	HIDL interface library for IPostProcService, IPostProcSession and IPostProcServiceCallBacks	observed
+vendor_a	firmware/CAMERA_ICP.b20	Segment 20: 7000-byte block (program header type NULL) containing X.509-style text Eureka_FW_Root, Meta Platforms, Inc. and Menlo Park	observed
+vendor_a	firmware/CAMERA_ICP.b01	Segment 1: 360 bytes at vaddr 0x0	verified
+vendor_a	firmware/CAMERA_ICP.b14	Segment 14: no file data; memory size 4194304 at vaddr 0x200000	verified
+vendor_a	firmware/CAMERA_ICP.b16	Segment 16: no file data; memory size 1048576 at vaddr 0x600000	verified
+vendor_a	firmware/CAMERA_ICP.b07	Segment 7: 16 bytes at vaddr 0x488	verified
+vendor_a	firmware/CAMERA_ICP.b11	Segment 11: no file data; memory size 472192 at vaddr 0xf8000	verified
+vendor_a	firmware/CAMERA_ICP.b18	Segment 18: 38884-byte RW segment at vaddr 0xe0420000	verified
+vendor_a	firmware/CAMERA_ICP.b19	Segment 19: no file data and no memory size (empty file)	verified
+vendor_a	firmware/CAMERA_ICP.b12	Segment 12: no file data; memory size 52076 at vaddr 0x1f0000	verified
+vendor_a	firmware/CAMERA_ICP.b00	Hash segment: copy of the ELF header and program header table (52 + 21 x 32 = 724 bytes)	verified
+vendor_a	firmware/CAMERA_ICP.b06	Segment 6: 24 bytes at vaddr 0x408	verified
+vendor_a	firmware/CAMERA_ICP.b08	Segment 8: 857980-byte code segment at vaddr 0x1000 (flags R E); text includes CPAS_CDM, BPS_CDM, IPE0_CDM, IPE1_CDM and an error-fatal message	observed
+vendor_a	firmware/CAMERA_ICP.b17	Segment 17: 13124-byte segment at vaddr 0xe0400000 (flags R E)	verified
+vendor_a	firmware/CAMERA_ICP.mdt	Xtensa ELF32 MDT header with 21 program headers for the CAMERA_ICP image; program header N maps to segment file CAMERA_ICP.bNN	verified
+vendor_a	firmware/CAMERA_ICP.b09	Segment 9: 25136-byte RW segment at vaddr 0xe8000; text includes EnqueueBpsWaitForIpe and MemMapUmdCdmRegions	observed
+vendor_a	firmware/CAMERA_ICP.b03	Segment 3: 20 bytes at vaddr 0x348	verified
+vendor_a	firmware/CAMERA_ICP.b02	Segment 2: 20 bytes at vaddr 0x308	verified
+vendor_a	firmware/CAMERA_ICP.b15	Segment 15: no file data and no memory size (empty file)	verified
+vendor_a	firmware/CAMERA_ICP.b13	Segment 13: no file data and no memory size (empty file)	verified
+vendor_a	firmware/CAMERA_ICP.b05	Segment 5: 20 bytes at vaddr 0x3c8	verified
+vendor_a	firmware/CAMERA_ICP.b10	Segment 10: no file data and no memory size (empty file)	verified
+vendor_a	firmware/CAMERA_ICP.b04	Segment 4: 20 bytes at vaddr 0x388	verified

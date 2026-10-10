@@ -1,0 +1,455 @@
+{
+ "key": "media-codecs",
+ "summary": "The media-codecs group has 163 files: 49 in system_a, 1 in system_ext_a and 113 in vendor_a. The system side holds the Stagefright and Codec2 framework libraries (32-bit and 64-bit), the media.extractor and media service executables, and a Mainline APEX (com.android.media.swcodec, version 319999900) that ships the mediaswcodec service, a Codec2 software plugin set, its own media_codecs.xml, init.rc and seccomp policy. The vendor side holds 29 Codec2 software plugins per bitness (each exporting CreateCodec2Factory), 14 legacy OMX software plugins (createSoftOMXComponent), Qualcomm QC2 layers (libqcodec2_*) including a V4L2 plugin, a Codec2 HIDL server library used by the vendor.qti.media.c2 HAL, a ClearKey MediaCas plugin, and XML/JSON configuration (media_codecs_anorak.xml, media_codecs_performance_anorak.xml, media_profiles_V1_0.xml, media_profiles_anorak.xml, media_anorak/video_system_specs.json). The variant suffix _anorak comes from ro.media.xml_variant.codecs and ro.media.xml_variant.codecs_performance in vendor build.prop. One row, system_ext_a/lib64/libcodecwrapper.so, is a protobuf wrapper for wearable input telemetry and is not a media codec. Several XML includes named by media_codecs_anorak.xml are not present in the mounted partitions.",
+ "rowsExpected": 163,
+ "rowsListed": 163,
+ "claims": [
+  {
+   "id": "grp-01",
+   "label": "verified",
+   "claim": "The group holds 163 rows: 49 in system_a, 1 in system_ext_a and 113 in vendor_a. Every row has kind file.",
+   "file": "<image>/classified.tsv",
+   "evidence": "MNT=<image>/mnt. Command: awk -F'\\t' '$1==\"media-codecs\"' <image>/classified.tsv > input_rows.tsv; wc -l input_rows.tsv; cut -f2 input_rows.tsv | sort | uniq -c; cut -f4 input_rows.tsv | sort | uniq -c. Output: '163 input_rows.tsv', '49 system_a', '1 system_ext_a', '113 vendor_a', '163 file'.",
+   "verdict": "confirmed",
+   "reason": "Subsystem filter returns 163 rows: 49 system_a, 1 system_ext_a, 113 vendor_a. The kind column is 163 'file'. No duplicate (partition, path) pairs in the input.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "grp-02",
+   "label": "verified",
+   "claim": "All 163 files exist at MNT/<partition>/<path> with the recorded size and sha256.",
+   "file": "<image>/mnt",
+   "evidence": "Command: cd MNT; while IFS=$'\\t' read -r sub part path kind size mime sha; do f=\"$part/$path\"; s=$(sha256sum \"$f\" | cut -d' ' -f1); [ \"$s\" = \"$sha\" ] && [ \"$(stat -c %s \"$f\")\" = \"$size\" ] && ok=$((ok+1)) || bad=$((bad+1)); done < input_rows.tsv; echo ok=$ok bad=$bad. Output: 'ok=163 bad=0'.",
+   "verdict": "confirmed",
+   "reason": "All 163 files resolve under the mounted tree at <partition>/<path>. Each matches its recorded SHA-256 and byte size (ok=163, bad=0, missing=0).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "grp-03",
+   "label": "verified",
+   "claim": "roles.tsv has one header line and 163 data rows. Its (partition, path) keys match the input exactly. Confidence counts are 103 verified, 56 observed, 4 inferred and 0 unverified.",
+   "file": "<image>-tools/work/subsystems/media-codecs/roles.tsv",
+   "evidence": "Command: awk -F'\\t' 'NR>1{print $1\"\\t\"$2}' roles.tsv | sort > r_keys.txt; awk -F'\\t' '{print $2\"\\t\"$3}' input_rows.tsv | sort > i_keys.txt; diff i_keys.txt r_keys.txt && echo 'keys match input exactly'; awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c. Output: 'keys match input exactly', '4 inferred', '56 observed', '103 verified'.",
+   "verdict": "confirmed",
+   "reason": "Role table has one header line and 163 data rows, each with 4 tab-separated fields. The (partition, path) key set matches the input exactly, with no duplicates. Confidence tally: 103 verified, 56 observed, 4 inferred, 0 unverified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "sysext-01",
+   "label": "verified",
+   "claim": "system_ext_a/lib64/libcodecwrapper.so is a protobuf encode and decode wrapper for wearable input telemetry, not a media codec. Its references are the WearableInputService package and two libraries that ship with it.",
+   "file": "<image>/mnt/system_ext_a/lib64/libcodecwrapper.so",
+   "evidence": "Command: cd MNT; grep -rl 'libcodecwrapper' . Output: ./system_ext_a/priv-app/WearableInputService/WearableInputService.apk, ./system_ext_a/lib64/libcodecwrapper.so, ./system_ext_a/lib64/libwis_input_device.so, ./system_ext_a/lib64/wis_handlers.so. Command: readelf -d system_ext_a/lib64/libcodecwrapper.so | grep NEEDED. Output: liblog.so libdl.so libc.so. Command: readelf --dyn-syms -W system_ext_a/lib64/libcodecwrapper.so | awk '$7!=\"UND\" && NR>3{print $8}' | c++filt | head. Output: codec_lib::SerializeConfigRequestMessage, codec_lib::SerializeRequestMessage, codec_lib::decodeBatteryInfoProto, codec_lib::decodeDeviceStateProto, codec_lib::decodeImuAccelEventProto. Defined 75, undefined 98.",
+   "verdict": "needs_change",
+   "reason": "Symbol counts (75 defined, 98 undefined), NEEDED list (liblog, libdl, libc) and the wearable-input message encode/decode functions in namespace com::oculus::wearableinputservice all hold. The embedded protobuf runtime is present (static protobuf source paths and descriptor strings, no libprotobuf dependency, no google:: dynamic symbols), so 'protobuf encode and decode wrapper' holds. Reference hits are WearableInputService.apk, libwis_input_device.so and wis_handlers.so (plus the file itself). The APK packages lib/arm64-v8a/libcodecwrapper.so and lib/arm64-v8a/libwis_input_device.so. wis_handlers.so is not in the APK; it is a standalone system_ext library, so 'two libraries that ship with it' is imprecise. The evidence excerpt of the symbol list does not match its stated command: the first ten defined symbols start with decodeEmgHandwritingInferenceEvent. The five names quoted do exist in the defined set.",
+   "corrected_claim": "system_ext_a/lib64/libcodecwrapper.so is a protobuf-based encode and decode wrapper for wearable input telemetry (IMU, EMG, gesture, battery, device-state and haptics messages in the com::oculus::wearableinputservice namespace), not a media codec. It embeds the protobuf runtime and has no libprotobuf dependency. Its references are WearableInputService.apk, which packages lib/arm64-v8a/libcodecwrapper.so and lib/arm64-v8a/libwis_input_device.so, and two system_ext libraries that link it: libwis_input_device.so (also packaged in the APK) and wis_handlers.so (a standalone system_ext library)."
+  },
+  {
+   "id": "apex-01",
+   "label": "verified",
+   "claim": "The swcodec Mainline module is an APEX named com.android.media.swcodec, version 319999900. Its payload is an ext2 image with extents.",
+   "file": "<image>/mnt/system_a/system/apex/com.android.media.swcodec.capex",
+   "evidence": "Command: file -b system_a/system/apex/com.android.media.swcodec.capex. Output: 'Android package (APK), with AndroidManifest.xml, with APK Signing Block'. Command: unzip -o -q <capex> -d X/swcodec_capex; cat X/swcodec_capex/apex_manifest.json. Output: {\"name\": \"com.android.media.swcodec\", \"version\": 319999900}. Command: unzip -o -q X/swcodec_capex/original_apex -d X/swcodec_capex/inner; file -b apex_payload.img; ls -l apex_payload.img. Output: 'Linux rev 1.0 ext2 filesystem data, UUID=7d1522e1-9dfa-5edb-a43e-98e3a4d20250 (extents) (large files) (huge files)'; 14233600 bytes. X is the scratch directory under work/subsystems/media-codecs/x.",
+   "verdict": "confirmed",
+   "reason": "The capex is reported as an APK-format archive with an APK Signing Block. Its apex_manifest.json gives name com.android.media.swcodec and version 319999900. The inner payload apex_payload.img is 14233600 bytes and reports as an ext2 filesystem with extents, large-file and huge-file flags.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "apex-02",
+   "label": "verified",
+   "claim": "The APEX payload tree contains bin/mediaswcodec, etc/{init.rc, ld.config.txt, media_codecs.xml, seccomp_policy/} and lib64 with 72 libraries, including Codec2 software plugins, libvpx.so, libopus.so and libmedia_codecserviceregistrant.so.",
+   "file": "<image>-tools/work/subsystems/media-codecs/x/swcodec_capex/inner/apex_payload.img",
+   "evidence": "Command: debugfs -R 'ls -l /' apex_payload.img. Output: bin (40755), etc (40755), lib64 (40755), apex_manifest.json 66 bytes, apex_manifest.pb 176 bytes. Command: debugfs -R 'ls -l /bin' apex_payload.img. Output: 'mediaswcodec' mode 100755, 15512 bytes. Command: debugfs -R 'ls -l /etc' apex_payload.img. Output: init.rc 209, ld.config.txt 8226, media_codecs.xml 8033, seccomp_policy (dir). Command: debugfs -R 'ls -l /etc/seccomp_policy' apex_payload.img. Output: code_coverage.arm64.policy 70, crash_dump.arm64.policy 563, mediaswcodec.policy 1982. Command: debugfs -R 'ls -l /lib64' apex_payload.img. Output: 72 regular files, for example libcodec2_soft_aacdec.so 964592, libcodec2_vndk.so 682280, libvpx.so 1655536, libmedia_codecserviceregistrant.so 46672.",
+   "verdict": "confirmed",
+   "reason": "Payload root holds bin, etc, lib64, apex_manifest.json (66 bytes) and apex_manifest.pb (176 bytes). bin/mediaswcodec is mode 100755, 15512 bytes. etc holds init.rc 209, ld.config.txt 8226, media_codecs.xml 8033 and seccomp_policy (code_coverage.arm64.policy 70, crash_dump.arm64.policy 563, mediaswcodec.policy 1982). lib64 has 72 entries, all regular .so files. libcodec2_soft_aacdec.so 964592, libcodec2_vndk.so 682280, libvpx.so 1655536, libopus.so 406648 and libmedia_codecserviceregistrant.so 46672 are present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "apex-03",
+   "label": "verified",
+   "claim": "The APEX init.rc declares one service, media.swcodec, which runs /apex/com.android.media.swcodec/bin/mediaswcodec with user mediacodec and the task profiles ProcessCapacityHigh and HighPerformance.",
+   "file": "<image>-tools/work/subsystems/media-codecs/x/swcodec_capex/inner/ext/init.rc",
+   "evidence": "Command: debugfs -R 'dump /etc/init.rc init.rc' apex_payload.img; cat init.rc. Output: 'service media.swcodec /apex/com.android.media.swcodec/bin/mediaswcodec' / '    class main' / '    user mediacodec' / '    group camera drmrpc mediadrm' / '    ioprio rt 4' / '    task_profiles ProcessCapacityHigh HighPerformance'.",
+   "verdict": "confirmed",
+   "reason": "init.rc in the payload declares exactly one service, media.swcodec, running /apex/com.android.media.swcodec/bin/mediaswcodec with class main, user mediacodec, groups camera drmrpc mediadrm, ioprio rt 4 and task_profiles ProcessCapacityHigh HighPerformance.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "apex-04",
+   "label": "verified",
+   "claim": "mediaswcodec is a stripped 64-bit AArch64 PIE that links libmedia_codecserviceregistrant.so and logs 'media swcodec service starting'. It registers the name media.swcodec and reads its seccomp policy from the APEX or vendor path.",
+   "file": "<image>-tools/work/subsystems/media-codecs/x/swcodec_capex/inner/ext/mediaswcodec",
+   "evidence": "Command: file -b mediaswcodec. Output: 'ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, ... stripped'. Command: readelf -d mediaswcodec | grep NEEDED. Output: libavservices_minijail.so libbase.so libhidlbase.so liblog.so libmedia_codecserviceregistrant.so libc++.so libc.so libm.so libdl.so. Command: strings -n 6 mediaswcodec | grep -E '^(/|media|vendor|c2|android\\.|debug\\.|ro\\.)'. Output: '/apex/com.android.media.swcodec/etc/seccomp_policy/mediaswcodec.policy', '/vendor/etc/seccomp_policy/mediaswcodec.policy', 'media swcodec service starting', 'media.swcodec'.",
+   "verdict": "confirmed",
+   "reason": "mediaswcodec is a stripped ARM aarch64 PIE with interpreter linker64. NEEDED includes libmedia_codecserviceregistrant.so. Strings include 'media swcodec service starting', the name media.swcodec, and the seccomp paths /apex/com.android.media.swcodec/etc/seccomp_policy/mediaswcodec.policy and /vendor/etc/seccomp_policy/mediaswcodec.policy.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "apex-05",
+   "label": "verified",
+   "claim": "The APEX media_codecs.xml lists 9 Codec2 decoders and 6 encoders, each with an OMX.google alias, and has no Include elements. Its component names use the c2.android.* prefix.",
+   "file": "<image>-tools/work/subsystems/media-codecs/x/swcodec_capex/inner/ext/media_codecs.xml",
+   "evidence": "Command: grep -n -E '<MediaCodec |<Include|<Setting |<Decoders|<Encoders|<Alias' media_codecs.xml. Output: decoders c2.android.mp3.decoder (alias OMX.google.mp3.decoder), c2.android.amrwb.decoder, c2.android.aac.decoder, c2.android.vorbis.decoder, c2.android.opus.decoder, c2.android.raw.decoder, c2.android.flac.decoder, c2.android.mpeg4.decoder, c2.android.vp8.decoder; encoders c2.android.aac.encoder, c2.android.amrwb.encoder, c2.android.flac.encoder, c2.android.opus.encoder, c2.android.mpeg4.encoder, c2.android.vp8.encoder. No Include lines were printed.",
+   "verdict": "needs_change",
+   "reason": "Nine c2.android decoders and six encoders are present, the file has no Include elements, and all 15 component names use the c2.android. prefix. Fourteen of the 15 MediaCodec entries carry an OMX.google Alias. c2.android.opus.encoder has none (its block holds Limit and Feature children only), so 'each with an OMX.google alias' is wrong.",
+   "corrected_claim": "The APEX media_codecs.xml lists 9 Codec2 decoders and 6 encoders, all named with the c2.android.* prefix. Fourteen of the 15 carry an OMX.google alias; c2.android.opus.encoder has none. The file has no Include elements."
+  },
+  {
+   "id": "apex-06",
+   "label": "observed",
+   "claim": "The mediaswcodec seccomp policy is a line-per-entry allow-list. Each entry is a syscall name followed by ': 1' or an argument expression, and the header notes that ioctl calls are filtered by SELinux policy.",
+   "file": "<image>-tools/work/subsystems/media-codecs/x/swcodec_capex/inner/ext/mediaswcodec.policy",
+   "evidence": "Command: debugfs -R 'dump /etc/seccomp_policy/mediaswcodec.policy mediaswcodec.policy' apex_payload.img; grep -v '^#' mediaswcodec.policy | head. Output: 'futex: 1', 'ioctl: 1', 'sched_yield: 1', 'close: 1', 'dup: 1', 'ppoll: 1'. Header comment line: '# ioctl calls are filtered via the selinux policy.'",
+   "verdict": "needs_change",
+   "reason": "Entry format and header hold: syscall entries are 'name: 1' or 'name: <argument expression>' (for example mprotect and mremap), and the header says ioctl calls are filtered via the SELinux policy. The file also contains one @include directive (code_coverage.arm64.policy under the APEX etc directory), which is not a syscall entry.",
+   "corrected_claim": "The mediaswcodec seccomp policy is a line-per-entry allow-list. Syscall entries are a name followed by ': 1' or an argument expression. The file also holds one @include directive that pulls in the code_coverage policy. The header notes that ioctl calls are filtered via the SELinux policy."
+  },
+  {
+   "id": "mediaextractor-01",
+   "label": "verified",
+   "claim": "/system/bin/mediaextractor is an AArch64 PIE that registers the media.extractor service (MediaExtractorService). It links libmedia.so and libmediaextractorservice.so and calls limitProcessMemory.",
+   "file": "<image>/mnt/system_a/system/bin/mediaextractor",
+   "evidence": "Command: readelf -h system_a/system/bin/mediaextractor | grep -E 'Class|Machine|Type'. Output: Class ELF64, Type DYN (Position-Independent Executable file), Machine AArch64. Command: readelf -d ... | grep NEEDED. Output: libmedia.so libmediaextractorservice.so libmediautils.so libbinder.so libutils.so liblog.so libavservices_minijail.so libc++.so libc.so libm.so libdl.so. Command: readelf --dyn-syms -W ... | awk '$7==\"UND\"{print $8}' | c++filt. Output: android::limitProcessMemory(char const*, unsigned long, unsigned long), android::SetUpMinijail(...), android::ProcessState::self()@LIBBINDER, android::defaultServiceManager()@LIBBINDER, android::MediaExtractorService::MediaExtractorService(). Defined dynamic symbols: 1 (__cfi_check); undefined: 23. Command: strings -n 5 ... Output: 'main_extractorservice', 'enable media.extractor memory limits', 'media.extractor'.",
+   "verdict": "confirmed",
+   "reason": "ELF64 DYN, AArch64. NEEDED includes libmedia.so, libmediaextractorservice.so, libmediautils.so, libbinder.so and libavservices_minijail.so. Dynamic symbols: one defined (__cfi_check), 23 undefined, including android::limitProcessMemory, SetUpMinijail, and the MediaExtractorService constructor. Strings include main_extractorservice, 'enable media.extractor memory limits' and media.extractor.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "mediaextractor-02",
+   "label": "observed",
+   "claim": "mediaextractor is referenced by init, SELinux file, service and domain files. Its seccomp policy is looked up at /apex/com.android.media/etc/seccomp_policy/mediaextractor.policy and /vendor/etc/seccomp_policy/mediaextractor.policy.",
+   "file": "<image>/mnt/system_a/system/etc/init/mediaextractor.rc",
+   "evidence": "Command: cat system_a/system/etc/init/mediaextractor.rc. Output: 'service mediaextractor /system/bin/mediaextractor' / 'class main' / 'user mediaex' / 'group drmrpc mediadrm' / 'ioprio rt 4' / 'task_profiles ProcessCapacityHigh HighPerformance'. Command: grep -n 'mediaextractor' system_a/system/etc/selinux/plat_file_contexts system_a/system/etc/selinux/plat_service_contexts. Output: plat_file_contexts:575 '/system/bin/mediaextractor u:object_r:mediaextractor_exec:s0'; plat_service_contexts:170 'media.extractor u:object_r:mediaextractor_service:s0'. Command: grep -n 'binderservicedomain' system_ext_a/etc/selinux/system_ext_sepolicy.cil | cut -c1-200. Output includes 'mediaextractor' and 'mediaserver' in the binderservicedomain attribute set (line 42). The file mediaextractor.policy is also referenced by system_a/system/apex/com.android.media.capex.",
+   "verdict": "confirmed",
+   "reason": "init service mediaextractor at /system/bin/mediaextractor (user mediaex). plat_file_contexts line 575 and plat_service_contexts line 170 are present. The binderservicedomain attribute set (line 42) includes mediaextractor. Binary strings contain /apex/com.android.media/etc/seccomp_policy/mediaextractor.policy and /vendor/etc/seccomp_policy/mediaextractor.policy. The com.android.media APEX payload contains etc/seccomp_policy/mediaextractor.policy.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "mediaserver-01",
+   "label": "verified",
+   "claim": "/system/bin/mediaserver is a 32-bit ARM EABI5 PIE. It instantiates MediaPlayerService and ResourceManagerService and starts an HIDL RPC thread pool for android.hardware.media.omx@1.0. Its init service is named media.",
+   "file": "<image>/mnt/system_a/system/bin/mediaserver",
+   "evidence": "Command: file -b system_a/system/bin/mediaserver. Output: 'ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /system/bin/linker'. Command: readelf -d ... | grep NEEDED. Output: android.hardware.media.omx@1.0.so libandroidicu.so libfmq.so libbinder.so libhidlbase.so liblog.so libmediaplayerservice.so libresourcemanagerservice.so libutils.so libc++.so libc.so libm.so libdl.so. Command: readelf --dyn-syms -W ... | awk '$7==\"UND\"{print $8}' | c++filt. Output: android::MediaPlayerService::instantiate(), android::ResourceManagerService::instantiate(), android::hardware::configureRpcThreadpool(unsigned int, bool), android::hardware::joinRpcThreadpool(). Defined dynamic symbols: 0. Command: cat system_a/system/etc/init/mediaserver.rc. Output: 'on property:init.svc.media=*' / 'setprop init.svc.mediadrm ${init.svc.media}' / 'service media /system/bin/mediaserver' / 'user media'.",
+   "verdict": "needs_change",
+   "reason": "32-bit ARM EABI5 PIE, instantiate calls for MediaPlayerService and ResourceManagerService, zero defined dynamic symbols, and the init service named media all hold. The binary calls the generic configureRpcThreadpool and joinRpcThreadpool and links android.hardware.media.omx@1.0.so. Nothing in the binary ties the thread pool to omx@1.0, so 'for android.hardware.media.omx@1.0' is an association the evidence does not show.",
+   "corrected_claim": "/system/bin/mediaserver is a 32-bit ARM EABI5 PIE. It instantiates MediaPlayerService and ResourceManagerService, configures and joins an HIDL RPC thread pool (configureRpcThreadpool and joinRpcThreadpool), and links android.hardware.media.omx@1.0.so. Its init service is named media."
+  },
+  {
+   "id": "mediaserver-02",
+   "label": "observed",
+   "claim": "The mediaserver service names are declared in the platform service contexts. The binary's file context is mediaserver_exec.",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_service_contexts",
+   "evidence": "Command: grep -n -E 'media\\.(player|extractor|resource)' system_a/system/etc/selinux/plat_service_contexts. Output: 168 'media.player u:object_r:mediaserver_service:s0', 170 'media.extractor u:object_r:mediaextractor_service:s0', 172 'media.resource_manager u:object_r:mediaserver_service:s0', 173 'media.resource_observer u:object_r:mediaserver_service:s0'. Command: grep -n '/system/bin/mediaserver' system_a/system/etc/selinux/plat_file_contexts. Output: 534 '/system/bin/mediaserver u:object_r:mediaserver_exec:s0'.",
+   "verdict": "confirmed",
+   "reason": "plat_service_contexts lines 168, 170, 172 and 173 map media.player, media.extractor, media.resource_manager and media.resource_observer. plat_file_contexts line 534 maps /system/bin/mediaserver to mediaserver_exec.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libstagefright-01",
+   "label": "verified",
+   "claim": "libstagefright.so (64-bit) is the core Stagefright library. Its exports cover the MediaCodec and ACodec state machines, MediaCodecList, MPEG4Writer, MediaCodecSource and NuMediaExtractor, and it exports 136 AMEDIAFORMAT_KEY_* constants.",
+   "file": "<image>/mnt/system_a/system/lib64/libstagefright.so",
+   "evidence": "Command: readelf -d system_a/system/lib64/libstagefright.so | grep SONAME. Output: 'Library soname: [libstagefright.so]'. Command: readelf --dyn-syms -W ... | awk '$7!=\"UND\" && NR>3' | wc -l. Output: defined 2044; undefined 856. Command: ... | c++filt | grep -o -E '^android::[A-Za-z_0-9]+(::[A-Za-z_0-9]+)?' | sort | uniq -c | sort -rn | head. Output: '78 android::MPEG4Writer::Track', '20 android::MediaCodecSource::Puller', '17 android::MediaCodec::ResourceManagerServiceProxy', '16 android::ACodec::BaseState'. Command: grep -c '^AMEDIAFORMAT_KEY_' on the exported names. Output: 136. Exported names include android::MediaCodecList::getInstance and android::MediaCodecList::findMatchingCodecs.",
+   "verdict": "confirmed",
+   "reason": "SONAME libstagefright.so, 64-bit. 2044 defined and 856 undefined dynamic symbols. MediaCodec, ACodec, MPEG4Writer, MediaCodecSource and NuMediaExtractor symbols are present. MediaCodecList::getInstance and findMatchingCodecs are exported. Exactly 136 AMEDIAFORMAT_KEY_ defined symbols. The quoted top-prefix list omits android::Vector (30) and MPEG2TSWriter::SourceInfo (19); the claim text does not depend on that list.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libstagefright-02",
+   "label": "observed",
+   "claim": "libstagefright.so references Codec2 and OMX libraries and the media config and profiling file paths. It names /apex/com.android.media/lib64/extractors and loads an optional libmediaformatshaper.so.",
+   "file": "<image>/mnt/system_a/system/lib64/libstagefright.so",
+   "evidence": "Command: strings -n 6 system_a/system/lib64/libstagefright.so | grep -E -i 'media_codecs|formatshaper|/apex/|libcodec2|libmedia_omx'. Output: '/apex/com.android.media/', '/apex/com.android.media/lib64/extractors', '/data/misc/media/media_codecs_profiling_results.xml', 'connectFormatShaper: unable to load formatshaper %s', 'connectFormatShaper: unable to load mainline formatshaper %s', 'libmediaformatshaper.so', 'libcodec2.so', 'libcodec2_vndk.so', 'libmedia_omx.so'. Command: readelf -d ... | grep NEEDED (truncated output begins): libstagefright_framecapture_utils.so libaudioutils.so libbase.so libbinder.so libbinder_ndk.so libcamera_client.so libcodec2.so libcodec2_vndk.so libcutils.so libdatasource.so libdl_android.so libgui.so liblog.so libmedia.so libmedia_codeclist.so libmedia_omx.so.",
+   "verdict": "confirmed",
+   "reason": "Strings include libcodec2.so, libcodec2_vndk.so, libmedia_omx.so, media_codecs_profiling_results.xml, /apex/com.android.media/lib64/extractors, libmediaformatshaper.so and format-shaper load-failure messages. The NEEDED list matches the prefix quoted. 'Optional' is inferred from the load-failure messages rather than stated in the binary.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libcodec2_vndk-01",
+   "label": "verified",
+   "claim": "libcodec2_vndk.so (system, 64-bit) is the Codec2 VNDK framework. It exports C2 buffer, block and store APIs, a platform store plugin loader (C2PlatformStorePluginLoader) and DMA-heap and ION usage structures.",
+   "file": "<image>/mnt/system_a/system/lib64/libcodec2_vndk.so",
+   "evidence": "Command: readelf -d ... | grep -E 'NEEDED|SONAME'. Output (vendor copy, same list): android.hardware.graphics.bufferqueue@2.0.so android.hardware.graphics.common@1.2.so android.hardware.media.bufferpool@2.0.so libbase.so libcutils.so libhardware.so libhidlbase.so libion.so libdmabufheap.so libfmq.so liblog.so libnativewindow.so libstagefright_foundation.so libstagefright_bufferpool@2.0.1.so libui.so libutils.so. Command: readelf --dyn-syms ... | c++filt | grep -E '^(android::C2|C2|android::Codec2)'. Output includes C2BasicGraphicBlockPool::fetchGraphicBlock, C2BasicLinearBlockPool::fetchLinearBlock, C2Buffer::CreateGraphicBuffer, C2PlatformStorePluginLoader::createAllocator, C2PlatformStorePluginLoader::GetInstance, C2StoreDmaBufUsageStruct::_FIELD_LIST, C2StoreIonUsageStruct::_FIELD_LIST. Defined 1384, undefined 182.",
+   "verdict": "confirmed",
+   "reason": "The system copy (64-bit) has 1384 defined and 182 undefined dynamic symbols; the vendor copy has 1386 defined and 182 undefined, with the same NEEDED list. Exports include C2Buffer::CreateGraphicBuffer, C2BasicGraphicBlockPool::fetchGraphicBlock, C2BasicLinearBlockPool::fetchLinearBlock, C2PlatformStorePluginLoader::GetInstance and createAllocator, and the C2StoreDmaBufUsageStruct and C2StoreIonUsageStruct _FIELD_LIST symbols.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libcodec2_vndk-02",
+   "label": "observed",
+   "claim": "libcodec2_vndk.so reads the debug.c2.use_dmabufheaps property and selects DMA-heap paths. The system copy also references media.c2.dmabuf.padding, and the vendor copy uses /dev/dma_heap/system and /dev/ion. Its file and property contexts are set by SELinux.",
+   "file": "<image>/mnt/vendor_a/lib64/libcodec2_vndk.so",
+   "evidence": "Command: strings -n 6 vendor_a/lib64/libcodec2_vndk.so | grep -E 'dma|ion|c2'. Output: 'debug.c2.use_dmabufheaps', 'debug.c2.use_dmabufheaps set, forcing DMABUF Heaps', '/dev/dma_heap/system', '/dev/dma_heap/system-uncached', '/dev/ion', 'CreateCodec2Factory', 'CreateAllocator', 'CreateBlockPool'. Command: strings -n 6 system_a/system/lib64/libcodec2_vndk.so | grep 'media.c2'. Output: 'media.c2.dmabuf.padding'. Command: grep -n 'media.c2.dmabuf.padding' system_a/system/etc/selinux/plat_property_contexts. Output: 433 'media.c2.dmabuf.padding u:object_r:codec2_config_prop:s0 exact int'. Command: grep -n 'libcodec2_vndk' vendor_a/etc/selinux/vendor_file_contexts. Output: 455 '/vendor/lib64/libcodec2_vndk\\.so u:object_r:same_process_hal_file:s0'.",
+   "verdict": "confirmed",
+   "reason": "Vendor copy strings: debug.c2.use_dmabufheaps, its forcing message, /dev/dma_heap/system, /dev/dma_heap/system-uncached, /dev/ion, CreateCodec2Factory, CreateAllocator and CreateBlockPool. System copy string: media.c2.dmabuf.padding. plat_property_contexts line 433 labels it codec2_config_prop. vendor_file_contexts line 455 labels /vendor/lib64/libcodec2_vndk.so same_process_hal_file.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libcodec2-01",
+   "label": "verified",
+   "claim": "The 32-bit and 64-bit libcodec2.so files in system_a are link stubs. They export no dynamic symbols and import only __cxa_finalize from libc.",
+   "file": "<image>/mnt/system_a/system/lib64/libcodec2.so",
+   "evidence": "Command: readelf --dyn-syms -W system_a/system/lib64/libcodec2.so. Output: 'Symbol table .dynsym contains 2 entries', '1: 0000000000000000 0 FUNC GLOBAL DEFAULT UND __cxa_finalize@LIBC (2)'. Defined count: 0 (also 0 for system_a/system/lib/libcodec2.so). NEEDED: libc++.so libc.so libm.so libdl.so. The purpose of the stub is inferred from its SONAME and the absence of exports.",
+   "verdict": "confirmed",
+   "reason": "Both the 64-bit and 32-bit system copies have a two-entry dynamic symbol table: one undefined FUNC __cxa_finalize from libc, and no defined dynamic symbols. NEEDED is libc++, libc, libm and libdl.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libcodec2_client-01",
+   "label": "verified",
+   "claim": "libcodec2_client.so (system, 64-bit) is the client wrapper for Codec2 HIDL component stores. Its Codec2Client::CreateFromAllServices and Codec2Client::Component methods cover queue, start, stop, flush, drain, reset, release, output surface and block pool setup.",
+   "file": "<image>/mnt/system_a/system/lib64/libcodec2_client.so",
+   "evidence": "Command: readelf -d ... | grep NEEDED. Output: android.hardware.graphics.bufferqueue@1.0.so android.hardware.media.bufferpool@2.0.so android.hardware.media.c2@1.0.so android.hardware.media.c2@1.1.so android.hardware.media.c2@1.2.so libbase.so libbinder.so libcodec2.so libcodec2_hidl_client@1.0.so libcodec2_hidl_client@1.1.so libcodec2_hidl_client@1.2.so libcodec2_vndk.so. Command: readelf --dyn-syms ... | c++filt | grep '^android::Codec2Client'. Output: android::Codec2Client::CreateFromAllServices, android::Codec2Client::CreateComponentByName, android::Codec2Client::Component::queue, ::start, ::stop, ::setOutputSurface, ::createBlockPool, ::connectToInputSurface, ::pollForRenderedFrames. Defined 101, undefined 181.",
+   "verdict": "confirmed",
+   "reason": "NEEDED includes the bufferqueue, bufferpool, android.hardware.media.c2 1.0/1.1/1.2 and libcodec2_hidl_client 1.0/1.1/1.2 libraries. 101 defined and 181 undefined dynamic symbols. CreateFromAllServices and CreateComponentByName are defined. Component queue, start, stop, flush, drain, reset, release, setOutputSurface, createBlockPool, connectToInputSurface and pollForRenderedFrames are defined.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libsfplugin_ccodec-01",
+   "label": "observed",
+   "claim": "libsfplugin_ccodec.so is the CCodec plugin that connects the stagefright MediaCodec path to Codec2. It takes its config file names from media_codecs.xml, media_codecs_c2.xml, media_codecs_performance.xml, media_codecs_performance_c2.xml and media_codecs_shaping.xml, and it reads from the swcodec APEX etc directory and a formatshaper path.",
+   "file": "<image>/mnt/system_a/system/lib64/libsfplugin_ccodec.so",
+   "evidence": "Command: strings -n 6 system_a/system/lib64/libsfplugin_ccodec.so | grep -E 'media_codecs|/apex/|c2\\.|libcodec2'. Output: '/apex/com.android.media.swcodec/etc', '/apex/com.android.media/etc/formatshaper', 'c2.android.', 'c2.vda.', 'libcodec2.so', 'libcodec2_client.so', 'libcodec2_vndk.so', 'libmedia_omx.so', 'libstagefright_omx.so', 'media_codecs.xml', 'media_codecs_c2.xml', 'media_codecs_performance.xml', 'media_codecs_performance_c2.xml', 'media_codecs_shaping.xml'. Defined dynamic symbols: 524. The strings name these files. Whether each one is loaded at runtime is not determined.",
+   "verdict": "confirmed",
+   "reason": "64-bit system library with 524 defined dynamic symbols, 121 of them CCodec-named. Strings include the five media_codecs XML names, /apex/com.android.media.swcodec/etc, /apex/com.android.media/etc/formatshaper, the c2. prefixes and references to libcodec2, libcodec2_client and libcodec2_vndk. The 'connects to Codec2' role is supported by those references. Runtime loading of each file is not determined (stated gap).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "xmlparser-01",
+   "label": "verified",
+   "claim": "libstagefright_xmlparser.so (64-bit) is the MediaCodecsXmlParser. It is built on expat and parses the media_codecs*.xml grammar: Include, Settings, Decoders, Encoders, MediaCodec, Alias, Limit, Feature, Quirk, Variant, Tuning and Mapping.",
+   "file": "<image>/mnt/system_a/system/lib64/libstagefright_xmlparser.so",
+   "evidence": "Command: readelf -d system_a/system/lib64/libstagefright_xmlparser.so | grep NEEDED. Output: libbase.so libexpat.so liblog.so libstagefright_omx_utils.so libc++.so libc.so libm.so libdl.so. Command: readelf --dyn-syms -W ... | c++filt | grep MediaCodecsXmlParser | sed 's/(.*//' | sort -u. Output: android::MediaCodecsXmlParser::Impl::Parser::addAlias, ::addFeature, ::addLimit, ::addMapping, ::addQuirk, ::addSetting, ::addTuning, Data::addGlobal. Defined 50. Command: strings -n 4 ... | grep -E 'media_codecs|invalid include|recursive include|^Variant$|^Tuning|^Mapping|^Feature|^Limit'. Output: 'media_codecs', 'media_codecs_', 'media_codecs_performance', 'media_codecs_shaping.xml', '.xml', 'invalid include file name: %s at line %zu of %s', 'recursive include chain', 'Variant', 'Tuning', 'Mapping', 'Feature', 'Limit'.",
+   "verdict": "confirmed",
+   "reason": "64-bit. NEEDED includes libexpat.so. 50 defined dynamic symbols, including MediaCodecsXmlParser::Impl::Parser addAlias, addFeature, addLimit, addMapping, addQuirk, addSetting and addTuning, and Data::addGlobal. The twelve tag names (Include, Settings, Decoders, Encoders, MediaCodec, Alias, Limit, Feature, Quirk, Variant, Tuning, Mapping) appear as standalone strings, with the media_codecs file-name strings and the recursive include chain message.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "variant-01",
+   "label": "verified",
+   "claim": "Vendor build.prop selects the _anorak variant for both codec XML files and the target. SELinux declares the matching variant properties. ro.media.xml_variant.profiles, which selects the media profiles variant, is not set in any mounted build.prop.",
+   "file": "<image>/mnt/vendor_a/build.prop",
+   "evidence": "Command: sed -n '47,53p' vendor_a/build.prop. Output: '# Media', 'debug.c2.use_dmabufheaps=1', 'debug.stagefright.c2inputsurface=-1', 'debug.stagefright.omx_default_rank=0', 'ro.media.xml_variant.codecs=_anorak', 'ro.media.xml_variant.codecs_performance=_anorak', 'vendor.media.target_variant=_anorak'. Command: grep -rn 'xml_variant.profiles' --include='*.prop' . (no match in build.prop files). Command: grep -n 'xml_variant' system_a/system/etc/selinux/plat_property_contexts. Output: 544 'ro.media.xml_variant.codecs u:object_r:media_variant_prop:s0 exact string', 545 '...codecs_performance ...', 546 'ro.media.xml_variant.profiles ...'. Command: grep -n 'ro.board.platform' vendor_a/build.prop. Output: 97 'ro.board.platform=anorak'.",
+   "verdict": "confirmed",
+   "reason": "Vendor build.prop lines 47-53 set ro.media.xml_variant.codecs=_anorak, ro.media.xml_variant.codecs_performance=_anorak and vendor.media.target_variant=_anorak. ro.board.platform=anorak is at line 97. plat_property_contexts lines 544-546 declare the three xml_variant properties. ro.media.xml_variant.profiles is set in no build.prop file (all .prop and build.prop files searched) and appears only as the SELinux declaration at line 546.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "vendor-xml-01",
+   "label": "verified",
+   "claim": "vendor_a/etc/media_codecs_anorak.xml is a well-formed Codec2 codec list with 12 decoders (avc, hevc, vp9 and av1, each with plain, low_latency and secure variants) and 4 encoders (avc, hevc, hevc.cq and heic). It includes media_codecs_google_audio.xml and two files that are missing from the mounted partitions.",
+   "file": "<image>/mnt/vendor_a/etc/media_codecs_anorak.xml",
+   "evidence": "Command: xmllint --noout vendor_a/etc/media_codecs_anorak.xml; echo rc=$?. Output: rc=0. Command: xmllint --noout --valid ... Output: 'validity error : Validation failed: no DTD found !' (the file has no DOCTYPE). Command: grep -n -E '<MediaCodec |<Decoders|<Encoders|</Decoders|</Encoders|<Include|<Setting ' media_codecs_anorak.xml | cut -c1-160. Output: 12 MediaCodec lines in Decoders (lines 128-315), 4 in Encoders (333-384); Include href=media_codecs_google_audio.xml (line 121), Include href=media_codecs_c2_audio.xml (line 122), Include href=media_codecs_google_c2.xml (line 399); Setting name=max-video-encoder-input-buffers value=11 (line 124). Command: find MNT -name 'media_codecs*'. Output: vendor_a/etc/media_codecs_anorak.xml, media_codecs_google_audio.xml, media_codecs_performance_anorak.xml, plus system_a/system/etc/media_profiles_V1_0.dtd is not a codecs file; media_codecs_c2_audio.xml and media_codecs_google_c2.xml are not found.",
+   "verdict": "confirmed",
+   "reason": "Well-formed (exit 0). No DOCTYPE, so DTD validation reports no DTD. Decoders block (lines 128-315) has 12 MediaCodec entries: avc, hevc, vp9 and av1, each plain, low_latency and secure. Encoders block (lines 333-384) has 4: avc, hevc, hevc.cq and heic. Include href lines 121, 122 and 399. media_codecs_google_audio.xml is present in vendor_a/etc. media_codecs_c2_audio.xml and media_codecs_google_c2.xml are absent from all mounted partitions.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "vendor-xml-02",
+   "label": "observed",
+   "claim": "Each MediaCodec element holds Alias, Limit, Feature and Limit-performance-point children. Limit keys include size, alignment, block-size, block-count, blocks-per-second, bitrate, frame-rate, concurrent-instances, complexity, quality and performance-point-<WxH>. Feature keys include adaptive-playback, low-latency, intra-refresh, video-minimum-quality and bitrate-modes. secure-playback has required=true.",
+   "file": "<image>/mnt/vendor_a/etc/media_codecs_anorak.xml",
+   "evidence": "Command: sed -n '128,145p;164,178p;333,345p' media_codecs_anorak.xml | cut -c1-120. Output excerpts: '<MediaCodec name=\"c2.qti.avc.decoder\" type=\"video/avc\">', '<Alias name=\"OMX.qcom.video.decoder.avc\"/>', '<Limit name=\"size\" min=\"96x96\" max=\"8192x8192\" />', '<Limit name=\"block-count\" range=\"36-138240\" />', '<Feature name=\"adaptive-playback\" />', '<Limit name=\"performance-point-1920x1080\" value=\"480\" />', '<Feature name=\"secure-playback\" required=\"true\" />', '<Feature name=\"bitrate-modes\" value=\"VBR,CBR\" />', '<Limit name=\"quality\" range=\"0-100\" default=\"80\" />' (encoder c2.qti.hevc.encoder.cq). The attribute names rank, disabled, supports- and mapping- also appear in the parser strings.",
+   "verdict": "needs_change",
+   "reason": "Limit and Feature children are present in all 16 MediaCodec entries. Thirteen of the 16 also have an Alias child; the three c2.qti.av1.decoder entries (plain, low_latency, secure) have none, so 'each MediaCodec holds Alias' is wrong. performance-point-<WxH> is a Limit name, not a separate element. secure-playback has required=true in all four entries that carry it. Limit and Feature key names quoted are present. For the parser strings, rank and supports- and mapping- are present; 'disabled' appears only inside attribute::disabled.",
+   "corrected_claim": "Each MediaCodec element holds Limit and Feature children; thirteen of the sixteen also hold an Alias child (the three c2.qti.av1.decoder entries have none). Limit names include size, alignment, block-size, block-count, blocks-per-second, bitrate, frame-rate, concurrent-instances, complexity, quality and performance-point-<WxH> (performance points are Limit names, not a separate element). Feature names include adaptive-playback, low-latency, intra-refresh, video-minimum-quality, bitrate-modes and secure-playback, which has required=true in every entry that carries it. The parser strings include rank, supports- and mapping-."
+  },
+  {
+   "id": "perf-xml-01",
+   "label": "verified",
+   "claim": "media_codecs_performance_anorak.xml is a Qualcomm overlay. It holds 15 MediaCodec entries, each with update=\"true\", that add measured-frame-rate-<WxH> limits to the Codec2 decoders and encoders.",
+   "file": "<image>/mnt/vendor_a/etc/media_codecs_performance_anorak.xml",
+   "evidence": "Command: xmllint --noout vendor_a/etc/media_codecs_performance_anorak.xml; echo rc=$?. Output: rc=0. Command: grep -c 'update=\"true\"' media_codecs_performance_anorak.xml. Output: 15. Command: grep -o -E '<MediaCodec name=\"[^\"]+\"[^>]*>' ... Output: c2.qti.avc.decoder, c2.qti.avc.decoder.low_latency, c2.qti.hevc.decoder, c2.qti.hevc.decoder.low_latency, c2.qti.vp9.decoder, c2.qti.vp9.decoder.low_latency, c2.qti.av1.decoder, c2.qti.av1.decoder.low_latency, c2.android.vp8.decoder, c2.android.mpeg4.decoder, c2.qti.avc.encoder, c2.qti.hevc.encoder, c2.qti.hevc.encoder.cq, c2.android.mpeg4.encoder, c2.android.vp8.encoder. Header: 'Copyright (c) 2018-2022 Qualcomm Technologies, Inc.'",
+   "verdict": "confirmed",
+   "reason": "Well-formed. 15 MediaCodec entries, 15 with update=\"true\". Names match the claim list (c2.qti avc, hevc, vp9 and av1 decoders with low_latency variants, c2.android vp8 and mpeg4 decoders, c2.qti avc, hevc and hevc.cq encoders, c2.android mpeg4 and vp8 encoders). measured-frame-rate-<WxH> attributes are present. Header copyright is 2018-2022 Qualcomm Technologies.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "profiles-01",
+   "label": "verified",
+   "claim": "media_profiles_V1_0.xml (vendor) is a MediaSettings document with CamcorderProfiles for cameraId 0 and 1, 25 EncoderProfile entries, 6 ImageEncoding entries and encoder, decoder and editor caps. Its internal DTD subset gives 61 validity errors. With the internal subset swapped for a reference to the system DTD copy, validation gives 0 errors.",
+   "file": "<image>/mnt/vendor_a/etc/media_profiles_V1_0.xml",
+   "evidence": "Command: grep -o -E '<[A-Za-z]+' media_profiles_V1_0.xml | sort | uniq -c | sort -rn. Output: 25 Video, 25 EncoderProfile, 25 Audio, 6 ImageEncoding, 5 AudioEncoderCap, 2 VideoEncoderCap, 2 ImageDecoding, 2 EncoderOutputFileFormat, 2 CamcorderProfiles, 1 VideoDecoderCap, 1 MediaSettings, 1 AudioDecoderCap. Command: xmllint --noout --valid media_profiles_V1_0.xml | grep -c 'validity error'. Output: 61. Command: python3 -I (rewrite the DOCTYPE to SYSTEM \"media_profiles_V1_0.dtd\" in scratch copy); cmp the scratch DTD to system_a/system/etc/media_profiles_V1_0.dtd; xmllint --noout --valid mp_v1_ext.xml | grep -c 'validity error'. Output: 'dtd copy identical', 'doctype replaced: 1', 0.",
+   "verdict": "needs_change",
+   "reason": "Tag counts match: 25 Video, 25 EncoderProfile, 25 Audio, 6 ImageEncoding, 5 AudioEncoderCap, 2 VideoEncoderCap, 2 ImageDecoding, 2 EncoderOutputFileFormat, 2 CamcorderProfiles (cameraId 0 and 1), 1 VideoDecoderCap, 1 MediaSettings, 1 AudioDecoderCap. Internal-subset validation gives 61 errors; with the subset swapped for the system DTD copy, 0 errors. But the file has no editor-cap instances. The ten lines mentioning Editor or Export are DTD declarations for VideoEditorCap and ExportVideoProfile (lines 84-93).",
+   "corrected_claim": "media_profiles_V1_0.xml (vendor) is a MediaSettings document with CamcorderProfiles for cameraId 0 and 1, 25 EncoderProfile entries, 6 ImageEncoding entries, and encoder and decoder caps (2 VideoEncoderCap, 5 AudioEncoderCap, 1 VideoDecoderCap, 1 AudioDecoderCap). Its internal DTD also declares VideoEditorCap and ExportVideoProfile, but the file has no instances of them. Its internal DTD subset gives 61 validity errors; with the subset swapped for a reference to the system DTD copy, validation gives 0 errors."
+  },
+  {
+   "id": "profiles-02",
+   "label": "verified",
+   "claim": "media_profiles_anorak.xml is a MediaSettings variant with CamcorderProfiles, VideoEditorCap (maxInputFrameWidth) and ExportVideoProfile. Its internal DTD does not declare the cameraId attribute and rejects the quality value 1080p, giving 11 validity errors.",
+   "file": "<image>/mnt/vendor_a/etc/media_profiles_anorak.xml",
+   "evidence": "Command: xmllint --noout media_profiles_anorak.xml; echo rc=$?. Output: rc=0. Command: xmllint --noout --valid media_profiles_anorak.xml 2>&1 | grep -c 'validity error'. Output: 11. Sample output: 'element CamcorderProfiles: validity error : No declaration for attribute cameraId of element CamcorderProfiles'; 'element EncoderProfile: validity error : Value \"1080p\" for attribute quality of EncoderProfile is not among the enumerated set'. Command: grep -n -E '<VideoEditorCap|<ExportVideoProfile' media_profiles_anorak.xml. Output: 179 '<VideoEditorCap maxInputFrameWidth=\"1920\"', 193 '<ExportVideoProfile name=\"h264\" profile= \"1\" level=\"2048\"/>'.",
+   "verdict": "confirmed",
+   "reason": "Well-formed. Internal-subset validation reports 11 errors: 2 'No declaration for attribute cameraId of element CamcorderProfiles', 2 'Value 1080p for attribute quality of EncoderProfile is not among the enumerated set', 2 for quality 95 on ImageEncoding, 2 'EncoderProfile does not carry attribute cameraId', 2 CamcorderProfiles content-model errors and 1 MediaSettings content-model error. VideoEditorCap (line 179, maxInputFrameWidth 1920) and ExportVideoProfile (line 193) are present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "profiles-dtd-01",
+   "label": "observed",
+   "claim": "The standalone media_profiles_V1_0.dtd defines the MediaSettings schema. Its elements are CamcorderProfiles, EncoderProfile (quality, fileFormat, duration), Video (codec, bitRate, width, height, frameRate), Audio (codec, bitRate, sampleRate, channels), ImageEncoding, ImageDecoding (memCap), Camera, EncoderOutputFileFormat, VideoEncoderCap, AudioEncoderCap, VideoDecoderCap and AudioDecoderCap.",
+   "file": "<image>/mnt/system_a/system/etc/media_profiles_V1_0.dtd",
+   "evidence": "Command: head -80 system_a/system/etc/media_profiles_V1_0.dtd. Output: '<!ELEMENT MediaSettings (CamcorderProfiles+, EncoderOutputFileFormat+, VideoEncoderCap+, AudioEncoderCap+, VideoDecoderCap, AudioDecoderCap)>', '<!ELEMENT EncoderProfile (Video, Audio)>', '<!ATTLIST EncoderProfile quality CDATA #REQUIRED>', '<!ATTLIST EncoderProfile fileFormat (mp4|3gp) #REQUIRED>', '<!ATTLIST EncoderProfile duration (30|60) #REQUIRED>', '<!ATTLIST Video codec (h264|h263|m4v) #REQUIRED>', '<!ATTLIST Audio codec (amrnb|amrwb|aac) #REQUIRED>'. libmedia strings include 'media_profiles', '_V1_0', 'ro.media.xml_variant.profiles', 'system/etc/', 'vendor/etc/', 'odm/etc/', 'product/etc/' and the name 'system/etc/media_profiles.xml', which is absent from the mounted partitions.",
+   "verdict": "confirmed",
+   "reason": "Thirteen ELEMENT declarations as listed (MediaSettings, CamcorderProfiles, EncoderProfile, Video, Audio, ImageEncoding, ImageDecoding, Camera, EncoderOutputFileFormat, VideoEncoderCap, AudioEncoderCap, VideoDecoderCap, AudioDecoderCap). The attributes quoted match. libmedia strings include media_profiles, _V1_0, ro.media.xml_variant.profiles, system/etc/, vendor/etc/, odm/etc/, product/etc/ and system/etc/media_profiles.xml. No media_profiles.xml exists in the mounted partitions.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "video-specs-01",
+   "label": "verified",
+   "claim": "media_anorak/video_system_specs.json is a commented JSON file for the Qualcomm codec platform. It has Video.Features (3 booleans), Video.Presets (5 values) and the empty lists or objects QC2CodecPlugins, QC2PreProcessingFilters and QC2PostProcessingFilters.",
+   "file": "<image>/mnt/vendor_a/etc/media_anorak/video_system_specs.json",
+   "evidence": "Command: python3 -I -c with a regex that strips // comments, then json.loads and json.dumps(indent=1). Output: {\"Video\": {\"Features\": {\"enc_csc_custom_matrix\": false, \"enc_csc_enable\": false, \"hw_protected_carveout\": false}, \"Presets\": {\"enc_linear_color_format\": 0, \"enc_chroma_qp_offset_10_bit\": 0, \"enc_chroma_qp_offset_8_bit\": 0, \"enc_bitrate_savings\": 3, \"default_primaries_override\": 1}, \"QC2CodecPlugins\": [], \"QC2PreProcessingFilters\": [], \"QC2PostProcessingFilters\": {}}}. The file header comment says to push it to /vendor/etc/media_anorak/video_system_specs.json and to kill media.hwcodec after changes. The repeated QC2PreProcessingFilters key appears only inside a comment block.",
+   "verdict": "needs_change",
+   "reason": "Commented JSON parses. Video.Features has 3 booleans, Video.Presets has 5 values, QC2CodecPlugins and QC2PreProcessingFilters are empty lists, QC2PostProcessingFilters is an empty object. The header comment (push to /vendor/etc/media_anorak/video_system_specs.json; kill media.hwcodec) matches. But QC2PreProcessingFilters occurs twice: once inside a comment block as a multi-stream example (line 56) and once as a live key with an empty list (line 60). The claim that the repeated key appears only inside a comment block is therefore wrong.",
+   "corrected_claim": "media_anorak/video_system_specs.json is a commented JSON file for the Qualcomm codec platform. It has Video.Features (3 booleans), Video.Presets (5 values), and empty QC2CodecPlugins and QC2PreProcessingFilters lists and an empty QC2PostProcessingFilters object. The name QC2PreProcessingFilters also appears once inside a comment block as a multi-stream example (line 56); the live key is at line 60."
+  },
+  {
+   "id": "video-specs-02",
+   "label": "observed",
+   "claim": "libqcodec2_platform.so builds the path /vendor/etc/media (plus a suffix) and the file name video_system_specs.json. The JSON keys are referenced in the QC2 platform, utils and V4L2 libraries.",
+   "file": "<image>/mnt/vendor_a/lib64/libqcodec2_platform.so",
+   "evidence": "Command: strings -n 4 vendor_a/lib64/libqcodec2_platform.so | grep -n -E '/vendor/etc|video_system_specs|media_|/data/vendor/media'. Output: '/vendor/etc/video_system_specs.json', '/vendor/etc/media', 'video_system_specs.json', '/data/vendor/media'. Command: grep -l for each key in vendor_a/lib64/*.so. Output: enc_bitrate_savings, hw_protected_carveout and enc_linear_color_format in libqcodec2_v4l2codec.so; default_primaries_override in libqcodec2_utils.so; QC2CodecPlugins, QC2PreProcessingFilters and QC2PostProcessingFilters in libqcodec2_platform.so.",
+   "verdict": "confirmed",
+   "reason": "Platform library strings include /vendor/etc/video_system_specs.json, /vendor/etc/media, video_system_specs.json and /data/vendor/media. All 11 JSON keys are found: enc_csc_custom_matrix, enc_csc_enable, hw_protected_carveout, enc_linear_color_format, enc_chroma_qp_offset_8_bit, enc_chroma_qp_offset_10_bit and enc_bitrate_savings in libqcodec2_v4l2codec.so; default_primaries_override in libqcodec2_utils.so; QC2CodecPlugins, QC2PreProcessingFilters and QC2PostProcessingFilters in libqcodec2_platform.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "qc2-v4l2-01",
+   "label": "verified",
+   "claim": "libqcodec2_v4l2codec.so (vendor, 64-bit) is the QC2 V4L2 codec plugin. It exports QC2Codec_GetPlugin and the QC2V4l2CodecPlugin::getSupportedCodecs entry, and it uses V4L2 and media device nodes.",
+   "file": "<image>/mnt/vendor_a/lib64/libqcodec2_v4l2codec.so",
+   "evidence": "Command: readelf --dyn-syms -W vendor_a/lib64/libqcodec2_v4l2codec.so | awk '$7!=\"UND\" && NR>3{print $8}' | c++filt | grep -E 'Create|Factory|V4L2|Plugin|Codec2'. Output: QC2Codec_GetPlugin, qc2::GetQC2V4L2CodecEntries, qc2::QC2V4l2CodecPlugin::getSupportedCodecs, qc2::QC2V4L2MetadataTranslator::flatten. Defined 789. Command: strings -n 6 ... | grep -E '^/dev/|v4l'. Output: '/dev/media%d', '/dev/video32', '/dev/video33', 'v4l2:config:Resolution %u x %u', 'v4l2:config:Operating-rate %.2g'. Command: grep -n 'libqcodec2_v4l2codec' vendor_a/etc/selinux/vendor_file_contexts. Output: 470 '/vendor/lib64/libqcodec2_v4l2codec\\.so u:object_r:same_process_hal_file:s0'.",
+   "verdict": "confirmed",
+   "reason": "64-bit. 789 defined dynamic symbols. QC2Codec_GetPlugin and qc2::QC2V4l2CodecPlugin::getSupportedCodecs are defined. Strings include /dev/media%d, /dev/video32 and /dev/video33. vendor_file_contexts line 470 labels the library same_process_hal_file.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "qc2-core-01",
+   "label": "observed",
+   "claim": "The QC2 base, core, base-codec, hooks and platform libraries form a layered stack. libqcodec2_core.so exports QC2ComponentStoreFactoryGetter. libqcodec2_hooks.so exports QC2ComponentObserver and its default observer, and it links the android.hardware.power HAL at versions 1.0 and 1.1.",
+   "file": "<image>/mnt/vendor_a/lib64/libqcodec2_core.so",
+   "evidence": "Command: readelf --dyn-syms -W on vendor_a/lib64/libqcodec2_core.so | c++filt | grep -E 'QC2ComponentStoreFactoryGetter' Output: 'QC2ComponentStoreFactoryGetter'; defined 307. Command: readelf --dyn-syms -W vendor_a/lib64/libqcodec2_hooks.so | c++filt | grep 'QC2ComponentObserver::Create'. Output: 'qc2::QC2ComponentObserver::Create', 'qc2::QC2DefaultCompObserver::onFPSChange', 'qc2::QC2DefaultCompObserver::onInitiatePerfLock'. Command: readelf -d vendor_a/lib64/libqcodec2_hooks.so | grep NEEDED. Output: libutils.so libcutils.so liblog.so libcodec2_vndk.so libqcodec2_base.so android.hardware.power@1.0.so android.hardware.power@1.1.so libhidlbase.so. Base exports: qc2::EventHandler::attach, qc2::EventHandler::post, qc2::Bundle::Item::Item (139 defined in libqcodec2_base.so).",
+   "verdict": "confirmed",
+   "reason": "libqcodec2_core.so defines QC2ComponentStoreFactoryGetter (307 defined symbols). libqcodec2_hooks.so defines QC2ComponentObserver::Create and QC2DefaultCompObserver methods and links android.hardware.power@1.0 and @1.1. libqcodec2_base.so defines 139 symbols including EventHandler attach and post and Bundle::Item. NEEDED edges run core to hooks, utils, platform, basecodec and base; basecodec to base, utils and platform; hooks to base. The layering holds.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "vendor-hidl-01",
+   "label": "verified",
+   "claim": "libcodec2_hidl@1.0.so (vendor, 64-bit) is the Codec2 HIDL server implementation for android.hardware.media.c2@1.0. It provides utils::ComponentStore, Component and CachedConfigurable, and it links the vendor Codec2 VNDK and the filter plugin library.",
+   "file": "<image>/mnt/vendor_a/lib64/libcodec2_hidl@1.0.so",
+   "evidence": "Command: readelf -d vendor_a/lib64/libcodec2_hidl@1.0.so | grep NEEDED. Output: android.hardware.graphics.bufferqueue@1.0.so android.hardware.graphics.bufferqueue@2.0.so android.hardware.graphics.common@1.0.so android.hardware.media@1.0.so android.hardware.media.bufferpool@2.0.so android.hardware.media.c2@1.0.so android.hardware.media.omx@1.0.so libbase.so libcodec2.so libcodec2_vndk.so libcutils.so libhidlbase.so liblog.so libstagefright_bufferpool@2.0.1.so libui.so libutils.so libstagefright_bufferqueue_helper.so libcodec2_hidl_plugin.so. Command: readelf --dyn-syms ... | awk '$7!=\"UND\" && NR>3' | wc -l. Output: 187 defined. Exports include android::hardware::media::c2::V1_0::utils::CachedConfigurable::querySupportedParams and android::hardware::media::c2::V1_0::utils::Component::Sink::findLocalComponent. Command: strings ... | grep -E '^Codec2-'. Output: 'Codec2-Component', 'Codec2-ComponentStore', 'Codec2-Configurable', 'Codec2-InputBufferManager', 'Codec2-InputSurfaceConnection', 'Codec2-types'.",
+   "verdict": "confirmed",
+   "reason": "64-bit vendor library. NEEDED list matches, including libcodec2_vndk.so, android.hardware.media.omx@1.0.so, libcodec2_hidl_plugin.so and the bufferqueue, bufferpool and c2@1.0 libraries. 187 defined dynamic symbols, including CachedConfigurable querySupportedParams, init and config, ComponentStore and Component VTTs, and Component::Sink::findLocalComponent. Strings include Codec2-Component, Codec2-ComponentStore, Codec2-Configurable, Codec2-InputBufferManager, Codec2-InputSurfaceConnection and Codec2-types.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "vendor-hal-01",
+   "label": "verified",
+   "claim": "The vendor.qti.media.c2@1.0-service HAL binary is started by init as vendor-qti-media-c2-hal-1-0 under user mediacodec. It registers the Codec2 IComponentStore and gets its store factory from QC2ComponentStoreFactoryGetter. Its seccomp policies are codec2.vendor.base-arm64.policy and codec2.vendor.ext-arm64.policy. The library name it opens with dlopen is not identified.",
+   "file": "<image>/mnt/vendor_a/bin/hw/vendor.qti.media.c2@1.0-service",
+   "evidence": "Command: cat vendor_a/etc/init/vendor.qti.media.c2@1.0-service.rc. Output: 'service vendor-qti-media-c2-hal-1-0 /vendor/bin/hw/vendor.qti.media.c2@1.0-service', 'class hal', 'user mediacodec', 'group mediadrm camera drmrpc system'. Command: readelf -d ... | grep NEEDED. Output includes libcodec2_vndk.so, android.hardware.media.c2@1.0.so, libcodec2_hidl@1.0.so, libavservices_minijail.so. Command: strings -n 5 ... | grep -E 'QC2|Codec2|seccomp'. Output: 'QC2ComponentStoreFactoryGetter', 'QC2HALService: failed to get Store factory !', 'QC2HALService: failed to open %s: %s', 'Codec2's IComponentStore default service created.', '/vendor/etc/seccomp_policy/codec2.vendor.base-arm64.policy', '/vendor/etc/seccomp_policy/codec2.vendor.ext-arm64.policy'. Command: grep -n 'vendor.qti.media.c2@1' vendor_a/etc/selinux/vendor_file_contexts. Output: 474 '/vendor/bin/hw/vendor\\.qti\\.media\\.c2@1\\.0-service u:object_r:mediacodec_exec:s0'.",
+   "verdict": "confirmed",
+   "reason": "init service vendor-qti-media-c2-hal-1-0 runs /vendor/bin/hw/vendor.qti.media.c2@1.0-service, class hal, user mediacodec. NEEDED includes libcodec2_vndk.so, android.hardware.media.c2@1.0.so and libcodec2_hidl@1.0.so. Strings include QC2ComponentStoreFactoryGetter, the store-factory failure message, the seccomp paths codec2.vendor.base-arm64.policy and codec2.vendor.ext-arm64.policy, and the default-service-created message. vendor_file_contexts line 474 labels the binary mediacodec_exec. The dlopen target library is not identified (stated gap).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "soft-plugins-01",
+   "label": "verified",
+   "claim": "There are 29 Codec2 software component plugins in each bitness, under lib and lib64, plus libcodec2_soft_common.so. Each plugin exports CreateCodec2Factory and DestroyCodec2Factory and names one c2.android.* component. libcodec2_soft_common.so exports SimpleC2Component and SimpleC2Interface.",
+   "file": "<image>/mnt/vendor_a/lib64",
+   "evidence": "Command: for f in lib64/libcodec2_soft_*.so; do readelf --dyn-syms -W $f | awk '$7!=\"UND\"{print $8}' | grep -c '^CreateCodec2Factory'; strings -n 6 $f | grep -E '^c2\\.android\\.[a-z0-9_.]+$'; done. Output: create=1 for all 29 plugins, for example 'lib64/libcodec2_soft_aacdec.so create=1 names=c2.android.aac.decoder', 'libcodec2_soft_vp9enc.so create=1 names=c2.android.vp9.encoder', 'libcodec2_soft_g711alawdec.so create=1 names=c2.android.g711.alaw.decoder'; the same 29 names appear under lib. libcodec2_soft_common.so: create=0. Command: readelf --dyn-syms -W lib64/libcodec2_soft_common.so | c++filt. Output: android::SimpleC2Component::SimpleC2Component, android::SimpleC2Component::queue_nb, android::SimpleC2Component::processQueue, android::SimpleC2Interface<void>::BaseParams::BaseParams. Defined 42.",
+   "verdict": "confirmed",
+   "reason": "lib64 and lib each hold 29 libcodec2_soft_* plugins plus libcodec2_soft_common.so (30 files each). All 29 lib64 plugins export CreateCodec2Factory and DestroyCodec2Factory and carry exactly one c2.android.* name; the same 29 plugin export and name pattern holds under lib. The name sets are identical between lib and lib64. libcodec2_soft_common.so exports no CreateCodec2Factory, has 42 defined symbols, and includes SimpleC2Component and SimpleC2Interface.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "soft-aacdec-01",
+   "label": "verified",
+   "claim": "libcodec2_soft_aacdec.so (vendor, 64-bit, 964592 bytes) is the AAC decoder Codec2 software plugin. It exports CreateCodec2Factory and DestroyCodec2Factory and depends on the Codec2 VNDK, the common soft library and the CCodec utilities.",
+   "file": "<image>/mnt/vendor_a/lib64/libcodec2_soft_aacdec.so",
+   "evidence": "Command: file -b vendor_a/lib64/libcodec2_soft_aacdec.so. Output: 'ELF 64-bit LSB shared object, ARM aarch64 ... BuildID[md5/uuid]=d4bb2592c56acd9cee2d2b0b79ffc4db, stripped'. Command: readelf -d ... | grep NEEDED. Output: libbase.so libcodec2.so libcodec2_vndk.so libutils.so libcodec2_soft_common.so libcutils.so liblog.so libsfplugin_ccodec_utils.so libstagefright_foundation.so libc++.so libc.so libm.so libdl.so. Command: readelf --dyn-syms -W ... | awk '$7!=\"UND\" && NR>3{print $8}'. Output: CreateCodec2Factory, DestroyCodec2Factory (no other exported symbols after filtering __). Command: strings -n 6 ... | grep '^c2.android'. Output: 'c2.android.aac.decoder'.",
+   "verdict": "confirmed",
+   "reason": "libcodec2_soft_aacdec.so in vendor lib64 is 964592 bytes, a stripped 64-bit ARM aarch64 shared object. NEEDED: libbase, libcodec2, libcodec2_vndk, libutils, libcodec2_soft_common, libcutils, liblog, libsfplugin_ccodec_utils, libstagefright_foundation. Its only exported non-internal symbols are CreateCodec2Factory and DestroyCodec2Factory. Its string is c2.android.aac.decoder.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "legacy-omx-01",
+   "label": "verified",
+   "claim": "There are 14 legacy OMX software plugins (libstagefright_soft_*.so) in vendor_a/lib. Each exports createSoftOMXComponent. Some report OMX.google.* component names. libstagefright_softomx.so provides the SimpleSoftOMXComponent base, and libstagefright_softomx_plugin.so exports createOMXPlugin.",
+   "file": "<image>/mnt/vendor_a/lib",
+   "evidence": "Command: for f in lib/libstagefright_soft_*.so; do printf '%s=%s ' ... readelf --dyn-syms -W $f | grep -c createSoftOMXComponent; done. Output: aacdec=1 aacenc=1 amrdec=1 amrwbenc=1 flacdec=1 flacenc=1 mp3dec=1 mpeg4dec=1 mpeg4enc=1 opusdec=1 rawdec=1 vorbisdec=1 vpxdec=1 vpxenc=1. The mangled symbol is _Z22createSoftOMXComponentPKcPK16OMX_CALLBACKTYPEPvPP17OMX_COMPONENTTYPE. Command: strings -n 6 libstagefright_soft_amrdec.so | grep OMX\\. Output: 'OMX.google.amrnb.decoder', 'OMX.google.amrwb.decoder'. Command: readelf --dyn-syms -W lib/libstagefright_softomx_plugin.so | grep createOMXPlugin. Output: createOMXPlugin.",
+   "verdict": "confirmed",
+   "reason": "vendor lib holds 14 libstagefright_soft_*.so files, each defining createSoftOMXComponent (14 of 14). OMX.google names are present (for example OMX.google.amrnb.decoder and OMX.google.amrwb.decoder in the amrdec plugin). libstagefright_softomx.so defines SimpleSoftOMXComponent symbols. libstagefright_softomx_plugin.so exports createOMXPlugin.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "selinux-type-01",
+   "label": "observed",
+   "claim": "SELinux declares mediaswcodec (service domain for hal_codec2_server) in the platform policy, and mediacodec (vendor) with a init transition from mediacodec_exec. Codec2 HAL attribute sets include mediaswcodec, mediacodec, mediaserver and cameraserver as clients.",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil",
+   "evidence": "Command: grep -n -E '^\\(type (mediaswcodec|mediaswcodec_exec)\\)|hal_codec2' system_a/system/etc/selinux/plat_sepolicy.cil | cut -c1-160. Output: 1029 '(typeattributeset hal_codec2 (mediaswcodec ))', 1032 '(typeattributeset hal_codec2_client (cameraserver mediaserver mediaswcodec surfaceflinger system_server mediatranscoding virtual_camera ))', 1035 '(typeattributeset hal_codec2_server (mediaswcodec ))', 2729 '(type mediaswcodec)', 2731 '(type mediaswcodec_exec)'. Command: grep -n -E '^\\(type mediacodec|typetransition init_32_0 mediacodec_exec|hal_codec2_server' vendor_a/etc/selinux/vendor_sepolicy.cil. Output: 665 '(type mediacodec)', 667 '(type mediacodec_exec)', 255 '(typeattributeset hal_codec2 (mediaswcodec_32_0 mediacodec))', 257 '(typeattributeset hal_codec2_server (mediaswcodec_32_0 mediacodec))', 1749 '(typetransition init_32_0 mediacodec_exec process mediacodec)'.",
+   "verdict": "needs_change",
+   "reason": "Line numbers and declarations match: plat_sepolicy.cil lines 1029, 1032, 1035, 2729 and 2731, and vendor_sepolicy.cil lines 255, 257, 665, 667 and 1749. The platform hal_codec2_client set includes cameraserver, mediaserver and mediaswcodec. The vendor policy places mediacodec in the hal_codec2 and hal_codec2_server sets, so mediacodec is a server-side member, not a client. The claim lists mediacodec as a client.",
+   "corrected_claim": "SELinux declares mediaswcodec (service domain for hal_codec2_server) in the platform policy, and mediacodec (vendor) with an init transition from mediacodec_exec. The platform hal_codec2_client set includes cameraserver, mediaserver and mediaswcodec. The vendor policy places mediacodec in the hal_codec2 and hal_codec2_server sets, so it is a server-side member rather than a client."
+  },
+  {
+   "id": "selinux-file-01",
+   "label": "observed",
+   "claim": "SELinux file contexts assign the codec binaries and libraries their labels. Two entries name paths that do not exist in the mounted partitions: /system/bin/mediaswcodec (the binary ships in the APEX) and /vendor/bin/hw/android.hardware.media.c2@1.0-service-v4l2-64.",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
+   "evidence": "Command: grep -n -E 'media|codec2' vendor_a/etc/selinux/vendor_file_contexts | cut -c1-170. Output: 59 '/(vendor|system/vendor)/bin/hw/android\\.hardware\\.media\\.omx@1\\.0-service u:object_r:mediacodec_exec:s0', 122 '/(vendor|system/vendor)/bin/hw/android\\.hardware\\.media\\.c2@1\\.0-service-v4l2-64 u:object_r:mediacodec_exec:s0', 455 '/vendor/lib64/libcodec2_vndk\\.so u:object_r:same_process_hal_file:s0', 470 '/vendor/lib64/libqcodec2_v4l2codec\\.so ...', 474 '/vendor/bin/hw/vendor\\.qti\\.media\\.c2@1\\.0-service u:object_r:mediacodec_exec:s0'. Command: ls vendor_a/bin/hw | grep -i -E 'media|c2'. Output: android.hardware.media.omx@1.0-service, vendor.qti.media.c2@1.0-service (no -v4l2-64 binary). Command: grep -n '/system/bin/mediaswcodec' system_a/system/etc/selinux/plat_file_contexts. Output: 546 '/system/bin/mediaswcodec u:object_r:mediaswcodec_exec:s0'; ls system_a/system/bin shows only mediaextractor and mediaserver under media*.",
+   "verdict": "confirmed",
+   "reason": "vendor_file_contexts lines 59, 122, 455, 470 and 474 match. /vendor/bin/hw/android.hardware.media.c2@1.0-service-v4l2-64 has no file in vendor_a/bin/hw (only android.hardware.media.omx@1.0-service and vendor.qti.media.c2@1.0-service match the media or c2 filter). /system/bin/mediaswcodec is at plat_file_contexts line 546 and has no file in system_a/system/bin (only mediaextractor and mediaserver match media*). The binary exists in the APEX payload as bin/mediaswcodec.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "hwservice-01",
+   "label": "observed",
+   "claim": "The Codec2 HIDL interfaces are registered as hwservice names with the hal_codec2_hwservice label in both partitions. The platform property media.c2.dmabuf.padding is labelled codec2_config_prop.",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_hwservice_contexts",
+   "evidence": "Command: grep -n 'codec2' system_a/system/etc/selinux/plat_hwservice_contexts vendor_a/etc/selinux/vendor_hwservice_contexts. Output: plat_hwservice_contexts:48 'android.hardware.media.c2::IComponentStore u:object_r:hal_codec2_hwservice:s0'; vendor_hwservice_contexts:1 'android.hardware.media.c2::IConfigurable u:object_r:hal_codec2_hwservice:s0'. Command: grep -n 'media.c2.dmabuf.padding' system_a/system/etc/selinux/plat_property_contexts. Output: 433 'media.c2.dmabuf.padding u:object_r:codec2_config_prop:s0 exact int'.",
+   "verdict": "confirmed",
+   "reason": "plat_hwservice_contexts line 48 maps android.hardware.media.c2::IComponentStore to hal_codec2_hwservice. vendor_hwservice_contexts line 1 maps android.hardware.media.c2::IConfigurable to hal_codec2_hwservice. plat_property_contexts line 433 maps media.c2.dmabuf.padding to codec2_config_prop (exact int).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "misc-libs-01",
+   "label": "observed",
+   "claim": "Other group libraries: libstagefright_flacdec.so is a FLAC decoder (FLAC__ symbols) used by the FLAC soft plugins. libstagefright_enc_common.so provides cmnMem* helpers and is used by the AMR-WB and AMR-WB encoder soft plugins. libclearkeycasplugin.so is the ClearKey MediaCas plugin (ClearKeyCasPlugin with openSession and processEcm). The DTD and profile loaders are described in the profiles claims.",
+   "file": "<image>/mnt/vendor_a/lib64/mediacas/libclearkeycasplugin.so",
+   "evidence": "Command: readelf --dyn-syms -W vendor_a/lib64/libstagefright_enc_common.so | awk '$7!=\"UND\" && NR>3' | wc -l. Output: 8 defined, names cmnMemAlloc, cmnMemCheck, cmnMemCompare, cmnMemCopy, cmnMemFree, cmnMemMove. Command: readelf -d vendor_a/lib64/libcodec2_soft_amrwbenc.so | grep NEEDED. Output includes libstagefright_enc_common.so. Command: readelf -d vendor_a/lib64/libcodec2_soft_flacdec.so | grep NEEDED. Output includes libstagefright_flacdec.so. Command: readelf --dyn-syms -W vendor_a/lib64/libstagefright_flacdec.so | c++filt | head -3. Output: FLAC_API_SUPPORTS_OGG_FLAC, FLAC__ChannelAssignmentString, FLAC__ENTROPY_CODING_METHOD_PARTITIONED_RICE2_PARAMETER_LEN. Command: readelf --dyn-syms -W vendor_a/lib64/mediacas/libclearkeycasplugin.so | awk '$7!=\"UND\" && NR>3{print $8}' | grep Plugin. Output: android::clearkeycas::ClearKeyCasPlugin::openSession, android::clearkeycas::ClearKeyCasPlugin::processEcm, ClearKeyCasPlugin constructor. Defined 189.",
+   "verdict": "needs_change",
+   "reason": "libstagefright_flacdec.so (64-bit, FLAC__ symbols) is NEEDED by libcodec2_soft_flacdec.so and by the legacy libstagefright_soft_flacdec.so. libstagefright_enc_common.so has 8 defined symbols (cmnMemAlloc, cmnMemCheck, cmnMemCompare, cmnMemCopy, cmnMemFree, cmnMemMove, cmnMemSet, __cfi_check) and is NEEDED by libcodec2_soft_amrwbenc.so and the legacy libstagefright_soft_amrwbenc.so. The ClearKey plugin defines ClearKeyCasPlugin openSession and processEcm (189 defined symbols). Wording problem: 'used by the AMR-WB and AMR-WB encoder soft plugins' repeats a name, and the users are the AMR-WB encoder plugins. The FLAC evidence excerpt does not match its command (that command prints defined symbols such as FLAC__crc16 and FLAC__FP_ONE).",
+   "corrected_claim": "libstagefright_flacdec.so is a FLAC decoder (FLAC__ symbols) used by the FLAC decoder soft plugins libcodec2_soft_flacdec.so and libstagefright_soft_flacdec.so. libstagefright_enc_common.so provides cmnMem* helpers and is used by the AMR-WB encoder soft plugins libcodec2_soft_amrwbenc.so and libstagefright_soft_amrwbenc.so. libclearkeycasplugin.so is the ClearKey MediaCas plugin (ClearKeyCasPlugin with openSession and processEcm). The DTD and profile loaders are described in the profiles claims."
+  },
+  {
+   "id": "seccomp-01",
+   "label": "observed",
+   "claim": "The seccomp policy files share one format: one entry per line, either 'name: 1' or 'name: <argument expression>'. The vendor Codec2 HAL base and extension policies are in vendor_a/etc/seccomp_policy. The system copies are mediacodec.policy and mediaextractor.policy. Only system and APEX copies exist in the mounted partitions for mediacodec.policy and mediaextractor.policy.",
+   "file": "<image>/mnt/vendor_a/etc/seccomp_policy/codec2.vendor.base-arm64.policy",
+   "evidence": "Command: head -n 12 vendor_a/etc/seccomp_policy/codec2.vendor.base-arm64.policy. Output: 'futex: 1', 'ioctl: 1', 'sched_yield: 1', 'close: 1', 'dup: 1', 'ppoll: 1', 'mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE', 'mmap: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE'. Command: grep -v '^#' system_a/system/etc/seccomp_policy/mediacodec.policy | head -3. Output: 'futex: 1', 'ioctl: 1', 'write: 1'. Command: grep -rl -a 'mediacodec.policy' MNT. Output: vendor_a/bin/hw/android.hardware.media.omx@1.0-service. Command: strings -n 8 vendor_a/bin/hw/android.hardware.media.omx@1.0-service | grep seccomp_policy. Output: '/system/etc/seccomp_policy/mediacodec.policy', '/vendor/etc/seccomp_policy/mediacodec.policy'. Command: head -n 3 vendor_a/etc/seccomp_policy/codec2.vendor.ext-arm64.policy. Output: 'pselect6: 1', 'eventfd2: 1', 'sendto: 1'.",
+   "verdict": "needs_change",
+   "reason": "Codec2 vendor base and ext policies hold only 'name: value' lines with no directives; the base file includes futex, ioctl, sched_yield, close, dup, ppoll, and mprotect and mmap with argument expressions; the quoted ext-policy entries pselect6 and eventfd2 are present once comments are removed. System mediacodec.policy starts futex, ioctl, write. The OMX HAL binary strings name /system/etc and /vendor/etc copies of mediacodec.policy. Corrections: mediacodec.policy and mediaextractor.policy each carry two @include directives, and the mediaswcodec APEX policy carries one. mediacodec.policy exists only as a system copy with no APEX copy. mediaextractor.policy exists as a system copy and inside the com.android.media APEX payload. Neither has a vendor copy. The quoted head excerpts do not match their stated commands, which print comment lines.",
+   "corrected_claim": "The seccomp policy files share one format: one entry per line, either 'name: 1' or 'name: <argument expression>'. The exceptions are @include directives: two each in mediacodec.policy and mediaextractor.policy, and one in the mediaswcodec APEX policy. The Codec2 vendor base and ext policies (codec2.vendor.base-arm64.policy and codec2.vendor.ext-arm64.policy in vendor_a/etc/seccomp_policy) have no directives. mediacodec.policy exists only as a system copy (system_a/system/etc/seccomp_policy); mediaextractor.policy exists as a system copy and inside the com.android.media APEX payload. Neither has a vendor copy."
+  }
+ ],
+ "gaps": [
+  "Included XML files that the vendor codec list names, media_codecs_c2_audio.xml and media_codecs_google_c2.xml, are not present in any mounted partition, so their codec entries are unknown.",
+  "Files that the stagefright and CCodec libraries name (media_codecs_c2.xml, media_codecs_performance_c2.xml, media_codecs_shaping.xml, system media_codecs.xml, media_profiles.xml) are not present in the mounted partitions. The runtime search order and which copy wins were not determined.",
+  "The media profiles variant selection depends on ro.media.xml_variant.profiles. That property is not set in any mounted build.prop, so whether media_profiles_anorak.xml or media_profiles_V1_0.xml is loaded at runtime is unknown.",
+  "Runtime files /data/misc/media/media_codecs_profiling_results.xml and /data/vendor/media were named by the libraries but are not in the input, so they were not analysed.",
+  "The library name that vendor.qti.media.c2@1.0-service opens with dlopen (the QC2HALService open message) was not identified from strings. Only its NEEDED list and the exported QC2ComponentStoreFactoryGetter name were read.",
+  "Two vendor binaries referenced by init and SELinux, vendor_a/bin/hw/android.hardware.media.omx@1.0-service and vendor_a/bin/hw/vendor.qti.media.c2@1.0-service, are not rows of this group. They were examined only for NEEDED lists and strings.",
+  "system_a/system/apex/com.android.media.capex (2514355 bytes) references mediaextractor.policy and is not a row of this group. It was not analysed.",
+  "The vendor_file_contexts entry for /vendor/bin/hw/android.hardware.media.c2@1.0-service-v4l2-64 has no matching binary in vendor_a, and the plat_file_contexts entry for /system/bin/mediaswcodec has no matching file in system_a. The runtime labelling outcome for these entries was not determined.",
+  "libcodecwrapper.so (system_ext_a/lib64) is a wearable-input protobuf wrapper, not a media codec. Its group membership should be reviewed; it was analysed but not reassigned.",
+  "Exported symbol families for the 32-bit system libraries and most 32-bit vendor libraries were not enumerated. Their roles rely on NEEDED lists, names and the 64-bit counterparts. Their confidence is labelled observed or inferred accordingly.",
+  "The ext2 APEX payload's ld.config.txt (8226 bytes), code_coverage.arm64.policy and crash_dump.arm64.policy were listed but not analysed.",
+  "The mediaswcodec APEX libcodec2_hidl@1.0.so (282944 bytes) differs in size from the vendor copy (283184 bytes). The difference was not analysed.",
+  "ClearKey license protobuf message definitions and the ClearKey session logic were not analysed beyond the exported class and method names.",
+  "Component-level codec capability values in media_codecs_anorak.xml (the limit ranges) were not compared with the performance overlay values or with runtime queries."
+ ],
+ "rolesFile": "data/subsystems/media-codecs/roles.tsv"
+}

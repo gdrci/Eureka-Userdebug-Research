@@ -1,0 +1,393 @@
+partition	path	role	confidence
+odm_a	etc/group	Zero-byte group file (no entries in this partition)	verified
+odm_a	etc/res/images/fw_init/fw_init_update.png	PNG image asset for fw_init update display	observed
+odm_a	etc/NOTICE.xml.gz	Gzip-compressed XML license notice index for odm_a (<licenses> root with file-name entries)	verified
+odm_a	etc/passwd	Zero-byte passwd file (no entries in this partition)	verified
+odm_a	etc/fw_init.cfg	INI config for fw_init firmware loader: syncboss, secondary and blu firmware paths, ids, sysfs control paths, update delays	observed
+odm_a	etc/catty.cfg	INI config for catty peripheral bridge: serial device and baud per service (syncboss, santanamanager)	observed
+odm_a	etc/fs_config_dirs	Zero-byte fs_config_dirs placeholder (no fs_config entries in this partition)	verified
+odm_a	etc/openxr/1/active_runtime.aarch64.json	Dangling symlink (absolute target /apex/com.meta.xr/active_runtime.aarch64.json; not present in mounted partitions) to an OpenXR active runtime manifest	verified
+odm_a	etc/openxr/1/active_runtime.armv7a-vfp.json	Dangling symlink (absolute target /apex/com.meta.xr/active_runtime.armv7a-vfp.json; not present in mounted partitions) to an OpenXR active runtime manifest	verified
+odm_a	etc/versions_info.txt	Key/value version metadata for SyncBoss firmware and HAL (IS_RELEASE, TIMESTAMP, META_VER_*, SYNCBOSS_*_VER)	observed
+odm_a	etc/fs_config_files	Zero-byte fs_config_files placeholder (no fs_config entries in this partition)	verified
+product_a	etc/VR_UI/system_dialog_cube.ktx	KTX 1.1 texture container (system dialog cube texture, 8 MB)	verified
+product_a	etc/VR_UI/pinchArrowBlend.gltf.ovrscene	Zip container of VR UI pinch-arrow glTF scene (models.gltf and buffer.bin)	verified
+product_a	etc/perfstream/device.cfg	Perfstream telemetry collector enable list (bracketed Collector.Event sections: thermal, battery, storage, memory, CPU)	observed
+product_a	etc/fonts_customization.xml	Font customization manifest (fonts-modification v1) adding families ms-neo-gothic, optimistic, optimistic display	verified
+product_a	etc/passwd	Zero-byte passwd file (no entries in this partition)	verified
+product_a	etc/fs_config_files	Zero-byte fs_config_files placeholder (no fs_config entries in this partition)	verified
+product_a	etc/fs_config_dirs	Zero-byte fs_config_dirs placeholder (no fs_config entries in this partition)	verified
+product_a	etc/res/images/font.png	PNG image asset under res/images (font preview image)	observed
+product_a	etc/group	Zero-byte group file (no entries in this partition)	verified
+product_a	etc/NOTICE.xml.gz	Gzip-compressed XML license notice index for product_a (<licenses> root with file-name entries)	verified
+system_a	system/etc/mldepth/stereo_model.ptl	Stereo depth model file (.ptl; header bytes 'TH1' NUL)	observed
+system_a	system/etc/mldepth/stereo_model_2.ptl	Stereo depth model file, second variant (.ptl; header bytes 'TH1' NUL)	observed
+system_a	system/etc/bpf/netd.o	eBPF relocatable ELF object (Linux BPF machine) for netd traffic accounting: cgroup, skfilter and inet programs, 10 maps, license Apache 2.0	verified
+system_a	system/etc/bpf/clatd.o	eBPF relocatable ELF object (Linux BPF machine) for CLAT (464XLAT) traffic classifiers: schedcls sections ingress6/egress4, maps clat_ingress6_map and clat_egress4_map, license Apache 2.0	verified
+system_a	system/etc/openxr/1/active_runtime.armv7a-vfp.json	OpenXR active-runtime manifest for armv7a: library_path into VrDriver.apk (lib/armeabi-v7a libopenxr_forwardloader.so)	verified
+system_a	system/etc/openxr/1/active_runtime.x86_64.json	OpenXR active-runtime manifest for x86_64: library_path into VrDriver.apk (lib/x86_64 libopenxr_forwardloader.so)	observed
+system_a	system/etc/openxr/1/active_runtime.aarch64.json	OpenXR active-runtime manifest for aarch64: library_path into VrDriver.apk (lib/arm64-v8a libopenxr_forwardloader.so)	verified
+system_a	system/etc/device_props.json	Device property map: chipset sxr2230p, GPU ADRENO_740, region US, SD card path /sdcard, default refresh 72.0	verified
+system_a	system/etc/mrsystemservice.cfg	mrsystemservice config: nice_constellation = "ruby"	observed
+system_a	system/etc/trackingservice.cfg	Tracking service config: nice_constellation = "ruby" and [rgbocal] and [perf] sections	observed
+system_a	system/etc/input_tracking/runtime/eureka/ruby/direct_pose_regression/release/dpr_torchscript_boltnn_qnn_lite_final.pt	Zip-format model archive for input (pose) tracking (entries include producer_info.json): dpr_torchscript_boltnn_qnn_lite_final.pt	observed
+system_a	system/etc/input_tracking/runtime/eureka/ruby/direct_pose_regression/experimental/.placeholder	Zero-byte .placeholder marker keeping an empty model directory	verified
+system_a	system/etc/input_tracking/runtime/eureka/ruby/direct_pose_regression/experimental/dpr_torchscript_boltnn_qnn_lite_final.pt	Zip-format model archive for input (pose) tracking (entries include producer_info.json): dpr_torchscript_boltnn_qnn_lite_final.pt	observed
+system_a	system/etc/input_tracking/runtime/eureka/ruby/extended_volume_pose_regression/release/torchscript_boltnn/model.ptl	Zip-format model archive for input (pose) tracking (entries include producer_info.json): model.ptl	observed
+system_a	system/etc/input_tracking/runtime/eureka/ruby/extended_volume_pose_regression/experimental/torchscript_boltnn/.placeholder	Zero-byte .placeholder marker keeping an empty model directory	verified
+system_a	system/etc/input_tracking/runtime/eureka/ruby/extended_volume_pose_regression/experimental/torchscript_boltnn/model.ptl	Zip-format model archive for input (pose) tracking (entries include producer_info.json): model.ptl	observed
+system_a	system/etc/object_tracking/runtime/models/motion_detection_keyboard_v2.pte	ExecuTorch-format program file (ET12 identifier), keyboard motion detection	verified
+system_a	system/etc/object_tracking/runtime/models/detection_keyboard_stable.ptl	Zip-format model archive for object tracking (entries include producer_info.json): detection_keyboard_stable.ptl	observed
+system_a	system/etc/object_tracking/runtime/models/pose_estimation_keyboard_stable.pte	ExecuTorch-format program file (ET12 identifier), keyboard pose estimation	verified
+system_a	system/etc/compatconfig/framework-platform-compat-config.xml	Compat-change definitions for framework platform (69 compat-change entries)	verified
+system_a	system/etc/compatconfig/documents-ui-compat-config.xml	Compat-change definitions for documents-ui (1 compat-change)	verified
+system_a	system/etc/compatconfig/icu4j-platform-compat-config.xml	Compat-change definitions for icu4j platform (1 compat-change)	verified
+system_a	system/etc/compatconfig/services-platform-compat-config.xml	Compat-change definitions for services platform (56 compat-change entries)	verified
+system_a	system/etc/compatconfig/calendar-provider-compat-config.xml	Compat-change definitions for calendar-provider (1 compat-change)	verified
+system_a	system/etc/fs_config_files	Zero-byte fs_config_files placeholder (no fs_config entries in this partition)	verified
+system_a	system/etc/handtracking/runtime/eureka/experimental/experimental_emm/emm.pte	ExecuTorch-format program file (ET12 identifier at offset 4), experimental EMM	verified
+system_a	system/etc/handtracking/runtime/eureka/experimental/experimental_emm/emm.ff	ExecuTorch-format program file (ET12 identifier at offset 4), experimental EMM	verified
+system_a	system/etc/handtracking/runtime/dpe/.placeholder	Zero-byte .placeholder marker keeping an empty model directory	verified
+system_a	system/etc/handtracking/runtime/dpe/DPEV23.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DPEV23.ptl	observed
+system_a	system/etc/handtracking/runtime/dpe/DPEV25MG.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DPEV25MG.ptl	observed
+system_a	system/etc/handtracking/runtime/dpe/DPEV24MG.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DPEV24MG.ptl	observed
+system_a	system/etc/handtracking/runtime/dpe/DPEV23MG.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DPEV23MG.ptl	observed
+system_a	system/etc/handtracking/runtime/detection/.placeholder	Zero-byte .placeholder marker keeping an empty model directory	verified
+system_a	system/etc/handtracking/runtime/detection/DETV68.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DETV68.ptl	observed
+system_a	system/etc/handtracking/runtime/detection/DETV62.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DETV62.ptl	observed
+system_a	system/etc/handtracking/runtime/detection/DETV66.ptl	Zip-format model archive for hand tracking (entries include producer_info.json): DETV66.ptl	observed
+system_a	system/etc/handtracking/runtime/common/defaultfbx_restSkeletons.msgpack	MessagePack hand-tracking rest-pose skeleton data	observed
+system_a	system/etc/handtracking/runtime/common/defaultfbx_L.msgpack	MessagePack hand-tracking default FBX skeleton data, left hand	observed
+system_a	system/etc/handtracking/runtime/common/defaultProfile.msgpack	MessagePack hand-tracking default profile (binary, begins with map header and 'handMo' key)	observed
+system_a	system/etc/handtracking/runtime/common/defaultfbx_R.msgpack	MessagePack hand-tracking default FBX skeleton data, right hand	observed
+system_a	system/etc/security/cacerts/5f47b495.0	Trusted root CA certificate (PEM, one certificate): Actalis Authentication Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/5acf816d.0	Trusted root CA certificate (PEM, one certificate): GTS Root R4; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/33ee480d.0	Trusted root CA certificate (PEM, one certificate): SSL.com Root Certification Authority RSA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/c491639e.0	Trusted root CA certificate (PEM, one certificate): DigiCert Assured ID Root G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/dfc0fe80.0	Trusted root CA certificate (PEM, one certificate): OISTE WISeKey Global Root GB CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b7db1890.0	Trusted root CA certificate (PEM, one certificate): TWCA Root Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9d6523ce.0	Trusted root CA certificate (PEM, one certificate): Chunghwa Telecom Co.; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/4be590e0.0	Trusted root CA certificate (PEM, one certificate): IdenTrust Public Sector Root CA 1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b936d1c6.0	Trusted root CA certificate (PEM, one certificate): FNMT-RCM; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9282e51c.0	Trusted root CA certificate (PEM, one certificate): CFCA EV ROOT; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b0ed035a.0	Trusted root CA certificate (PEM, one certificate): TWCA Global Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b3fb433b.0	Trusted root CA certificate (PEM, one certificate): Entrust Root Certification Authority - EC1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/89c02a45.0	Trusted root CA certificate (PEM, one certificate): COMODO ECC Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/c559d742.0	Trusted root CA certificate (PEM, one certificate): GTS Root R2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/f459871d.0	Trusted root CA certificate (PEM, one certificate): emSign Root CA - G1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/343eb6cb.0	Trusted root CA certificate (PEM, one certificate): Cybertrust Global Root; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/e8651083.0	Trusted root CA certificate (PEM, one certificate): Microsec e-Szigno Root CA 2009; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9aef356c.0	Trusted root CA certificate (PEM, one certificate): Trustwave Global ECC P384 Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/a81e292b.0	Trusted root CA certificate (PEM, one certificate): SZAFIR ROOT CA2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/23f4c490.0	Trusted root CA certificate (PEM, one certificate): Starfield Technologies; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/2add47b6.0	Trusted root CA certificate (PEM, one certificate): GlobalSign; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/cb1c3204.0	Trusted root CA certificate (PEM, one certificate): Certum Trusted Network CA 2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/c51c224c.0	Trusted root CA certificate (PEM, one certificate): Trustis Limited; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/8d6437c3.0	Trusted root CA certificate (PEM, one certificate): DigiCert Assured ID Root G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/83e9984f.0	Trusted root CA certificate (PEM, one certificate): e-Szigno Root CA 2017; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d39b0a2c.0	Trusted root CA certificate (PEM, one certificate): NAVER Global Root Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/bc3f2570.0	Trusted root CA certificate (PEM, one certificate): Go Daddy Root Certificate Authority - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/95aff9e3.0	Trusted root CA certificate (PEM, one certificate): Certum Trusted Network CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9576d26b.0	Trusted root CA certificate (PEM, one certificate): CA Disig Root R2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/869fbf79.0	Trusted root CA certificate (PEM, one certificate): emSign ECC Root CA - C3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/e442e424.0	Trusted root CA certificate (PEM, one certificate): QuoVadis Root CA 3 G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/dc99f41e.0	Trusted root CA certificate (PEM, one certificate): Hellenic Academic and Research Institutions RootCA 2015; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/85cde254.0	Trusted root CA certificate (PEM, one certificate): Starfield Root Certificate Authority - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/fd08c599.0	Trusted root CA certificate (PEM, one certificate): Amazon Root CA 1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/219d9499.0	Trusted root CA certificate (PEM, one certificate): The Go Daddy Group; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d41b5e2a.0	Trusted root CA certificate (PEM, one certificate): Amazon Root CA 4; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/40dc992e.0	Trusted root CA certificate (PEM, one certificate): Hellenic Academic and Research Institutions RootCA 2011; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/c90bc37d.0	Trusted root CA certificate (PEM, one certificate): DigiCert Global Root G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/6b03dec0.0	Trusted root CA certificate (PEM, one certificate): GTS Root R3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/399e7759.0	Trusted root CA certificate (PEM, one certificate): DigiCert Global Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/f0cd152c.0	Trusted root CA certificate (PEM, one certificate): Entrust Root Certification Authority - G4; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/52b525c7.0	Trusted root CA certificate (PEM, one certificate): QuoVadis Root CA 1 G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/75680d2e.0	Trusted root CA certificate (PEM, one certificate): AAA Certificate Services; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d06393bb.0	Trusted root CA certificate (PEM, one certificate): T-TeleSec GlobalRoot Class 2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/12d55845.0	Trusted root CA certificate (PEM, one certificate): DST Root CA X3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d16a5865.0	Trusted root CA certificate (PEM, one certificate): Autoridad de Certificacion Firmaprofesional CIF A62634068; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/a9d40e02.0	Trusted root CA certificate (PEM, one certificate): CERTSIGN SA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/aeb67534.0	Trusted root CA certificate (PEM, one certificate): EC-ACC; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/7a7c655d.0	Trusted root CA certificate (PEM, one certificate): Amazon Root CA 3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/88950faa.0	Trusted root CA certificate (PEM, one certificate): SSL.com Root Certification Authority ECC; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/10531352.0	Trusted root CA certificate (PEM, one certificate): Starfield Services Root Certificate Authority - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/1e8e7201.0	Trusted root CA certificate (PEM, one certificate): GlobalSign; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/ccc52f49.0	Trusted root CA certificate (PEM, one certificate): AffirmTrust Premium ECC; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/edcbddb5.0	Trusted root CA certificate (PEM, one certificate): Trustwave Global Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/ab5346f4.0	Trusted root CA certificate (PEM, one certificate): SecureSign RootCA11; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/27af790d.0	Trusted root CA certificate (PEM, one certificate): GeoTrust Primary Certification Authority - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/35105088.0	Trusted root CA certificate (PEM, one certificate): USERTrust RSA Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/7892ad52.0	Trusted root CA certificate (PEM, one certificate): SSL.com EV Root Certification Authority ECC; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/76579174.0	Trusted root CA certificate (PEM, one certificate): XRamp Global Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/1df5a75f.0	Trusted root CA certificate (PEM, one certificate): D-TRUST Root Class 3 CA 2 2009; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/fde84897.0	Trusted root CA certificate (PEM, one certificate): Certigna; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/985c1f52.0	Trusted root CA certificate (PEM, one certificate): GlobalSign; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/69105f4f.0	Trusted root CA certificate (PEM, one certificate): DigiCert Assured ID Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b74d2bd5.0	Trusted root CA certificate (PEM, one certificate): emSign ECC Root CA - G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/3c860d51.0	Trusted root CA certificate (PEM, one certificate): SwissSign Gold CA - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d4c339cb.0	Trusted root CA certificate (PEM, one certificate): COMODO RSA Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/04f60c28.0	Trusted root CA certificate (PEM, one certificate): USERTrust ECC Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/f013ecaf.0	Trusted root CA certificate (PEM, one certificate): GTS Root R1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/5cf9d536.0	Trusted root CA certificate (PEM, one certificate): QuoVadis Root Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9339512a.0	Trusted root CA certificate (PEM, one certificate): QuoVadis Root CA 3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/60afe812.0	Trusted root CA certificate (PEM, one certificate): NetLock Arany (Class Gold) F\xC5\x91tan\xC3\xBAs\xC3\xADtv\xC3\xA1ny; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/2d9dafe4.0	Trusted root CA certificate (PEM, one certificate): Buypass Class 3 Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/3ad48a91.0	Trusted root CA certificate (PEM, one certificate): Baltimore CyberTrust Root; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/3c9a4d3b.0	Trusted root CA certificate (PEM, one certificate): ACCVRAIZ1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/882de061.0	Trusted root CA certificate (PEM, one certificate): certSIGN; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/81b9768f.0	Trusted root CA certificate (PEM, one certificate): DigiCert High Assurance EV Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9f533518.0	Trusted root CA certificate (PEM, one certificate): Global Chambersign Root - 2008; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/524d9b43.0	Trusted root CA certificate (PEM, one certificate): VeriSign Universal Root Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/302904dd.0	Trusted root CA certificate (PEM, one certificate): Certigna Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/0d69c7e1.0	Trusted root CA certificate (PEM, one certificate): GlobalSign; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/dbff3a01.0	Trusted root CA certificate (PEM, one certificate): emSign Root CA - C1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/bf64f35b.0	Trusted root CA certificate (PEM, one certificate): Entrust Root Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9591a472.0	Trusted root CA certificate (PEM, one certificate): Microsoft RSA Root Certificate Authority 2017; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/1ae85e5e.0	Trusted root CA certificate (PEM, one certificate): Trustwave Global ECC P256 Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/48a195d8.0	Trusted root CA certificate (PEM, one certificate): Izenpe.com; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/ab59055e.0	Trusted root CA certificate (PEM, one certificate): GDCA TrustAUTH R5 ROOT; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b872f2b4.0	Trusted root CA certificate (PEM, one certificate): Atos TrustedRoot 2011; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/3c6676aa.0	Trusted root CA certificate (PEM, one certificate): Staat der Nederlanden EV Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/cf701eeb.0	Trusted root CA certificate (PEM, one certificate): SecureTrust CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/82223c44.0	Trusted root CA certificate (PEM, one certificate): Buypass Class 2 Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/7a819ef2.0	Trusted root CA certificate (PEM, one certificate): QuoVadis Root CA 2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d18e9066.0	Trusted root CA certificate (PEM, one certificate): IdenTrust Commercial Root CA 1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/2fa87019.0	Trusted root CA certificate (PEM, one certificate): Network Solutions Certificate Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d7746a63.0	Trusted root CA certificate (PEM, one certificate): D-TRUST Root Class 3 CA 2 EV 2009; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/3e7271e8.0	Trusted root CA certificate (PEM, one certificate): Entrust.net Certification Authority (2048); file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/3c899c73.0	Trusted root CA certificate (PEM, one certificate): OISTE WISeKey Global Root GC CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/ed39abd0.0	Trusted root CA certificate (PEM, one certificate): DigiCert Global Root G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/86212b19.0	Trusted root CA certificate (PEM, one certificate): AffirmTrust Networking; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/5a250ea7.0	Trusted root CA certificate (PEM, one certificate): Staat der Nederlanden Root CA - G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/111e6273.0	Trusted root CA certificate (PEM, one certificate): GlobalSign; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/1f58a078.0	Trusted root CA certificate (PEM, one certificate): QuoVadis Root CA 2 G3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/63a2c897.0	Trusted root CA certificate (PEM, one certificate): TeliaSonera Root CA v1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/1e1eab7c.0	Trusted root CA certificate (PEM, one certificate): T-TeleSec GlobalRoot Class 3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/583d0756.0	Trusted root CA certificate (PEM, one certificate): SSL.com EV Root Certification Authority RSA R2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/455f1b52.0	Trusted root CA certificate (PEM, one certificate): Entrust Root Certification Authority - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/31188b5e.0	Trusted root CA certificate (PEM, one certificate): TUBITAK Kamu SM SSL Kok Sertifikasi - Surum 1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/304d27c3.0	Trusted root CA certificate (PEM, one certificate): UCA Global G2 Root; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/fb5fa911.0	Trusted root CA certificate (PEM, one certificate): Amazon Root CA 2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/1eb37bdf.0	Trusted root CA certificate (PEM, one certificate): Chambers of Commerce Root - 2008; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/5046c355.0	Trusted root CA certificate (PEM, one certificate): SwissSign Silver CA - G2; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/bdacca6f.0	Trusted root CA certificate (PEM, one certificate): Secure Global CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9479c8c3.0	Trusted root CA certificate (PEM, one certificate): Hellenic Academic and Research Institutions ECC RootCA 2015; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/a2c66da8.0	Trusted root CA certificate (PEM, one certificate): DigiCert Trusted Root G4; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/6187b673.0	Trusted root CA certificate (PEM, one certificate): ISRG Root X1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/01419da9.0	Trusted root CA certificate (PEM, one certificate): Microsoft ECC Root Certificate Authority 2017; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/bd43e1dd.0	Trusted root CA certificate (PEM, one certificate): Hongkong Post Root CA 3; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/d59297b8.0	Trusted root CA certificate (PEM, one certificate): SECOM Trust Systems CO.; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/9685a493.0	Trusted root CA certificate (PEM, one certificate): Hongkong Post Root CA 1; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/dbc54cab.0	Trusted root CA certificate (PEM, one certificate): AffirmTrust Premium; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/b0f3e76e.0	Trusted root CA certificate (PEM, one certificate): GlobalSign Root CA; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/da7377f6.0	Trusted root CA certificate (PEM, one certificate): UCA Extended Validation Root; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/5a3f0ff8.0	Trusted root CA certificate (PEM, one certificate): COMODO Certification Authority; file name = subject_hash_old	verified
+system_a	system/etc/security/cacerts/e48193cf.0	Trusted root CA certificate (PEM, one certificate): AffirmTrust Commercial; file name = subject_hash_old	verified
+system_a	system/etc/security/otacerts.zip	Zip archive of OTA certificate (testkey.x509.pem, 1675 bytes)	verified
+system_a	system/etc/facetracking/runtime/models/lipsync/prod/bolt/model.pt	Zip-format model archive for face tracking (entries include producer_info.json): model.pt	observed
+system_a	system/etc/facetracking/runtime/models/lipsync/prod/nn_config.json	Backend and model table for lipsync models (TorchScript, QNNPACK entries)	observed
+system_a	system/etc/facetracking/runtime/models/a2e/prod/bolt/a2e.ptl	Zip-format model archive for face tracking (entries include producer_info.json): a2e.ptl	observed
+system_a	system/etc/facetracking/runtime/models/a2e/prod/nn_config.json	Backend and model table for audio-to-expression (a2e) models (TorchScript, QNNPACK entries)	observed
+system_a	system/etc/facetracking/runtime/config.json	Face-tracking runtime config: lipsyncSmoothing, lipsyncBlendshapes, lipsync, audioToExpression sections	verified
+system_a	system/etc/boot-image.bprof	ART boot-image profile (text-style profile lines beginning with /system paths)	observed
+system_a	system/etc/task_profiles/task_profiles_28.json	Task profile attributes and profiles for API level 28 (STuneBoost, STunePreferIdle; 11 profiles)	verified
+system_a	system/etc/task_profiles/task_profiles_29.json	Task profile attributes and profiles for API level 29 (STuneBoost, STunePreferIdle; 11 profiles)	verified
+system_a	system/etc/task_profiles/cgroups_29.json	cgroup descriptor for schedtune controller (API level 29)	verified
+system_a	system/etc/task_profiles/cgroups_30.json	cgroup descriptor for schedtune controller (API level 30)	verified
+system_a	system/etc/task_profiles/task_profiles_30.json	Task profile attributes and profiles for API level 30 (STuneBoost, STunePreferIdle; 11 profiles)	verified
+system_a	system/etc/task_profiles/cgroups_28.json	cgroup descriptor for schedtune controller (API level 28)	verified
+system_a	system/etc/threadpolicy.conf	Thread scheduling policy table (ELEVATED: SCHED_FIFO rtprio 47; ELEVATED_SOFT_REALTIME: SCHED_OTHER nice -20); JSON-like with trailing comma, fails strict JSON parse	verified
+system_a	system/etc/classpaths/bootclasspath.pb	Protobuf-encoded boot classpath entry list (binary, 844 bytes)	observed
+system_a	system/etc/classpaths/systemserverclasspath.pb	Protobuf-encoded system-server classpath entry list (binary, 191 bytes)	observed
+system_a	system/etc/public.libraries.txt	NDK public library list for apps (29 libraries, including libc.so, libEGL.so, libandroid.so)	verified
+system_a	system/etc/bodytracking/runtime/.placeholder	Zero-byte .placeholder marker keeping an empty model directory	verified
+system_a	system/etc/bodytracking/runtime/delegate_encoder_V67.ptl	Body-tracking delegate encoder model archive, V67	observed
+system_a	system/etc/bodytracking/runtime/delegate_lstm_V67.ptl	Body-tracking delegate LSTM model archive, V67	observed
+system_a	system/etc/bodytracking/runtime/delegate_encoder_V68.ptl	Body-tracking delegate encoder model archive, V68	observed
+system_a	system/etc/bodytracking/runtime/delegate_lstm_V68.ptl	Body-tracking delegate LSTM model archive, V68	observed
+system_a	system/etc/bodytracking/fbs/model.jit	Body-tracking model archive, fbs variant (zip layout with producer_info.json)	observed
+system_a	system/etc/bodytracking/fbs/model_iobt.jit	Body-tracking model archive, fbs iobt variant (zip layout with producer_info.json)	observed
+system_a	system/etc/boot-image.prof	ART boot-image profile file (magic 'pro' + NUL, version '016')	verified
+system_a	system/etc/tkb/runtime/tvd.ptl	Zip-format model archive for TKB (entries include producer_info.json): tvd.ptl	observed
+system_a	system/etc/protolog.conf.json.gz	Gzip-compressed protolog message table (JSON, version 1.0.0, 649 messages)	verified
+system_a	system/etc/gps_debug.conf	Sample GPS/AGPS debug override config (commented; AGPS server and SUPL settings)	observed
+system_a	system/etc/task_profiles.json	Task profile definitions: 10 attributes, 40 profiles, 13 aggregate profiles (cpuset, memory, uclamp, freezer actions)	verified
+system_a	system/etc/vndkcorevariant.libraries.txt	VNDK core-variant library list (empty, single newline)	verified
+system_a	system/etc/xrs-hmdconfig.capnp.bin	Cap'n Proto binary HMD configuration (1 segment, 94 words, strings 'Meta Quest 3' and 'Oculus VR')	verified
+system_a	system/etc/NOTICE.xml.gz	Gzip-compressed XML license notice index for system_a (<licenses> root with file-name entries)	verified
+system_a	system/etc/transport_security_state_static.certs	Static certificate pin list (Chromium-derived text file, pinned certificate entries)	observed
+system_a	system/etc/updatable-bcp-packages.txt	List of updatable boot-classpath package names (24 non-empty lines, android.* packages)	verified
+system_a	system/etc/mke2fs.conf	mke2fs defaults: base features, 4096-byte blocks, 256-byte inodes, fs_types for ext3 and ext4	observed
+system_a	system/etc/xtables.lock	Zero-byte lock or marker file (xtables.lock)	verified
+system_a	system/etc/scene_objects/mask2former_v5.ptl	Scene-object segmentation model file (.ptl; header bytes 'etz0')	observed
+system_a	system/etc/scene_objects/semantic_keypoints_v6_boltnn.ptl	Zip-format model archive for scene objects (entries include producer_info.json): semantic_keypoints_v6_boltnn.ptl	observed
+system_a	system/etc/hosts	Hosts file with localhost and ip6-localhost entries (56 bytes)	observed
+system_a	system/etc/sanitizer.libraries.txt	Sanitizer runtime library list (asan, hwasan, ubsan, tsan for aarch64 and arm)	observed
+system_a	system/etc/ppp/ip-up-vpn	AArch64 ELF PIE executable (ip-up VPN helper): NEEDED libcutils, liblog, libc++, libc, libm, libdl	verified
+system_a	system/etc/xrs_version_code	Version code integer 665334863	verified
+system_a	system/etc/passwd	Zero-byte passwd file (no entries in this partition)	verified
+system_a	system/etc/fs_config_dirs	Binary fs_config directory-permission table: one entry (prefix persist/, mode 0771, uid 1000, gid 1000)	verified
+system_a	system/etc/cgroups.json	Cgroup mount and permission table: Cgroups (blkio, cpu, cpuacct, cpuset, memory) and Cgroups2 (freezer)	verified
+system_a	system/etc/seccomp_policy/crash_dump.arm64.policy	seccomp-bpf syscall allow list for crash_dump (arm64), one 'syscall: 1' line per syscall	observed
+system_a	system/etc/seccomp_policy/crash_dump.arm.policy	seccomp-bpf syscall allow list for crash_dump (arm), one 'syscall: 1' line per syscall	observed
+system_a	system/etc/seccomp_policy/code_coverage.arm64.policy	seccomp-bpf policy stub for code_coverage (arm64): comment-only placeholder ('empty unless code_coverage is enabled')	observed
+system_a	system/etc/seccomp_policy/code_coverage.arm.policy	seccomp-bpf policy stub for code_coverage (arm): comment-only placeholder	inferred
+system_a	system/etc/dirty-image-objects	Boot-image dirty-object list (Dalvik class and member descriptors, 386 lines)	observed
+system_a	system/etc/event-log-tags	EventLog tag definitions (506 lines, format '<tag-id> <name> (<field>|<type>)')	verified
+system_a	system/etc/group	Zero-byte group file (no entries in this partition)	verified
+system_a	system/etc/linker.config.pb	Binary protobuf linker namespace configuration: 38 provided library names and 19 further library names	verified
+system_a	system/etc/passivetracking/runtime/eureka/detection_torchscript_boltnn_qnn_lite_final.pt	Zip-format model archive for passive tracking (entries include producer_info.json): detection_torchscript_boltnn_qnn_lite_final.pt	observed
+system_a	system/etc/passivetracking/runtime/eureka/dpr_torchscript_boltnn_qnn_lite_final.pt	Zip-format model archive for passive tracking (entries include producer_info.json): dpr_torchscript_boltnn_qnn_lite_final.pt	observed
+system_a	system/etc/passivetracking/runtime/eureka_experimental/detection_torchscript_boltnn_qnn_lite_final.pt	Zip-format model archive for passive tracking (entries include producer_info.json): detection_torchscript_boltnn_qnn_lite_final.pt	observed
+system_a	system/etc/passivetracking/runtime/eureka_experimental/dpr_torchscript_boltnn_qnn_lite_final.pt	Zip-format model archive for passive tracking (entries include producer_info.json): dpr_torchscript_boltnn_qnn_lite_final.pt	observed
+system_a	system/etc/mkshrc	mksh interactive shell rc for Android (prompt and PS4 setup)	observed
+system_a	system/etc/iot/runtime/bdd.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd.ptl	observed
+system_a	system/etc/iot/runtime/bdd_qnn.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd_qnn.ptl	observed
+system_a	system/etc/iot/runtime/bdd_qnn_32.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd_qnn_32.ptl	observed
+system_a	system/etc/iot/runtime/rotation_v2.zip	Zip archive of rotation model data (bias_0.csv and further CSV parameter files), v2	observed
+system_a	system/etc/iot/runtime/bdd_qnn_64.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd_qnn_64.ptl	observed
+system_a	system/etc/iot/runtime/bdd_256.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd_256.ptl	observed
+system_a	system/etc/iot/runtime/bdd_qnn_128.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd_qnn_128.ptl	observed
+system_a	system/etc/iot/runtime/environment_classifier_v0_boltnn_int8.ptl	Zip-format model archive for IoT (entries include producer_info.json): environment_classifier_v0_boltnn_int8.ptl	observed
+system_a	system/etc/iot/runtime/rotation_v3.zip	Zip archive of rotation model data (CSV parameter files), v3	observed
+system_a	system/etc/iot/runtime/bdd_qnn_256.ptl	Zip-format model archive for IoT (entries include producer_info.json): bdd_qnn_256.ptl	observed
+system_a	system/etc/iot/runtime/extrapolation_models/.placeholder	Zero-byte .placeholder marker keeping an empty model directory	verified
+system_a	system/etc/fonts.xml	System font manifest (familyset version 23): 157 families, 24 aliases, 204 distinct font files	verified
+system_a	system/usr/hyphen-data/hyph-en-us.lic.txt	Licence and notice text for hyphenation pattern set hyph-en-us	observed
+system_a	system/usr/hyphen-data/hyph-en-gb.lic.txt	Licence and notice text for hyphenation pattern set hyph-en-gb	inferred
+system_a	system/usr/hyphen-data/hyph-und-ethi.lic.txt	Licence and notice text for hyphenation pattern set hyph-und-ethi	inferred
+system_a	system/usr/hyphen-data/hyph-fr.lic.txt	Licence and notice text for hyphenation pattern set hyph-fr	inferred
+system_a	system/usr/hyphen-data/hyph-la.lic.txt	Licence and notice text for hyphenation pattern set hyph-la	inferred
+system_a	system/usr/hyphen-data/hyph-de-1901.lic.txt	Licence and notice text for hyphenation pattern set hyph-de-1901	inferred
+system_a	system/usr/hyphen-data/hyph-hy.lic.txt	Licence and notice text for hyphenation pattern set hyph-hy	inferred
+system_a	system/usr/hyphen-data/hyph-pa.lic.txt	Licence and notice text for hyphenation pattern set hyph-pa	inferred
+system_a	system/usr/hyphen-data/hyph-bn.lic.txt	Licence and notice text for hyphenation pattern set hyph-bn	inferred
+system_a	system/usr/hyphen-data/hyph-eu.lic.txt	Licence and notice text for hyphenation pattern set hyph-eu	inferred
+system_a	system/usr/hyphen-data/hyph-bg.lic.txt	Licence and notice text for hyphenation pattern set hyph-bg	inferred
+system_a	system/usr/hyphen-data/hyph-ga.lic.txt	Licence and notice text for hyphenation pattern set hyph-ga	inferred
+system_a	system/usr/hyphen-data/hyph-as.lic.txt	Licence and notice text for hyphenation pattern set hyph-as	inferred
+system_a	system/usr/hyphen-data/hyph-mn-cyrl.lic.txt	Licence and notice text for hyphenation pattern set hyph-mn-cyrl	inferred
+system_a	system/usr/hyphen-data/hyph-nb.lic.txt	Licence and notice text for hyphenation pattern set hyph-nb	observed
+system_a	system/usr/hyphen-data/hyph-ta.lic.txt	Licence and notice text for hyphenation pattern set hyph-ta	inferred
+system_a	system/usr/hyphen-data/hyph-ml.lic.txt	Licence and notice text for hyphenation pattern set hyph-ml	inferred
+system_a	system/usr/hyphen-data/hyph-et.lic.txt	Licence and notice text for hyphenation pattern set hyph-et	inferred
+system_a	system/usr/hyphen-data/hyph-cy.lic.txt	Licence and notice text for hyphenation pattern set hyph-cy	inferred
+system_a	system/usr/hyphen-data/hyph-be.lic.txt	Licence and notice text for hyphenation pattern set hyph-be	inferred
+system_a	system/usr/hyphen-data/hyph-es.lic.txt	Licence and notice text for hyphenation pattern set hyph-es	inferred
+system_a	system/usr/hyphen-data/hyph-hr.lic.txt	Licence and notice text for hyphenation pattern set hyph-hr	inferred
+system_a	system/usr/hyphen-data/hyph-or.lic.txt	Licence and notice text for hyphenation pattern set hyph-or	inferred
+system_a	system/usr/hyphen-data/hyph-nn.lic.txt	Licence and notice text for hyphenation pattern set hyph-nn	inferred
+system_a	system/usr/hyphen-data/hyph-tk.lic.txt	Licence and notice text for hyphenation pattern set hyph-tk	inferred
+system_a	system/usr/hyphen-data/hyph-kn.lic.txt	Licence and notice text for hyphenation pattern set hyph-kn	inferred
+system_a	system/usr/hyphen-data/hyph-de-1996.lic.txt	Licence and notice text for hyphenation pattern set hyph-de-1996	observed
+system_a	system/usr/hyphen-data/hyph-da.lic.txt	Licence and notice text for hyphenation pattern set hyph-da	inferred
+system_a	system/usr/hyphen-data/hyph-de-ch-1901.lic.txt	Licence and notice text for hyphenation pattern set hyph-de-ch-1901	inferred
+system_a	system/usr/hyphen-data/hyph-hi.lic.txt	Licence and notice text for hyphenation pattern set hyph-hi	inferred
+system_a	system/usr/hyphen-data/hyph-pt.lic.txt	Licence and notice text for hyphenation pattern set hyph-pt	inferred
+system_a	system/usr/hyphen-data/hyph-te.lic.txt	Licence and notice text for hyphenation pattern set hyph-te	inferred
+system_a	system/usr/hyphen-data/hyph-gu.lic.txt	Licence and notice text for hyphenation pattern set hyph-gu	inferred
+system_a	system/usr/hyphen-data/hyph-sl.lic.txt	Licence and notice text for hyphenation pattern set hyph-sl	inferred
+system_a	system/usr/hyphen-data/hyph-cu.lic.txt	Licence and notice text for hyphenation pattern set hyph-cu	inferred
+system_a	system/usr/hyphen-data/hyph-hu.lic.txt	Licence and notice text for hyphenation pattern set hyph-hu	inferred
+system_a	system/usr/hyphen-data/hyph-mr.lic.txt	Licence and notice text for hyphenation pattern set hyph-mr	inferred
+system_ext_a	etc/terminfo/d/dumb	Compiled terminfo entry for terminal 'dumb' (80-column dumb tty; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/h/hurd	Compiled terminfo entry for terminal 'hurd' (The GNU Hurd console server; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/a/ansi	Compiled terminfo entry for terminal 'ansi' (ansi/pc-term compatible with color; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/r/rxvt	Compiled terminfo entry for terminal 'rxvt' (rxvt terminal emulator (X Window System); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/r/rxvt-basic	Compiled terminfo entry for terminal 'rxvt-basic' (rxvt terminal base (X Window System); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-r5	Compiled terminfo entry for terminal 'xterm-r5' (xterm R5 version; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm	Compiled terminfo entry for terminal 'xterm' (xterm terminal emulator (X Window System); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-256color	Compiled terminfo entry for terminal 'xterm-256color' (xterm with 256 colors; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-r6	Compiled terminfo entry for terminal 'xterm-r6' (xterm X11R6 version; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-vt220	Compiled terminfo entry for terminal 'xterm-vt220' (xterm emulating vt220; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-xfree86	Compiled terminfo entry for terminal 'xterm-xfree86' (xterm terminal emulator (XFree86); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-mono	Compiled terminfo entry for terminal 'xterm-mono' (monochrome xterm; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/x/xterm-color	Compiled terminfo entry for terminal 'xterm-color' (nxterm|generic color xterm; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/sun	Compiled terminfo entry for terminal 'sun' (sun1|sun2|Sun Microsystems Inc. workstation console; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen-bce	Compiled terminfo entry for terminal 'screen-bce' (VT 100/ANSI X3.64 virtual terminal with bce; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen-256color	Compiled terminfo entry for terminal 'screen-256color' (GNU Screen with 256 colors; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen-s	Compiled terminfo entry for terminal 'screen-s' (VT 100/ANSI X3.64 virtual terminal with hardstatus line; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen	Compiled terminfo entry for terminal 'screen' (VT 100/ANSI X3.64 virtual terminal; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen-w	Compiled terminfo entry for terminal 'screen-w' (VT 100/ANSI X3.64 virtual terminal with 132 cols; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen-256color-bce	Compiled terminfo entry for terminal 'screen-256color-bce' (GNU Screen with 256 colors and BCE; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/s/screen.xterm-256color	Compiled terminfo entry for terminal 'screen.xterm-256color' (GNU Screen with xterm using 256 colors; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/w/wsvt25m	Compiled terminfo entry for terminal 'wsvt25m' (NetBSD wscons in 25 line DEC VT220 mode with Meta; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/w/wsvt25	Compiled terminfo entry for terminal 'wsvt25' (NetBSD wscons in 25 line DEC VT220 mode; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/m/mach-bold	Compiled terminfo entry for terminal 'mach-bold' (Mach Console with bold instead of underline; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/m/mach	Compiled terminfo entry for terminal 'mach' (Mach Console; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/m/mach-color	Compiled terminfo entry for terminal 'mach-color' (Mach Console with ANSI color; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/m/mach-gnu	Compiled terminfo entry for terminal 'mach-gnu' (GNU Mach; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/m/mach-gnu-color	Compiled terminfo entry for terminal 'mach-gnu-color' (Mach Console with ANSI color; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/v/vt220	Compiled terminfo entry for terminal 'vt220' (vt200|dec vt220; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/v/vt102	Compiled terminfo entry for terminal 'vt102' (dec vt102; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/v/vt100	Compiled terminfo entry for terminal 'vt100' (vt100-am|dec vt100 (w/advanced video); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/v/vt52	Compiled terminfo entry for terminal 'vt52' (dec vt52; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/p/pcansi	Compiled terminfo entry for terminal 'pcansi' (ibm-pc terminal programs claiming to be ansi; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/l/linux	Compiled terminfo entry for terminal 'linux' (linux console; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/E/Eterm	Compiled terminfo entry for terminal 'Eterm' (Eterm-color|Eterm with xterm-style color support (X Window System); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/E/Eterm-color	Compiled terminfo entry for terminal 'Eterm-color' (Eterm-color|Eterm with xterm-style color support (X Window System); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/c/cygwin	Compiled terminfo entry for terminal 'cygwin' (ANSI emulation for Cygwin; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/c/cons25	Compiled terminfo entry for terminal 'cons25' (ansis|ansi80x25|freebsd console (25-line ansi mode); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/c/cons25-debian	Compiled terminfo entry for terminal 'cons25-debian' (freebsd console with debian backspace (25-line ansi mode); legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/t/tmux-256color	Compiled terminfo entry for terminal 'tmux-256color' (tmux with 256 colors; legacy magic 0x011a)	verified
+system_ext_a	etc/terminfo/t/tmux	Compiled terminfo entry for terminal 'tmux' (tmux terminal multiplexer; legacy magic 0x011a)	verified
+system_ext_a	etc/starlet-version-compat.json	Component version-hash table (components auth, override, wifi with SHA-256 hashes)	verified
+system_ext_a	etc/assistant/kwsEngine.json	Keyword-spotting engine config, en_US: chunkSize 3, detectionThresholds, kwsModelConfig modelPath ww_model.pt	verified
+system_ext_a	etc/assistant/en_US/smean_ng	Text list of float values for the next-generation second statistic vector	observed
+system_ext_a	etc/assistant/en_US/smean	Text list of float values for the second feature statistic vector	observed
+system_ext_a	etc/assistant/en_US/mean	Text list of float mean values for the front-end feature normalisation (14 lines read)	observed
+system_ext_a	etc/assistant/en_US/ww_q_all_boltnn_lite_opt_old.pt	Zip-format model archive for assistant (wake word / VAD) (entries include producer_info.json): ww_q_all_boltnn_lite_opt_old.pt	observed
+system_ext_a	etc/assistant/en_US/mean_ng	Text list of float mean values for the next-generation front end	observed
+system_ext_a	etc/assistant/en_US/ww_model.pt	Zip-format model archive for assistant (wake word / VAD) (entries include producer_info.json): ww_model.pt	observed
+system_ext_a	etc/assistant/en_US/smean_vad	Single-newline placeholder for the VAD second statistic vector	verified
+system_ext_a	etc/assistant/en_US/mean_vad	Single-newline placeholder for the VAD mean vector	verified
+system_ext_a	etc/assistant/en_US/ww_q_all_boltnn_lite_opt.pt	Zip-format model archive for assistant (wake word / VAD) (entries include producer_info.json): ww_q_all_boltnn_lite_opt.pt	observed
+system_ext_a	etc/assistant/en_US/q_predict_net.pb	Caffe2-style quantized NetDef protobuf, predict net (keyword model)	observed
+system_ext_a	etc/assistant/en_US/vad_model.pt	Zip-format model archive for assistant (wake word / VAD) (entries include producer_info.json): vad_model.pt	observed
+system_ext_a	etc/assistant/en_US/dnn_q_init_net.pb	Caffe2-style quantized NetDef protobuf, init net (wake-word front end)	observed
+system_ext_a	etc/assistant/en_US/dnn_q_predict_net.pb	Caffe2-style quantized NetDef protobuf, predict net (wake-word front end)	observed
+system_ext_a	etc/assistant/en_US/q_init_net.pb	Caffe2-style quantized NetDef protobuf, init net (keyword model)	observed
+system_ext_a	etc/assistant/kwsEngine_vad.json	Keyword-spotting engine config for VAD model (modelPath vad_model.pt, rule decoder)	verified
+system_ext_a	etc/assistant/kwsEngine_ng.json	Keyword-spotting engine config, next-generation: detectionThreshold 0.882, modelPath ww_q_all_boltnn_lite_opt.pt	verified
+system_ext_a	etc/fs_config_dirs	Zero-byte fs_config_dirs placeholder (no fs_config entries in this partition)	verified
+system_ext_a	etc/telemetryDictionaryOverlay.json	Telemetry dictionary overlay (version 0.1, mapping list keyed by atom_id)	verified
+system_ext_a	etc/nonDiscretionaryAppPackageName	List of package names (first entry 'system', then com.oculus.* packages), 5415 bytes	observed
+system_ext_a	etc/group	Zero-byte group file (no entries in this partition)	verified
+system_ext_a	etc/dynamicTelemetryOfflineConfig.json	Offline dynamic telemetry configuration: event list with is_enabled and sample_rate	verified
+system_ext_a	etc/passwd	Zero-byte passwd file (no entries in this partition)	verified
+system_ext_a	etc/fs_config_files	Zero-byte fs_config_files placeholder (no fs_config entries in this partition)	verified
+system_ext_a	etc/compatconfig/settings-platform-compat-config.xml	Compat-change definition for settings platform (1 compat-change, CHANGE_RESTRICT_SAW_INTENT)	verified
+system_ext_a	etc/telemetryDictionaryOffline.json	Offline telemetry dictionary (dictionary_id_hash, version 0.1, atom mapping list)	verified
+system_ext_a	etc/public.libraries-meta.txt	Public library metadata list (libhzos.meta.so, libhzos_tracking.meta.so)	verified
+system_ext_a	etc/NOTICE.xml.gz	Gzip-compressed XML license notice index for system_ext_a (<licenses> root with file-name entries)	verified
+system_ext_a	etc/offlineSchema.json	Offline settings schema: settings_to_categories, settings_to_default_value, allowed endpoints	verified
+system_ext_a	etc/IDNameMapping.json	Enum-to-name mapping table (enum_to_values per domain; JSON, about 520 KB)	verified
+system_ext_a	etc/ovr_crashreporter.conf	Crash reporter JSON config: pstore dir, report dir, app id, upload CA file and cipher list	verified
+vendor_a	etc/card-defs.xml	Sound card definitions XML (defs with a card element), Linux Foundation copyright header	verified
+vendor_a	etc/passwd	Vendor passwd entries (vendor_qti_diag through vendor_codecavatardataservice, uid 2901 to 2908, shell /bin/sh)	observed
+vendor_a	etc/thread_priority.cfg	Thread priority fixture config (INI-style sections, e.g. [syncbossWorkerPriority] policy Realtime value 52)	observed
+vendor_a	etc/group	Vendor group identity entries (vendor_qti_diag through vendor_codecavatardataservice, gid 2901 to 2908)	observed
+vendor_a	etc/peripheralconfig/dynamic_logical_device_manifest.json	Camera logical device manifest: targetName halliday, LogicalRGB with JacksonLeft and JacksonRight physical cameras, sensor id map	verified
+vendor_a	etc/peripheralconfig/pcl_config.bin	Binary peripheral configuration blob (leading protobuf-style 0x0a bytes)	observed
+vendor_a	etc/eps_properties.json	Spatial audio engine (EPS) properties: ambisonic order, room acoustics, object limits	verified
+vendor_a	etc/acdbdata/anorak_max98388/workspaceFileXml.qwsp	Binary audio calibration workspace file (.qwsp), anorak_max98388 target	observed
+vendor_a	etc/acdbdata/anorak_max98388/acdb_cal.acdb	Qualcomm ACDB audio calibration database (magic 'ACDB'), anorak_max98388 target	verified
+vendor_a	etc/fs_config_files	Zero-byte fs_config_files placeholder (no fs_config entries in this partition)	verified
+vendor_a	etc/resourcemanager_anorak_max98388.xml	Audio resource manager configuration XML (version 2.0; 13 top-level sections incl. group_device_cfg, sound_trigger_platform_info)	verified
+vendor_a	etc/gpfspath_oem_config.xml	OEM configuration for GP FS listener save paths (gp_data_path, gp_persist_path), comment-documented	observed
+vendor_a	etc/default_volume_tables.xml	Audio default volume table XML: 23 reference entries	verified
+vendor_a	etc/fs_config_dirs	Zero-byte fs_config_dirs placeholder (no fs_config entries in this partition)	verified
+vendor_a	etc/sec_config	IPC/QMI security configuration lines (service id, instance id, client group id), 331 lines	observed
+vendor_a	etc/init.insmod.cfg	Config for init.insmod.sh: modprobe -b list, enable entries for boot devices, setprop ready flags	observed
+vendor_a	etc/backend_conf.xml	Audio backend configuration XML: 43 device entries and 1 group_device	verified
+vendor_a	etc/public.libraries.txt	Vendor public library list (libadsprpc.so, libcdsprpc.so, libeva.so, libhexagon.so, libsdsprpc.so, libsynx.so, libdrm.so, libOpenCL.so)	observed
+vendor_a	etc/task_profiles.json	Vendor task profile definitions: 11 attributes, 52 profiles incl. trackingPolicy, sensorServicePolicy, mrSystemPolicy	verified
+vendor_a	etc/mkshrc	mksh interactive shell rc for vendor partition (Android minimal mkshrc)	observed
+vendor_a	etc/usecaseKvManager.xml	Audio usecase key-value manager XML (streams, streampps, devices, devicepps sections)	verified
+vendor_a	etc/msm_irqbalance.conf	msm_irqbalance config: PRIO list and IGNORED_IRQ list (IRQs 27, 23, 38)	observed
+vendor_a	etc/NOTICE.xml.gz	Gzip-compressed XML license notice index for vendor_a (<licenses> root with file-name entries)	verified
+vendor_a	etc/Diag-CHGPD.cfg	Binary diagnostic configuration blob for charger and PD (1071 bytes, non-text)	observed
+vendor_a	etc/HRTF_KS.hrtf	Binary HRTF dataset (head-related transfer function filters, KS set, 677804 bytes)	observed
+vendor_a	etc/vr_runtime_power_mitigation.json	VR runtime power mitigation config: compact mitigation-code string	verified
+vendor_a	etc/microphone_characteristics.xml	Microphone characteristics and snd_devices channel-map XML	verified
+vendor_a	bin/groups	Symlink to toybox_vendor (toybox multi-call applet alias)	verified

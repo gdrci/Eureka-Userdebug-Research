@@ -1,0 +1,14 @@
+partition	path	role	confidence
+system_a	cache	Symlink to /data/cache	verified
+system_a	bin	Symlink to /system/bin	verified
+system_a	sdcard	Symlink to /storage/self/primary	verified
+system_a	vendor_dlkm/etc	Symlink to /vendor/vendor_dlkm/etc	verified
+system_a	d	Symlink to /sys/kernel/debug	verified
+system_a	etc	Symlink to /system/etc	verified
+system_a	odm_dlkm/etc	Symlink to /odm/odm_dlkm/etc	verified
+system_a	bugreports	Symlink to /data/user_de/0/com.android.shell/files/bugreports	verified
+system_a	system/system_ext	Symlink to /system_ext	verified
+system_a	system/xbin/su	su: switch-user command, AArch64 setuid PIE ELF (usage: su [WHO [COMMAND...]])	verified
+system_a	system/vendor	Symlink to /vendor	verified
+system_a	system/product	Symlink to /product	verified
+vendor_a	odm	Symlink to /odm	verified

@@ -1,0 +1,273 @@
+{
+ "key": "security-keystore-crypto",
+ "summary": "The group has 60 classified rows: 56 regular files and 4 symlinks, spread over system_a (40), system_ext_a (1) and vendor_a (19). It covers four layers. (1) The system keystore2 stack: the Rust keystore2 daemon, its AIDL/NDK and C++ stubs, Rust crypto and attestation helpers, the keystore client CLI and the wait_for_keymaster boot helper. (2) Gatekeeper: the gatekeeperd and gatekeeperserver daemons, the gatekeeper core libraries, the OVR gatekeeper service and client libraries, and the Qualcomm gatekeeper 1.0 HAL service and implementation. (3) Keymaster and KeyMint: HIDL 3.0, 4.0 and 4.1 interface libraries in system and vendor, software keymaster libraries, the Qualcomm keymaster 4.1 HAL service and backend, and the qseecomd TEE daemon used by the vendor services. (4) fs-verity and AVB verity: fsverity_init (started from init.rc), set-verity-state with its enable-verity and disable-verity links, libfsverity, and the fs-verity release X.509 certificate. Cross-cutting libraries are BoringSSL libcrypto (32-bit and 64-bit) and the Widevine OEMCrypto libraries. All 56 regular files match their recorded sha256 and size. Binaries are stripped, so behaviour is taken from exported and imported symbols, NEEDED entries, strings, and init and SELinux text files.",
+ "rowsExpected": 60,
+ "rowsListed": 60,
+ "claims": [
+  {
+   "id": "cov-1",
+   "claim": "The group has 60 input rows (56 regular files, 4 symlinks). roles.tsv has one row per input row, with the same partition and path set and no duplicates.",
+   "label": "verified",
+   "file": "<image>-tools/work/subsystems/security-keystore-crypto/roles.tsv",
+   "evidence": "awk -F'\\t' '$1==\"security-keystore-crypto\"' classified.tsv | wc -l  ->  60. awk -F'\\t' '{print $4}' input_rows.tsv | sort | uniq -c  ->  56 file / 4 symlink. cmp cov_in.tsv cov_out.tsv  ->  no output (identical). awk -F'\\t' '{print $1}' cov_out.tsv | sort | uniq -c  ->  40 system_a / 1 system_ext_a / 19 vendor_a.",
+   "verdict": "confirmed",
+   "reason": "Classified group has 60 rows. Input rows split 56 file / 4 symlink. Input and coverage tables are byte-identical. Partition counts in both: system_a 40, system_ext_a 1, vendor_a 19. roles.tsv has 60 rows, 60 distinct (partition, path) pairs, no duplicates, and the same set as the input rows. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "cov-2",
+   "claim": "All 56 regular input files match their recorded sha256 and size.",
+   "label": "verified",
+   "file": "<image>/mnt",
+   "evidence": "cd <image>/mnt && while IFS=$'\\t' read -r sub part path kind size mime sha; do [ \"$kind\" = file ] && [ \"$(sha256sum \"$part/$path\" | cut -d' ' -f1)\" = \"$sha\" ] || echo MISMATCH $part/$path; done < input_rows.tsv  ->  sha_mismatches=0. stat -L -c %s on each file compared to the size column  ->  no SIZE MISMATCH lines.",
+   "verdict": "confirmed",
+   "reason": "All 56 regular-file rows: SHA-256 of mnt/<partition>/<path> equals the recorded sha256 (sha_mismatches=0). Byte size of each followed symlink target equals the recorded size (0 size mismatches). Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "cov-3",
+   "claim": "Four rows are symlinks: system_a/system/bin/disable-verity and enable-verity point to set-verity-state; system_a/system/bin/tee points to toybox; vendor_a/bin/tee points to toybox_vendor.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/disable-verity",
+   "evidence": "cd <image>/mnt && readlink system_a/system/bin/disable-verity system_a/system/bin/enable-verity system_a/system/bin/tee vendor_a/bin/tee  ->  set-verity-state / set-verity-state / toybox / toybox_vendor. ls -la system_a/system/bin/toybox vendor_a/bin/toybox_vendor  ->  both 507352 bytes.",
+   "verdict": "confirmed",
+   "reason": "Symlink targets: system_a/system/bin/disable-verity -> set-verity-state; enable-verity -> set-verity-state; system_a/system/bin/tee -> toybox; vendor_a/bin/tee -> toybox_vendor. toybox and toybox_vendor are both 507352 bytes. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "ks2-format",
+   "claim": "keystore2 is a stripped, dynamically linked AArch64 PIE for Android (ELF64, interpreter /system/bin/linker64), 1546696 bytes, BuildID 18995cead41f204d5b127934d0ec6651. It was built from Rust sources and has no .comment section.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/keystore2",
+   "evidence": "cd <image>/mnt && file -b system_a/system/bin/keystore2  ->  ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, BuildID[md5/uuid]=18995cead41f204d5b127934d0ec6651, stripped. readelf -h system_a/system/bin/keystore2 | grep -E 'Class|Machine|Type'  ->  Class: ELF64 / Machine: AArch64 / Type: DYN (Position-Independent Executable file). readelf -d system_a/system/bin/keystore2 | grep -E 'FLAGS'  ->  (FLAGS) BIND_NOW / (FLAGS_1) Flags: NOW PIE. readelf -p .comment system_a/system/bin/keystore2  ->  no output.",
+   "verdict": "confirmed",
+   "reason": "ELF64, AArch64, type DYN (PIE), dynamically linked, interpreter /system/bin/linker64, build-ID 18995cead41f204d5b127934d0ec6651, stripped. Size 1546696 bytes. No .comment section. The binary string table holds 29 Rust source paths under system/security/keystore2/src and paths under prebuilts/rust/linux-x86/1.55.0/src/stdlibs, consistent with the Rust build statement.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "ks2-deps",
+   "claim": "keystore2 has 14 NEEDED entries. Of these, libkm_compat_service.so and libsqlite.so are outside this group.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/keystore2",
+   "evidence": "cd <image>/mnt && readelf -d system_a/system/bin/keystore2 | grep NEEDED  ->  libbinder_ndk.so, libcutils.so, liblog.so, libc.so, libm.so, libdl.so, libkeystore2_aaid.so, libkeystore2_apc_compat.so, libkeystore2_crypto.so, libcrypto.so, libkm_compat_service.so, libselinux.so, libkeystore2_vintf_cpp.so, libsqlite.so.",
+   "verdict": "confirmed",
+   "reason": "14 NEEDED entries: libbinder_ndk, libcutils, liblog, libc, libm, libdl, libkeystore2_aaid, libkeystore2_apc_compat, libkeystore2_crypto, libcrypto, libkm_compat_service, libselinux, libkeystore2_vintf_cpp, libsqlite. libkm_compat_service.so and libsqlite.so are not among the 60 group rows (they sit in the native-libraries group).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "ks2-interfaces",
+   "claim": "keystore2 registers and implements the android.system.keystore2 AIDL service plus maintenance, metrics, authorization, compat, APC, legacy keystore and remote provisioning interfaces, and it uses KeyMint, secure clock and shared secret HAL interfaces.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/keystore2",
+   "evidence": "cd <image>/mnt && strings -n 6 system_a/system/bin/keystore2 | grep -o -E 'android\\.[a-zA-Z0-9_.]*(/[a-z]+)?' | sort -u  ->  android.system.keystore2.IKeystoreService/default, android.system.keystore2.IKeystoreOperation, android.security.maintenance.IKeystoreMaintenance, android.security.metrics.IKeystoreMetrics, android.security.authorization.IKeystoreAuthorization, android.security.compat.IKeystoreCompatService, android.security.apc.IConfirmationCallback, android.security.legacykeystore.ILegacyKeystore, android.security.remoteprovisioning.IRemoteProvisioning, android.hardware.security.keymint.IKeyMintDevice, android.hardware.security.secureclock.ISecureClock, android.hardware.security.sharedsecret.ISharedSecret.",
+   "verdict": "needs_change",
+   "reason": "All named interface strings are present in the binary string table. The binary imports AServiceManager_addService and contains the message 'Successfully registered Keystore 2.0 service.' next to android.system.keystore2.IKeystoreService/default, android.security.apc, authorization, metrics, remoteprovisioning, maintenance and legacykeystore. The compat interface name appears elsewhere in the strings but not in that run. Strings do not show whether each listed interface is served by the binary or only referenced, so 'implements' is not established. Label observed.",
+   "corrected_claim": "keystore2's binary strings contain the android.system.keystore2 service names (IKeystoreService/default, IKeystoreOperation) and the maintenance, metrics, authorization, compat, APC, legacy keystore and remote provisioning interface names, plus the KeyMint, secure clock and shared secret HAL interface names. It imports AServiceManager_addService and logs 'Successfully registered Keystore 2.0 service.' next to the IKeystoreService/default, APC, authorization, metrics, remote provisioning, maintenance and legacy keystore names. Whether each listed interface is served by the binary or only referenced is not determined from strings."
+  },
+  {
+   "id": "ks2-config",
+   "claim": "keystore2 uses system properties keystore.boot_level and keystore.crash_count and the data directory /data/misc/keystore. Its init service passes that directory as its first argument, and init.rc sets the boot-level property during boot.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/etc/init/keystore2.rc",
+   "evidence": "cd <image>/mnt && cat system_a/system/etc/init/keystore2.rc  ->  service keystore2 /system/bin/keystore2 /data/misc/keystore / class early_hal / user keystore / group keystore readproc log / task_profiles ProcessCapacityHigh HighPerformance. grep -n -E 'keystore.boot_level|earlyBootEnded|misc/keystore' system_a/system/etc/init/hw/init.rc  ->  714 mkdir /data/misc/keystore 0700 keystore keystore / 722 setprop keystore.boot_level 30 / 728 exec - system system -- /system/bin/vdc keymaster earlyBootEnded / 986 setprop keystore.boot_level 1000000000. sed -n '1178,1182p' system_a/system/etc/selinux/plat_property_contexts  ->  keystore.boot_level u:object_r:keystore_listen_prop:s0 exact int; keystore.crash_count u:object_r:keystore_crash_prop:s0 exact int.",
+   "verdict": "confirmed",
+   "reason": "keystore2.rc: 'service keystore2 /system/bin/keystore2 /data/misc/keystore' (directory is the first argument). Binary strings contain keystore.boot_level (3 occurrences) and keystore.crash_count (1). init.rc: line 714 mkdir /data/misc/keystore; line 722 setprop keystore.boot_level 30; line 986 setprop keystore.boot_level 1000000000. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "ks2-selinux",
+   "claim": "keystore2 is labelled keystore_exec. Its data directory is keystore_data_file, its AIDL service name maps to keystore_service, and the keystore2 key contexts are in plat_keystore2_key_contexts.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "evidence": "cd <image>/mnt && grep -n -E 'keystore2|data/misc/keystore' system_a/system/etc/selinux/plat_file_contexts  ->  263: /data/misc/keystore(/.*)? u:object_r:keystore_data_file:s0 / 507: /system/bin/keystore2 u:object_r:keystore_exec:s0 / 587: /plat_keystore2_key_contexts u:object_r:keystore2_key_contexts_file:s0. grep -n 'keystore2.IKeystoreService' system_a/system/etc/selinux/plat_service_contexts  ->  25: android.system.keystore2.IKeystoreService/default u:object_r:keystore_service:s0. grep -n '(type keystore_exec)' system_a/system/etc/selinux/plat_sepolicy.cil  ->  2687: (type keystore_exec).",
+   "verdict": "confirmed",
+   "reason": "plat_file_contexts: line 263 '/data/misc/keystore(/.*)? keystore_data_file'; line 507 '/system/bin/keystore2 keystore_exec'; lines 587 and 638 label /plat_keystore2_key_contexts and /system/etc/selinux/plat_keystore2_key_contexts as keystore2_key_contexts_file, and the file exists in system_a/system/etc/selinux. plat_service_contexts line 25: 'android.system.keystore2.IKeystoreService/default keystore_service'. plat_sepolicy.cil line 2687: '(type keystore_exec)'. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "ks2-source",
+   "claim": "keystore2 was built from 29 Rust source files under system/security/keystore2/src, including keystore2_main.rs, service.rs, database.rs, super_key.rs, legacy_blob.rs and remote_provisioning.rs, with Rust 1.55.0 standard-library paths.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/keystore2",
+   "evidence": "cd <image>/mnt && strings -n 8 system_a/system/bin/keystore2 | grep -o -E 'system/security/keystore2/src/[A-Za-z0-9_/]+\\.rs' | sort -u | wc -l  ->  29. Sample entries: system/security/keystore2/src/keystore2_main.rs, service.rs, database.rs, super_key.rs, legacy_blob.rs, remote_provisioning.rs. strings | grep -o 'prebuilts/rust/linux-x86/1.55.0'  ->  prebuilts/rust/linux-x86/1.55.0/src/stdlibs/....",
+   "verdict": "confirmed",
+   "reason": "Unique system/security/keystore2/src/*.rs paths in the binary string table: 29. Includes keystore2_main.rs, service.rs, database.rs, super_key.rs, legacy_blob.rs and remote_provisioning.rs. 'prebuilts/rust/linux-x86/1.55.0' occurs 78 times, with src/stdlibs/library/... paths. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libcrypto64-format",
+   "claim": "lib64/libcrypto.so is BoringSSL, built from external/boringssl. It exports about 2386 defined dynamic symbols and depends only on libc, libm and libdl. The 32-bit system/lib/libcrypto.so has the same BoringSSL markers and 2388 exports.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libcrypto.so",
+   "evidence": "cd <image>/mnt && readelf -d system_a/system/lib64/libcrypto.so | grep -E 'NEEDED|SONAME'  ->  NEEDED libc.so, libm.so, libdl.so; SONAME libcrypto.so. readelf --dyn-syms -W system_a/system/lib64/libcrypto.so | awk '$7!=\"UND\" && NR>3 && $4!=\"\"' | wc -l  ->  2386. strings -n 8 system_a/system/lib64/libcrypto.so | grep -E 'BORINGSSL_self_test|external/boringssl' | head -3  ->  BORINGSSL_self_test; external/boringssl/src/crypto/evp/evp_ctx.c. strings -n 8 system_a/system/lib/libcrypto.so | grep -c -E 'BORINGSSL_self_test|external/boringssl'  ->  164. readelf --dyn-syms -W system_a/system/lib/libcrypto.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"' | wc -l  ->  2388.",
+   "verdict": "confirmed",
+   "reason": "lib64/libcrypto.so: NEEDED libc.so, libm.so, libdl.so only; SONAME libcrypto.so. Defined dynamic symbols with a non-empty name: 2386. Strings include BORINGSSL_self_test and external/boringssl/src/crypto/evp/evp_ctx.c. 32-bit lib/libcrypto.so: 164 BoringSSL marker strings and 2388 defined dynamic symbols. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "set-verity-format-cfg",
+   "claim": "set-verity-state is a stripped AArch64 PIE that enables or disables verity. It is invoked either directly with a usage of [1|0] or through the enable-verity and disable-verity names, and it reads and writes the avb.managed_verity_mode property. It depends on libfec, libfs_mgr_binder and libcrypto_utils.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/set-verity-state",
+   "evidence": "cd <image>/mnt && file -b system_a/system/bin/set-verity-state  ->  ELF 64-bit LSB pie executable, ARM aarch64 ... dynamically linked, interpreter /system/bin/linker64 ... stripped. readelf -d system_a/system/bin/set-verity-state | grep NEEDED  ->  libbase.so, libcrypto.so, libcrypto_utils.so, libcutils.so, libfec.so, libfs_mgr_binder.so, liblog.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 4 system_a/system/bin/set-verity-state | grep -E 'usage|enable-verity|disable-verity|Verity already|avb.managed'  ->  usage: %s [1|0] / enable-verity / disable-verity / Verity already enabled on %s / Verity already disabled on %s / avb.managed_verity_mode (also in strings: ro.boot.vbmeta.digest, avb.persistent_digest, ro.secure).",
+   "verdict": "confirmed",
+   "reason": "set-verity-state: ELF64 AArch64 PIE, dynamically linked, interpreter /system/bin/linker64, build-ID c5b37fdaf72025a770664e6bcdf5d27f, stripped. NEEDED includes libfec.so, libfs_mgr_binder.so, libcrypto_utils.so. Strings: 'usage: %s [1|0]', 'enable-verity', 'disable-verity', 'Verity already enabled on %s' / 'Verity already disabled on %s', and read/write/clear error messages for avb.managed_verity_mode. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "set-verity-refs",
+   "claim": "Four other binaries in the mounted partitions contain the verity-state command names. They are init, snapshotctl, update_engine and set-verity-state itself. The group's rows are not referenced from any init.rc or file_contexts entry.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/set-verity-state",
+   "evidence": "cd <image>/mnt && grep -rl -a -E 'verity-state|enable-verity|disable-verity' system_a vendor_a system_ext_a product_a odm_a  ->  system_a/system/bin/init, system_a/system/bin/set-verity-state, system_a/system/bin/snapshotctl, system_a/system/bin/update_engine. grep -n -E 'set-verity|enable-verity|disable-verity|bin/tee' system_a/system/etc/selinux/plat_file_contexts vendor_a/etc/selinux/vendor_file_contexts system_ext_a/etc/selinux/system_ext_file_contexts  ->  no output.",
+   "verdict": "needs_change",
+   "reason": "The four binaries containing the verity-state command names are system_a/system/bin/init, snapshotctl, update_engine and set-verity-state. That is three other binaries plus set-verity-state itself, so 'Four other binaries' is wrong. The verity-name cross-reference holds: no init.rc under system_a, vendor_a or system_ext_a, and no plat, vendor or system_ext file_contexts entry, names set-verity-state, enable-verity, disable-verity or bin/tee. The broader sentence, that the group's rows are not referenced from any init.rc or file_contexts entry, is refuted: keystore2 is labelled at plat_file_contexts line 507 and fsverity_init is run from init.rc line 647. Label verified for the cross-reference only.",
+   "corrected_claim": "Four binaries in the mounted partitions contain the verity-state command names: system_a/system/bin/init, snapshotctl, update_engine and set-verity-state itself (three besides set-verity-state). The verity-state rows (set-verity-state, enable-verity, disable-verity) and the tee symlink rows are not named in any init.rc or file_contexts entry in the checked partitions."
+  },
+  {
+   "id": "fsverity-init",
+   "claim": "fsverity_init is a stripped AArch64 PIE that loads verified fs-verity keys from /system/etc/security/fsverity and /product/etc/security/fsverity (.der files), loads extra keys by name, and locks the .fs-verity keyring. init.rc runs it with --load-verified-keys during early boot and --lock later.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/fsverity_init",
+   "evidence": "cd <image>/mnt && readelf -d system_a/system/bin/fsverity_init | grep NEEDED  ->  libbase.so, libkeyutils.so, liblog.so, liblogwrap.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 4 system_a/system/bin/fsverity_init | grep -E '^--|fsverity|keyring|/system/etc|/product/etc|\\.der|/proc/'  ->  --load-extra-key / --lock / /product/etc/security/fsverity / /system/etc/security/fsverity / .der / .fs-verity / /proc/keys / /proc/sys/fs/verity/require_signatures / keyctl_restrict_keyring / system/security/fsverity_init/fsverity_init.cpp. grep -n 'fsverity_init' system_a/system/etc/init/hw/init.rc  ->  647: exec -- /system/bin/fsverity_init --load-verified-keys / 981: exec -- /system/bin/fsverity_init --lock.",
+   "verdict": "needs_change",
+   "reason": "Binary is a stripped AArch64 PIE. Strings include /system/etc/security/fsverity, /product/etc/security/fsverity, .der, --load-extra-key (with 'requires <key_name> argument'), --lock, and .fs-verity keyring messages. init.rc line 647 (--load-verified-keys) is inside the 'on late-fs' block (header line 637), not an early-boot trigger. Line 981 (--lock) is inside the 'on post-fs-data' block (header line 672). The /product/etc/security/fsverity directory does not exist in the mounted product_a. Label observed.",
+   "corrected_claim": "fsverity_init is a stripped AArch64 PIE that loads verified fs-verity keys from /system/etc/security/fsverity and /product/etc/security/fsverity (.der files), loads extra keys by name, and locks the .fs-verity keyring. init.rc runs it with --load-verified-keys in the 'on late-fs' block (line 647) and with --lock in the 'on post-fs-data' block (line 981)."
+  },
+  {
+   "id": "fsverity-cert",
+   "claim": "fsverity-release.x509.der is a DER X.509 v3 self-signed CA certificate with subject and issuer CN=Android (O=Google Inc., OU=Android), RSA 4096-bit key, public exponent 65537, valid 2020-03-20 to 2050-03-20, and SHA-256 fingerprint 9F:97:31:5D:A5:EC:FF:D9:5B:78:C1:EE:B2:1D:3B:3C:27:1B:C3:0D:AB:61:C0:FA:74:2C:89:E6:20:BE:AC:7D.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/security/fsverity/fsverity-release.x509.der",
+   "evidence": "cd <image>/mnt && openssl x509 -inform DER -in system_a/system/etc/security/fsverity/fsverity-release.x509.der -noout -subject -issuer -dates -fingerprint -sha256  ->  subject=C = US, ST = California, L = Mountain View, O = Google Inc., OU = Android, CN = Android / issuer= (same) / notBefore=Mar 20 19:51:58 2020 GMT / notAfter=Mar 20 19:51:58 2050 GMT / sha256 Fingerprint=9F:97:31:5D:A5:EC:FF:D9:5B:78:C1:EE:B2:1D:3B:3C:27:1B:C3:0D:AB:61:C0:FA:74:2C:89:E6:20:BE:AC:7D. openssl x509 ... -text | grep -E 'Public-Key|Exponent|CA:'  ->  Public-Key: (4096 bit) / Exponent: 65537 (0x10001) / CA:TRUE.",
+   "verdict": "confirmed",
+   "reason": "Certificate fields: Version 3; subject and issuer identical (C=US, ST=California, L=Mountain View, O=Google Inc., OU=Android, CN=Android); CA:TRUE; signature sha256WithRSAEncryption with rsaEncryption key; Public-Key 4096 bit; exponent 65537 (0x10001); notBefore Mar 20 2020 19:51:58 GMT; notAfter Mar 20 2050 19:51:58 GMT; SHA-256 fingerprint 9F:97:31:5D:A5:EC:FF:D9:5B:78:C1:EE:B2:1D:3B:3C:27:1B:C3:0D:AB:61:C0:FA:74:2C:89:E6:20:BE:AC:7D (exact match). Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libfsverity",
+   "claim": "libfsverity.so is the fs-verity userspace library. It exports libfsverity_enable, libfsverity_enable_with_sig, libfsverity_sign_digest, libfsverity_compute_digest and hash helpers, and depends on libcrypto.so. Its only NEEDED consumer in the mounted partitions is /system/bin/odsign, which is outside this group.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libfsverity.so",
+   "evidence": "cd <image>/mnt && readelf -d system_a/system/lib64/libfsverity.so | grep -E 'NEEDED|SONAME'  ->  NEEDED libcrypto.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libfsverity.so. readelf --dyn-syms -W system_a/system/lib64/libfsverity.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"{print $8}' | c++filt  ->  22 defined; libfsverity_enable, libfsverity_enable_with_sig, libfsverity_sign_digest, libfsverity_compute_digest, libfsverity_hash_init, libfsverity_hash_update, libfsverity_hash_final, libfsverity_find_hash_alg_by_name. Consumer check (loop over ELF files that name libfsverity.so): NEEDED-by: system_a/system/bin/odsign.",
+   "verdict": "confirmed",
+   "reason": "libfsverity.so: NEEDED libcrypto.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libfsverity.so. 22 defined dynamic symbols including libfsverity_enable, libfsverity_enable_with_sig, libfsverity_sign_digest, libfsverity_compute_digest, libfsverity_hash_init, libfsverity_hash_update, libfsverity_hash_final, libfsverity_find_hash_alg_by_name. Files whose NEEDED list includes libfsverity.so: system_a/system/bin/odsign only, which is not among the group's 60 rows. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "gatekeeperd",
+   "claim": "gatekeeperd is a stripped AArch64 PIE daemon that exposes android.service.gatekeeper.IGateKeeperService over binder. It depends on the gatekeeper HIDL 1.0 interface and libgatekeeper, and is started by init at late_start.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/gatekeeperd",
+   "evidence": "cd <image>/mnt && readelf -d system_a/system/bin/gatekeeperd | grep NEEDED  ->  libbinder.so, libbinder_ndk.so, libgatekeeper.so, libgsi.so, liblog.so, libhardware.so, libbase.so, libutils.so, libcrypto.so, libhidlbase.so, android.hardware.gatekeeper@1.0.so, libgatekeeper_aidl.so, android.hardware.security.keymint-V1-ndk_platform.so, android.security.authorization-ndk_platform.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 5 system_a/system/bin/gatekeeperd | grep -E 'IGateKeeperService|ro.gsid|gatekeeperd.cpp'  ->  android.service.gatekeeper.IGateKeeperService / ro.gsid.image_running / system/core/gatekeeperd/gatekeeperd.cpp. cat system_a/system/etc/init/gatekeeperd.rc  ->  service gatekeeperd /system/bin/gatekeeperd /data/misc/gatekeeper / class late_start / user system / task_profiles ServiceCapacityLow ServicePerformance. grep -n 'gatekeeper' system_a/system/etc/init/hw/init.rc  ->  770: mkdir /data/misc/gatekeeper 0700 system system.",
+   "verdict": "confirmed",
+   "reason": "gatekeeperd: stripped AArch64 PIE. NEEDED includes libgatekeeper.so, android.hardware.gatekeeper@1.0.so and libgatekeeper_aidl.so. Strings: android.service.gatekeeper.IGateKeeperService, ro.gsid.image_running, system/core/gatekeeperd/gatekeeperd.cpp. Defined symbols include BnInterface<android::service::gatekeeper::IGateKeeperService>. gatekeeperd.rc: 'class late_start'. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libgatekeeper64",
+   "claim": "lib64/libgatekeeper.so is the gatekeeper core library. It exports GateKeeper::Enroll, GateKeeper::Verify, GateKeeper::MintAuthToken, CreatePasswordHandle, ThrottleRequest and IncrementFailureRecord, and the request and response serialization classes. The 32-bit system/lib/libgatekeeper.so exports 46 gatekeeper:: symbols.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libgatekeeper.so",
+   "evidence": "cd <image>/mnt && readelf --dyn-syms -W system_a/system/lib64/libgatekeeper.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"{print $8}' | c++filt  ->  gatekeeper::GateKeeper::Enroll(...), gatekeeper::GateKeeper::Verify(...), gatekeeper::GateKeeper::MintAuthToken(...), gatekeeper::GateKeeper::CreatePasswordHandle(...), gatekeeper::GateKeeper::ThrottleRequest(...), gatekeeper::GateKeeper::IncrementFailureRecord(...), gatekeeper::EnrollRequest::nonErrorSerialize(...). readelf -d system_a/system/lib64/libgatekeeper.so | grep NEEDED  ->  libc++.so, libc.so, libm.so, libdl.so. 32-bit: readelf --dyn-syms -W system_a/system/lib/libgatekeeper.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"' | c++filt | grep -c 'gatekeeper::'  ->  46.",
+   "verdict": "confirmed",
+   "reason": "lib64/libgatekeeper.so defined symbols include GateKeeper::Enroll, Verify, MintAuthToken, CreatePasswordHandle, ThrottleRequest, IncrementFailureRecord, and EnrollRequest/EnrollResponse/VerifyRequest/VerifyResponse serialization methods. 32-bit lib/libgatekeeper.so: 46 gatekeeper:: symbols. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "gatekeeperserver",
+   "claim": "gatekeeperserver is a small OVR (Oculus) gatekeeper service host. It imports GatekeeperNativeService::createProdInstance and ServiceHost, is started by init in the main class, and reads gatekeeper overrides from /data/oculus/gatekeepers/gks.db. The native service library exports override and clear methods and a dump entry point.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/gatekeeperserver",
+   "evidence": "cd <image>/mnt && readelf --dyn-syms -W system_a/system/bin/gatekeeperserver | awk '$7==\"UND\"{print $8}' | c++filt | grep OVR  ->  OVR::OS::GatekeeperNativeService::createProdInstance(); OVR::OS::ServiceHost::ServiceHost(...); OVR::OS::ServiceHost::startThreadPool(). readelf -d system_a/system/bin/gatekeeperserver | grep NEEDED  ->  libbase.so, libbinder.so, libgatekeepernativeservice.so, libkvstore.so, liblog.so, libosutils.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so. cat system_a/system/etc/init/gatekeeperservice.rc  ->  on post-fs-data: mkdir /data/oculus/gatekeepers 0750 system system; service gatekeeperserver /system/bin/gatekeeperserver / class main / user system / group system. readelf --dyn-syms -W system_a/system/lib64/libgatekeepernativeservice.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"{print $8}' | c++filt | grep -E 'override|clearOverride|dump'  ->  OVR::OS::GatekeeperNativeService::clearGatekeeper(...), clearOverriddenGatekeepers(), clearOverrideGatekeeper(...), dump(...). strings -n 5 system_a/system/lib64/libgatekeepernativeservice.so | grep gks.db  ->  /data/oculus/gatekeepers/gks.db. grep -n gatekeep system_ext_a/etc/selinux/system_ext_file_contexts  ->  21: /data/oculus/gatekeepers(/.*)? gatekeeperservice_data_file; 56: /system/bin/gatekeeperserver gatekeeperserver_exec.",
+   "verdict": "needs_change",
+   "reason": "All checks hold except the gks.db attribution. The string /data/oculus/gatekeepers/gks.db has 0 matches in the gatekeeperserver binary. It is present in libgatekeepernativeservice.so, which gatekeeperserver lists in NEEDED. Imports (GatekeeperNativeService::createProdInstance, ServiceHost), init 'class main' service, and the library's override, clear and dump entry points are confirmed. Label verified for the other parts.",
+   "corrected_claim": "gatekeeperserver is a small OVR gatekeeper service host. It imports GatekeeperNativeService::createProdInstance and ServiceHost and is started by init in the main class. It links libgatekeepernativeservice.so, whose strings contain /data/oculus/gatekeepers/gks.db. That library exports override and clear methods (overrideGatekeeper, clearOverrideGatekeeper, clearOverriddenGatekeepers, clearGatekeeper) and a dump entry point."
+  },
+  {
+   "id": "keystore-cli",
+   "claim": "keystore_cli_v2 is a stripped AArch64 client for keystore2 that exposes the commands confirmation, decrypt, delete, encrypt, generate, get-chars, list, list-brillo-tests, sign-verify and brillo-platform-test. It depends on libchrome, libprotobuf-cpp-lite and libkeymint_support, and its source is system/security/keystore/keystore_cli_v2.cpp.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/keystore_cli_v2",
+   "evidence": "cd <image>/mnt && strings -n 3 system_a/system/bin/keystore_cli_v2 | grep -E 'Usage|Commands|^(confirmation|decrypt|delete|encrypt|generate|get-chars|list|sign-verify)$'  ->  Usage: keystore_client_v2 <command> [options] / Commands: brillo-platform-test [--prefix=<test_name_prefix>] [--test_for_0_3] / confirmation / decrypt / delete / encrypt / generate / get-chars / list / list-brillo-tests / sign-verify. readelf -d system_a/system/bin/keystore_cli_v2 | grep NEEDED  ->  android.security.apc-ndk_platform.so, android.system.keystore2-V1-ndk_platform.so, libbinder.so, libbinder_ndk.so, libchrome.so, libcrypto.so, libkeymint_support.so, libprotobuf-cpp-lite.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 6 system_a/system/bin/keystore_cli_v2 | grep -o 'system/security/keystore[A-Za-z0-9_/]*\\.cpp' | sort -u  ->  system/security/keystore/keystore_cli_v2.cpp.",
+   "verdict": "confirmed",
+   "reason": "keystore_cli_v2: stripped AArch64 PIE. Strings contain all ten listed commands (confirmation, decrypt, delete, encrypt, generate, get-chars, list, list-brillo-tests, sign-verify, brillo-platform-test). NEEDED includes libchrome.so, libprotobuf-cpp-lite.so, libkeymint_support.so. Source string: system/security/keystore/keystore_cli_v2.cpp. The usage text prints 'keystore_client_v2'. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "wait-for-keymaster",
+   "claim": "wait_for_keymaster is a boot-time helper, run as root with priority -20 by init. It waits for the keystore2 IKeystoreService/default instance and the keymaster maintenance service, and its source is system/vold/wait_for_keymaster.cpp. It is labelled wait_for_keymaster_exec.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/wait_for_keymaster",
+   "evidence": "cd <image>/mnt && cat system_a/system/etc/init/wait_for_keymaster.rc  ->  service wait_for_keymaster /system/bin/wait_for_keymaster / user root / group root system / priority -20 / ioprio rt 0. readelf -d system_a/system/bin/wait_for_keymaster | grep NEEDED  ->  includes android.system.keystore2-V1-ndk_platform.so, android.security.maintenance-ndk_platform.so, libkeymint_support.so, libhardware_legacy.so. strings -n 5 system_a/system/bin/wait_for_keymaster | grep -E 'IKeystoreService|vold/'  ->  android.system.keystore2.IKeystoreService/default / system/vold/Keymaster.cpp / system/vold/wait_for_keymaster.cpp. grep -n wait_for_keymaster system_a/system/etc/selinux/plat_file_contexts  ->  604: /system/bin/wait_for_keymaster u:object_r:wait_for_keymaster_exec:s0.",
+   "verdict": "confirmed",
+   "reason": "wait_for_keymaster.rc: 'user root', 'group root system', 'priority -20', 'ioprio rt 0'. NEEDED includes android.system.keystore2-V1-ndk_platform.so, android.security.maintenance-ndk_platform.so, libkeymint_support.so, libhardware_legacy.so. Strings: android.system.keystore2.IKeystoreService/default, system/vold/wait_for_keymaster.cpp, system/vold/Keymaster.cpp. plat_file_contexts line 604 labels /system/bin/wait_for_keymaster as wait_for_keymaster_exec. The 'waits for' behaviour is inferred from the names only. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libkeymaster-portable",
+   "claim": "libkeymaster_portable.so is the portable software keymaster implementation. It exports the AndroidKeymaster class, operation classes for RSA, symmetric keys and upgrade messages, and the ae_* authenticated-encryption helpers. It depends on libcrypto, libcppbor_external and libcppcose_rkp.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libkeymaster_portable.so",
+   "evidence": "cd <image>/mnt && readelf -d system_a/system/lib64/libkeymaster_portable.so | grep NEEDED  ->  libcrypto.so, libcppbor_external.so, libcppcose_rkp.so, libc++.so, libc.so, libm.so, libdl.so. readelf --dyn-syms -W system_a/system/lib64/libkeymaster_portable.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"' | wc -l  ->  702 defined symbols (c++filt output contains keymaster::AndroidKeymaster::AndroidKeymaster, keymaster::RsaOperation::~RsaOperation, keymaster::SymmetricKey::~SymmetricKey). readelf --dyn-syms -W system_a/system/lib64/libkeymaster_portable.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"{print $8}' | grep -E '^ae_' | head -4  ->  ae_allocate, ae_clear, ae_ctx_sizeof, ae_decrypt.",
+   "verdict": "confirmed",
+   "reason": "libkeymaster_portable.so: NEEDED libcrypto.so, libcppbor_external.so, libcppcose_rkp.so, libc++.so, libc.so, libm.so, libdl.so. 702 defined dynamic symbols. Demangled names include keymaster::AndroidKeymaster::AndroidKeymaster, RsaOperation and SymmetricKey destructors, UpgradeKeyRequest and UpgradeKeyResponse. Defined ae_allocate, ae_clear, ae_decrypt, ae_free. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "vendor-keymaster41-hidl",
+   "claim": "The vendor lib64/android.hardware.keymaster@4.1.so is the HIDL IKeymasterDevice 4.1 interface library. It exports V4_1::IKeymasterDevice with its Bp and Bn proxy and stub classes, and it is published in the vendor VINTF manifest as @4.1::IKeymasterDevice/default.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/lib64/android.hardware.keymaster@4.1.so",
+   "evidence": "cd <image>/mnt && readelf --dyn-syms -W vendor_a/lib64/android.hardware.keymaster@4.1.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"{print $8}' | c++filt | grep -o -E 'android::hardware::keymaster::V[0-9_]+::[A-Za-z_]+' | sort | uniq -c | sort -rn | head -3  ->  46 android::hardware::keymaster::V4_1::BpHwKeymasterDevice / 29 android::hardware::keymaster::V4_1::IKeymasterDevice / 19 android::hardware::keymaster::V4_1::BnHwKeymasterDevice. sed -n '56,60p' vendor_a/etc/vintf/manifest.xml  ->  <hal format=\"hidl\"> / <name>android.hardware.keymaster</name> / <transport>hwbinder</transport> / <fqname>@4.1::IKeymasterDevice/default</fqname> / </hal>.",
+   "verdict": "confirmed",
+   "reason": "vendor_a/lib64/android.hardware.keymaster@4.1.so: defined symbols include V4_1::BpHwKeymasterDevice (46), V4_1::IKeymasterDevice (29), V4_1::BnHwKeymasterDevice (19). vendor_a/etc/vintf/manifest.xml lines 56-60: hal format=hidl, name android.hardware.keymaster, transport hwbinder, fqname @4.1::IKeymasterDevice/default. Label verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "vendor-keymaster41-service",
+   "claim": "bin/hw/android.hardware.keymaster@4.1-service-qti is the Qualcomm keymaster 4.1 HAL service. It is started by init as vendor.keymaster-4-1 in the early_hal class, links libqtikeymaster4 and the 4.0 and 4.1 HIDL libraries, and its source is the vendor securemsm keymaster/4.1/service.cpp.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.keymaster@4.1-service-qti",
+   "evidence": "cd <image>/mnt && cat vendor_a/etc/init/android.hardware.keymaster@4.1-service-qti.rc  ->  on init / start vendor.keymaster-4-1 / service vendor.keymaster-4-1 /vendor/bin/hw/android.hardware.keymaster@4.1-service-qti / class early_hal / user system / group system drmrpc. readelf -d vendor_a/bin/hw/android.hardware.keymaster@4.1-service-qti | grep NEEDED  ->  liblog.so, libcutils.so, libbase.so, libutils.so, libhardware.so, libhidlbase.so, android.hardware.keymaster@4.0.so, android.hardware.keymaster@4.1.so, libqtikeymaster4.so, libcrypto.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 6 vendor_a/bin/hw/android.hardware.keymaster@4.1-service-qti | grep -E 'service.cpp|registerAsService|Could not register'  ->  Could not register service for Keymaster 4.1 ( / ...IKeymasterDevice17registerAsService... / vendor/qcom/proprietary/securemsm-noship/android_security/keymaster/4.1/service.cpp. grep -n keymaster@4.1-service vendor_a/etc/selinux/vendor_file_contexts  ->  486: /(vendor|...)/bin/hw/android\\.hardware\\.keymaster@4\\.1-service-qti u:object_r:vendor_hal_keymaster_qti_exec:s0.",
+   "verdict": "confirmed",
+   "reason": "Service rc: 'on init' starts vendor.keymaster-4-1 (/vendor/bin/hw/android.hardware.keymaster@4.1-service-qti), 'class early_hal', 'user system', 'group system drmrpc'. NEEDED includes android.hardware.keymaster@4.0.so, android.hardware.keymaster@4.1.so, libqtikeymaster4.so. Strings include vendor/qcom/proprietary/securemsm-noship/android_security/keymaster/4.1/service.cpp and 'Could not register service for Keymaster 4.1'. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "qseecomd",
+   "claim": "qseecomd is the QSEECom daemon for the vendor TEE path. It runs as root in the core class, owns a notify-topology socket for the drmrpc group, opens /dev/smcinvoke and links libQSEEComAPI, libdrmfs, libminkdescriptor and libdmabufheap. It is labelled tee_exec, and the /dev/qseecom node is labelled tee_device.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bin/qseecomd",
+   "evidence": "cd <image>/mnt && cat vendor_a/etc/init/qseecomd.rc  ->  on init / start vendor.qseecomd / service vendor.qseecomd /vendor/bin/qseecomd / socket notify-topology stream 660 system drmrpc / class core / user root / group root drmrpc system. readelf -d vendor_a/bin/qseecomd | grep NEEDED  ->  libcutils.so, libutils.so, liblog.so, libQSEEComAPI.so, libdrmfs.so, libminkdescriptor.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 6 vendor_a/bin/qseecomd | grep -E '/dev/|QSEECOM DAEMON'  ->  /dev/smcinvoke / QSEECOM DAEMON RUNNING. grep -n -E 'qseecom|bin/qseecomd' vendor_a/etc/selinux/vendor_file_contexts  ->  375: /dev/qseecom u:object_r:tee_device:s0 / 407: /vendor/bin/qseecomd u:object_r:tee_exec:s0.",
+   "verdict": "confirmed",
+   "reason": "vendor.qseecomd rc: 'user root', 'class core', 'socket notify-topology stream 660 system drmrpc'. NEEDED includes libQSEEComAPI.so, libdrmfs.so, libminkdescriptor.so, libdmabufheap.so. Strings include /dev/smcinvoke and 'QSEECOM DAEMON RUNNING'. vendor_file_contexts: line 407 /vendor/bin/qseecomd tee_exec; line 375 /dev/qseecom tee_device. 'Opens /dev/smcinvoke' rests on the string only. Label observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "libqtikeymaster4",
+   "claim": "lib64/libqtikeymaster4.so is the Qualcomm keymaster 4.x backend that the vendor keymaster 4.1 service links. It depends on the vendor keymaster device and utility libraries, libqcbor, and the 4.0 and 4.1 HIDL interfaces. It exports 239 defined symbols, including a CR* family of getter functions.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/lib64/libqtikeymaster4.so",
+   "evidence": "cd <image>/mnt && readelf -d vendor_a/lib64/libqtikeymaster4.so | grep NEEDED  ->  liblog.so, libcrypto.so, libhidlbase.so, libutils.so, libcutils.so, libkeymasterdeviceutils.so, libkeymasterutils.so, libbase.so, libqcbor.so, android.hardware.keymaster@4.0.so, android.hardware.keymaster@4.1.so, libc++.so, libc.so, libm.so, libdl.so. readelf --dyn-syms -W vendor_a/lib64/libqtikeymaster4.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"' | wc -l  ->  239. readelf --dyn-syms -W vendor_a/lib64/libqtikeymaster4.so | awk '$7!=\"UND\" && NR>3 && $8!=\"\"{print $8}' | head -3  ->  CRGetBool, CRGetBoolFromMapWithStringLabel, CRGetBytesOrString.",
+   "verdict": "confirmed",
+   "reason": "vendor_a/lib64/libqtikeymaster4.so: NEEDED includes libkeymasterdeviceutils.so, libkeymasterutils.so, libqcbor.so, android.hardware.keymaster@4.0.so, android.hardware.keymaster@4.1.so. 239 defined dynamic symbols, 25 of them with a CR prefix (CRGetBool, CRGetBoolFromMapWithStringLabel, CRGetBytesOrString among them). Label observed.",
+   "corrected_claim": ""
+  }
+ ],
+ "gaps": [
+  "Stripped binaries (keystore2, gatekeeperd, gatekeeperserver, fsverity_init, set-verity-state, wait_for_keymaster, keystore_cli_v2, qseecomd, both HAL service processes): function-level behaviour, internal state layouts and on-disk database formats were not determined. Descriptions rely on exported and imported symbols, NEEDED entries, strings and init/SELinux text.",
+  "Dependencies outside this group that were not analysed: libkm_compat_service.so and libsqlite.so (NEEDED by keystore2), libkeyutils.so, libselinux.so, libfs_mgr_binder.so, libfec.so, libQSEEComAPI.so, libqcbor.so, libcppbor_external.so, libcppcose_rkp.so, libkeymint_support.so, libchrome.so, libprotobuf-cpp-lite.so, libgsi.so, libkvstore.so, libosutils.so.",
+  "The KeyMint service binary (vendor_a/bin/hw/android.hardware.security.keymint-service-qti, with its init rc and vintf manifest, which are in vendor_a) is referenced by the group's VINTF and SELinux files but is not in this group, so it was not analysed.",
+  "The consumer of libkm_compat_service.so is keystore2 by NEEDED entry, but the implementation of that library is outside the group and was not examined.",
+  "odsign (system_a/system/bin/odsign, NEEDED libfsverity.so) is outside this group. Its use of libfsverity was checked only by its NEEDED entry.",
+  "No explicit file_contexts entries were found for set-verity-state, enable-verity, disable-verity, tee, keystore_cli_v2 or the group's shared libraries. The default labelling rule that applies to them was not determined.",
+  "The runtime key-loading path of fsverity_init (which key files it actually loads at boot) and the fs-verity sign-and-verify flow were not reproduced. The release certificate's role is inferred from the file name and the search path strings.",
+  "The 32-bit and 64-bit gatekeeper core libraries, the 32-bit vendor gatekeeper implementation (vendor_a/lib/hw/android.hardware.gatekeeper@1.0-impl-qti.so), the 32-bit vendor keymasterdeviceutils library, the vendor copies of libkeymaster4support and libkeymaster_messages, and the vendor 3.0 and 4.0 HIDL libraries were identified from names, NEEDED lists and sizes, not from symbol-level inspection. The vendor copies of libkeymaster4support and libkeymaster_messages have the same size as their system counterparts but different sha256 values, and the reason was not determined.",
+  "The meaning of the CR* getter family in libqtikeymaster4 and the vendor.gatekeeper.disable_spu key in the gatekeeper implementation was not determined. The vendor.wv.oemcrypto.debug.* keys in liboemcrypto were listed only, not interpreted.",
+  "The vendor boringssl_self_test init rc (vendor_a/etc/init/boringssl_self_test.rc) and its relation to libcrypto were not examined.",
+  "SELinux sources are compiled CIL only (no .te files). Domain transitions for keystore2 and gatekeeperd were not traced end to end; only exec labels and type declarations were confirmed.",
+  "The toybox applets behind the tee symlinks were not examined."
+ ],
+ "rolesFile": "data/subsystems/security-keystore-crypto/roles.tsv"
+}

@@ -1,0 +1,560 @@
+{
+ "key": "wifi-bluetooth",
+ "summary": "The wifi-bluetooth group is the Wi-Fi and Bluetooth stack of a device with a Qualcomm QCA6490 combo chipset (QCA6490 appears in the Bluetooth patch build strings and in the cnss-qca6490 sysfs node named in the SELinux file contexts). Vendor HAL services expose IWifi (HIDL 1.0 through 1.5), ISupplicant (1.0 through 1.4), IHostapd (1.0 through 1.3) and IBluetoothHci (1.0). These are backed by wpa_supplicant and hostapd 2.10-devel-12 daemons, Qualcomm WLAN services cnss-daemon and cnss_diag, and Qualcomm Bluetooth rampatch and NVM blobs stored as single-record TLV containers. The system partition holds the wificond daemon, the Bluetooth stack libbluetooth.so with its JNI library, the Wi-Fi APEX com.android.wifi (framework-wifi.jar, service-wifi.jar, ServiceWifiResources.apk), and privileged-permission and feature-flag XML. An Oculus vendor Wi-Fi HAL (vendor.oculus.hardware.wifi@1.0) is on odm, and a telemetry daemon is on system_ext. Configuration is delivered as wpa_supplicant and driver override text files, an ICM channel config, a Bluetooth stack trace config and Device ID files.",
+ "rowsExpected": 104,
+ "rowsListed": 104,
+ "claims": [
+  {
+   "id": "WB-01",
+   "claim": "The group holds 104 rows: 103 regular files and 1 symlink. Partition counts are odm_a 3, product_a 7, system_a 31, system_ext_a 5 and vendor_a 58.",
+   "label": "verified",
+   "file": "<image>/classified.tsv",
+   "evidence": "$ awk -F'\\t' '$1==\"wifi-bluetooth\"' <image>/classified.tsv | wc -l  => 104 ; $ cut -f4 input_rows.tsv | sort | uniq -c  => 103 file, 1 symlink ; $ cut -f2 input_rows.tsv | sort | uniq -c  => 3 odm_a, 7 product_a, 31 system_a, 5 system_ext_a, 58 vendor_a",
+   "verdict": "confirmed",
+   "reason": "Group rows total 104: 103 regular files and 1 symlink. Partition counts reproduce: odm_a 3, product_a 7, system_a 31, system_ext_a 5, vendor_a 58. The role table also holds 104 data rows that match the input rows one-to-one.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-02",
+   "claim": "All 104 input rows exist at their mount paths with the recorded size and sha256 (ok=104 bad=0). The one symlink resolves to /system/lib64/libbluetooth_jni.so.",
+   "label": "verified",
+   "evidence": "E=<image>; M=$E/mnt; while IFS=$'\\t' read -r sub part path kind size mime sha; do f=\"<image>/mnt/$part/$path\"; if [ \"$kind\" = symlink ]; then [ -L \"$f\" ] && echo \"SYMLINK $part/$path -> $(readlink \"$f\")\"; continue; fi; got=$(sha256sum \"$f\" | cut -d' ' -f1); sz=$(stat -c %s \"$f\"); if [ \"$got\" = \"$sha\" ] && [ \"$sz\" = \"$size\" ]; then ok=$((ok+1)); else bad=$((bad+1)); fi; done < input_rows.tsv; echo ok=$ok bad=$bad  => ok=104 bad=0 ; SYMLINK system_a/system/app/Bluetooth/lib/arm64/libbluetooth_jni.so -> /system/lib64/libbluetooth_jni.so",
+   "verdict": "needs_change",
+   "reason": "The 103 regular files all match their recorded size and sha256 (bad=0), but the counter reads ok=103, not ok=104, because the symlink is handled in a separate branch that does not increment it. The symlink is present and its stored target is /system/lib64/libbluetooth_jni.so, which exists in the system_a mount. Gap: none.",
+   "corrected_claim": "All 104 input rows are present at their mount paths. The 103 regular files match their recorded size and sha256 (ok=103 bad=0). The one symlink, system_a/system/app/Bluetooth/lib/arm64/libbluetooth_jni.so, is present and its target /system/lib64/libbluetooth_jni.so exists in the system_a mount."
+  },
+  {
+   "id": "WB-03",
+   "claim": "No two files in the group share a sha256 digest. Pairs with equal size differ in content: system_a and vendor_a android.hardware.wifi@1.0.so (both 1018168 bytes), and odm_a and system_ext_a vendor.oculus.hardware.wifi@1.0.so (both 171728 bytes).",
+   "label": "verified",
+   "evidence": "$ cut -f7 input_rows.tsv | awk 'NF' | sort | uniq -d | wc -l  => 0 ; $ cmp -s <image>/mnt/system_a/system/lib64/android.hardware.wifi@1.0.so <image>/mnt/vendor_a/lib64/android.hardware.wifi@1.0.so && echo same || echo differ  => differ ; $ cmp -s <image>/mnt/system_ext_a/lib64/vendor.oculus.hardware.wifi@1.0.so <image>/mnt/odm_a/lib64/vendor.oculus.hardware.wifi@1.0.so && echo same || echo differ  => differ",
+   "verdict": "confirmed",
+   "reason": "No sha256 digest is shared by two rows. system_a and vendor_a android.hardware.wifi@1.0.so are both 1018168 bytes and differ in content. odm_a and system_ext_a vendor.oculus.hardware.wifi@1.0.so are both 171728 bytes and differ in content.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-04",
+   "claim": "The 64-bit ELF objects in the group are AArch64. The lib/ objects are 32-bit ARM EABI5, with lib64/ and bin/ holding the 64-bit set.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib/libbluetooth.so",
+   "evidence": "$ file -b <image>/mnt/system_a/system/lib/libbluetooth.so  => ELF 32-bit LSB shared object, ARM, EABI5 version 1 (SYSV) ; $ file -b <image>/mnt/vendor_a/bin/hw/wpa_supplicant  => ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64",
+   "verdict": "confirmed",
+   "reason": "All 58 ELF64 objects are AArch64; they sit under lib64/ (47) or bin/ (11) directories. All 21 ELF32 objects are ARM EABI5 and all are under lib/ directories. Gap: none.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-05",
+   "claim": "Init service definitions for the group live in these files: vendor_a/etc/init/hw/init.anorak.rc (wpa_supplicant, cnss-daemon), vendor_a/etc/init/hw/init.anorak.debug.rc (vendor.cnss_diag), vendor_a/etc/init/android.hardware.wifi@1.0-service.rc (vendor.wifi_hal_legacy), vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc, vendor_a/etc/init/hostapd.android.rc (hostapd), system_a/system/etc/init/wificond.rc, system_a/system/etc/init/wifi.rc (tracing and restorecon steps, no service), system_ext_a/etc/init/wifitelemetry.rc, and odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc.",
+   "label": "verified",
+   "evidence": "$ grep -rlE 'wpa_supplicant|hostapd|wificond|wifi@1[.]0-service|bluetooth@1[.]0-service-qti|wifitelemetry|cnss' --include='*.rc' <image>/mnt  => odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc ; system_a/system/etc/init/wifi.rc ; system_a/system/etc/init/wificond.rc ; system_ext_a/etc/init/wifitelemetry.rc ; vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc ; vendor_a/etc/init/android.hardware.wifi@1.0-service.rc ; vendor_a/etc/init/hostapd.android.rc ; vendor_a/etc/init/hw/init.anorak.rc ; vendor_a/etc/init/hw/init.anorak.debug.rc",
+   "verdict": "needs_change",
+   "reason": "The service mapping holds. The evidence does not: the search for service-name terms matches 14 .rc files, not the 9 cited, and system_a/system/etc/init/wifi.rc is not one of them because it contains none of the search terms. The file itself has no service; it holds restorecon and kernel tracing steps, which matches the claim's parenthetical. The 14 matches also include zygote, init.rc and ueventd.rc files that the claim does not list.",
+   "corrected_claim": "Init service definitions for the group are in: vendor_a/etc/init/hw/init.anorak.rc (wpa_supplicant, cnss-daemon), vendor_a/etc/init/hw/init.anorak.debug.rc (vendor.cnss_diag), vendor_a/etc/init/android.hardware.wifi@1.0-service.rc (vendor.wifi_hal_legacy), vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc (vendor.bluetooth-1-0-qti), vendor_a/etc/init/hostapd.android.rc (hostapd), system_a/system/etc/init/wificond.rc (wificond), system_ext_a/etc/init/wifitelemetry.rc (wifitelemetry) and odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc (vendor.oculus.wifi-hal-1-0). system_a/system/etc/init/wifi.rc defines no service; it holds restorecon and kernel tracing steps."
+  },
+  {
+   "id": "WB-06",
+   "claim": "The SELinux file_contexts labels for the group executables are: hal_wifi_supplicant_default_exec for /vendor/bin/hw/wpa_supplicant, hal_wifi_hostapd_default_exec for hostapd, hal_wifi_default_exec for the Wi-Fi HAL service, hal_bluetooth_default_exec for the Bluetooth HAL service, vendor_wcnss_service_exec for cnss-daemon and cnss_diag, wificond_exec for /system/bin/wificond, and wifitelemetry_exec for /system_ext/bin/wifitelemetry. Data-path labels cover /data/vendor/bluetooth, /data/vendor/wifi/hostapd and /data/misc/bluetooth.",
+   "label": "verified",
+   "evidence": "$ grep -nE 'hal_wifi_supplicant_default_exec|hal_wifi_hostapd_default_exec|wificond_exec|vendor_wcnss_service_exec|hal_wifi_default_exec|hal_bluetooth_default_exec|vendor_bt_data_file|bluetooth_data_file|hostapd_data_file' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts <image>/mnt/system_a/system/etc/selinux/plat_file_contexts <image>/mnt/system_ext_a/etc/selinux/system_ext_file_contexts  => vendor_file_contexts:81 /(vendor|system/vendor)/bin/hw/android[.]hardware[.]wifi@1[.]0-service u:object_r:hal_wifi_default_exec:s0 ; vendor_file_contexts:83 .../bin/hw/hostapd u:object_r:hal_wifi_hostapd_default_exec:s0 ; vendor_file_contexts:84 .../bin/hw/wpa_supplicant u:object_r:hal_wifi_supplicant_default_exec:s0 ; vendor_file_contexts:260 /data/vendor/bluetooth(/.*)? u:object_r:vendor_bt_data_file:s0 ; vendor_file_contexts:263 /data/vendor/wifi/hostapd(/.*)? u:object_r:hostapd_data_file:s0 ; vendor_file_contexts:411 /vendor/bin/cnss_diag u:object_r:vendor_wcnss_service_exec:s0 ; vendor_file_contexts:420 /vendor/bin/cnss-daemon u:object_r:vendor_wcnss_service_exec:s0 ; vendor_file_contexts:483 /vendor/bin/hw/android[.]hardware[.]bluetooth@1[.]0-service-qti u:object_r:hal_bluetooth_default_exec:s0 ; plat_file_contexts:488 /system/bin/wificond u:object_r:wificond_exec:s0 ; system_ext_file_contexts:59 /system_ext/bin/wifitelemetry u:object_r:wifitelemetry_exec:s0 ; plat_file_contexts:281 /data/misc/bluetooth(/.*)? u:object_r:bluetooth_data_file:s0",
+   "verdict": "confirmed",
+   "reason": "All labels reproduce in the named context files: wpa_supplicant (vendor line 84), hostapd (83), Wi-Fi HAL service (81), Bluetooth HAL service (483), cnss-daemon and cnss_diag (420, 411), wificond (plat line 488), wifitelemetry (system_ext line 59). Data-path labels reproduce: /data/vendor/bluetooth (vendor line 260), /data/vendor/wifi/hostapd (263), /data/misc/bluetooth (plat line 281).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-07",
+   "claim": "The HIDL hwservice labels bind IWifi to hal_wifi_hwservice, ISupplicant to hal_wifi_supplicant_hwservice, IHostapd to hal_wifi_hostapd_hwservice, IKeystore to system_wifi_keystore_hwservice and IBluetoothHci to hal_bluetooth_hwservice. The Oculus interface IWifi is labelled hal_oculus_wifi_hwservice in the vendor context file.",
+   "label": "verified",
+   "evidence": "$ grep -nE 'wifi|bluetooth|hostapd|supplicant' <image>/mnt/system_a/system/etc/selinux/plat_hwservice_contexts  => 19:android.hardware.bluetooth::IBluetoothHci u:object_r:hal_bluetooth_hwservice:s0 ; 74:android.hardware.wifi::IWifi u:object_r:hal_wifi_hwservice:s0 ; 75:android.hardware.wifi.hostapd::IHostapd u:object_r:hal_wifi_hostapd_hwservice:s0 ; 76:android.hardware.wifi.supplicant::ISupplicant u:object_r:hal_wifi_supplicant_hwservice:s0 ; 84:android.system.wifi.keystore::IKeystore u:object_r:system_wifi_keystore_hwservice:s0 ; $ grep -n 'oculus.hardware.wifi' <image>/mnt/vendor_a/etc/selinux/vendor_hwservice_contexts  => 50:vendor.oculus.hardware.wifi::IWifi u:object_r:hal_oculus_wifi_hwservice:s0",
+   "verdict": "confirmed",
+   "reason": "Hwservice labels reproduce in the system file: IBluetoothHci (line 19), IWifi (74), IHostapd (75), ISupplicant (76), IKeystore (84). The Oculus IWifi is labelled hal_oculus_wifi_hwservice at vendor line 50.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-08",
+   "claim": "The vendor VINTF manifests declare the Wi-Fi HAL interfaces at these versions: IWifi 1.5 (default instance), ISupplicant 1.4 (default) and IHostapd 1.3 (default), all over hwbinder.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml",
+   "evidence": "$ cat <image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.wifi@1.0-service.xml  => <name>android.hardware.wifi</name> <transport>hwbinder</transport> <version>1.5</version> <name>IWifi</name> ; $ cat <image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.wifi.supplicant.xml  => <name>android.hardware.wifi.supplicant</name> <version>1.4</version> <name>ISupplicant</name> ; $ cat <image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.wifi.hostapd.xml  => <name>android.hardware.wifi.hostapd</name> <version>1.3</version> <name>IHostapd</name>",
+   "verdict": "confirmed",
+   "reason": "Vendor VINTF manifests declare android.hardware.wifi 1.5 with IWifi default over hwbinder, android.hardware.wifi.supplicant 1.4 with ISupplicant default, and android.hardware.wifi.hostapd 1.3 with IHostapd default.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-09",
+   "claim": "The product partition declares seven feature flags: android.hardware.bluetooth, android.hardware.bluetooth_le, android.hardware.wifi, android.hardware.wifi.aware, android.hardware.wifi.direct, android.hardware.wifi.rtt and oculus.software.wifi.sleep (the last for the Wi-Fi sleep policy).",
+   "label": "verified",
+   "evidence": "$ grep -h 'feature name' <image>/mnt/product_a/etc/permissions/android.hardware.bluetooth.xml <image>/mnt/product_a/etc/permissions/android.hardware.bluetooth_le.xml <image>/mnt/product_a/etc/permissions/android.hardware.wifi.xml <image>/mnt/product_a/etc/permissions/android.hardware.wifi.aware.xml <image>/mnt/product_a/etc/permissions/android.hardware.wifi.direct.xml <image>/mnt/product_a/etc/permissions/android.hardware.wifi.rtt.xml <image>/mnt/product_a/etc/permissions/oculus.software.wifi.sleep.xml  => <feature name=\"android.hardware.bluetooth\" /> ; <feature name=\"android.hardware.bluetooth_le\" /> ; <feature name=\"android.hardware.wifi\" /> ; <feature name=\"android.hardware.wifi.aware\" /> ; <feature name=\"android.hardware.wifi.direct\" /> ; <feature name=\"android.hardware.wifi.rtt\" /> ; <feature name=\"oculus.software.wifi.sleep\" />",
+   "verdict": "confirmed",
+   "reason": "The seven product_a permission files declare the seven listed features. The oculus.software.wifi.sleep file's own comment says it sets the Wi-Fi sleep policy.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-10",
+   "claim": "com.android.wifi.capex is a zip holding original_apex (itself a zip) and an AndroidManifest. Its inner payload is an ext2 image (apex_payload.img) containing nine files: javalib/framework-wifi.jar, javalib/service-wifi.jar, priv-app/ServiceWifiResources/ServiceWifiResources.apk, app/OsuLogin/OsuLogin.apk, three certificates under etc/security/cacerts_wfa, etc/classpaths/bootclasspath.pb and apex_manifest.pb (package name com.android.wifi).",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/apex/com.android.wifi.capex",
+   "evidence": "$ unzip -l <image>/mnt/system_a/system/apex/com.android.wifi.capex  => AndroidManifest.xml ; apex_build_info.pb ; apex_manifest.pb ; apex_pubkey ; original_apex ; META-INF/CERT.RSA ; 8 files ; $ file -b payload/apex_payload.img  => Linux rev 1.0 ext2 filesystem data (extents) (large files) (huge files) ; $ debugfs -R 'rdump / DIR' payload/apex_payload.img && find DIR -type f  => apex_manifest.pb ; app/OsuLogin/OsuLogin.apk ; etc/classpaths/bootclasspath.pb ; etc/security/cacerts_wfa/21125ccd.0 ; etc/security/cacerts_wfa/674b5f5b.0 ; etc/security/cacerts_wfa/ea93cb5b.0 ; javalib/framework-wifi.jar ; javalib/service-wifi.jar ; priv-app/ServiceWifiResources/ServiceWifiResources.apk ; count: 9",
+   "verdict": "confirmed",
+   "reason": "The outer archive holds AndroidManifest.xml, apex_build_info.pb, apex_manifest.pb, apex_pubkey, original_apex and META-INF (8 entries). original_apex is an APK-type zip. Its apex_payload.img is an ext2 filesystem holding exactly nine regular files, matching the claim's list. The payload's apex_manifest.pb names com.android.wifi.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-11",
+   "claim": "Each Bluetooth firmware or NVM file in bt_firmware/image is one TLV record: byte 0 is the record type (0x01 for the .tlv rampatch files, 0x02 for the .bin NVM files), bytes 1 to 3 are a little-endian length, and the file size equals that length plus 4 for all six files.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bt_firmware/image",
+   "evidence": "$ python3 -I - <image>/mnt/vendor_a/bt_firmware/image  (reads each file: t=b[0]; L=int.from_bytes(b[1:4],'little'); prints size, type, length and len+4==size) => hpbtfw20.tlv: size=201560 type=0x01 len24=0x031354(201556) len+4=201560 match=True ; hpbtfw21.tlv: size=151520 type=0x01 len24=0x024fdc(151516) len+4=151520 match=True ; hpnv20.bin: size=6319 type=0x02 len24=0x0018ab(6315) len+4=6319 match=True ; hpnv20g.bin: size=6329 type=0x02 len24=0x0018b5(6325) len+4=6329 match=True ; hpnv21.bin: size=6610 type=0x02 len24=0x0019ce(6606) len+4=6610 match=True ; hpnv21g.bin: size=6450 type=0x02 len24=0x00192e(6446) len+4=6450 match=True",
+   "verdict": "confirmed",
+   "reason": "All six files: byte 0 is 0x01 for the two .tlv files and 0x02 for the four .bin files; bytes 1 to 3 are a little-endian length; length plus 4 equals the file size (201560, 151520, 6319, 6329, 6610, 6450).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-12",
+   "claim": "hpbtfw21.tlv carries the build string BTFW.HSP.2.1.0-00632-PATCHZ-1.63111.4 with build date Mar 14 2024 and the line 'Patch Release PF=QCA6490ROM= 0201'. hpbtfw20.tlv carries BTFW.HSP.2.0.1-00252-HSP_PATCH-1 with 'PF=QCA6490ROM= 0200'.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bt_firmware/image/hpbtfw21.tlv",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/bt_firmware/image/hpbtfw21.tlv | grep -E 'BTFW|20[0-9]{2}|PATCH'  => Mar 14 2024 ; BTFW.HSP.2.1.0-00632-PATCHZ-1.63111.4 ; Patch Release PF=QCA6490ROM= 0201 BUILD=BTFW.HSP.2.1.0-00632-PATCHZ-1.63111.4 ; $ strings -n 6 <image>/mnt/vendor_a/bt_firmware/image/hpbtfw20.tlv | grep -E 'BTFW|20[0-9]{2}|PATCH'  => BTFW.HSP.2.0.1-00252-HSP_PATCH-1 ; Patch Release PF=QCA6490ROM= 0200 BUILD=BTFW.HSP.2.0.1-00252-HSP_PATCH-1",
+   "verdict": "confirmed",
+   "reason": "hpbtfw21.tlv contains 'Mar 14 2024', BTFW.HSP.2.1.0-00632-PATCHZ-1.63111.4 and 'Patch Release PF=QCA6490ROM= 0201' (followed by a BUILD= suffix the claim omits). hpbtfw20.tlv contains BTFW.HSP.2.0.1-00252-HSP_PATCH-1 and 'PF=QCA6490ROM= 0200'.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-13",
+   "claim": "The first bytes of hpbtfw21.tlv after the 4-byte record header are little-endian words 0x00024fbc and 0x00024f98, both inside the file. The bytes 70 b5 82 b0 sit at offset 0x28.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bt_firmware/image/hpbtfw21.tlv",
+   "evidence": "$ od -A x -t x1z -N 64 <image>/mnt/vendor_a/bt_firmware/image/hpbtfw21.tlv  => 000000 01 dc 4f 02 bc 4f 02 00 98 4f 02 00 01 00 03 00 ; 000020 00 00 00 00 50 5b 02 00 70 b5 82 b0 01 ac 00 21",
+   "verdict": "confirmed",
+   "reason": "Bytes 4 to 7 read as 0x00024fbc and bytes 8 to 11 as 0x00024f98, both below the file size of 151520. Bytes 70 b5 82 b0 sit at offset 0x28. Reproduced, so the label can read verified rather than observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-14",
+   "claim": "hpnv21.bin is a type 0x02 record of length 6606 with the ASCII marker EVT2 at offset 0x10. hpnv21g.bin has length 6446 and the same marker. hpnv20.bin has length 6315 and no EVT2 marker at that offset.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bt_firmware/image/hpnv21.bin",
+   "evidence": "$ od -A x -t x1z -N 48 <image>/mnt/vendor_a/bt_firmware/image/hpnv21.bin  => 000000 02 ce 19 00 01 00 40 00 00 00 00 00 00 00 00 00 ; 000010 45 56 54 32 00 00 00 00 00 00 00 00 00 00 00 00 ; $ od -A x -t x1z -N 48 <image>/mnt/vendor_a/bt_firmware/image/hpnv20.bin  => 000000 02 ab 18 00 02 00 06 00 ; 000010 ad 5a 00 00 00 00 08 00",
+   "verdict": "confirmed",
+   "reason": "hpnv21.bin is type 0x02 with length 0x19ce (6606) and the ASCII marker EVT2 at offset 0x10. hpnv21g.bin has length 6446 with EVT2 at 0x10. hpnv20.bin has length 6315 (0x18ab) and no EVT2 at 0x10 (bytes ad 5a 00 00 00 00 08 00 there). Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-15",
+   "claim": "The Bluetooth HAL implementation (lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so) contains literal firmware and NVM file names for several chip families, including apbtfw10.tlv, cmbtfw13.tlv, crbtfw32.tlv, gnbtfw20.tlv, hmtbtfw20.tlv, hpbtfw21.tlv, hpnv21xm.bin and msnv12.bin. It also has the pattern string (btfw_(([a-z1-9][a-z1-9])|[a-z1-9])) and fallback names tpbtfw00.tlv and tpnv00.bin under /vendor/bt_firmware/image/ and /vendor/firmware/.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so",
+   "evidence": "$ strings -n 4 <image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so | grep -E '^[a-z]{2,4}(btfw|nv|btxm)[0-9a-z]*[.](tlv|bin)$' | sort -u  => apbtfw10.tlv ; cmbtfw13.tlv ; crbtfw32.tlv ; gnbtfw20.tlv ; hmtbtfw20.tlv ; hpbtfw21.tlv ; hpnv21xm.bin ; msnv12.bin ; $ strings -n 4 ... | grep -F 'btfw_(' => (btfw_(([a-z1-9][a-z1-9])|[a-z1-9])) ; $ strings -n 4 ... | grep -E '/vendor/bt_firmware/image/tpbtfw00.tlv|/vendor/firmware/tpnv00.bin' => /vendor/bt_firmware/image/tpbtfw00.tlv ; /vendor/firmware/tpnv00.bin",
+   "verdict": "confirmed",
+   "reason": "All eight named firmware and NVM names occur as literal strings in the HAL library (apbtfw10.tlv, cmbtfw13.tlv, crbtfw32.tlv, gnbtfw20.tlv, hmtbtfw20.tlv, hpbtfw21.tlv, hpnv21xm.bin, msnv12.bin). The pattern string (btfw_(([a-z1-9][a-z1-9])|[a-z1-9])) and the fallbacks /vendor/bt_firmware/image/tpbtfw00.tlv and /vendor/firmware/tpnv00.bin also occur. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-16",
+   "claim": "The Bluetooth HAL implementation reads these persist and ro properties: persist.vendor.bluetooth.alt_path_for_fw, persist.vendor.bluetooth.patch_config, persist.vendor.bluetooth.modem_nv_support, persist.vendor.bluetooth.rx_delay, persist.vendor.qcom.bluetooth.soc, ro.vendor.bt.bdaddr_path and ro.vendor.bluetooth.wipower. It logs the messages 'Downloading NVM TAG %d' and 'NVM_TAG_ERROR (0x%x) detected!!!'.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so | grep -E '^(ro|persist|vendor|bluetooth)[.][a-z._-]+$' | sort -u  => persist.vendor.bluetooth.alt_path_for_fw ; persist.vendor.bluetooth.modem_nv_support ; persist.vendor.bluetooth.patch_config ; persist.vendor.bluetooth.rx_delay ; persist.vendor.qcom.bluetooth.soc ; ro.vendor.bluetooth.wipower ; ro.vendor.bt.bdaddr_path ; $ strings -n 4 ... | grep -E 'Downloading NVM TAG|NVM_TAG_ERROR'  => %s: Downloading NVM TAG %d ; %s: NVM_TAG_ERROR (0x%x) detected!!!",
+   "verdict": "needs_change",
+   "reason": "The literal property names and both log format strings occur in the HAL library. The strings show the names are referenced; they do not show whether each property is read at run time, so 'reads' overstates what was observed. Gap: which properties are read at run time is not determined.",
+   "corrected_claim": "The Bluetooth HAL implementation contains the literal names of these persist and ro properties: persist.vendor.bluetooth.alt_path_for_fw, persist.vendor.bluetooth.patch_config, persist.vendor.bluetooth.modem_nv_support, persist.vendor.bluetooth.rx_delay, persist.vendor.qcom.bluetooth.soc, ro.vendor.bt.bdaddr_path and ro.vendor.bluetooth.wipower. It contains the format strings 'Downloading NVM TAG %d' and 'NVM_TAG_ERROR (0x%x) detected!!!'. The strings do not show which of these properties are read at run time."
+  },
+  {
+   "id": "WB-17",
+   "claim": "The chipset identity is Qualcomm QCA6490: the vendor SELinux file contexts label a sysfs node under the b0000000.qcom,cnss-qca6490 platform device, and the Bluetooth patch builds name PF=QCA6490ROM.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
+   "evidence": "$ grep -ln 'cnss-qca6490' <image>/mnt/vendor_a/etc/selinux/*file_contexts  => vendor_a/etc/selinux/vendor_file_contexts ; $ grep -h 'cnss-qca6490' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts  => /sys/devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0 ; (see WB-12 for PF=QCA6490ROM)",
+   "verdict": "confirmed",
+   "reason": "vendor_file_contexts labels the sysfs path /sys/devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup/wakeup[0-9]+(/.*)? as sysfs_wakeup. The Bluetooth patch file hpbtfw21.tlv contains 'PF=QCA6490ROM'. Reproduced, so the label can read verified. The identification as QCA6490 is an inference from these strings.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-18",
+   "claim": "wpa_supplicant is a stripped 64-bit AArch64 PIE with interpreter /system/bin/linker64. Its DT_NEEDED entries include the ISupplicant libraries android.hardware.wifi.supplicant@1.0 through @1.4, libkeystore-wifi-hidl.so, libkeystore-engine-wifi-hidl.so, libnl.so, libcrypto.so, libssl.so, libhidlbase.so and libbase.so.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/hw/wpa_supplicant",
+   "evidence": "$ file -b <image>/mnt/vendor_a/bin/hw/wpa_supplicant  => ELF 64-bit LSB pie executable, ARM aarch64 ... interpreter /system/bin/linker64, stripped ; $ readelf -h <image>/mnt/vendor_a/bin/hw/wpa_supplicant | grep -E 'Class|Type|Machine'  => Class: ELF64 ; Type: DYN (Position-Independent Executable file) ; Machine: AArch64 ; $ readelf -d <image>/mnt/vendor_a/bin/hw/wpa_supplicant | grep NEEDED  => libcutils.so liblog.so libcrypto.so libssl.so libkeystore-wifi-hidl.so libkeystore-engine-wifi-hidl.so libnl.so android.hardware.wifi.supplicant@1.0.so ... @1.4.so libhidlbase.so libutils.so libbase.so libc++.so libc.so libm.so libdl.so",
+   "verdict": "confirmed",
+   "reason": "wpa_supplicant is a stripped ELF64 PIE for AArch64 with interpreter /system/bin/linker64. DT_NEEDED includes android.hardware.wifi.supplicant@1.0 through @1.4, libkeystore-wifi-hidl.so, libkeystore-engine-wifi-hidl.so, libnl.so, libcrypto.so, libssl.so, libhidlbase.so and libbase.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-19",
+   "claim": "wpa_supplicant contains the literal version string 'wpa_supplicant v2.10-devel-12' and these configuration keys as standalone literals: update_config, eapol_version, ap_scan, fast_reauth, p2p_add_cli_chan, sae_pwe, disable_scan_offload, p2p_disabled, tdls_external_control, wowlan_triggers, bss_max_count, interworking, p2p_no_group_iface, persistent_reconnect and p2p_go_he. The keys pmf and oce occur only as substrings.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bin/hw/wpa_supplicant",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/bin/hw/wpa_supplicant | grep -E 'wpa_supplicant v|ctrl_interface=%s|@android:'  => wpa_supplicant v2.10-devel-12 ; ctrl_interface=%s ; @android: ; $ for k in update_config eapol_version ap_scan fast_reauth ... p2p_go_he; do strings -n 4 <image>/mnt/vendor_a/bin/hw/wpa_supplicant | grep -qx \"$k\" && echo \"$k:yes\"; done  => update_config:yes eapol_version:yes ap_scan:yes fast_reauth:yes p2p_add_cli_chan:yes sae_pwe:yes disable_scan_offload:yes p2p_disabled:yes tdls_external_control:yes wowlan_triggers:yes bss_max_count:yes interworking:yes p2p_no_group_iface:yes persistent_reconnect:yes p2p_go_he:yes ; pmf:substr oce:substr",
+   "verdict": "confirmed",
+   "reason": "The version string 'wpa_supplicant v2.10-devel-12' is present. All 15 listed keys occur as exact standalone strings. pmf and oce have no exact standalone match and occur only inside longer strings. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-20",
+   "claim": "The wpa_supplicant service is defined in vendor_a/etc/init/hw/init.anorak.rc with -O/data/vendor/wifi/wpa/sockets, -puse_p2p_group_interface=1 and -g@android:wpa_wlan0. It runs in class main, owns a wpa_wlan0 dgram socket (mode 660, wifi:wifi), and is disabled and oneshot. The binary is labelled hal_wifi_supplicant_default_exec.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "evidence": "$ sed -n '412,424p' <image>/mnt/vendor_a/etc/init/hw/init.anorak.rc  => service wpa_supplicant /vendor/bin/hw/wpa_supplicant \\ ; -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 \\ ; -g@android:wpa_wlan0 ; interface android.hardware.wifi.supplicant@1.0::ISupplicant default ; interface android.hardware.wifi.supplicant@1.1::ISupplicant default ; class main ; socket wpa_wlan0 dgram 660 wifi wifi ; disabled ; oneshot ; (see WB-06 for the file_contexts label)",
+   "verdict": "confirmed",
+   "reason": "The init.anorak.rc service wpa_supplicant has -O/data/vendor/wifi/wpa/sockets, -puse_p2p_group_interface=1 and -g@android:wpa_wlan0, class main, socket wpa_wlan0 dgram 660 wifi wifi, disabled and oneshot. The binary label is at vendor file_contexts line 84.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-21",
+   "claim": "hostapd is a stripped 64-bit AArch64 PIE with interpreter /system/bin/linker64. Its DT_NEEDED entries include the IHostapd libraries android.hardware.wifi.hostapd@1.0 through @1.3, libnl.so, libssl.so, libcrypto.so and libhidlbase.so. Its banner is 'hostapd v%s' and the version string is 2.10-devel-12.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/hw/hostapd",
+   "evidence": "$ readelf -h <image>/mnt/vendor_a/bin/hw/hostapd | grep -E 'Class|Type|Machine'  => Class: ELF64 ; Type: DYN ; Machine: AArch64 ; $ readelf -d <image>/mnt/vendor_a/bin/hw/hostapd | grep NEEDED  => libcutils.so liblog.so libcrypto.so libssl.so libnl.so android.hardware.wifi.hostapd@1.0.so ... @1.3.so libbase.so libhidlbase.so libutils.so libc++.so libc.so libm.so libdl.so ; $ strings -n 4 <image>/mnt/vendor_a/bin/hw/hostapd | grep -E '2[.]10-devel-12|hostapd v'  => 2.10-devel-12 ; hostapd v%s",
+   "verdict": "confirmed",
+   "reason": "hostapd is a stripped ELF64 PIE for AArch64 with interpreter /system/bin/linker64. DT_NEEDED includes android.hardware.wifi.hostapd@1.0 through @1.3, libnl.so, libssl.so, libcrypto.so and libhidlbase.so. The banner 'hostapd v%s' and version '2.10-devel-12' are present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-22",
+   "claim": "hostapd contains the default control interface path /data/vendor/wifi/hostapd/ctrl, the usage line 'usage: hostapd [-hdBKtv] [-P <PID file>] [-e <entropy file>]', and the keys ctrl_interface, ctrl_interface_group and dump_file. The dump_file key is reported as deprecated.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bin/hw/hostapd",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/bin/hw/hostapd | grep -E 'ctrl_interface=|usage: hostapd|DEPRECATED'  => ctrl_interface=/data/vendor/wifi/hostapd/ctrl ; usage: hostapd [-hdBKtv] [-P <PID file>] [-e <entropy file>] \\ ; Line %d: DEPRECATED: 'dump_file' configuration variable is not used anymore ; $ strings -n 6 <image>/mnt/vendor_a/bin/hw/hostapd | grep -E '^ctrl_interface|^dump_file'  => ctrl_interface ; ctrl_interface_group ; dump_file",
+   "verdict": "confirmed",
+   "reason": "The default control path ctrl_interface=/data/vendor/wifi/hostapd/ctrl, the usage line, and the keys ctrl_interface, ctrl_interface_group and dump_file are present. The message 'Line %d: DEPRECATED: 'dump_file' configuration variable is not used anymore' is present. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-23",
+   "claim": "hostapd is started from vendor_a/etc/init/hostapd.android.rc. The post-fs-data step creates /data/vendor/wifi/hostapd and its sockets subdirectory owned by wifi:wifi. The service runs /vendor/bin/hw/hostapd in class main with capabilities NET_ADMIN and NET_RAW, user wifi, and is disabled and oneshot. Its SELinux label is hal_wifi_hostapd_default_exec and /data/vendor/wifi/hostapd is labelled hostapd_data_file.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hostapd.android.rc",
+   "evidence": "$ cat <image>/mnt/vendor_a/etc/init/hostapd.android.rc  => on post-fs-data ; mkdir /data/vendor/wifi 0770 wifi wifi ; mkdir /data/vendor/wifi/hostapd 0770 wifi wifi ; mkdir /data/vendor/wifi/hostapd/sockets 0770 wifi wifi ; service hostapd /vendor/bin/hw/hostapd ; interface android.hardware.wifi.hostapd@1.0::IHostapd default ... @1.3 ; class main ; capabilities NET_ADMIN NET_RAW ; user wifi ; group wifi net_raw net_admin ; disabled ; oneshot ; (labels: see WB-06)",
+   "verdict": "confirmed",
+   "reason": "hostapd.android.rc creates /data/vendor/wifi, /data/vendor/wifi/hostapd and its sockets subdirectory as wifi:wifi 0770 on post-fs-data. The service runs /vendor/bin/hw/hostapd in class main with NET_ADMIN NET_RAW, user wifi, disabled and oneshot. Labels: hal_wifi_hostapd_default_exec (vendor line 83) and hostapd_data_file for /data/vendor/wifi/hostapd (line 263).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-24",
+   "claim": "android.hardware.wifi@1.0-service is a 64-bit AArch64 PIE that depends on android.hardware.wifi@1.0 through @1.5, libwifi-hal.so, libwifi-system-iface.so, libxml2.so, libnl.so and libhidlbase.so. Its init service vendor.wifi_hal_legacy registers the IWifi default instance for interfaces @1.0 through @1.5. It runs in class hal as user wifi, group wifi gps, with capabilities NET_ADMIN, NET_RAW and SYS_MODULE. Its SELinux label is hal_wifi_default_exec.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.wifi@1.0-service",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/bin/hw/android.hardware.wifi@1.0-service | grep NEEDED  => libbase.so libcutils.so libhidlbase.so liblog.so libnl.so libutils.so libwifi-hal.so libwifi-system-iface.so libxml2.so android.hardware.wifi@1.0.so ... @1.5.so libc++.so libc.so libm.so libdl.so ; $ cat <image>/mnt/vendor_a/etc/init/android.hardware.wifi@1.0-service.rc  => service vendor.wifi_hal_legacy /vendor/bin/hw/android.hardware.wifi@1.0-service ; interface android.hardware.wifi@1.0::IWifi default ... android.hardware.wifi@1.5::IWifi default ; class hal ; capabilities NET_ADMIN NET_RAW SYS_MODULE ; user wifi ; group wifi gps",
+   "verdict": "confirmed",
+   "reason": "The Wi-Fi HAL binary is an ELF64 PIE for AArch64 and depends on android.hardware.wifi@1.0 through @1.5, libwifi-hal.so, libwifi-system-iface.so, libxml2.so, libnl.so and libhidlbase.so. The rc file registers vendor.wifi_hal_legacy for IWifi default across @1.0 to @1.5, class hal, user wifi, group wifi gps, capabilities NET_ADMIN NET_RAW SYS_MODULE. Label hal_wifi_default_exec (vendor line 81).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-25",
+   "claim": "The Wi-Fi HAL service binary contains these log and class strings: 'Wifi HAL started', 'Wifi HAL stopped', 'WifiVendorHal', 'No active wlan interfaces in use! Using default', and 'Check failed: size >= 0 && size <= kMaxWifiUsableChannels'.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.wifi@1.0-service",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/bin/hw/android.hardware.wifi@1.0-service | grep -E 'IWifi|default|wifi-hal|Wifi|service' | sort -u  => Check failed: size >= 0 && size <= kMaxWifiUsableChannels ; No active wlan interfaces in use! Using default ; Wifi HAL started ; Wifi HAL stopped ; Wifi Hal is booting up... ; WifiVendorHal",
+   "verdict": "confirmed",
+   "reason": "All five strings are present in the Wi-Fi HAL service binary: 'Wifi HAL started', 'Wifi HAL stopped', 'WifiVendorHal', 'No active wlan interfaces in use! Using default', and 'Check failed: size >= 0 && size <= kMaxWifiUsableChannels'. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-26",
+   "claim": "The 64-bit android.hardware.wifi@1.5.so has SONAME android.hardware.wifi@1.5.so. Its dynamic symbols carry the version tokens V1_0 (304), V1_1 (9), V1_2 (31), V1_3 (14), V1_4 (26) and V1_5 (766). It depends on the @1.0 through @1.4 libraries. The IWifi, IWifiIface, IWifiApIface and IWifiNanIface classes appear in mangled names.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/lib64/android.hardware.wifi@1.5.so",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/lib64/android.hardware.wifi@1.5.so | grep SONAME  => Library soname: [android.hardware.wifi@1.5.so] ; $ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/android.hardware.wifi@1.5.so | awk '$7!=\"UND\" && NR>3 {print $8}' | grep -o 'V[0-9]_[0-9]' | sort | uniq -c  => 304 V1_0 ; 9 V1_1 ; 31 V1_2 ; 14 V1_3 ; 26 V1_4 ; 766 V1_5 ; $ ... | grep -oE '[0-9]+(IWifi|IWifiIface|IWifiApIface|IWifiNanIface)[A-Za-z]*' | sort -u  => 010IWifiIfaceE ; 012IWifiApIfaceE ; 013IWifiNanIfaceE",
+   "verdict": "confirmed",
+   "reason": "SONAME is android.hardware.wifi@1.5.so. Version-token counts reproduce: V1_0 304, V1_1 9, V1_2 31, V1_3 14, V1_4 26, V1_5 766. DT_NEEDED includes @1.0 through @1.4. Mangled names include IWifi (for example 05IWifiE), IWifiIface, IWifiApIface and IWifiNanIface. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-27",
+   "claim": "The 64-bit android.hardware.wifi.supplicant@1.4.so has SONAME android.hardware.wifi.supplicant@1.4.so. It carries version tokens V1_0 (376), V1_1 (19), V1_2 (26), V1_3 (25) and V1_4 (921). Its mangled names include ISupplicant, ISupplicantIface and ISupplicantNetwork. The hwservice context binds android.hardware.wifi.supplicant::ISupplicant to hal_wifi_supplicant_hwservice (plat_hwservice_contexts line 76).",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/lib64/android.hardware.wifi.supplicant@1.4.so",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/lib64/android.hardware.wifi.supplicant@1.4.so | grep SONAME  => Library soname: [android.hardware.wifi.supplicant@1.4.so] ; $ readelf --dyn-syms -W ... | grep -o 'V[0-9]_[0-9]' | sort | uniq -c  => 376 V1_0 ; 19 V1_1 ; 26 V1_2 ; 25 V1_3 ; 921 V1_4 ; $ ... | grep -oE '[0-9]+(ISupplicant|ISupplicantIface|ISupplicantNetwork)[A-Za-z]*' | sort -u  => 011ISupplicant ; 016ISupplicantIfaceE ; 018ISupplicantNetworkE",
+   "verdict": "confirmed",
+   "reason": "SONAME is android.hardware.wifi.supplicant@1.4.so. Version-token counts reproduce: V1_0 376, V1_1 19, V1_2 26, V1_3 25, V1_4 921. Mangled names include ISupplicant, ISupplicantIface and ISupplicantNetwork. The hwservice binding is at plat_hwservice_contexts line 76.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-28",
+   "claim": "libwifi-hal-qcom.so is a 64-bit shared object with SONAME libwifi-hal-qcom.so and 571 defined dynamic symbols, of which 73 start with wifi_ (for example wifi_get_roaming_capabilities). It depends on libnetutils.so, liblog.so, libcld80211.so, libwifi-hal-ctrl.so, libcrypto.so and libnl.so. Its C++ classes include WifiVendorCommand, LLStatsCommand, GScanCommand and NanCommand.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/lib64/libwifi-hal-qcom.so",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/lib64/libwifi-hal-qcom.so | grep -E 'SONAME|NEEDED'  => libnetutils.so liblog.so libcld80211.so libwifi-hal-ctrl.so libcrypto.so libnl.so libc++.so libc.so libm.so libdl.so ; $ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/libwifi-hal-qcom.so | awk '$7!=\"UND\" && NR>3 {print $8}' | grep -c '^wifi_'  => 73 ; $ ... | head -8  => _ZN17WifiVendorCommandC2EP9wifi_infoijj ; _ZN17WifiVendorCommand7get_s32EPK6nlattr ; _ZN14LLStatsCommand14notifyResponseEv ; _ZN12GScanCommandD0Ev ; _ZN10NanCommand11putNanStatsEtPK15NanStatsRequest ; wifi_get_roaming_capabilities",
+   "verdict": "confirmed",
+   "reason": "SONAME is libwifi-hal-qcom.so. It is an ELF64 shared object with 571 defined dynamic symbols, 73 of which begin with wifi_ and include wifi_get_roaming_capabilities. DT_NEEDED includes libnetutils.so, liblog.so, libcld80211.so, libwifi-hal-ctrl.so, libcrypto.so and libnl.so. The class names WifiVendorCommand, LLStatsCommand, GScanCommand and NanCommand are present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-29",
+   "claim": "libwifi-hal-qcom.so contains QCA_WLAN_VENDOR_ATTR_* attribute names that it checks for presence, for example QCA_WLAN_VENDOR_ATTR_FEATURE_SET, QCA_WLAN_VENDOR_ATTR_CHANNEL, QCA_WLAN_VENDOR_ATTR_DRV_INFO_BUS_SIZE and QCA_WLAN_VENDOR_ATTR_GSCAN_RESULTS_CAPABILITIES_MAX_HOTLIST_BSSIDS. It also contains the log text '%s: Error wifi_handle NULL'.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/lib64/libwifi-hal-qcom.so",
+   "evidence": "$ strings -n 8 <image>/mnt/vendor_a/lib64/libwifi-hal-qcom.so | grep -iE 'QCA_NL80211|QCA_WLAN|vendor_cmd|LOGD|wifi_' | sort -u | head -12  => %s: QCA_WLAN_VENDOR_ATTR_CHANNEL not found ; %s: QCA_WLAN_VENDOR_ATTR_DRV_INFO_BUS_SIZE not found ; %s: QCA_WLAN_VENDOR_ATTR_FEATURE_SET not found ; %s: QCA_WLAN_VENDOR_ATTR_GSCAN_RESULTS_CAPABILITIES_MAX_HOTLIST_BSSIDS not found ; %s: Error wifi_handle NULL",
+   "verdict": "confirmed",
+   "reason": "The attribute names appear in 'not found' messages (for example '%s: QCA_WLAN_VENDOR_ATTR_FEATURE_SET not found'), which matches a presence check. The log format '%s: Error wifi_handle NULL' is present, along with a longer variant. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-30",
+   "claim": "wificond is a stripped 64-bit AArch64 PIE at /system/bin/wificond. Its init service runs in class main as user wifi, group wifi net_raw net_admin, with capabilities NET_RAW and NET_ADMIN. Its DT_NEEDED entries include libwifi-system-iface.so, android.system.wifi.keystore@1.0.so, android.system.keystore2-V1-ndk_platform.so, libbinder_ndk.so, libminijail.so and libcrypto.so. Its SELinux label is wificond_exec.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/bin/wificond",
+   "evidence": "$ readelf -h <image>/mnt/system_a/system/bin/wificond | grep -E 'Type|Machine'  => Type: DYN (Position-Independent Executable file) ; Machine: AArch64 ; $ readelf -d <image>/mnt/system_a/system/bin/wificond | grep NEEDED  => android.system.keystore2-V1-ndk_platform.so ; android.security.legacykeystore-ndk_platform.so ; libbinder.so ; libbinder_ndk.so ; libbase.so ; libcrypto.so ; libcutils.so ; libhidlbase.so ; libminijail.so ; libssl.so ; libutils.so ; libwifi-system-iface.so ; android.system.wifi.keystore@1.0.so ; $ cat <image>/mnt/system_a/system/etc/init/wificond.rc  => service wificond /system/bin/wificond ; class main ; user wifi ; group wifi net_raw net_admin ; capabilities NET_RAW NET_ADMIN",
+   "verdict": "confirmed",
+   "reason": "wificond is a stripped ELF64 PIE for AArch64 at /system/bin/wificond. Its init service runs in class main as user wifi, group wifi net_raw net_admin, capabilities NET_RAW NET_ADMIN. DT_NEEDED includes libwifi-system-iface.so, android.system.wifi.keystore@1.0.so, android.system.keystore2-V1-ndk_platform.so, libbinder_ndk.so, libminijail.so and libcrypto.so. Label wificond_exec (plat line 488).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-31",
+   "claim": "wificond logs 'Driver is in a bad state, restarting wificond', 'New wificond event callback registered' and 'Failed to find registered wificond event callback'. Its binder interface references the keystore AIDL types IKeystoreService, IKeystoreOperation and IKeystoreSecurityLevel.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/bin/wificond",
+   "evidence": "$ strings -n 6 <image>/mnt/system_a/system/bin/wificond | sort -u | grep -E 'restarting wificond|event callback|IKeystoreService|IKeystoreOperation|IKeystoreSecurityLevel'  => Driver is in a bad state, restarting wificond ; Failed to find registered wificond event callback ; New wificond event callback registered ; _ZN4aidl7android6system9keystore216IKeystoreService10fromBinderERKN3ndk10SpAIBinderE ; _ZN4aidl7android6system9keystore218IKeystoreOperation4hashE ; _ZN4aidl7android6system9keystore222IKeystoreSecurityLevel4hashE",
+   "verdict": "confirmed",
+   "reason": "The log strings 'Driver is in a bad state, restarting wificond', 'New wificond event callback registered' and 'Failed to find registered wificond event callback' are present. Mangled names reference IKeystoreService, IKeystoreOperation and IKeystoreSecurityLevel. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-32",
+   "claim": "libbluetooth.so (lib64) is a stripped 64-bit shared object with SONAME libbluetooth.so and no .symtab section. Its DT_NEEDED entries include android.hardware.bluetooth@1.0 and @1.1, android.hardware.bluetooth.audio@2.0 and @2.1, android.hardware.bluetooth.a2dp@1.0, android.system.suspend@1.0, libchrome.so, libgrpc++.so, libprotobuf-cpp-lite.so, libflatbuffers-cpp.so, libaaudio.so and libfmq.so.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libbluetooth.so",
+   "evidence": "$ file -b <image>/mnt/system_a/system/lib64/libbluetooth.so  => ELF 64-bit LSB shared object, ARM aarch64, ... BuildID[md5/uuid]=1c08bebfa4738ac560a1d74145e0c745, stripped ; $ readelf -S -W <image>/mnt/system_a/system/lib64/libbluetooth.so | grep -c '[.]symtab'  => 0 ; $ readelf -d <image>/mnt/system_a/system/lib64/libbluetooth.so | grep NEEDED  => libchrome.so libgrpc++.so libgrpc_wrap.so libstatslog.so android.hardware.bluetooth.a2dp@1.0.so android.hardware.bluetooth.audio@2.0.so android.hardware.bluetooth.audio@2.1.so ... android.hardware.bluetooth@1.0.so android.hardware.bluetooth@1.1.so android.system.suspend.control-V1-ndk.so android.system.suspend@1.0.so libaaudio.so libfmq.so libc++.so libc.so libm.so libdl.so",
+   "verdict": "confirmed",
+   "reason": "libbluetooth.so (lib64) is a stripped ELF64 shared object for AArch64 with SONAME libbluetooth.so and no symbol table section. DT_NEEDED includes every listed library: android.hardware.bluetooth@1.0 and @1.1, bluetooth.audio@2.0 and @2.1, bluetooth.a2dp@1.0, android.system.suspend@1.0, libchrome.so, libgrpc++.so, libprotobuf-cpp-lite.so, libflatbuffers-cpp.so, libaaudio.so and libfmq.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-33",
+   "claim": "libbluetooth.so exports bluetoothInterface and the btif_a2dp_audio_interface family (init, deinit, start_session, end_session, restart_session, on_started, on_stopped, on_suspended). It has 695 mangled C++ export names containing bt, Bt, btif or bluetooth, and contains Rust cxxbridge exports such as bluetooth$shim$rust$cxxbridge1$controller_supports_connected_iso_stream_central.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libbluetooth.so",
+   "evidence": "$ strings -n 6 <image>/mnt/system_a/system/lib64/libbluetooth.so | grep -E '^(bt_interface|bluetoothInterface|btif_|bt_host|bluetooth_interface|btav_|hh_interface)' | sort -u | head -10  => bluetoothInterface ; btif_a2dp_audio_interface ; btif_a2dp_audio_interface_deinit ; btif_a2dp_audio_interface_end_session ; btif_a2dp_audio_interface_init ; btif_a2dp_audio_interface_restart_session ; btif_a2dp_audio_interface_start_session ; $ readelf --dyn-syms -W <image>/mnt/system_a/system/lib64/libbluetooth.so | awk '$7!=\"UND\" && NR>3 {print $8}' | grep -cE '^_Z.*(bt|Bt|btif|bluetooth)'  => 695 ; $ ... | grep 'cxxbridge1' | grep controller_supports | head -1  => bluetooth$shim$rust$cxxbridge1$controller_supports_connected_iso_stream_central",
+   "verdict": "needs_change",
+   "reason": "bluetoothInterface is a defined dynamic symbol and the 695 defined mangled names and the cxxbridge export reproduce. The btif_a2dp_audio_interface_* names are not dynamic exports; they occur only as literal strings. The on_started, on_stopped and on_suspended names carry the prefix btif_a2dp_audio_on_*, not btif_a2dp_audio_interface_on_*. Gap: the purpose of the literal strings is not determined.",
+   "corrected_claim": "libbluetooth.so exports bluetoothInterface as a dynamic symbol. The literal strings btif_a2dp_audio_interface_init, btif_a2dp_audio_interface_deinit, btif_a2dp_audio_interface_start_session, btif_a2dp_audio_interface_end_session, btif_a2dp_audio_interface_restart_session, btif_a2dp_audio_on_started, btif_a2dp_audio_on_stopped and btif_a2dp_audio_on_suspended occur in the binary; they are not in its dynamic symbol table. It has 695 defined mangled C++ names containing bt, Bt, btif or bluetooth, and contains Rust cxxbridge exports such as bluetooth$shim$rust$cxxbridge1$controller_supports_connected_iso_stream_central."
+  },
+  {
+   "id": "WB-34",
+   "claim": "libbluetooth.so holds the literal path /etc/bluetooth/bt_stack.conf and the literal override path /odm/etc/bluetooth/bt_did_override.conf. Stack keys TraceConf, TRC_BTM, TRC_HCI, TRC_L2CAP, TRC_SMP, TRC_BTAPP, PTS_SecurePairOnly, PTS_SmpOptions and LoggingVModule are literals. Device ID keys primaryRecord, vendorIdSource, productId, clientExecutableURL, serviceDescription and documentationURL are literals. The base path /etc/bluetooth/bt_did.conf does not appear as a literal, so its loading route is not determined.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/lib64/libbluetooth.so",
+   "evidence": "$ strings -n 6 <image>/mnt/system_a/system/lib64/libbluetooth.so | grep -E 'bt_stack[.]conf|bt_did[.]conf|bt_did|/etc/bluetooth|bt_stack'  => /etc/bluetooth/bt_stack.conf ; /odm/etc/bluetooth/bt_did_override.conf ; bt_stack ; bt_stack_config ; bt_stack_manager ; bt_stack_manager_thread ; $ for k in TraceConf TRC_BTM ... PTS_SmpOptions LoggingVModule; do ... grep -qx \"$k\" ... done  => TraceConf:yes TRC_BTM:yes TRC_HCI:yes TRC_L2CAP:yes TRC_SMP:yes TRC_BTAPP:yes PTS_SecurePairOnly:yes PTS_SmpOptions:yes LoggingVModule:yes ; primaryRecord:yes vendorIdSource:yes productId:yes clientExecutableURL:yes serviceDescription:yes documentationURL:yes ; DID1:no bt_did:no",
+   "verdict": "confirmed",
+   "reason": "The literal strings /etc/bluetooth/bt_stack.conf and /odm/etc/bluetooth/bt_did_override.conf are present. All nine listed stack keys and all six listed device-ID keys occur as exact strings. The literal /etc/bluetooth/bt_did.conf does not occur. Gap: how bt_did.conf is loaded is not determined, as the claim itself states.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-35",
+   "claim": "The Bluetooth HAL implementation (lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so) is a 64-bit shared object with SONAME android.hardware.bluetooth@1.0-impl-qti.so and 821 defined dynamic symbols. It exports HIDL_FETCH_IBluetoothHci and implements android::hardware::bluetooth::V1_0::implementation::BluetoothHci with AsyncFdWatcher and BluetoothAddress helpers. Its DT_NEEDED entries include libdiag.so, libqmi_cci.so, libbtnv.so, libsoc_helper.so, libbtatomreport.so and android.hardware.bluetooth@1.0.so.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so | grep -E 'SONAME|NEEDED'  => Library soname: [android.hardware.bluetooth@1.0-impl-qti.so] ; libbase.so libbinder.so libcutils.so libhidlbase.so liblog.so libutils.so libdiag.so libqmi_cci.so libbtnv.so android.hardware.bluetooth@1.0.so libsoc_helper.so libbtatomreport.so libc++.so libc.so libm.so libdl.so ; $ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so | awk '$7!=\"UND\" && $5!=\"LOCAL\" && NR>3' | wc -l  => 821 ; $ readelf --dyn-syms -W ... | awk '$7!=\"UND\" && NR>3 {print $8}' | c++filt | grep -E 'hardware|bluetooth|Bluetooth|Hci|btnv|HIDL' | sort -u | head -15  => HIDL_FETCH_IBluetoothHci ; android::hardware::bluetooth::V1_0::implementation::AsyncFdWatcher::AsyncFdWatcher() ; android::hardware::bluetooth::V1_0::implementation::BluetoothAddress::GetLocalAddress(unsigned char*)",
+   "verdict": "confirmed",
+   "reason": "ELF64 shared object with SONAME android.hardware.bluetooth@1.0-impl-qti.so and 821 defined dynamic symbols. HIDL_FETCH_IBluetoothHci is defined. BluetoothHci, AsyncFdWatcher and BluetoothAddress symbols are present (BluetoothAddress has 13 defined names). DT_NEEDED includes libdiag.so, libqmi_cci.so, libbtnv.so, libsoc_helper.so, libbtatomreport.so and android.hardware.bluetooth@1.0.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-36",
+   "claim": "android.hardware.bluetooth@1.0-service-qti is a 64-bit PIE that depends on android.hardware.bluetooth@1.0.so, libhidlbase.so, libutils.so and libcutils.so. Its init service vendor.bluetooth-1-0-qti runs in class hal as user bluetooth, group bluetooth system wakelock oem_2901 net_raw, with ioprio rt 4 and capabilities BLOCK_SUSPEND, NET_ADMIN and SYS_NICE. Its SELinux label is hal_bluetooth_default_exec.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.bluetooth@1.0-service-qti",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/bin/hw/android.hardware.bluetooth@1.0-service-qti | grep NEEDED  => liblog.so libcutils.so libutils.so libhidlbase.so android.hardware.bluetooth@1.0.so libc++.so libc.so libm.so libdl.so ; $ cat <image>/mnt/vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc  => service vendor.bluetooth-1-0-qti /vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti ; class hal ; user bluetooth ; group bluetooth system wakelock oem_2901 net_raw ; ioprio rt 4 ; capabilities BLOCK_SUSPEND NET_ADMIN SYS_NICE",
+   "verdict": "confirmed",
+   "reason": "The Bluetooth service is an ELF64 PIE for AArch64 with DT_NEEDED android.hardware.bluetooth@1.0.so, libhidlbase.so, libutils.so and libcutils.so. The rc service vendor.bluetooth-1-0-qti runs in class hal as user bluetooth, groups bluetooth system wakelock oem_2901 net_raw, ioprio rt 4, capabilities BLOCK_SUSPEND NET_ADMIN SYS_NICE. Label hal_bluetooth_default_exec (vendor line 483).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-37",
+   "claim": "bt_stack.conf sets TraceConf=true and 19 TRC_* trace-level keys (TRC_BTM through TRC_HID_DEV) to level 2. The PTS_* test keys are all commented out. The file has no active key other than TraceConf and the TRC_* keys.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/bluetooth/bt_stack.conf",
+   "evidence": "$ grep -c '^TRC_' <image>/mnt/system_a/system/etc/bluetooth/bt_stack.conf  => 19 ; $ grep -c '^TRC_[A-Z_0-9]*=2$' <image>/mnt/system_a/system/etc/bluetooth/bt_stack.conf  => 19 ; $ grep -n '^TraceConf' <image>/mnt/system_a/system/etc/bluetooth/bt_stack.conf  => 3:TraceConf=true ; $ grep -c '^#PTS_' <image>/mnt/system_a/system/etc/bluetooth/bt_stack.conf  => 9",
+   "verdict": "needs_change",
+   "reason": "TraceConf=true (line 3), 19 TRC_* keys set to 2, and the claim that the only active keys are TraceConf and TRC_* all reproduce. The cited count of 9 for lines starting with '#PTS_' does not reproduce: 5 lines start with '#PTS_', and 7 lines contain PTS_ after a comment mark. The commented-out status of the PTS keys holds.",
+   "corrected_claim": "bt_stack.conf sets TraceConf=true and sets 19 TRC_* keys (TRC_BTM through TRC_HID_DEV) to level 2. Its PTS_* test keys are all commented out (5 lines begin with '#PTS_'). No active key other than TraceConf and the TRC_* keys is present."
+  },
+  {
+   "id": "WB-38",
+   "claim": "The two Device ID files define DID1. The system file bt_did.conf sets primaryRecord=true, productId=0x1200 and version=0x1436. The odm override bt_did_override.conf sets primaryRecord=true, vendorId=0x01AB, productId=0x0504 and version=0x0100. DID2 and DID3 are entirely commented out in both files.",
+   "label": "verified",
+   "file": "<image>/mnt/odm_a/etc/bluetooth/bt_did_override.conf",
+   "evidence": "$ grep -vE '^#|^$' <image>/mnt/system_a/system/etc/bluetooth/bt_did.conf  => [DID1] ; primaryRecord = true ; productId = 0x1200 ; version = 0x1436 ; [DID2] ; [DID3] ; $ grep -vE '^#|^$' <image>/mnt/odm_a/etc/bluetooth/bt_did_override.conf  => [DID1] ; primaryRecord = true ; vendorId = 0x01AB ; productId = 0x0504 ; version = 0x0100 ; [DID2] ; [DID3]",
+   "verdict": "needs_change",
+   "reason": "The DID1 values reproduce in both files: bt_did.conf has primaryRecord=true, productId=0x1200, version=0x1436; bt_did_override.conf has primaryRecord=true, vendorId=0x01AB, productId=0x0504, version=0x0100. DID2 and DID3 are not entirely commented out: their section headers are present and uncommented in both files, and every key line under them is commented out. The claim's own evidence lists [DID2] and [DID3] as uncommented lines.",
+   "corrected_claim": "The two Device ID files define DID1: bt_did.conf (system) has primaryRecord=true, productId=0x1200 and version=0x1436; bt_did_override.conf (odm) has primaryRecord=true, vendorId=0x01AB, productId=0x0504 and version=0x0100. DID2 and DID3 section headers are present and uncommented in both files, but every key line under them is commented out."
+  },
+  {
+   "id": "WB-39",
+   "claim": "WCNSS_qcom_cfg.ini is a text override file for the WLAN driver with 99 key=value lines and 14 comment lines. Its first comment reads 'This file allows user to override the factory defaults for the WLAN Driver'. Keys include gDot11Mode=0, gChannelBondingMode5GHz=1, gEnableSelfRecovery=1, RoamRssiDiff=5 and gSoftApMaxPeers=10. gActiveMaxChannelTime appears at lines 22 (40) and 101 (60), and gEnableDFSMasterCap at lines 12 and 119. No binary in the group contains the file name.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini",
+   "evidence": "$ grep -cE '^[A-Za-z_0-9]+ *= *[^ ]' <image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini  => 99 ; $ grep -cE '^\\s*#' <image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini  => 14 ; $ grep -oE '^[A-Za-z_0-9]+' <image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini | sort | uniq -d  => gActiveMaxChannelTime ; gEnableDFSMasterCap ; $ grep -nE '^gEnableDFSMasterCap|^gActiveMaxChannelTime' <image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini  => 12:gEnableDFSMasterCap=1 ; 22:gActiveMaxChannelTime=40 ; 101:gActiveMaxChannelTime=60 ; 119:gEnableDFSMasterCap=1 ; $ for f in ... ; do strings -n 6 $f | grep -c 'WCNSS_qcom_cfg'; done  => 0 for libwifi-hal.so, libwifi-hal-qcom.so, cnss-daemon, wpa_supplicant, the Wi-Fi HAL service and wificond",
+   "verdict": "confirmed",
+   "reason": "WCNSS_qcom_cfg.ini has 99 key=value lines and 14 comment lines. Its opening comment reads 'This file allows user to override the factory' followed by 'defaults for the WLAN Driver'. The listed keys hold their values (gDot11Mode=0, gChannelBondingMode5GHz=1, gEnableSelfRecovery=1, RoamRssiDiff=5, gSoftApMaxPeers=10). gActiveMaxChannelTime is at lines 22 and 101 and gEnableDFSMasterCap at lines 12 and 119. No file in the group contains the name WCNSS_qcom_cfg (103 regular files scanned).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-40",
+   "claim": "cnss-daemon is a stripped 64-bit AArch64 PIE that depends on libqmi_cci.so, libqmi_common_so.so, libcld80211.so, libperipheral_client.so, libmdmdetect.so, libnl.so and libcutils.so. Its init service is defined in init.anorak.rc as /system/vendor/bin/cnss-daemon -n -l in class late_start, user system, group system inet net_admin wifi, with capability NET_ADMIN. The SELinux label is vendor_wcnss_service_exec on /vendor/bin/cnss-daemon.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/bin/cnss-daemon",
+   "evidence": "$ readelf -d <image>/mnt/vendor_a/bin/cnss-daemon | grep NEEDED  => libcutils.so liblog.so libqmi_cci.so libqmi_common_so.so libnl.so libcld80211.so libperipheral_client.so libmdmdetect.so libc++.so libc.so libm.so libdl.so ; $ sed -n '225,236p' <image>/mnt/vendor_a/etc/init/hw/init.anorak.rc  => service cnss-daemon /system/vendor/bin/cnss-daemon -n -l ; class late_start ; user system ; group system inet net_admin wifi ; capabilities NET_ADMIN ; on property:sys.shutdown.requested=* ; write /sys/kernel/shutdown_wlan/shutdown 1 ; stop cnss-daemon",
+   "verdict": "confirmed",
+   "reason": "cnss-daemon is a stripped ELF64 PIE for AArch64. DT_NEEDED includes libqmi_cci.so, libqmi_common_so.so, libcld80211.so, libperipheral_client.so, libmdmdetect.so, libnl.so and libcutils.so. The init service runs /system/vendor/bin/cnss-daemon -n -l in class late_start, user system, groups system inet net_admin wifi, capability NET_ADMIN. Label vendor_wcnss_service_exec (vendor line 420).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-41",
+   "claim": "cnss-daemon contains the Platform QMI messages 'Failed to init Platform QMI client' and 'CNSS Platform QMI disconnected: %d', the calibration path pattern /data/vendor/wifi/wlfw_cal_%02d.bin, /data/vendor/wifi/iotap_ps.bin, and the local sockets /data/vendor/wifi/sockets/cnss_user_client and cnss_user_server. It takes -n (do not run as a daemon) and -l (log to logcat).",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/bin/cnss-daemon",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/bin/cnss-daemon | grep -iE 'wlfw|qmi|cnss|usage|-n|-l' | sort -u | head -10  => -l Log output to logcat ; -n, --nodaemon do not run as a daemon ; %s: CNSS Platform QMI disconnected: %d ; %s: Failed to init Platform QMI client ; $ strings -n 6 <image>/mnt/vendor_a/bin/cnss-daemon | grep -E '^/(sys|data|vendor|system|proc|dev)'  => /data/vendor/wifi/wlfw_cal_%02d.bin ; /data/vendor/wifi/iotap_ps.bin ; /data/vendor/wifi/sockets/cnss_user_client ; /data/vendor/wifi/sockets/cnss_user_server",
+   "verdict": "confirmed",
+   "reason": "The cnss-daemon strings include 'Failed to init Platform QMI client', '%s: CNSS Platform QMI disconnected: %d', /data/vendor/wifi/wlfw_cal_%02d.bin, /data/vendor/wifi/iotap_ps.bin, and /data/vendor/wifi/sockets/cnss_user_client and cnss_user_server. The option text includes '-n, --nodaemon  do not run as a daemon' and '-l  Log output to logcat'. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-42",
+   "claim": "cnss_diag runs /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM as service vendor.cnss_diag in class main, user system, with groups including diag. It is disabled and starts only when persist.ovr.cnss_diag.enabled=true or the vold.decrypt property is trigger_restart_framework. Its SELinux label is vendor_wcnss_service_exec.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.debug.rc",
+   "evidence": "$ sed -n '12,24p' <image>/mnt/vendor_a/etc/init/hw/init.anorak.debug.rc  => service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM ; class main ; user system ; group system wifi inet sdcard_rw media_rw diag ; oneshot ; disabled ; on property:persist.ovr.cnss_diag.enabled=true ; start vendor.cnss_diag ; on property:persist.ovr.cnss_diag.enabled=true && property:vold.decrypt=trigger_restart_framework ; start vendor.cnss_diag ; $ grep -n 'cnss_diag' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts  => 411:/vendor/bin/cnss_diag u:object_r:vendor_wcnss_service_exec:s0",
+   "verdict": "refuted",
+   "reason": "The service is disabled, runs in class main as user system with groups including diag, and carries label vendor_wcnss_service_exec (vendor line 411). The start condition is wrong. The rc file has two triggers: on property:persist.ovr.cnss_diag.enabled=true, and on property:persist.ovr.cnss_diag.enabled=true && property:vold.decrypt=trigger_restart_framework. The vold.decrypt value is never a trigger on its own; it is checked only together with the persist property.",
+   "corrected_claim": "vendor.cnss_diag runs /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM as service vendor.cnss_diag in class main, user system, with groups including diag. It is disabled and is started by init on property persist.ovr.cnss_diag.enabled=true. A second trigger starts it when that property is true and vold.decrypt=trigger_restart_framework. Its SELinux label is vendor_wcnss_service_exec."
+  },
+  {
+   "id": "WB-43",
+   "claim": "The device init fragment writes WLAN power and recovery nodes: /sys/kernel/cnss/charger_mode (value 1), /sys/kernel/cnss/fs_ready (value 1), /sys/kernel/cnss/recovery (value 1), and /sys/kernel/shutdown_wlan/shutdown on sys.shutdown.requested. It also creates the Wi-Fi and Bluetooth data directories and the wpa socket directory.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "evidence": "$ grep -nE 'cnss|wifi|bluetooth|wpa' <image>/mnt/vendor_a/etc/init/hw/init.anorak.rc | head -40  => 15: write /sys/kernel/cnss/charger_mode 1 ; 74: mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth ; 77: mkdir /data/vendor/wifi 0770 wifi wifi ; 81: mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi ; 83: mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi ; 113: write /sys/kernel/cnss/fs_ready 1 ; 511: write /sys/kernel/cnss/recovery 1",
+   "verdict": "confirmed",
+   "reason": "init.anorak.rc writes /sys/kernel/cnss/charger_mode 1 (line 15), /sys/kernel/cnss/fs_ready 1 (line 113) and /sys/kernel/cnss/recovery 1 (line 511). The sys.shutdown.requested trigger writes /sys/kernel/shutdown_wlan/shutdown. It creates /data/vendor/bluetooth (line 74), /data/vendor/wifi (77) and the wpa_supplicant and wpa/sockets directories (81, 83).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-44",
+   "claim": "The odm Oculus Wi-Fi HAL (odm_a/bin/hw/vendor.oculus.hardware.wifi@1.0-service, 64-bit AArch64) depends on android.hardware.wifi.hostapd@1.1, android.hardware.wifi.supplicant@1.0, vendor.oculus.hardware.wifi@1.0.so, libvrsensors-hidlwrapper.so, libwpa_client.so and libnl.so. Its init service vendor.oculus.wifi-hal-1-0 registers vendor.oculus.hardware.wifi@1.0::IWifi default in class hal as user system. Its SELinux labels are hal_oculus_wifi_default_exec for the binary and hal_oculus_wifi_hwservice for the interface.",
+   "label": "verified",
+   "file": "<image>/mnt/odm_a/bin/hw/vendor.oculus.hardware.wifi@1.0-service",
+   "evidence": "$ readelf -d <image>/mnt/odm_a/bin/hw/vendor.oculus.hardware.wifi@1.0-service | grep NEEDED  => android.hardware.wifi.hostapd@1.1.so android.hardware.wifi.supplicant@1.0.so android.frameworks.stats@1.0.so ... vendor.oculus.hardware.wifi@1.0.so libwpa_client.so libc++.so libc.so libm.so libdl.so ; $ cat <image>/mnt/odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc  => service vendor.oculus.wifi-hal-1-0 /odm/bin/hw/vendor.oculus.hardware.wifi@1.0-service ; interface vendor.oculus.hardware.wifi@1.0::IWifi default ; class hal ; user system ; group system wifi inet net_admin ; capabilities NET_ADMIN ; $ grep -n 'oculus_wifi' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts  => 113:/(odm|vendor/odm)/bin/hw/vendor[.]oculus[.]hardware[.]wifi@1[.]0-service u:object_r:hal_oculus_wifi_default_exec:s0",
+   "verdict": "confirmed",
+   "reason": "The odm Oculus Wi-Fi HAL is an ELF64 AArch64 binary (stripped). DT_NEEDED includes android.hardware.wifi.hostapd@1.1, android.hardware.wifi.supplicant@1.0, vendor.oculus.hardware.wifi@1.0.so, libvrsensors-hidlwrapper.so, libwpa_client.so and libnl.so. The init service vendor.oculus.wifi-hal-1-0 registers vendor.oculus.hardware.wifi@1.0::IWifi default in class hal as user system. Labels: hal_oculus_wifi_default_exec (vendor file_contexts line 113) and hal_oculus_wifi_hwservice (vendor hwservice line 50).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-45",
+   "claim": "wifitelemetry is a 64-bit AArch64 daemon at /system_ext/bin/wifitelemetry. Its init service runs in class late_start as user system with groups system wifi inet net_admin and a restart_period of 1800. It depends on libwifitelemetry.so, libnativewakelock.so, libosutils.so and libbinder.so, and its SELinux label is wifitelemetry_exec.",
+   "label": "verified",
+   "file": "<image>/mnt/system_ext_a/bin/wifitelemetry",
+   "evidence": "$ cat <image>/mnt/system_ext_a/etc/init/wifitelemetry.rc  => service wifitelemetry /system_ext/bin/wifitelemetry ; class late_start ; user system ; group system wifi inet net_admin ; restart_period 1800 ; $ readelf -d <image>/mnt/system_ext_a/bin/wifitelemetry | grep NEEDED  => libbase.so libbinder.so liblog.so libnativewakelock.so libosutils.so libutils.so libwifitelemetry.so libc++.so libc.so libm.so libdl.so ; (label: see WB-06 system_ext_file_contexts line 59)",
+   "verdict": "confirmed",
+   "reason": "wifitelemetry is an ELF64 AArch64 binary at /system_ext/bin/wifitelemetry. Its init service runs in class late_start as user system, groups system wifi inet net_admin, restart_period 1800. DT_NEEDED includes libwifitelemetry.so, libnativewakelock.so, libosutils.so and libbinder.so. Label wifitelemetry_exec (system_ext line 59).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-46",
+   "claim": "libwifitelemetry.so exports nl80211 parsers and listeners (OVR::OS::nl80211::Parsers::station, EventListener::subscribeToScanMulticast, Connector::getP2pIfaceName) and OVR::OS::WifiHalConnector::getLinkLayerStat. Its strings include oculus_mobile_wifi_telemetry and the failure message 'Failed to create telemetryHandler!'.",
+   "label": "observed",
+   "file": "<image>/mnt/system_ext_a/lib64/libwifitelemetry.so",
+   "evidence": "$ readelf --dyn-syms -W <image>/mnt/system_ext_a/lib64/libwifitelemetry.so | awk '$7!=\"UND\" && NR>3 {print $8}' | c++filt | grep -E 'OVR|Telemetry|Wifi' | head -6  => OVR::OS::nl80211::Parsers::station(nl_msg*, OVR::OS::MetricHolder&, bool&) ; OVR::OS::nl80211::EventListener::subscribeToScanMulticast() ; OVR::OS::nl80211::Connector::getP2pIfaceName(...) ; OVR::OS::WifiHalConnector::getLinkLayerStat(OVR::OS::MetricHolder&) ; $ strings -n 6 <image>/mnt/system_ext_a/bin/wifitelemetry | grep -iE 'telemetry|wifi'  => oculus_mobile_wifi_telemetry ; Failed to create telemetryHandler!",
+   "verdict": "needs_change",
+   "reason": "The four named exports (nl80211 Parsers::station, EventListener::subscribeToScanMulticast, Connector::getP2pIfaceName, WifiHalConnector::getLinkLayerStat) are defined dynamic symbols of libwifitelemetry.so. The two strings oculus_mobile_wifi_telemetry and 'Failed to create telemetryHandler!' are not in that library; each occurs once in the wifitelemetry daemon binary.",
+   "corrected_claim": "libwifitelemetry.so exports OVR::OS::nl80211::Parsers::station, OVR::OS::nl80211::EventListener::subscribeToScanMulticast, OVR::OS::nl80211::Connector::getP2pIfaceName and OVR::OS::WifiHalConnector::getLinkLayerStat. The strings oculus_mobile_wifi_telemetry and 'Failed to create telemetryHandler!' are in the wifitelemetry daemon binary (/system_ext/bin/wifitelemetry), not in libwifitelemetry.so."
+  },
+  {
+   "id": "WB-47",
+   "claim": "wifi_cli (system_ext_a/bin/wifi_cli) is a 64-bit command-line tool that dlopens an OSSDK Wi-Fi module by name. Its commands include createWifiHandler, destroyWifiHandler, setStreamClassV4, setStreamClassV6, clearStreamClass and dumpInfo. Its usage lines name the arguments of the stream-class commands. The module itself is not in the group.",
+   "label": "observed",
+   "file": "<image>/mnt/system_ext_a/bin/wifi_cli",
+   "evidence": "$ readelf -d <image>/mnt/system_ext_a/bin/wifi_cli | grep NEEDED  => liblog.so libc++.so libc.so libm.so libdl.so ; $ strings -n 4 <image>/mnt/system_ext_a/bin/wifi_cli | grep -vE '^_Z|GLIBC|GCC|^[.]|__' | head -40  => OSSDK Wi-Fi CLI ; createWifiHandler ; destroyWifiHandler ; dumpInfo ; clearStreamClass ; Usage: clearStreamClass <Profile ID> ; Usage: setStreamClassV4 <Local IP Address> <Local Port> <Remote IP Address> <Remote Port> <DSCP> <Protocol> ; OSSDK module '%s' not found",
+   "verdict": "confirmed",
+   "reason": "wifi_cli is an ELF64 AArch64 binary with DT_NEEDED liblog.so, libc++.so, libc.so, libm.so and libdl.so. The command names createWifiHandler, destroyWifiHandler, dumpInfo, clearStreamClass, setStreamClassV4 and setStreamClassV6 are present with their usage lines, and the dlopen and 'OSSDK module '%s' not found' strings are present. No input row names an OSSDK module. The image does contain libossdk.oculus.so in system_ext_a, but it is classified under sensors-mcu-meta-hal, not this group. Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-48",
+   "claim": "libwpa_drv_oem_hmd.so is a driver wrapper for wpa_supplicant that sends OEM vendor commands: OEM_CMD_SET_CUSTOM_TX_POWER, OEM_CMD_SET_POWER_SURGE, OEM_CMD_GET_TX_DUTY_CYCLE, OEM_CMD_GET_TX_DUTY_CYCLE_STATS, OEM_CMD_GET_CUSTOM_TX_POWER and OEM_CMD_GET_POWER_SURGE, with allocation failures reported for set_ac_config, set_burst_duration and get_power_surge_config. The library exists as a 32-bit copy in lib/ and a 64-bit copy in lib64/.",
+   "label": "observed",
+   "file": "<image>/mnt/vendor_a/lib64/libwpa_drv_oem_hmd.so",
+   "evidence": "$ strings -n 6 <image>/mnt/vendor_a/lib64/libwpa_drv_oem_hmd.so | grep -iE 'hmd|wpa_driver|oem|nl80211|ioctl' | sort -u | head -10  => %s: OEM_CMD_GET_CUSTOM_TX_POWER received ; %s: OEM_CMD_GET_POWER_SURGE received ; %s: OEM_CMD_GET_TX_DUTY_CYCLE received ; %s: OEM_CMD_GET_TX_DUTY_CYCLE_STATS received ; %s: Unknown oem cmd %u received ; %s: sending OEM_CMD_SET_CUSTOM_TX_POWER ; %s: sending OEM_CMD_SET_POWER_SURGE ; Failed to malloc oem_buf for set_ac_config",
+   "verdict": "confirmed",
+   "reason": "The lib64 copy of libwpa_drv_oem_hmd.so is an ELF64 AArch64 shared object (82272 bytes). The six OEM_CMD names occur, and the malloc-failure messages for set_ac_config, set_burst_duration and get_power_surge_config are present. The lib/ copy is ELF32 EABI5 (53660 bytes). Reproduced, so the label can read verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-49",
+   "claim": "libwifi-system-iface.so exports android::wifi_system::InterfaceTool methods for interface up and down state, MAC address get and set, factory MAC lookup, and bridge create, delete, add and remove. libbluetooth_jni.so registers com.android.bluetooth native methods through android::register_com_android_bluetooth_* functions (for example sdp and hearing_aid) and imports btgatt callbacks. libwifirpc.so uses nng PAIR, PUB, REP, REQ and SUB sockets and refers to a JNI class WifiRpc.",
+   "label": "observed",
+   "file": "<image>/mnt/system_a/system/lib64/libwifi-system-iface.so",
+   "evidence": "$ readelf --dyn-syms -W <image>/mnt/system_a/system/lib64/libwifi-system-iface.so | awk '$7!=\"UND\" && NR>3 {print $8}' | c++filt | head -12  => android::wifi_system::InterfaceTool::GetUpState(char const*) ; ...::SetUpState(char const*, bool) ; ...::createBridge(...) ; ...::GetFactoryMacAddress(char const*) ; ...::deleteBridge(...) ; ...::SetMacAddress(char const*, std::array<unsigned char, 6ul> const&) ; ...::SetWifiUpState(bool) ; ...::addIfaceToBridge(...) ; ...::removeIfaceFromBridge(...) ; $ readelf --dyn-syms -W <image>/mnt/system_a/system/lib64/libbluetooth_jni.so | awk '$7!=\"UND\" && NR>3 {print $8}' | c++filt | grep register_com | head -3  => android::register_com_android_bluetooth_hearing_aid(_JNIEnv*) ; android::register_com_android_bluetooth_sdp(_JNIEnv*) ; $ strings -n 6 <image>/mnt/system_a/system/lib64/libwifirpc.so | grep -E 'Failed to FindClass for WifiRpc|PAIR socket|SUB socket'  => Failed to FindClass for WifiRpc ; Failed to open PAIR socket: %s ; Failed to open SUB socket: %s",
+   "verdict": "needs_change",
+   "reason": "The InterfaceTool exports are GetUpState, SetUpState, SetWifiUpState, SetMacAddress, GetFactoryMacAddress, createBridge, deleteBridge, addIfaceToBridge and removeIfaceFromBridge. No plain MAC-address getter is exported; GetFactoryMacAddress is the only getter. In libbluetooth_jni.so the btgatt symbols are defined by that library (43 defined dynamic symbols with btgatt in the name), not imported. The register_com_android_bluetooth_* exports and the libwifirpc.so nng socket types and WifiRpc class reproduce.",
+   "corrected_claim": "libwifi-system-iface.so exports android::wifi_system::InterfaceTool methods for interface up and down state (GetUpState, SetUpState, SetWifiUpState), MAC address set (SetMacAddress) and factory MAC lookup (GetFactoryMacAddress), and bridge create, delete, add and remove (createBridge, deleteBridge, addIfaceToBridge, removeIfaceFromBridge). libbluetooth_jni.so registers com.android.bluetooth native methods through android::register_com_android_bluetooth_* functions (for example sdp, hearing_aid and a2dp). It defines 43 dynamic symbols whose names contain btgatt (the btgatt client and server callbacks); it does not import them. libwifirpc.so uses nng PAIR, PUB, REP, REQ and SUB sockets and refers to a JNI class WifiRpc."
+  },
+  {
+   "id": "WB-50",
+   "claim": "The Wi-Fi and Bluetooth lib64 libraries in vendor_a (libwifi-hal.so, libwpa_client.so, libkeystore-wifi-hidl.so, libkeystore-engine-wifi-hidl.so) are small helpers. libwifi-hal.so exports 77 wifi_* C names such as wifi_get_valid_channels, wifi_select_tx_power_scenario, wifi_set_link_stats and wifi_cleanup. libwpa_client.so exports wpa_ctrl_open, wpa_ctrl_request, wpa_ctrl_recv, wpa_ctrl_get_fd and wpa_ctrl_detach. libkeystore-wifi-hidl.so exports keystore_get and libkeystore-engine-wifi-hidl.so exports EVP_PKEY_from_keystore.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/lib64/libwifi-hal.so",
+   "evidence": "$ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/libwifi-hal.so | awk '$7!=\"UND\" && NR>3 {print $8}' | grep -c '^wifi_'  => 77 ; $ ... | grep '^wifi_' | head -8  => wifi_get_valid_channels ; wifi_cleanup ; wifi_select_tx_power_scenario ; wifi_get_iface_name ; wifi_set_link_stats ; wifi_disable_responder ; wifi_reset_significant_change_handler ; wifi_clear_link_stats ; $ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/libwpa_client.so | awk '$7!=\"UND\" && NR>3 {print $8}' | head -12  => wpa_ctrl_cleanup ; wpa_ctrl_recv ; wpa_ctrl_request ; wpa_ctrl_detach ; wpa_ctrl_get_fd ; wpa_ctrl_open ; $ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/libkeystore-wifi-hidl.so | awk '$7!=\"UND\" && NR>3 {print $8}' | c++filt | head -4  => keystore_get ; $ readelf --dyn-syms -W <image>/mnt/vendor_a/lib64/libkeystore-engine-wifi-hidl.so | awk '$7!=\"UND\" && NR>3 {print $8}' | c++filt | head -4  => EVP_PKEY_from_keystore",
+   "verdict": "needs_change",
+   "reason": "All export names reproduce: libwifi-hal.so has 77 wifi_* names; libwpa_client.so exports the five wpa_ctrl_* functions; libkeystore-wifi-hidl.so exports keystore_get; libkeystore-engine-wifi-hidl.so exports EVP_PKEY_from_keystore. The characterization 'small' does not fit libwifi-hal.so, which is 514,040 bytes; the four files are 15,224 to 514,040 bytes.",
+   "corrected_claim": "The Wi-Fi and Bluetooth lib64 helper libraries in vendor_a are ARM aarch64 shared objects of 15 KB to 514 KB. libwifi-hal.so (514,040 bytes) exports 77 wifi_* C names such as wifi_get_valid_channels, wifi_select_tx_power_scenario, wifi_set_link_stats and wifi_cleanup. libwpa_client.so (28,248 bytes) exports wpa_ctrl_open, wpa_ctrl_request, wpa_ctrl_recv, wpa_ctrl_get_fd and wpa_ctrl_detach. libkeystore-wifi-hidl.so (15,224 bytes) exports keystore_get, and libkeystore-engine-wifi-hidl.so (46,984 bytes) exports EVP_PKEY_from_keystore."
+  },
+  {
+   "id": "WB-51",
+   "claim": "icm.conf configures one radio (id_0_radio_ifname=phy0, num_radios=1, walflag=cfg, daemon=0, server_mode=0). Its interface id_0 is softap0 on band 0 (2.4 GHz) with PHY spec 7 (11NG) and channel 6, and its id_1 is on band 1 (5 GHz) with PHY spec 6 (11NA), HT40PLUS width 2 and channel 44. The p2p0 and ath2 interface names are commented out.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/wifi/icm.conf",
+   "evidence": "$ grep -vE '^#|^$' <image>/mnt/vendor_a/etc/wifi/icm.conf  => num_devices=1 ; num_radios=1 ; walflag=cfg ; daemon=0 ; server_mode=0 ; debug_level=2 ; debug_module_bitmap=255 ; sock_type=1 ; id_0_radio_ifname=phy0 ; id_0_dev_ifname=softap0 ; id_0_band=0 ; id_1_band=1 ; id_0_phy_spec=7 ; id_1_phy_spec=6 ; id_0_channel_width=0 ; id_1_channel_width=2 ; id_0_channel=6 ; id_1_channel=44",
+   "verdict": "confirmed",
+   "reason": "icm.conf sets num_devices=1, num_radios=1, walflag=cfg, daemon=0, server_mode=0 and id_0_radio_ifname=phy0. id_0 is softap0 with band 0, phy spec 7, channel 6. id_1 has band 1, phy spec 6, channel width 2, channel 44. The file's own comments define band 0 as 2.4 GHz, band 1 as 5 GHz, phy 6 as 11NA, phy 7 as 11NG, and width 2 as HT40PLUS. The p2p0 and ath2 names are commented out at lines 80 and 81.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-52",
+   "claim": "The wpa_supplicant configuration fragments set these keys: base file vendor_a/etc/wifi/wpa_supplicant.conf (update_config=1, eapol_version=1, ap_scan=1, fast_reauth=1, pmf=1, p2p_add_cli_chan=1, oce=1, sae_pwe=2); wpa_supplicant_overlay.conf (disable_scan_offload=1, p2p_disabled=1, tdls_external_control=1, wowlan_triggers=magic_pkt, bss_max_count=400, interworking=1); p2p_supplicant_overlay.conf (disable_scan_offload=1, p2p_no_group_iface=1, persistent_reconnect=1, bss_max_count=400, p2p_go_he=1).",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/wifi/wpa_supplicant.conf",
+   "evidence": "$ cat <image>/mnt/vendor_a/etc/wifi/wpa_supplicant.conf  => update_config=1 ; eapol_version=1 ; ap_scan=1 ; fast_reauth=1 ; pmf=1 ; p2p_add_cli_chan=1 ; oce=1 ; sae_pwe=2 ; $ cat <image>/mnt/vendor_a/etc/wifi/wpa_supplicant_overlay.conf  => disable_scan_offload=1 ; p2p_disabled=1 ; tdls_external_control=1 ; wowlan_triggers=magic_pkt ; bss_max_count=400 ; interworking=1 ; $ cat <image>/mnt/vendor_a/etc/wifi/p2p_supplicant_overlay.conf  => disable_scan_offload=1 ; p2p_no_group_iface=1 ; persistent_reconnect=1 ; bss_max_count=400 ; p2p_go_he=1",
+   "verdict": "confirmed",
+   "reason": "wpa_supplicant.conf sets update_config=1, eapol_version=1, ap_scan=1, fast_reauth=1, pmf=1, p2p_add_cli_chan=1, oce=1 and sae_pwe=2. wpa_supplicant_overlay.conf sets disable_scan_offload=1, p2p_disabled=1, tdls_external_control=1, wowlan_triggers=magic_pkt, bss_max_count=400 and interworking=1. p2p_supplicant_overlay.conf sets disable_scan_offload=1, p2p_no_group_iface=1, persistent_reconnect=1, bss_max_count=400 and p2p_go_he=1.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-53",
+   "claim": "The Bluetooth audio policy file etc/bluetooth_audio_policy_configuration_7_0.xml declares the module 'bluetooth' at halVersion 2.0 with mix ports 'a2dp output', 'hearing aid output' and 'le audio output', and device ports for A2DP (BT A2DP Out, Headphones, Speaker), BT Hearing Aid Out, and BLE Headset Out and BLE Speaker Out.",
+   "label": "verified",
+   "file": "<image>/mnt/vendor_a/etc/bluetooth_audio_policy_configuration_7_0.xml",
+   "evidence": "$ grep -n -e '<module' -e '<mixPort' -e '<devicePort' <image>/mnt/vendor_a/etc/bluetooth_audio_policy_configuration_7_0.xml  => 3:<module name=\"bluetooth\" halVersion=\"2.0\"> ; 6:<mixPort name=\"a2dp output\" role=\"source\"/> ; 8:<mixPort name=\"hearing aid output\" role=\"source\"> ; 14:<mixPort name=\"le audio output\" role=\"source\"> ; 28:<devicePort tagName=\"BT A2DP Out\" type=\"AUDIO_DEVICE_OUT_BLUETOOTH_A2DP\" role=\"sink\"> ; 44:<devicePort tagName=\"BT Hearing Aid Out\" type=\"AUDIO_DEVICE_OUT_HEARING_AID\" role=\"sink\"/> ; 46:<devicePort tagName=\"BLE Headset Out\" type=\"AUDIO_DEVICE_OUT_BLE_HEADSET\" role=\"sink\"/>",
+   "verdict": "confirmed",
+   "reason": "The module is bluetooth with halVersion 2.0. Mix ports are 'a2dp output', 'hearing aid output' and 'le audio output'. Device ports are BT A2DP Out, BT A2DP Headphones and BT A2DP Speaker (A2DP types), BT Hearing Aid Out, BLE Headset Out and BLE Speaker Out.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "WB-54",
+   "claim": "The system partition has four entries that are not ELF objects and carry feature or permission data: system_a/system/etc/permissions/com.oculus.vrbluetooth.xml grants android.permission.BLUETOOTH_PRIVILEGED to package com.oculus.vrbluetooth as a privileged-app permission. The APEX manifest names package com.android.wifi.",
+   "label": "verified",
+   "file": "<image>/mnt/system_a/system/etc/permissions/com.oculus.vrbluetooth.xml",
+   "evidence": "$ cat <image>/mnt/system_a/system/etc/permissions/com.oculus.vrbluetooth.xml  => <privapp-permissions package=\"com.oculus.vrbluetooth\"> ; <permission name=\"android.permission.BLUETOOTH_PRIVILEGED\"/> ; $ strings -n 3 $W/capex_x/apex_manifest.pb  => com.android.wifi",
+   "verdict": "needs_change",
+   "reason": "The count of four non-ELF system entries is correct, and the permission grant and the APEX manifest package name com.android.wifi reproduce. Three of the four do not carry feature or permission data: the APEX package com.android.wifi.capex and the two Bluetooth stack configuration files bt_stack.conf and bt_did.conf. Only com.oculus.vrbluetooth.xml carries permission data.",
+   "corrected_claim": "The system partition has four entries in the group that are not ELF objects: system_a/system/apex/com.android.wifi.capex (the Wi-Fi APEX package), system_a/system/etc/bluetooth/bt_stack.conf and system_a/system/etc/bluetooth/bt_did.conf (Bluetooth stack and device-ID configuration), and system_a/system/etc/permissions/com.oculus.vrbluetooth.xml, which grants android.permission.BLUETOOTH_PRIVILEGED to package com.oculus.vrbluetooth as a privapp permission. The APEX manifest names package com.android.wifi."
+  }
+ ],
+ "gaps": [
+  "Stripped executables and libraries (wpa_supplicant, hostapd, wificond, libbluetooth.so, cnss-daemon, the HAL services and the Bluetooth JNI library) were examined through headers, dynamic tables, exported names and strings only. Their runtime control flow is not established.",
+  "The meaning of the suffixes 'g' in hpnv20g.bin and hpnv21g.bin, and of the 'xm' variants named in the Bluetooth HAL, was not determined. Only the g files are present in this group.",
+  "The Bluetooth firmware and NVM bodies were not decoded beyond the 4-byte record header and the EVT2 marker. The NVM tag structure the HAL logs (NVM TAG messages) was not parsed, and hpbtfw20.tlv was not compared with hpbtfw21.tlv beyond the header and build string.",
+  "The Thumb-code interpretation of the rampatch payload (bytes 70 b5 82 b0 at offset 0x28) was not verified as code.",
+  "The base Device ID file /etc/bluetooth/bt_did.conf does not appear as a literal in libbluetooth.so, so the mechanism that loads it and merges the odm override was not determined.",
+  "The WCNSS_qcom_cfg.ini consumer is not identified. No binary in the group contains the file name, so the reader is presumed to be a WLAN kernel driver or a component outside this group, and no kernel modules from vendor_dlkm or odm_dlkm were analysed.",
+  "The OSSDK Wi-Fi module that wifi_cli dlopens is not in the group, so its name and behaviour are not determined.",
+  "The purpose of libwifi-hal-ctrl.so (32-bit and 64-bit) is inferred only from its five exports and its limited imports. Its exported names were not listed individually.",
+  "The SELinux policy was searched only in text context and CIL files. The compiled precompiled_sepolicy binaries were not parsed, so allow-rules for these domains were not enumerated beyond the labels.",
+  "The init reference to /system/vendor/bin/cnss-daemon and the SELinux file_contexts rule for /vendor/bin/cnss-daemon were not reconciled. Whether /system/vendor is a symlink to /vendor on this device was not verified.",
+  "The 32-bit libraries in system_a/system/lib and vendor_a/lib were verified for ELF class, SONAME and NEEDED entries only. Their dynamic exports were not enumerated individually.",
+  "Of the 12 Wi-Fi APEX payload files, only the file list was examined. The contents of framework-wifi.jar, service-wifi.jar, ServiceWifiResources.apk and OsuLogin.apk were not inspected.",
+  "The HIDL version of the Bluetooth HAL in the VINTF manifests was not checked; only the Wi-Fi manifests were read.",
+  "Dependencies named in DT_NEEDED entries that are outside this group (libcld80211.so, libnl.so, libqmi_cci.so, libdiag.so, libbtnv.so, libsoc_helper.so, libvrsensors-hidlwrapper.so and others) were not resolved to files, so their roles are not described.",
+  "The role assigned to each of the 13 'observed' rows in roles.tsv rests on strings or exported names without a structural check. The 'g' variant files, the Oculus telemetry library and the wifi_cli tool are in that set."
+ ],
+ "rolesFile": "data/subsystems/wifi-bluetooth/roles.tsv"
+}

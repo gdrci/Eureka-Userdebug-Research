@@ -1,0 +1,372 @@
+{
+ "key": "native-libraries",
+ "summary": "The native-libraries group is 1371 rows across five partitions: system_a 787, vendor_a 368, system_ext_a 169, odm_a 27 and product_a 20. It contains 1361 regular files and 10 symlinks. The regular files are 1351 ELF shared objects (854 ELF64 AArch64, 497 ELF32 ARM, all ET_DYN) and 10 LLVM bitcode files (libclc built-in libraries under system/lib and system/lib64). The symlinks are 8 bionic links (libc, libdl, libdl_android, libm in system/lib and system/lib64) that point into /apex/com.android.runtime, which is not in the mount, plus odm_a and vendor_a lib/modules links to the dlkm partitions. system_a holds the AOSP platform and NDK-public libraries plus HIDL/AIDL interface libraries and Rust dylibs. vendor_a holds Qualcomm HIDL/AIDL clients, HAL modules (lib/hw, lib64/hw), FastRPC, audio (AGM/PAL) and camera/display libraries. system_ext_a, product_a and odm_a hold device-specific libraries (Oculus/Meta telemetry, tracking, XR loader, maintenance boot, Vulkan layers). The configuration that governs the group is system/etc/public.libraries.txt (29 entries) and vendor/etc/public.libraries.txt (8 entries), plus SELinux labels in plat_file_contexts line 121 and vendor_file_contexts lines 142-153, 196. The role table is at roles.tsv with 1371 rows: 453 verified, 857 inferred, 61 unverified. In the evidence, <image>/mnt means <image>/mnt.",
+ "rowsExpected": 1371,
+ "rowsListed": 1371,
+ "claims": [
+  {
+   "id": "G1",
+   "claim": "The group has 1371 rows: 1361 regular files and 10 symlinks. Partition counts are system_a 787, vendor_a 368, system_ext_a 169, odm_a 27, product_a 20.",
+   "label": "verified",
+   "evidence": "awk -F'\\t' '$1==\"native-libraries\"' classified.tsv | wc -l -> 1371; cut -f2 input_rows.tsv | sort | uniq -c -> 27 odm_a, 20 product_a, 787 system_a, 169 system_ext_a, 368 vendor_a; cut -f4 input_rows.tsv | sort | uniq -c -> 1361 file, 10 symlink",
+   "file": "<image>-tools/work/subsystems/native-libraries/input_rows.tsv",
+   "verdict": "confirmed",
+   "reason": "Command: awk on classified.tsv keeping rows whose first field is native-libraries, piped to wc -l -> 1371. cut -f2 of input_rows.tsv | sort | uniq -c -> 27 odm_a, 20 product_a, 787 system_a, 169 system_ext_a, 368 vendor_a. cut -f4 | sort | uniq -c -> 1361 file, 10 symlink. A sorted full-row diff of the group rows in classified.tsv against input_rows.tsv is empty.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G2",
+   "claim": "All 1361 regular files match the size and sha256 recorded in the inventory; the mounted copies are byte-identical to the classified rows.",
+   "label": "verified",
+   "evidence": "python3 -I scripts/run_facts.py (hashes each file under <image>/mnt/<partition>/<path> with hashlib.sha256 and compares to the TSV); summary check: sha_match:True: 1361; size mismatches: 0",
+   "file": "<image>-tools/work/subsystems/native-libraries/facts.jsonl",
+   "verdict": "confirmed",
+   "reason": "Command: a copy of scripts/run_facts.py with its output redirected to verify/rerun/facts_rerun.jsonl, run with python3 -I. Output: rows 1371. cmp shows the file is byte-identical to facts.jsonl (the original was not overwritten). Independent check with the same method: for each of 1361 regular files, size and sha256 recomputed from mnt/<partition>/<path> -> size_match 1361, sha_match 1361, mismatches 0. All 10 symlinks are readable.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G3",
+   "claim": "Format split: 1351 ELF ET_DYN shared objects (854 ELF64 EM_AARCH64, 497 ELF32 EM_ARM) and 10 LLVM bitcode files, with no other file formats.",
+   "label": "verified",
+   "evidence": "python3 -I summary over facts.jsonl -> by format: Counter({'ELF': 1351, 'LLVM bitcode': 10}); ELF class: Counter({64: 854, 32: 497}); machine: Counter({'EM_AARCH64': 854, 'EM_ARM': 497}); <image>/mnt/system_a/system/lib64/libbinder.so -> readelf -hW: Class ELF64, Type DYN, Machine AArch64",
+   "file": "<image>-tools/work/subsystems/native-libraries/facts.jsonl",
+   "verdict": "confirmed",
+   "reason": "Command: first four bytes of each regular file -> 1351 start with 7f 45 4c 46 (ELF), 10 start with 42 43 c0 de (LLVM bitcode). readelf -hW on all 1351 ELF files -> Class ELF64 854, ELF32 497; Machine AArch64 854, ARM 497; Type DYN (Shared object file) 1351; Data 2's complement, little endian 1351. The 10 bitcode files are libclcore variants, five in system/lib and five in system/lib64.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G4",
+   "claim": "The 10 symlinks are 8 bionic links (libc.so, libdl.so, libdl_android.so, libm.so in system/lib and system/lib64) into /apex/com.android.runtime, and 2 kernel-module directory links (odm_a and vendor_a lib/modules).",
+   "label": "verified",
+   "evidence": "readlink <image>/mnt/system_a/system/lib64/libc.so -> /apex/com.android.runtime/lib64/bionic/libc.so; readlink <image>/mnt/odm_a/lib/modules -> /odm_dlkm/lib/modules; readlink <image>/mnt/vendor_a/lib/modules -> /vendor_dlkm/lib/modules",
+   "file": "<image>-tools/work/subsystems/native-libraries/roles.tsv",
+   "verdict": "confirmed",
+   "reason": "Command: readlink on each of the 10 symlink rows -> 8 targets under /apex/com.android.runtime/lib/bionic/ or /apex/com.android.runtime/lib64/bionic/ (libc.so, libdl.so, libdl_android.so, libm.so in system/lib and system/lib64); odm_a/lib/modules -> /odm_dlkm/lib/modules; vendor_a/lib/modules -> /vendor_dlkm/lib/modules.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G5",
+   "claim": "1300 ELF objects carry a DT_SONAME. The 51 without one are 50 Rust .dylib.so crate objects and libVkLayer_khronos_validation.so.",
+   "label": "verified",
+   "evidence": "python3 -I summary over facts.jsonl -> no soname: 51 of which .dylib.so: 50; dylib names total: 50; readelf -dW <image>/mnt/system_ext_a/lib64/libVkLayer_khronos_validation.so | grep SONAME -> (no output)",
+   "file": "<image>-tools/work/subsystems/native-libraries/facts.jsonl",
+   "verdict": "needs_change",
+   "reason": "Command: readelf -dW on all 1351 ELF files, filter for SONAME -> 1300 with SONAME, 51 without. The 51 are 50 .dylib.so objects and system_ext_a/lib64/libVkLayer_khronos_validation.so. The count and naming are confirmed. Rust origin is not established for all 50: readelf -dW NEEDED shows libstd.dylib.so in 40 objects. The other ten are libstd.dylib.so itself (32 Rust-marker strings) and nine crates (libbitflags, libcfg_if, libinstant, libitoa, liblazy_static, liblibz_sys, libscopeguard, libstructopt, libthiserror) whose only NEEDED entry is libc.so and which have no Rust-marker strings. Their Rust origin rests on the crate names.",
+   "corrected_claim": "1300 ELF objects carry a DT_SONAME. The 51 without one are 50 .dylib.so objects and libVkLayer_khronos_validation.so. The 50 .dylib.so objects follow the Rust crate-dylib naming; 40 list libstd.dylib.so in NEEDED, and the Rust origin of the nine small crates without that entry (for example libbitflags.dylib.so) is inferred from their names."
+  },
+  {
+   "id": "G6",
+   "claim": "The role table covers each input row exactly once: 1371 rows, 453 verified, 857 inferred, 61 unverified. Roles marked unverified are name-only guesses.",
+   "label": "verified",
+   "evidence": "python3 -I scripts/write_roles.py -> rows written: 1371 input rows: 1371 dup keys: 0; Counter({'inferred': 857, 'verified': 453, 'unverified': 61}); wc -l roles.tsv -> 1372 (header plus 1371)",
+   "file": "<image>-tools/work/subsystems/native-libraries/roles.tsv",
+   "verdict": "confirmed",
+   "reason": "Command: python check over roles.tsv -> header plus 1371 data rows, each with 4 fields; 0 duplicate (partition, path) keys; key set equal to the input_rows.tsv key set (0 missing, 0 extra). wc -l gives 1372 including the header. Confidence counts: inferred 857, verified 453, unverified 61. All 61 unverified role texts contain 'name-based'; no name-based row is marked verified.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G7",
+   "claim": "There are 810 unique basenames across the 1371 rows; many names recur in lib and lib64 and in two or more partitions.",
+   "label": "verified",
+   "evidence": "python3 -I summary: unique basenames: 810 (computed as the set of path basenames over the 1371 rows)",
+   "file": "<image>-tools/work/subsystems/native-libraries/input_rows.tsv",
+   "verdict": "confirmed",
+   "reason": "Command: basenames of the 1371 input rows, sort -u, wc -l -> 810. 483 basenames occur in two or more rows; 476 occur under both a lib/ path and a lib64/ path; 55 occur in two or more partitions.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G8",
+   "claim": "The system SELinux mapping labels every system/lib and system/lib64 path as system_lib_file, with bootstrap copies labelled system_bootstrap_lib_file.",
+   "label": "verified",
+   "evidence": "grep -n -E '/system/lib(64)?(/.*)?' <image>/mnt/system_a/system/etc/selinux/plat_file_contexts -> 121:/system/lib(64)?(/.*)?\\t\\tu:object_r:system_lib_file:s0 ; 122:/system/lib(64)?/bootstrap(/.*)? u:object_r:system_bootstrap_lib_file:s0",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n -E on plat_file_contexts for /system/lib(64)? paths -> line 121 u:object_r:system_lib_file:s0 and line 122 u:object_r:system_bootstrap_lib_file:s0 with the bootstrap pattern. Applying every rule in the file to the 787 system_a paths (last matching line wins): 0 unmatched; 779 resolve to system_lib_file via line 121; the 8 paths under bootstrap/ resolve to system_bootstrap_lib_file via line 122, which is later in the file and narrower. The generic line 88 is overridden by line 121 for every path.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "G9",
+   "claim": "The vendor SELinux mapping labels the vendor libadsprpc.so and the display-mapper HAL implementation libraries as same_process_hal_file. vendor_file_contexts line 17 labels the boot HAL service executable as hal_bootctl_default_exec, and line 108 labels the odm maintenance-boot service executable as hal_maintenanceboot_default_exec.",
+   "label": "verified",
+   "evidence": "grep -n 'libadsprpc' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts -> 196:/vendor/lib(64)?/libadsprpc\\.so u:object_r:same_process_hal_file:s0 ; line 17: /(vendor|system/vendor)/bin/hw/android\\.hardware\\.boot@1\\.[0-9]+-service u:object_r:hal_bootctl_default_exec:s0 ; line 108: /(odm|vendor/odm)/bin/hw/vendor\\.oculus\\.hardware\\.maintenanceboot\\.maintenanceboot-service u:object_r:hal_maintenanceboot_default_exec:s0",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
+   "verdict": "needs_change",
+   "reason": "Command: grep -n libadsprpc on vendor_file_contexts -> line 196 same_process_hal_file (confirmed for lib and lib64 copies). Lines 17 and 108 match the executables vendor_a/bin/hw/android.hardware.boot@1.2-service and odm_a/bin/hw/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service; no other rule matches either path. Lines 161-166 label the vendor.qti.hardware.display.mapper@2.0/3.0/4.0 and mapperextensions@1.0/1.1/1.2 libraries in this group (12 rows) as same_process_hal_file. Wording: these are the HIDL mapper and mapperextensions libraries (D9.1 calls mapper@4.0 a passthrough interface library). The -impl-qti-display mapper implementation libraries (lines 143-145) are in the display-and-composer subsystem (vendor_a/lib/hw and lib64/hw), not in native-libraries.",
+   "corrected_claim": "The vendor SELinux mapping labels vendor libadsprpc.so and the vendor.qti.hardware.display.mapper@2.0, @3.0 and @4.0 libraries and the vendor.qti.hardware.display.mapperextensions@1.0, @1.1 and @1.2 libraries in this group as same_process_hal_file (vendor_file_contexts lines 161-166 and 196). vendor_file_contexts line 17 labels the boot HAL service executable as hal_bootctl_default_exec, and line 108 labels the odm maintenance-boot service executable as hal_maintenanceboot_default_exec."
+  },
+  {
+   "id": "D1.1",
+   "claim": "system/lib64/libc.so is a symbolic link to the bionic library inside the com.android.runtime APEX; that target is not in the mount, and system_a/apex is empty.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/lib64 && ls -l libc.so -> lrw-r--r--. 1 root root 46 Jan 1 2009 libc.so -> /apex/com.android.runtime/lib64/bionic/libc.so; ls -la <image>/mnt/system_a/apex -> only '.' and '..' entries (total 8)",
+   "file": "<image>/mnt/system_a/system/lib64/libc.so",
+   "verdict": "needs_change",
+   "reason": "Command: cd system_a/system/lib64 and ls -l libc.so -> lrw-r--r--. 1 root root 46 Jan 1 2009 libc.so -> /apex/com.android.runtime/lib64/bionic/libc.so. ls -la system_a/apex -> only . and .. (total 8), so the apex directory is empty and the target path is not materialized. However the APEX package is in the mount at system_a/system/apex/com.android.runtime.apex (8955305 bytes, a zip containing apex_payload.img). Extracting apex_payload.img to scratch and running debugfs -R 'ls -l /lib64/bionic' lists libc.so (1322360 bytes), libdl.so, libdl_android.so and libm.so.",
+   "corrected_claim": "system/lib64/libc.so is a 46-byte symbolic link to /apex/com.android.runtime/lib64/bionic/libc.so. That path is not materialized in the mount, and system_a/apex is empty. The APEX package itself is in the mount at system/apex/com.android.runtime.apex, and its apex_payload.img contains /lib64/bionic/libc.so (1322360 bytes)."
+  },
+  {
+   "id": "D2.1",
+   "claim": "system/lib64/libbinder.so is an ELF64 AArch64 DYN object with SONAME libbinder.so, a build-id note and 28 sections, stripped. It has 1392 defined dynamic symbols and 245 undefined entries, including the null entry.",
+   "label": "verified",
+   "evidence": "readelf -hW libbinder.so -> Class ELF64, Type DYN (Shared object file), Machine AArch64, Number of section headers 28; readelf -SW libbinder.so | grep -E '.comment|build-id|.dynsym|.dynamic' -> [ 2] .note.gnu.build-id, [ 3] .dynsym, [21] .dynamic (no .comment section); readelf --dyn-syms -W libbinder.so | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\"' | wc -l -> 1392; same awk with $7==\"UND\" -> 245",
+   "file": "<image>/mnt/system_a/system/lib64/libbinder.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -hW libbinder.so -> Class ELF64, Type DYN (Shared object file), Machine AArch64, 28 section headers. readelf -SW -> .note.gnu.build-id present; no .symtab and no .comment; .gnu_debugdata present. readelf --dyn-syms -W with awk on column 7 -> 1392 defined, 245 UND (the 245 includes entry 0, NOTYPE LOCAL UND). readelf -dW -> SONAME libbinder.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D2.2",
+   "claim": "libbinder.so depends on liblog, libcutils, libutils, libc++, libc, libm and libdl. Its exports include the C++ Binder API, for example _ZN7android12ProcessState15startThreadPoolEv (ProcessState::startThreadPool). It is not listed in public.libraries.txt.",
+   "label": "verified",
+   "evidence": "readelf -dW libbinder.so | grep NEEDED -> liblog.so, libcutils.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so; readelf --dyn-syms -W libbinder.so -> _ZN7android12ProcessState15startThreadPoolEv; grep -n -E '^(libbinder|libutils|libcutils|liblog)' <image>/mnt/system_a/system/etc/public.libraries.txt -> 17:liblog.so only (libbinder.so, libutils.so, libcutils.so absent)",
+   "file": "<image>/mnt/system_a/system/etc/public.libraries.txt",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW libbinder.so | grep NEEDED -> liblog.so, libcutils.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so. The export _ZN7android12ProcessState15startThreadPoolEv is present. grep -n -E '^(libbinder|libutils|libcutils|liblog)' on public.libraries.txt -> line 5 libbinder_ndk.so and line 17 liblog.so. libbinder.so, libutils.so and libcutils.so are not listed. The claim's excerpt omitted line 5, which matches the prefix but is a different library; the claim itself holds.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D3.1",
+   "claim": "system/lib64/libutils.so is an AArch64 DYN object with SONAME libutils.so and 389 defined dynamic symbols. Its exports include Looper and RefBase, and it depends on libcutils, liblog, libprocessgroup, libvndksupport, libc++, libc, libm and libdl.",
+   "label": "verified",
+   "evidence": "readelf -dW libutils.so | grep -E 'NEEDED|SONAME' -> NEEDED libcutils.so, liblog.so, libprocessgroup.so, libvndksupport.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libutils.so; readelf --dyn-syms -W libutils.so | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\"' | wc -l -> 389; exported names include _ZN7android6Looper6awokenEv",
+   "file": "<image>/mnt/system_a/system/lib64/libutils.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW libutils.so | grep -E 'NEEDED|SONAME' -> NEEDED libcutils.so, liblog.so, libprocessgroup.so, libvndksupport.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libutils.so. Defined dynamic symbols (awk on column 7 not UND) -> 389. _ZN7android6Looper6awokenEv is present; RefBase exports include _ZTVN7android7RefBaseE and _ZN7android7RefBaseD2Ev.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D4.1",
+   "claim": "system/lib64/liblog.so is the Android logging library. It exports __android_log_print, __android_log_write and android_log_* symbols with version tags such as @@LIBLOG, and depends only on libc++, libc, libm and libdl. It is listed in the NDK public-library file.",
+   "label": "verified",
+   "evidence": "readelf --dyn-syms -W liblog.so | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\"{print $8}' -> __android_log_assert@@LIBLOG, __android_log_print@@LIBLOG, __android_log_write@@LIBLOG, android_log_id_to_name@@LIBLOG ...; defined 64 entries; readelf -dW liblog.so -> NEEDED libc++.so, libc.so, libm.so, libdl.so, SONAME liblog.so; public.libraries.txt line 17: liblog.so",
+   "file": "<image>/mnt/system_a/system/lib64/liblog.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf --dyn-syms -W liblog.so with awk on defined entries, printing column 8 -> __android_log_print@@LIBLOG, __android_log_write@@LIBLOG, android_log_destroy@@LIBLOG_M and other android_log_* names; defined count 64. readelf -dW -> NEEDED libc++.so, libc.so, libm.so, libdl.so; SONAME liblog.so. public.libraries.txt line 17 is liblog.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D5.1",
+   "claim": "system/lib64/libcutils.so is the Android C utilities library. It exports property_get, ashmem_create_region, android_get_control_socket and socket_local_client, has 120 defined symbols, and depends on liblog, libbase, libc++, libc, libm and libdl.",
+   "label": "verified",
+   "evidence": "readelf -dW libcutils.so | grep -E 'NEEDED|SONAME' -> NEEDED liblog.so, libbase.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libcutils.so; readelf --dyn-syms -W libcutils.so | awk '$1 ~ /^[0-9]+:$/ && $7!=\"UND\"{print $8}' | grep -E '^(property_get|ashmem_create_region|android_get_control_socket|socket_local_client)$' -> all four names printed",
+   "file": "<image>/mnt/system_a/system/lib64/libcutils.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW libcutils.so | grep -E 'NEEDED|SONAME' -> NEEDED liblog.so, libbase.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libcutils.so. Defined symbols -> 120. Filtering column 8 for the four names -> socket_local_client, android_get_control_socket, ashmem_create_region, property_get, all present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D6.1",
+   "claim": "system/lib64/libclcore.bc (and the _debug, _debug_g, _g and _neon variants) are LLVM IR bitcode files that begin with the magic bytes 42 43 c0 de. Sizes in lib64 are 330432, 353076, 1077160, 1124700 and 333936 bytes respectively. Their purpose (libclc built-in library for OpenCL and RenderScript) is inferred from the name.",
+   "label": "verified",
+   "evidence": "od -A x -t x1z -N 8 <image>/mnt/system_a/system/lib64/libclcore.bc -> 000000 42 43 c0 de 35 14 00 00 >BC..5...<; file -b libclcore.bc -> LLVM IR bitcode; ls -l <image>/mnt/system_a/system/lib64/libclcore*.bc -> 330432 libclcore.bc, 353076 libclcore_debug.bc, 1077160 libclcore_debug_g.bc, 1124700 libclcore_g.bc, 333936 libclcore_neon.bc",
+   "file": "<image>/mnt/system_a/system/lib64/libclcore.bc",
+   "verdict": "needs_change",
+   "reason": "Command: od -A x -t x1z -N 8 on libclcore.bc -> 42 43 c0 de 35 14 00 00. file -b -> LLVM IR bitcode. ls -l on libclcore*.bc in system_a/system/lib64 -> 330432, 353076, 1077160, 1124700 and 333936 bytes for libclcore.bc, _debug, _debug_g, _g and _neon. The magic and size facts hold. The purpose statement is name-based, as the claim's own text says, so the purpose should carry the 'inferred' label; the 'verified' label applies only to the magic and size facts.",
+   "corrected_claim": "system/lib64/libclcore.bc (and the _debug, _debug_g, _g and _neon variants) are LLVM IR bitcode files that begin with the magic bytes 42 43 c0 de (verified). Sizes in lib64 are 330432, 353076, 1077160, 1124700 and 333936 bytes respectively (verified). Their purpose (libclc built-in library for OpenCL and RenderScript) is inferred from the name (inferred)."
+  },
+  {
+   "id": "D6.2",
+   "claim": "The bitcode is consumed by libRSCpuRef.so, which contains the literal paths /system/lib64/libclcore.bc, libclcore_debug.bc and libclcore_debug_g.bc.",
+   "label": "verified",
+   "evidence": "strings -n 6 <image>/mnt/system_a/system/lib64/libRSCpuRef.so | grep -m3 libclcore -> /system/lib64/libclcore_debug_g.bc, /system/lib64/libclcore_debug.bc, /system/lib64/libclcore.bc; grep -l -a 'libclcore' <image>/mnt/system_a/system/lib64/*.so -> lib64/libRSCpuRef.so",
+   "file": "<image>/mnt/system_a/system/lib64/libRSCpuRef.so",
+   "verdict": "confirmed",
+   "reason": "Command: strings -n 6 libRSCpuRef.so | grep -m3 libclcore -> /system/lib64/libclcore_debug_g.bc, /system/lib64/libclcore_debug.bc, /system/lib64/libclcore.bc. grep -l -a libclcore over system_a/system/lib64/*.so -> libRSCpuRef.so (the glob also reports dangling bionic symlinks, which are not files). The 'consumed by' wording rests on the literal path strings; no loading call was traced.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D7.1",
+   "claim": "system/lib64/hw/android.hidl.memory@1.0-impl.so is a passthrough HIDL implementation with SONAME android.hidl.memory@1.0-impl.so. It exports the AshmemMapper and AshmemMemory classes in android::hidl::memory::V1_0::implementation, and depends on android.hidl.memory@1.0.so and libhidlbase.so.",
+   "label": "verified",
+   "evidence": "readelf -dW android.hidl.memory@1.0-impl.so | grep -E 'NEEDED|SONAME' -> NEEDED libcutils.so, libbase.so, liblog.so, libutils.so, libhidlbase.so, android.hidl.memory@1.0.so, libc++.so, libc.so, libm.so, libdl.so; SONAME android.hidl.memory@1.0-impl.so; readelf --dyn-syms: _ZN7android4hidl6memory4V1_014implementation12AshmemMapper9mapMemoryERKNS_8hardware11hidl_memoryE; defined 24, undefined 53",
+   "file": "<image>/mnt/system_a/system/lib64/hw/android.hidl.memory@1.0-impl.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW android.hidl.memory@1.0-impl.so | grep -E 'NEEDED|SONAME' -> NEEDED libcutils.so, libbase.so, liblog.so, libutils.so, libhidlbase.so, android.hidl.memory@1.0.so, libc++.so, libc.so, libm.so, libdl.so; SONAME android.hidl.memory@1.0-impl.so. Defined 24, undefined 53. _ZN7android4hidl6memory4V1_014implementation12AshmemMapper9mapMemoryERKNS_8hardware11hidl_memoryE present; AshmemMapper and AshmemMemory symbols in the V1_0 implementation namespace present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D7.2",
+   "claim": "The system VINTF manifest declares android.hidl.memory 1.0 as a passthrough HAL on 32+64-bit architectures, so the implementation is loaded into the client process.",
+   "label": "verified",
+   "evidence": "grep -n -B2 -A3 'android.hidl.memory' <image>/mnt/system_a/system/etc/vintf/manifest.xml -> 46:    <hal format=\"hidl\"> 47: <name>android.hidl.memory</name> 48: <transport arch=\"32+64\">passthrough</transport> 49: <version>1.0</version>",
+   "file": "<image>/mnt/system_a/system/etc/vintf/manifest.xml",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n -B2 -A3 'android.hidl.memory' on system_a/system/etc/vintf/manifest.xml -> lines 46-49: hal format=hidl; name android.hidl.memory; transport arch=32+64 passthrough; version 1.0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D8.1",
+   "claim": "vendor/lib64/hw/bootctrl.anorak.so is an AArch64 HAL module with SONAME bootctrl.anorak.so. It exports the HMI module-info object (568 bytes), boot_control_init, set_active_boot_slot, slot_suffix_arr, gpt_disk_alloc and gpt_utils_is_ufs_device, and has 28 defined dynamic symbols.",
+   "label": "verified",
+   "evidence": "readelf --dyn-syms -W bootctrl.anorak.so | grep -w HMI -> 67: 000000000000d3a0 568 OBJECT GLOBAL DEFAULT 21 HMI; readelf --dyn-syms -W ... | awk defined count -> 28; exports (readelf): boot_control_init, set_active_boot_slot, slot_suffix_arr, gpt_disk_alloc, gpt_utils_is_ufs_device",
+   "file": "<image>/mnt/vendor_a/lib64/hw/bootctrl.anorak.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -hW bootctrl.anorak.so -> ELF64, DYN, AArch64. readelf -dW -> SONAME bootctrl.anorak.so. readelf --dyn-syms -W | grep -w HMI -> 67: 000000000000d3a0 568 OBJECT GLOBAL DEFAULT 21 HMI. Defined count -> 28. boot_control_init, set_active_boot_slot, slot_suffix_arr, gpt_disk_alloc and gpt_utils_is_ufs_device are present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D8.2",
+   "claim": "bootctrl.anorak.so depends on libcutils, liblog, libz, libc++, libc, libm and libdl. Its string table holds the boot-slot API names get_current_slot, get_number_slots, is_slot_bootable, is_slot_marked_successful, set_active_boot_slot and set_slot_as_unbootable.",
+   "label": "verified",
+   "evidence": "readelf -dW bootctrl.anorak.so | grep NEEDED -> libcutils.so, liblog.so, libz.so, libc++.so, libc.so, libm.so, libdl.so; strings -n 6 bootctrl.anorak.so | grep -i slot -> get_current_slot, get_number_slots, is_slot_bootable, is_slot_marked_successful, set_active_boot_slot, set_slot_as_unbootable",
+   "file": "<image>/mnt/vendor_a/lib64/hw/bootctrl.anorak.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW bootctrl.anorak.so | grep NEEDED -> libcutils.so, liblog.so, libz.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 6 | grep -i slot includes get_current_slot, get_number_slots, is_slot_bootable, is_slot_marked_successful, set_active_boot_slot and set_slot_as_unbootable.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D8.3",
+   "claim": "The boot HAL service that consumes the module is declared in init as vendor.boot-hal-1-2, running /vendor/bin/hw/android.hardware.boot@1.2-service with interfaces IBootControl 1.0, 1.1 and 1.2 in the early_hal class. That the service loads bootctrl.anorak.so is inferred from the HMI export and the shared slot API names, not from an import in the service binary.",
+   "label": "inferred",
+   "evidence": "cat <image>/mnt/vendor_a/etc/init/android.hardware.boot@1.2-service.rc -> service vendor.boot-hal-1-2 /vendor/bin/hw/android.hardware.boot@1.2-service; interface android.hardware.boot@1.0::IBootControl default ... class early_hal user root group root; readelf -dW vendor_a/lib64/hw/android.hardware.boot@1.0-impl-1.2-qti.so -> NEEDED includes libhardware.so and android.hardware.boot@1.0.so",
+   "file": "<image>/mnt/vendor_a/etc/init/android.hardware.boot@1.2-service.rc",
+   "verdict": "confirmed",
+   "reason": "Command: cat vendor_a/etc/init/android.hardware.boot@1.2-service.rc -> service vendor.boot-hal-1-2 /vendor/bin/hw/android.hardware.boot@1.2-service; interface android.hardware.boot@1.0, @1.1 and @1.2 IBootControl default; class early_hal; user root; group root. readelf -dW on vendor_a/lib64/hw/android.hardware.boot@1.0-impl-1.2-qti.so -> NEEDED includes libhardware.so and android.hardware.boot@1.0.so. No NEEDED entry links this path to bootctrl.anorak.so, so the 'inferred' label is the right one.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D9.1",
+   "claim": "vendor/lib64/vendor.qti.hardware.display.mapper@4.0.so is a passthrough HIDL interface library for IQtiMapper v4.0. It depends on graphics common 1.0/1.1/1.2, graphics mapper 4.0, the mapperextensions 1.0 interface and libhidlbase, and exports 101 defined symbols including IQtiMapper::getService and BnHwQtiMapper.",
+   "label": "verified",
+   "evidence": "readelf -dW vendor.qti.hardware.display.mapper@4.0.so | grep NEEDED -> android.hardware.graphics.common@1.0.so, @1.1.so, @1.2.so, android.hardware.graphics.mapper@4.0.so, vendor.qti.hardware.display.mapperextensions@1.0.so, libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so, libdl.so; readelf --dyn-syms defined count -> 101; export _ZN6vendor3qti8hardware7display6mapper4V4_010IQtiMapper10getService...",
+   "file": "<image>/mnt/vendor_a/lib64/vendor.qti.hardware.display.mapper@4.0.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW vendor.qti.hardware.display.mapper@4.0.so | grep NEEDED -> android.hardware.graphics.common@1.0.so, @1.1.so, @1.2.so, android.hardware.graphics.mapper@4.0.so, vendor.qti.hardware.display.mapperextensions@1.0.so, libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so, libdl.so. Defined count 101. grep -c IQtiMapper10getService -> 1; grep -c BnHwQtiMapper -> 19.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D9.2",
+   "claim": "The vendor VINTF manifest declares vendor.qti.hardware.display.mapper 4.0 as passthrough with interface IQtiMapper, in a fragment named android.hardware.graphics.mapper-impl-qti-display.xml.",
+   "label": "verified",
+   "evidence": "grep -n -A4 'vendor.qti.hardware.display.mapper' <image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml -> 31: <name>vendor.qti.hardware.display.mapper</name> 32: <transport arch=\"32+64\">passthrough</transport> 33: <version>4.0</version> 34: <interface> 35: <name>IQtiMapper</name>",
+   "file": "<image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n -A4 'vendor.qti.hardware.display.mapper' on vendor_a/etc/vintf/manifest/android.hardware.graphics.mapper-impl-qti-display.xml -> line 31 name vendor.qti.hardware.display.mapper; line 32 transport arch=32+64 passthrough; line 33 version 4.0; line 34-35 interface IQtiMapper.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D10.1",
+   "claim": "system_ext/lib64/libopenxr_loader.so is an OpenXR loader: SONAME libopenxr_loader.so, 55 defined symbols and 162 undefined, exporting xr* entry points such as xrCreateInstance, xrDestroyInstance and xrAcquireSwapchainImage. It depends on libandroid, libEGL, liblog, libnativewindow and libvulkan.",
+   "label": "verified",
+   "evidence": "readelf -dW libopenxr_loader.so | grep -E 'NEEDED|SONAME' -> libandroid.so, libEGL.so, liblog.so, libnativewindow.so, libvulkan.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libopenxr_loader.so; readelf --dyn-syms -W ... -> defined 55; exports xrDestroyInstance, xrAcquireSwapchainImage, xrEnumerateSwapchainFormats, xrGetViewConfigurationProperties",
+   "file": "<image>/mnt/system_ext_a/lib64/libopenxr_loader.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW libopenxr_loader.so | grep -E 'NEEDED|SONAME' -> NEEDED libandroid.so, libEGL.so, liblog.so, libnativewindow.so, libvulkan.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libopenxr_loader.so. Defined 55; undefined 162 (includes entry 0). xrDestroyInstance, xrAcquireSwapchainImage, xrEnumerateSwapchainFormats, xrGetViewConfigurationProperties and xrCreateInstance are present.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D10.2",
+   "claim": "The system OpenXR runtime manifest does not name libopenxr_loader.so. active_runtime.aarch64.json names libopenxr_forwardloader.so inside VrDriver.apk. No init, SELinux, XML, JSON or text file in the mount references libopenxr_loader.so.",
+   "label": "verified",
+   "evidence": "cat <image>/mnt/system_a/system/etc/openxr/1/active_runtime.aarch64.json -> \"library_path\": \"/system/priv-app/VrDriver/VrDriver.apk!/lib/arm64-v8a/libopenxr_forwardloader.so\"; grep -rIl 'libopenxr_loader' --include='*.rc' --include='*file_contexts*' --include='*.xml' --include='*.json' --include='*.txt' <image>/mnt -> (no output)",
+   "file": "<image>/mnt/system_a/system/etc/openxr/1/active_runtime.aarch64.json",
+   "verdict": "needs_change",
+   "reason": "Command: cat system_a/system/etc/openxr/1/active_runtime.aarch64.json -> library_path /system/priv-app/VrDriver/VrDriver.apk!/lib/arm64-v8a/libopenxr_forwardloader.so. The directory has three runtime manifests: active_runtime.aarch64.json, active_runtime.armv7a-vfp.json and active_runtime.x86_64.json. The other two also name libopenxr_forwardloader.so inside VrDriver.apk, so the claim's singular 'manifest' is imprecise. grep -rIl 'libopenxr_loader' over the whole mount (text files only) -> no output. Binary files do reference the name (grep -rla): system/lib64/libxrapp.so and system/lib64/libvrui_jni.so list libopenxr_loader.so in NEEDED (readelf -dW | grep NEEDED), and the string also appears in the lib/ copies, several APKs and two system_ext JNI libraries.",
+   "corrected_claim": "The system OpenXR runtime manifests under system/etc/openxr/1 (active_runtime.aarch64.json, active_runtime.armv7a-vfp.json, active_runtime.x86_64.json) each name libopenxr_forwardloader.so inside VrDriver.apk; none names libopenxr_loader.so. No text file in the mount (init, SELinux, XML, JSON or other) references libopenxr_loader.so. Binary files do: system/lib64/libxrapp.so and system/lib64/libvrui_jni.so list libopenxr_loader.so in NEEDED."
+  },
+  {
+   "id": "D11.1",
+   "claim": "system_ext/lib64/libVkLayer_khronos_validation.so is a Vulkan layer. It is an AArch64 DYN object with no SONAME and 21482200 bytes. It exports 7 vk* loader-interface symbols, including vkNegotiateLoaderLayerInterfaceVersion, and depends on libdl, liblog, libandroid, libm and libc.",
+   "label": "verified",
+   "evidence": "ls -l libVkLayer_khronos_validation.so -> 21482200; readelf -dW libVkLayer_khronos_validation.so | grep NEEDED -> libdl.so, liblog.so, libandroid.so, libm.so, libc.so; readelf --dyn-syms -W ... -> defined 7: vkGetInstanceProcAddr, vkGetDeviceProcAddr, vkEnumerateInstanceLayerProperties, vkEnumerateInstanceExtensionProperties, vkNegotiateLoaderLayerInterfaceVersion, vkEnumerateDeviceLayerProperties, vkEnumerateDeviceExtensionProperties; undefined 137",
+   "file": "<image>/mnt/system_ext_a/lib64/libVkLayer_khronos_validation.so",
+   "verdict": "confirmed",
+   "reason": "Command: ls -l libVkLayer_khronos_validation.so -> 21482200 bytes. readelf -hW -> ELF64, DYN, AArch64. readelf -dW -> NEEDED libdl.so, liblog.so, libandroid.so, libm.so, libc.so; no SONAME line. Defined 7: vkGetInstanceProcAddr, vkGetDeviceProcAddr, vkEnumerateInstanceLayerProperties, vkEnumerateInstanceExtensionProperties, vkNegotiateLoaderLayerInterfaceVersion, vkEnumerateDeviceLayerProperties, vkEnumerateDeviceExtensionProperties. Undefined 137 (includes entry 0).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D11.2",
+   "claim": "No layer manifest (explicit or implicit layer JSON) or configuration file in the mount names libVkLayer_khronos_validation.so, so the registration path for this layer is not determined.",
+   "label": "verified",
+   "evidence": "grep -rIl 'VkLayer_khronos' --include='*.rc' --include='*file_contexts*' --include='*.xml' --include='*.json' --include='*.txt' <image>/mnt -> (no output)",
+   "file": "<image>/mnt/system_ext_a/lib64/libVkLayer_khronos_validation.so",
+   "verdict": "needs_change",
+   "reason": "Command: grep -rIl 'VkLayer_khronos' over the whole mount -> no output (no text file names the layer). grep -rla 'VkLayer_khronos' -> system/lib64/libvulkan.so and system/lib/libvulkan.so. strings -n 6 on system/lib64/libvulkan.so -> libVkLayer_khronos_validation.so next to libVkLayer_meta_intercept.so, debug.vulkan.layers, debug.vulkan.layer. and 'Detected Vulkan layers configured with debug.vulkan.layer.<priority>'. grep -rIn 'debug.vulkan' over the mount -> no property assignment in any text file. The conclusion that no manifest or configuration file registers the layer holds, but the claim omits that the loader binary carries the layer's file name and the layer-property strings.",
+   "corrected_claim": "No layer manifest or configuration text file in the mount names libVkLayer_khronos_validation.so. The name does appear as a string in the binaries system/lib64/libvulkan.so and system/lib/libvulkan.so, which also contain the debug.vulkan.layers and debug.vulkan.layer.<priority> strings; no text file in the mount sets those properties, so the registration path is not determined from the mount."
+  },
+  {
+   "id": "D12.1",
+   "claim": "vendor/lib64/libadsprpc.so is the FastRPC user-space library for the audio DSP. It has SONAME libadsprpc.so and 44 defined symbols, exporting remote_handle_control, remote_session_control, remote_mem_map, remote_munmap64 and rpcmem_to_fd. It depends on vendor.qti.hardware.dsp@1.0.so, libhardware.so, libdmabufheap.so and libvmmem.so.",
+   "label": "verified",
+   "evidence": "readelf -dW libadsprpc.so | grep -E 'NEEDED|SONAME' -> libhidlbase.so, libhardware.so, libutils.so, vendor.qti.hardware.dsp@1.0.so, liblog.so, libc.so, libcutils.so, libdmabufheap.so, libvmmem.so, libc++.so, libm.so, libdl.so; readelf --dyn-syms -W libadsprpc.so | awk defined -> 44; exports remote_handle_control, remote_session_control, remote_mem_map, remote_munmap64, rpcmem_to_fd",
+   "file": "<image>/mnt/vendor_a/lib64/libadsprpc.so",
+   "verdict": "needs_change",
+   "reason": "Command: readelf -dW libadsprpc.so | grep -E 'NEEDED|SONAME' -> NEEDED libhidlbase.so, libhardware.so, libutils.so, vendor.qti.hardware.dsp@1.0.so, liblog.so, libc.so, libcutils.so, libdmabufheap.so, libvmmem.so, libc++.so, libm.so, libdl.so; SONAME libadsprpc.so. Defined 44. Column-8 filter -> remote_handle_control, remote_session_control, remote_mem_map, remote_munmap64 and rpcmem_to_fd are present. Strings show FastRPC source paths (vendor/qcom/proprietary/adsprpc/src/...). The audio-DSP attribution is not shown by any string checked; it rests on the adsp name prefix.",
+   "corrected_claim": "vendor/lib64/libadsprpc.so is a FastRPC user-space library (SONAME libadsprpc.so, 44 defined symbols, exporting remote_handle_control, remote_session_control, remote_mem_map, remote_munmap64 and rpcmem_to_fd). Its association with the audio DSP is inferred from the adsp name prefix (inferred)."
+  },
+  {
+   "id": "D12.2",
+   "claim": "libadsprpc.so is listed in vendor/etc/public.libraries.txt and is labelled same_process_hal_file in vendor_file_contexts. Its strings include fastrpc_mmap, fastrpc_munmap and fastrpc_async_get_status.",
+   "label": "verified",
+   "evidence": "grep -n 'libadsprpc' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts -> 196:/vendor/lib(64)?/libadsprpc\\.so u:object_r:same_process_hal_file:s0; cat <image>/mnt/vendor_a/etc/public.libraries.txt -> libadsprpc.so, libcdsprpc.so, libeva.so, libhexagon.so, libsdsprpc.so, libsynx.so, libdrm.so, libOpenCL.so; strings -n 8 libadsprpc.so | grep fastrpc -> fastrpc_mmap, fastrpc_munmap, fastrpc_async_get_status",
+   "file": "<image>/mnt/vendor_a/etc/public.libraries.txt",
+   "verdict": "confirmed",
+   "reason": "Command: grep -n libadsprpc on vendor_file_contexts -> line 196 same_process_hal_file. cat vendor_a/etc/public.libraries.txt -> libadsprpc.so, libcdsprpc.so, libeva.so, libhexagon.so, libsdsprpc.so, libsynx.so, libdrm.so, libOpenCL.so. strings -n 8 libadsprpc.so | grep fastrpc -> fastrpc_mmap, fastrpc_munmap, fastrpc_async_get_status among others.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D13.1",
+   "claim": "odm/lib64/libmaintenanceboot.so is a maintenance-boot library with SONAME libmaintenanceboot.so and 122 defined symbols. It exports OVR::OS MiscWriter, ReadMiscVirtualAbMessage, update_bootloader_message_in_struct, clear_bootloader_message and android::fs_mgr fstab readers. It depends on android.hardware.health@2.1.so, libosutils, libutils, libbase, libcutils and liblog.",
+   "label": "verified",
+   "evidence": "readelf -dW libmaintenanceboot.so | grep -E 'NEEDED|SONAME' -> android.hardware.health@2.1.so, libbase.so, libcutils.so, liblog.so, libosutils.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libmaintenanceboot.so; defined 122; exports _ZN3OVR2OS10MiscWriter8ReadDataEPNS0_14IadMessageDataEPNSt3__112basic_string..., _Z24clear_bootloader_messagePNSt3__1..., _ZN7android6fs_mgr16ReadDefaultFstab...",
+   "file": "<image>/mnt/odm_a/lib64/libmaintenanceboot.so",
+   "verdict": "confirmed",
+   "reason": "Command: readelf -dW libmaintenanceboot.so | grep -E 'NEEDED|SONAME' -> NEEDED android.hardware.health@2.1.so, libbase.so, libcutils.so, liblog.so, libosutils.so, libutils.so, libc++.so, libc.so, libm.so, libdl.so; SONAME libmaintenanceboot.so. Defined 122. Exports include _ZN3OVR2OS10MiscWriter8ReadData (OVR::OS MiscWriter), ReadMiscVirtualAbMessage, update_bootloader_message_in_struct, clear_bootloader_message and _ZN7android6fs_mgr16ReadDefaultFstab.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D13.2",
+   "claim": "The maintenance-boot HAL service is declared in odm init as vendor.oculus.hardware.maintenanceboot.maintenanceboot-service, interface aidl vendor.oculus.hardware.maintenanceboot.IMaintenanceBoot/default, class hal. No init or SELinux file names libmaintenanceboot.so directly; the service binary is labelled hal_maintenanceboot_default_exec.",
+   "label": "verified",
+   "evidence": "cat <image>/mnt/odm_a/etc/init/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service.rc -> service vendor.oculus.hardware.maintenanceboot.maintenanceboot-service /odm/bin/hw/...; interface aidl vendor.oculus.hardware.maintenanceboot.IMaintenanceBoot/default; class hal; user system; group system root; grep -rn 'libmaintenanceboot' --include='*.rc' --include='*file_contexts*' <image>/mnt -> (no output)",
+   "file": "<image>/mnt/odm_a/etc/init/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service.rc",
+   "verdict": "confirmed",
+   "reason": "Command: cat odm_a/etc/init/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service.rc -> service vendor.oculus.hardware.maintenanceboot.maintenanceboot-service /odm/bin/hw/...; interface aidl vendor.oculus.hardware.maintenanceboot.IMaintenanceBoot/default; class hal; user system; group system root. grep -rn libmaintenanceboot over *.rc and *file_contexts* in the mount -> no output.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "D14.1",
+   "claim": "system/etc/public.libraries.txt lists 29 library entries (after a comment header) that the NDK exposes publicly. The entry libneuralnetworks.so carries a trailing nopreload token. Five listed names (libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so, libneuralnetworks.so) appear in no subsystem inventory and are absent from this mount.",
+   "label": "verified",
+   "evidence": "grep -v '^#' <image>/mnt/system_a/system/etc/public.libraries.txt | grep -c . -> 29; grep -n 'nopreload' ... -> 22:libneuralnetworks.so nopreload; grep -E 'libicu|libnativehelper|libneuralnetworks' classified.tsv -> (no output); header line 1: # See https://android.googlesource.com/platform/ndk/+/master/docs/PlatformApis.md",
+   "file": "<image>/mnt/system_a/system/etc/public.libraries.txt",
+   "verdict": "needs_change",
+   "reason": "Command: grep -v '^#' on system_a/system/etc/public.libraries.txt | grep -c . -> 29; line 22 libneuralnetworks.so nopreload; header line is the NDK PlatformApis URL. Lines 13, 14, 15, 20 and 22 hold libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so and libneuralnetworks.so. No file or row under these exact names exists in classified.tsv or in the mount. The claim's evidence says grep -E 'libicu|libnativehelper|libneuralnetworks' on classified.tsv returns no output; it returns two rows, native-libraries system_a system/lib/libneuralnetworks_packageinfo.so and system/lib64/libneuralnetworks_packageinfo.so, which are different libraries.",
+   "corrected_claim": "system/etc/public.libraries.txt lists 29 entries after a comment header. The entry libneuralnetworks.so carries a trailing nopreload token. Five listed names (libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so and libneuralnetworks.so) have no file or classified row under those exact names and are absent from the mount. The substring libneuralnetworks matches only libneuralnetworks_packageinfo.so (native-libraries, system_a)."
+  },
+  {
+   "id": "D14.2",
+   "claim": "Of the 29 public entries, 23 are present as files or links in the group rows. Entries such as libaaudio.so, libEGL.so, libGLESv2.so and libvulkan.so are present in other subsystems (audio, gpu, camera), not in this group. Meaning of the nopreload token is inferred to mark libraries excluded from preloading.",
+   "label": "inferred",
+   "evidence": "awk over input_rows.tsv matching each entry's path basename for system_a: libandroid.so 2, libamidi.so 2, libbinder_ndk.so 2, libc.so 4, libdl.so 4, liblog.so 2, libm.so 4 ...; classified.tsv: gpu/system_a/system/lib64/libEGL.so, audio/system_a/system/lib64/libaaudio.so",
+   "file": "<image>/mnt/system_a/system/etc/public.libraries.txt",
+   "verdict": "refuted",
+   "reason": "Command: basename match of the public entries against input_rows.tsv (all partitions). 17 of the 29 entries have at least one row in this group, all in system_a: libandroid, libamidi, libbinder_ndk, libc, libdl, libjnigraphics, liblog, libmediandk, libm, libnativewindow, libOpenMAXAL, libOpenSLES, libRS, libstdc++, libsync, libwebviewchromium_plat_support, libz. Twelve entries have none. No group-row reading gives 23: rows whose basename is a public entry number 40, of which 34 are files. The other-subsystem locations in the claim are confirmed: libaaudio.so (audio), libEGL.so, libGLESv2.so and libvulkan.so (gpu), and libcamera2ndk.so (camera) in classified.tsv.",
+   "corrected_claim": "Of the 29 public entries, 17 are present as files or links in the group rows (all under system_a, including the bionic symlinks). Twelve entries have no row in this group: libaaudio.so, libcamera2ndk.so, libEGL.so, libGLESv1_CM.so, libGLESv2.so, libGLESv3.so, libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so, libneuralnetworks.so and libvulkan.so. Entries such as libaaudio.so, libEGL.so, libGLESv2.so and libvulkan.so are present in other subsystems (audio, gpu, camera), not in this group. The meaning of the nopreload token is inferred to mark libraries excluded from preloading."
+  },
+  {
+   "id": "D15.1",
+   "claim": "vendor/etc/public.libraries.txt lists 8 vendor entries: libadsprpc.so, libcdsprpc.so, libeva.so, libhexagon.so, libsdsprpc.so, libsynx.so (all six present in this group), plus libdrm.so and libOpenCL.so (present in display-and-composer and gpu subsystems).",
+   "label": "verified",
+   "evidence": "grep -v '^#' <image>/mnt/vendor_a/etc/public.libraries.txt | grep -c . -> 8; awk membership over input_rows.tsv -> libadsprpc.so 2, libcdsprpc.so 2, libeva.so 2, libhexagon.so 2, libsdsprpc.so 2, libsynx.so 2, libdrm.so 0, libOpenCL.so 0; classified.tsv -> display-and-composer/vendor_a/lib/libdrm.so, gpu/vendor_a/lib/libOpenCL.so",
+   "file": "<image>/mnt/vendor_a/etc/public.libraries.txt",
+   "verdict": "confirmed",
+   "reason": "Command: grep -v '^#' on vendor_a/etc/public.libraries.txt | grep -c . -> 8 (libadsprpc.so, libcdsprpc.so, libeva.so, libhexagon.so, libsdsprpc.so, libsynx.so, libdrm.so, libOpenCL.so). Basename match against input_rows.tsv: 2 rows each for the six, 0 for libdrm.so and libOpenCL.so. classified.tsv: display-and-composer vendor_a lib/libdrm.so and lib64/libdrm.so; gpu vendor_a lib/libOpenCL.so and lib64/libOpenCL.so.",
+   "corrected_claim": ""
+  }
+ ],
+ "gaps": [
+  "The bionic targets under /apex/com.android.runtime (libc, libdl, libm, libdl_android) are not in the mount; system_a/apex is empty, so the 8 bionic symlinks could not be followed to content.",
+  "libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so and libneuralnetworks.so are named in system/etc/public.libraries.txt but do not appear in any subsystem inventory; whether APEX modules supply them was not determined.",
+  "The roles for 857 rows are inferred from file names and the 453 verified roles from exported symbols or NEEDED entries; no per-file behaviour was checked. The 61 unverified rows are name-only guesses (for example com.qti.stats.common.so, libgipp.so, libkll.so, libfruit.so) and are marked as such in roles.tsv.",
+  "Reverse dependencies were computed only for the 15 deep-dive items. A full NEEDED graph across the 1351 ELF objects was not built.",
+  "The linker configuration (system/linkerconfig, system/etc/linker.config.pb) is binary and was not decoded. A literal grep for libadsprpc.so, libopenxr_loader.so and libmaintenanceboot.so found no matches in linker.config.pb, but the search rules and namespace search paths were not determined.",
+  "The HMI module id string for bootctrl.anorak.so was not extracted, and no import linkage between android.hardware.boot@1.0-impl-1.2-qti.so and bootctrl.anorak.so was found. The consumer relationship is inferred only.",
+  "The Vulkan layer manifest for libVkLayer_khronos_validation.so was not found in the mount, so its registration and enablement path is unknown.",
+  "The OpenXR loader's consumer apps were not identified. The runtime manifest points at a different library inside VrDriver.apk.",
+  "The 50 Rust .dylib.so crate objects and the 10 bitcode files were classified from names and format only, apart from the Rust NEEDED check and the bitcode magic bytes.",
+  "The 15 deep-dive items are a selection of the most important files by name and role. The remaining binaries were not deep-dived beyond the role table.",
+  "Symbol counts from pyelftools (in facts.jsonl) differ from readelf by one for undefined symbols because readelf counts the null entry. Claims cite readelf counts."
+ ],
+ "rolesFile": "data/subsystems/native-libraries/roles.tsv"
+}

@@ -1,0 +1,362 @@
+{
+ "key": "kernel-modules",
+ "summary": "The kernel-modules group is 306 files in two read-only ext4 images: vendor_dlkm_a (271 files, 262 modules) and odm_dlkm_a (35 files, 27 modules). The 289 .ko files are 64-bit little-endian AArch64 ELF relocatable objects, all built for kernel 5.10.205-01655-g5c5a360e9c21 (identical vermagic). Each image carries modules.alias, modules.dep, modules.load, modules.softdep, a build.prop, a NOTICE.xml.gz (empty licence list) and two empty fs_config lists; vendor_dlkm_a also carries modules.blocklist. fstab.eureka mounts the images at /vendor_dlkm and /odm_dlkm, and /vendor/lib/modules and /odm/lib/modules are symlinks into them. Loading is done by /vendor/bin/init.insmod.sh, which reads init.insmod.charger.cfg (charger class, 37 named modprobe entries) or init.insmod.cfg (boot, modprobe -b * against both modules.load files). init.anorak.rc additionally loads wlan and sched-walt directly with modprobe. Module families visible from modinfo and aliases: Qualcomm SoC platform drivers (clocks, interconnect, SMMU, GLINK/QRTR transports, KGSL graphics, MSM DRM, cfg80211/mac80211 WLAN stack, WCD/LPASS audio codecs, SPMI PMIC, UFS) in vendor_dlkm_a, and device drivers for Oculus/Meta peripherals (USB VDM, syncboss, sensors, regulators, charging dock) in odm_dlkm_a.",
+ "rowsExpected": 306,
+ "rowsListed": 306,
+ "claims": [
+  {
+   "id": "K01",
+   "label": "verified",
+   "claim": "The group has 306 rows: 289 .ko modules and 17 other files. 271 rows are in vendor_dlkm_a and 35 in odm_dlkm_a.",
+   "evidence": "Command (from the classified.tsv directory): awk -F'\\t' '$1==\"kernel-modules\"' classified.tsv > input_rows.tsv; wc -l < input_rows.tsv  -> 306. Command: cut -f2 input_rows.tsv | sort | uniq -c -> '35 odm_dlkm_a' and '271 vendor_dlkm_a'. Command: awk -F'\\t' '$3 ~ /[.]ko$/' input_rows.tsv | wc -l -> 289.",
+   "file": "<image>-tools/work/subsystems/kernel-modules/input_rows.tsv",
+   "verdict": "confirmed",
+   "reason": "Group filter on classified.tsv gives 306 rows; partition counts are 271 vendor_dlkm_a and 35 odm_dlkm_a; 289 paths end in .ko. The 17 non-.ko rows are fs_config_dirs and fs_config_files (both trees), NOTICE.xml.gz (both), build.prop (both), modules.alias/dep/load/softdep (both), and modules.blocklist (vendor).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K02",
+   "label": "verified",
+   "claim": "All 289 .ko files are ELF64 little-endian AArch64 relocatable objects (e_machine 183, e_type REL), not stripped, with intree=Y and the same vermagic string.",
+   "evidence": "Command: file vendor_dlkm_a/lib/modules/wlan.ko vendor_dlkm_a/lib/modules/cfg80211.ko (run in eureka/mnt) -> 'ELF 64-bit LSB relocatable, ARM aarch64, version 1 (SYSV), BuildID[sha1]=ef69ea77..., not stripped'. Command: readelf -h vendor_dlkm_a/lib/modules/wlan.ko -> 'Type: REL (Relocatable file)', 'Machine: AArch64'. Command: python3 -I scripts/ko_info.py <mnt> paths.tsv ko_info.json, then a Counter over the parsed .modinfo entries -> [((\"5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64\",), 289)], Counter({('Y',): 289}) for intree, Counter({183: 289}) for machine.",
+   "file": "<image>-tools/work/subsystems/kernel-modules/scripts/ko_info.py",
+   "verdict": "confirmed",
+   "reason": "Raw ELF header bytes for all 289 files: EI_CLASS 2 (64-bit), EI_DATA 1 (little-endian), e_type 1 (REL), e_machine 183 (AArch64). The section/file type check reports not stripped for all 289. .modinfo vermagic is identical in all 289 (5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64) and intree=Y in all 289.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K03",
+   "label": "verified",
+   "claim": "261 of the 289 modules carry a modinfo description string; 28 do not (listed with inferred or unverified roles in roles.tsv).",
+   "evidence": "Command: python3 -I scripts/ko_info.py over the 289 .ko paths, then count of modinfo['description'] present -> 'with description 261'. Modules with empty description include lib/modules/virtual_sensor.ko, lib/modules/sched-walt.ko, lib/modules/ufs_qcom.ko, lib/modules/zsmalloc.ko.",
+   "file": "<image>-tools/work/subsystems/kernel-modules/ko_summary.tsv",
+   "verdict": "confirmed",
+   "reason": "261 modules carry a description key and 28 do not. The 28 are exactly the set of non-verified rows in roles.tsv (set comparison shows no difference). Evidence text calls them 'empty description'; they have no description key at all (no description= line has an empty value). The claim wording is correct.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K04",
+   "label": "verified",
+   "claim": "Load and dependency lists are complete and consistent with the .ko files in both trees: every .ko is in modules.load, and modules.dep has one line per module (262 vendor, 27 odm).",
+   "evidence": "Command (in eureka/mnt): comm -3 <(sort vendor_dlkm_a/lib/modules/modules.load) <(cd vendor_dlkm_a/lib/modules && ls *.ko | sort) | wc -l -> 0. Same for odm_dlkm_a -> 0. Command: cut -d: -f1 vendor_dlkm_a/lib/modules/modules.dep | grep -c . -> 262. Command: cut -d: -f1 odm_dlkm_a/lib/modules/modules.dep | grep -c . -> 27.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.load",
+   "verdict": "confirmed",
+   "reason": "Set difference between modules.load and the *.ko names is empty in both trees (262 vendor, 27 odm). modules.dep has 262 and 27 lines, every line begins with /vendor/lib/modules/ or /odm/lib/modules/ respectively.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K05",
+   "label": "verified",
+   "claim": "fstab.eureka mounts vendor_dlkm at /vendor_dlkm and odm_dlkm at /odm_dlkm, both as read-only ext4 with AVB, logical and first_stage_mount flags.",
+   "evidence": "Command: sed -n '9,12p' vendor_a/etc/fstab.eureka (run in eureka/mnt) -> 'vendor_dlkm /vendor_dlkm ext4 ro,barrier=1,discard' and 'odm_dlkm /odm_dlkm ext4 ro,barrier=1,discard'. Command: grep -n dlkm vendor_a/etc/fstab.eureka -> '10: vendor_dlkm ... wait,slotselect,avb,logical,first_stage_mount' and '11: odm_dlkm ... wait,slotselect,avb,logical,first_stage_mount'.",
+   "file": "<image>/mnt/vendor_a/etc/fstab.eureka",
+   "verdict": "confirmed",
+   "reason": "fstab lines 10 and 11: vendor_dlkm to /vendor_dlkm and odm_dlkm to /odm_dlkm, ext4, ro,barrier=1,discard, flags wait,slotselect,avb,logical,first_stage_mount.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K06",
+   "label": "verified",
+   "claim": "/vendor/lib/modules and /odm/lib/modules are symbolic links to /vendor_dlkm/lib/modules and /odm_dlkm/lib/modules.",
+   "evidence": "Command (in eureka/mnt): readlink vendor_a/lib/modules odm_a/lib/modules -> '/vendor_dlkm/lib/modules' and '/odm_dlkm/lib/modules'.",
+   "file": "<image>/mnt/vendor_a/lib/modules",
+   "verdict": "confirmed",
+   "reason": "Symlink targets: vendor_a/lib/modules to /vendor_dlkm/lib/modules and odm_a/lib/modules to /odm_dlkm/lib/modules.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K07",
+   "label": "verified",
+   "claim": "init.insmod.sh reads a config file of action|argument lines. For modprobe it builds the argument list from both modules.load files when the argument is '-b *', and it runs modprobe with both module directories as -d paths. It sets vendor.all.modules.ready and vendor.all.devices.ready at the end.",
+   "evidence": "Command: cat vendor_a/bin/init.insmod.sh (1533 bytes, run in eureka/mnt). Excerpt: 'case ${arg} in \"-b *\" | \"-b\") arg=\"-b $(cat /vendor_dlkm/lib/modules/modules.load /odm_dlkm/lib/modules/modules.load 2>/dev/null)\" ;;' then 'modprobe -a -d /vendor_dlkm/lib/modules -d /odm_dlkm/lib/modules $arg ;;'. Final lines: 'setprop vendor.all.modules.ready 1' and 'setprop vendor.all.devices.ready 1'.",
+   "file": "<image>/mnt/vendor_a/bin/init.insmod.sh",
+   "verdict": "confirmed",
+   "reason": "Script is 1533 bytes. The '-b *' case expands to the modules.load files of /vendor_dlkm and /odm_dlkm, modprobe -a runs with -d for both trees, and the last two lines are setprop vendor.all.modules.ready 1 and vendor.all.devices.ready 1. The script also has a '*' or empty-argument case that the claim does not mention; this does not contradict it.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K08",
+   "label": "verified",
+   "claim": "The two insmod configs use 38 modprobe directives, 4 enable and 4 setprop directives. The 37 named modules in init.insmod.charger.cfg all resolve to a .ko in the two module trees. Names are written with hyphens where the file uses underscores (pmic-glink.ko refers to pmic_glink.ko), so name normalisation is relied on.",
+   "evidence": "Command: cut -d'|' -f1 vendor_a/etc/init.insmod.cfg vendor_a/etc/init.insmod.charger.cfg | sort | uniq -c -> '38 modprobe', '4 enable', '4 setprop' (comment lines excluded). Command: grep -n pmic-glink vendor_a/etc/init.insmod.charger.cfg -> '20:modprobe|pmic-glink.ko'. Command: ls vendor_dlkm_a/lib/modules | grep pmic_glink -> 'pmic_glink.ko'. Check of named cfg entries against both trees (python3 -I, names compared after - to _ normalisation) -> 'not found in dlkm trees: []'.",
+   "file": "<image>/mnt/vendor_a/etc/init.insmod.charger.cfg",
+   "verdict": "needs_change",
+   "reason": "Counts reproduce: 38 modprobe, 4 enable, 4 setprop across both cfg files; the charger cfg has 37 named modprobe entries. All 37 resolve in the two trees, but only one needs normalisation: pmic-glink.ko versus the file pmic_glink.ko. The other 36 match file names exactly (for example altmode-glink.ko, usbvdm-cypd.ko). The sentence 'Names are written with hyphens where the file uses underscores' overstates a single case.",
+   "corrected_claim": "The two insmod configs use 38 modprobe directives, 4 enable and 4 setprop directives. The 37 named modules in init.insmod.charger.cfg all resolve to a .ko in the two module trees. Only one entry, pmic-glink.ko, differs from its file name (pmic_glink.ko); the other 36 match exactly, so name normalisation is relied on for that single entry."
+  },
+  {
+   "id": "K09",
+   "label": "verified",
+   "claim": "init.insmod.cfg (boot config) contains one modprobe directive that loads everything: 'modprobe|-b *', followed by setprop and enable directives for the ADSP/CDSP boot nodes.",
+   "evidence": "Command: cat vendor_a/etc/init.insmod.cfg -> '# Load everything' / 'modprobe|-b *' / 'setprop|vendor.all.modules.ready' / 'enable|/sys/kernel/boot_adsp/boot' / 'enable|/sys/kernel/boot_cdsp/boot' / 'enable|/sys/devices/virtual/cvp/cvp/boot' / 'setprop|vendor.all.devices.ready'.",
+   "file": "<image>/mnt/vendor_a/etc/init.insmod.cfg",
+   "verdict": "needs_change",
+   "reason": "The boot config has three enable directives, not two: /sys/kernel/boot_adsp/boot, /sys/kernel/boot_cdsp/boot, and /sys/devices/virtual/cvp/cvp/boot (a CVP node, not ADSP/CDSP). The setprop of vendor.all.modules.ready follows the modprobe line directly, and setprop vendor.all.devices.ready is the last directive.",
+   "corrected_claim": "init.insmod.cfg (boot config) contains one modprobe directive that loads everything, 'modprobe|-b *'. It is followed by setprop vendor.all.modules.ready, then enable directives for the ADSP boot, CDSP boot and CVP boot nodes (/sys/devices/virtual/cvp/cvp/boot), and finally setprop vendor.all.devices.ready."
+  },
+  {
+   "id": "K10",
+   "label": "verified",
+   "claim": "init.anorak.rc defines two oneshot services that run init.insmod.sh with the two configs. insmod_charger_sh runs in class charger, started by 'on charger'. insmod_sh is disabled and is started by 'on init && property:vendor.skip.init=0'.",
+   "evidence": "Command: grep -n insmod vendor_a/etc/init/hw/init.anorak.rc -> '7: start insmod_charger_sh', '52: start insmod_sh', '246: service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.cfg' (class main, user root, disabled, oneshot), '253: service insmod_charger_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.charger.cfg' (class charger). Command: grep -n -E '^on (boot|charger|init)' vendor_a/etc/init/hw/init.anorak.rc -> '6:on charger', '50:on init && property:vendor.skip.init=0'.",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "verdict": "confirmed",
+   "reason": "Service blocks at lines 246 (insmod_sh: class main, disabled, oneshot) and 253 (insmod_charger_sh: class charger, disabled, oneshot). Line 6 'on charger' starts insmod_charger_sh at line 7; line 50 'on init && property:vendor.skip.init=0' starts insmod_sh at line 52.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K11",
+   "label": "verified",
+   "claim": "init.anorak.rc calls modprobe directly for two modules, both as u:r:vendor_modprobe:s0 with exec_background: wlan with country_code=0 in 'on boot', and sched-walt in 'on boot && property:vendor.scheduler.schedutil=false'.",
+   "evidence": "Command: grep -n modprobe vendor_a/etc/init/hw/init.anorak.rc -> '130:    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ wlan country_code=0' and '198:    exec_background u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules/ sched-walt'. Trigger lines: '129:on boot' and '197:on boot && property:vendor.scheduler.schedutil=false'.",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "verdict": "confirmed",
+   "reason": "Lines 129-130 ('on boot', modprobe -a wlan country_code=0) and 197-198 ('on boot && property:vendor.scheduler.schedutil=false', modprobe -a sched-walt) match. Both use exec_background with u:r:vendor_modprobe:s0 and no -b.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K12",
+   "label": "verified",
+   "claim": "vendor_dlkm_a modules.blocklist has 69 blocklist lines naming 68 unique modules. Four blocklisted names match .ko files in the module trees: llcc_perfmon, sched-walt, usbip-vudc and wlan.",
+   "evidence": "Command: grep -c '^blocklist' vendor_dlkm_a/lib/modules/modules.blocklist -> 69. Command: grep '^blocklist ' vendor_dlkm_a/lib/modules/modules.blocklist | sort -u | wc -l -> 68. Command: grep -n -E '^blocklist (wlan|sched-walt|llcc_perfmon|usbip-vudc)$' vendor_dlkm_a/lib/modules/modules.blocklist -> '22:blocklist llcc_perfmon', '46:blocklist sched-walt', '64:blocklist usbip-vudc', '69:blocklist wlan'. Header: '# SPDX-License-Identifier: GPL-2.0-only' and '# Copyright (c) 2022, Qualcomm Innovation Center, Inc. All rights reserved.'",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.blocklist",
+   "verdict": "confirmed",
+   "reason": "modules.blocklist has 69 blocklist lines and 68 unique names (dummy_hcd is the only repeated name). Normalised comparison with the module file names gives exactly four matches: llcc_perfmon, sched-walt, usbip-vudc and wlan. The two header lines match the claim.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K13",
+   "label": "inferred",
+   "claim": "wlan and sched-walt appear in vendor modules.load (lines 189 and 216), so the modprobe -b * path from init.insmod.cfg would consider them. init.anorak.rc loads both by name without -b. Behaviour follows the usual modprobe -b convention; modprobe itself was not run.",
+   "evidence": "Command: grep -n -x -E 'wlan.ko|sched-walt.ko' vendor_dlkm_a/lib/modules/modules.load -> '189:wlan.ko', '216:sched-walt.ko'. Blocklist entries as in K12. init.anorak.rc lines 130 and 198 use modprobe -a without -b (see K11).",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.load",
+   "verdict": "confirmed",
+   "reason": "modules.load lines 189 (wlan.ko) and 216 (sched-walt.ko) match. Both names are blocklisted (lines 69 and 46), and init.anorak.rc lines 130 and 198 contain no -b. The 'inferred' label is correct. Gap: modprobe was not run, so whether the blocklist entries are skipped on the -b path is not tested; the claim wording is an inference and is labelled as one.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K14",
+   "label": "verified",
+   "claim": "SELinux defines a vendor_modprobe domain. init may transition to it, and it may read proc_modules. vendor_file_contexts labels /vendor/bin/init.insmod.sh as init-insmod-sh_exec.",
+   "evidence": "Command: sed -n '1822,1826p' vendor_a/etc/selinux/vendor_sepolicy.cil -> '(allow init_32_0 vendor_modprobe_32_0 (process (transition)))' ... '(allow vendor_modprobe_32_0 proc_modules_32_0 (file (ioctl read getattr lock map open watch watch_reads)))'. Command: grep -n insmod vendor_a/etc/selinux/vendor_file_contexts -> '433:/vendor/bin/init\\.insmod\\.sh    u:object_r:init-insmod-sh_exec:s0'.",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_sepolicy.cil",
+   "verdict": "confirmed",
+   "reason": "sepolicy lines 1822-1826 match. vendor_modprobe is declared as (type vendor_modprobe) in plat_pub_versioned.cil and included in the domain attribute (vendor_sepolicy.cil line 202). vendor_file_contexts line 433 labels /vendor/bin/init.insmod.sh as init-insmod-sh_exec.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K15",
+   "label": "verified",
+   "claim": "The platform file contexts label /vendor_dlkm and /odm_dlkm (and their vendor/ prefixed forms) as vendor_file. No vendor file-context entry names the module directories or the dlkm mount points.",
+   "evidence": "Command: sed -n '70,71p' system_a/system/etc/selinux/plat_file_contexts -> '/(vendor_dlkm|vendor/vendor_dlkm|system/vendor/vendor_dlkm)(/.*)?         u:object_r:vendor_file:s0' and '/(odm_dlkm|vendor/odm_dlkm|system/vendor/odm_dlkm)(/.*)?                  u:object_r:vendor_file:s0'. Command: grep -n -E 'insmod|dlkm|lib/modules|modprobe' vendor_a/etc/selinux/vendor_file_contexts -> only line 433.",
+   "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
+   "verdict": "confirmed",
+   "reason": "plat_file_contexts lines 70-71 label the dlkm paths (with vendor/ and system/vendor/ prefixes) as vendor_file:s0. vendor_file_contexts has no entry for lib/modules, dlkm or modprobe; its only insmod match is line 433.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K16",
+   "label": "verified",
+   "claim": "init.anorak.rc writes to sysfs paths that belong to modules: /sys/module/drm/parameters/vblankoffdelay (drm core, not msm_drm.ko) and /sys/module/qcom_ramdump/parameters/enable_dump_collection, which matches the enable_dump_collection parameter of qcom_ramdump.ko.",
+   "evidence": "Command: grep -n 'sys/module' vendor_a/etc/init/hw/init.anorak.rc -> '124: write /sys/module/drm/parameters/vblankoffdelay \"0\"', '403: write /sys/module/qcom_ramdump/parameters/enable_dump_collection ...' (property persist.vendor.ssr.enable_ramdump=0 or 1 triggers), '409: write /sys/module/qcom_ramdump/parameters/enable_dump_collection ...'. Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/qcom_ramdump.ko -> '[  0]  parmtype=enable_dump_collection:int'.",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "verdict": "needs_change",
+   "reason": "Paths and line numbers reproduce: vblankoffdelay at line 124; enable_dump_collection writes at lines 403 and 409 under the enable_ramdump=1 and =0 property triggers; qcom_ramdump.ko declares parmtype enable_dump_collection:int. The drm attribution is not shown: no drm.ko exists in either module tree and no dlkm module declares vblankoffdelay, so 'drm core' is inferred. Gap: the kernel image was not examined.",
+   "corrected_claim": "init.anorak.rc writes to sysfs paths that belong to modules: /sys/module/drm/parameters/vblankoffdelay (line 124), which no module in the two dlkm trees declares, so it is not msm_drm.ko; attributing it to the drm core is inferred (no drm.ko in the module trees). It also writes /sys/module/qcom_ramdump/parameters/enable_dump_collection (lines 403 and 409), which matches the enable_dump_collection parameter of qcom_ramdump.ko."
+  },
+  {
+   "id": "K17",
+   "label": "verified",
+   "claim": "wlan.ko (vendor): WLAN host device driver, Dual BSD/GPL, staging, direct depends on cnss2, cfg80211, cnss_prealloc, cnss_nl and cnss_utils. It has six module parameters, including country_code (charp), which init sets to 0. It defines no exported symbols and imports 503 global undefined symbols. Its transitive dependency closure in modules.dep has 22 entries.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/wlan.ko -> 'license=Dual BSD/GPL', 'author=Qualcomm Atheros, Inc.', 'description=WLAN HOST DEVICE DRIVER', 'parmtype=enable_dfs_chan_scan:int', 'parmtype=enable_11d:int', 'parmtype=country_code:charp', 'parmtype=prealloc_disabled:bool', 'parmtype=qdf_log_dump_at_kernel_enable:bool', 'parmtype=qdf_log_flush_timer_period:uint', 'staging=Y', 'depends=cnss2,cfg80211,cnss_prealloc,cnss_nl,cnss_utils'. Command: readelf -s --wide vendor_dlkm_a/lib/modules/wlan.ko | awk '$7==\"UND\" && $5==\"GLOBAL\" && $8!=\"\"' | wc -l -> 503. Command: readelf -p __ksymtab_strings vendor_dlkm_a/lib/modules/wlan.ko | grep -c '^  \\[' -> 0. Command: awk -v m='/vendor/lib/modules/wlan.ko:' 'index($0,m)==1{print NF-1}' vendor_dlkm_a/lib/modules/modules.dep -> 22.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/wlan.ko",
+   "verdict": "confirmed",
+   "reason": "wlan.ko: license Dual BSD/GPL, description WLAN HOST DEVICE DRIVER, staging=Y, depends cnss2,cfg80211,cnss_prealloc,cnss_nl,cnss_utils. Six parmtype entries, including country_code charp. No __ksymtab sections (no exports). 503 global undefined named symbols. modules.dep closure has 22 entries.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K18",
+   "label": "verified",
+   "claim": "cfg80211.ko (vendor): wireless configuration support, GPL, no module dependencies. It has three parameters, declares firmware files regulatory.db and regulatory.db.p7s, aliases the NETLINK family nl80211, and exports 129 symbols. wlan.ko and mac80211.ko depend on it.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/cfg80211.ko -> 'alias=net-pf-16-proto-16-family-nl80211', 'parmtype=cfg80211_disable_40mhz_24ghz:bool', 'parmtype=ieee80211_regdom:charp', 'firmware=regulatory.db.p7s', 'firmware=regulatory.db', 'parmtype=bss_entries_limit:int', 'name=cfg80211', 'depends='. Command: readelf -p __ksymtab_strings vendor_dlkm_a/lib/modules/cfg80211.ko | grep -c '^  \\[' -> 129. Command: readelf -s --wide ... UND GLOBAL count -> 186. Command: grep -n 'net-pf-16-proto-16-family-nl80211' vendor_dlkm_a/lib/modules/modules.alias -> '510:alias net-pf-16-proto-16-family-nl80211 cfg80211'. Command: grep -c 'cfg80211[.]ko' vendor_dlkm_a/lib/modules/modules.dep -> counts wlan and mac80211 lines (the modules.dep line for cfg80211.ko itself is empty).",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/cfg80211.ko",
+   "verdict": "confirmed",
+   "reason": "cfg80211.ko: description 'wireless configuration support', license GPL, no depends, three parameters, firmware regulatory.db and regulatory.db.p7s, alias net-pf-16-proto-16-family-nl80211 (modules.alias line 510). Exports: __ksymtab and __ksymtab_gpl sizes give 129 entries at 12 bytes each, matching 129 names in __ksymtab_strings. Dependents: the wlan and mac80211 modules.dep lines name cfg80211.ko. Evidence note: the grep count of 3 includes cfg80211's own line; the dependency fact is still correct.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K19",
+   "label": "verified",
+   "claim": "mac80211.ko (vendor): IEEE 802.11 subsystem, GPL, depends on cfg80211 only. It has six parameters (ieee80211_default_rc_algo charp, max_nullfunc_tries, max_probe_tries, beacon_loss_count, probe_wait_ms int, minstrel_vht_only bool), exports 119 symbols and imports 312.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/mac80211.ko -> 'description=IEEE 802.11 subsystem', 'license=GPL', 'parmtype=ieee80211_default_rc_algo:charp', 'parmtype=max_nullfunc_tries:int', 'parmtype=max_probe_tries:int', 'parmtype=beacon_loss_count:int', 'parmtype=probe_wait_ms:int', 'parmtype=minstrel_vht_only:bool', 'depends=cfg80211'. Command: readelf -p __ksymtab_strings ... | grep -c '^  \\[' -> 119. Command: readelf -s --wide ... UND GLOBAL count -> 312.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/mac80211.ko",
+   "verdict": "confirmed",
+   "reason": "mac80211.ko: description 'IEEE 802.11 subsystem', license GPL, depends=cfg80211 only (closure 1), six parameters with the stated types, 119 export names (ksymtab sections give 119 entries), 312 global undefined named symbols.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K20",
+   "label": "verified",
+   "claim": "msm_kgsl.ko (vendor): '3D Graphics driver', GPL v2. Direct depends are nine modules (qcom_iommu_util, qcom-scm, cmd-db, llcc-qcom, clk-qcom, log_gpu_error, mdt_loader, secure_buffer, mem_buf_dev). It has soft dependency pre arm_smmu nvmem_qfprom, matches the DT compatible qcom,kgsl-3d0, exports 6 symbols and imports 506. Its transitive modules.dep closure has 14 entries. powerhint.cfg (outside init and SELinux) writes kgsl-3d0 devfreq nodes.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/msm_kgsl.ko -> 'description=3D Graphics driver', 'license=GPL v2', 'softdep=pre: arm_smmu nvmem_qfprom', 'depends=qcom_iommu_util,qcom-scm,cmd-db,llcc-qcom,clk-qcom,log_gpu_error,mdt_loader,secure_buffer,mem_buf_dev', 'alias=of:N*T*Cqcom,kgsl-3d0', 'alias=of:N*T*Cqcom,kgsl-3d0C*'. Command: readelf -p __ksymtab_strings ... -> 6 entries (kgsl_add_rcu_notifier, kgsl_del_rcu_notifier, kgsl_get_stats, kgsl_gpu_frame_count, kgsl_gpu_num_freqs, kgsl_gpu_stat). Command: awk -v m='/vendor/lib/modules/msm_kgsl.ko:' 'index($0,m)==1{print NF-1}' vendor_dlkm_a/lib/modules/modules.dep -> 14. Command: sed -n '177,178p' vendor_a/etc/powerhint.cfg -> '\"/sys/class/kgsl/kgsl-3d0/devfreq/max_freq\" = \"690000000\"' and min_freq 285000000.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/msm_kgsl.ko",
+   "verdict": "needs_change",
+   "reason": "GPL v2 licence, nine direct depends, softdep pre arm_smmu nvmem_qfprom, the kgsl-3d0 compatible alias, six exports, 506 global undefined symbols and closure of 14 all reproduce. powerhint.cfg is a TOML file whose header says the power HAL applies it; it lists kgsl-3d0 devfreq and power-level paths with values (max_freq 690000000 at line 177, min_freq 285000000 at line 178). The file does not itself perform the writes. Gap: the power HAL consumer binary was not examined.",
+   "corrected_claim": "msm_kgsl.ko (vendor): '3D Graphics driver', GPL v2. Direct depends are nine modules (qcom_iommu_util, qcom-scm, cmd-db, llcc-qcom, clk-qcom, log_gpu_error, mdt_loader, secure_buffer, mem_buf_dev). It has soft dependency pre arm_smmu nvmem_qfprom, matches the DT compatible qcom,kgsl-3d0, exports 6 symbols and imports 506. Its transitive modules.dep closure has 14 entries. powerhint.cfg (outside init and SELinux) is a TOML configuration applied by the power HAL; it lists kgsl-3d0 devfreq nodes and values (for example devfreq/max_freq = 690000000 at line 177), but the writes themselves are performed by the consumer, not by this file."
+  },
+  {
+   "id": "K21",
+   "label": "verified",
+   "claim": "msm_drm.ko (vendor): two description strings ('MSM DRM Driver' and 'MSM SMMU driver'), GPL and GPL v2 licence tags, author Rob Clark. It has 13 direct depends, soft dependency pre msm-mmrm, seven parameters (including dsi_display0, dsi_display1, modeset, vram), 16 aliases for the mdp4 and mdss DT compatibles, 41 exported symbols and 701 imported symbols. Its transitive modules.dep closure has 31 entries. It is loaded by init.insmod.charger.cfg.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/msm_drm.ko -> 'parmtype=sdecustom:bool', 'parmtype=dsi_display0:string', 'parmtype=dsi_display1:string', 'parmtype=reglog:bool', 'parmtype=vram:charp', 'parmtype=dumpstate:bool', 'parmtype=modeset:bool', 'softdep=pre: msm-mmrm', 'description=MSM DRM Driver', 'license=GPL', 'license=GPL v2', 'description=MSM SMMU driver'; 'depends=msm_dma_iommu_mapping,qcom_iommu_util,qcom_rpmh,llcc-qcom,msm-mmrm,spmi-pmic-arb,pinctrl-msm,panel_event_notifier,qcom-scm,hdcp,msm_ext_display,altmode-glink,dwc3-msm' (13 entries) and 'alias=of:N*T*Cqcom,mdp4' ... (16 alias lines). Command: readelf -p __ksymtab_strings ... -> 41. Command: awk -v m='/vendor/lib/modules/msm_drm.ko:' 'index($0,m)==1{print NF-1}' vendor_dlkm_a/lib/modules/modules.dep -> 31. Command: grep -n 'msm_drm.ko' vendor_a/etc/init.insmod.charger.cfg -> 'modprobe|msm_drm.ko'.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/msm_drm.ko",
+   "verdict": "needs_change",
+   "reason": "Two descriptions (MSM DRM Driver, MSM SMMU driver), licences GPL and GPL v2, author Rob Clark, 13 direct depends, softdep pre msm-mmrm, seven parameters, 41 exports, 701 global undefined symbols, closure of 31 and loading from charger cfg line 17 all reproduce. The 16 alias lines are not limited to mdp4 and mdss: they cover mdp4, mdss, sde-kms, smmu_sde_unsec, smmu_sde_sec, smmu_sde_nrt_unsec, smmu_sde_nrt_sec and msm-hdcp, each as an exact and a C* wildcard form.",
+   "corrected_claim": "msm_drm.ko (vendor): two description strings ('MSM DRM Driver' and 'MSM SMMU driver'), GPL and GPL v2 licence tags, author Rob Clark. It has 13 direct depends, soft dependency pre msm-mmrm, seven parameters (including dsi_display0, dsi_display1, modeset, vram), 16 modules.alias lines that map the mdp4, mdss, sde-kms, smmu_sde_unsec, smmu_sde_sec, smmu_sde_nrt_unsec, smmu_sde_nrt_sec and msm-hdcp DT compatibles to msm_drm (each as an exact and a C* wildcard form), 41 exported symbols and 701 imported symbols. Its transitive modules.dep closure has 31 entries. It is loaded by init.insmod.charger.cfg."
+  },
+  {
+   "id": "K22",
+   "label": "verified",
+   "claim": "qcom_glink.ko (vendor): 'Qualcomm GLINK driver', GPL v2, no dependencies, exports 8 symbols (qcom_glink_native_probe, qcom_glink_native_start, glink_native_pm_ops and others) and imports 91. It is listed in the modules.dep closure of 54 other vendor modules, for example audio_prm_dlkm.ko.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/qcom_glink.ko -> 'description=Qualcomm GLINK driver', 'license=GPL v2', 'name=qcom_glink', 'depends='. Command: readelf -p __ksymtab_strings ... | grep -c '^  \\[' -> 8. Command: grep -c 'qcom_glink[.]ko' vendor_dlkm_a/lib/modules/modules.dep -> 54. modules.dep head line: '/vendor/lib/modules/audio_prm_dlkm.ko: ... /vendor/lib/modules/qcom_glink.ko'.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/qcom_glink.ko",
+   "verdict": "needs_change",
+   "reason": "Description, GPL v2, no depends, 8 exports (names present) and 91 global undefined symbols reproduce; audio_prm_dlkm.ko's modules.dep line includes qcom_glink.ko. The count of 54 is the grep result, which includes qcom_glink.ko's own line (its modules.dep entry begins with its own path). Excluding that line, 53 other modules list it.",
+   "corrected_claim": "qcom_glink.ko (vendor): 'Qualcomm GLINK driver', GPL v2, no dependencies, exports 8 symbols (qcom_glink_native_probe, qcom_glink_native_start, glink_native_pm_ops and others) and imports 91. It is listed in the modules.dep lines of 53 other vendor modules, for example audio_prm_dlkm.ko."
+  },
+  {
+   "id": "K23",
+   "label": "verified",
+   "claim": "qrtr.ko (vendor): Qualcomm IPC-router driver with a nameserver description, GPL v2 and Dual BSD/GPL tags, and no dependencies. It is the net protocol family 42 (net-pf-42) and exports 8 symbols (qrtr_endpoint_register, qrtr_ns_init, qrtr_get_service_id and others). qmi_helpers.ko has soft dependency pre qrtr. init.anorak.rc starts vendor.qrtr-ns, which runs as user vendor_qrtr.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/qrtr.ko -> 'description=Qualcomm IPC-router driver', 'description=Qualcomm IPC Router Nameservice', 'license=Dual BSD/GPL', 'alias=net-pf-42', 'depends='. Command: grep -n 'net-pf-42' vendor_dlkm_a/lib/modules/modules.alias -> 'alias net-pf-42 qrtr'. Command: grep -n 'softdep qmi_helpers' vendor_dlkm_a/lib/modules/modules.softdep -> '6:softdep qmi_helpers pre: qrtr'. Command: sed -n '324,327p' vendor_a/etc/init/hw/init.anorak.rc -> 'service vendor.qrtr-ns /vendor/bin/qrtr-ns -f', 'user vendor_qrtr', 'group vendor_qrtr'.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/qrtr.ko",
+   "verdict": "needs_change",
+   "reason": "Two descriptions, GPL v2 and Dual BSD/GPL licences, alias net-pf-42, no depends, 8 exports (qrtr_endpoint_register, qrtr_ns_init and qrtr_get_service_id present), softdep line 6 'qmi_helpers pre: qrtr', and user and group vendor_qrtr all reproduce. init.anorak.rc defines vendor.qrtr-ns at line 324 in class core; no start statement for it exists in the init directory, so 'starts' is not supported as written.",
+   "corrected_claim": "qrtr.ko (vendor): Qualcomm IPC-router driver with a nameserver description, GPL v2 and Dual BSD/GPL tags, and no dependencies. It is the net protocol family 42 (net-pf-42) and exports 8 symbols (qrtr_endpoint_register, qrtr_ns_init, qrtr_get_service_id and others). qmi_helpers.ko has soft dependency pre qrtr. init.anorak.rc defines the service vendor.qrtr-ns (line 324, class core, user and group vendor_qrtr, NET_BIND_SERVICE) with no explicit start line, so it runs as a class-core service; it runs as user vendor_qrtr."
+  },
+  {
+   "id": "K24",
+   "label": "verified",
+   "claim": "sched-walt.ko (vendor): module name sched_walt, GPL v2, depends on qcom-cpufreq-hw, exports 7 core-control and WALT symbols, imports 261. It has no description string, is in the blocklist (line 46), and is loaded by init.anorak.rc on boot when vendor.scheduler.schedutil is false.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/sched-walt.ko -> 'license=GPL v2', 'name=sched_walt', 'depends=qcom-cpufreq-hw'. Command: readelf -p __ksymtab_strings ... | grep -c '^  \\[' -> 7 (core_ctl_notifier_register, core_ctl_set_boost, set_task_boost, walt_pause_cpus, walt_resume_cpus, ...). Command: readelf -s --wide ... UND GLOBAL count -> 261. Blocklist: '46:blocklist sched-walt'. init.anorak.rc:197-198: 'on boot && property:vendor.scheduler.schedutil=false' / 'exec_background ... modprobe -a -d /vendor/lib/modules/ sched-walt'.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/sched-walt.ko",
+   "verdict": "confirmed",
+   "reason": "sched-walt.ko: name sched_walt, GPL v2, depends qcom-cpufreq-hw (closure 1), 7 export names (walt_pause_cpus, core_ctl_notifier_register, set_task_boost and others), 261 global undefined symbols, no description key, blocklist line 46, load on 'on boot && property:vendor.scheduler.schedutil=false' (lines 197-198).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K25",
+   "label": "verified",
+   "claim": "qcom_ramdump.ko (vendor): 'Qualcomm Technologies, Inc. Ramdump driver', GPL v2, no dependencies, one int parameter enable_dump_collection, six exported symbols and 34 imported symbols. init.anorak.rc writes the parameter from persist.vendor.ssr.enable_ramdump.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/qcom_ramdump.ko -> 'parmtype=enable_dump_collection:int', 'description=Qualcomm Technologies, Inc. Ramdump driver', 'license=GPL v2', 'name=qcom_ramdump', 'depends='. Command: readelf -p __ksymtab_strings ... | grep -c '^  \\[' -> 6. Command: readelf -s --wide ... UND GLOBAL count -> 34. Command: sed -n '402,404p' vendor_a/etc/init/hw/init.anorak.rc -> 'on property:persist.vendor.ssr.enable_ramdump=1' followed by 'write /sys/module/qcom_ramdump/parameters/enable_dump_collection ${persist.vendor.ssr.enable_ramdump}'.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/qcom_ramdump.ko",
+   "verdict": "confirmed",
+   "reason": "qcom_ramdump.ko: description 'Qualcomm Technologies, Inc. Ramdump driver', GPL v2, no depends, one int parameter enable_dump_collection, 6 export names, 34 global undefined symbols. The rc writes the parameter from persist.vendor.ssr.enable_ramdump at lines 402-403 and 408-409.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K26",
+   "label": "verified",
+   "claim": "usbvdm.ko (odm): 'Meta USB VDM abstraction library', GPL v2, staging, no dependencies. It exports 14 symbols (usbvdm_register, usbvdm_subscribe, usbvdm_engine_vdm, usbvdm_subscriber_vdm and others) and is the dependency of five odm modules: pdfu_initiator, usbvdm-glink, external_battery, usbvdm-cypd and charging_dock. init.insmod.charger.cfg loads it with usbvdm-cypd.ko and usbvdm-glink.ko.",
+   "evidence": "Command: readelf -p .modinfo odm_dlkm_a/lib/modules/usbvdm.ko -> 'description=Meta USB VDM abstraction library', 'license=GPL v2', 'name=usbvdm', 'intree=Y', 'staging=Y', 'depends='. Command: grep -n usbvdm odm_dlkm_a/lib/modules/modules.dep -> '6:/odm/lib/modules/pdfu_initiator.ko: /odm/lib/modules/usbvdm.ko', '12:.../usbvdm-glink.ko: .../usbvdm.ko', '14:external_battery.ko: usbvdm.ko', '18:usbvdm-cypd.ko: usbvdm.ko', '27:charging_dock.ko: usbvdm.ko', '23:/odm/lib/modules/usbvdm.ko:'. Command: grep -n usbvdm vendor_a/etc/init.insmod.charger.cfg -> 'modprobe|usbvdm.ko', 'modprobe|usbvdm-cypd.ko', 'modprobe|usbvdm-glink.ko'.",
+   "file": "<image>/mnt/odm_dlkm_a/lib/modules/usbvdm.ko",
+   "verdict": "confirmed",
+   "reason": "usbvdm.ko (odm): description 'Meta USB VDM abstraction library', GPL v2, staging=Y, no depends, 14 export names (usbvdm_register, usbvdm_subscribe, usbvdm_engine_vdm and others). Five odm modules list it in modules.dep (pdfu_initiator, usbvdm-glink, external_battery, usbvdm-cypd, charging_dock). Charger cfg lines 37-39 load usbvdm.ko, usbvdm-cypd.ko and usbvdm-glink.ko.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K27",
+   "label": "verified",
+   "claim": "modules.dep is depmod output: one line per module, '<absolute path>: <space-separated transitive dependency paths>', with an empty list for a module without dependencies. Vendor paths use /vendor/lib/modules and odm paths use /odm/lib/modules, the symlink names.",
+   "evidence": "Command: head -4 vendor_dlkm_a/lib/modules/modules.dep -> '/vendor/lib/modules/debug-regulator.ko:' and '/vendor/lib/modules/audio_prm_dlkm.ko: /vendor/lib/modules/spf_core_dlkm.ko /vendor/lib/modules/gpr_dlkm.ko /vendor/lib/modules/snd_event_dlkm.ko /vendor/lib/modules/q6_notifier_dlkm.ko /vendor/lib/modules/q6_pdr_dlkm.ko /vendor/lib/modules/pdr_interface.ko /vendor/lib/modules/qmi_helpers.ko /vendor/lib/modules/rproc_qcom_common.ko /vendor/lib/modules/qcom_smd.ko /vendor/lib/modules/qcom_glink_smem.ko /vendor/lib/modules/qcom_glink.ko'. Command: cut -d: -f1 vendor_dlkm_a/lib/modules/modules.dep | grep -c . -> 262. Odm file: '/odm/lib/modules/sensorlock.ko:' (first line).",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.dep",
+   "verdict": "confirmed",
+   "reason": "Every vendor modules.dep line begins with /vendor/lib/modules/ and every odm line with /odm/lib/modules/. 110 vendor and 19 odm lines have an empty dependency list. The first lines match the quoted text.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K28",
+   "label": "verified",
+   "claim": "modules.alias is kmod alias output with a comment header and 'alias <key> <module>' lines. Keys are OF compatible strings (alias of:N*T*C<compatible> with a C* wildcard line), platform:, i2c:, MHI or NETLINK forms. The vendor file has 841 lines including the header; the odm file has 27 alias lines.",
+   "evidence": "Command: sed -n '1,5p' vendor_dlkm_a/lib/modules/modules.alias -> '# Aliases extracted from modules themselves.', 'alias of:N*T*Cqcom,audio_prm audio_prm_dlkm', 'alias of:N*T*Cqcom,audio_prmC* audio_prm_dlkm', 'alias of:N*T*Cqcom,anorak-dispcc1 dispcc1_anorak'. Command: wc -l < vendor_dlkm_a/lib/modules/modules.alias -> 841. Command: grep -c '^alias' odm_dlkm_a/lib/modules/modules.alias -> 27. Command: grep -n 'net-pf-42\\|kgsl-3d0' vendor_dlkm_a/lib/modules/modules.alias -> 'alias net-pf-42 qrtr', 'alias of:N*T*Cqcom,kgsl-3d0 msm_kgsl'.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.alias",
+   "verdict": "confirmed",
+   "reason": "Header '# Aliases extracted from modules themselves.' is present. The vendor file has 841 lines (1 header and 840 alias lines); the odm file has 27 alias lines. Key forms present: of:N*T*C<compatible> with C* lines, platform: (17), i2c: (2), mhi and MHI_DTR/MHI_UCI, and net-pf-16 and net-pf-42 NETLINK forms.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K29",
+   "label": "verified",
+   "claim": "modules.load is a plain list of .ko file names, one per line, with no paths and no options. Vendor has 262 entries and odm has 27, and both lists are the full module sets (K04). Order is significant for the -b * path. The first vendor entries are lzo-rle.ko, lzo.ko, qti-regmap-debugfs.ko, regmap-spmi.ko and zram.ko. The first odm entry is as5510.ko.",
+   "evidence": "Command: head -5 vendor_dlkm_a/lib/modules/modules.load -> 'lzo-rle.ko', 'lzo.ko', 'qti-regmap-debugfs.ko', 'regmap-spmi.ko', 'zram.ko'. Command: head -1 odm_dlkm_a/lib/modules/modules.load -> 'as5510.ko'. Command: wc -l < vendor_dlkm_a/lib/modules/modules.load -> 262; wc -l < odm_dlkm_a/lib/modules/modules.load -> 27. Command: cat vendor_a/bin/init.insmod.sh (see K07) builds the list from both files.",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.load",
+   "verdict": "needs_change",
+   "reason": "Plain module names: no lines contain a path ('/') or options (no spaces or '='). Vendor has 262 entries and odm has 27; first vendor entries and the first odm entry (as5510.ko) match. The 'order is significant' statement is not verified: order is only inferred from the vendor-then-odm concatenation in the script, and no load-order test was run.",
+   "corrected_claim": "modules.load is a plain list of .ko file names, one per line, with no paths and no options. Vendor has 262 entries and odm has 27, and both lists are the full module sets (K04). The vendor list precedes the odm list in the argument built for the -b * path; whether order changes load order is inferred and was not tested. The first vendor entries are lzo-rle.ko, lzo.ko, qti-regmap-debugfs.ko, regmap-spmi.ko and zram.ko. The first odm entry is as5510.ko."
+  },
+  {
+   "id": "K30",
+   "label": "verified",
+   "claim": "modules.softdep holds softdep rules in the form 'softdep <module> pre: <modules> [post: <modules>]'. The vendor file has 16 rules; the odm file has only a comment header and no rules. Example: softdep msm_kgsl pre: arm_smmu nvmem_qfprom.",
+   "evidence": "Command: grep -c '^softdep' vendor_dlkm_a/lib/modules/modules.softdep -> 16. Command: sed -n '5,6p' vendor_dlkm_a/lib/modules/modules.softdep -> 'softdep msm_kgsl pre: arm_smmu nvmem_qfprom', 'softdep qmi_helpers pre: qrtr'. Command: wc -c < odm_dlkm_a/lib/modules/modules.softdep -> 55 (the '# Soft dependencies extracted from modules themselves.' header line and a newline).",
+   "file": "<image>/mnt/vendor_dlkm_a/lib/modules/modules.softdep",
+   "verdict": "confirmed",
+   "reason": "Vendor modules.softdep has 16 softdep lines, with one 'post:' rule (dwc3_msm). The odm file is 55 bytes: the header line and a newline, with no rules. Lines 5 and 6 are 'softdep msm_kgsl pre: arm_smmu nvmem_qfprom' and 'softdep qmi_helpers pre: qrtr'.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K31",
+   "label": "verified",
+   "claim": "Both etc/build.prop files identify the same build: device eureka, Oculus brand, model 'Quest 3', Android release 12 (SDK 32), build id SQ3A.220605.009.A1, userdebug/test-keys, dated Tue Nov 19 17:09:18 PST 2024. Each sets persist.sys.usb.config=none.",
+   "evidence": "Command: cat odm_dlkm_a/etc/build.prop -> 'ro.product.odm_dlkm.model=Quest 3', 'ro.product.odm_dlkm.device=eureka', 'ro.odm_dlkm.build.date=Tue Nov 19 17:09:18 PST 2024', 'ro.odm_dlkm.build.version.sdk=32', 'persist.sys.usb.config=none'. Command: cat vendor_dlkm_a/etc/build.prop -> 'ro.product.vendor_dlkm.model=Quest 3', 'ro.vendor_dlkm.build.version.sdk=32'. Build property names are also listed in system_a plat_property_contexts lines 823-885.",
+   "file": "<image>/mnt/odm_dlkm_a/etc/build.prop",
+   "verdict": "confirmed",
+   "reason": "Both build.prop files: brand oculus, device eureka, manufacturer Oculus, model Quest 3, release 12, SDK 32, build id SQ3A.220605.009.A1, fingerprint ending in userdebug/test-keys, date 'Tue Nov 19 17:09:18 PST 2024', and persist.sys.usb.config=none. The dlkm build-property names are listed in system_a plat_property_contexts within lines 823-885 (16 odm entries in 835-851, the vendor entries in 824-833 and 881-885).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K32",
+   "label": "verified",
+   "claim": "The fs_config_dirs and fs_config_files files in both images are zero bytes. Both NOTICE.xml.gz files are 75 bytes and decompress to an XML document with an empty licenses element.",
+   "evidence": "Command: stat -c '%s %n' vendor_dlkm_a/etc/fs_config_dirs vendor_dlkm_a/etc/fs_config_files vendor_dlkm_a/etc/NOTICE.xml.gz odm_dlkm_a/etc/NOTICE.xml.gz -> '0 vendor_dlkm_a/etc/fs_config_dirs', '0 vendor_dlkm_a/etc/fs_config_files', '75 vendor_dlkm_a/etc/NOTICE.xml.gz', '75 odm_dlkm_a/etc/NOTICE.xml.gz'. Command: gzip -dc vendor_dlkm_a/etc/NOTICE.xml.gz -> '<?xml version=\"1.0\" encoding=\"utf-8\"?>' '<licenses>' '</licenses>'.",
+   "file": "<image>/mnt/vendor_dlkm_a/etc/NOTICE.xml.gz",
+   "verdict": "confirmed",
+   "reason": "fs_config_dirs and fs_config_files are 0 bytes in both trees. NOTICE.xml.gz is 75 bytes in both and decompresses to an XML declaration with an empty licenses element (only whitespace inside).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K33",
+   "label": "verified",
+   "claim": "roles.tsv holds 306 data rows (plus a header) with one row per input row and unique partition/path keys. Confidence labels: 278 verified, 27 inferred, 1 unverified (blu_fw_driver.ko).",
+   "evidence": "Command: awk -F'\\t' 'NR>1{print $1\"\\t\"$2}' roles.tsv | sort | uniq -d | wc -l -> 0. Command: awk -F'\\t' 'NR>1{print $1\"\\t\"$2}' roles.tsv | sort | diff - <(awk -F'\\t' '{print $2\"\\t\"$3}' input_rows.tsv | sort) -> no output. Command: awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c -> '27 inferred', '1 unverified', '278 verified'.",
+   "file": "<image>-tools/work/subsystems/kernel-modules/roles.tsv",
+   "verdict": "confirmed",
+   "reason": "roles.tsv has a header and 306 data rows, 4 fields each. Partition/path keys are unique and identical to the 306 input keys. Confidence: 278 verified, 27 inferred, 1 unverified (blu_fw_driver.ko).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "K34",
+   "label": "inferred",
+   "claim": "The 289 modules fall into two groups. vendor_dlkm_a holds Qualcomm SoC platform drivers (clocks, interconnect, SMMU, GLINK/QRTR transports, KGSL, MSM DRM, cfg80211/mac80211 WLAN, WCD/LPASS audio, SPMI PMIC, UFS). odm_dlkm_a holds device drivers for Meta/Oculus peripherals (USB VDM, syncboss, sensors, regulators). The grouping comes from author strings, descriptions and DT compatibles, not from the device tree.",
+   "evidence": "Command: readelf -p .modinfo vendor_dlkm_a/lib/modules/qcom_glink.ko and odm_dlkm_a/lib/modules/usbvdm.ko (descriptions as in K22 and K26). Command: grep -n 'oculus' odm_dlkm_a/lib/modules/modules.alias -> 'alias of:N*T*Coculus,nautilus nautilus', 'alias of:N*T*Coculus,virtual-sensor virtual_sensor'. Command: grep -c 'Qualcomm' ko_summary.tsv -> count of Qualcomm-described modules (from the description column).",
+   "file": "<image>-tools/work/subsystems/kernel-modules/ko_summary.tsv",
+   "verdict": "confirmed",
+   "reason": "Inferred grouping is supported by names and descriptions. Vendor holds clock, interconnect, SMMU, glink and qrtr, KGSL, MSM DRM, wlan/cfg80211/mac80211, lpass/wcd audio, SPMI and UFS modules. Odm holds five syncboss_* modules, sensorlock, virtual_sensor, two regulator modules and the usbvdm family. Note: the grouping is a broad rule, not exact: vendor also holds generic modules (zram, zsmalloc, lzo) and odm holds two ASoC codecs (snd-soc-ak4333, snd-soc-max98388).",
+   "corrected_claim": ""
+  }
+ ],
+ "gaps": [
+  "Runtime behaviour of the modules (probe functions, device nodes created, effective parameter values after boot) was not determined; all findings are static.",
+  "The modprobe binary (vendor_a/bin/modprobe) was not inspected, so the blocklist and -b behaviour in K13 is inferred, not reproduced.",
+  "Device-tree nodes matching the of: alias keys live in device-tree blobs outside this group and were not resolved.",
+  "Firmware files named by modules (cfg80211 regulatory.db and regulatory.db.p7s, WLAN firmware via wlan_firmware_service) were not located in the mounted partitions.",
+  "Roles for 27 modules come from name, alias or exported symbol names only; blu_fw_driver.ko is unverified; bcl_pmic5, bcl_soc, icc-test, qcom_iommu_debug, qti_qmi_sensor_v2, rimps_log and ddr_cdev have no content-based confirmation.",
+  "Cross-module symbol resolution (which module provides each undefined symbol) was not computed; only per-module export and import counts were produced.",
+  "Deep dives cover 10 modules and 4 configuration or list files (modules.dep, modules.alias, modules.blocklist, modules.load) plus init and SELinux references; the other 279 modules were classified from modinfo, alias or export strings only.",
+  "Module parameter descriptions were extracted for modules with parm entries only; parameter defaults are not in the modules.",
+  "The kernel image and CONFIG_ options are not in this group, so the build configuration of 5.10.205-01655-g5c5a360e9c21 was not checked.",
+  "init.insmod.sh (vendor_a/bin) and init.anorak.rc belong to other subsystems and were cited only for module-loading references.",
+  "References to module-provided nodes in other configuration files (ueventd.rc kgsl and wcd nodes, powerhint.cfg sched_walt and kgsl paths) were located but not analysed in full."
+ ],
+ "rolesFile": "data/subsystems/kernel-modules/roles.tsv"
+}

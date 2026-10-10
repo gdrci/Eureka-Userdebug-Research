@@ -1,0 +1,184 @@
+partition	path	role	confidence
+odm_a	etc/build.prop	ODM partition build.prop: ro.product.odm.* identity, ro.odm.build.fingerprint and ODM properties (63 keys)	verified
+odm_a	etc/init/vendor.oculus.hardware.wifi@1.0-service.rc	init service vendor.oculus.wifi-hal-1-0 running /odm/bin/hw/vendor.oculus.hardware.wifi@1.0-service	verified
+odm_a	etc/init/vendor.oculus.hardware.pdfu-service.rc	init service vendor.oculus.hardware.pdfu-service (PDFU HAL binary under /odm/bin/hw), starts on vendor.all.modules.ready=1	verified
+odm_a	etc/init/flashswap.rc	post-fs-data action: mkdir /data/vendor/flashswap (0700 root root) and exec /odm/bin/flashswap.sh	verified
+odm_a	etc/init/vendor.oculus.hardware.externalbattery@1.0-service.rc	init service vendor.oculus.externalbattery-hal-1-0 (external battery HAL), started on init	verified
+odm_a	etc/init/vendor.oculus.hardware.keyboxinstaller@1.0-service.anorak.rc	init service vendor.oculus.keyboxinstaller-hal-1-0 (anorak keybox installer HAL)	verified
+odm_a	etc/init/odm.sensor-emulator.rc	init service vendor.sensor-emulator (/odm/bin/sensor-emulator) with post-fs-data and boot triggers	verified
+odm_a	etc/init/board_init.rc	oneshot init service board_init (/odm/bin/board_init --setprops), class core, runs as system	verified
+odm_a	etc/init/vendor.oculus.hardware.sensors@1.0-service-debug.rc	init service vendor.oculus.sensors-hal-1-0 (sensors HAL, debug variant) with post-fs-data and boot triggers	verified
+odm_a	etc/init/perfservice.rc	init service perfservice (/odm/bin/hw/perf_service --schedutil), restarted when zygote restarts	verified
+odm_a	etc/init/fw_init.rc	init service fw_init (/vendor/odm/bin/fw_init)	verified
+odm_a	etc/init/vendor.oculus.hardware.sensors@1.0-iad.rc	init service vendor.oculus.iad-hal-1-0 (sensors IAD HAL)	verified
+odm_a	etc/init/vendor.oculus.hardware.sensors@1.0-flicker.rc	init service vendor.oculus.flicker-hal-1-0 (sensors flicker HAL)	verified
+odm_a	etc/init/fw_init_bootstat.rc	property-triggered action: bootstat -r FwInitDuration with vendor.fw_init.duration_ms	verified
+odm_a	etc/init/odm.sensoremu.rc	init service vendor.sensoremu (/odm/bin/sensoremu) with post-fs-data and boot triggers	verified
+odm_a	etc/init/android.hardware.usb@1.2-service.ovr.dev.rc	init service vendor.usb-hal-1-2 (USB HAL 1.2, ovr dev variant), early-boot and boot triggers	verified
+odm_a	etc/init/vendor.oculus.hardware.dock@1.0-service.rc	init service vendor.dock-1-0 (dock HAL), triggered on vendor.all.modules.ready=1	verified
+odm_a	etc/init/vendor.oculus.hardware.sensorlock-service.rc	init service vendor.oculus.hardware.sensorlock-service (anorak sensor lock HAL)	verified
+odm_a	etc/init/vendor.oculus.hardware.catty@1.0-service.rc	init service vendor.catty-1-0 (catty HAL)	verified
+odm_a	etc/init/vendor.oculus.hardware.devicecert@1.0-service.anorak.rc	init service vendor.oculus.devicecert-hal-1-0 (anorak device certificate HAL), post-fs-data trigger	verified
+odm_a	etc/init/android.hardware.dumpstate@1.1-service.ovr.rc	init service vendor.dumpstate-1.1 (dumpstate HAL 1.1, ovr variant)	verified
+odm_a	etc/init/vendor.oculus.hardware.maintenanceboot.maintenanceboot-service.rc	init service for the Oculus maintenanceboot HAL (binary under /odm/bin/hw)	verified
+odm_a	etc/init/android.hardware.power.stats@1.0-service.anorak.rc	init service vendor.power.stats-hal-1-0 (anorak power stats HAL), boot trigger	verified
+odm_a	etc/init/vendor.oculus.hardware.sensors@1.0-service-mock.rc	init service vendor.oculus.sensors-mock-hal-1-0 (mock sensors HAL), post-fs-data trigger	verified
+product_a	etc/build.prop	product partition build.prop: ro.product.product.* identity, ro.product.build.fingerprint and product properties (52 keys)	verified
+product_a	etc/init/ovr_crashuploader.rc	init service crashuploader (/product/bin/ovr_crashuploader64)	verified
+system_a	init	symlink at image root to /system/bin/init (the init entry point)	verified
+system_a	init.environ.rc	early-init action exporting global environment variables (ANDROID_ROOT, ANDROID_DATA, ANDROID_ART_ROOT, ANDROID_STORAGE and others)	verified
+system_a	system/bin/init	init executable: aarch64 PIE, dynamically linked, stripped, BuildID ab61af44159984e98f5fa1da776a36db; binary contains the path /system/etc/init/hw/init.rc	verified
+system_a	system/bin/ueventd	symlink to init (readlink); the init binary also contains the string "ueventd started!"	verified
+system_a	system/etc/ueventd.rc	ueventd rule file: imports vendor and odm ueventd.rc, defines subsystems and /dev and /sys permission lines	verified
+system_a	system/etc/init/logtagd.rc	post-fs-data action creating /data/misc/logd/event-log-tags with logd owner and mode 0600	verified
+system_a	system/etc/init/mdnsd.rc	init service mdnsd (/system/bin/mdnsd)	verified
+system_a	system/etc/init/mediaextractor.rc	init service mediaextractor (/system/bin/mediaextractor)	verified
+system_a	system/etc/init/recovery-refresh.rc	post-fs action running /system/bin/recovery-refresh in the background	verified
+system_a	system/etc/init/traced_perf.rc	init service traced_perf (/system/bin/traced_perf), enabled by persist.traced_perf.enable	verified
+system_a	system/etc/init/oculus_shutdown_stats.rc	boot action read_prev_vendor_shutdown_stats	verified
+system_a	system/etc/init/racoon.rc	init service racoon (/system/bin/racoon)	verified
+system_a	system/etc/init/atrace.rc	boottrace service (/system/bin/atrace --async_start) plus about 316 chmod rules for the kernel trace buffer	verified
+system_a	system/etc/init/watchdogd.rc	init service watchdogd (/system/bin/watchdogd 10 20)	verified
+system_a	system/etc/init/lmkd.rc	init service lmkd (/system/bin/lmkd) with reinit and device_config triggers	verified
+system_a	system/etc/init/flags_health_check.rc	triggers after load_persist_props, boot completion and updatable-crash flags (no service)	observed
+system_a	system/etc/init/mediaserver.rc	init service media (/system/bin/mediaserver), triggered by init.svc.media	verified
+system_a	system/etc/init/vold.rc	init service vold (/system/bin/vold)	verified
+system_a	system/etc/init/mtpd.rc	init service mtpd (/system/bin/mtpd)	verified
+system_a	system/etc/init/wificond.rc	init service wificond (/system/bin/wificond)	verified
+system_a	system/etc/init/update_verifier.rc	init services update_verifier_nonencrypted and update_verifier (/system/bin/update_verifier)	verified
+system_a	system/etc/init/hw/init.zygote64.rc	zygote service for app_process64 (64-bit zygote) with system-server start	verified
+system_a	system/etc/init/hw/init.usb.configfs.rc	USB configfs gadget actions switching sys.usb.config among adb, mtp, ptp and combinations (25 on-blocks)	verified
+system_a	system/etc/init/hw/init.zygote32.rc	zygote service for app_process (32-bit zygote)	verified
+system_a	system/etc/init/hw/init.zygote64_32.rc	zygote and zygote_secondary services (app_process64 and app_process32)	verified
+system_a	system/etc/init/hw/init.usb.rc	adbd service (/system/bin/adbd --root_seclabel) and ADB and USB property actions	verified
+system_a	system/etc/init/hw/init.zygote64_stub32.rc	zygote services selected by ro.zygote=zygote64_stub32: app_process64 zygote and stub_zygote for app_process32	verified
+system_a	system/etc/init/hw/init.rc	main init script: early-init, init, late-init, post-fs, boot triggers; imports init.environ.rc, usb, the hardware and zygote scripts; defines ueventd and console services	verified
+system_a	system/etc/init/lpdumpd.rc	init service lpdumpd (/system/bin/lpdumpd) with sys.lpdumpd start and stop triggers	verified
+system_a	system/etc/init/dumpstate.rc	services dumpstate, dumpstatez and bugreportd (/system/bin/dumpstate)	verified
+system_a	system/etc/init/iorapd.rc	init service iorapd (/system/bin/iorapd)	verified
+system_a	system/etc/init/vdc.rc	encryption triggers defaultcrypto and encrypt calling /system/bin/vdc cryptfs	verified
+system_a	system/etc/init/recovery-persist.rc	post-fs-data action creating /data/misc/recovery and running /system/bin/recovery-persist	verified
+system_a	system/etc/init/simpleperf.rc	boot action running simpleperf boot-record when ro.debuggable=1 and persist.simpleperf.boot_record is set	verified
+system_a	system/etc/init/tombstoned.rc	init service tombstoned (/system/bin/tombstoned)	verified
+system_a	system/etc/init/gpuservice.rc	init service gpu (/system/bin/gpuservice)	verified
+system_a	system/etc/init/heapprofd.rc	services heapprofd and heapprofd_secondary (/system/bin/heapprofd)	verified
+system_a	system/etc/init/storaged.rc	init service storaged (/system/bin/storaged)	verified
+system_a	system/etc/init/uncrypt.rc	services uncrypt, setup-bcb and clear-bcb (/system/bin/uncrypt)	verified
+system_a	system/etc/init/odsign.rc	init service odsign (/system/bin/odsign), not oneshot; stopped manually after it exits	verified
+system_a	system/etc/init/apexd.rc	services apexd, apexd-bootstrap and apexd-snapshotde (/system/bin/apexd)	verified
+system_a	system/etc/init/gatekeeperservice.rc	init service gatekeeperserver (/system/bin/gatekeeperserver), post-fs-data	verified
+system_a	system/etc/init/perfetto.rc	services traced, traced_probes, mm_events and perfetto_boottrace (Perfetto tracing binaries)	verified
+system_a	system/etc/init/logcatd.rc	init service logcatd (/system/bin/logcatd) writing persistent logs under /data	verified
+system_a	system/etc/init/usbd.rc	init service usbd (/system/bin/usbd), factorytest trigger	verified
+system_a	system/etc/init/vendor-464xlat.rc	triggers setting net.464xlat.cellular.enabled from persist.vendor.net.doxlat	verified
+system_a	system/etc/init/audioserver.rc	init service audioserver (/system/bin/audioserver) with vts and stopped-state triggers	verified
+system_a	system/etc/init/installd.rc	init service installd (/system/bin/installd), early-boot trigger	verified
+system_a	system/etc/init/vrfocusserver.rc	init service vrfocus (/system/bin/vrfocusserver), factorytest trigger	verified
+system_a	system/etc/init/atrace_userdebug.rc	post-fs action adding userdebug kernel-trace permissions (no service)	observed
+system_a	system/etc/init/snapuserd.rc	init service snapuserd (/system/bin/snapuserd)	verified
+system_a	system/etc/init/drmserver.rc	init service drm (/system/bin/drmserver), triggered by drm.service.enabled	verified
+system_a	system/etc/init/hwservicemanager.rc	init service hwservicemanager (/system/bin/hwservicemanager)	verified
+system_a	system/etc/init/wifi.rc	post-fs-data, fs and boot-completed triggers for Wi-Fi setup and tracing (no service)	observed
+system_a	system/etc/init/blank_screen.rc	init service blank_screen (/system/bin/blank_screen)	verified
+system_a	system/etc/init/runtimeipcbroker.rc	init service runtimeipcbroker (/system/bin/runtimeipcbroker), factorytest trigger	verified
+system_a	system/etc/init/surfaceflinger.rc	init service surfaceflinger (/system/bin/surfaceflinger)	verified
+system_a	system/etc/init/profcollectd.rc	init service profcollectd (/system/bin/profcollectd) with post-fs-data and boot triggers	verified
+system_a	system/etc/init/wait_for_keymaster.rc	init service wait_for_keymaster (/system/bin/wait_for_keymaster)	verified
+system_a	system/etc/init/incidentd.rc	init service incidentd (/system/bin/incidentd), post-fs-data	verified
+system_a	system/etc/init/init-debug.rc	debug triggers writing MMC speed and cache sysfs nodes from persist.mmc.* and mounting debugfs (no service)	verified
+system_a	system/etc/init/idmap2d.rc	init service idmap2d (/system/bin/idmap2d)	verified
+system_a	system/etc/init/rss_hwm_reset.rc	init service rss_hwm_reset (/system/bin/rss_hwm_reset), triggered by sys.rss_hwm_reset.on=1	verified
+system_a	system/etc/init/oculus.perfetto.rc	triggers on init.svc.adbd state to enable or disable perfetto tracing (no service)	observed
+system_a	system/etc/init/netd.rc	init service netd (/system/bin/netd)	verified
+system_a	system/etc/init/update_engine.rc	init service update_engine (/system/bin/update_engine) with slot-suffix and post-fs-data triggers	verified
+system_a	system/etc/init/llkd.rc	init service llkd-0 (/system/bin/llkd), triggered by ro.llk.enable and ro.debuggable	verified
+system_a	system/etc/init/logd.rc	services logd, logd-reinit and logd-auditctl (/system/bin/logd and /system/bin/auditctl -r 5)	verified
+system_a	system/etc/init/xrspd-debug.rc	init service xrspd (/system/bin/xrspd), the xrs protocol daemon for Oculus Link	verified
+system_a	system/etc/init/gsid.rc	init service gsid (/system/bin/gsid) with post-fs and boot triggers	verified
+system_a	system/etc/init/android.hidl.allocator@1.0-service.rc	init service hidl_memory (/system/bin/hw/android.hidl.allocator@1.0-service)	verified
+system_a	system/etc/init/credstore.rc	init service credstore (/system/bin/credstore /data/misc/credstore)	verified
+system_a	system/etc/init/android.system.suspend@1.0-service.rc	init service system_suspend (/system/bin/hw/android.system.suspend@1.0-service)	verified
+system_a	system/etc/init/clean_scratch_files.rc	post-fs-data action running /system/bin/clean_scratch_files when ro.debuggable=1	verified
+system_a	system/etc/init/bpfloader.rc	init service bpfloader (/system/bin/bpfloader), started by load_bpf_programs trigger	verified
+system_a	system/etc/init/servicemanager.rc	init service servicemanager (/system/bin/servicemanager)	verified
+system_a	system/etc/init/keystore2.rc	init service keystore2 (/system/bin/keystore2 /data/misc/keystore)	verified
+system_a	system/etc/init/gatekeeperd.rc	init service gatekeeperd (/system/bin/gatekeeperd /data/misc/gatekeeper)	verified
+system_a	system/etc/init/bootstat.rc	post-fs, post-fs-data and boot triggers for bootstat boot-time metrics (no service)	observed
+system_a	system/build.prop	system partition build.prop: ro.build.* and ro.system.build.* identity, buildinfo.prop section, device/meta system properties (173 keys)	verified
+system_ext_a	etc/init/voiceassistantserver.rc	init service voiceassistantserver (/system_ext/bin/voiceassistantserver), triggered by ovr.assistant.ww_enabled	verified
+system_ext_a	etc/init/cameramuxmodeservice.rc	init service cameramuxmodeservice (/system_ext/bin/cameramuxmodeservice), factorytest trigger	verified
+system_ext_a	etc/init/perfstream.rc	init service perfstream (/system_ext/bin/perfstream), post-fs-data	verified
+system_ext_a	etc/init/sensorproxy.rc	init service sensorproxy (/system_ext/bin/sensorproxy), boot triggers keyed on persist.ovr.enable.sensorproxy	verified
+system_ext_a	etc/init/audiotapperhost.rc	init service audiotapperhost (/system_ext/bin/audiotapperhost)	verified
+system_ext_a	etc/init/instsampd.rc	init service instsampd (/system_ext/bin/instsampd)	verified
+system_ext_a	etc/init/logd_ext.rc	init service logdumpd (/system_ext/bin/logdumpd), post-fs-data	verified
+system_ext_a	etc/init/configbootfreeze.rc	early-boot action running /system_ext/bin/configbootfreeze	verified
+system_ext_a	etc/init/vr_bootanim.rc	init service bootanim (/system_ext/bin/vr_bootanimation), triggered by service.bootanim.exit_vendor=1	verified
+system_ext_a	etc/init/bpfagent_lume_bridge.rc	init service bpfagent_lume_bridge (/system_ext/bin/bpfagent_lume_bridge)	verified
+system_ext_a	etc/init/init.emgservice.rc	init service emgservice (/system_ext/bin/emgservice)	verified
+system_ext_a	etc/init/ovr_crashreporter.rc	services minidumpd64, crashreporterd and panicreporter (/system_ext/bin/ovr_crashreporter64)	verified
+system_ext_a	etc/init/mrsystemservice.rc	init service mrsystemservice (/system_ext/bin/mrsystemservice)	verified
+system_ext_a	etc/init/vendor.oculus.hardware.telemetry@1.0-service.rc	init service oculus-hardware-telemetry-1-0 (/system_ext/bin/hw/vendor.oculus.hardware.telemetry@1.0-service)	verified
+system_ext_a	etc/init/parfait.rc	init service parfait (/system_ext/bin/parfait) with post-fs-data and parfait.enable triggers	verified
+system_ext_a	etc/init/wifitelemetry.rc	init service wifitelemetry (/system_ext/bin/wifitelemetry)	verified
+system_ext_a	etc/init/oculusmediametrics.rc	init service mediametrics (/system_ext/bin/oculusmediametrics)	verified
+system_ext_a	etc/init/preferencesserver.rc	init service settingsserver (/system_ext/bin/settingsserver), post-fs-data	verified
+system_ext_a	etc/init/trackingservice.rc	init service trackingservice (/system_ext/bin/trackingservice), post-fs-data	verified
+system_ext_a	etc/init/crashtelemetry.rc	init service crashtelemetry (/system_ext/bin/crashtelemetry)	verified
+system_ext_a	etc/init/calibrationserver.rc	init service calibration_svr (/system_ext/bin/calibrationserver), post-fs-data	verified
+system_ext_a	etc/init/bug_report_service.rc	post-fs-data action creating /data/misc/bugreports (0770 system system), no service	verified
+system_ext_a	etc/init/gpuprofilingservice.rc	init service gpuprofserver (/system_ext/bin/gpuprofserver), debug.vr and persist.vr triggers	verified
+system_ext_a	etc/init/diagnosticscollector.rc	init service diagnosticscollector (/system_ext/bin/diagnosticscollector), boot-completed trigger	verified
+system_ext_a	etc/init/vendor.oculus.hardware.composer-service.rc	init service for the Oculus composer HAL (/system_ext/bin/hw/vendor.oculus.hardware.composer-service), early-boot triggers	verified
+system_ext_a	etc/init/bpfagent.rc	init service bpfagent (/system_ext/bin/bpfagent) with post-fs-data and user-build triggers	verified
+system_ext_a	etc/init/audiotapper.rc	init service audiotapper (/system_ext/bin/audiotapper)	verified
+system_ext_a	etc/init/trackingfidelityservice.rc	init service trackingfidelityservice (/system_ext/bin/trackingfidelityservice), factorytest trigger	verified
+system_ext_a	etc/init/vrdevicemanagerserver.rc	init service vrdevice (/system_ext/bin/vrdevicemanagerserver)	verified
+system_ext_a	etc/init/telemetry.rc	init service telemetry (/system_ext/bin/telemetry), post-fs-data	verified
+system_ext_a	etc/build.prop	system_ext partition build.prop: ro.product.system_ext.* identity and ro.system_ext.build.fingerprint (22 keys)	verified
+vendor_a	etc/init/memtrack_qti.rc	init service vendor.qti.hardware.memtrack (memtrack HAL binary under /vendor/bin/hw)	verified
+vendor_a	etc/init/vendor.qti.hardware.qseecom@1.0-service.rc	init service qseecom-service (qseecom HAL 1.0), started on init	verified
+vendor_a	etc/init/android.hardware.media.omx@1.0-service.rc	init service vendor.media.omx (media OMX HAL)	verified
+vendor_a	etc/init/vendor.qti.hardware.display.allocator-service.rc	init service vendor.qti.hardware.display.allocator (display allocator HAL)	verified
+vendor_a	etc/init/display_property_handler.rc	init service display_property_handler (/vendor/bin/display_property_handler) with display property triggers	verified
+vendor_a	etc/init/vendor.qti.tftp.rc	init service vendor.tftp_server (/vendor/bin/tftp_server), post-fs-data	verified
+vendor_a	etc/init/vendor.qti.adsprpc-guestos-service.rc	init service vendor.adsprpcd (/vendor/bin/adsprpcd)	verified
+vendor_a	etc/init/vndservicemanager.rc	init service vndservicemanager (/vendor/bin/vndservicemanager /dev/vndbinder)	verified
+vendor_a	etc/init/android.hardware.drm@1.4-service-lazy.widevine.rc	services vendor.move_data_sh (/system/bin/move_widevine_data.sh) and vendor.drm-widevine-hal-1-4 (Widevine DRM HAL)	verified
+vendor_a	etc/init/vendor_flash_recovery.rc	init service vendor_flash_recovery running /vendor/bin/install-recovery.sh (script not in mounted tree)	verified
+vendor_a	etc/init/vendor.qti.diag.rc	init service vendor.diag-router (/vendor/bin/diag-router), early-boot	verified
+vendor_a	etc/init/hostapd.android.rc	init service hostapd (/vendor/bin/hw/hostapd), post-fs-data	verified
+vendor_a	etc/init/set_blu_current.rc	init service set_blu_current (/vendor/bin/set_blu_current), triggered on service.bootanim.exit=1	verified
+vendor_a	etc/init/boringssl_self_test.rc	vendor copies of the boringssl self-test services (boringssl_self_test32_vendor and boringssl_self_test64_vendor)	verified
+vendor_a	etc/init/vendor.qti.media.c2@1.0-service.rc	init service vendor-qti-media-c2-hal-1-0 (Codec2 HAL)	verified
+vendor_a	etc/init/android.hardware.gatekeeper@1.0-service-qti.rc	init service gatekeeper-1-0 (QTI gatekeeper HAL)	verified
+vendor_a	etc/init/android.hardware.boot@1.2-service.rc	init service vendor.boot-hal-1-2 (boot control HAL)	verified
+vendor_a	etc/init/android.hardware.atrace@1.0-service.rc	init service vendor.atrace-hal-1-0 (atrace HAL), late-init trigger	verified
+vendor_a	etc/init/android.hardware.health@2.1-service.rc	init service health-hal-2-1 (health HAL)	verified
+vendor_a	etc/init/android.hardware.drm@1.4-service-lazy.clearkey.rc	init service vendor.drm-clearkey-hal-1-4 (ClearKey DRM HAL)	verified
+vendor_a	etc/init/android.hardware.bluetooth@1.0-service-qti.rc	init service vendor.bluetooth-1-0-qti (QTI Bluetooth HAL)	verified
+vendor_a	etc/init/android.hardware.light@2.0-service.anorak.rc	init service light-hal-2-0 (anorak light HAL), early-boot and fs triggers	verified
+vendor_a	etc/init/vendor.qti.audio-adsprpc-service.rc	init service vendor.audioadsprpcd_audiopd (/vendor/bin/audioadsprpcd audiopd)	verified
+vendor_a	etc/init/android.hardware.drm@1.0-service-lazy.rc	init service vendor.drm-hal-1-0 (DRM 1.0 HAL)	verified
+vendor_a	etc/init/qseecomd.rc	init service vendor.qseecomd (/vendor/bin/qseecomd), started on init	verified
+vendor_a	etc/init/hw/init.anorak.usb.rc	USB init actions (7 on-blocks, 24 write lines) and service set_usb_cdc_mac (/vendor/bin/set_usb_cdc_mac.sh)	verified
+vendor_a	etc/init/hw/init.eureka.rc	device-specific init script: imports init.anorak.rc, post-fs nautilus depth enable, sys.hmt.mounted triggers, factorytest battery limit	verified
+vendor_a	etc/init/hw/init.anorak.rc	SoC (anorak) vendor init script: 23 services (charger, cnss-daemon, insmod, kswapd and secnvm helpers, audio, display, wpa_supplicant and others), 36 on-blocks, fstab mount_all	verified
+vendor_a	etc/init/hw/init.anorak.debug.rc	vendor.cnss_diag service (/system/vendor/bin/cnss_diag) with persist.ovr.cnss_diag.enabled triggers	verified
+vendor_a	etc/init/hw/init.anorak.power.rc	charger and boot actions setting sleep mode and CPU online and core_ctl sysfs values	verified
+vendor_a	etc/init/hw/init.anorak.cgroup.rc	early-init and init actions creating /dev/cpuctl groups (mkdir, write and chown rules)	verified
+vendor_a	etc/init/vendor.qti.hardware.display.composer-service.rc	init service vendor.qti.hardware.display.composer (display composer HAL)	verified
+vendor_a	etc/init/android.hardware.keymaster@4.1-service-qti.rc	init service vendor.keymaster-4-1 (keymaster HAL 4.1), started on init	verified
+vendor_a	etc/init/init.time_daemon.rc	init service time_daemon (/vendor/bin/time_daemon) with encrypted-state trigger	verified
+vendor_a	etc/init/android.hardware.wifi@1.0-service.rc	init service vendor.wifi_hal_legacy (Wi-Fi HAL 1.0)	verified
+vendor_a	etc/init/android.hardware.security.keymint-service-qti.rc	init service vendor.keymint-qti (KeyMint HAL), started on init	verified
+vendor_a	etc/init/android.hardware.cas@1.2-service-lazy.rc	init service vendor.cas-hal-1-2 (CAS HAL)	verified
+vendor_a	etc/init/android.hardware.audio.service_64.rc	init service vendor.audio-hal (64-bit audio HAL)	verified
+vendor_a	etc/init/vendor.qti.cdsprpc-service.rc	init service vendor.cdsprpcd (/vendor/bin/cdsprpcd), boot triggers keyed on ro.boot.product.vendor.sku	verified
+vendor_a	etc/fstab.eureka	device fstab: logical system, vendor, odm, product partitions (AVB flags), /data, /metadata, /vision, /mnt/vendor/spunvm and 4 GiB zram swap	verified
+vendor_a	etc/fstab.persist	fstab entry for /persist (ext4, sync, noexec, nosuid, nodev)	verified
+vendor_a	etc/ueventd.rc	vendor ueventd rule file: subsystem definitions and about 248 /dev and /sys permission lines	verified
+vendor_a	build.prop	vendor partition build.prop: ro.product.vendor.* identity, ro.vendor.build.fingerprint, ro.board.platform=anorak, ro.zygote=zygote64_stub32 (96 keys)	verified
+vendor_a	bin/init.kswapd.sh	shell helper that finds the kswapd0 kernel thread through /proc and writes its PID into a /dev/cpuset cgroup	verified
+vendor_a	bin/init.insmod.sh	shell helper that reads an insmod/setprop/enable/modprobe/wait config, loads modules, then sets vendor.all.modules.ready and vendor.all.devices.ready	verified
+vendor_a	bin/init.set_secnvm_perms.sh	shell helper that chowns /persist/secnvm/* to system:system and chmods them 0600	verified

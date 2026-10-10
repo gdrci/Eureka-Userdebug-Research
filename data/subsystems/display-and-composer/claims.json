@@ -1,0 +1,403 @@
+{
+ "key": "display-and-composer",
+ "summary": "The group holds 132 rows (odm_a 6, system_a 65, system_ext_a 7, vendor_a 54; 130 regular files and 2 symlinks) that make up the Android display, graphics-composition and DRM stack of a Qualcomm SDM/SDE-based device with Oculus VR (VROS) components. Two IComposer 2.4 HAL implementations are registered in VINTF: the Qualcomm vendor.qti.hardware.display.composer-service (IQtiComposer 3.2, DisplayConfig AIDL) and the Oculus StrataComposer service (instance \"display\", disabled at boot and enabled only when a persist.device_config property is true). surfaceflinger is the HIDL client of both, and gralloc, mapper, allocator and DisplayConfig client libraries sit beneath them. Display tuning comes from /system/etc/display.conf (JSON), /vendor/etc/display/DPU930.xml (Qualcomm SDE930 parameter table, read by libdisplayqos.so) and the vendor property vendor.display.*. About 70 rows are DRM and media-DRM material (ClearKey and Widevine HAL services, DRM framework, MediaDrm metrics, forward-lock engine, memtrack). libdrm.so here is the userspace kernel-DRM library, not Android content-protection DRM.",
+ "rowsExpected": 132,
+ "rowsListed": 132,
+ "claims": [
+  {
+   "id": "C01",
+   "claim": "The group has 132 input rows (130 regular files, 2 symlinks) across odm_a (6), system_a (65), system_ext_a (7) and vendor_a (54). Every file exists under the read-only mount and matches its recorded size and sha256.",
+   "label": "verified",
+   "evidence": "awk -F'\\t' '$1==\"display-and-composer\"' classified.tsv | wc -l  ->  132; cut -f2 input_rows.tsv | sort | uniq -c  ->  6 odm_a / 65 system_a / 7 system_ext_a / 54 vendor_a; cut -f4 input_rows.tsv | sort | uniq -c  ->  130 file / 2 symlink; per-row loop running sha256sum against the mounted file, output in hashcheck.tsv: 130 lines 'OK' and 2 lines 'OK-LINK'.",
+   "verdict": "needs_change",
+   "reason": "Commands run from the eureka directory. awk on classified.tsv with partition filter | wc -l -> 132; cut -f2 input_rows.tsv | sort | uniq -c -> 6 odm_a, 65 system_a, 7 system_ext_a, 54 vendor_a; cut -f4 input_rows.tsv | sort | uniq -c -> 130 file, 2 symlink. Per-row loop (size and sha256sum of each mnt/<partition>/<path>) -> 130 rows OK. The 2 symlink rows (system_a system/bin/hwclock, vendor_a bin/hwclock) carry sha256 '-' and size 0, so they have no recorded hash to match. findmnt -T mnt/vendor_a -o OPTIONS -> ro,relatime (same for odm_a, system_a, system_ext_a); touch in mnt/vendor_a -> Read-only file system. The 132 input rows match the classified group rows exactly (sorted cmp).",
+   "corrected_claim": "The group has 132 input rows: 130 regular files and 2 symlinks, across odm_a (6), system_a (65), system_ext_a (7) and vendor_a (54). All four partitions are mounted read-only. Every regular file exists under the mount and matches its recorded size and sha256. The 2 symlink rows (system_a/system/bin/hwclock -> toybox, vendor_a/bin/hwclock -> toybox_vendor) record no sha256 (field '-') and are checked as links only."
+  },
+  {
+   "id": "C02",
+   "claim": "roles.tsv has a header and 132 data rows, one per input row, with keys identical to the input. Confidence split: 114 verified, 13 observed, 5 inferred, 0 unverified.",
+   "label": "verified",
+   "evidence": "wc -l roles.tsv  ->  133 roles.tsv; awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c  ->  5 inferred / 13 observed / 114 verified; diff of sorted (partition, path) pairs from roles.tsv against input_rows.tsv  ->  no output (identical).",
+   "verdict": "confirmed",
+   "reason": "wc -l roles.tsv -> 133 (header plus 132 data rows). awk with NF print | sort | uniq -c -> all 133 lines have 4 fields. awk NR>1 confidence column | sort | uniq -c -> 114 verified, 13 observed, 5 inferred, no unverified rows. Sorted (partition, path) pairs from roles.tsv diffed against input_rows.tsv -> empty diff. Header: partition, path, role, confidence.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C03",
+   "claim": "The Qualcomm composer service is an ELF64 PIE for AArch64, dynamically linked against /system/bin/linker64, stripped, with 41 NEEDED entries.",
+   "label": "verified",
+   "evidence": "readelf -h /…/mnt/vendor_a/bin/hw/vendor.qti.hardware.display.composer-service  ->  Class: ELF64 / Type: DYN (Position-Independent Executable file) / Machine: AArch64; file -b  ->  '...interpreter /system/bin/linker64, BuildID[md5/uuid]=3f24e70ba31b484d47ddf63f365d0d10, stripped'; readelf -d ... | grep -c NEEDED  ->  41.",
+   "file": "<image>/mnt/vendor_a/bin/hw/vendor.qti.hardware.display.composer-service",
+   "verdict": "confirmed",
+   "reason": "readelf -h vendor_a/bin/hw/vendor.qti.hardware.display.composer-service -> Class ELF64, Type DYN (Position-Independent Executable file), Machine AArch64. file -b -> ELF 64-bit LSB pie executable, ARM aarch64, dynamically linked, interpreter /system/bin/linker64, BuildID[md5/uuid]=3f24e70ba31b484d47ddf63f365d0d10, stripped. readelf -d ... | grep -c NEEDED -> 41. readelf -l | grep -i interpreter -> /system/bin/linker64.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C04",
+   "claim": "The Qualcomm composer service links the composer HIDL 2.1 to 2.4 and vendor QTI 3.0 to 3.2 interfaces, plus libsdmcore.so, libqservice.so, libdisplayconfig.qti.so, libdrm.so and libdisplaydebug.so. Those last three are in this group.",
+   "label": "verified",
+   "evidence": "readelf -d vendor_a/bin/hw/vendor.qti.hardware.display.composer-service | grep NEEDED  ->  '...Shared library: [libsdmcore.so]', '[libqservice.so]', '[libdisplayconfig.qti.so]', '[libdrm.so]', '[libdisplaydebug.so]', '[vendor.qti.hardware.display.composer@3.0.so]', '[vendor.qti.hardware.display.composer@3.1.so]', '[vendor.qti.hardware.display.composer@3.2.so]', '[android.hardware.graphics.composer@2.4.so]'.",
+   "file": "<image>/mnt/vendor_a/bin/hw/vendor.qti.hardware.display.composer-service",
+   "verdict": "confirmed",
+   "reason": "readelf -d vendor_a/bin/hw/vendor.qti.hardware.display.composer-service | grep NEEDED -> libsdmcore.so, libqservice.so, libdisplayconfig.qti.so, libdrm.so, libdisplaydebug.so, vendor.qti.hardware.display.composer@3.0.so, @3.1.so, @3.2.so, android.hardware.graphics.composer@2.1.so through @2.4.so. Group membership from input_rows.tsv: libdisplayconfig.qti.so (vendor_a lib/ and lib64/), libdrm.so (system_a and vendor_a), libdisplaydebug.so (vendor_a lib/ and lib64/). libsdmcore.so and libqservice.so have no group row.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C05",
+   "claim": "The Qualcomm composer service registers IQtiComposer 3.2 (instance default), IComposer 2.4 (instance default), and the DisplayConfig AIDL (vendor.qti.hardware.display.config version 10, fqname IDisplayConfig/default). The manifest also lists vendor.display.config IDisplayConfig 2.0.",
+   "label": "verified",
+   "evidence": "cat vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml  ->  '<hal format=\"hidl\"> <name>vendor.qti.hardware.display.composer</name> <version>3.2</version> <interface> <name>IQtiComposer</name> <instance>default</instance>'; '<name>android.hardware.graphics.composer</name> <version>2.4</version> ... <name>IComposer</name> <instance>default</instance>'; '<name>vendor.display.config</name> <version>2.0</version> ... IDisplayConfig'; '<hal format=\"aidl\"> <name>vendor.qti.hardware.display.config</name> <version>10</version> <fqname>IDisplayConfig/default</fqname>'.",
+   "file": "<image>/mnt/vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml",
+   "verdict": "confirmed",
+   "reason": "cat vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml -> hal format hidl, name vendor.qti.hardware.display.composer, version 3.2, interface IQtiComposer instance default; hal hidl android.hardware.graphics.composer version 2.4, interface IComposer instance default; hal hidl vendor.display.config version 2.0, interface IDisplayConfig instance default; hal aidl vendor.qti.hardware.display.config version 10, fqname IDisplayConfig/default. Gap: this is the declared VINTF set; runtime registration calls were not observed.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C06",
+   "claim": "The Qualcomm composer service's init definition (service name vendor.qti.hardware.display.composer) is in a standalone rc file and also in init.anorak.rc, where the copy is marked override and disabled, restarts the strata class on restart, and is started when vendor.syncbosshal.fw_update_complete=true.",
+   "label": "verified",
+   "evidence": "cat vendor_a/etc/init/vendor.qti.hardware.display.composer-service.rc  ->  'service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service', 'class hal animation', 'user system', 'group graphics drmrpc', 'capabilities SYS_NICE', 'onrestart restart surfaceflinger', 'socket pps stream 0660 system system'; grep -n 'display.composer' vendor_a/etc/init/hw/init.anorak.rc  ->  330:service vendor.qti.hardware.display.composer ..., 357:    start vendor.qti.hardware.display.composer; sed -n '330,340p' init.anorak.rc shows 'onrestart class_restart strata' (line 335), 'override' (line 339), 'disabled' (line 340); sed -n '355,358p' shows 'on property:vendor.syncbosshal.fw_update_complete=true' (355) and the start line (357). Which definition init applies is not decided by the text.",
+   "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
+   "verdict": "confirmed",
+   "reason": "cat vendor_a/etc/init/vendor.qti.hardware.display.composer-service.rc -> service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service (no disabled or override line). grep -n 'display.composer' vendor_a/etc/init/hw/init.anorak.rc -> 330 service vendor.qti.hardware.display.composer ..., 357 start vendor.qti.hardware.display.composer. sed -n '330,340p' -> 335 onrestart class_restart strata, 339 override, 340 disabled. sed -n '355,358p' -> 355 on property:vendor.syncbosshal.fw_update_complete=true, 357 start vendor.qti.hardware.display.composer, 358 start surfaceflinger. Gap: the text does not decide which definition init applies.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C07",
+   "claim": "SELinux labels the Qualcomm composer service as hal_graphics_composer_default_exec and registers IQtiComposer on the hwservice label hal_graphics_composer_hwservice.",
+   "label": "verified",
+   "evidence": "grep -n 'composer-service' vendor_a/etc/selinux/vendor_file_contexts  ->  488:/vendor/bin/hw/vendor\\.qti\\.hardware\\.display\\.composer-service              u:object_r:hal_graphics_composer_default_exec:s0; grep -n 'IQtiComposer' vendor_a/etc/selinux/vendor_hwservice_contexts  ->  9:vendor.qti.hardware.display.composer::IQtiComposer                 u:object_r:hal_graphics_composer_hwservice:s0",
+   "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
+   "verdict": "confirmed",
+   "reason": "grep -n 'composer-service' vendor_a/etc/selinux/vendor_file_contexts -> 488 /vendor/bin/hw/vendor\\\\.qti\\\\.hardware\\\\.display\\\\.composer-service u:object_r:hal_graphics_composer_default_exec:s0. grep -n 'IQtiComposer' vendor_a/etc/selinux/vendor_hwservice_contexts -> 9 vendor.qti.hardware.display.composer::IQtiComposer u:object_r:hal_graphics_composer_hwservice:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C08",
+   "claim": "The Qualcomm composer service exposes 41 vendor.display.*, vendor.gralloc.* or vendor.debug.* property keys. Examples: vendor.display.enable_verbose_log, vendor.display.cac_scale_red, vendor.display.idle_time, vendor.display.disable_skip_validate, vendor.gralloc.disable_ubwc.",
+   "label": "observed",
+   "evidence": "strings -n 6 vendor_a/bin/hw/vendor.qti.hardware.display.composer-service | grep -cE '^vendor\\.(display|gralloc|debug)\\.'  ->  41; the matching lines include 'vendor.display.enable_verbose_log', 'vendor.display.cac_scale_red', 'vendor.display.idle_time', 'vendor.display.disable_skip_validate', 'vendor.gralloc.disable_ubwc'.",
+   "file": "<image>/mnt/vendor_a/bin/hw/vendor.qti.hardware.display.composer-service",
+   "verdict": "needs_change",
+   "reason": "strings -n 6 vendor_a/bin/hw/vendor.qti.hardware.display.composer-service | grep -cE '^vendor\\\\.(display|gralloc|debug)\\\\.' -> 41. Two of these are not concrete keys: 'vendor.display.' (bare prefix) and 'vendor.display.cac_ipd_adjust_%zu' (format template). Excluding both leaves 39 (grep -v '%' and grep -vx 'vendor.display.'). grep -cx for vendor.display.enable_verbose_log, vendor.display.cac_scale_red, vendor.display.idle_time, vendor.display.disable_skip_validate and vendor.gralloc.disable_ubwc -> 1 each.",
+   "corrected_claim": "The Qualcomm composer service binary contains 41 strings beginning vendor.display., vendor.gralloc. or vendor.debug.; 39 of them are concrete property keys (the other two are the bare prefix vendor.display. and the template vendor.display.cac_ipd_adjust_%zu). Examples: vendor.display.enable_verbose_log, vendor.display.cac_scale_red, vendor.display.idle_time, vendor.display.disable_skip_validate, vendor.gralloc.disable_ubwc."
+  },
+  {
+   "id": "C09",
+   "claim": "The Qualcomm composer service uses these filesystem paths: /vendor/etc/display/hwc_display_resolution_extn.xml (extension resolution list), /data/vendor/display and /data/vendor/display/frame_dump_external (frame dumps). Dump filenames use the patterns input_layer%d_%dx%d_%s_frame%d.raw and frame_dump_disp_id_%02u_%s.",
+   "label": "observed",
+   "evidence": "strings -n 6 vendor_a/bin/hw/vendor.qti.hardware.display.composer-service | grep -E '^/(vendor|data)/'  ->  /data/vendor/display, /data/vendor/display/frame_dump_external, /vendor/etc/display/hwc_display_resolution_extn.xml; the same strings output includes '%s/input_layer%d_%dx%d_%s_frame%d.raw' and '%s/frame_dump_disp_id_%02u_%s'.",
+   "file": "<image>/mnt/vendor_a/bin/hw/vendor.qti.hardware.display.composer-service",
+   "verdict": "needs_change",
+   "reason": "strings -n 6 vendor_a/bin/hw/vendor.qti.hardware.display.composer-service | grep -E '^/(vendor|data)/' -> /data/vendor/display, /data/vendor/display/frame_dump_external, /vendor/etc/display/hwc_display_resolution_extn.xml. Same strings with grep for input_layer and frame_dump_disp_id -> %s/input_layer%d_%dx%d_%s_frame%d.raw and %s/frame_dump_disp_id_%02u_%s. ls -la vendor_a/etc/display/ -> DPU930.xml only; hwc_display_resolution_extn.xml is not in the mounted tree. The parenthetical purposes are inferred from the names.",
+   "corrected_claim": "The Qualcomm composer service binary contains the path strings /vendor/etc/display/hwc_display_resolution_extn.xml, /data/vendor/display and /data/vendor/display/frame_dump_external, and the dump filename formats %s/input_layer%d_%dx%d_%s_frame%d.raw and %s/frame_dump_disp_id_%02u_%s. The resolution XML is not present in the mounted vendor_a/etc/display/ (which holds only DPU930.xml). The roles of these paths (extension resolution list, frame dumps) are inferred from their names."
+  },
+  {
+   "id": "C10",
+   "claim": "The Oculus StrataComposer service is an ELF64 PIE for AArch64 with 30 NEEDED entries. These include composer HIDL 2.1 to 2.4, mapper 2.0, 3.0 and 4.0, allocator 4.0, power 1.3, libEGL.so, libGLESv2.so and vendor.qti.hardware.display.mapper@4.0.so.",
+   "label": "verified",
+   "evidence": "readelf -h system_ext_a/bin/hw/vendor.oculus.hardware.composer-service  ->  Class: ELF64 / Type: DYN (Position-Independent Executable file) / Machine: AArch64; readelf -d ... | grep -c NEEDED  ->  30; NEEDED list includes android.hardware.graphics.composer@2.1.so ... @2.4.so, android.hardware.graphics.mapper@2.0.so, @3.0.so, @4.0.so, android.hardware.power@1.3.so, libEGL.so, libGLESv2.so, vendor.qti.hardware.display.mapper@4.0.so.",
+   "file": "<image>/mnt/system_ext_a/bin/hw/vendor.oculus.hardware.composer-service",
+   "verdict": "confirmed",
+   "reason": "readelf -h system_ext_a/bin/hw/vendor.oculus.hardware.composer-service -> ELF64, DYN (PIE), AArch64. readelf -d | grep -c NEEDED -> 30. NEEDED includes android.hardware.graphics.composer@2.1.so, @2.2.so, @2.3.so, @2.4.so; android.hardware.graphics.mapper@2.0.so, @3.0.so, @4.0.so; android.hardware.graphics.allocator@4.0.so; android.hardware.power@1.3.so; libEGL.so; libGLESv2.so; vendor.qti.hardware.display.mapper@4.0.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C11",
+   "claim": "The Oculus composer advertises IComposer 2.4 with instance name display in VINTF, marked override=true. Its binary contains the strings 'Starting VROS HWComposer HAL' and 'StrataComposerService_2_4'.",
+   "label": "verified",
+   "evidence": "cat system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml  ->  '<hal format=\"hidl\" override=\"true\"> <name>android.hardware.graphics.composer</name> <transport>hwbinder</transport> <version>2.4</version> <interface> <name>IComposer</name> <instance>display</instance>'; strings -n 6 system_ext_a/bin/hw/vendor.oculus.hardware.composer-service | grep -E 'Starting VROS|StrataComposerService_2_4'  ->  'Starting VROS HWComposer HAL', 'createClient called on StrataComposerService_2_4'.",
+   "file": "<image>/mnt/system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml",
+   "verdict": "confirmed",
+   "reason": "cat system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml -> hal format hidl override true, name android.hardware.graphics.composer, transport hwbinder, version 2.4, interface IComposer instance display. strings -n 6 system_ext_a/bin/hw/vendor.oculus.hardware.composer-service | grep -E 'Starting VROS|StrataComposerService_2_4' -> 'Starting VROS HWComposer HAL' (standalone string); 'createClient called on StrataComposerService_2_4' and 'createClient_2_3 called on StrataComposerService_2_4'. The name StrataComposerService_2_4 occurs only as a substring of these log messages, so 'contains' holds.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C12",
+   "claim": "The Oculus composer service is disabled in init and is enabled only when persist.device_config.oculus_shared_os_services.mros_enable_strata_composer is true. The property defaults to false. When enabled, init sets debug.sf.hwc_service_name and ro.ovr.hwc_service_name to display.",
+   "label": "verified",
+   "evidence": "grep -n '' system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc  ->  1:service vendor.oculus.hardware.composer-service /system_ext/bin/hw/vendor.oculus.hardware.composer-service; 4:    disabled; 15:    setprop persist.device_config.oculus_shared_os_services.mros_enable_strata_composer \\; 16:          ${persist.device_config.oculus_shared_os_services.mros_enable_strata_composer:-false}; 19:on early-boot && property:persist.device_config.oculus_shared_os_services.mros_enable_strata_composer=true; 21:    enable vendor.oculus.hardware.composer-service; 22:    setprop debug.sf.hwc_service_name display; 23:    setprop ro.ovr.hwc_service_name display.",
+   "file": "<image>/mnt/system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc",
+   "verdict": "confirmed",
+   "reason": "grep -n '' system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc -> 1 service vendor.oculus.hardware.composer-service /system_ext/bin/hw/vendor.oculus.hardware.composer-service; 4 disabled; 15-16 setprop persist.device_config.oculus_shared_os_services.mros_enable_strata_composer with ${...:-false} (default false); 19 on early-boot && property:persist.device_config.oculus_shared_os_services.mros_enable_strata_composer=true; 21 enable vendor.oculus.hardware.composer-service; 22 setprop debug.sf.hwc_service_name display; 23 setprop ro.ovr.hwc_service_name display.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C13",
+   "claim": "The Oculus composer service's init rc also sets ro.surface_flinger.has_writeback_dpu_cac to 0 when the strata composer is enabled and ro.vros.composer.cac_mode is writeback, and to 1 when cac_mode is writeback alone. The service binary reads ro.vros.composer.cac_mode and ro.vros.composer.orientation.",
+   "label": "verified",
+   "evidence": "grep -n 'has_writeback_dpu_cac' system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc  ->  29:    setprop ro.surface_flinger.has_writeback_dpu_cac 0; 34:    setprop ro.surface_flinger.has_writeback_dpu_cac 1; strings -n 6 system_ext_a/bin/hw/vendor.oculus.hardware.composer-service | grep -E '^ro\\.'  ->  ro.vros.composer.cac_mode, ro.vros.composer.orientation.",
+   "file": "<image>/mnt/system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc",
+   "verdict": "needs_change",
+   "reason": "cat -n system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc -> lines 26-27: on early-boot && property:ro.vros.composer.cac_mode=writeback && property:persist...mros_enable_strata_composer=true; line 29 setprop ro.surface_flinger.has_writeback_dpu_cac 0. Lines 32-34: on early-boot && property:ro.vros.composer.cac_mode=writeback (no strata condition); line 34 setprop ro.surface_flinger.has_writeback_dpu_cac 1. strings -n 6 system_ext_a/bin/hw/vendor.oculus.hardware.composer-service | grep -E '^ro\\\\.' -> ro.vros.composer.cac_mode, ro.vros.composer.orientation. Both triggers match early-boot, and init runs matching actions in file order, so with strata enabled the final value is 1 (inferred from init ordering). The rc comment 'unless set by Strata above' is not enforced by the second trigger.",
+   "corrected_claim": "The Oculus composer service rc sets ro.surface_flinger.has_writeback_dpu_cac to 0 (line 29) when the strata composer property is true and ro.vros.composer.cac_mode is writeback, and sets it to 1 (line 34) whenever ro.vros.composer.cac_mode is writeback, with no condition on the strata property. When strata is enabled both actions match and init runs them in file order, so the value ends as 1 (inferred from init's in-order execution); the rc comment 'unless set by Strata above' is not enforced. The service binary reads ro.vros.composer.cac_mode and ro.vros.composer.orientation."
+  },
+  {
+   "id": "C14",
+   "claim": "SELinux labels the Oculus composer service as strata_exec, and a type transition gives it the strata domain when init executes it.",
+   "label": "verified",
+   "evidence": "grep -n 'composer-service' system_ext_a/etc/selinux/system_ext_file_contexts  ->  1:/(system|system_ext)/bin/hw/vendor\\.oculus\\.hardware\\.composer-service  u:object_r:strata_exec:s0; grep -n 'typetransition' system_ext_a/etc/selinux/system_ext_sepolicy.cil  ->  3382:(typetransition init strata_exec process strata)",
+   "file": "<image>/mnt/system_ext_a/etc/selinux/system_ext_file_contexts",
+   "verdict": "confirmed",
+   "reason": "grep -n 'composer-service' system_ext_a/etc/selinux/system_ext_file_contexts -> 1 /(system|system_ext)/bin/hw/vendor\\\\.oculus\\\\.hardware\\\\.composer-service u:object_r:strata_exec:s0. grep -n 'typetransition' system_ext_a/etc/selinux/system_ext_sepolicy.cil -> 3382 (typetransition init strata_exec process strata).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C15",
+   "claim": "surfaceflinger is an ELF64 PIE for AArch64 with 43 NEEDED entries, including composer HIDL 2.1 to 2.4, allocator 2.0 and 3.0, android.frameworks.displayservice@1.0.so and libdisplayservicehidl.so.",
+   "label": "verified",
+   "evidence": "readelf -h system_a/system/bin/surfaceflinger  ->  Class: ELF64, Type: DYN (Position-Independent Executable file), Machine: AArch64; readelf -d system_a/system/bin/surfaceflinger | grep -c NEEDED  ->  43; readelf -d ... | grep NEEDED | grep -E 'composer|mapper|allocator|displayservice'  ->  android.hardware.graphics.composer@2.1.so ... @2.4.so, android.hardware.graphics.allocator@2.0.so, @3.0.so, android.frameworks.displayservice@1.0.so, libdisplayservicehidl.so.",
+   "file": "<image>/mnt/system_a/system/bin/surfaceflinger",
+   "verdict": "confirmed",
+   "reason": "readelf -h system_a/system/bin/surfaceflinger -> ELF64, DYN (PIE), AArch64. readelf -d | grep -c NEEDED -> 43. NEEDED includes android.hardware.graphics.composer@2.1.so through @2.4.so, android.hardware.graphics.allocator@2.0.so and @3.0.so, android.frameworks.displayservice@1.0.so, libdisplayservicehidl.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C16",
+   "claim": "surfaceflinger is started by the core/animation init service with SYS_NICE and three PDX display sockets (client, manager, vsync). Its SELinux label is surfaceflinger_exec.",
+   "label": "verified",
+   "evidence": "cat system_a/system/etc/init/surfaceflinger.rc  ->  'service surfaceflinger /system/bin/surfaceflinger', 'class core animation', 'capabilities SYS_NICE', 'socket pdx/system/vr/display/client ... stream 0666 system graphics', '.../manager', '.../vsync'; grep -n 'bin/surfaceflinger' system_a/system/etc/selinux/plat_file_contexts  ->  573:/system/bin/surfaceflinger\\tu:object_r:surfaceflinger_exec:s0",
+   "file": "<image>/mnt/system_a/system/etc/init/surfaceflinger.rc",
+   "verdict": "needs_change",
+   "reason": "cat system_a/system/etc/init/surfaceflinger.rc -> service surfaceflinger /system/bin/surfaceflinger; class core animation; capabilities SYS_NICE; sockets pdx/system/vr/display/client, manager, vsync (stream 0666 system graphics). grep -n 'bin/surfaceflinger' system_a/system/etc/selinux/plat_file_contexts -> 573 /system/bin/surfaceflinger u:object_r:surfaceflinger_exec:s0. 'class core animation' names two init classes, not a service. sed -n '328,360p' vendor_a/etc/init/hw/init.anorak.rc -> a second surfaceflinger definition at 342, with override at 349 and disabled at 350; started by the fw_update_complete action at 358.",
+   "corrected_claim": "surfaceflinger is defined in system_a/system/etc/init/surfaceflinger.rc as /system/bin/surfaceflinger in the init classes core and animation (class core animation), with SYS_NICE and three PDX sockets (pdx/system/vr/display/client, manager, vsync). Its SELinux label is surfaceflinger_exec. The vendor init.anorak.rc also defines the service, marked override and disabled, and starts it from the vendor.syncbosshal.fw_update_complete=true action; the text does not settle which definition init applies."
+  },
+  {
+   "id": "C17",
+   "claim": "surfaceflinger reads debug.sf.* properties (for example debug.sf.hwc_service_name, debug.sf.enable_layer_caching, debug.sf.disable_writeback_display) and a sysprop has_writeback_dpu_cac from libSurfaceFlingerProp.so.",
+   "label": "observed",
+   "evidence": "strings -n 6 system_a/system/bin/surfaceflinger | grep -E '^debug\\.sf\\.' | sort -u  ->  debug.sf.hwc_service_name, debug.sf.enable_layer_caching, debug.sf.disable_writeback_display and many more; strings -n 6 system_a/system/bin/surfaceflinger | grep has_writeback_dpu_cac  ->  _ZN7android7sysprop21has_writeback_dpu_cacEb.",
+   "file": "<image>/mnt/system_a/system/bin/surfaceflinger",
+   "verdict": "confirmed",
+   "reason": "strings -n 6 system_a/system/bin/surfaceflinger | grep -E '^debug\\\\.sf\\\\.' | sort -u -> 53 lines, including debug.sf.hwc_service_name, debug.sf.enable_layer_caching and debug.sf.disable_writeback_display (each matched exactly once). readelf --dyn-syms -W system_a/system/bin/surfaceflinger | grep has_writeback_dpu_cac -> _ZN7android7sysprop21has_writeback_dpu_cacEb with Ndx UND (imported). readelf --dyn-syms -W system_a/system/lib64/libSurfaceFlingerProp.so | grep has_writeback_dpu_cac -> _ZN7android7sysprop21has_writeback_dpu_cacEb FUNC GLOBAL, Ndx 14 (defined). surfaceflinger NEEDs libSurfaceFlingerProp.so.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C18",
+   "claim": "The DPU930.xml file is an XML document with a Qualcomm SDE930 root element, 74 Param entries (Param0 to Param73) and a commented Overrides example. Its SHA-256 is e46c07687f208cc0b715d4ae1ff8c79e6873d15e9ed4b715e35683384e73c4c6 and its size is 2108 bytes. The meanings of the numeric parameters are not determined.",
+   "label": "verified",
+   "evidence": "sha256sum vendor_a/etc/display/DPU930.xml  ->  e46c07687f208cc0b715d4ae1ff8c79e6873d15e9ed4b715e35683384e73c4c6; grep -o '<Param[0-9]*>' vendor_a/etc/display/DPU930.xml | wc -l  ->  75 (74 active plus <Param11> inside the comment); head of file: '<SDE930>', '<Param0>6</Param0>', 'Copyright (c) 2022 Qualcomm Technologies, Inc.'.",
+   "file": "<image>/mnt/vendor_a/etc/display/DPU930.xml",
+   "verdict": "needs_change",
+   "reason": "sha256sum vendor_a/etc/display/DPU930.xml -> e46c07687f208cc0b715d4ae1ff8c79e6873d15e9ed4b715e35683384e73c4c6; stat -c %s -> 2108. Root element: the file opens with <XML> (line 1) and closes with </XML> (line 91); <SDE930> (line 7 to 90) is its only child (Python ElementTree: root tag XML, children ['SDE930']). grep -o '<Param[0-9]*>' | wc -l -> 75; the extra one is <Param11> at line 86 inside a comment spanning lines 83-89 (Example, Overrides at 84-88). Active Param entries under SDE930: 74 (Param0 to Param73).",
+   "corrected_claim": "DPU930.xml is an XML document, 2108 bytes, sha256 e46c07687f208cc0b715d4ae1ff8c79e6873d15e9ed4b715e35683384e73c4c6. Its root element is <XML>, whose only child is the SDE930 element. SDE930 contains 74 active Param entries (Param0 to Param73) and a commented Overrides example at lines 83 to 89. The meanings of the numeric parameters are not determined."
+  },
+  {
+   "id": "C19",
+   "claim": "libdisplayqos.so is the consumer of the DPU parameter files. Its string table lists the /vendor/etc/display/ directory and a set of DPU model files that includes DPU930.xml.",
+   "label": "observed",
+   "evidence": "strings -n 4 vendor_a/lib64/libdisplayqos.so | grep -E 'DPU[0-9_]+\\.xml|/vendor/etc/display' | sort -u  ->  /vendor/etc/display/, DPU660.xml, DPU670.xml, DPU6__.xml, DPU720.xml, DPU7__.xml, DPU820.xml, DPU830.xml, DPU8__.xml, DPU930.xml; the 32-bit libdisplayqos.so contains the same strings.",
+   "file": "<image>/mnt/vendor_a/lib64/libdisplayqos.so",
+   "verdict": "needs_change",
+   "reason": "strings -n 4 vendor_a/lib64/libdisplayqos.so | grep -E 'DPU[0-9_]+\\\\.xml|/vendor/etc/display' | sort -u -> /vendor/etc/display/, DPU660.xml, DPU670.xml, DPU6__.xml, DPU720.xml, DPU7__.xml, DPU820.xml, DPU830.xml, DPU8__.xml, DPU930.xml; the vendor_a/lib copy yields the identical set (diff empty). grep -rl -a 'DPU930' over all mounted partitions -> vendor_a/lib/libdisplayqos.so and vendor_a/lib64/libdisplayqos.so only. The code that reads these names was not traced.",
+   "corrected_claim": "libdisplayqos.so (64-bit and 32-bit copies) has a string table containing /vendor/etc/display/ and the DPU model file names DPU660.xml, DPU670.xml, DPU6__.xml, DPU720.xml, DPU7__.xml, DPU820.xml, DPU830.xml, DPU8__.xml and DPU930.xml. It is the only mounted binary that contains the name DPU930.xml, so it is the likely reader of the DPU parameter files (inferred; the code that reads them was not traced)."
+  },
+  {
+   "id": "C20",
+   "claim": "display.conf is a JSON object with 10 keys: DIRECTION 3, SHUTTER_TYPE 0, two COMMENT-valued keys, SWAP_TIMING_FRONT_BUFFER and SWAP_TIMING_SWAPPED_BUFFER (6-element arrays), NIGHT_DISPLAY_AVAILABLE true, and night-display colour temperature minimum 2220, default 2856, maximum 6504.",
+   "label": "verified",
+   "evidence": "python3 -c \"import json; d=json.load(open('system_a/system/etc/display.conf')); print(len(d)); print(sorted(d))\"  ->  10 and the key list ['Bottom-to-Top', 'DIRECTION', 'NIGHT_DISPLAY_AVAILABLE', 'NIGHT_DISPLAY_COLOR_TEMPERATURE_DEFAULT', 'NIGHT_DISPLAY_COLOR_TEMPERATURE_MAX', 'NIGHT_DISPLAY_COLOR_TEMPERATURE_MIN', 'Rolling scanout prediction', 'SHUTTER_TYPE', 'SWAP_TIMING_FRONT_BUFFER', 'SWAP_TIMING_SWAPPED_BUFFER']; cat -A display.conf shows '\"NIGHT_DISPLAY_COLOR_TEMPERATURE_MAX\": 6504'.",
+   "file": "<image>/mnt/system_a/system/etc/display.conf",
+   "verdict": "confirmed",
+   "reason": "python3 -I json load of system_a/system/etc/display.conf -> len 10; keys: Bottom-to-Top, DIRECTION, NIGHT_DISPLAY_AVAILABLE, NIGHT_DISPLAY_COLOR_TEMPERATURE_DEFAULT, _MAX, _MIN, Rolling scanout prediction, SHUTTER_TYPE, SWAP_TIMING_FRONT_BUFFER, SWAP_TIMING_SWAPPED_BUFFER. Values: 'Bottom-to-Top': 'COMMENT', 'Rolling scanout prediction': 'COMMENT', DIRECTION 3, SHUTTER_TYPE 0, SWAP_TIMING_FRONT_BUFFER [0.7, 0.7, 2.0, 2.0, 2.0, 2.0], SWAP_TIMING_SWAPPED_BUFFER [0.0, 0.0, 2.0, 2.5, 2.5, 3.0], NIGHT_DISPLAY_AVAILABLE true, NIGHT_DISPLAY_COLOR_TEMPERATURE_MIN 2220, DEFAULT 2856, MAX 6504.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C21",
+   "claim": "The only consumer of /system/etc/display.conf found in the mounted partitions is vrdevicemanagerserver in system_ext_a, which is outside this group. No init rc or SELinux file in the mounted partitions refers to display.conf.",
+   "label": "verified",
+   "evidence": "strings -n 6 system_ext_a/bin/vrdevicemanagerserver | grep -F 'display.conf'  ->  /system/etc/display.conf; grep -rnE 'display\\.conf|etc/display' system_a/system/etc/selinux system_ext_a/etc/selinux vendor_a/etc/selinux  ->  no output for display.conf.",
+   "file": "<image>/mnt/system_ext_a/bin/vrdevicemanagerserver",
+   "verdict": "needs_change",
+   "reason": "grep -rl -a -F '/system/etc/display.conf' mnt -> system_ext_a/bin/vrdevicemanagerserver only. grep -rl -a -E 'display\\\\.conf([^i]|$)' mnt -> system_ext_a/bin/vrdevicemanagerserver only. grep -rnE 'display\\\\.conf([^i]|$)' over the selinux and init trees -> no output. The claim's stated pattern, grep -rnE 'display\\\\.conf|etc/display' over system_a/system/etc/selinux, system_ext_a/etc/selinux and vendor_a/etc/selinux -> 2 lines, both display.config service-context names (vendor_a/etc/selinux/vendor_service_contexts:4, vendor_hwservice_contexts:2), so the stated evidence does not reproduce as written. The fact holds with a word-bounded search.",
+   "corrected_claim": "The only mounted file that references /system/etc/display.conf is vrdevicemanagerserver in system_ext_a, which has no group row (outside this group). No init rc or SELinux file in the mounted partitions refers to display.conf. A plain search for display\\\\.conf also matches the display.config service-context names, so the check must be word-bounded."
+  },
+  {
+   "id": "C22",
+   "claim": "The vendor QTI composer 3.2 library exports the IQtiComposer and IQtiComposerClient classes. It has 269 defined dynamic symbols and NEEDs the graphics common 1.0 to 1.2 libraries and composer 2.1 to 2.3.",
+   "label": "verified",
+   "evidence": "readelf -h vendor_a/lib64/vendor.qti.hardware.display.composer@3.2.so  ->  Type: DYN (Shared object file), Machine: AArch64; readelf --dyn-syms -W ... | awk '$7!=\"UND\" && $8!=\"\"' | wc -l  ->  269; readelf --dyn-syms -W ... | grep -oE 'IQtiComposer[A-Za-z]*' | sort -u  ->  IQtiComposer, IQtiComposerClient; readelf -d ... | grep NEEDED  ->  android.hardware.graphics.common@1.0.so, @1.1.so, @1.2.so, android.hardware.graphics.composer@2.1.so, @2.2.so, @2.3.so.",
+   "file": "<image>/mnt/vendor_a/lib64/vendor.qti.hardware.display.composer@3.2.so",
+   "verdict": "needs_change",
+   "reason": "readelf -h vendor_a/lib64/vendor.qti.hardware.display.composer@3.2.so -> Type DYN (Shared object file), Machine AArch64. readelf --dyn-syms -W ... | awk defined and named | wc -l -> 269. c++filt on defined symbols gives IQtiComposer::castFrom, IQtiComposerClient::castFrom, IQtiComposerClient::tryGetService and related. readelf -d ... | grep NEEDED -> android.hardware.graphics.common@1.0.so, @1.1.so, @1.2.so; android.hardware.graphics.composer@2.1.so, @2.2.so, @2.3.so and @2.4.so; vendor.qti.hardware.display.composer@3.0.so and @3.1.so; libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so, libdl.so. The @2.4.so entry is absent from the claim's evidence and the claim's range stops at 2.3.",
+   "corrected_claim": "The vendor QTI composer 3.2 library (vendor_a/lib64) exports the IQtiComposer and IQtiComposerClient classes (castFrom and related functions), has 269 defined dynamic symbols, and NEEDs the graphics common 1.0 to 1.2 libraries, composer 2.1 to 2.4, and vendor QTI composer 3.0 and 3.1 libraries."
+  },
+  {
+   "id": "C23",
+   "claim": "The system copy of the composer 2.4 library exports the V2_4 IComposerClient and IComposerCallback proxy and cast functions. The HIDL interface name is android.hardware.graphics.composer::IComposer on the label hal_graphics_composer_hwservice. The vendor copy is a different file with 345 defined dynamic symbols.",
+   "label": "verified",
+   "evidence": "readelf --dyn-syms -W system_a/system/lib64/android.hardware.graphics.composer@2.4.so | awk '$7!=\"UND\" && $8!=\"\"{print $8}' | grep -E 'IComposerClient|IComposerCallback' | head -3  ->  _ZN7android8hardware10fromBinderINS0_8graphics8composer4V2_415IComposerClientENS4_18BpHwComposerClientENS4_18BnHwComposerClientEEENS_2spIT_EERKNS8_INS0_7IBinderEEE, ...; grep -n 'composer::IComposer' system_a/system/etc/selinux/plat_hwservice_contexts  ->  36:android.hardware.graphics.composer::IComposer u:object_r:hal_graphics_composer_hwservice:s0; cmp system_a/.../composer@2.4.so vendor_a/.../composer@2.4.so  ->  files differ; readelf --dyn-syms ... | awk ... | wc -l on vendor copy  ->  345.",
+   "file": "<image>/mnt/system_a/system/lib64/android.hardware.graphics.composer@2.4.so",
+   "verdict": "confirmed",
+   "reason": "readelf --dyn-syms -W system_a/system/lib64/android.hardware.graphics.composer@2.4.so | awk defined | c++filt | grep V2_4 | grep -E 'castInterface|BpHwComposerClient|BpHwComposerCallback' -> castInterface for V2_4::IComposerClient and V2_4::IComposerCallback (from V2_1, V2_2, V2_3 and IBase), and BpHwComposerClient / BpHwComposerCallback members. cmp system_a/.../composer@2.4.so vendor_a/.../composer@2.4.so -> files differ. Defined dynamic symbols in the vendor copy: 345. grep -n 'composer::IComposer' system_a/system/etc/selinux/plat_hwservice_contexts -> 36 android.hardware.graphics.composer::IComposer u:object_r:hal_graphics_composer_hwservice:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C24",
+   "claim": "The 64-bit mapper 4.0 QTI implementation exports HIDL_FETCH_IMapper and HIDL_FETCH_IQtiMapper plus QtiMapperExtensions methods. It NEEDs libgralloccore.so, libgrallocutils.so, libqdMetaData.so, vendor QTI mapper 4.0 and mapperextensions 1.0 to 1.2. It is labelled same_process_hal_file.",
+   "label": "verified",
+   "evidence": "readelf --dyn-syms -W vendor_a/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so | awk '$7!=\"UND\" && $8!=\"\"{print $8}' | grep -E '^HIDL_FETCH'  ->  HIDL_FETCH_IMapper, HIDL_FETCH_IQtiMapper; readelf -d ... | grep NEEDED  ->  libqdMetaData.so, libgrallocutils.so, libgralloccore.so, vendor.qti.hardware.display.mapper@4.0.so, vendor.qti.hardware.display.mapperextensions@1.0.so, @1.1.so, @1.2.so; grep -n 'mapper@4\\\\.0-impl-qti-display' vendor_a/etc/selinux/vendor_file_contexts  ->  145:/vendor/lib(64)?/hw/android\\.hardware\\.graphics\\.mapper@4\\.0-impl-qti-display\\.so   u:object_r:same_process_hal_file:s0",
+   "file": "<image>/mnt/vendor_a/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so",
+   "verdict": "confirmed",
+   "reason": "readelf --dyn-syms -W vendor_a/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so | awk defined | grep '^HIDL_FETCH' -> HIDL_FETCH_IMapper, HIDL_FETCH_IQtiMapper. c++filt gives QtiMapperExtensions V1_1 implementation methods getMetadataBlob, getUnalignedWidth, calculateBufferAttributes. readelf -d | grep NEEDED -> libqdMetaData.so, libgrallocutils.so, libgralloccore.so, libgralloctypes.so, vendor.qti.hardware.display.mapper@4.0.so, vendor.qti.hardware.display.mapperextensions@1.0.so, @1.1.so, @1.2.so, and android.hardware.graphics.mapper@2.0/2.1/3.0/4.0.so. grep -n 'mapper@4' vendor_a/etc/selinux/vendor_file_contexts -> 145 same_process_hal_file:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C25",
+   "claim": "The 64-bit gralloc module exports the HMI module-info symbol and gralloc_lock, gralloc_unlock, gralloc_register_buffer, gralloc_unregister_buffer, mapBuffer, terminateBuffer, mapFrameBufferLocked and fb_device_open. It has 6 NEEDED entries and is labelled same_process_hal_file.",
+   "label": "verified",
+   "evidence": "readelf -d vendor_a/lib64/hw/gralloc.default.so | grep -c NEEDED  ->  6; readelf --dyn-syms -W vendor_a/lib64/hw/gralloc.default.so | awk '$7!=\"UND\" && $8!=\"\"{print $8}' | grep -E '^HMI$|gralloc_lock|gralloc_register|fb_device_open'  ->  HMI, _Z14fb_device_openPK11hw_module_tPKcPP11hw_device_t, _Z12gralloc_lockPK16gralloc_module_tPK13native_handleiiiiiPPv, _Z23gralloc_register_bufferPK16gralloc_module_tPK13native_handle; grep -n 'gralloc\\\\.default' vendor_a/etc/selinux/vendor_file_contexts  ->  92:/(vendor|system/vendor)/lib(64)?/hw/gralloc\\.default\\.so   u:object_r:same_process_hal_file:s0",
+   "file": "<image>/mnt/vendor_a/lib64/hw/gralloc.default.so",
+   "verdict": "confirmed",
+   "reason": "readelf -d vendor_a/lib64/hw/gralloc.default.so | grep -c NEEDED -> 6. Defined dynamic symbols (readelf --dyn-syms -W with awk defined filter) include HMI, gralloc_lock, gralloc_unlock, gralloc_register_buffer, gralloc_unregister_buffer, mapBuffer, terminateBuffer, mapFrameBufferLocked and fb_device_open, each matched once; c++filt gives the signatures for the gralloc_*, mapBuffer, terminateBuffer, mapFrameBufferLocked and fb_device_open names. vendor_a/etc/selinux/vendor_file_contexts line 92 -> /(vendor|system/vendor)/lib(64)?/hw/gralloc\\\\.default\\\\.so u:object_r:same_process_hal_file:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C26",
+   "claim": "The 64-bit DisplayConfig client library exports DisplayConfig::ClientImpl methods such as SetActiveConfig, SetPowerMode, IsHDRSupported and SetCWBOutputBuffer. It has 150 defined dynamic symbols and NEEDs vendor.display.config@2.0.so. It is labelled same_process_hal_file.",
+   "label": "verified",
+   "evidence": "readelf --dyn-syms -W vendor_a/lib64/libdisplayconfig.qti.so | awk '$7!=\"UND\" && $8!=\"\"' | wc -l  ->  150; readelf --dyn-syms ... | grep -o 'ClientImpl[A-Za-z0-9]*' | sort -u | head  ->  ClientImpl SetActiveConfig, SetPowerMode, IsHDRSupported, SetCWBOutputBuffer; readelf -d ... | grep NEEDED  ->  liblog.so, libhidlbase.so, libutils.so, vendor.display.config@2.0.so; grep -n libdisplayconfig vendor_a/etc/selinux/vendor_file_contexts  ->  149:/vendor/lib(64)?/libdisplayconfig\\.qti\\.so u:object_r:same_process_hal_file:s0",
+   "file": "<image>/mnt/vendor_a/lib64/libdisplayconfig.qti.so",
+   "verdict": "confirmed",
+   "reason": "readelf --dyn-syms -W vendor_a/lib64/libdisplayconfig.qti.so | awk defined | wc -l -> 150. c++filt gives DisplayConfig::ClientImpl::SetActiveConfig(DisplayConfig::DisplayType, unsigned int), SetPowerMode(unsigned int, DisplayConfig::PowerMode), IsHDRSupported(unsigned int, bool*) and SetCWBOutputBuffer(unsigned int, DisplayConfig::Rect, bool, native_handle const*). readelf -d | grep NEEDED -> liblog.so, libhidlbase.so, libutils.so, vendor.display.config@2.0.so, libc++.so, libc.so, libm.so, libdl.so. vendor_a/etc/selinux/vendor_file_contexts line 149 -> same_process_hal_file:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C27",
+   "claim": "display_tool is a command-line display utility: an ELF64 PIE for AArch64 that needs root. It accepts brightness, configure_cabc, configure_cabc_gray_interp, configure_cac, lock_backlight, overide_display_temperature and read_dcs. It NEEDs vendor.oculus.hardware.graphics.composer@1.1.so. It is not referenced from any init or SELinux file in the mounted partitions.",
+   "label": "observed",
+   "evidence": "readelf -h system_ext_a/bin/display_tool  ->  ELF64 / DYN / AArch64; readelf -d ... | grep NEEDED  ->  libandroid.so, libgui.so, libui.so, ..., vendor.oculus.hardware.graphics.composer@1.1.so; strings -n 4 system_ext_a/bin/display_tool | grep 'usage: display_tool'  ->  'usage: display_tool command args', 'usage: display_tool configure_cac <cacScaleRed> <cacScaleBlue> <offsetX> <offsetY>', 'usage: display_tool read_dcs commands'; strings ... | grep -i 'Root permissions required'  ->  'Root permissions required. Run `adb root` and try again.'; grep -rl 'display_tool' system_a/system/etc/init system_ext_a/etc vendor_a/etc/init odm_a/etc product_a/etc  ->  no output.",
+   "file": "<image>/mnt/system_ext_a/bin/display_tool",
+   "verdict": "needs_change",
+   "reason": "readelf -h system_ext_a/bin/display_tool -> ELF64, DYN (PIE), AArch64; file -b -> stripped, dynamically linked, interpreter /system/bin/linker64. strings -n 4 system_ext_a/bin/display_tool | grep 'usage: display_tool' -> brightness, configure_cabc, configure_cabc_gray_interp, configure_cac, lock_backlight, overide_display_temperature, read_dcs, write_dcs, write_dcs_unicast, toggle_cabc, toggle_cabc_gray_interp, toggle_cac, toggle_display_power, refresh_rate. strings | grep -i 'Root permissions required' -> 'Root permissions required. Run `adb root` and try again.' readelf -d | grep NEEDED -> vendor.oculus.hardware.graphics.composer@1.1.so present. grep -rl -a 'display_tool' over all mounted partitions -> system_ext_a/bin/display_tool only.",
+   "corrected_claim": "display_tool is an ELF64 PIE for AArch64 that is stripped and uses linker64. It prints usage for many subcommands, including brightness, configure_cabc, configure_cabc_gray_interp, configure_cac, lock_backlight, overide_display_temperature, read_dcs, write_dcs, write_dcs_unicast, toggle_cabc, toggle_cabc_gray_interp, toggle_cac, toggle_display_power and refresh_rate. It prints 'Root permissions required. Run adb root and try again.' It NEEDs vendor.oculus.hardware.graphics.composer@1.1.so. No other file in the mounted partitions contains the string display_tool."
+  },
+  {
+   "id": "C28",
+   "claim": "display_tool addresses these kernel and sysfs nodes: /sys/class/backlight/, /sys/class/drm/card0-sde-crtc-0/, /sys/class/drm/card0/card0-sde-crtc-0/backlight_temperature_override, and /sys/kernel/debug/dri/0/DSI-1/dcs_cmd_tx and dcs_cmd_tx_unicast.",
+   "label": "observed",
+   "evidence": "strings -n 4 system_ext_a/bin/display_tool | grep -E '^/sys/'  ->  /sys/class/backlight/, /sys/class/drm/card0-sde-crtc-0/, /sys/class/drm/card0/card0-sde-crtc-0/backlight_temperature_override, /sys/kernel/debug/dri/0/DSI-1/dcs_cmd_tx, /sys/kernel/debug/dri/0/DSI-1/dcs_cmd_tx_unicast.",
+   "file": "<image>/mnt/system_ext_a/bin/display_tool",
+   "verdict": "confirmed",
+   "reason": "strings -n 4 system_ext_a/bin/display_tool | grep -E '^/sys/' -> /sys/class/backlight/, /sys/class/drm/card0-sde-crtc-0/, /sys/class/drm/card0/card0-sde-crtc-0/backlight_temperature_override, /sys/kernel/debug/dri/0/DSI-1/dcs_cmd_tx, /sys/kernel/debug/dri/0/DSI-1/dcs_cmd_tx_unicast; all five listed nodes are present. Also present but not listed: /sys/class/drm/sde-crtc-0/, /sys/kernel/debug/, /sys/module/msm_drm/parameters/dsi_display0, /sys/kernel/debug/dri/0/DSI-1/backlight_lock.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C29",
+   "claim": "display_property_handler is a one-shot helper. Init starts it with the display.enable_ddic_cac property as its argument, once vendor.skip.init=0 and display.enable_ddic_cac is set. It opens the DRM render node and issues DRM_IOCTL_MSM_DISPLAY_CAC through libdrm. Its SELinux label is disp_prop_handler_exec.",
+   "label": "verified",
+   "evidence": "grep -n '' vendor_a/etc/init/display_property_handler.rc  ->  2:service display_property_handler /vendor/bin/display_property_handler ${display.enable_ddic_cac}; 3:    class main; 6:    disabled; 7:    oneshot; 11:on property:vendor.skip.init=0 && property:display.enable_ddic_cac=*; readelf -d vendor_a/bin/display_property_handler | grep NEEDED  ->  libdrm.so, libbase.so, libcutils.so, liblog.so, libutils.so; strings -n 4 vendor_a/bin/display_property_handler | grep -E 'DRM_IOCTL|drm render'  ->  'Could not issue DRM_IOCTL_MSM_DISPLAY_CAC. Reason: %s', 'Could not open drm render node, reason: %s'; grep -n 'display_property_handler' vendor_a/etc/selinux/vendor_file_contexts  ->  468:/vendor/bin/display_property_handler u:object_r:disp_prop_handler_exec:s0",
+   "file": "<image>/mnt/vendor_a/bin/display_property_handler",
+   "verdict": "confirmed",
+   "reason": "cat -n vendor_a/etc/init/display_property_handler.rc -> line 2 service display_property_handler /vendor/bin/display_property_handler ${display.enable_ddic_cac}; line 6 disabled; line 7 oneshot; line 11 on property:vendor.skip.init=0 && property:display.enable_ddic_cac=*; line 12 start display_property_handler. readelf --dyn-syms -W vendor_a/bin/display_property_handler | awk undefined | c++filt -> drmIoctl, drmOpenWithType; readelf -d -> NEEDED libdrm.so. strings -n 4 | grep -E 'DRM_IOCTL|drm render' -> 'Could not issue DRM_IOCTL_MSM_DISPLAY_CAC. Reason: %s', 'Could not open drm render node, reason: %s'. grep -n display_property_handler vendor_a/etc/selinux/vendor_file_contexts -> 468 /vendor/bin/display_property_handler u:object_r:disp_prop_handler_exec:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C30",
+   "claim": "The ClearKey DRM HAL service is an ELF64 PIE with 17 NEEDED entries. It registers clearkey DRM and crypto factories for interfaces 1.0 to 1.4. It is lazy and disabled until init starts it, runs as user media, and is labelled vendor_hal_drm_clearkey_exec. Its service name is vendor.drm-clearkey-hal-1-4.",
+   "label": "verified",
+   "evidence": "readelf -d vendor_a/bin/hw/android.hardware.drm@1.4-service-lazy.clearkey | grep -c NEEDED  ->  17; strings -n 6 ... | grep 'registerService'  ->  '(serviceRegistrar.registerService(drmFactory, \"clearkey\")='; grep -n '' vendor_a/etc/init/android.hardware.drm@1.4-service-lazy.clearkey.rc  ->  1:service vendor.drm-clearkey-hal-1-4 /vendor/bin/hw/android.hardware.drm@1.4-service-lazy.clearkey; 2-11: interface android.hardware.drm@1.0::IDrmFactory clearkey ... @1.4::ICryptoFactory clearkey; 'disabled', 'oneshot', 'class hal', 'user media', 'group media mediadrm'; grep -n clearkey vendor_a/etc/selinux/vendor_service_contexts  ->  2:android.hardware.drm.IDrmFactory/clearkey u:object_r:hal_drm_service:s0; sed -n '342p' vendor_a/etc/selinux/vendor_file_contexts  ->  /vendor/bin/hw/android\\.hardware\\.drm@[0-9]+\\.[0-9]+-service-lazy\\.clearkey  u:object_r:vendor_hal_drm_clearkey_exec:s0",
+   "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.drm@1.4-service-lazy.clearkey",
+   "verdict": "confirmed",
+   "reason": "readelf -h vendor_a/bin/hw/android.hardware.drm@1.4-service-lazy.clearkey -> ELF64, DYN (PIE). readelf -d | grep -c NEEDED -> 17. strings | grep registerService -> registerService(drmFactory, 'clearkey') and registerService(cryptoFactory, 'clearkey'), with LazyServiceRegistrar::registerService in the symbols. cat -n vendor_a/etc/init/android.hardware.drm@1.4-service-lazy.clearkey.rc -> line 1 service vendor.drm-clearkey-hal-1-4 /vendor/bin/hw/android.hardware.drm@1.4-service-lazy.clearkey; lines 2-11 IDrmFactory and ICryptoFactory clearkey at @1.0 through @1.4; line 12 disabled; 13 oneshot; 14 class hal; 15 user media. grep -n clearkey vendor_a/etc/selinux/vendor_service_contexts -> 2 android.hardware.drm.IDrmFactory/clearkey u:object_r:hal_drm_service:s0. sed -n '342p' vendor_a/etc/selinux/vendor_file_contexts -> /vendor/bin/hw/android\\\\.hardware\\\\.drm@[0-9]+\\\\.[0-9]+-service-lazy\\\\.clearkey u:object_r:vendor_hal_drm_clearkey_exec:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C31",
+   "claim": "drmserver is an ELF32 PIE for ARM. It is the Android DRM framework daemon, started only when drm.service.enabled is set to true or 1. It runs as user drm. It NEEDs libdrmframeworkcommon.so, libbinder.so, libselinux.so and libstagefright_foundation.so, and is labelled drmserver_exec. Its service-manager name is drm.drmManager.",
+   "label": "verified",
+   "evidence": "readelf -h system_a/system/bin/drmserver  ->  Class: ELF32, Type: DYN (Position-Independent Executable file), Machine: ARM; readelf -d ... | grep NEEDED  ->  libmediametrics.so, libmediautils.so, libbinder.so, libdrmframeworkcommon.so, libselinux.so, libstagefright_foundation.so; grep -n '' system_a/system/etc/init/drmserver.rc  ->  1:service drm /system/bin/drmserver; 3:    disabled; 4:    class main; 5:    user drm; 8:on property:drm.service.enabled=true; 11:on property:drm.service.enabled=1; grep -n 'drmserver' system_a/system/etc/selinux/plat_file_contexts  ->  503:/system/bin/drmserver\\tu:object_r:drmserver_exec:s0; grep -n 'drmManager' system_a/system/etc/selinux/plat_service_contexts  ->  108:drm.drmManager                            u:object_r:drmserver_service:s0",
+   "file": "<image>/mnt/system_a/system/bin/drmserver",
+   "verdict": "confirmed",
+   "reason": "readelf -h system_a/system/bin/drmserver -> ELF32, DYN (PIE), Machine ARM. readelf -d | grep NEEDED -> libmediametrics.so, libmediautils.so, libcutils.so, libutils.so, liblog.so, libbinder.so, libdrmframeworkcommon.so, libselinux.so, libstagefright_foundation.so, libc++.so, libc.so, libm.so, libdl.so. cat -n system_a/system/etc/init/drmserver.rc -> line 1 service drm /system/bin/drmserver; line 2 disabled; line 4 user drm; lines 8-9 on property:drm.service.enabled=true then start drm; lines 11-12 on property:drm.service.enabled=1 then start drm. grep -n drmserver system_a/system/etc/selinux/plat_file_contexts -> 503 /system/bin/drmserver u:object_r:drmserver_exec:s0. grep -n drmManager system_a/system/etc/selinux/plat_service_contexts -> 108 drm.drmManager u:object_r:drmserver_service:s0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C32",
+   "claim": "libdisplayservicehidl.so implements the android.frameworks.displayservice@1.0 HIDL service: DisplayService::getEventReceiver and DisplayEventReceiver with requestNextVsync, setVsyncRate and init. It is labelled fwk_display_hwservice and listed in the framework manifest.",
+   "label": "verified",
+   "evidence": "readelf -d system_a/system/lib64/libdisplayservicehidl.so | grep NEEDED  ->  libgui.so, libhidlbase.so, android.frameworks.displayservice@1.0.so; readelf --dyn-syms -W ... | awk '$7!=\"UND\" && $8!=\"\"{print $8}' | grep -oE 'DisplayEventReceiver[0-9]*[A-Za-z]*' | sort -u  ->  DisplayEventReceiver with requestNextVsync, setVsyncRate, init, close; grep -n 'displayservice' system_a/system/etc/selinux/plat_hwservice_contexts  ->  4:android.frameworks.displayservice::IDisplayService u:object_r:fwk_display_hwservice:s0; grep -n 'frameworks.displayservice' system_a/system/etc/vintf/manifest.xml  ->  7:        <name>android.frameworks.displayservice</name>",
+   "file": "<image>/mnt/system_a/system/lib64/libdisplayservicehidl.so",
+   "verdict": "confirmed",
+   "reason": "readelf -d system_a/system/lib64/libdisplayservicehidl.so | grep NEEDED -> libgui.so, libhidlbase.so, android.frameworks.displayservice@1.0.so (plus libbase, liblog, libutils). readelf --dyn-syms with defined filter | c++filt | grep -oE DisplayService/DisplayEventReceiver names -> DisplayService::getEventReceiver; DisplayEventReceiver::requestNextVsync, setVsyncRate, init, close, AttachedEvent. grep -n displayservice system_a/system/etc/selinux/plat_hwservice_contexts -> 4 android.frameworks.displayservice::IDisplayService u:object_r:fwk_display_hwservice:s0. grep -n -A1 frameworks.displayservice system_a/system/etc/vintf/manifest.xml -> 7 <name>android.frameworks.displayservice</name>, 8 <transport>hwbinder</transport>.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C33",
+   "claim": "The odm anorak Oculus composer 1.1 implementation exports HIDL_FETCH_IComposer. It NEEDs libdisplayconfig.qti.so and libdrm.so, and its VINTF fragment declares IComposer 1.1 with transport passthrough and instance default.",
+   "label": "verified",
+   "evidence": "readelf --dyn-syms -W odm_a/lib/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so | awk '$7!=\"UND\" && $8!=\"\"{print $8}' | grep HIDL_FETCH  ->  HIDL_FETCH_IComposer; readelf -d ... | grep NEEDED  ->  libbase.so, libdisplayconfig.qti.so, libdrm.so, libhidlbase.so, vendor.oculus.hardware.graphics.composer@1.0.so, @1.1.so; cat odm_a/etc/vintf/manifest/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.xml  ->  '<transport arch=\"32+64\">passthrough</transport> <version>1.1</version> <instance>default</instance>'.",
+   "file": "<image>/mnt/odm_a/lib/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so",
+   "verdict": "confirmed",
+   "reason": "readelf -h odm_a/lib/hw/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.so -> ELF32, DYN (shared object). readelf --dyn-syms with defined filter | grep HIDL_FETCH -> HIDL_FETCH_IComposer. readelf -d | grep NEEDED -> libdisplayconfig.qti.so, libdrm.so, libbase.so, libhidlbase.so, liblog.so, libutils.so, vendor.oculus.hardware.graphics.composer@1.0.so, @1.1.so. cat odm_a/etc/vintf/manifest/vendor.oculus.hardware.graphics.composer@1.1-impl-anorak.xml -> hal (no format attribute), name vendor.oculus.hardware.graphics.composer, transport arch=32+64 passthrough, version 1.1, interface IComposer instance default.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C34",
+   "claim": "Two IComposer 2.4 HAL services are declared in VINTF, with different instance names: the Qualcomm service uses instance default and the Oculus service uses instance display. Their sysprop-selected service name is set to display only when the Oculus service is enabled.",
+   "label": "observed",
+   "evidence": "grep -n 'instance' vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml  ->  IQtiComposer and IComposer each with <instance>default</instance>; cat system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml  ->  <version>2.4</version> <instance>display</instance>; system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc line 22: setprop debug.sf.hwc_service_name display.",
+   "file": "<image>/mnt/system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml",
+   "verdict": "confirmed",
+   "reason": "grep -n instance vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml -> three instance lines, all default (IQtiComposer 3.2, IComposer 2.4, IDisplayConfig 2.0). cat system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml -> version 2.4, instance display. grep -rn hwc_service_name over the init trees -> only system_ext_a/etc/init/vendor.oculus.hardware.composer-service.rc lines 22 and 23 (setprop, inside the enable trigger at line 19). No other init file sets debug.sf.hwc_service_name.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C35",
+   "claim": "In the mounted partitions, the libdrm.so files are the userspace libdrm library: they export drmGetDevice2, drmAddBufs and related functions. They are distinct from the Android DRM framework libraries (libdrmframework, libmediadrm) and the HAL libraries.",
+   "label": "observed",
+   "evidence": "readelf --dyn-syms -W system_a/system/lib64/libdrm.so | awk '$7!=\"UND\" && $8!=\"\"{print $8}' | grep -E 'drmGetDevice2|drmAddBufs'  ->  drmAddBufs, drmGetDevice2; the same export list is present in vendor_a/lib64/libdrm.so and vendor_a/lib/libdrm.so.",
+   "file": "<image>/mnt/system_a/system/lib64/libdrm.so",
+   "verdict": "confirmed",
+   "reason": "readelf --dyn-syms -W system_a/system/lib64/libdrm.so | awk defined | grep -E 'drmGetDevice2|drmAddBufs' -> drmAddBufs, drmGetDevice2; the same two symbols in vendor_a/lib64/libdrm.so and vendor_a/lib/libdrm.so. Sorted defined-symbol lists of the three copies: 199 each, diff empty. readelf --dyn-syms on system_a/system/lib64/libdrmframework.so and libmediadrm.so -> neither exports drmGetDevice2 or drmAddBufs (0 matches).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C36",
+   "claim": "The mediadrm signer is a jar (classes.dex and MANIFEST.MF only) registered as a shared library by a permissions XML. Its arm and arm64 vdex files are byte-identical.",
+   "label": "verified",
+   "evidence": "unzip -l system_a/system/framework/com.android.mediadrm.signer.jar  ->  2660 classes.dex, 45 META-INF/MANIFEST.MF, 2 files; cat system_a/system/etc/permissions/com.android.mediadrm.signer.xml  ->  '<library name=\"com.android.mediadrm.signer\" file=\"/system/framework/com.android.mediadrm.signer.jar\"/>'; sha256sum on both vdex files  ->  58608918ce2d828f14c38e1b196b357063ebe443651689c94a8d34fa94acf627 for both.",
+   "file": "<image>/mnt/system_a/system/framework/com.android.mediadrm.signer.jar",
+   "verdict": "confirmed",
+   "reason": "unzip -l system_a/system/framework/com.android.mediadrm.signer.jar -> 2660 classes.dex, 45 META-INF/MANIFEST.MF, 2 files. cat system_a/system/etc/permissions/com.android.mediadrm.signer.xml -> <library name=com.android.mediadrm.signer file=/system/framework/com.android.mediadrm.signer.jar/>. sha256sum system_a/system/framework/oat/arm/com.android.mediadrm.signer.vdex and .../arm64/com.android.mediadrm.signer.vdex -> both 58608918ce2d828f14c38e1b196b357063ebe443651689c94a8d34fa94acf627 (124 bytes each).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C37",
+   "claim": "The two hwclock rows are symbolic links: system_a/system/bin/hwclock points to toybox and vendor_a/bin/hwclock to toybox_vendor.",
+   "label": "verified",
+   "evidence": "readlink system_a/system/bin/hwclock  ->  toybox; readlink vendor_a/bin/hwclock  ->  toybox_vendor; ls -la shows 'lrwxr-xr-x ... hwclock -> toybox' and 'hwclock -> toybox_vendor'.",
+   "file": "<image>/mnt/vendor_a/bin/hwclock",
+   "verdict": "confirmed",
+   "reason": "readlink system_a/system/bin/hwclock -> toybox; readlink vendor_a/bin/hwclock -> toybox_vendor. Group rows: system_a system/bin/hwclock and vendor_a bin/hwclock, both kind symlink, sha256 field '-'.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C38",
+   "claim": "The Widevine and ClearKey HAL service binaries are lazy, disabled until started, and use the same interface numbering. The Widevine service registers the widevine DRM and crypto factories over interfaces 1.0 to 1.4.",
+   "label": "verified",
+   "evidence": "cat vendor_a/etc/init/android.hardware.drm@1.4-service-lazy.widevine.rc  ->  'service vendor.drm-widevine-hal-1-4 /vendor/bin/hw/android.hardware.drm@1.4-service-lazy.widevine', 'interface android.hardware.drm@1.0::IDrmFactory widevine' through '@1.4::ICryptoFactory widevine', 'oneshot', 'disabled'; strings -n 6 vendor_a/bin/hw/android.hardware.drm@1.4-service-lazy.widevine | grep 'registerService'  ->  '(serviceRegistrar.registerService(drmFactory, \"widevine\")='.",
+   "file": "<image>/mnt/vendor_a/etc/init/android.hardware.drm@1.4-service-lazy.widevine.rc",
+   "verdict": "confirmed",
+   "reason": "cat -n vendor_a/etc/init/android.hardware.drm@1.4-service-lazy.widevine.rc -> line 12 service vendor.drm-widevine-hal-1-4 /vendor/bin/hw/android.hardware.drm@1.4-service-lazy.widevine; lines 13-22 IDrmFactory and ICryptoFactory widevine at @1.0 through @1.4; line 23 IBase widevine; line 24 oneshot; line 25 disabled. strings -n 6 vendor_a/bin/hw/android.hardware.drm@1.4-service-lazy.widevine | grep registerService -> registerService(drmFactory, 'widevine') and registerService(cryptoFactory, 'widevine'); the binary references LazyServiceRegistrar::registerService.",
+   "corrected_claim": ""
+  }
+ ],
+ "gaps": [
+  "Binaries are stripped. Behaviour is taken from dynamic exports, strings, NEEDED lists and init/VINTF/SELinux text. No disassembly or decompilation was performed, so internal call graphs and parameter semantics are unknown.",
+  "Runtime selection between the Qualcomm composer service and the Oculus StrataComposer is not determined. It depends on the persist.device_config.oculus_shared_os_services.mros_enable_strata_composer value on the device, which is not in the image, and on init ordering.",
+  "Two definitions of the service vendor.qti.hardware.display.composer exist (standalone rc and init.anorak.rc with override and disabled). The effective definition under init is not determined from the text.",
+  "Meanings of the 74 numeric Param entries in DPU930.xml and of the display.conf keys beyond their names and values are not determined. libdisplayqos.so's parsing logic was not examined.",
+  "display.conf has no consumer inside this group. The only consumer identified is vrdevicemanagerserver in system_ext_a, outside this group.",
+  "No SELinux label for system_ext_a/bin/display_tool or display_validator was found in the text policy and file_contexts files. The compiled precompiled_sepolicy binary was not parsed.",
+  "Exported-symbol enumeration was not performed for several 32-bit libraries: libhdr_tm.so, libsdedrm.so, libwvdrmengine.so, libdrmfs.so, libdrmtime.so and libmemtrackproxy.so. Their roles are taken from NEEDED lists and names; libdrmfs, libdrmtime and both libmemtrackproxy rows are labelled inferred.",
+  "Dependencies outside this group were not classified and are only named: libsdmcore.so, libqservice.so, libqdutils.so, libqdMetaData.so, libgralloccore.so, libgrallocutils.so, libgralloctypes.so, vendor.qti.hardware.display.mapper@4.0.so, vendor.display.config@2.0.so, android.hardware.graphics.common@1.x, android.hardware.power@1.3.so, libhardware.so, libprotobuf-cpp-lite-3.9.1.so and libQSEEComAPI.so.",
+  "Expansions of the adaptive-backlight acronyms CABL, FOSS and SVI in libdisp-aba are not confirmed. Only the symbol prefixes were observed.",
+  "Whether the 32-bit or 64-bit anorak composer implementation is the one loaded on a running device is not determined.",
+  "The Widevine engine (libwvdrmengine.so) internals and the content-protection behaviour of the DRM stack were not analysed. Security properties are out of scope.",
+  "Partition contents are taken as mounted under <scratch>/eureka/mnt. They were not cross-checked against the raw image.",
+  "Roles for the five inferred rows (libmemtrackproxy.so in both variants, libdrmfs.so and libdrmtime.so in 32-bit and 64-bit variants) rest on NEEDED lists and file names only.",
+  "The value of display.vendor.skip.init and display.enable_ddic_cac on a running device is not determined, so whether display_property_handler runs is unknown."
+ ],
+ "rolesFile": "data/subsystems/display-and-composer/roles.tsv"
+}

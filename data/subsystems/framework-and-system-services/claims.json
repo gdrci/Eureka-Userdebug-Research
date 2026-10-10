@@ -1,0 +1,387 @@
+{
+ "key": "framework-and-system-services",
+ "summary": "The group has 707 rows: 229 symlinks and 478 regular files, spread across system_a (681), system_ext_a (15), product_a (9) and odm_a (2). It holds the framework layer: bytecode and ART artifacts (services.jar, framework.jar, framework-res.apk, the services.odex/.vdex/.art set, the arm and arm64 boot-framework images), the native daemons and command clients in system/bin (servicemanager, hwservicemanager, app_process32/64 zygote launchers, toybox and toolbox applet links, cmd, service, and about 180 others), 22 APEX module packages, about 33 shell wrapper scripts that exec app_process or cmd, and XML configuration (platform.xml, privapp-permissions, default-permissions, framework-sysconfig, hidden-API whitelist, feature and library declarations). Startup wiring is visible in the init rc files (zygote variants, servicemanager, hwservicemanager) and in plat_file_contexts entries for the binaries. Neither the init nor the SELinux files in the mounted system_a tree name any of the XML configuration files. All roles and facts are read from the mounted copy; nothing was executed.",
+ "rowsExpected": 707,
+ "rowsListed": 707,
+ "claims": [
+  {
+   "id": "C01",
+   "claim": "roles.tsv has one data row per input row (707) with the header partition, path, role, confidence; no (partition, path) pair is missing or duplicated.",
+   "label": "verified",
+   "evidence": "cd <image>-tools/work/subsystems/framework-and-system-services && cut -f1,2 input_rows.tsv | sort > cov_in.txt && cut -f1,2 roles.tsv | tail -n +2 | sort > cov_out.txt && comm -3 cov_in.txt cov_out.txt | wc -l ; wc -l < roles.tsv ; cut -f1,2 roles.tsv | tail -n +2 | sort | uniq -d | wc -l | output: 0 (comm differences) ; 708 (header plus 707 rows) ; 0 (duplicates)",
+   "file": "<image>-tools/work/subsystems/framework-and-system-services/roles.tsv",
+   "verdict": "confirmed",
+   "reason": "Command: comm -3 of sorted (partition, path) pairs from input_rows.tsv and roles.tsv data rows gives 0 differing lines. wc -l roles.tsv gives 708 (header plus 707 data rows). Duplicate (partition, path) pairs in roles.tsv: 0. Every roles.tsv line has 4 tab-separated fields, header is partition, path, role, confidence, and no role or confidence cell is empty. input_rows.tsv has 707 rows and 0 duplicate pairs.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C02",
+   "claim": "Partition split of the group: system_a 681 rows, system_ext_a 15, product_a 9, odm_a 2.",
+   "label": "verified",
+   "evidence": "cd <image>-tools/work/subsystems/framework-and-system-services && cut -f1 roles.tsv | tail -n +2 | sort | uniq -c | output: 2 odm_a / 9 product_a / 681 system_a / 15 system_ext_a",
+   "verdict": "confirmed",
+   "reason": "Command: cut -f1 roles.tsv | tail -n +2 | sort | uniq -c gives 2 odm_a, 9 product_a, 681 system_a, 15 system_ext_a (sum 707). The same counts come from input_rows.tsv column 1.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C03",
+   "claim": "Kinds: 478 regular files and 229 symlinks. Regular-file MIME types: 183 application/x-pie-executable, 85 application/octet-stream, 74 application/x-sharedlib, 54 application/vnd.android.package-archive, 36 text/xml, 36 text/plain, 6 application/java-archive, 4 application/x-executable (sum 478). Symlink rows carry MIME value link and size 0.",
+   "label": "verified",
+   "evidence": "cd <image>-tools/work/subsystems/framework-and-system-services && cut -f3 input_rows.tsv | sort | uniq -c | output: 478 file / 229 symlink ; cut -f5 input_rows.tsv | sort | uniq -c | sort -rn | output excerpt: 183 application/x-pie-executable / 85 application/octet-stream / 74 application/x-sharedlib / 54 application/vnd.android.package-archive / 36 text/xml / 36 text/plain / 6 application/java-archive / 4 application/x-executable",
+   "verdict": "confirmed",
+   "reason": "Command: cut -f3 input_rows.tsv | sort | uniq -c gives 478 file and 229 symlink. For file rows, cut -f5 counts are 183 application/x-pie-executable, 85 application/octet-stream, 74 application/x-sharedlib, 54 application/vnd.android.package-archive, 36 text/xml, 36 text/plain, 6 application/java-archive, 4 application/x-executable (sum 478). All 229 symlink rows have MIME value link and size 0.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C04",
+   "claim": "The sha256 recomputed from the mounted copy matches the sha256 column of classified.tsv for all 478 regular files.",
+   "label": "verified",
+   "evidence": "cd <image>-tools/work/subsystems/framework-and-system-services && python3 probe.py (hashlib.sha256 over each file under mnt, written to probe_out.tsv) ; then python3 comparing probe_out.tsv against the framework-and-system-services rows of classified.tsv | output: sha mismatches: 0 of 478",
+   "verdict": "confirmed",
+   "reason": "probe.py re-run with python3 -I regenerates probe_out.tsv byte-identical to the earlier run (478 rows). Joining its sha256 column with the framework-and-system-services file rows of classified.tsv on partition and path matches 478 of 478 with 0 mismatches. An independent sha256sum pass over the same 478 mounted files also matches 478 of 478.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C05",
+   "claim": "The 229 symlinks resolve to these targets: 173 toybox, 6 toolbox, 5 netutils-wrapper-1.0, 5 iptables, 3 mke2fs, 3 fsck.f2fs, 2 ziptool, 2 logpersist.start, 2 bzip2, 2 linker64 and 2 linker inside /apex/com.android.runtime, 18 ISA-specific boot-*.vdex links (9 each under arm and arm64) pointing to ../boot-*.vdex, and singles for linkerconfig, dex2oat64, dalvikvm (into /apex/com.android.art), app_process64, bootstrap linker and linker64 aliases.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a && while read p; do readlink \"$p\"; done < <image>-tools/work/subsystems/framework-and-system-services/group_symlinks.txt | sort | uniq -c | sort -rn | output excerpt: 173 toybox / 6 toolbox / 5 netutils-wrapper-1.0 / 5 iptables / 3 mke2fs / 3 fsck.f2fs / 2 ziptool / 2 logpersist.start / 2 bzip2 / 2 /apex/com.android.runtime/bin/linker64 / 2 /apex/com.android.runtime/bin/linker / 2 ../boot-framework.vdex (one line per boot part) / 1 /apex/com.android.art/bin/dex2oat64 / 1 /apex/com.android.art/bin/dalvikvm / 1 app_process64",
+   "verdict": "needs_change",
+   "reason": "Counts reproduce: readlink over group_symlinks.txt (229 entries) gives 173 toybox, 6 toolbox, 5 netutils-wrapper-1.0, 5 iptables, 3 mke2fs, 3 fsck.f2fs, 2 ziptool, 2 logpersist.start, 2 bzip2, 2 /apex/com.android.runtime/bin/linker64, 2 /apex/com.android.runtime/bin/linker, 18 ../boot-*.vdex (9 boot names, each twice, 9 under system/framework/arm and 9 under system/framework/arm64), and singles. Wording error: the link system/bin/linkerconfig resolves to /apex/com.android.runtime/bin/linkerconfig, but the claim's parenthetical (into /apex/com.android.art) reads as applying to linkerconfig. Also the bootstrap aliases are system/bin/bootstrap/linker_asan -> linker and system/bin/bootstrap/linker_asan64 -> linker64.",
+   "corrected_claim": "The 229 symlinks resolve to: 173 toybox, 6 toolbox, 5 netutils-wrapper-1.0, 5 iptables, 3 mke2fs, 3 fsck.f2fs, 2 ziptool, 2 logpersist.start, 2 bzip2, 2 /apex/com.android.runtime/bin/linker64, 2 /apex/com.android.runtime/bin/linker, 18 relative ../boot-*.vdex links (9 boot names, each under system/framework/arm and system/framework/arm64), and singles: system/bin/linkerconfig into /apex/com.android.runtime/bin/linkerconfig, system/bin/dex2oat into /apex/com.android.art/bin/dex2oat64, system/bin/dalvikvm into /apex/com.android.art/bin/dalvikvm, system/bin/app_process into app_process64, and the bootstrap aliases system/bin/bootstrap/linker_asan -> linker and linker_asan64 -> linker64."
+  },
+  {
+   "id": "C06",
+   "claim": "Eight symlinks that exist on the mounted tree are not in this group: system/bin/disable-verity, enable-verity, hwclock, tee, touch, ueventd, and the two system/framework/arm and arm64 boot-com.oculus.os.platform.vdex links. They belong to another subsystem in classified.tsv.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a && find system/bin system/framework -type l -printf '%p\\n' | sort > all_symlinks_sys.txt ; comm -23 all_symlinks_sys.txt group_symlinks.txt | output: system/bin/disable-verity / system/bin/enable-verity / system/bin/hwclock / system/bin/tee / system/bin/touch / system/bin/ueventd / system/framework/arm/boot-com.oculus.os.platform.vdex / system/framework/arm64/boot-com.oculus.os.platform.vdex",
+   "verdict": "needs_change",
+   "reason": "find over system/bin and system/framework gives 237 symlinks. Set difference against group_symlinks.txt (229) gives exactly the 8 listed paths. The paths belong to four subsystems in classified.tsv, not one: security-keystore-crypto (system/bin/disable-verity, enable-verity, tee), display-and-composer (system/bin/hwclock), sensors-mcu-meta-hal (system/bin/touch and the two system/framework arm and arm64 boot-com.oculus.os.platform.vdex links), init-and-properties (system/bin/ueventd). The 3+1+3+1 split sums to 8.",
+   "corrected_claim": "Eight symlinks that exist on the mounted tree are not in this group: system/bin/disable-verity, enable-verity, hwclock, tee, touch, ueventd, and the two system/framework/arm and arm64 boot-com.oculus.os.platform.vdex links. They belong to four other subsystems in classified.tsv: security-keystore-crypto (disable-verity, enable-verity, tee), display-and-composer (hwclock), sensors-mcu-meta-hal (touch and the two boot-com.oculus.os.platform.vdex links), and init-and-properties (ueventd)."
+  },
+  {
+   "id": "C07",
+   "claim": "22 APEX-type packages are in the group: 20 in system_a (system/apex), 1 in product_a (apex/com.meta.quest.apex) and 1 in odm_a (apex/com.meta.xr.apex). Manifest names differ from filenames for the VNDK package, which is com.android.vndk.v32. Each .apex has an apex_payload.img of ext4 type. Each .capex (compressed APEX) has no payload and instead contains an original_apex member. The com.android.art.capex original_apex is 60,234,888 bytes.",
+   "label": "verified",
+   "evidence": "cd <image>-tools/work/subsystems/framework-and-system-services && python3 apex_probe.py (zipfile listing for each .apex/.capex: apex_manifest.pb name string, apex_payload.img magic at byte offset 1080, original_apex size) | output excerpt: system_a system/apex/com.android.art.capex 24151376 com.android.art none original_apex(60234888 bytes) 8 ; system_a system/apex/com.android.vndk.current.apex 41100359 com.android.vndk.v32 ext4 none 10 ; product_a apex/com.meta.quest.apex 49634100 com.meta.quest ext4 none 8 ; odm_a apex/com.meta.xr.apex 290596 com.meta.xr ext4 none 8",
+   "verdict": "needs_change",
+   "reason": "apex_probe.py re-run gives apex_facts.tsv identical to the earlier run, 22 rows: 20 system_a, 1 product_a, 1 odm_a. Twelve .apex files carry an ext4 payload (magic 53ef at offset 1080). The ten .capex files have no payload and contain an original_apex member; com.android.art.capex original_apex is 60234888 bytes. Manifest names differ from filenames for two packages, not one: com.android.vndk.current.apex (manifest com.android.vndk.v32) and com.android.tethering.inprocess.capex (manifest com.android.tethering). Confirmed by reading apex_manifest.pb name strings.",
+   "corrected_claim": "22 APEX-type packages are in the group: 20 in system_a (system/apex), 1 in product_a (apex/com.meta.quest.apex) and 1 in odm_a (apex/com.meta.xr.apex). Manifest names differ from filenames for two packages: com.android.vndk.current.apex (manifest com.android.vndk.v32) and com.android.tethering.inprocess.capex (manifest com.android.tethering). Each .apex has an apex_payload.img of ext4 type. Each .capex has no payload and contains an original_apex member. The com.android.art.capex original_apex is 60,234,888 bytes."
+  },
+  {
+   "id": "C08",
+   "claim": "com.android.runtime.apex is a zip container with 10 members: apex_build_info.pb, apex_manifest.pb (manifest name com.android.runtime), apex_payload.img (8,880,128 bytes), apex_pubkey, assets/NOTICE.html.gz, resources.arsc, AndroidManifest.xml and META-INF signature files. The payload carries the ext4 signature 0x53ef at byte offset 1080. /system/bin/linker64 is a symlink to /apex/com.android.runtime/bin/linker64.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/apex && unzip -l com.android.runtime.apex | tail -n +4 | head -11 ; python3 -c \"import zipfile,re; z=zipfile.ZipFile('com.android.runtime.apex'); print(re.findall(rb'[A-Za-z][A-Za-z0-9_.]{5,}', z.read('apex_manifest.pb'))); h=z.open('apex_payload.img').read(1100); print(h[1080:1082].hex())\" | output: [b'com.android.runtime', b'libdexfile.soB', b'liblog.so'] / 53ef ; readlink <image>/mnt/system_a/system/bin/linker64 | output: /apex/com.android.runtime/bin/linker64",
+   "file": "<image>/mnt/system_a/system/apex/com.android.runtime.apex",
+   "verdict": "confirmed",
+   "reason": "unzip -l of com.android.runtime.apex lists 10 members: apex_build_info.pb, apex_manifest.pb, apex_payload.img (8880128 bytes), apex_pubkey, assets/NOTICE.html.gz, resources.arsc, AndroidManifest.xml, META-INF/CERT.SF, META-INF/CERT.RSA, META-INF/MANIFEST.MF. Manifest name string is com.android.runtime. Payload bytes 1080-1081 are 53ef. readlink of system/bin/linker64 is /apex/com.android.runtime/bin/linker64.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C09",
+   "claim": "services.jar (archive 18,820,024 bytes) has 28 members: classes.dex (11,441,472 bytes uncompressed), classes2.dex (7,359,616 bytes), META-INF/MANIFEST.MF, 20 *_compat_config.xml files and 5 .uau files. Member total is 18,842,858 bytes. The manifest declares Created-By: soong_zip. The purpose of the .uau members was not determined.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework && unzip -l services.jar | tail -n 1 ; unzip -l services.jar | grep -c '_compat_config.xml' ; unzip -l services.jar | grep -c '[.]uau$' ; unzip -p services.jar META-INF/MANIFEST.MF | head -c 200 | output: 18842858 28 files / 20 / 5 / Manifest-Version: 1.0 Created-By: soong_zip",
+   "file": "<image>/mnt/system_a/system/framework/services.jar",
+   "verdict": "confirmed",
+   "reason": "unzip -l services.jar total line: 18842858 bytes over 28 files; file size 18820024 bytes. Counts: 20 _compat_config.xml and 5 .uau members. classes.dex is 11441472 bytes and classes2.dex is 7359616 bytes uncompressed. META-INF/MANIFEST.MF begins Manifest-Version: 1.0 and Created-By: soong_zip. Gap: the purpose of the .uau members is not determined here.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C10",
+   "claim": "classes.dex inside services.jar is a dex 039 file whose string table contains the system_server entry class Lcom/android/server/SystemServer;.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework && unzip -p services.jar classes.dex | head -c 8 | od -An -c ; unzip -p services.jar classes.dex | strings -n 10 | grep -m3 'com/android/server/SystemServer;' | output: d e x newline 0 3 9 NUL / !Lcom/android/server/SystemServer;",
+   "file": "<image>/mnt/system_a/system/framework/services.jar",
+   "verdict": "confirmed",
+   "reason": "unzip -p services.jar classes.dex | head -c 8 gives dex, newline, 039, NUL. strings finds !Lcom/android/server/SystemServer; where the 0x21 byte is the ULEB128 length of the 33-character descriptor, consistent with a dex string table entry.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C11",
+   "claim": "framework.jar (archive 34,835,598 bytes) has 45 members: classes.dex through classes4.dex (dex 039), res/android.mime.types, res/debian.mime.types and res/vendor.mime.types, plus META-INF. Its dex string table contains Landroid/app/ActivityThread;.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework && unzip -l framework.jar | tail -n 1 ; unzip -l framework.jar | awk 'NR>3{print $4}' | grep -E '^classes|mime.types' | output: classes.dex / classes2.dex / classes3.dex / classes4.dex / res/android.mime.types / res/debian.mime.types / res/vendor.mime.types ; unzip -p framework.jar classes.dex | head -c 8 | od -An -c | output: d e x newline 0 3 9 NUL",
+   "file": "<image>/mnt/system_a/system/framework/framework.jar",
+   "verdict": "needs_change",
+   "reason": "unzip -l gives 45 members: 4 classes*.dex, 3 res/ mime-type files, 1 META-INF/MANIFEST.MF, and 37 android/...*_compat_config.xml files. The claim lists the first three groups and omits the 37 compat config members, so the enumeration does not account for 45 members. Archive size 34835598 and dex magic dex 039 for all four dex files are confirmed; Landroid/app/ActivityThread; appears in each dex string table.",
+   "corrected_claim": "framework.jar (archive 34,835,598 bytes) has 45 members: classes.dex through classes4.dex (dex 039), res/android.mime.types, res/debian.mime.types, res/vendor.mime.types, META-INF/MANIFEST.MF, and 37 android/...*_compat_config.xml files. Its dex string tables contain Landroid/app/ActivityThread;."
+  },
+  {
+   "id": "C12",
+   "claim": "framework-res.apk (file 28,322,116 bytes) is a zip with 3,259 members, 3,249 of them under res/. It carries AndroidManifest.xml (275,872 bytes uncompressed) and resources.arsc (15,986,932 bytes). 1,675 members are stored and 1,584 deflated. It has no classes.dex.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework && unzip -l framework-res.apk | grep -E ' AndroidManifest[.]xml$| resources[.]arsc$' ; python3 -c \"import zipfile,collections; z=zipfile.ZipFile('framework-res.apk'); print(len(z.namelist()), sum(n.startswith('res/') for n in z.namelist()), collections.Counter(i.compress_type for i in z.infolist()))\" | output: 3259 3249 Counter({0: 1675, 8: 1584}) ; output excerpt: 275872 AndroidManifest.xml / 15986932 resources.arsc",
+   "file": "<image>/mnt/system_a/system/framework/framework-res.apk",
+   "verdict": "confirmed",
+   "reason": "ls gives framework-res.apk as 28322116 bytes. unzip -l shows AndroidManifest.xml at 275872 bytes and resources.arsc at 15986932 bytes. Python zipfile counts: 3259 members, 3249 under res/, compress types {0: 1675, 8: 1584}. No classes.dex member; non-res members are assets, resources.arsc, AndroidManifest.xml and META-INF.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C13",
+   "claim": "services.odex is an ELF64, ET_DYN, AArch64 shared object. Its sections include .rodata at 0x1000, .text at 0x67e000 (size 0x1b636e8), .data.bimg.rel.ro at 0x21e2000, .dynsym at 0x227f0a0 and .dynamic at 0x2280000 (size 0x70). File size is 36,885,288 bytes. Companion files are services.vdex (248,244 bytes) and services.art (2,019,328 bytes).",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework/oat/arm64 && readelf -h services.odex | grep -E 'Class|Type|Machine' ; readelf -S -W services.odex | grep -E '[]][ ]+[.](rodata|text|data[.]bimg[.]rel[.]ro|dynsym|dynamic)[ ]' | output: ELF64 / DYN (Shared object file) / AArch64 ; [ 2] .rodata PROGBITS 0000000000001000 001000 67d000 ; [ 3] .text PROGBITS 000000000067e000 67e000 1b636e8 ; [ 4] .data.bimg.rel.ro PROGBITS 00000000021e2000 21e2000 008f9c ; [ 8] .dynsym DYNSYM 000000000227f0a0 21eb0a0 000120 ; [10] .dynamic DYNAMIC 0000000002280000 21ec000 000070",
+   "file": "<image>/mnt/system_a/system/framework/oat/arm64/services.odex",
+   "verdict": "confirmed",
+   "reason": "readelf -h services.odex: ELF64, DYN (Shared object file), AArch64. Section table: .rodata at 0x1000, .text at 0x67e000 with size 0x1b636e8, .data.bimg.rel.ro at 0x21e2000, .dynsym at 0x227f0a0, .dynamic at 0x2280000 with size 0x70. ls gives services.odex 36885288 bytes, services.vdex 248244 bytes, services.art 2019328 bytes.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C14",
+   "claim": "The services.odex image records a classpath that starts with the ART core jars, then /system/framework/framework.jar, framework-graphics.jar, ext.jar, telephony-common.jar, voip-common.jar, ims-common.jar, /apex/com.android.i18n/javalib/core-icu4j.jar, and the system_ext jars /system_ext/framework/com.oculus.os.platform.jar, vros-framework.jar and ocui.jar. Dex locations are recorded as /system/framework/services.jar!classes2.dex.",
+   "label": "observed",
+   "evidence": "cd <image>/mnt/system_a/system/framework/oat/arm64 && strings -n 8 services.odex | grep -m5 -E 'services[.]jar|^oat|/system/framework' | output excerpt: /apex/com.android.art/javalib/core-oj.jar:...:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/system_ext/framework/com.oculus.os.platform.jar:/system_ext/framework/vros-framework.jar:/system_ext/framework/ocui.jar / PCL[/system/framework/com.android.location.provider.jar*2527093069] / /system/framework/services.jar!classes2.dex",
+   "verdict": "confirmed",
+   "reason": "Observed label holds. strings on services.odex shows one classpath string beginning /apex/com.android.art/javalib/core-oj.jar, then core-libart, okhttp, bouncycastle and apache-xml (all under /apex/com.android.art), then /system/framework/framework.jar, framework-graphics.jar, ext.jar, telephony-common.jar, voip-common.jar, ims-common.jar, /apex/com.android.i18n/javalib/core-icu4j.jar, /system_ext/framework/com.oculus.os.platform.jar, vros-framework.jar and ocui.jar. /system/framework/services.jar!classes2.dex appears as a string. Wording note: okhttp, bouncycastle and apache-xml are also in the leading ART group, so 'ART core jars' is loose but not wrong.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C15",
+   "claim": "services.vdex has magic vdex followed by 027 and NUL; services.art has magic art, newline, 099, NUL. Both are in oat/arm64.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework/oat/arm64 && od -An -c -N8 services.vdex ; od -An -c -N8 services.art | output: v d e x 0 2 7 NUL / a r t newline 0 9 9 NUL",
+   "verdict": "confirmed",
+   "reason": "od -c -N8 on oat/arm64/services.vdex gives v d e x 0 2 7 NUL. On services.art it gives a r t newline 0 9 9 NUL. Both files are in oat/arm64.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C16",
+   "claim": "The boot-framework image set for arm64 is: boot-framework.oat (ELF64 AArch64 ET_DYN, 1,050,096 bytes, zero DT_NEEDED entries), boot-framework.art (art 099 image, 7,344,128 bytes) and boot-framework.vdex (vdex 027, 324,332 bytes). The arm variant has boot-framework.art at 5,550,080 bytes and boot-framework.oat at 870,420 bytes.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework/arm64 && readelf -h boot-framework.oat | grep -E 'Type|Machine' ; readelf -d boot-framework.oat | grep -c NEEDED ; od -An -c -N16 boot-framework.art ; ls -l boot-framework.art boot-framework.oat ../boot-framework.vdex | output: DYN (Shared object file) / AArch64 / 0 / a r t newline 0 9 9 NUL / 7344128 boot-framework.art / 1050096 boot-framework.oat / 324332 ../boot-framework.vdex",
+   "verdict": "confirmed",
+   "reason": "readelf -h boot-framework.oat: ELF64, DYN, AArch64. readelf -d | grep -c NEEDED gives 0. od on boot-framework.art gives a r t newline 0 9 9 NUL. Sizes: arm64 boot-framework.art 7344128, boot-framework.oat 1050096, ../boot-framework.vdex 324332 (vdex header v d e x 0 2 7 NUL). arm variant: boot-framework.art 5550080, boot-framework.oat 870420. Note: arm64/boot-framework.vdex is a symlink to the shared ../boot-framework.vdex.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C17",
+   "claim": "The boot-framework.oat strings name the bootclasspath and its checksum table, and list the ART core jars followed by /system/framework/framework.jar and its classes2 to classes4 dex entries.",
+   "label": "observed",
+   "evidence": "cd <image>/mnt/system_a/system/framework/arm64 && strings -n 8 boot-framework.oat | grep -m3 -E 'bootclasspath|oatlastword' ; strings -n 8 boot-framework.oat | grep -m4 -E 'system/framework/framework[.]jar' | output: bootclasspath / bootclasspath-checksums / oatlastword / /system/framework/framework.jar / /system/framework/framework.jar!classes2.dex / /system/framework/framework.jar!classes3.dex",
+   "verdict": "confirmed",
+   "reason": "Observed label holds. strings -n 8 boot-framework.oat lines: bootclasspath (line 1), the five ART jars as one string (line 2), bootclasspath-checksums (line 3), /system/framework/framework.jar (line 39), framework.jar!classes2.dex (line 40), !classes3.dex (line 41), !classes4.dex (line 42), oatlastword (line 45). The trailing g after classes4.dex is a byte from the adjacent string, not part of the name.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C18",
+   "claim": "The profile files for services.jar and org.apache.http.legacy.jar are ART profiles with magic pro, NUL, 015, NUL (version 015). services.jar.bprof (3,244 bytes) starts with byte 0x1e followed by /system/framework/services.jar text, which is a different (boot profile) format.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/framework && od -c -N8 services.jar.prof ; od -c -N8 services.jar.bprof ; strings -n 6 services.jar.bprof | head -3 | output: p r o NUL 0 1 5 NUL / 036 / s y s t e m / /system/framework/services.jar+/system/framework/services.jar!classes2.dex",
+   "verdict": "needs_change",
+   "reason": "od -c -N8 gives p r o NUL 0 1 5 NUL for services.jar.prof and org.apache.http.legacy.jar.prof, so both have the pro magic and version 015. services.jar.bprof (3244 bytes) begins with byte 0x1e (octal 036) followed by /system/framework/services.jar text, so it lacks the pro magic. Its identification as a boot profile is inferred from the .bprof suffix (compare etc/boot-image.bprof), not verified from its contents, so the label verified does not cover that part.",
+   "corrected_claim": "The profile files for services.jar and org.apache.http.legacy.jar are ART profiles with magic pro, NUL, 015, NUL (version 015). services.jar.bprof (3,244 bytes) starts with byte 0x1e followed by /system/framework/services.jar text, so it does not carry the pro magic; its boot-profile designation is inferred from the .bprof suffix."
+  },
+  {
+   "id": "C19",
+   "claim": "servicemanager is a PIE AArch64 executable, interpreter /system/bin/linker64, with 11 DT_NEEDED entries: libbase.so, libbinder.so, libvintf.so, libcutils.so, liblog.so, libutils.so, libselinux.so, libc++.so, libc.so, libm.so, libdl.so. It is 71,728 bytes.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/bin && readelf -h servicemanager | grep -E 'Type|Machine' ; readelf -l servicemanager | grep -m1 'interpreter' ; readelf -d servicemanager | grep NEEDED | sed 's/.*[[]\\(.*\\)[]]/\\1/' | output: DYN (Position-Independent Executable file) / AArch64 / [Requesting program interpreter: /system/bin/linker64] / libbase.so libbinder.so libvintf.so libcutils.so liblog.so libutils.so libselinux.so libc++.so libc.so libm.so libdl.so",
+   "verdict": "confirmed",
+   "reason": "readelf -h servicemanager: DYN (PIE), AArch64. readelf -l interpreter: /system/bin/linker64. readelf -d NEEDED count 11, listed in the claimed order (libbase.so ... libdl.so). ls size 71728 bytes.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C20",
+   "claim": "servicemanager exports the binder interface android::os::IServiceManager: the mangled symbols include IServiceManager descriptor and BnServiceManager onTransact.",
+   "label": "observed",
+   "evidence": "cd <image>/mnt/system_a/system/bin && strings -n 8 servicemanager | grep -E 'IServiceManager' | head -4 | output: _ZN7android2os15IServiceManager10descriptorE / _ZN7android2os15IServiceManagerD0Ev / _ZN7android2os16BnServiceManager10onTransactEjRKNS_6ParcelEPS2_j (remaining lines truncated)",
+   "verdict": "needs_change",
+   "reason": "strings lists _ZN7android2os15IServiceManager10descriptorE, _ZN7android2os15IServiceManagerD0Ev and _ZN7android2os16BnServiceManager10onTransact..., so the names are present. readelf --dyn-syms shows the IServiceManager descriptor, IServiceManager destructors, and BnServiceManager ctor and onTransact as UND, imported from LIBBINDER. The only defined IServiceManager dynamic symbol is the WEAK instantiation _ZN7android11BnInterfaceINS_2os15IServiceManagerEE10onAsBinderEv. So servicemanager imports the interface from libbinder; it does not export it.",
+   "corrected_claim": "servicemanager uses the android::os::IServiceManager binder interface defined in libbinder: its dynamic symbol table imports the IServiceManager descriptor, the IServiceManager destructors, and BnServiceManager::onTransact from LIBBINDER. The only defined interface symbol is the weak BnInterface<IServiceManager>::onAsBinder."
+  },
+  {
+   "id": "C21",
+   "claim": "init starts servicemanager from its service definition: class core animation, user system, group system readproc, critical, onrestart restart apexd, audioserver, gatekeeperd, onrestart class_restart main, hal and early_hal, task_profiles ServiceCapacityLow ServicePerformance, shutdown critical. init/hw/init.rc starts it with start servicemanager at line 504, before hwservicemanager and vndservicemanager.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc && cat init/servicemanager.rc ; grep -n 'servicemanager' init/hw/init.rc | output: service servicemanager /system/bin/servicemanager / class core animation / user system / group system readproc / critical / onrestart restart apexd / ... / shutdown critical ; 504: start servicemanager / 505: start hwservicemanager / 506: start vndservicemanager",
+   "verdict": "confirmed",
+   "reason": "cat init/servicemanager.rc gives the service with class core animation, user system, group system readproc, critical, onrestart restart apexd, audioserver, gatekeeperd, onrestart class_restart main, hal and early_hal, task_profiles ServiceCapacityLow ServicePerformance, shutdown critical. grep -n servicemanager init/hw/init.rc gives 504 start servicemanager, 505 start hwservicemanager, 506 start vndservicemanager.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C22",
+   "claim": "SELinux labels the binary as servicemanager_exec and the hwservicemanager binary as hwservicemanager_exec. The hwservicemanager init service is defined as service hwservicemanager /system/bin/hwservicemanager.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc && grep -n '/system/bin/servicemanager\\|/system/bin/hwservicemanager' selinux/plat_file_contexts ; head -1 init/hwservicemanager.rc | output: 572:/system/bin/servicemanager u:object_r:servicemanager_exec:s0 / 591:/system/bin/hwservicemanager u:object_r:hwservicemanager_exec:s0 / service hwservicemanager /system/bin/hwservicemanager",
+   "verdict": "confirmed",
+   "reason": "grep plat_file_contexts gives 572 /system/bin/servicemanager u:object_r:servicemanager_exec:s0 and 591 /system/bin/hwservicemanager u:object_r:hwservicemanager_exec:s0. head -1 init/hwservicemanager.rc is service hwservicemanager /system/bin/hwservicemanager.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C23",
+   "claim": "app_process64 is a PIE AArch64 executable, interpreter /system/bin/linker64, with 13 DT_NEEDED entries (libandroid_runtime.so, libbinder.so, libcutils.so, libhidlbase.so, liblog.so, libnativeloader.so, libsigchain.so, libutils.so, libwilhelm.so, libc++.so, libc.so, libm.so, libdl.so). Its strings contain the entry class com.android.internal.os.ZygoteInit and the flags --zygote and --start-system-server. It is 20,400 bytes. app_process is a symlink to it.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/bin && readelf -d app_process64 | grep -c NEEDED ; strings -n 6 app_process64 | grep -E 'ZygoteInit|--zygote|--start-system-server' | head -3 ; readlink app_process | output: 13 / --zygote / com.android.internal.os.ZygoteInit / --start-system-server / app_process64",
+   "verdict": "confirmed",
+   "reason": "app_process64: 20400 bytes, DYN (PIE), AArch64, interpreter /system/bin/linker64, 13 NEEDED entries. Flags --start-system-server (strings line 71), --zygote and com.android.internal.os.ZygoteInit are present. readlink app_process gives app_process64. Note: the claim's evidence command with head -3 truncates the output before the --start-system-server line, but a full grep confirms the string.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C24",
+   "claim": "init defines the zygote services that run app_process64 and app_process32: init.zygote64.rc line 1 is service zygote /system/bin/app_process64 -Xzygote /system/bin --zygote --start-system-server. init.zygote64_32.rc line 18 defines zygote_secondary on app_process32 with --socket-name=zygote_secondary and --enable-lazy-preload. init.zygote64_stub32.rc line 18 defines zygote_secondary on stub_zygote, which then execs app_process32. SELinux maps app_process32 and app_process64 to zygote_exec at lines 562 and 563.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc && grep -n 'app_process\\|stub_zygote' init/hw/init.zygote64.rc init/hw/init.zygote64_32.rc init/hw/init.zygote64_stub32.rc ; grep -n 'app_process' selinux/plat_file_contexts | output: init/hw/init.zygote64.rc:1:service zygote /system/bin/app_process64 -Xzygote /system/bin --zygote --start-system-server / init/hw/init.zygote64_32.rc:18:service zygote_secondary /system/bin/app_process32 -Xzygote /system/bin --zygote --socket-name=zygote_secondary --enable-lazy-preload / init/hw/init.zygote64_stub32.rc:18:service zygote_secondary /system/bin/stub_zygote /system/bin/app_process32 -Xzygote /system/bin --zygote --socket-name=zygote_secondary --enable-lazy-preload / 562:/system/bin/app_process32 u:object_r:zygote_exec:s0 / 563:/system/bin/app_process64 u:object_r:zygote_exec:s0",
+   "verdict": "needs_change",
+   "reason": "init.zygote64.rc line 1, init.zygote64_32.rc line 18 and init.zygote64_stub32.rc line 18 match the claim text. plat_file_contexts lines 562 and 563 map app_process32 and app_process64 to zygote_exec. The statement that stub_zygote then execs app_process32 is not read from the init files: the stub binary (60080 bytes, PIE AArch64) imports execve and contains the strings execve and execve failed, while app_process32 appears only as an argument in init. The exec is inferred, so the verified label does not hold for that clause.",
+   "corrected_claim": "init.zygote64_stub32.rc line 18 defines zygote_secondary running /system/bin/stub_zygote with /system/bin/app_process32 as its first argument. The stub binary imports execve, so an exec of app_process32 is inferred."
+  },
+  {
+   "id": "C25",
+   "claim": "toybox is a PIE AArch64 executable with 8 DT_NEEDED entries (libcrypto.so, libz.so, liblog.so, libprocessgroup.so, libselinux.so, libc.so, libm.so, libdl.so). Its strings include the multicall banner Toybox %s multicall binary. In this group 173 symlinks point to it. SELinux labels /system/bin/toybox as toolbox_exec (plat_file_contexts line 463). No file in the mounted init directory mentions toybox or toolbox.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system && readelf -d bin/toybox | grep -c NEEDED ; strings -n 4 bin/toybox | grep -m1 'multicall' ; grep -n '^/system/bin/toybox' etc/selinux/plat_file_contexts ; grep -rl 'toybox\\|toolbox' etc/init | wc -l | output: 8 / Toybox %s multicall binary: https://landley.net/toybox (see toybox --help) / 463:/system/bin/toybox -- u:object_r:toolbox_exec:s0 / 0",
+   "verdict": "confirmed",
+   "reason": "toybox: DYN (PIE), AArch64, 8 NEEDED entries (libcrypto.so, libz.so, liblog.so, libprocessgroup.so, libselinux.so, libc.so, libm.so, libdl.so). strings gives Toybox %s multicall binary: https://landley.net/toybox (see toybox --help). plat_file_contexts line 463: /system/bin/toybox -- u:object_r:toolbox_exec:s0. grep -rl toybox|toolbox over init gives 0 files. readlink over the group list: 173 entries resolve to toybox.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C26",
+   "claim": "cmd and service are PIE AArch64 binder clients (8 and 7 DT_NEEDED entries). cmd prints the messages No service specified; use -l to list all running services and cmd: Can't find service. service accepts list and check SERVICE: its usage text reads Usage: service [-h|-?], service list, service check SERVICE. Neither binary has an explicit line in plat_file_contexts; the absence was checked with grep.",
+   "label": "observed",
+   "evidence": "cd <image>/mnt/system_a/system && readelf -d bin/cmd | grep -c NEEDED ; readelf -d bin/service | grep -c NEEDED ; strings -n 6 bin/service | grep -E 'Usage|service list|service check' | head -3 ; grep -nE '^/system/bin/(cmd|service)[[:space:]]' etc/selinux/plat_file_contexts | output: 8 / 7 / Usage: service [-h|-?] / service list / service check SERVICE / (no matching lines)",
+   "verdict": "needs_change",
+   "reason": "cmd has 8 NEEDED entries and service has 7. cmd strings include cmd: No service specified; use -l to list all running services. Use -w to start and wait for a service. and cmd: Can't find service: followed by the name (colon, not period; the format string is Can't find service %.*s). service usage lines are Usage: service [-h|-?], service list, service check SERVICE, one per line. grep finds no plat_file_contexts line for /system/bin/cmd or /system/bin/service (the only match is for servicemanager).",
+   "corrected_claim": "cmd prints the messages 'No service specified; use -l to list all running services' and 'cmd: Can't find service: <name>'. service accepts list and check SERVICE: its usage text reads Usage: service [-h|-?], service list, service check SERVICE. Neither binary has an explicit line in plat_file_contexts."
+  },
+  {
+   "id": "C27",
+   "claim": "platform.xml is the core permission file: root permissions with 20 permission, 45 assign-permission, 13 split-permission, 6 allow-in-power-save, 3 allow-in-power-save-except-idle, 1 allow-in-data-usage-save and 5 library children. The library elements name android.test.base, android.test.mock, android.test.runner (dependency android.test.base:android.test.mock), android.hidl.base-V1.0-java and android.hidl.manager-V1.0-java, each with a file= attribute under /system/framework.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/permissions && python3 -c \"import xml.etree.ElementTree as ET,collections; r=ET.parse('platform.xml').getroot(); print(collections.Counter(c.tag for c in r)); print([(l.get('name'),l.get('file')) for l in r if l.tag=='library'][:2])\" | output: Counter({'assign-permission': 45, 'permission': 20, 'split-permission': 13, 'allow-in-power-save': 6, 'library': 5, 'allow-in-power-save-except-idle': 3, 'allow-in-data-usage-save': 1}) / [('android.test.base', '/system/framework/android.test.base.jar'), ('android.test.mock', '/system/framework/android.test.mock.jar')]",
+   "file": "<image>/mnt/system_a/system/etc/permissions/platform.xml",
+   "verdict": "confirmed",
+   "reason": "Parsing platform.xml: root is permissions with 93 children: 20 permission, 45 assign-permission, 13 split-permission, 6 allow-in-power-save, 3 allow-in-power-save-except-idle, 1 allow-in-data-usage-save, 5 library. Library names and files: android.test.base, android.test.mock, android.test.runner (dependency android.test.base:android.test.mock), android.hidl.base-V1.0-java, android.hidl.manager-V1.0-java, each file under /system/framework.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C28",
+   "claim": "privapp-permissions-platform.xml has 35 package elements (attribute package), 377 permission children, and 213 distinct permission names. The first package is android.ext.services with PROVIDE_RESOLVER_RANKER_SERVICE and MONITOR_DEFAULT_SMS_PACKAGE.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/permissions && python3 -c \"import xml.etree.ElementTree as ET; r=ET.parse('privapp-permissions-platform.xml').getroot(); pp=list(r); print(len(pp), sum(len(list(p)) for p in pp), len(set(x.get('name') for p in pp for x in p))); print(pp[0].attrib)\" | output: 35 377 213 / {'package': 'android.ext.services'}",
+   "file": "<image>/mnt/system_a/system/etc/permissions/privapp-permissions-platform.xml",
+   "verdict": "confirmed",
+   "reason": "Parsing privapp-permissions-platform.xml: 35 privapp-permissions elements, 377 permission children, 213 distinct permission names. First element attribute package=android.ext.services with permissions PROVIDE_RESOLVER_RANKER_SERVICE, MONITOR_DEFAULT_SMS_PACKAGE, REQUEST_NOTIFICATION_ASSISTANT_SERVICE and INTERACT_ACROSS_USERS; the two named in the claim are the first two.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C29",
+   "claim": "default-permissions.xml has 32 exception elements (attribute package) with 87 permission grant children, 25 of which carry fixed=true. The first exception is com.facebook.wearable.system.location.proxy with ACCESS_BACKGROUND_LOCATION and ACCESS_FINE_LOCATION fixed=true.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/default-permissions && python3 -c \"import xml.etree.ElementTree as ET; ex=list(ET.parse('default-permissions.xml').getroot()); print(len(ex), sum(len(list(e)) for e in ex), sum(1 for e in ex for g in e if g.get('fixed')=='true')); print(ex[0].get('package'))\" | output: 32 87 25 / com.facebook.wearable.system.location.proxy",
+   "file": "<image>/mnt/system_a/system/etc/default-permissions/default-permissions.xml",
+   "verdict": "confirmed",
+   "reason": "Parsing default-permissions.xml: 32 exception elements, 87 permission grant children, 25 with fixed=true (62 with fixed=false). First exception package=com.facebook.wearable.system.location.proxy with ACCESS_BACKGROUND_LOCATION and ACCESS_FINE_LOCATION, both fixed=true. Gap: the same directory also holds com.oculus.mrservice.xml and com.oculus.xrstreamingclient.xml, which are not characterized here.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C30",
+   "claim": "framework-sysconfig.xml (config root) has 23 allow-implicit-broadcast action elements, 2 backup-transport-whitelisted-service elements (service=com.android.localtransport/.LocalTransportService and com.android.encryptedlocaltransport/.EncryptedLocalTransportService), 1 bugreport-whitelisted (package com.android.shell) and 1 app-link (package com.android.carrierdefaultapp).",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/sysconfig && python3 -c \"import xml.etree.ElementTree as ET,collections; r=ET.parse('framework-sysconfig.xml').getroot(); print(collections.Counter(c.tag for c in r)); print([c.attrib for c in r if c.tag in ('backup-transport-whitelisted-service','bugreport-whitelisted','app-link')])\" | output: Counter({'allow-implicit-broadcast': 23, 'backup-transport-whitelisted-service': 2, 'bugreport-whitelisted': 1, 'app-link': 1}) / [{'service': 'com.android.localtransport/.LocalTransportService'}, {'service': 'com.android.encryptedlocaltransport/.EncryptedLocalTransportService'}, {'package': 'com.android.shell'}, {'package': 'com.android.carrierdefaultapp'}]",
+   "file": "<image>/mnt/system_a/system/etc/sysconfig/framework-sysconfig.xml",
+   "verdict": "confirmed",
+   "reason": "Parsing framework-sysconfig.xml (root config): 23 allow-implicit-broadcast, 2 backup-transport-whitelisted-service (service com.android.localtransport/.LocalTransportService and com.android.encryptedlocaltransport/.EncryptedLocalTransportService), 1 bugreport-whitelisted (package com.android.shell), 1 app-link (package com.android.carrierdefaultapp).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C31",
+   "claim": "hiddenapi-package-whitelist.xml has 36 hidden-api-whitelisted-app elements, each with a package attribute; the first entries are android.ext.services, com.android.apps.tag, com.android.basicsmsreceiver and com.android.bookmarkprovider.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/sysconfig && grep -o 'hidden-api-whitelisted-app package=\"[^\"]*\"' hiddenapi-package-whitelist.xml | wc -l ; grep -o 'hidden-api-whitelisted-app package=\"[^\"]*\"' hiddenapi-package-whitelist.xml | head -2 | output: 36 / hidden-api-whitelisted-app package=\"android.ext.services\" / hidden-api-whitelisted-app package=\"com.android.apps.tag\"",
+   "file": "<image>/mnt/system_a/system/etc/sysconfig/hiddenapi-package-whitelist.xml",
+   "verdict": "confirmed",
+   "reason": "grep -o hidden-api-whitelisted-app package= gives 36 matches; XML parse gives 36 hidden-api-whitelisted-app elements under config. First four packages: android.ext.services, com.android.apps.tag, com.android.basicsmsreceiver, com.android.bookmarkprovider.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C32",
+   "claim": "preinstalled-packages-platform.xml has 2 install-in-user-type elements. Its package attribute is the placeholder com.android.example. The leading comment defines the base user types, including SYSTEM (user 0) and FULL (any non-profile human user).",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/sysconfig && python3 -c \"import xml.etree.ElementTree as ET,collections; r=ET.parse('preinstalled-packages-platform.xml').getroot(); print(collections.Counter(c.tag for c in r))\" ; grep -n 'SYSTEM\\|FULL' preinstalled-packages-platform.xml | head -3 | output: Counter({'install-in-user-type': 2}) / lines with SYSTEM (user 0) and FULL (any non-profile human user)",
+   "verdict": "refuted",
+   "reason": "The count of 2 install-in-user-type elements is correct, and the base user types SYSTEM (user 0) and FULL (any non-profile human user) are in the leading comment block. The package attribute claim is wrong: the two elements carry package=com.android.providers.settings (install-in SYSTEM, FULL and PROFILE) and package=com.android.wallpaperbackup (install-in FULL). The string com.android.example occurs only inside the comment examples (lines 49 to 90).",
+   "corrected_claim": "preinstalled-packages-platform.xml has 2 install-in-user-type elements, for packages com.android.providers.settings and com.android.wallpaperbackup. The leading comment defines the base user types, including SYSTEM (user 0) and FULL (any non-profile human user). The placeholder com.android.example appears only in comment examples."
+  },
+  {
+   "id": "C33",
+   "claim": "No init file and no SELinux file in the mounted system_a tree refers to platform.xml, privapp-permissions-platform.xml, framework-sysconfig.xml, default-permissions.xml or hiddenapi-package-whitelist.xml by name, and plat_file_contexts has no line for /system/etc/permissions, /system/etc/sysconfig or /system/etc/default-permissions.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc && grep -rn 'permissions/platform\\|privapp-permissions-platform\\|framework-sysconfig\\|default-permissions\\|hiddenapi-package-whitelist' init selinux ; grep -n '/system/etc/permissions\\|/system/etc/sysconfig\\|/system/etc/default' selinux/plat_file_contexts | output: (no matching lines for either command)",
+   "verdict": "confirmed",
+   "reason": "grep -rn over init and selinux for permissions/platform, privapp-permissions-platform, framework-sysconfig, default-permissions and hiddenapi-package-whitelist gives no matches (exit 1). A broader search for platform.xml gives no matches. grep of plat_file_contexts for /system/etc/permissions, /system/etc/sysconfig and /system/etc/default gives no matches (exit 1).",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C34",
+   "claim": "plat_seapp_contexts assigns system_server processes (isSystemServer=true) to the domain system_server_startup. The association of services.jar with that domain is inferred from the seapp rule name, not read from a file that names services.jar.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc/selinux && head -1 plat_seapp_contexts | output: isSystemServer=true domain=system_server_startup",
+   "verdict": "needs_change",
+   "reason": "head -1 of plat_seapp_contexts is isSystemServer=true domain=system_server_startup, and it is the only rule that names that domain in the seapp file. The clause that no file names services.jar is wrong: a search of the etc tree finds etc/classpaths/systemserverclasspath.pb listing /system/framework/services.jar as a system server classpath entry. That file names no domain, so the association with the domain is still inferred.",
+   "corrected_claim": "plat_seapp_contexts assigns system_server processes (isSystemServer=true) to the domain system_server_startup. The association of services.jar with that domain is inferred from the seapp rule name; no file maps services.jar to system_server_startup. etc/classpaths/systemserverclasspath.pb lists /system/framework/services.jar as a system server classpath entry but names no domain."
+  },
+  {
+   "id": "C35",
+   "claim": "Wrapper scripts in system/bin follow two patterns. Pattern A sets CLASSPATH to a framework jar and runs app_process on a com.android.commands class (hid: LD_PRELOAD libhidcommand_jni.so, CLASSPATH /system/framework/hid.jar, exec app_process /system/bin com.android.commands.hid.Hid; monkey: exec app_process $base/bin com.android.commands.monkey.Monkey). Pattern B runs cmd with a service name (pm: cmd package; settings: cmd settings; wm: cmd window; am: cmd activity except instrument). svc maps svc wifi to cmd wifi set-wifi-enabled.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/bin && cat hid ; cat monkey | grep -n 'exec' ; cat pm ; cat wm ; grep -n 'set-wifi-enabled' svc | output: export LD_PRELOAD=libhidcommand_jni.so / export CLASSPATH=/system/framework/hid.jar / exec app_process /system/bin com.android.commands.hid.Hid \"$@\" / 10:exec app_process $base/bin com.android.commands.monkey.Monkey \"$@\" / #!/system/bin/sh / cmd package \"$@\" / cmd window \"$@\" / (svc line containing cmd wifi set-wifi-enabled)",
+   "verdict": "confirmed",
+   "reason": "hid: export LD_PRELOAD=libhidcommand_jni.so, export CLASSPATH=/system/framework/hid.jar, exec app_process /system/bin com.android.commands.hid.Hid. monkey line 10: exec app_process $base/bin com.android.commands.monkey.Monkey. pm, settings and wm run cmd package, cmd settings and cmd window. am runs cmd activity unless the first argument is instrument. svc lines 9 and 11: exec cmd wifi set-wifi-enabled enabled and disabled.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C36",
+   "claim": "Two init-run scripts: logcatd is an init service script that reads the last logcat buffer to persistent storage with -L, then runs logcat for the current buffers, and logpersist.start refuses to run unless getprop ro.debuggable returns 1.",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/bin && head -8 logcatd | tail -4 ; head -8 logpersist.start | tail -6 | output: comment: reads 'last' logcat to persistent storage with -L, then runs logcat without -L (init service) / case `getprop ro.debuggable` in / 1) ;; / *) echo \"${progname} - Permission denied\"",
+   "verdict": "confirmed",
+   "reason": "logcatd: the script runs logcat with -L when present, then runs logcat without -L (ARGS array). The init service at init/logcatd.rc line 55 runs /system/bin/logcatd -L with -f /data/misc/logd/logcat, which supports writing to persistent storage. logpersist.start: case on getprop ro.debuggable, value 1 continues, otherwise prints Permission denied and exits 1.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C37",
+   "claim": "preloaded-classes is a plain-text list of 2,482 Java class names (for example android.accounts.Account, android.accounts.Account$1, android.accounts.AccountManager).",
+   "label": "verified",
+   "evidence": "cd <image>/mnt/system_a/system/etc && wc -l preloaded-classes ; head -3 preloaded-classes | output: 2482 preloaded-classes / android.accounts.Account / android.accounts.Account$1 / android.accounts.AccountManager",
+   "verdict": "confirmed",
+   "reason": "wc -l preloaded-classes gives 2482. Splitting on newline gives 2482 non-empty lines and no lines with spaces or #. The first three lines are android.accounts.Account, android.accounts.Account$1 and android.accounts.AccountManager.",
+   "corrected_claim": ""
+  },
+  {
+   "id": "C38",
+   "claim": "The ELF executables with Meta- or Oculus-specific names (VRStool, vrs-recorder, vrs-recorder2, vrsbuilder, vrfocusserver, xrspd, resource_control, resource_load, stream-publisher, runtimeipcbroker, wattsdown, flags_health_check, clean_scratch_files, profcollectd and profcollectctl) have roles taken from their names and linked libraries. The roles were not confirmed by running them or by reading their string tables in depth, so they are labeled inferred or unverified.",
+   "label": "inferred",
+   "evidence": "cd <image>/mnt/system_a/system/bin && readelf -d vrs-recorder | grep NEEDED | head -3 ; readelf -d wattsdown | grep -c NEEDED | output: libandroid.so / liblog.so / libmediandk.so ; 2 (libc.so and libdl.so only)",
+   "verdict": "needs_change",
+   "reason": "Label inferred is appropriate. All 15 listed names exist as PIE AArch64 ELF files. Linkage: vrs-recorder NEEDED includes libandroid.so, liblog.so and libmediandk.so (first three), plus libdl, libvrsdevicetools, libtokaido_device_features, libm and libc. wattsdown NEEDED is libc.so and libdl.so only. The Meta or Oculus attribution does not hold for three names: profcollectd, profcollectctl and flags_health_check have platform SELinux labels in plat_file_contexts (lines 553, 577 and 607). Gap: whether the other twelve are Meta or Oculus components is not established.",
+   "corrected_claim": "The fifteen listed ELF executables (VRStool, vrs-recorder, vrs-recorder2, vrsbuilder, vrfocusserver, xrspd, resource_control, resource_load, stream-publisher, runtimeipcbroker, wattsdown, flags_health_check, clean_scratch_files, profcollectd, profcollectctl) are PIE AArch64 binaries. Their roles are inferred from names and linked libraries. profcollectd, profcollectctl and flags_health_check are platform components (plat_file_contexts lines 553, 577, 607), so they are not Meta- or Oculus-specific."
+  },
+  {
+   "id": "C39",
+   "claim": "The group's ELF executables are PIE AArch64 (or ARM for the 32-bit variants) binaries, and every ELF in the group uses /system/bin/linker64 or /system/bin/linker as its interpreter. The statically linked exceptions are gdbserver, gdbserver64 and snapuserd, which have no interpreter line.",
+   "label": "verified",
+   "evidence": "cd <image>-tools/work/subsystems/framework-and-system-services && cut -f2,4 elf_facts.tsv | head -0 ; awk -F'\\t' '{print $5}' elf_facts.tsv | sort | uniq -c | output: 166 (ELF with interpreter line, the value /system/bin/linker64 dominating) / 95 (no interpreter line; includes the oat/odex files and the bootstrap linkers)",
+   "verdict": "refuted",
+   "reason": "elf_facts.tsv re-generated identical (261 ELF rows). Column 5 counts: 178 /system/bin/linker64, 78 empty interpreter ('-'), 3 /system/bin/linker, 2 /system/bin/bootstrap/linker64. So 183 rows have an interpreter line, not 166, and 78 have none, not 95. The two rows with /system/bin/bootstrap/linker64 are apexd and secilc, so not every ELF uses linker64 or linker. Of the 78 without interpreter, 72 are .odex, .oat, .art or .vdex images and 6 are gdbserver, gdbserver64, snapuserd, bootstrap/linker, bootstrap/linker64 and bootstrap/linkerconfig; the claim lists only three exceptions.",
+   "corrected_claim": "Of 261 ELF rows in the group, 183 have an interpreter line: 178 /system/bin/linker64, 3 /system/bin/linker, and 2 /system/bin/bootstrap/linker64 (apexd and secilc). 78 have no interpreter line: 72 are .odex, .oat, .art or .vdex images, and 6 are gdbserver, gdbserver64, snapuserd, bootstrap/linker, bootstrap/linker64 and bootstrap/linkerconfig."
+  }
+ ],
+ "gaps": [
+  "Purpose of the five .uau members inside services.jar was not determined; their format was not decoded.",
+  "Binary XML AndroidManifest.xml inside framework-res.apk and the APK-type packages was not decoded; package names of the APK-type jars were not extracted.",
+  "Dex code of services.jar and framework.jar was not disassembled; only the dex version and selected string-table entries were read, so the set of services started by SystemServer was not enumerated.",
+  "The ART OAT key-value header, method tables and checksums inside services.odex and boot-framework.oat were not parsed; the boot-framework.art image header fields were not decoded.",
+  "APEX payload filesystems (ext4) were not mounted or listed; only their manifest names and magic values were read.",
+  "Roles for the Meta- or Oculus-specific ELF executables and for hw/android.hidl.allocator@1.0-service and android.system.suspend@1.0-service are name-based. Nothing was executed, because the binaries are ARM images.",
+  "The toybox applet list was not enumerated; the 173 toybox symlink names are given only by their readlink targets.",
+  "Binder interfaces exported by cmd and service were not enumerated beyond their usage and error strings; no AIDL descriptor list was extracted for servicemanager.",
+  "Init and SELinux searches covered only the system_a/system/etc/init and system_a/system/etc/selinux directories. vendor_a, odm_a, product_a and system_ext_a init and SELinux files were not searched, so references from those partitions are unknown.",
+  "Whether platform code loads platform.xml, privapp-permissions-platform.xml, framework-sysconfig.xml, default-permissions.xml or hiddenapi-package-whitelist.xml at runtime was not verified; no file in the mounted init or SELinux trees names them.",
+  "The eight symlinks listed in C06 that sit outside this group were not classified here.",
+  "preinstalled-packages-com.android.providers.media.module.xml has no XML declaration and was read only as text; no structured parse was done.",
+  "The services.odex and boot-framework.oat DT_NEEDED lists were not extracted, since the files are ELF containers around ART code and the runtime dependencies are recorded in the OAT header instead."
+ ],
+ "rolesFile": "data/subsystems/framework-and-system-services/roles.tsv"
+}

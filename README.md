@@ -27,12 +27,34 @@ The super image holds the dynamic partitions. `boot`, `vendor_boot` and the kern
 | SQE and GMU firmware | [02](docs/02-sqe-and-gmu-firmware.md) | [02](docs/02-sqe-and-gmu-firmware.zh-CN.md) |
 | kgsl kernel module | [03](docs/03-kgsl-module.md) | [03](docs/03-kgsl-module.zh-CN.md) |
 | Userspace GPU libraries | [04](docs/04-userspace-libraries.md) | [04](docs/04-userspace-libraries.zh-CN.md) |
-| Init, SELinux and HAL entries | [05](docs/05-init-selinux-and-hal.md) | [05](docs/05-init-selinux-and-hal.zh-CN.md) |
+| Init, SELinux and HAL entries (GPU) | [05](docs/05-init-selinux-and-hal.md) | [05](docs/05-init-selinux-and-hal.zh-CN.md) |
+| Kernel modules | [06](docs/06-kernel-modules.md) | [06](docs/06-kernel-modules.zh-CN.md) |
+| SELinux policy and file contexts | [07](docs/07-selinux-policy.md) | [07](docs/07-selinux-policy.zh-CN.md) |
+| HAL manifests (VINTF) | [08](docs/08-hal-manifests.md) | [08](docs/08-hal-manifests.zh-CN.md) |
+| Init scripts and build properties | [09](docs/09-init-and-properties.md) | [09](docs/09-init-and-properties.zh-CN.md) |
+| Display and composer | [10](docs/10-display-and-composer.md) | [10](docs/10-display-and-composer.zh-CN.md) |
+| Camera | [11](docs/11-camera.md) | [11](docs/11-camera.zh-CN.md) |
+| DSP and remote processors | [12](docs/12-dsp-and-remote-processors.md) | [12](docs/12-dsp-and-remote-processors.zh-CN.md) |
+| Wi-Fi and Bluetooth | [13](docs/13-wifi-bluetooth.md) | [13](docs/13-wifi-bluetooth.zh-CN.md) |
+| Audio | [14](docs/14-audio.md) | [14](docs/14-audio.zh-CN.md) |
+| Sensors, MCU and Meta HALs | [15](docs/15-sensors-mcu-meta-hal.md) | [15](docs/15-sensors-mcu-meta-hal.zh-CN.md) |
+| Power, thermal and charging | [16](docs/16-power-thermal-charging.md) | [16](docs/16-power-thermal-charging.zh-CN.md) |
+| Keystore, keymaster and crypto | [17](docs/17-security-keystore-crypto.md) | [17](docs/17-security-keystore-crypto.zh-CN.md) |
+| Media and codecs | [18](docs/18-media-codecs.md) | [18](docs/18-media-codecs.zh-CN.md) |
+| Framework and system services | [19](docs/19-framework-and-system-services.md) | [19](docs/19-framework-and-system-services.zh-CN.md) |
+| Apps | [20](docs/20-apps.md) | [20](docs/20-apps.zh-CN.md) |
+| Native shared libraries | [21](docs/21-native-libraries.md) | [21](docs/21-native-libraries.zh-CN.md) |
+| Fonts, locale, input and resources | [22](docs/22-fonts-locale-input-resources.md) | [22](docs/22-fonts-locale-input-resources.zh-CN.md) |
+| Configuration files | [23](docs/23-config-files.md) | [23](docs/23-config-files.zh-CN.md) |
+| Native tools and HAL binaries | [24](docs/24-native-tools-and-hal-binaries.md) | [24](docs/24-native-tools-and-hal-binaries.zh-CN.md) |
+| Miscellaneous root and small files | [25](docs/25-unclassified.md) | [25](docs/25-unclassified.zh-CN.md) |
 
 ## Evidence
 
 - `data/gpu/confirmed_findings.json`: every claim in these documents, with the command and output that reproduce it.
 - `data/gpu/partitions.tsv`: the logical partitions in the super image, with sizes and SHA-256 prefixes.
+- `data/inventory/files.tsv`: every file and symlink in the eight partitions, with its subsystem, size, MIME type and SHA-256.
+- `data/subsystems/<subsystem>/`: the role table (`roles.tsv`) and the claims with their evidence (`claims.json`) for each subsystem.
 - `tools/superunpack.go`: the unpacker used to split the super image. It streams the logical partitions and checks them against the LP metadata.
 
 ## Evidence labels
