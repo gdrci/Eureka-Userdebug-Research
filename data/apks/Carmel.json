@@ -1,0 +1,1833 @@
+{
+ "apk": "system_ext_a/app/Carmel/Carmel.apk",
+ "package": "com.oculus.browser",
+ "version_name": "35.1.0.78.167.646680531",
+ "version_code": "565301467",
+ "min_sdk": "26",
+ "target_sdk": "35",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 4,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libchrome.so",
+    "size": 160690824
+   },
+   {
+    "path": "lib/arm64-v8a/libchromium_android_linker.so",
+    "size": 14528
+   },
+   {
+    "path": "lib/arm64-v8a/libopenxr_loader.so",
+    "size": 706080
+   },
+   {
+    "path": "lib/arm64-v8a/libpanelappsdk.so",
+    "size": 121224
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 36,
+ "components": {
+  "activity": {
+   "count": 32,
+   "items": [
+    {
+     "name": "org.chromium.chrome.browser.document.ChromeLauncherActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.MediaLauncherActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.PictureInPictureActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.LauncherShortcutActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.dragdrop.DragAndDropLauncherActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "org.chromium.chrome.browser.dragdrop.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.BROWSABLE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.incognito.IncognitoTabLauncher",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "org.chromium.chrome.browser.incognito.OPEN_PRIVATE_TAB"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.customtabs.CustomTabActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.customtabs.TranslucentCustomTabActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.WebXRCustomTabActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.INFO",
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.ChromeTabbedActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.signin.SigninAndHistorySyncActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.device_lock.DeviceLockActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.app.bookmarks.BookmarkFolderPickerActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.app.creator.CreatorActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.BrowserRestartActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": ":browser_restart_process",
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.PermissionsRequestActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrshell.panel.vr_permission.GET"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.browser.CertPickerActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.browserservices.ClearDataDialogActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.browserservices.ManageTrustedWebActivityDataActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.support.customtabs.action.ACTION_MANAGE_TRUSTED_WEB_ACTIVITY_DATA"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.support.customtabs.action.ACTION_MANAGE_TRUSTED_WEB_ACTIVITY_DATA"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.webauth.authenticator.CableAuthenticatorActivity",
+     "exported": "true",
+     "permission": "com.google.android.gms.auth.cryptauth.permission.CABLEV2_SERVER_LINK",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.webauth.authenticator.CableAuthenticatorUSBActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.hardware.usb.action.USB_ACCESSORY_ATTACHED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.browser.WebVRActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.INFO",
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.browser.WebVRVolumeActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.INFO",
+        "com.oculus.intent.category.VOLUME"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.searchwidget.SearchActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.PanelActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "com.oculus.vrshell.SHELL_MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.LAUNCHER",
+        "com.oculus.intent.category.2D"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.BROWSABLE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationIntentInterceptor$TrampolineActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.price_tracking.PriceDropNotificationManagerImpl$TrampolineActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.price_tracking.PriceDropNotificationManagerImpl$DismissNotificationChromeActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.test_dummy.TestDummyActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.components.webxr.XrHostActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [],
+       "categories": [
+        "android.intent.category.XR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.google.android.play.core.common.PlayCoreDialogWrapperActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.google.android.gms.common.api.GoogleApiActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 71,
+   "items": [
+    {
+     "name": "com.oculus.browser.BrowserRestartService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": ":browser_restart_process",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.photo_picker.DecoderService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": ":decoder_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.download.DownloadForegroundService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.download.DownloadBroadcastManager",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.components.background_task_scheduler.internal.BackgroundTaskJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.customtabs.CustomTabsConnectionService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [],
+       "categories": [
+        "androidx.browser.customtabs.category.ColorSchemeCustomization",
+        "androidx.browser.customtabs.category.NavBarColorCustomization",
+        "androidx.browser.trusted.category.ImmersiveMode",
+        "androidx.browser.trusted.category.LaunchSiteSettings",
+        "androidx.browser.trusted.category.LaunchWebApkSiteSettings",
+        "androidx.browser.trusted.category.TrustedWebActivities",
+        "androidx.browser.trusted.category.TrustedWebActivitySplashScreensV1",
+        "androidx.browser.trusted.category.WebShareTargetV2"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "androidx.browser.customtabs.PostMessageService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.components.payments.PaymentDetailsUpdateService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "org.chromium.intent.action.UPDATE_PAYMENT_DETAILS"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.browser.PanelService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrshell.SHELL_MAIN"
+       ],
+       "categories": [
+        "com.oculus.intent.category.PANEL"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationIntentInterceptorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.MediaCaptureNotificationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService1",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService2",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService3",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService4",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService5",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService6",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PlaybackListenerService7",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$PresentationListenerService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.media.ui.ChromeMediaNotificationControllerServices$CastListenerService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MEDIA_BUTTON"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.app.bluetooth.BluetoothNotificationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.app.usb.UsbNotificationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService0",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process0",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService1",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process1",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService2",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process2",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService3",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process3",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService4",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process4",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService5",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process5",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService6",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process6",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService7",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process7",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService8",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process8",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService9",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process9",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService10",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process10",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService11",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process11",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService12",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process12",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService13",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process13",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService14",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process14",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService15",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process15",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService16",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process16",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService17",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process17",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService18",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process18",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService19",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process19",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService20",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process20",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService21",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process21",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService22",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process22",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService23",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process23",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService24",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process24",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService25",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process25",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService26",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process26",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService27",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process27",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService28",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process28",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService29",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process29",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService30",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process30",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService31",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process31",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService32",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process32",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService33",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process33",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService34",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process34",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService35",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process35",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService36",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process36",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService37",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process37",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService38",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process38",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService39",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":sandboxed_process39",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.PrivilegedProcessService0",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":privileged_process0",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.PrivilegedProcessService1",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":privileged_process1",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.PrivilegedProcessService2",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":privileged_process2",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.PrivilegedProcessService3",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":privileged_process3",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.PrivilegedProcessService4",
+     "exported": "false",
+     "permission": "com.oculus.browser.permission.CHILD_SERVICE",
+     "enabled": null,
+     "process": ":privileged_process4",
+     "filters": []
+    },
+    {
+     "name": "com.google.android.gms.cast.framework.media.MediaNotificationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.google.android.gms.cast.framework.ReconnectionService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 24,
+   "items": [
+    {
+     "name": "org.chromium.chrome.browser.safe_browsing.PasswordProtectionBroadcastReceiver",
+     "exported": "true",
+     "permission": "com.google.android.gms.permission.INTERNAL_BROADCAST",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.chrome.safe_browsing.LOGIN"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.browserservices.ui.trustedwebactivity.DisclosureAcceptanceBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.webapps.WebApkInstallBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.PackageBroadcastReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PACKAGE_FULLY_REMOVED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.quickactionsearchwidget.QuickActionSearchWidgetProvider$QuickActionSearchWidgetProviderSearch",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.appwidget.action.APPWIDGET_UPDATE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.quickactionsearchwidget.QuickActionSearchWidgetProvider$QuickActionSearchWidgetProviderDino",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.appwidget.action.APPWIDGET_UPDATE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.browser.fbns.FBNSNotificationsReceiver",
+     "exported": "true",
+     "permission": "com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrnotifications.intent.action.SILENT_PAYLOAD"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.browser.PackageSettingsReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.SYNC_PWA_SETTING"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationService$Receiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationServiceImpl$Receiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "org.chromium.chrome.browser.notifications.CLICK_NOTIFICATION",
+        "org.chromium.chrome.browser.notifications.CLOSE_NOTIFICATION",
+        "org.chromium.chrome.browser.notifications.PRE_UNSUBSCRIBE",
+        "org.chromium.chrome.browser.notifications.UNDO_UNSUBSCRIBE",
+        "org.chromium.chrome.browser.notifications.COMMIT_UNSUBSCRIBE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.permissions.NotificationPermissionChangeReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.APP_BLOCK_STATE_CHANGED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.components.background_task_scheduler.internal.BackgroundTaskBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.data_sharing.DataSharingNotificationManager$Receiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.LHQAMReceiver",
+     "exported": "true",
+     "permission": "com.oculus.browser.LHQAM_BROADCAST_PERMISSION",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.TheaterViewStatusReceiver",
+     "exported": "true",
+     "permission": "com.oculus.browser.THEATER_VIEW_STATUS_BROADCAST_PERMISSION",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.browser.PackageReplacedBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MY_PACKAGE_REPLACED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.chrome.browser.announcement.AnnouncementNotificationManager$Receiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.NotificationIntentInterceptor$Receiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.notifications.scheduler.DisplayAgent$Receiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.offlinepages.AutoFetchNotifier$CompleteNotificationReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.offlinepages.AutoFetchNotifier$InProgressCancelReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_SET_CLIENT_VALUES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientDebugReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_EXPORT_CLIENT_ACCESS_LOG"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.google.android.gms.cast.framework.media.MediaIntentReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "provider": {
+   "count": 6,
+   "items": [
+    {
+     "name": "org.chromium.chrome.browser.util.ChromeFileProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.download.DownloadFileProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.ui.dragdrop.DropDataContentProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.pdf.PdfContentProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.chrome.browser.provider.ChromeBrowserProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.vrshell.panels.AppMenuProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 62,
+  "items": [
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.CREDENTIAL_MANAGER_QUERY_CANDIDATE_CREDENTIALS",
+   "android.permission.CREDENTIAL_MANAGER_SET_ALLOWED_PROVIDERS",
+   "android.permission.CREDENTIAL_MANAGER_SET_ORIGIN",
+   "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.FOREGROUND_SERVICE_DATA_SYNC",
+   "android.permission.FOREGROUND_SERVICE_LOCATION",
+   "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK",
+   "android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION",
+   "android.permission.FOREGROUND_SERVICE_MICROPHONE",
+   "android.permission.FOREGROUND_SERVICE_SPECIAL_USE",
+   "android.permission.INTERNET",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.POST_NOTIFICATIONS",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.RECORD_AUDIO",
+   "android.permission.RUN_USER_INITIATED_JOBS",
+   "android.permission.SYSTEM_ALERT_WINDOW",
+   "android.permission.USE_BIOMETRIC",
+   "android.permission.USE_CREDENTIALS",
+   "android.permission.USE_FINGERPRINT",
+   "android.permission.VIBRATE",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "com.chrome.permission.DEVICE_EXTRAS",
+   "com.google.android.apps.now.CURRENT_ACCOUNT_ACCESS",
+   "com.google.android.c2dm.permission.RECEIVE",
+   "com.oculus.browser.TOS_ACKED",
+   "com.oculus.browser.permission.C2D_MESSAGE",
+   "com.oculus.browser.permission.READ_WRITE_BOOKMARK_FOLDERS",
+   "com.oculus.horizon.FBCONNECT_CONTENT_PROVIDER_READ_ACCESS",
+   "com.oculus.permission.ACCESS_TRACKING_ENV",
+   "com.oculus.permission.BOUNDARY_VISIBILITY",
+   "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.MANAGE_LOCKSCREEN",
+   "com.oculus.permission.PASSTHROUGH",
+   "com.oculus.permission.PLANE_TRACKING",
+   "com.oculus.permission.PLAY_AUDIO_BACKGROUND",
+   "com.oculus.permission.READ_FOCUS_STATE",
+   "com.oculus.permission.READ_PACKAGE_SETTINGS",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.RECORD_AUDIO_BACKGROUND",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.SET_PERF_LEVEL",
+   "com.oculus.permission.TOUCH_CONTROLLER_PRO",
+   "com.oculus.permission.USE_ANCHOR_API",
+   "com.oculus.permission.USE_SCENE",
+   "com.oculus.permission.WRITE_PACKAGE_SETTINGS",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.vrshell.BrowserTheaterViewRequestBroadcastReceiverPermission",
+   "com.oculus.vrshell.permission.ACCESS_PANEL_ACTIVITY_FEATURES",
+   "com.oculus.vrshell.permission.ACCESS_PRIVATE_IPC",
+   "com.oculus.vrshell.permission.BROWSER_DUI_REPLACEMENT",
+   "com.oculus.vrshell.permission.THEATER_VIEW_SERVICE"
+  ]
+ },
+ "declared_permissions": {
+  "count": 7,
+  "items": [
+   {
+    "name": "com.oculus.browser.permission.CHILD_SERVICE",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.browser.permission.READ_WRITE_BOOKMARK_FOLDERS",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.browser.TOS_ACKED",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.browser.permission.C2D_MESSAGE",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.browser.permission.DEBUG",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.browser.LHQAM_BROADCAST_PERMISSION",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.browser.THEATER_VIEW_STATUS_BROADCAST_PERMISSION",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [
+  "android.hardware.gamepad",
+  "android.hardware.microphone",
+  "android.hardware.touchscreen",
+  "android.hardware.vr.headtracking",
+  "com.oculus.experimental.enabled",
+  "com.oculus.feature.PASSTHROUGH",
+  "com.oculus.software.body_tracking",
+  "oculus.software.handtracking",
+  "oculus.software.overlay_keyboard",
+  "oculus.software.touch_controller_pro",
+  "oculus.software.vr.app.hybrid"
+ ],
+ "meta_data": [
+  "android.activity.launch_mode",
+  "android.allow_multiple_resumed_activities",
+  "android.app.searchable",
+  "android.app.shortcuts",
+  "android.appwidget.provider",
+  "android.content.APP_RESTRICTIONS",
+  "android.hardware.usb.action.USB_ACCESSORY_ATTACHED",
+  "android.max_aspect",
+  "android.support.FILE_PROVIDER_PATHS",
+  "com.facebook.build_id",
+  "com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME",
+  "com.google.android.gms.version",
+  "com.oculus.auth.fbpermission.USE_ACCOUNTS_FACEBOOK",
+  "com.oculus.auth.fbpermission.USE_ACCOUNTS_META",
+  "com.oculus.dependency.required_os_version_name",
+  "com.oculus.deviceconfig.PARAMS_MAP_PATH",
+  "com.oculus.gpu_debuggable",
+  "com.oculus.handtracking.version",
+  "com.oculus.horizon.fbpermission.SSO_CONTENT_PROVIDER",
+  "com.oculus.messagequeue.doctor",
+  "com.oculus.ossplash.background",
+  "com.oculus.supportedDevices",
+  "com.oculus.vr.focusaware",
+  "com.oculus.vrnotifications.datanotifications",
+  "com.oculus.vrshell.free_resizing_limits",
+  "com.oculus.vrshell.initial_cooperative_state",
+  "com.oculus.vrshell.is_default_service",
+  "com.oculus.vrshell.layer_definition",
+  "com.oculus.vrshell.loading_state_size",
+  "com.oculus.vrshell.panel_activity",
+  "com.oculus.vrshell.supports_drop_target_move_event",
+  "com.oculus.vrshell.supports_free_resizing",
+  "com.oculus.vrshell.supports_ime_composition",
+  "com.oculus.vrshell.supports_loading_state",
+  "com.oculus.vrshell.supports_multi_cursor",
+  "com.oculus.vrshell.supports_multi_instance",
+  "com.oculus.vrshell.supports_native_android_input",
+  "com.oculus.vrshell.upgrade_component_name",
+  "com.oculus.vrshell.uses_secure_layer",
+  "com.oculus.websafety.fbpermission.VERIFY_URI",
+  "com.samsung.android.sdk.multiwindow.enable",
+  "com.samsung.android.sdk.multiwindow.penwindow.enable",
+  "oculus_preferences_browser",
+  "org.chromium.content.browser.NUM_PRIVILEGED_SERVICES",
+  "org.chromium.content.browser.NUM_SANDBOXED_SERVICES",
+  "org.chromium.content.browser.SMART_CLIP_PROVIDER"
+ ],
+ "classes": {
+  "count": 13356,
+  "top_prefixes": [
+   [
+    "org.chromium.chrome",
+    795
+   ],
+   [
+    "org.chromium.components",
+    348
+   ],
+   [
+    "com.google.android",
+    167
+   ],
+   [
+    "org.chromium.content",
+    102
+   ],
+   [
+    "com.oculus.browser",
+    57
+   ],
+   [
+    "org.chromium.ui",
+    43
+   ],
+   [
+    "org.chromium.base",
+    41
+   ],
+   [
+    "org.chromium.device",
+    31
+   ],
+   [
+    "org.chromium.media",
+    26
+   ],
+   [
+    "android.support.v4",
+    25
+   ],
+   [
+    "androidx.appcompat.widget",
+    22
+   ],
+   [
+    "androidx.fragment.app",
+    19
+   ],
+   [
+    "org.chromium.content_public",
+    19
+   ],
+   [
+    "org.chromium.net",
+    12
+   ],
+   [
+    "androidx.mediarouter.app",
+    9
+   ],
+   [
+    "androidx.recyclerview.widget",
+    8
+   ],
+   [
+    "org.chromium.mojo",
+    7
+   ],
+   [
+    "org.chromium.services",
+    7
+   ],
+   [
+    "com.facebook.secure",
+    6
+   ],
+   [
+    "org.chromium.midi",
+    6
+   ],
+   [
+    "com.google.protobuf",
+    5
+   ],
+   [
+    "org.chromium.url",
+    5
+   ],
+   [
+    "androidx.constraintlayout.widget",
+    4
+   ],
+   [
+    "com.oculus.deviceconfigclient",
+    4
+   ],
+   [
+    "n",
+    3
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 96,
+   "items": [
+    "android.intent.action.ACTION_POWER_CONNECTED",
+    "android.intent.action.ACTION_POWER_DISCONNECTED",
+    "android.intent.action.APPLICATION_RESTRICTIONS_CHANGED",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.CALL",
+    "android.intent.action.CHOOSER",
+    "android.intent.action.CREATE_DOCUMENT",
+    "android.intent.action.CREATE_SHORTCUT",
+    "android.intent.action.DIAL",
+    "android.intent.action.DOWNLOAD_COMPLETE",
+    "android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED",
+    "android.intent.action.GET_BARCODE",
+    "android.intent.action.GET_CONTENT",
+    "android.intent.action.HEADSET_PLUG",
+    "android.intent.action.INSERT",
+    "android.intent.action.LOCALE_CHANGED",
+    "android.intent.action.MAIN",
+    "android.intent.action.MEDIA_BUTTON",
+    "android.intent.action.MEDIA_EJECT",
+    "android.intent.action.MEDIA_MOUNTED",
+    "android.intent.action.MEDIA_REMOVED",
+    "android.intent.action.MEDIA_SCANNER_SCAN_FILE",
+    "android.intent.action.MEDIA_SEARCH",
+    "android.intent.action.MY_PACKAGE_REPLACED",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.PACKAGE_RESTARTED",
+    "android.intent.action.PICK_ACTIVITY",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.PROXY_CHANGE",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.USER_PRESENT",
+    "android.intent.action.VIEW",
+    "android.intent.action.VIEW_DOWNLOADS",
+    "android.intent.action.WEB_SEARCH",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.http.IpProtectionAuthService",
+    "android.net.wifi.RSSI_CHANGED",
+    "android.net.wifi.STATE_CHANGE",
+    "com.android.launcher.action.INSTALL_SHORTCUT",
+    "com.meta.AccountsCenter.pwa",
+    "com.oculus.aidl.OVRServiceInterface",
+    "com.oculus.assistant",
+    "com.oculus.assistant.ENTRY_SERVICE",
+    "com.oculus.assistant.api.IOculusAssistantService",
+    "com.oculus.assistant.api.IOculusAssistantSubscriber",
+    "com.oculus.assistant.service.AssistantService",
+    "com.oculus.browser",
+    "com.oculus.browser.PACKAGE_NAME",
+    "com.oculus.browser.PANEL_ID",
+    "com.oculus.browser.PanelActivity",
+    "com.oculus.browser.PanelActivityIntents",
+    "com.oculus.browser.PanelService",
+    "com.oculus.browser.PanelService.delete_pwa_data",
+    "com.oculus.browser.PanelService.pwa_package_name",
+    "com.oculus.browser.shortcut.",
+    "com.oculus.browser.webtask",
+    "com.oculus.dependency.required_os_version_name",
+    "com.oculus.horizon",
+    "com.oculus.horizon.service.OVRService",
+    "com.oculus.intent.action.SYNC_PWA_SETTING",
+    "com.oculus.launch_aborted",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.os.qrcodereader",
+    "com.oculus.os.qrcodereader.ScannerActivity",
+    "com.oculus.os.vrbrowserlauncher",
+    "com.oculus.permission.USE_SCENE",
+    "com.oculus.pwa.DISPLAY",
+    "com.oculus.pwa.NAME",
+    "com.oculus.pwa.OVR_MULTI_TAB_ENABLED",
+    "com.oculus.pwa.OVR_SCOPE_EXTENSIONS",
+    "com.oculus.pwa.SCOPE",
+    "com.oculus.pwa.START_URL",
+    "com.oculus.shellenv",
+    "com.oculus.systemux",
+    "com.oculus.vrnotifications.intent.action.SILENT_PAYLOAD",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.BrowserTheaterViewRequestBroadcastReceiver",
+    "com.oculus.vrshell.MainActivity",
+    "com.oculus.vrshell.PanelActivityService",
+    "com.oculus.vrshell.intent.action.LAUNCH",
+    "com.oculus.vrshell.panel.vr_permission.GET",
+    "com.oculus.vrshell.panel.vr_permission.RESULT",
+    "com.oculus.vrshell.privateipc.IBrowserDuiReplacementCallback",
+    "com.oculus.vrshell.privateipc.IBrowserDuiReplacementService",
+    "com.oculus.vrshell.privateipc.IEnvironmentIPCService",
+    "com.oculus.vrshell.privateipc.ITheaterViewCallback",
+    "com.oculus.vrshell.privateipc.ITheaterViewService"
+   ]
+  },
+  "system_properties": {
+   "count": 10,
+   "items": [
+    "debug.oc_shell.dbg_watchdog",
+    "debug.oculus.graphtier",
+    "debug.oculus.mqd.off",
+    "persist.ovr.deviceconfig.service",
+    "ro.build.type",
+    "ro.build.version.oneui",
+    "ro.product.first_api_level",
+    "ro.vros.build.version",
+    "sys.hmt.connected",
+    "sys.hmt.mounted"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 16,
+   "items": [
+    "android.content.pm.IPackageManager",
+    "android.intent.action.INSERT",
+    "android.intent.extra.INTENT",
+    "android.intent.extra.shortcut.ICON",
+    "android.intent.extra.shortcut.INTENT",
+    "android.os.IMessenger",
+    "android.support.customtabs.customaction.ICON",
+    "android.widget.directwriting.IDirectWritingService",
+    "android.widget.directwriting.IDirectWritingServiceCallback",
+    "com.oculus.assistant.api.IOculusAssistantService",
+    "com.oculus.assistant.api.IOculusAssistantSubscriber",
+    "com.oculus.vrshell.privateipc.IBrowserDuiReplacementCallback",
+    "com.oculus.vrshell.privateipc.IBrowserDuiReplacementService",
+    "com.oculus.vrshell.privateipc.IEnvironmentIPCService",
+    "com.oculus.vrshell.privateipc.ITheaterViewCallback",
+    "com.oculus.vrshell.privateipc.ITheaterViewService"
+   ]
+  },
+  "content_authorities": {
+   "count": 6,
+   "items": [
+    "content://com.facebook.mobileconfigservice.contentprovider",
+    "content://com.google.android.gms.phenotype/",
+    "content://com.google.android.gsf.gservices",
+    "content://com.google.android.gsf.gservices/prefix",
+    "content://com.oculus.horizon.sso/cookies?fb_app_id=1562231310457908",
+    "content://com.oculus.horizon/profile?app_id=1916519981771802"
+   ]
+  }
+ }
+}

@@ -1,0 +1,2580 @@
+{
+ "apk": "system_ext_a/app/Horizon/Horizon.apk",
+ "package": "com.oculus.horizon",
+ "version_name": "71.0.0.894.253",
+ "version_code": "665345962",
+ "min_sdk": "23",
+ "target_sdk": "23",
+ "shared_uid": "com.oculus.uid",
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 137,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libNativeApiManager-V1.so",
+    "size": 14248
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_projects_presence_service_aidl_if-V1-cpp.so",
+    "size": 390576
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_projects_socialvr_libraries_verts_zone_storage_state_capture-cpp2-typesAndroid.so",
+    "size": 11944
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_projects_unified_qpl_native_client_client-shared-lib.so",
+    "size": 5080
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_third-party_mosquitto_mosquittoAndroid.so",
+    "size": 35448
+   },
+   {
+    "path": "lib/arm64-v8a/libbreakpad.so",
+    "size": 353928
+   },
+   {
+    "path": "lib/arm64-v8a/libbreakpad_cpp_helper.so",
+    "size": 8256
+   },
+   {
+    "path": "lib/arm64-v8a/libc++_shared.so",
+    "size": 426488
+   },
+   {
+    "path": "lib/arm64-v8a/libcoldstart.so",
+    "size": 3987344
+   },
+   {
+    "path": "lib/arm64-v8a/libcryptopub-jni.so",
+    "size": 11872
+   },
+   {
+    "path": "lib/arm64-v8a/libcryptopub.so",
+    "size": 13608
+   },
+   {
+    "path": "lib/arm64-v8a/libcurl.so",
+    "size": 438352
+   },
+   {
+    "path": "lib/arm64-v8a/libdexload.so",
+    "size": 131064
+   },
+   {
+    "path": "lib/arm64-v8a/libdistractmerged.so",
+    "size": 14200
+   },
+   {
+    "path": "lib/arm64-v8a/libfba-merged.so",
+    "size": 4233440
+   },
+   {
+    "path": "lib/arm64-v8a/libffmpegmerged_2_8_20.so",
+    "size": 607160
+   },
+   {
+    "path": "lib/arm64-v8a/libfmt.so",
+    "size": 83496
+   },
+   {
+    "path": "lib/arm64-v8a/libglog.so",
+    "size": 53312
+   },
+   {
+    "path": "lib/arm64-v8a/liblz4.so",
+    "size": 11592
+   },
+   {
+    "path": "lib/arm64-v8a/libmemalign16.so",
+    "size": 3696
+   },
+   {
+    "path": "lib/arm64-v8a/libmnscertificateverifier.so",
+    "size": 21880
+   },
+   {
+    "path": "lib/arm64-v8a/libmsysxplatmerged.so",
+    "size": 339216
+   },
+   {
+    "path": "lib/arm64-v8a/libnotifgateway-jni.so",
+    "size": 92440
+   },
+   {
+    "path": "lib/arm64-v8a/libnotifgateway-stream-jni.so",
+    "size": 16544
+   },
+   {
+    "path": "lib/arm64-v8a/liboculus_p2p.so",
+    "size": 7134840
+   },
+   {
+    "path": "lib/arm64-v8a/liboktigon.so",
+    "size": 64480
+   },
+   {
+    "path": "lib/arm64-v8a/libovravatar.so",
+    "size": 4070664
+   },
+   {
+    "path": "lib/arm64-v8a/libovrbody.so",
+    "size": 4144264
+   },
+   {
+    "path": "lib/arm64-v8a/libovrplatform.so",
+    "size": 5931272
+   },
+   {
+    "path": "lib/arm64-v8a/libovrplatformplugin.so",
+    "size": 4958240
+   },
+   {
+    "path": "lib/arm64-v8a/libpuffin-jni.so",
+    "size": 9000
+   },
+   {
+    "path": "lib/arm64-v8a/libpuffin_lz4-jni.so",
+    "size": 9032
+   },
+   {
+    "path": "lib/arm64-v8a/libqplserviceclientjni.so",
+    "size": 10328
+   },
+   {
+    "path": "lib/arm64-v8a/librs-streamgrouphandler-jni.so",
+    "size": 30472
+   },
+   {
+    "path": "lib/arm64-v8a/librs-streamhandler-jni.so",
+    "size": 11512
+   },
+   {
+    "path": "lib/arm64-v8a/librsync-jni.so",
+    "size": 5008
+   },
+   {
+    "path": "lib/arm64-v8a/librsync.so",
+    "size": 18152
+   },
+   {
+    "path": "lib/arm64-v8a/libsimplejni.so",
+    "size": 19400
+   },
+   {
+    "path": "lib/arm64-v8a/libsuperpack-jni.so",
+    "size": 812960
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_aidl_executor_executorAndroid.so",
+    "size": 44392
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_http-parser_http-parserAndroid.so",
+    "size": 23296
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_libev_libevAndroid.so",
+    "size": 20496
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_libfmq_aidl_fmq-cppAndroid.so",
+    "size": 3744
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_nghttp3_nghttp3Android.so",
+    "size": 110976
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_ngtcp2_ngtcp2Android.so",
+    "size": 203096
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_pffft_pffftAndroid.so",
+    "size": 20600
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_puffin_libpuffpatchAndroid.so",
+    "size": 127832
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_puffin_lz4_libpuffpatch_lz4Android.so",
+    "size": 138024
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_zlib_zAndroid.so",
+    "size": 32976
+   },
+   {
+    "path": "lib/arm64-v8a/libvrperflogger.so",
+    "size": 14000
+   },
+   {
+    "path": "lib/arm64-v8a/libvrperfloggerjni.so",
+    "size": 15696
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_PrivacyManifests_FileTimestamp_C617_1_METAFstat_C617_1Android.so",
+    "size": 3488
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_boxedalloc_boxedalloc_threadedAndroid.so",
+    "size": 23072
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_commonAndroid.so",
+    "size": 47520
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_crypto_mbed_implAndroid.so",
+    "size": 8544
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_dnsresolverAndroid.so",
+    "size": 15824
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_fbdomainsAndroid.so",
+    "size": 6768
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_http_clientAndroid.so",
+    "size": 227928
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_mbedtlsutilsAndroid.so",
+    "size": 4880
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_quicAndroid.so",
+    "size": 63928
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_quicclientAndroid.so",
+    "size": 15104
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_quiccommonAndroid.so",
+    "size": 10672
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_securetcpAndroid.so",
+    "size": 27304
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_tcpAndroid.so",
+    "size": 19728
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_third-party_mbedtls_tlsAndroid.so",
+    "size": 70616
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_tls_contextAndroid.so",
+    "size": 10032
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_tls_keyloggerAndroid.so",
+    "size": 7720
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_tls_mbedAndroid.so",
+    "size": 14400
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_tls_resumptionAndroid.so",
+    "size": 11656
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mobilenetwork_tokenbindingAndroid.so",
+    "size": 4080
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_notifgateway_client_NotifGatewayClientAndroid.so",
+    "size": 27264
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLDistribgwConnectivityModuleAndroid.so",
+    "size": 3640
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLDistribgwLoadSheddingModuleAndroid.so",
+    "size": 3640
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLDistribgwModuleAndroid.so",
+    "size": 3640
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLMnsDgwModuleAndroid.so",
+    "size": 3608
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLMsysHealthModuleAndroid.so",
+    "size": 3488
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLMsysTraceModuleAndroid.so",
+    "size": 3472
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_generated_Modules_QPLQueryHealthModuleAndroid.so",
+    "size": 3488
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_yajl_yajlAndroid.so",
+    "size": 27512
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_zstd__zstdAndroid.so",
+    "size": 76992
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_tourniquet_tourniquetAndroid.so",
+    "size": 3456
+   },
+   {
+    "path": "lib/arm64-v8a/libxra-merged.so",
+    "size": 82192
+   },
+   {
+    "path": "lib/arm64-v8a/libxxhash.so",
+    "size": 3424
+   },
+   {
+    "path": "lib/armeabi-v7a/libNativeApiManager-V1.so",
+    "size": 9048
+   },
+   {
+    "path": "lib/armeabi-v7a/libarvr_projects_presence_service_aidl_if-V1-cpp.so",
+    "size": 233524
+   },
+   {
+    "path": "lib/armeabi-v7a/libarvr_projects_socialvr_libraries_verts_zone_storage_state_capture-cpp2-typesAndroid.so",
+    "size": 8072
+   },
+   {
+    "path": "lib/armeabi-v7a/libarvr_third-party_mosquitto_mosquittoAndroid.so",
+    "size": 23128
+   },
+   {
+    "path": "lib/armeabi-v7a/libbreakpad.so",
+    "size": 99148
+   },
+   {
+    "path": "lib/armeabi-v7a/libc++_shared.so",
+    "size": 237864
+   },
+   {
+    "path": "lib/armeabi-v7a/libcoldstart.so",
+    "size": 2462448
+   },
+   {
+    "path": "lib/armeabi-v7a/libcurl.so",
+    "size": 301352
+   },
+   {
+    "path": "lib/armeabi-v7a/libdexload.so",
+    "size": 88892
+   },
+   {
+    "path": "lib/armeabi-v7a/libdistractmerged.so",
+    "size": 8824
+   },
+   {
+    "path": "lib/armeabi-v7a/libfba-merged.so",
+    "size": 3604896
+   },
+   {
+    "path": "lib/armeabi-v7a/libfmt.so",
+    "size": 54736
+   },
+   {
+    "path": "lib/armeabi-v7a/libglog.so",
+    "size": 35432
+   },
+   {
+    "path": "lib/armeabi-v7a/libmemalign16.so",
+    "size": 2472
+   },
+   {
+    "path": "lib/armeabi-v7a/libmnscertificateverifier.so",
+    "size": 15200
+   },
+   {
+    "path": "lib/armeabi-v7a/libmsysxplatmerged.so",
+    "size": 227920
+   },
+   {
+    "path": "lib/armeabi-v7a/liboculus_p2p.so",
+    "size": 4444040
+   },
+   {
+    "path": "lib/armeabi-v7a/libovravatar.so",
+    "size": 3441036
+   },
+   {
+    "path": "lib/armeabi-v7a/libovrbody.so",
+    "size": 3522856
+   },
+   {
+    "path": "lib/armeabi-v7a/libovrplatform.so",
+    "size": 3925568
+   },
+   {
+    "path": "lib/armeabi-v7a/libsimplejni.so",
+    "size": 12700
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_aidl_executor_executorAndroid.so",
+    "size": 31168
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_http-parser_http-parserAndroid.so",
+    "size": 16792
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_libev_libevAndroid.so",
+    "size": 15340
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_nghttp3_nghttp3Android.so",
+    "size": 85384
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_ngtcp2_ngtcp2Android.so",
+    "size": 174816
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_pffft_pffftAndroid.so",
+    "size": 19256
+   },
+   {
+    "path": "lib/armeabi-v7a/libthird-party_zlib_zAndroid.so",
+    "size": 21700
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_boxedalloc_boxedalloc_threadedAndroid.so",
+    "size": 15304
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_commonAndroid.so",
+    "size": 32376
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_crypto_mbed_implAndroid.so",
+    "size": 5860
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_dnsresolverAndroid.so",
+    "size": 10340
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_fbdomainsAndroid.so",
+    "size": 4380
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_http_clientAndroid.so",
+    "size": 159928
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_mbedtlsutilsAndroid.so",
+    "size": 3240
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_quicAndroid.so",
+    "size": 45236
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_quicclientAndroid.so",
+    "size": 10668
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_quiccommonAndroid.so",
+    "size": 7344
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_securetcpAndroid.so",
+    "size": 19064
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_tcpAndroid.so",
+    "size": 13408
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_third-party_mbedtls_tlsAndroid.so",
+    "size": 48184
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_tls_contextAndroid.so",
+    "size": 7152
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_tls_keyloggerAndroid.so",
+    "size": 5408
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_tls_mbedAndroid.so",
+    "size": 10088
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_tls_resumptionAndroid.so",
+    "size": 7956
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_mobilenetwork_tokenbindingAndroid.so",
+    "size": 2724
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_perflogger_base_generated_Modules_QPLDistribgwConnectivityModuleAndroid.so",
+    "size": 2448
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_perflogger_base_generated_Modules_QPLDistribgwLoadSheddingModuleAndroid.so",
+    "size": 2448
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_perflogger_base_generated_Modules_QPLDistribgwModuleAndroid.so",
+    "size": 2448
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_perflogger_base_generated_Modules_QPLMnsDgwModuleAndroid.so",
+    "size": 2416
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_third-party_yajl_yajlAndroid.so",
+    "size": 19148
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_third-party_zstd__zstdAndroid.so",
+    "size": 53760
+   },
+   {
+    "path": "lib/armeabi-v7a/libxplat_tourniquet_tourniquetAndroid.so",
+    "size": 2304
+   },
+   {
+    "path": "lib/armeabi-v7a/libxxhash.so",
+    "size": 2272
+   }
+  ]
+ },
+ "dex_files": 2,
+ "asset_files": 330,
+ "components": {
+  "activity": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.oculus.horizon.fbconnectui.FBConnectActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.horizon.fbconnect.action.LINK"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "com.oculus.horizon.category.protocol.20160302"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.FacebookActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.google.android.gms.common.api.GoogleApiActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 53,
+   "items": [
+    {
+     "name": "com.facebook.secure.packagefinder.PackageFinderService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.appmanager.downloader.OculusDownloadService",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.config.service.GkService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.headlesshorizon.notifications.receivers.NotificationReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.headlesshorizon.social.SocialJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.cloudstorage2.CloudStorageIntentService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.cloudstorage2.CloudStorageBackgroundService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.mediaupload.MediaUploaderService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.mediaupload.MediaUploaderServiceInternal",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.mediaupload.MediaUploaderStoreFBGamingTokenService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.mediaupload.MediaChangeObserverService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.mediaupload.MediaUploaderSyncService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.push.HorizonFbnsService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.service.OVRService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.service.SDKLoggingService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.service.ODHInterfaceService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.service_media.OVRMediaService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.AccountSyncJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.SessionPingJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.F3UpgradeJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.AccountUpdateJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.AccountFixJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.RebootJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.AuthControlDumpsysService",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.service.DeviceTokenRefreshService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.auth.ACTION_DEVICE_SCOPED_TOKEN_REFRESH"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.service.AuthService2",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.service.AuthService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.auth.ACTION_LOGIN_API",
+        "com.oculus.auth.ACTION_LOGIN_WITH_FB_AUTH",
+        "com.oculus.auth.ACTION_FETCH_FB_INFO_FOR_ACCOUNT_LINKING",
+        "com.oculus.auth.ACTION_STATUS",
+        "com.oculus.auth.ACTION_FETCH_DEVICE_SCOPED_CREDENTIALS",
+        "com.oculus.auth.ACTION_FETCH_HORIZON_DEVICE_SCOPED_CREDENTIALS",
+        "com.oculus.auth.ACTION_LOGOUT",
+        "com.oculus.auth.ACTION_SEND_TWO_FACTOR_CODE",
+        "com.oculus.auth.ACTION_VERIFY_LOGIN",
+        "com.oculus.auth.ACTION_VERIFY_LOGIN_FOR_ACCOUNT_LINKING",
+        "com.oculus.auth.ACTION_VERIFY_PIN",
+        "com.oculus.auth.ACTION_RESEND_LOGIN_APPROVAL_CODE",
+        "com.oculus.auth.ACTION_ENSURE_DEVICE_OWNERSHIP",
+        "com.oculus.auth.ACTION_FB_LOGIN",
+        "com.oculus.auth.ACTION_FB_VERIFY_LOGIN_APPROVALS_CODE",
+        "com.oculus.auth.ACTION_FB_CHECK_MACHINE_APPROVAL",
+        "com.oculus.auth.ACTION_FB_MACHINE_APPROVAL_LOGIN",
+        "com.oculus.auth.ACTION_FB_RESEND_SMS",
+        "com.oculus.auth.ACTION_LINK_FB_ACCOUNT",
+        "com.oculus.auth.ACTION_AUTH_WITH_OCULUS_EMAIL_AND_PASSWORD_FOR_ACCOUNT_LINKING"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.service.AuthServicePermissionProtected",
+     "exported": "true",
+     "permission": "com.oculus.horizon.auth",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.auth.ACTION_LOGIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.mobileconfigservice.service.MobileConfigService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.receiver.LoginHandlersService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.auth.BROADCAST_LOGIN",
+        "com.oculus.auth.BROADCAST_LOGOUT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.authenticator.meta.MetaAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.horizon.vr_lifecycle.VRLifecycleJobService",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.durableiap.DurableIAPJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.privacy.HandsTrackingConsentSyncIntentService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.privacy.DevicePrivacyConsentSyncIntentService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.privacy.DevicePrivacyConsentSyncJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.authenticator.facebook.FacebookAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.authenticator.facebooksso.FacebookSsoAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.authenticator.horizonworldsplatform.HorizonWorldsPlatformAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.authenticator.instagramsso.InstagramSsoAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.authenticator.oculus.OculusAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.authenticator.work.WorkAuthenticatorService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.deviceownership.EnsureDeviceOwnershipJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.service.LollipopUploadSafeService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.legacy.uploader.LollipopUploadService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.legacy.uploader.Analytics2UploadService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.legacy.uploader.AlarmBasedUploadService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.google.firebase.messaging.FirebaseMessagingService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.google.firebase.MESSAGING_EVENT"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.SystemAlarmService",
+     "exported": "false",
+     "permission": null,
+     "enabled": "@7F050000",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.background.systemjob.SystemJobService",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": "@7F050001",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.foreground.SystemForegroundService",
+     "exported": "false",
+     "permission": null,
+     "enabled": "@7F050001",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.room.MultiInstanceInvalidationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.google.firebase.components.ComponentDiscoveryService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 37,
+   "items": [
+    {
+     "name": "com.oculus.appmanager.downloader.OculusDownloadManagerReceiver",
+     "exported": "true",
+     "permission": "android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.DOWNLOAD_COMPLETE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigservice.DeviceConfigDebugReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_DUMP",
+        "oculus.intent.action.DC_OVERRIDE",
+        "oculus.intent.action.DC_CLEAR_OVERRIDE",
+        "oculus.intent.action.DC_EXPORT",
+        "oculus.intent.action.DC_IMPORT",
+        "oculus.intent.action.DC_FORCE_FETCH"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigservice.StatusRequestReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.REQUEST_METADEVICECONFIG_STATUS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.REQUEST_METADEVICECONFIG_STATUS"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.headlesshorizon.deviceauth.DeviceAuthTokenRefreshBroadcastReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.deviceauthservice.NEW_TOKEN_AVAILABLE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.headlesshorizon.notifications.receivers.OculusFbnsCallbackReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.facebook.rti.fbns.intent.RECEIVE"
+       ],
+       "categories": [
+        "com.oculus.horizon"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.horizon.fbconnect.FBConnectReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.fbconnect.UPDATE_CURRENT_FACEBOOK_ACCOUNT"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.horizon.platform.PresenceBootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.fbns.standalone.service.RegisteredMqttSystemBroadcastReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.MY_PACKAGE_REPLACED",
+        "android.intent.action.USER_PRESENT"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "android.intent.action.PACKAGE_CHANGED",
+        "android.intent.action.PACKAGE_REMOVED"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.MY_PACKAGE_REPLACED",
+        "android.intent.action.USER_PRESENT",
+        "android.net.conn.CONNECTIVITY_CHANGE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.rti.pushv2.service.RegisteredSystemBroadcastReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.MY_PACKAGE_REPLACED",
+        "android.net.conn.CONNECTIVITY_CHANGE",
+        "android.intent.action.USER_PRESENT"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "android.intent.action.PACKAGE_CHANGED",
+        "android.intent.action.PACKAGE_REMOVED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.horizon.service_media.sharing.SharingEducationReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.SHARING_EDUCATION"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.common.packagescache.PackagesCacheReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PACKAGE_ADDED",
+        "android.intent.action.PACKAGE_REPLACED",
+        "android.intent.action.PACKAGE_REMOVED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.AccountSyncTriggerReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.SessionPingTriggerReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.F3UpgradeTriggerReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.AccountUpdateTriggerReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.AccountFixTriggerReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.HeartbeatMonitorTriggerReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.control.SnapshotTriggerReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_SET_CLIENT_VALUES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientDebugReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_EXPORT_CLIENT_ACCESS_LOG"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.receiver.AuthBroadcastReceiver",
+     "exported": "true",
+     "permission": "com.oculus.horizon.auth",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.auth.BROADCAST_LOGIN",
+        "com.oculus.auth.BROADCAST_LOGOUT"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.horizon.vr_lifecycle.VRLifecycleStartUpBootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.horizon.privacy.HandsTrackingConsentSyncBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.auth.deviceownership.EnsureDeviceOwnershipBootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.rlcp.RLCPDataChangeReceiver",
+     "exported": "true",
+     "permission": "com.oculus.horizon.auth",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrnotifications.intent.action.SILENT_PAYLOAD",
+        "com.oculus.auth.BROADCAST_LOGIN"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.rlcp.RLCPSalsaReceiver",
+     "exported": "true",
+     "permission": "com.oculus.horizon.auth",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.rlcp.intent.action.SALSA_AGED_DOWN"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.analytics2.logger.legacy.uploader.HighPriUploadRetryReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.ACTION_POWER_CONNECTED",
+        "android.intent.action.ACTION_POWER_DISCONNECTED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BATTERY_OKAY",
+        "android.intent.action.BATTERY_LOW"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.DEVICE_STORAGE_LOW",
+        "android.intent.action.DEVICE_STORAGE_OK"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.net.conn.CONNECTIVITY_CHANGE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.RescheduleReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.TIME_SET",
+        "android.intent.action.TIMEZONE_CHANGED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "@7F050000",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.work.impl.background.systemalarm.UpdateProxies"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.google.firebase.iid.FirebaseInstanceIdReceiver",
+     "exported": "true",
+     "permission": "com.google.android.c2dm.permission.SEND",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.google.android.c2dm.intent.RECEIVE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.profileinstaller.ProfileInstallReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.profileinstaller.action.INSTALL_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SKIP_FILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SAVE_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 15,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.fbconnect.FBConnectContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.linkedaccounts.provider.LinkedAccountsContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.provider.ProfileContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.provider.GatekeeperContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.provider.OVRPlatformContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.provider.DeviceConfigContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.horizon.sso.SsoContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.control.AuthControlContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.mobileconfigservice.contentprovider.MobileConfigContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.legacygraphql.methods.contract.SocialDBContractPartiesProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.legacygraphql.methods.contract.SocialDBContractSocialProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.auth.e2etestharness.E2eTestHarnessContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.startup.InitializationProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.google.firebase.provider.FirebaseInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 57,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.CAMERA",
+   "android.permission.CAPTURE_AUDIO_OUTPUT",
+   "android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST",
+   "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.INTERNET",
+   "android.permission.MANAGE_EXTERNAL_STORAGE",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.SYSTEM_ALERT_WINDOW",
+   "android.permission.VIBRATE",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "com.android.launcher.permission.INSTALL_SHORTCUT",
+   "com.android.launcher.permission.UNINSTALL_SHORTCUT",
+   "com.google.android.c2dm.permission.RECEIVE",
+   "com.meta.federatedcomputing.BIND_ANALYTICS_EVENT_SERVICE",
+   "com.oculus.appsafety.PLATFORM_ATTESTATION",
+   "com.oculus.companion.server.permission.HANDLE_CASTING_ACTIONS",
+   "com.oculus.companion.server.permission.SEND_INTENTS",
+   "com.oculus.horizon.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+   "com.oculus.horizon.auth",
+   "com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS",
+   "com.oculus.horizon.permission.ACCESS",
+   "com.oculus.horizon.permission.OVR_PLATFORM_BROADCAST",
+   "com.oculus.horizon.receivers.permission.APPLICATION_INVITE_ACTION",
+   "com.oculus.horizon.receivers.permission.REQUEST_TO_JOIN_ACTION",
+   "com.oculus.metacam.permission.CASTING_SERVICE",
+   "com.oculus.nux.ota.permission.SEND_INTENTS",
+   "com.oculus.ocms.am.service.permission.ACCESS",
+   "com.oculus.panelapp.messenger.permission.SOCIAL_NOTIF_UPSELL_ACTION",
+   "com.oculus.panelapp.parties.permission.CONCURRENT_NOTIF_QUICK_ACTION",
+   "com.oculus.panelapp.parties.permission.SOCIAL_PARTY_END_NOTIF_ACTION",
+   "com.oculus.panelapp.people.permission.SOCIAL_REQUEST_ACTION",
+   "com.oculus.permission.ALWAYS_CAPTURE_MIC_AUDIO_INPUT",
+   "com.oculus.permission.BIND_PRESENCE_SERVICE",
+   "com.oculus.permission.CONNECT_TO_DUMPSYSPROXY",
+   "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+   "com.oculus.permission.GET_WINDOW_LAYOUT",
+   "com.oculus.permission.MANAGE_LOCKSCREEN",
+   "com.oculus.permission.METACAM_SCREEN_CAPTURE",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE_DEBUG",
+   "com.oculus.permission.MOUNT_WAKE_LOCK",
+   "com.oculus.permission.PLAY_AUDIO_BACKGROUND",
+   "com.oculus.permission.Q4B_KIOSK_SESSION",
+   "com.oculus.permission.READ_FOCUS_STATE",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.RECORD_AUDIO_BACKGROUND",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.updater.permission.NOTIFICATION_REQUEST_ACTION",
+   "com.oculus.vrshell.RECEIVE_NOTIFICATION_DESTINATIONS",
+   "com.oculus.vrshell.ShellControlProtectedReceiverPermission"
+  ]
+ },
+ "declared_permissions": {
+  "count": 20,
+  "items": [
+   {
+    "name": "com.oculus.horizon.permission.ACCESS",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.REQUEST_METADEVICECONFIG_STATUS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.horizon.notifications.receivers.RECEIVE_NOTIFICATION_DESTINATIONS",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.horizon.notifications.receivers.TEST_FBNS_NOTIFICATION",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.horizon.receivers.permission.REQUEST_TO_JOIN_ACTION",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.horizon.receivers.permission.APPLICATION_INVITE_ACTION",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.panelapp.people.permission.SOCIAL_REQUEST_ACTION",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.panelapp.parties.permission.SOCIAL_PARTY_END_NOTIF_ACTION",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.vrshell.RECEIVE_NOTIFICATION_DESTINATIONS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.panelapp.messenger.permission.SOCIAL_NOTIF_UPSELL_ACTION",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.panelapp.parties.permission.CONCURRENT_NOTIF_QUICK_ACTION",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.horizon.FBCONNECT_CONTENT_PROVIDER_WRITE_ACCESS",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.horizon.FBCONNECT_CONTENT_PROVIDER_READ_ACCESS",
+    "protection": "0x00000000"
+   },
+   {
+    "name": "com.oculus.horizon.LINKED_ACCOUNTS_READ_PERMISSION",
+    "protection": null
+   },
+   {
+    "name": "com.oculus.horizon.LINKED_ACCOUNTS_WRITE_PERMISSION",
+    "protection": null
+   },
+   {
+    "name": "com.oculus.horizon.permission.OVR_PLATFORM_BROADCAST",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.horizon.auth",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.horizon.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [
+  "android.hardware.camera"
+ ],
+ "meta_data": [
+  "android.accounts.AccountAuthenticator",
+  "android.content.APP_RESTRICTIONS",
+  "android.max_aspect",
+  "androidx.profileinstaller.ProfileInstallerInitializer",
+  "androidx.work.WorkManagerInitializer",
+  "com.facebook.build_id",
+  "com.facebook.build_rule",
+  "com.facebook.build_time",
+  "com.facebook.package_type",
+  "com.facebook.sdk.AdvertiserIDCollectionEnabled",
+  "com.facebook.sdk.ApplicationId",
+  "com.facebook.sdk.AutoLogAppEventsEnabled",
+  "com.facebook.versioncontrol.branch",
+  "com.facebook.versioncontrol.revision",
+  "com.google.android.ALLOW_PHISHING_DETECTION",
+  "com.google.android.gms.version",
+  "com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar",
+  "com.google.firebase.components:com.google.firebase.iid.Registrar",
+  "com.meta.libraries.appmanager.CLIENT_VERSION",
+  "com.oculus.auth.fbpermission.USE_DEVICE_AUTH",
+  "com.oculus.custom_profiles",
+  "com.oculus.deviceconfig.PARAMS_MAP_PATH",
+  "com.oculus.horizon.screencapture.capability",
+  "com.oculus.messagequeue.doctor",
+  "com.oculus.ocms.fbpermission.LIBRARY_PROVIDER",
+  "com.oculus.ocms.fbpermission.MESSENGER_SERVICE_PROVIDER",
+  "com.oculus.persistent_service",
+  "com.oculus.socialplatform.fbpermission.FRIEND_LIST_CONTENT_PROVIDER",
+  "com.oculus.socialplatform.fbpermission.MESSENGER_VR_ACCOUNTS_CONTENT_PROVIDER_READ_ONLY",
+  "com.oculus.socialplatform.fbpermission.PARTIES_API_PROVIDER",
+  "com.oculus.systemux.fbpermission.CAST_TWILIGHT_DIALOGUE",
+  "com.oculus.systemux.fbpermission.SHARING_UPSELL",
+  "com.oculus.vrnotifications.datanotifications",
+  "oculus_preferences_capture",
+  "oculus_preferences_horizon",
+  "oculus_preferences_horizon_fbns_push",
+  "oculus_preferences_horizon_platform",
+  "oculus_preferences_horizon_privacy",
+  "oculus_preferences_ims",
+  "oculus_preferences_oculus_horizon",
+  "oculus_preferences_rlcp",
+  "oculus_preferences_unifiedlogging_utils"
+ ],
+ "classes": {
+  "count": 13037,
+  "top_prefixes": [
+   [
+    "com.oculus.horizon",
+    966
+   ],
+   [
+    "com.oculus.graphql",
+    835
+   ],
+   [
+    "com.oculus.auth",
+    536
+   ],
+   [
+    "com.oculus.presence",
+    461
+   ],
+   [
+    "org.checkerframework.checker",
+    261
+   ],
+   [
+    "com.fasterxml.jackson",
+    258
+   ],
+   [
+    "com.google.common",
+    213
+   ],
+   [
+    "com.oculus.metacam",
+    208
+   ],
+   [
+    "com.squareup.okhttp",
+    183
+   ],
+   [
+    "com.facebook.acra",
+    166
+   ],
+   [
+    "com.oculus.mediaupload",
+    149
+   ],
+   [
+    "com.oculus.deviceconfigclient",
+    134
+   ],
+   [
+    "com.oculus.http",
+    122
+   ],
+   [
+    "com.oculus.appmanager",
+    114
+   ],
+   [
+    "com.oculus.platform",
+    102
+   ],
+   [
+    "com.google.android",
+    98
+   ],
+   [
+    "com.oculus.deviceconfigservice",
+    93
+   ],
+   [
+    "com.oculus.ocms",
+    87
+   ],
+   [
+    "com.oculus.identitymanagement",
+    86
+   ],
+   [
+    "com.google.gson",
+    78
+   ],
+   [
+    "com.oculus.live",
+    64
+   ],
+   [
+    "com.oculus.library",
+    61
+   ],
+   [
+    "org.checkerframework.common",
+    57
+   ],
+   [
+    "com.meta.libraries",
+    56
+   ],
+   [
+    "com.facebook.common",
+    53
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 558,
+   "items": [
+    "android.intent.action.ACTION_POWER_CONNECTED",
+    "android.intent.action.ACTION_POWER_DISCONNECTED",
+    "android.intent.action.ACTION_SHUTDOWN",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.BATTERY_LOW",
+    "android.intent.action.BATTERY_OKAY",
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.DEVICE_STORAGE_LOW",
+    "android.intent.action.DEVICE_STORAGE_OK",
+    "android.intent.action.DOWNLOAD_COMPLETE",
+    "android.intent.action.HEADSET_PLUG",
+    "android.intent.action.MY_PACKAGE_REPLACED",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SCREEN_ON",
+    "android.intent.action.USER_PRESENT",
+    "android.intent.action.USER_UNLOCKED",
+    "android.intent.action.VIEW",
+    "android.net.Network",
+    "android.net.TrafficStats",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.http.X509TrustManagerExtensions",
+    "android.net.wifi.STATE_CHANGE",
+    "com.meta.CodecAvatarSmile",
+    "com.meta.WorkspaceTemplateApp",
+    "com.meta.aether.apps.experiments.hca",
+    "com.meta.aether.ar_apps.experiments.playground",
+    "com.meta.ar.ArPlayground",
+    "com.meta.ar.Camera",
+    "com.meta.ar.Gallery",
+    "com.meta.ar.arcalling",
+    "com.meta.ar.arcellularexperience",
+    "com.meta.ar.ards",
+    "com.meta.ar.arguidebook",
+    "com.meta.ar.arlego",
+    "com.meta.ar.arshellux",
+    "com.meta.ar.arwhatsapp",
+    "com.meta.ar.augmentedig",
+    "com.meta.ar.avatars",
+    "com.meta.ar.awe",
+    "com.meta.ar.browser",
+    "com.meta.ar.bugreporter",
+    "com.meta.ar.codecdemo",
+    "com.meta.ar.copresence",
+    "com.meta.ar.endtoenddiagnostics",
+    "com.meta.ar.fbns",
+    "com.meta.ar.felios.playground",
+    "com.meta.ar.foaauthsample",
+    "com.meta.ar.helixfusion",
+    "com.meta.ar.helixproxy",
+    "com.meta.ar.helixserver",
+    "com.meta.ar.iris.messenger",
+    "com.meta.ar.iris.umami",
+    "com.meta.ar.iris.workchat",
+    "com.meta.ar.magicframe",
+    "com.meta.ar.metaai",
+    "com.meta.ar.modelviewer",
+    "com.meta.ar.mrhorizonshortcuts",
+    "com.meta.ar.msysservice",
+    "com.meta.ar.music",
+    "com.meta.ar.peoplehub",
+    "com.meta.ar.photoframe",
+    "com.meta.ar.playtorch",
+    "com.meta.ar.reactarplayground",
+    "com.meta.ar.settings",
+    "com.meta.ar.spark_experience.artisan",
+    "com.meta.ar.spark_experience.augment_api_example_experience",
+    "com.meta.ar.spark_experience.boxing",
+    "com.meta.ar.spark_experience.chess_v3",
+    "com.meta.ar.spark_experience.flippy_blocks",
+    "com.meta.ar.spark_experience.lines",
+    "com.meta.ar.spark_experience.pong",
+    "com.meta.ar.spark_experience.shooter",
+    "com.meta.ar.sparkexperiencerunnertemplate",
+    "com.meta.ar.stocks",
+    "com.meta.ar.vraugmentpack.asgardswrath2",
+    "com.meta.ar.vraugmentpack.beatsaber",
+    "com.meta.ar.vraugmentpack.populationone",
+    "com.meta.ar.vraugmentpack.superhot",
+    "com.meta.ar.vraugmentpack.supernatural",
+    "com.meta.ar.wasabi.service",
+    "com.meta.ar.wasabi.service.devapp",
+    "com.meta.ar.worldunderstandingcoapp",
+    "com.meta.automation.cowter.vr",
+    "com.meta.automation.pauldron.vr",
+    "com.meta.codecavatar.workspace",
+    "com.meta.conductor.coca",
+    "com.meta.environment",
+    "com.meta.federatedcomputing.oculus",
+    "com.meta.federatedcomputing.service.AnalyticsEventService",
+    "com.meta.greenhouse",
+    "com.meta.handseducationmodule",
+    "com.meta.horizon.standalone.demo",
+    "com.meta.horizon.standalone.dev",
+    "com.meta.iap.sample",
+    "com.meta.imeiqrreader",
+    "com.meta.metasdksample",
+    "com.meta.mocklocationtool",
+    "com.meta.mr.awe",
+    "com.meta.pclink.arkio",
+    "com.meta.pclink.gravitysketch",
+    "com.meta.pclink.quill",
+    "com.meta.pclink.quill_proto",
+    "com.meta.pclink.quill_proto_quest2",
+    "com.meta.pclink.quill_proto_quest3",
+    "com.meta.pclink.quill_proto_questpro",
+    "com.meta.pclink.substance3dmodeler",
+    "com.meta.pclinkservice.server",
+    "com.meta.portal.sdk.app",
+    "com.meta.proximity.service",
+    "com.meta.quest_hard_link",
+    "com.meta.rl.trust.service",
+    "com.meta.samples.Aura",
+    "com.meta.samples.MetaXRAudioSDK",
+    "com.meta.samples.dodgearcade",
+    "com.meta.shellavatar",
+    "com.meta.testing",
+    "com.meta.transport",
+    "com.meta.wearable.aiextensibility.samples.aiactions",
+    "com.meta.wearable.mfgapp",
+    "com.meta.wirelessinsight",
+    "com.meta.work",
+    "com.meta.work.workds.gallery",
+    "com.meta.worlds.stable",
+    "com.meta.wrist.os.power.scenariotracker",
+    "com.meta.wrist.os.sdk.resources",
+    "com.meta.xrbody.dogfooding",
+    "com.meta.xrmark",
+    "com.meta.xrteleporter",
+    "com.oculus.HapticsStudio",
+    "com.oculus.LucidApp",
+    "com.oculus.MrcCameraCalibration",
+    "com.oculus.SEE_SOCIAL_NOTIFICATIONS",
+    "com.oculus.accessibility",
+    "com.oculus.accountscenter",
+    "com.oculus.aidl.AssetResultCallbackInterface",
+    "com.oculus.aidl.IAuthService2",
+    "com.oculus.aidl.IAuthenticationCallback",
+    "com.oculus.aidl.IGkService",
+    "com.oculus.aidl.OVRMediaServiceInterface",
+    "com.oculus.aidl.OVRServiceInterface",
+    "com.oculus.aidl.OVRShareServiceInterface",
+    "com.oculus.appautomation",
+    "com.oculus.appmanager.downloader.OculusDownloadService",
+    "com.oculus.appmanager.info.ApkUpdateInfo",
+    "com.oculus.appmanager.info.InfoUtils",
+    "com.oculus.appmanager.installer.broadcast.AssetBroadcastDispatch",
+    "com.oculus.appmanager.installer.common.InstallerDownloadStatusChecker",
+    "com.oculus.appmanager.installer.service.InstallerService",
+    "com.oculus.appsafety",
+    "com.oculus.asrservice",
+    "com.oculus.asset_file_download_update",
+    "com.oculus.assistant",
+    "com.oculus.assistant.QUEUE_MIC_LOG",
+    "com.oculus.aui_report_pressed",
+    "com.oculus.aui_report_request_handled",
+    "com.oculus.auth.ACTION_AUTH_WITH_OCULUS_EMAIL_AND_PASSWORD_FOR_ACCOUNT_LINKING",
+    "com.oculus.auth.ACTION_DEVICE_SCOPED_TOKEN_REFRESH",
+    "com.oculus.auth.ACTION_ENSURE_DEVICE_OWNERSHIP",
+    "com.oculus.auth.ACTION_FB_CHECK_MACHINE_APPROVAL",
+    "com.oculus.auth.ACTION_FB_LOGIN",
+    "com.oculus.auth.ACTION_FB_MACHINE_APPROVAL_LOGIN",
+    "com.oculus.auth.ACTION_FB_RESEND_SMS",
+    "com.oculus.auth.ACTION_FB_VERIFY_LOGIN_APPROVALS_CODE",
+    "com.oculus.auth.ACTION_FETCH_APP_SCOPED_CREDENTIALS",
+    "com.oculus.auth.ACTION_FETCH_DEVICE_SCOPED_CREDENTIALS",
+    "com.oculus.auth.ACTION_FETCH_FB_INFO_FOR_ACCOUNT_LINKING",
+    "com.oculus.auth.ACTION_FETCH_HORIZON_DEVICE_SCOPED_CREDENTIALS",
+    "com.oculus.auth.ACTION_LINK_FB_ACCOUNT",
+    "com.oculus.auth.ACTION_LOGIN",
+    "com.oculus.auth.ACTION_LOGIN_API",
+    "com.oculus.auth.ACTION_LOGIN_WITH_FB_AUTH",
+    "com.oculus.auth.ACTION_LOGOUT",
+    "com.oculus.auth.ACTION_RESEND_LOGIN_APPROVAL_CODE",
+    "com.oculus.auth.ACTION_SEND_TWO_FACTOR_CODE",
+    "com.oculus.auth.ACTION_STATUS",
+    "com.oculus.auth.ACTION_VERIFY_LOGIN",
+    "com.oculus.auth.ACTION_VERIFY_LOGIN_FOR_ACCOUNT_LINKING",
+    "com.oculus.auth.ACTION_VERIFY_PIN",
+    "com.oculus.auth.BROADCAST_LOGIN",
+    "com.oculus.auth.BROADCAST_LOGOUT",
+    "com.oculus.auth.DEVICE_TOKEN",
+    "com.oculus.auth.control",
+    "com.oculus.auth.control.family_of_apps_previous_session",
+    "com.oculus.auth.control.family_of_apps_previous_token",
+    "com.oculus.auth.control.linkedaccount.removed",
+    "com.oculus.auth.control.previous_token",
+    "com.oculus.auth.control.stable_id",
+    "com.oculus.auth.deviceownership.ENSURE_DEVICE_OWNERSHIP",
+    "com.oculus.auth.deviceownership.SCHEDULE_ENSURE_DEVICE_OWNERSHIP_JOB",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_FACEBOOK",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_FACEBOOK_INTERNAL_ONLY",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_HORIZON_WORLDS_PLATFORM",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_HORIZON_WORLDS_PLATFORM_INTERNAL_ONLY",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_INSTAGRAM",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_META",
+    "com.oculus.auth.fbpermission.USE_ACCOUNTS_META_INTERNAL_ONLY"
+   ]
+  },
+  "system_properties": {
+   "count": 124,
+   "items": [
+    "dalvik.vm.heapgrowthlimit",
+    "dalvik.vm.heapmaxfree",
+    "dalvik.vm.heapminfree",
+    "dalvik.vm.heapstartsize",
+    "dalvik.vm.heaptargetutilization",
+    "debug.atrace.tags.enableflags",
+    "debug.fbsystrace.force_java",
+    "debug.fbsystrace.tags",
+    "debug.fbsystrace.trace_load",
+    "debug.meta.federatedcomputing.client",
+    "debug.meta.federatedcomputing.client.allow_all_federated_events",
+    "debug.meta.federatedcomputing.client.disable",
+    "debug.meta.federatedcomputing.client.fa_event_list",
+    "debug.meta.federatedcomputing.client.faevent_policy_json",
+    "debug.meta.federatedcomputing.client.is_batching_enabled",
+    "debug.meta.federatedcomputing.client.msg_ack_enabled",
+    "debug.meta.federatedcomputing.client.should_send_secondary_user_fa_events",
+    "debug.oculus.capture.always_up",
+    "debug.oculus.capture.bitrate",
+    "debug.oculus.capture.height",
+    "debug.oculus.capture.roll_angle_stabil_params",
+    "debug.oculus.capture.rotation_3_dof_stabil_params",
+    "debug.oculus.capture.rotation_3_dof_stabil_preset",
+    "debug.oculus.capture.width",
+    "debug.oculus.command_line_media_capture",
+    "debug.oculus.force_sideload_apps_can_update",
+    "debug.oculus.graphtier",
+    "debug.oculus.mqd.off",
+    "debug.oculus.unlink_sla.deadline",
+    "debug.qpl.output_to_logcat",
+    "net.sf.cglib",
+    "net.sf.cglib.proxy.",
+    "persist.fb.running_e2e",
+    "persist.ocms.appinsights.uninstall_recommendation_algorithm",
+    "persist.ocms.appinsights.unused_app_uninstall_recommendation_look_back_days",
+    "persist.ocms.application.restore.on.install",
+    "persist.ocms.autoupdate.fix.corrupted.apps",
+    "persist.ocms.autoupdate.ignore.on.stop.job",
+    "persist.ocms.autoupdate.job.scheduling.delay.ms",
+    "persist.ocms.autoupdate.min.execution.delta.ms",
+    "persist.ocms.autoupdate.on.screen.off.enabled",
+    "persist.ocms.autoupdate.predownloads",
+    "persist.ocms.autoupdate.recent.use.enabled",
+    "persist.ocms.autoupdate.refresh.only.installed",
+    "persist.ocms.autoupdate.send.update.now.broadcast",
+    "persist.ocms.autoupdate.sync.updates",
+    "persist.ocms.autoupdate.time.limit.enabled",
+    "persist.ocms.autoupdate.timed.wifi.lock.timeout.ms",
+    "persist.ocms.autoupdate.use.update.ranker",
+    "persist.ocms.autoupdate.use.update.size.fetcher",
+    "persist.ocms.autoupdate.using.delayed.install.enabled",
+    "persist.ocms.autoupdate.wait.for.library",
+    "persist.ocms.autoupdate.wait.on.installer.queue",
+    "persist.ocms.cloudbackup.before.power.off",
+    "persist.ocms.cloudbackup.close",
+    "persist.ocms.cloudbackup.on.maintenance.boot",
+    "persist.ocms.cloudbackup.uninstall",
+    "persist.ocms.debug_optional_apps",
+    "persist.ocms.dev.keep.tempfiles",
+    "persist.ocms.device.in.use",
+    "persist.ocms.disable.asset.fetch",
+    "persist.ocms.disable.side.load.update",
+    "persist.ocms.dlc.ui.updates.enabled",
+    "persist.ocms.durable_iap.enabled",
+    "persist.ocms.enable.q4b.channel",
+    "persist.ocms.ent.fetch.on.network",
+    "persist.ocms.entitlement.optimized.fetch",
+    "persist.ocms.entitlements.cloud_backup_metadata_sync",
+    "persist.ocms.fetch.dependency",
+    "persist.ocms.force.in.place.update.flow",
+    "persist.ocms.image_caching.sideloaded_apps",
+    "persist.ocms.install_existing_enabled",
+    "persist.ocms.installer2.augment.install",
+    "persist.ocms.installer2.limited.reboot.recover",
+    "persist.ocms.installer2.max.job",
+    "persist.ocms.installer2.max.task",
+    "persist.ocms.installer2.max.task.in_immersive_app",
+    "persist.ocms.installer2.reboot.recover",
+    "persist.ocms.installer2.reboot.recover.max",
+    "persist.ocms.installer2.use.battery.monitor",
+    "persist.ocms.installer2.use.pause.resume",
+    "persist.ocms.library.refresh",
+    "persist.ocms.library.refresh.push",
+    "persist.ocms.manifest.sync.enabled",
+    "persist.ocms.manifest.sync.on.network",
+    "persist.ocms.maui.app.manager.enabled",
+    "persist.ocms.no.autoupdate",
+    "persist.ocms.oculus.cdn.url",
+    "persist.ocms.periodic.fetch.disabled",
+    "persist.ocms.post_nux_default_apps_install_enabled",
+    "persist.ocms.pre.shutdown.fgservice.enabled",
+    "persist.ocms.precomputed.shaders",
+    "persist.ocms.predownload.encryption",
+    "persist.ocms.predownload.use_latest_released_binary",
+    "persist.ocms.push.fgservice.enabled",
+    "persist.ocms.refresh_library_before_autoupdate",
+    "persist.ocms.restore.remoteconfig.on.reboot",
+    "persist.ocms.secondary_user_pre_downloads",
+    "persist.ocms.show.transitional.install.states",
+    "persist.ocms.split.image.fetch",
+    "persist.ocms.split.image.fetch.q4b.shared.mode",
+    "persist.ocms.standardize.app.stub.feature",
+    "persist.ocms.testing.override.system.gpu.hash",
+    "persist.ocms.throttling.autoupdate",
+    "persist.ocms.throttling.default",
+    "persist.ocms.timed.wifi.lock.enabled",
+    "persist.ocms.updates.update.before.power.off",
+    "persist.ocms.updates.update.on.maintenance.boot",
+    "persist.ocms.use.battery.monitor",
+    "persist.ocms.use.entitlement.2.device_setup",
+    "persist.ocms.use.entitlement.channel.manager",
+    "persist.ocms.use.in.place.update.flow",
+    "persist.ocms.use.super.logger",
+    "persist.ocms.vr.focus.broadcast.enabled",
+    "persist.ocms.watchdog.experiment.enabled",
+    "persist.oculus.horizon.disable_presence_manager",
+    "persist.oculus.presence.disable_telemetry",
+    "persist.ovr.deviceconfig.svc",
+    "persist.ovr.e2e.http_proxy",
+    "persist.ovr.e2e.running",
+    "persist.ovr.e2e.sandbox_url",
+    "persist.ovr.e2e.x2p_proxy_url",
+    "persist.ovr.skip_q4b_mdm_update",
+    "vendor.qti.hardware.cacert.server"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 28,
+   "items": [
+    "android.os.IMessenger",
+    "android.permission.INTERNET",
+    "com.oculus.aidl.IAuthService2",
+    "com.oculus.aidl.IAuthenticationCallback",
+    "com.oculus.aidl.IGkService",
+    "com.oculus.iap.IAPResultPermission",
+    "com.oculus.metacam.ipc.ICaptureServiceBinder",
+    "com.oculus.metacam.ipc.ICastStateListener",
+    "com.oculus.metacam.ipc.ILivestreamCheckFbAccountLinkedQueryListener",
+    "com.oculus.metacam.ipc.ILivestreamCommentListener",
+    "com.oculus.metacam.ipc.ILivestreamSettingQueryListener",
+    "com.oculus.metacam.ipc.ILivestreamStateListener",
+    "com.oculus.metacam.ipc.ILivestreamStateListenerV2",
+    "com.oculus.metacam.ipc.ILivestreamingServiceBinder",
+    "com.oculus.metacam.ipc.IMetaCamServiceBinder",
+    "com.oculus.metacam.ipc.IOnCaptureStoppedListener",
+    "com.oculus.metacam.ipc.IScreenshotStateListener",
+    "com.oculus.metacam.ipc.IVirtualCameraServiceBinder",
+    "com.oculus.metacam.ipc.IVirtualCameraStateListener",
+    "com.oculus.presence.hyperspace.IHyperspaceApiProvider",
+    "com.oculus.presence.hyperspace.IHyperspaceApiStatusListener",
+    "com.oculus.presence.hyperspace.IHyperspaceServiceVideoApi",
+    "com.oculus.presence.hyperspace.IOutgoingVideoObserver",
+    "com.oculus.presence.hyperspace.ISurfaceVideoObserver",
+    "com.oculus.userserver.managerservice.IOculusUserManager",
+    "com.oculus.vrshell.notifications.IVrNotificationWaypointMetricService",
+    "vendor.meta.parfait.IConfigQuery",
+    "vendor.meta.parfait.ITrigger"
+   ]
+  },
+  "content_authorities": {
+   "count": 17,
+   "items": [
+    "content://com.facebook.app.FacebookContentProvider",
+    "content://com.facebook.katana.provider.AttributionIdProvider",
+    "content://com.facebook.mobileconfigservice.contentprovider",
+    "content://com.facebook.wakizashi.provider.AttributionIdProvider",
+    "content://com.oculus.horizon",
+    "content://com.oculus.horizon.gatekeeper/fetch",
+    "content://com.oculus.horizon.linkedaccounts/accounts",
+    "content://com.oculus.horizon/profile",
+    "content://com.oculus.identitymanagement.capabilities.contentprovider/account",
+    "content://com.oculus.identitymanagement.capabilities.contentprovider/account/activeuser/capabilities",
+    "content://com.oculus.identitymanagement.capabilities.contentprovider/activeuser",
+    "content://com.oculus.identitymanagement.capabilities.contentprovider/capabilities",
+    "content://com.oculus.messenger.service.provider",
+    "content://com.oculus.socialplatform.messenger.service.provider",
+    "content://com.oculus.socialplatform.messengervraccounts/v1",
+    "content://com.oculus.socialplatform.partiesapi",
+    "content://downloads/my_downloads"
+   ]
+  }
+ }
+}

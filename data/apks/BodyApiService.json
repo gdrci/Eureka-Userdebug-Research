@@ -1,0 +1,408 @@
+{
+ "apk": "system_ext_a/priv-app/BodyApiService/BodyApiService.apk",
+ "package": "com.oculus.bodyapiservice",
+ "version_name": "71.0.0.541.758",
+ "version_code": "665334810",
+ "min_sdk": "23",
+ "target_sdk": "29",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 43,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_event_event.so",
+    "size": 21184
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_XNNPACK_XNNPACK.so",
+    "size": 236088
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_OculusBodytrackingPeriodicEventsEvent_genNoBuilder.so",
+    "size": 185848
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_thread_util.so",
+    "size": 186080
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_logger.so",
+    "size": 186560
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_libkineto_api.so",
+    "size": 14736
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_libkineto.so",
+    "size": 189808
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_device_functions.so",
+    "size": 14784
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_config_loader.so",
+    "size": 18936
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_config.so",
+    "size": 19160
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_kineto_libkineto_base_logger.so",
+    "size": 17680
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_shared_promise.so",
+    "size": 3376
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_coreAndroid.so",
+    "size": 301024
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_barrier.so",
+    "size": 14832
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executors_global_executorAndroid.so",
+    "size": 659288
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executorAndroid.so",
+    "size": 229344
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_supported_mobile_models.so",
+    "size": 43704
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_mobile_observer.so",
+    "size": 3376
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_mobile_module.so",
+    "size": 20120
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_mobile_deserialize_common.so",
+    "size": 21792
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_mobile_deserialize.so",
+    "size": 21824
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_kineto_profiling.so",
+    "size": 203688
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_edge_profiling.so",
+    "size": 16368
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_torch_common.so",
+    "size": 313032
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_pthreadpool.so",
+    "size": 242648
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_miniz.so",
+    "size": 3360
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_fb_lite_predictor_aibench_api.so",
+    "size": 17936
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_common_core.so",
+    "size": 14720
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_caffe2_serialize.so",
+    "size": 19832
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_c10_c10.so",
+    "size": 491016
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_backend_interface_lib.so",
+    "size": 99736
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_aten_src_ATen_native_quantized_cpu_qnnpack_pytorch_qnnpack.so",
+    "size": 113744
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_caffe2_aten_cpu.so",
+    "size": 1277928
+   },
+   {
+    "path": "lib/arm64-v8a/libtorch-code-gen.so",
+    "size": 2849576
+   },
+   {
+    "path": "lib/arm64-v8a/libroi-align-ops-xplat.so",
+    "size": 71608
+   },
+   {
+    "path": "lib/arm64-v8a/libmaskrcnn-ops-xplat.so",
+    "size": 19456
+   },
+   {
+    "path": "lib/arm64-v8a/libloaderimpl.so",
+    "size": 265120
+   },
+   {
+    "path": "lib/arm64-v8a/libeyetrackingservice.so",
+    "size": 383800
+   },
+   {
+    "path": "lib/arm64-v8a/libeyetrackingplugin.so",
+    "size": 425632
+   },
+   {
+    "path": "lib/arm64-v8a/libdouble-conversion.so",
+    "size": 17664
+   },
+   {
+    "path": "lib/arm64-v8a/libbodyapiservice.so",
+    "size": 8939600
+   },
+   {
+    "path": "lib/arm64-v8a/libbodyapiplugin.so",
+    "size": 645608
+   },
+   {
+    "path": "lib/arm64-v8a/libbatch-box-cox-ops-xplat.so",
+    "size": 14720
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.bodyapiservice.MainActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "com.oculus.bodyapiservice",
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.bodyapiservice.BodyApiService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "com.oculus.bodyapiservice",
+     "filters": []
+    },
+    {
+     "name": "com.oculus.eyetrackingservice.EyeTrackingService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "com.oculus.eyetrackingservice",
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 10,
+  "items": [
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.RECORD_AUDIO",
+   "com.oculus.permission.ACCESS_BACKGROUND_HEAD_TRACKING",
+   "com.oculus.permission.ACCESS_BACKGROUND_INPUT_TRACKING",
+   "com.oculus.permission.EYE_TRACKING",
+   "com.oculus.permission.FACE_TRACKING",
+   "com.oculus.permission.IOBT_DATA",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.USE_RESERVED_CORE"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "oculus.software.eye_tracking",
+  "oculus.software.face_tracking"
+ ],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.RuntimeForegroundService",
+  "com.oculus.messagequeue.doctor",
+  "com.oculus.reserved_core.enabled",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 1205,
+  "top_prefixes": [
+   [
+    "kotlin.jvm.internal",
+    102
+   ],
+   [
+    "com.facebook.appperf",
+    54
+   ],
+   [
+    "com.facebook.infer",
+    37
+   ],
+   [
+    "kotlin.io.path",
+    33
+   ],
+   [
+    "org.intellij.lang",
+    25
+   ],
+   [
+    "kotlin.jvm.functions",
+    24
+   ],
+   [
+    "kotlin.collections.builders",
+    23
+   ],
+   [
+    "kotlin.coroutines.jvm",
+    16
+   ],
+   [
+    "kotlin.collections.unsigned",
+    12
+   ],
+   [
+    "kotlin.coroutines.intrinsics",
+    12
+   ],
+   [
+    "kotlin.io.encoding",
+    9
+   ],
+   [
+    "com.facebook.common",
+    7
+   ],
+   [
+    "javax.annotation.meta",
+    7
+   ],
+   [
+    "org.jetbrains.annotations",
+    7
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "kotlin.streams.jdk8",
+    6
+   ],
+   [
+    "com.oculus.bodyapiservice",
+    5
+   ],
+   [
+    "com.facebook.proguard",
+    4
+   ],
+   [
+    "javax.annotation.concurrent",
+    4
+   ],
+   [
+    "kotlin.annotations.jvm",
+    4
+   ],
+   [
+    "kotlin.internal.jdk7",
+    4
+   ],
+   [
+    "kotlin.internal.jdk8",
+    2
+   ],
+   [
+    "com.facebook.buck_generated",
+    1
+   ],
+   [
+    "com.oculus.eyetrackingservice",
+    1
+   ],
+   [
+    "com.oculus.libloaderimpl",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 5,
+   "items": [
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SCREEN_ON",
+    "com.oculus.bodyapiservice",
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.messagequeue.doctor"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "debug.oculus.mqd.off"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

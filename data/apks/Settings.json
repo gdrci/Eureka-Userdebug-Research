@@ -1,0 +1,4201 @@
+{
+ "apk": "system_ext_a/priv-app/Settings/Settings.apk",
+ "package": "com.android.settings",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 2,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 282,
+   "items": [
+    {
+     "name": "com.android.settings.homepage.SettingsHomepageActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.homepage.DeepLinkHomepageActivity",
+     "exported": "true",
+     "permission": "android.permission.LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.SETTINGS_EMBED_DEEP_LINK_ACTIVITY"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.homepage.SliceDeepLinkHomepageActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.SubSettings",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$CreateShortcutActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.CREATE_SHORTCUT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$NetworkDashboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WIRELESS_SETTINGS",
+        "android.settings.AIRPLANE_MODE_SETTINGS",
+        "com.android.settings.sim.SIM_SUB_INFO_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.network.telephony.MobileNetworkActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.telephony.ims.action.SHOW_CAPABILITY_DISCOVERY_OPT_IN",
+        "android.settings.NETWORK_OPERATOR_SETTINGS",
+        "android.settings.DATA_ROAMING_SETTINGS",
+        "android.settings.MMS_MESSAGE_SETTING"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$MobileNetworkListActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.MOBILE_NETWORK_LIST",
+        "android.settings.MANAGE_ALL_SIM_PROFILES_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ConnectedDeviceDashboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.BLUETOOTH_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.AirplaneModeVoiceActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.VOICE_CONTROL_AIRPLANE_MODE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.search.SearchResultTrampoline",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.SEARCH_RESULT_TRAMPOLINE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WIFI_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$NetworkProviderSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.NETWORK_PROVIDER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$NetworkSelectActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$WifiDetailsSettingsActivity",
+     "exported": "true",
+     "permission": "android.permission.CHANGE_WIFI_STATE",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WIFI_DETAILS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wifi.WifiPickerActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.net.wifi.PICK_WIFI_NETWORK"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.settings.wifi.WifiSetupActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$ConfigureWifiSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WIFI_IP_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.VOICE_LAUNCH",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$SavedAccessPointsSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WIFI_SAVED_NETWORK_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiInfoActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEVELOPMENT_PREFERENCE",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wifi.WifiConfigInfo",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEVELOPMENT_PREFERENCE",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiAPITestActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEVELOPMENT_PREFERENCE",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wifi.WifiStatusTest",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEVELOPMENT_PREFERENCE",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wifi.WifiNoInternetDialog",
+     "exported": "true",
+     "permission": "android.permission.NETWORK_STACK",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.net.action.PROMPT_UNVALIDATED"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.net.action.PROMPT_LOST_VALIDATION"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ApnSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.APN_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AssistGestureSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ASSIST_GESTURE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$FaceSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.FACE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$FingerprintSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.FINGERPRINT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$CombinedBiometricSettingsActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$CombinedBiometricProfileSettingsActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.bluetooth.DevicePickerActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.devicepicker.action.LAUNCH"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.network.TetherProvisioningActivity",
+     "exported": "true",
+     "permission": "android.permission.TETHER_PRIVILEGED",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.TETHER_PROVISIONING_UI"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.network.telephony.ToggleSubscriptionDialogActivity",
+     "exported": "false",
+     "permission": "android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.network.telephony.DeleteEuiccSubscriptionDialogActivity",
+     "exported": "false",
+     "permission": "android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$TetherSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "android.settings.TETHER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiTetherSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.WIFI_TETHER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiP2pSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$VpnSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.VPN_SETTINGS",
+        "android.net.vpn.SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$DataSaverSummaryActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.DATA_SAVER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$DateTimeSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.DATE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "android.intent.action.QUICK_CLOCK"
+       ],
+       "categories": [
+        "android.intent.category.VOICE_LAUNCH",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$LocalePickerActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.LOCALE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.localepicker.LocalePickerWithRegionActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$LanguageAndInputSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.VOICE_LAUNCH",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AvailableVirtualKeyboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.INPUT_METHOD_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ManageAssistActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.VOICE_INPUT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$KeyboardLayoutPickerActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$PhysicalKeyboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.HARD_KEYBOARD_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$SpellCheckersSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.VOICE_LAUNCH",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.inputmethod.InputMethodAndSubtypeEnablerActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.INPUT_METHOD_SUBTYPE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.VOICE_LAUNCH",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$UserDictionarySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.USER_DICTIONARY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.inputmethod.UserDictionaryAddWordActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.USER_DICTIONARY_INSERT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ZenModeSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ZEN_MODE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.settings.ZEN_MODE_PRIORITY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.notification.zen.ZenSuggestionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.ZEN"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.FIRST_IMPRESSION"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.notification.zen.ZenOnboardingActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ZEN_MODE_ONBOARDING"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ZenModeAutomationSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ZEN_MODE_AUTOMATION_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.settings.ACTION_CONDITION_PROVIDER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WallpaperSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.wallpaper.WallpaperSuggestionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.FIRST_IMPRESSION"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.PERSONALIZE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wallpaper.StyleSuggestionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.FIRST_IMPRESSION"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ZenModeScheduleRuleSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ZEN_MODE_SCHEDULE_RULE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ZenModeEventRuleSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ZEN_MODE_EVENT_RULE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$DisplaySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.DISPLAY_SETTINGS",
+        "android.settings.DISPLAY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$SmartAutoRotateSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.AUTO_ROTATE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$NightDisplaySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@android:01110122",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      },
+      {
+       "actions": [
+        "android.settings.NIGHT_DISPLAY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$DarkThemeSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      },
+      {
+       "actions": [
+        "android.settings.DARK_THEME_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$NightDisplaySuggestionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@android:01110122",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.FIRST_IMPRESSION"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$MyDeviceInfoActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.DEVICE_INFO_SETTINGS",
+        "android.settings.DEVICE_NAME"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$LockScreenSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.LOCK_SCREEN_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$BlueToothPairingActivity",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_SCAN",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.BLUETOOTH_PAIRING_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.SettingsLicenseActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.LICENSE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ModuleLicensesActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.MODULE_LICENSES"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ManageApplicationsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.APPLICATION_SETTINGS",
+        "android.settings.MANAGE_APPLICATIONS_SETTINGS",
+        "android.settings.MANAGE_ALL_APPLICATIONS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ManageDomainUrlsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.MANAGE_DOMAIN_URLS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AppMemoryUsageActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.APP_MEMORY_USAGE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$HighPowerApplicationsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.datausage.AppDataUsageActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.IGNORE_BACKGROUND_DATA_RESTRICTIONS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.fuelgauge.RequestIgnoreBatteryOptimizations",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.slices.SliceDeepLinkSpringBoard",
+     "exported": "true",
+     "permission": "android.permission.MODIFY_PHONE_STATE",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.BROWSABLE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.applications.InstalledAppDetailsTop",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.applications.InstalledAppOpenByDefaultActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.APP_OPEN_BY_DEFAULT_SETTINGS",
+        "com.android.settings.APP_OPEN_BY_DEFAULT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$RunningServicesActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.MONKEY",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$StorageUseActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MANAGE_PACKAGE_STORAGE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.MONKEY",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$NotificationStationActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.notification.history.NotificationHistoryActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.NOTIFICATION_HISTORY"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.notification.zen.ZenModeVoiceActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.VOICE_CONTROL_DO_NOT_DISTURB_MODE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$LocationSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.LOCATION_SOURCE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ScanningSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.LOCATION_SCANNING_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiScanningSettingsActivity",
+     "exported": "true",
+     "permission": "android.permission.CHANGE_WIFI_STATE",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WIFI_SCANNING_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$SecurityDashboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.SECURITY_SETTINGS",
+        "android.credentials.UNLOCK"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.MonitoringCertInfoActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.MONITORING_CERT_INFO"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$TrustedCredentialsSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.TRUSTED_CREDENTIALS",
+        "com.android.settings.TRUSTED_CREDENTIALS_USER"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PrivacySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PrivacyDashboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.PRIVACY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.settings.REQUEST_ENABLE_CONTENT_CAPTURE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.SetFullBackupPassword",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.security.CredentialStorage",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.credentials.INSTALL",
+        "com.android.credentials.RESET"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.security.InstallCaCertificateWarning",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.security.RequestManageCredentials",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.security.MANAGE_CREDENTIALS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$DeviceAdminSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.applications.specialaccess.deviceadmin.DeviceAdminAdd",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.ADD_DEVICE_ADMIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.applications.specialaccess.deviceadmin.ProfileOwnerAdd",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.SET_PROFILE_OWNER"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$UsageAccessSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.USAGE_ACCESS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AppUsageAccessSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.USAGE_ACCESS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$IccLockSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AccessibilitySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACCESSIBILITY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AccessibilityDetailsSettingsActivity",
+     "exported": "true",
+     "permission": "android.permission.OPEN_ACCESSIBILITY_DETAILS_SETTINGS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACCESSIBILITY_DETAILS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.accessibility.AccessibilitySettingsForSetupWizardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACCESSIBILITY_SETTINGS_FOR_SUW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.accessibility.AccessibilityScreenSizeForSetupWizardActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$AccessibilityDaltonizerSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.ACCESSIBILITY_COLOR_SPACE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ReduceBrightColorsSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.REDUCE_BRIGHT_COLORS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AccessibilityInversionSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.COLOR_INVERSION_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$CaptioningSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.CAPTIONING_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$TextToSpeechSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.TTS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$EnterprisePrivacySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ENTERPRISE_PRIVACY_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.password.ConfirmDeviceCredentialActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.CONFIRM_DEVICE_CREDENTIAL",
+        "android.app.action.CONFIRM_FRP_CREDENTIAL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.password.ConfirmDeviceCredentialActivity$InternalActivity",
+     "exported": "false",
+     "permission": "android.permission.MANAGE_USERS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.CONFIRM_DEVICE_CREDENTIAL_WITH_USER"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.SetupRedactionInterstitial",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.LOCK_SCREEN_REDACTION"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.notification.RedactionInterstitial",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.notification.RedactionSettingsStandalone",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACTION_APP_NOTIFICATION_REDACTION"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.password.ConfirmLockPattern",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ConfirmLockPassword",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ForgotPasswordActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.face.FaceEnrollParentalConsent",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.face.FaceEnrollIntroduction",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.FACE_ENROLL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.biometrics.face.FaceEnrollEducation",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.face.FaceEnrollEnrolling",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.face.FaceEnrollFinish",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.BiometricHandoffActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.BiometricEnrollActivity$InternalActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.BiometricEnrollActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.BIOMETRIC_ENROLL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintSettings",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintEnrollFindSensor",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintEnrollEnrolling",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintEnrollFinish",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintEnrollParentalConsent",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintEnrollIntroduction",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.FINGERPRINT_ENROLL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.SetupFingerprintEnrollFindSensor",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.SetupFingerprintEnrollEnrolling",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.SetupFingerprintEnrollFinish",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.SetupFingerprintEnrollIntroduction",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_FINGERPRINT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.FINGERPRINT_SETUP"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintSuggestionActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_FINGERPRINT",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ConfirmLockPattern$InternalActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ConfirmLockPassword$InternalActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.SetupChooseLockGeneric",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.SETUP_LOCK_SCREEN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.password.SetupChooseLockGeneric$InternalActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ChooseLockGeneric",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.SetNewPasswordActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ScreenLockSuggestionActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.FIRST_IMPRESSION"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.biometrics.fingerprint.FingerprintEnrollSuggestionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.suggested.category.FIRST_IMPRESSION"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.password.ChooseLockGeneric$InternalActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.SetupChooseLockPattern",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ChooseLockPattern",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.SetupChooseLockPassword",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.password.ChooseLockPassword",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.SetupEncryptionInterstitial",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.EncryptionInterstitial",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$StorageDashboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.INTERNAL_STORAGE_SETTINGS",
+        "android.settings.MEMORY_CARD_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PublicVolumeSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.provider.action.DOCUMENT_ROOT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PrivateVolumeForgetActivity",
+     "exported": "true",
+     "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardInit",
+     "exported": "true",
+     "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardFormatProgress",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardFormatSlow",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardMigrateConfirm",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardMigrateProgress",
+     "exported": "true",
+     "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardReady",
+     "exported": "true",
+     "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardMoveConfirm",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageWizardMoveProgress",
+     "exported": "true",
+     "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$ApnEditorActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.VIEW",
+        "android.intent.action.EDIT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.INSERT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$DevelopmentSettingsDashboardActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.APPLICATION_DEVELOPMENT_SETTINGS",
+        "com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS",
+        "android.service.quicksettings.action.QS_TILE_PREFERENCES"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "com.android.settings.action.SETTINGS"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.DevelopmentSettingsDisabledActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.APPLICATION_DEVELOPMENT_SETTINGS",
+        "com.android.settings.APPLICATION_DEVELOPMENT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PrintSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACTION_PRINT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE_LAUNCH"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PrintJobSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACTION_PRINT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.AppPicker",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.development.AdbQrCodeActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.development.DSULoader",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.development.DSUTermsOfServiceActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.development.storage.BlobInfoListView",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.development.storage.LeaseInfoListView",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$WebViewAppPickerActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.Settings$BugReportHandlerPickerActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.BUGREPORT_HANDLER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.bluetooth.BluetoothPairingDialog",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_PRIVILEGED",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.device.action.PAIRING_REQUEST"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.bluetooth.RequestPermissionActivity",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_CONNECT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.adapter.action.REQUEST_DISCOVERABLE",
+        "android.bluetooth.adapter.action.REQUEST_ENABLE",
+        "android.bluetooth.adapter.action.REQUEST_DISABLE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wifi.WifiScanModeActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.net.wifi.action.REQUEST_SCAN_ALWAYS_AVAILABLE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$UsbDetailsActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USB",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.RemoteBugreportActivity",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.SHOW_REMOTE_BUGREPORT_DIALOG"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.bluetooth.RequestPermissionHelperActivity",
+     "exported": null,
+     "permission": "android.permission.BLUETOOTH_CONNECT",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.bluetooth.BluetoothPermissionActivity",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_CONNECT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.device.action.CONNECTION_ACCESS_REQUEST",
+        "android.bluetooth.device.action.CONNECTION_ACCESS_CANCEL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.ActivityPicker",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PICK_ACTIVITY"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AndroidBeamSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.NFCSHARING_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$WifiDisplaySettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.CAST_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$TestingSettingsActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.AppWidgetPickActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.appwidget.action.APPWIDGET_PICK"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.AllowBindAppWidgetActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.appwidget.action.APPWIDGET_BIND"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.UsageStatsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEVELOPMENT_PREFERENCE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$PowerUsageSummaryActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.POWER_USAGE_SUMMARY"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "com.android.settings.SHORTCUT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$BatterySaverSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.BATTERY_SAVER_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.fuelgauge.BatterySaverModeVoiceActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.VOICE_CONTROL_BATTERY_SAVER_MODE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.VOICE"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$AccountSyncSettingsActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ACCOUNT_SYNC_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ManagedProfileSettingsActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USERS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.MANAGED_PROFILE_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.accounts.AddAccountSettings",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.settings.ADD_ACCOUNT_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.Settings$ChooseAccountActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.CryptKeeper",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":CryptKeeper",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.HOME",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 15,
+   "items": [
+    {
+     "name": "com.android.settings.wifi.tether.TetherService",
+     "exported": "true",
+     "permission": "android.permission.TETHER_PRIVILEGED",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.bluetooth.BluetoothPairingService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.SettingsDumpService",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$ShowLayout",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$GPUProfiling",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$ForceRTL",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$AnimationSpeed",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$WinscopeTrace",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$SensorsOff",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$WirelessDebugging",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.development.qstile.DevelopmentTiles$ShowTaps",
+     "exported": "true",
+     "permission": "android.permission.BIND_QUICK_SETTINGS_TILE",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.service.quicksettings.action.QS_TILE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.fuelgauge.batterytip.AnomalyCleanupJobService",
+     "exported": null,
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.fuelgauge.batterytip.AnomalyConfigJobService",
+     "exported": null,
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.fuelgauge.batterytip.AnomalyDetectionJobService",
+     "exported": null,
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.sim.SimNotificationService",
+     "exported": null,
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 20,
+   "items": [
+    {
+     "name": "com.android.settings.SettingsInitialize",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.USER_INITIALIZE",
+        "android.intent.action.PRE_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.search.SearchStateReceiver",
+     "exported": "true",
+     "permission": "android.permission.READ_SEARCH_INDEXABLES",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.SEARCH_START",
+        "com.android.settings.SEARCH_EXIT"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.deviceinfo.StorageUnmountReceiver",
+     "exported": "true",
+     "permission": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.bluetooth.BluetoothPairingRequest",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.device.action.PAIRING_REQUEST"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.bluetooth.BluetoothPermissionRequest",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_CONNECT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.device.action.CONNECTION_ACCESS_REQUEST",
+        "android.bluetooth.device.action.CONNECTION_ACCESS_CANCEL"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.TestingSettingsBroadcastReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.telephony.action.SECRET_CODE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settingslib.bluetooth.BluetoothDiscoverableTimeoutReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.intent.DISCOVERABLE_TIMEOUT"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.users.ProfileUpdateReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.provider.Contacts.PROFILE_CHANGED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.sim.SimSelectNotification",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.telephony.action.PRIMARY_SUBSCRIPTION_LIST_CHANGED",
+        "android.settings.ENABLE_MMS_DATA_REQUEST"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.wifi.slice.ConnectToWifiHandler",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.slices.SliceBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.slices.SliceRelayReceiver",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_SLICE_PERMISSIONS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.slices.VolumeSliceRelayReceiver",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_SLICE_PERMISSIONS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.fuelgauge.batterytip.AnomalyDetectionReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.fuelgauge.batterytip.AnomalyConfigReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.STATSD_STARTED",
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.media.BluetoothPairingReceiver",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_CONNECT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.action.LAUNCH_BLUETOOTH_PAIRING"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.sim.receivers.SimSlotChangeReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.telephony.action.SIM_SLOT_STATUS_CHANGED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.sim.receivers.SuwFinishReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.google.android.setupwizard.SETUP_WIZARD_FINISHED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.sim.receivers.SimCompleteBootReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.remotecallback.ProviderRelayReceiver",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "provider": {
+   "count": 11,
+   "items": [
+    {
+     "name": "androidx.core.content.FileProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.deviceinfo.legal.ModuleLicenseProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.emergency.EmergencyActionContentProvider",
+     "exported": "true",
+     "permission": "android.permission.CALL_PRIVILEGED",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.search.SettingsSearchIndexablesProvider",
+     "exported": "true",
+     "permission": "android.permission.READ_SEARCH_INDEXABLES",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.content.action.SEARCH_INDEXABLES_PROVIDER"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.dashboard.suggestions.SuggestionStateProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.settings.action.SUGGESTION_STATE_PROVIDER"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.settings.dashboard.SummaryProvider",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.slices.SettingsSliceProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.homepage.contextualcards.CardContentProvider",
+     "exported": "true",
+     "permission": "android.permission.WRITE_SETTINGS_HOMEPAGE_DATA",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.settings.homepage.contextualcards.SettingsContextualCardProvider",
+     "exported": "true",
+     "permission": "android.permission.WRITE_SETTINGS_HOMEPAGE_DATA",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.content.action.SETTINGS_HOMEPAGE_DATA"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.settings.wifi.WifiEapCertProvider",
+     "exported": "true",
+     "permission": "com.oculus.settings.wifi.permission.VIEW_WIFI_EAP_CERT_ALIASES",
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.lifecycle.ProcessLifecycleOwnerInitializer",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 105,
+  "items": [
+   "android.permission.ACCESS_CHECKIN_PROPERTIES",
+   "android.permission.ACCESS_DOWNLOAD_MANAGER",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_NOTIFICATIONS",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.ALLOW_PLACE_IN_MULTI_PANE_SETTINGS",
+   "android.permission.BACKUP",
+   "android.permission.BATTERY_STATS",
+   "android.permission.BIND_CELL_BROADCAST_SERVICE",
+   "android.permission.BIND_SETTINGS_SUGGESTIONS_SERVICE",
+   "android.permission.BLUETOOTH_ADVERTISE",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_PRIVILEGED",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.CALL_PHONE",
+   "android.permission.CAMERA",
+   "android.permission.CHANGE_APP_IDLE_STATE",
+   "android.permission.CHANGE_CONFIGURATION",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.CLEAR_APP_USER_DATA",
+   "android.permission.CONFIGURE_DISPLAY_COLOR_MODE",
+   "android.permission.CONFIGURE_WIFI_DISPLAY",
+   "android.permission.CONTROL_DISPLAY_COLOR_TRANSFORMS",
+   "android.permission.COPY_PROTECTED_DATA",
+   "android.permission.DELETE_PACKAGES",
+   "android.permission.DEVICE_POWER",
+   "android.permission.FORCE_STOP_PACKAGES",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.HARDWARE_TEST",
+   "android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS",
+   "android.permission.INSTALL_DYNAMIC_SYSTEM",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.INTERNET",
+   "android.permission.LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+   "android.permission.LOCAL_MAC_ADDRESS",
+   "android.permission.MANAGE_APP_HIBERNATION",
+   "android.permission.MANAGE_APP_OPS_MODES",
+   "android.permission.MANAGE_APP_OPS_RESTRICTIONS",
+   "android.permission.MANAGE_DEBUGGING",
+   "android.permission.MANAGE_DEVICE_ADMINS",
+   "android.permission.MANAGE_EXTERNAL_STORAGE",
+   "android.permission.MANAGE_FINGERPRINT",
+   "android.permission.MANAGE_NOTIFICATIONS",
+   "android.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS",
+   "android.permission.MANAGE_SCOPED_ACCESS_DIRECTORY_PERMISSIONS",
+   "android.permission.MANAGE_USB",
+   "android.permission.MANAGE_USERS",
+   "android.permission.MANAGE_USER_OEM_UNLOCK_STATE",
+   "android.permission.MASTER_CLEAR",
+   "android.permission.MEDIA_CONTENT_CONTROL",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.MODIFY_PHONE_STATE",
+   "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+   "android.permission.MOVE_PACKAGE",
+   "android.permission.NETWORK_SETTINGS",
+   "android.permission.NFC",
+   "android.permission.OEM_UNLOCK_STATE",
+   "android.permission.OVERRIDE_WIFI_CONFIG",
+   "android.permission.PACKAGE_USAGE_STATS",
+   "android.permission.PEERS_MAC_ADDRESS",
+   "android.permission.READ_CONTACTS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_DREAM_STATE",
+   "android.permission.READ_DREAM_SUPPRESSION",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.READ_PHONE_STATE",
+   "android.permission.READ_PRINT_SERVICES",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.READ_PROFILE",
+   "android.permission.READ_SEARCH_INDEXABLES",
+   "android.permission.READ_SYNC_SETTINGS",
+   "android.permission.READ_SYNC_STATS",
+   "android.permission.READ_USER_DICTIONARY",
+   "android.permission.REBOOT",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.REQUEST_DELETE_PACKAGES",
+   "android.permission.REQUEST_NETWORK_SCORES",
+   "android.permission.SET_KEYBOARD_LAYOUT",
+   "android.permission.SET_POINTER_SPEED",
+   "android.permission.STATUS_BAR",
+   "android.permission.SUGGEST_MANUAL_TIME_AND_ZONE",
+   "android.permission.SYSTEM_ALERT_WINDOW",
+   "android.permission.TEST_BLACKLISTED_PASSWORD",
+   "android.permission.TETHER_PRIVILEGED",
+   "android.permission.USER_ACTIVITY",
+   "android.permission.USE_BIOMETRIC",
+   "android.permission.USE_BIOMETRIC_INTERNAL",
+   "android.permission.USE_CREDENTIALS",
+   "android.permission.USE_RESERVED_DISK",
+   "android.permission.VIBRATE",
+   "android.permission.WRITE_APN_SETTINGS",
+   "android.permission.WRITE_CONTACTS",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "android.permission.WRITE_MEDIA_STORAGE",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "android.permission.WRITE_SETTINGS",
+   "android.permission.WRITE_SYNC_SETTINGS",
+   "android.permission.WRITE_USER_DICTIONARY",
+   "com.android.certinstaller.INSTALL_AS_USER",
+   "com.android.launcher.permission.READ_SETTINGS",
+   "com.android.launcher.permission.WRITE_SETTINGS",
+   "com.google.android.googleapps.permission.GOOGLE_AUTH",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.settings.wifi.permission.VIEW_WIFI_EAP_CERT_ALIASES"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.settings.wifi.permission.VIEW_WIFI_EAP_CERT_ALIASES",
+    "protection": "0x00000003"
+   }
+  ]
+ },
+ "uses_feature": [
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "android.app.shortcuts",
+  "android.service.quicksettings.TOGGLEABLE_TILE",
+  "android.support.FILE_PROVIDER_PATHS",
+  "com.android.settings.FRAGMENT_CLASS",
+  "com.android.settings.HIGHLIGHT_MENU_KEY",
+  "com.android.settings.PRIMARY_PROFILE_CONTROLLED",
+  "com.android.settings.category",
+  "com.android.settings.dismiss",
+  "com.android.settings.icon",
+  "com.android.settings.icon_tintable",
+  "com.android.settings.order",
+  "com.android.settings.require_feature",
+  "com.android.settings.require_user_type",
+  "com.android.settings.summary",
+  "com.android.settings.summary_uri",
+  "com.android.settings.title",
+  "com.meta.vr.display_mode"
+ ],
+ "classes": {
+  "count": 9525,
+  "top_prefixes": [
+   [
+    "com.android.settings",
+    4648
+   ],
+   [
+    "com.google.android",
+    760
+   ],
+   [
+    "com.android.settingslib",
+    561
+   ],
+   [
+    "com.google.common",
+    366
+   ],
+   [
+    "com.airbnb.lottie",
+    226
+   ],
+   [
+    "com.google.zxing",
+    213
+   ],
+   [
+    "androidx.appcompat.widget",
+    182
+   ],
+   [
+    "com.google.protobuf",
+    154
+   ],
+   [
+    "androidx.recyclerview.widget",
+    141
+   ],
+   [
+    "androidx.fragment.app",
+    134
+   ],
+   [
+    "com.android.wifitrackerlib",
+    113
+   ],
+   [
+    "androidx.core.view",
+    104
+   ],
+   [
+    "androidx.mediarouter.media",
+    102
+   ],
+   [
+    "androidx.constraintlayout.motion",
+    94
+   ],
+   [
+    "androidx.mediarouter.app",
+    73
+   ],
+   [
+    "androidx.appcompat.app",
+    66
+   ],
+   [
+    "com.facebook.secure",
+    62
+   ],
+   [
+    "android.support.v4",
+    59
+   ],
+   [
+    "androidx.slice.widget",
+    59
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "androidx.window.layout",
+    54
+   ],
+   [
+    "androidx.constraintlayout.solver",
+    52
+   ],
+   [
+    "androidx.core.app",
+    35
+   ],
+   [
+    "androidx.window.embedding",
+    35
+   ],
+   [
+    "androidx.core.content",
+    32
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 129,
+   "items": [
+    "android.intent.action.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED",
+    "android.intent.action.AIRPLANE_MODE",
+    "android.intent.action.APPLICATION_PREFERENCES",
+    "android.intent.action.APP_ERROR",
+    "android.intent.action.AUTO_REVOKE_PERMISSIONS",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.BUG_REPORT",
+    "android.intent.action.CALL",
+    "android.intent.action.CARRIER_SETUP",
+    "android.intent.action.CLOSE_SYSTEM_DIALOGS",
+    "android.intent.action.CREATE_SHORTCUT",
+    "android.intent.action.DEVICE_STORAGE_OK",
+    "android.intent.action.DIAL",
+    "android.intent.action.EDIT",
+    "android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE",
+    "android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE",
+    "android.intent.action.FACTORY_RESET",
+    "android.intent.action.GET_CONTENT",
+    "android.intent.action.GET_RESTRICTION_ENTRIES",
+    "android.intent.action.HEADSET_PLUG",
+    "android.intent.action.INSERT",
+    "android.intent.action.MAIN",
+    "android.intent.action.MANAGED_PROFILE_ADDED",
+    "android.intent.action.MANAGED_PROFILE_AVAILABLE",
+    "android.intent.action.MANAGED_PROFILE_REMOVED",
+    "android.intent.action.MANAGED_PROFILE_UNAVAILABLE",
+    "android.intent.action.MANAGED_PROFILE_UNLOCKED",
+    "android.intent.action.MANAGE_APP_PERMISSION",
+    "android.intent.action.MANAGE_APP_PERMISSIONS",
+    "android.intent.action.MANAGE_DEFAULT_APP",
+    "android.intent.action.MANAGE_NETWORK_USAGE",
+    "android.intent.action.MANAGE_RESTRICTED_SETTING",
+    "android.intent.action.MANAGE_SPECIAL_APP_ACCESSES",
+    "android.intent.action.MEDIA_SHARED",
+    "android.intent.action.MEDIA_UNSHARED",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_NEEDS_VERIFICATION",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.PACKAGE_RESTARTED",
+    "android.intent.action.PHONE_STATE",
+    "android.intent.action.PICK",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.QUERY_PACKAGE_RESTART",
+    "android.intent.action.QUICKSTEP_SERVICE",
+    "android.intent.action.RADIO_TECHNOLOGY",
+    "android.intent.action.RINGTONE_PICKER",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SEND",
+    "android.intent.action.SENDTO",
+    "android.intent.action.SEND_MULTIPLE",
+    "android.intent.action.SET_WALLPAPER",
+    "android.intent.action.SHOW_APP_INFO",
+    "android.intent.action.SIM_STATE_CHANGED",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.UNINSTALL_PACKAGE",
+    "android.intent.action.USER_ADDED",
+    "android.intent.action.USER_BACKGROUND",
+    "android.intent.action.USER_INFO_CHANGED",
+    "android.intent.action.USER_PRESENT",
+    "android.intent.action.USER_REMOVED",
+    "android.intent.action.USER_STARTED",
+    "android.intent.action.USER_STOPPED",
+    "android.intent.action.USER_UNLOCKED",
+    "android.intent.action.VIEW",
+    "android.net.action.PROMPT_LOST_VALIDATION",
+    "android.net.action.PROMPT_PARTIAL_CONNECTIVITY",
+    "android.net.action.PROMPT_UNVALIDATED",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.conn.TETHER_STATE_CHANGED",
+    "android.net.extra.NETWORK",
+    "android.net.extra.TETHER_PROVISIONING_RESPONSE",
+    "android.net.extra.TETHER_SILENT_PROVISIONING_ACTION",
+    "android.net.extra.TETHER_SUBID",
+    "android.net.extra.TETHER_UI_PROVISIONING_APP_NAME",
+    "android.net.wifi.CONFIGURED_NETWORKS_CHANGE",
+    "android.net.wifi.LINK_CONFIGURATION_CHANGED",
+    "android.net.wifi.NETWORK_IDS_CHANGED",
+    "android.net.wifi.RSSI_CHANGED",
+    "android.net.wifi.SCAN_RESULTS",
+    "android.net.wifi.STATE_CHANGE",
+    "android.net.wifi.WIFI_AP_STATE_CHANGED",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "android.net.wifi.action.REQUEST_DISABLE",
+    "android.net.wifi.action.REQUEST_ENABLE",
+    "android.net.wifi.action.REQUEST_SCAN_ALWAYS_AVAILABLE",
+    "android.net.wifi.p2p.CONNECTION_STATE_CHANGE",
+    "android.net.wifi.p2p.DISCOVERY_STATE_CHANGE",
+    "android.net.wifi.p2p.PEERS_CHANGED",
+    "android.net.wifi.p2p.STATE_CHANGED",
+    "android.net.wifi.p2p.THIS_DEVICE_CHANGED",
+    "android.net.wifi.p2p.action.WIFI_P2P_PERSISTENT_GROUPS_CHANGED",
+    "android.net.wifi.supplicant.CONNECTION_CHANGE",
+    "android.net.wifi.supplicant.STATE_CHANGE",
+    "com.android.camera.action.CROP",
+    "com.android.contacts.action.LIST_DEFAULT",
+    "com.android.contacts.action.LIST_STARRED",
+    "com.android.intent.action.SHOW_BRIGHTNESS_DIALOG",
+    "com.android.internal.intent.action.BUGREPORT_REQUESTED",
+    "com.android.server.action.REMOTE_BUGREPORT_SHARING_ACCEPTED",
+    "com.android.server.action.REMOTE_BUGREPORT_SHARING_DECLINED",
+    "com.android.settings.action.EXTRA_SETTINGS",
+    "com.android.settings.action.IA_SETTINGS",
+    "com.android.settings.action.LAUNCH_BLUETOOTH_PAIRING",
+    "com.android.settings.action.REQUEST_DEBUG_FEATURES",
+    "com.android.settings.action.SETTINGS",
+    "com.android.settings.action.emergency_gesture_settings",
+    "com.android.settings.action.live_caption",
+    "com.android.settings.bluetooth.action.BLUETOOTH_MODE_CHANGED",
+    "com.android.settings.flashlight.action.FLASHLIGHT_CHANGED",
+    "com.android.settings.mobilenetwork.action.ENHANCED_4G_LTE_CHANGED",
+    "com.android.settings.panel.action.CLOSE_PANEL",
+    "com.android.settings.slice.action.COPY",
+    "com.android.settings.slice.action.SLIDER_CHANGED",
+    "com.android.settings.slice.action.TOGGLE_CHANGED",
+    "com.android.settings.slice.action.WIFI_CALLING_PREFERENCE_CELLULAR_PREFERRED",
+    "com.android.settings.slice.action.WIFI_CALLING_PREFERENCE_WIFI_ONLY",
+    "com.android.settings.slice.action.WIFI_CALLING_PREFERENCE_WIFI_PREFERRED",
+    "com.android.settings.wifi.calling.action.WIFI_CALLING_CHANGED",
+    "com.android.settingslib.action.REGISTER_SLICE_RECEIVER",
+    "com.android.settingslib.action.UNREGISTER_SLICE_RECEIVER",
+    "com.android.systemui.action.FINISH_WIZARD",
+    "com.android.systemui.action.LAUNCH_MEDIA_OUTPUT_DIALOG",
+    "com.oculus.panelapp.settings"
+   ]
+  },
+  "system_properties": {
+   "count": 57,
+   "items": [
+    "debug.com.android.settings.search.crash_on_error",
+    "debug.force_rtl",
+    "debug.hwui.force_dark",
+    "debug.hwui.overdraw",
+    "debug.hwui.profile",
+    "debug.hwui.show_dirty_regions",
+    "debug.hwui.show_layers_updates",
+    "debug.hwui.show_non_rect_clip",
+    "persist.bluetooth.a2dp_offload.disabled",
+    "persist.bluetooth.avrcpversion",
+    "persist.bluetooth.btsnooplogmode",
+    "persist.bluetooth.disableabsvol",
+    "persist.bluetooth.mapversion",
+    "persist.bluetooth.maxconnectedaudiodevices",
+    "persist.bluetooth.showdeviceswithoutnames",
+    "persist.camera.stats.disablehaf",
+    "persist.log.tag",
+    "persist.log.tag.snet_event_log",
+    "persist.logd.logpersistd",
+    "persist.logd.logpersistd.buffer",
+    "persist.logd.size",
+    "persist.radio.imsregrequired",
+    "persist.sys.bootanim.play_sound",
+    "persist.sys.debug.color_temp",
+    "persist.sys.fflag.override.",
+    "persist.sys.fflag.override.settings_dynamic_system.list",
+    "persist.sys.fuse.disable_transcode_cache",
+    "persist.sys.fuse.transcode_default",
+    "persist.sys.fuse.transcode_enabled",
+    "persist.sys.fuse.transcode_notification",
+    "persist.sys.fuse.transcode_user_control",
+    "persist.sys.hdcp_checking",
+    "persist.sys.strictmode.visual",
+    "ro.bluetooth.a2dp_offload.supported",
+    "ro.boot.cid",
+    "ro.boot.hardware.coo",
+    "ro.boot.hardware.revision",
+    "ro.boot.hardware.sku",
+    "ro.build.type",
+    "ro.build.version.security_patch",
+    "ro.config.low_ram",
+    "ro.debuggable",
+    "ro.gfx.driver.0",
+    "ro.gfx.driver.1",
+    "ro.gsid.image_running",
+    "ro.logd.size",
+    "ro.oem_unlock_supported",
+    "ro.product.cpu.abi",
+    "ro.ril.fccid",
+    "ro.setupwizard.esim_cid_ignore",
+    "ro.storage_manager.enabled",
+    "ro.support_one_handed_mode",
+    "ro.system.build.version.release",
+    "ro.vendor.aware_available",
+    "ro.vndk.version",
+    "sys.debug.storage_slow",
+    "sys.fuse.transcode_mtp"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 6,
+   "items": [
+    "android.credentials.INSTALL",
+    "android.intent.action.INSERT",
+    "android.intent.extra.INTENT",
+    "android.intent.extra.shortcut.ICON",
+    "android.intent.extra.shortcut.INTENT",
+    "android.ui.ISurfaceComposer"
+   ]
+  },
+  "content_authorities": {
+   "count": 2,
+   "items": [
+    "content://telephony/carriers/preferapn",
+    "content://telephony/carriers/restore"
+   ]
+  }
+ }
+}

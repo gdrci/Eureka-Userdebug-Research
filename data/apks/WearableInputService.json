@@ -1,0 +1,617 @@
+{
+ "apk": "system_ext_a/priv-app/WearableInputService/WearableInputService.apk",
+ "package": "com.oculus.wearableinputservice",
+ "version_name": "80.0.0.0.0",
+ "version_code": "637286716",
+ "min_sdk": "26",
+ "target_sdk": "26",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 28,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_event_event.so",
+    "size": 106808
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_InputWakeEventEvent_gen.so",
+    "size": 503824
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_InputReliabilityEventEvent_gen.so",
+    "size": 502992
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_InputHeartbeatsEvent_gen.so",
+    "size": 504488
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_InputEmgSdkGestureEventEvent_gen.so",
+    "size": 504776
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_InputEmgRawGestureEventEvent_gen.so",
+    "size": 502688
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_gen_InputCrashesEvent_gen.so",
+    "size": 503600
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_secure_lib_secure_string.so",
+    "size": 6976
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_shared_promise.so",
+    "size": 2936
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_coreAndroid.so",
+    "size": 523040
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_barrier.so",
+    "size": 100592
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executors_global_executorAndroid.so",
+    "size": 1513832
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executorAndroid.so",
+    "size": 362872
+   },
+   {
+    "path": "lib/arm64-v8a/libwis_input_device.so",
+    "size": 2063296
+   },
+   {
+    "path": "lib/arm64-v8a/libtrex_emgwristband_server_plugin.so",
+    "size": 2678016
+   },
+   {
+    "path": "lib/arm64-v8a/libtrex_emgwristband_client_plugin.so",
+    "size": 1190168
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_zlib_z.so",
+    "size": 93136
+   },
+   {
+    "path": "lib/arm64-v8a/libproxy-kpi-native.so",
+    "size": 85912
+   },
+   {
+    "path": "lib/arm64-v8a/libmeta_wearable_orientation_jni.so",
+    "size": 1373600
+   },
+   {
+    "path": "lib/arm64-v8a/libloaderimpl.so",
+    "size": 81904
+   },
+   {
+    "path": "lib/arm64-v8a/libemgservice_aidl.meta.so",
+    "size": 216640
+   },
+   {
+    "path": "lib/arm64-v8a/libemgsdk_client_app_native.so",
+    "size": 796008
+   },
+   {
+    "path": "lib/arm64-v8a/libemgexperience_shared.meta.so",
+    "size": 126688
+   },
+   {
+    "path": "lib/arm64-v8a/libdouble-conversion.so",
+    "size": 307008
+   },
+   {
+    "path": "lib/arm64-v8a/libcodecwrapper.so",
+    "size": 3658376
+   },
+   {
+    "path": "lib/arm64-v8a/libblekpi-native.so",
+    "size": 135456
+   },
+   {
+    "path": "lib/arm64-v8a/libbinder_ndk.so",
+    "size": 15376
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_projects_BLEWearables_WearableInputService_aidl_wis-cpp.so",
+    "size": 627408
+   }
+  ]
+ },
+ "dex_files": 10,
+ "asset_files": 3,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".WearableInputTestServiceLauncher",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":wearableInputServiceLauncher",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.LAUNCHER"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 5,
+   "items": [
+    {
+     "name": ".EMGService",
+     "exported": "true",
+     "permission": "com.oculus.permission.WEARABLE_INPUT_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".WearableInputCLIService2",
+     "exported": "false",
+     "permission": "com.oculus.permission.WEARABLE_INPUT_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".WearableInputIntegrationTestService",
+     "exported": "true",
+     "permission": "com.oculus.permission.WEARABLE_INPUT_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".WearableInputService",
+     "exported": "true",
+     "permission": "com.oculus.permission.WEARABLE_INPUT_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".WearableInputTestService",
+     "exported": "true",
+     "permission": "com.oculus.permission.WEARABLE_INPUT_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".PrepareLogsReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.internal.intent.action.BUGREPORT_STARTED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 10,
+  "items": [
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_PRIVILEGED",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.DUMP",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.INTERNET"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.permission.WEARABLE_INPUT_SERVICE",
+    "protection": "0x00000003"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 15190,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    2160
+   ],
+   [
+    "com.facebook.quicklog",
+    1729
+   ],
+   [
+    "com.oculus.wearableinputservice",
+    834
+   ],
+   [
+    "com.google.android",
+    815
+   ],
+   [
+    "kotlinx.coroutines.flow",
+    358
+   ],
+   [
+    "com.google.protobuf",
+    358
+   ],
+   [
+    "com.facebook.analytics2",
+    295
+   ],
+   [
+    "org.checkerframework.checker",
+    264
+   ],
+   [
+    "androidx.core.view",
+    263
+   ],
+   [
+    "com.meta.wearable",
+    256
+   ],
+   [
+    "androidx.appcompat.widget",
+    247
+   ],
+   [
+    "androidx.core.app",
+    227
+   ],
+   [
+    "com.facebook.common",
+    226
+   ],
+   [
+    "com.facebook.secure",
+    218
+   ],
+   [
+    "androidx.recyclerview.widget",
+    203
+   ],
+   [
+    "androidx.fragment.app",
+    202
+   ],
+   [
+    "com.facebook.logginginfra",
+    166
+   ],
+   [
+    "com.mcu.telemetry",
+    159
+   ],
+   [
+    "com.facebook.crudolib",
+    154
+   ],
+   [
+    "com.facebook.thrift",
+    150
+   ],
+   [
+    "com.facebook.storage",
+    141
+   ],
+   [
+    "com.facebook.wearable",
+    132
+   ],
+   [
+    "com.oculus.aidl",
+    128
+   ],
+   [
+    "kotlinx.coroutines.channels",
+    126
+   ],
+   [
+    "androidx.core.content",
+    119
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 274,
+   "items": [
+    "android.intent.action.AUTO_REVOKE_PERMISSIONS",
+    "android.intent.action.CREATE_DOCUMENT",
+    "android.intent.action.CREATE_REMINDER",
+    "android.intent.action.GET_CONTENT",
+    "android.intent.action.MAIN",
+    "android.intent.action.OPEN_DOCUMENT",
+    "android.intent.action.OPEN_DOCUMENT_TREE",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.PICK",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.VIEW",
+    "com.android.launcher.action.INSTALL_SHORTCUT",
+    "com.meta.CodecAvatarSmile",
+    "com.meta.aether",
+    "com.meta.aether.apps.experiments.hca",
+    "com.meta.aether.ar_apps.experiments.playground",
+    "com.meta.ar",
+    "com.meta.ar.action.PREPARE_LOGS",
+    "com.meta.ar.arcalling",
+    "com.meta.ar.arcellularexperience",
+    "com.meta.ar.ards",
+    "com.meta.ar.arguidebook",
+    "com.meta.ar.arlego",
+    "com.meta.ar.arshellux",
+    "com.meta.ar.arwhatsapp",
+    "com.meta.ar.augmentedig",
+    "com.meta.ar.avatars",
+    "com.meta.ar.awe",
+    "com.meta.ar.bugreporter",
+    "com.meta.ar.codecavatars",
+    "com.meta.ar.codecdemo",
+    "com.meta.ar.copresence",
+    "com.meta.ar.endtoenddiagnostics",
+    "com.meta.ar.fbns",
+    "com.meta.ar.helixfusion",
+    "com.meta.ar.helixproxy",
+    "com.meta.ar.helixserver",
+    "com.meta.ar.iris.umami",
+    "com.meta.ar.metaai",
+    "com.meta.ar.modelviewer",
+    "com.meta.ar.msysservice",
+    "com.meta.ar.playtorch",
+    "com.meta.ar.settings",
+    "com.meta.ar.spark_experience",
+    "com.meta.ar.spark_experience.artisan",
+    "com.meta.ar.spark_experience.augment_api_example_experience",
+    "com.meta.ar.spark_experience.boxing",
+    "com.meta.ar.spark_experience.chess_v3",
+    "com.meta.ar.spark_experience.flippy_blocks",
+    "com.meta.ar.spark_experience.lines",
+    "com.meta.ar.spark_experience.pong",
+    "com.meta.ar.spark_experience.shooter",
+    "com.meta.ar.sparkexperiencerunnertemplate",
+    "com.meta.ar.wasabi.service",
+    "com.meta.ar.worldunderstandingcoapp",
+    "com.meta.automation",
+    "com.meta.automation.cowter.vr",
+    "com.meta.automation.pauldron.vr",
+    "com.meta.codecavatar.workspace",
+    "com.meta.conductor.coca",
+    "com.meta.ctrl.studyapp.emgmanager.CtrlEmgInterfaceManager",
+    "com.meta.emgsdk.client.wis.WISInputDevice",
+    "com.meta.federatedcomputing.oculus",
+    "com.meta.greenhouse",
+    "com.meta.handseducationmodule",
+    "com.meta.horizon",
+    "com.meta.horizon.standalone",
+    "com.meta.horizon.standalone.demo",
+    "com.meta.horizon.standalone.dev",
+    "com.meta.iap.sample",
+    "com.meta.imeiqrreader",
+    "com.meta.internal.skyguard",
+    "com.meta.internal.skyguard.SkyguardService",
+    "com.meta.metasdksample",
+    "com.meta.mocklocationtool",
+    "com.meta.mr.awe",
+    "com.meta.pclink",
+    "com.meta.pclink.arkio",
+    "com.meta.pclink.gravitysketch",
+    "com.meta.pclink.quill",
+    "com.meta.pclink.quill_proto",
+    "com.meta.pclink.quill_proto_quest2",
+    "com.meta.pclink.quill_proto_quest3",
+    "com.meta.pclink.quill_proto_questpro",
+    "com.meta.pclink.substance3dmodeler",
+    "com.meta.pclinkservice.server",
+    "com.meta.portal.sdk.app",
+    "com.meta.proximity.service",
+    "com.meta.quest_hard_link",
+    "com.meta.rl.trust.service",
+    "com.meta.samples",
+    "com.meta.samples.Aura",
+    "com.meta.samples.MetaXRAudioSDK",
+    "com.meta.samples.dodgearcade",
+    "com.meta.testing",
+    "com.meta.wearable.emg.connectivity.manager.DefaultEmgInterfaceManager",
+    "com.meta.wearable.emg.device.WisEmgInputDevice",
+    "com.meta.wearable.mfgapp",
+    "com.meta.wirelessinsight",
+    "com.meta.work.workds.gallery",
+    "com.meta.wrist",
+    "com.meta.wrist.os",
+    "com.meta.wrist.os.power.scenariotracker",
+    "com.meta.wrist.os.sdk.resources",
+    "com.meta.xrbody.dogfooding",
+    "com.meta.xrmark",
+    "com.meta.xrteleporter",
+    "com.oculus.HapticsStudio",
+    "com.oculus.LucidApp",
+    "com.oculus.MrcCameraCalibration",
+    "com.oculus.accessibility",
+    "com.oculus.accountscenter",
+    "com.oculus.appautomation",
+    "com.oculus.appsafety",
+    "com.oculus.asrservice",
+    "com.oculus.assistant",
+    "com.oculus.assistant.QUEUE_MIC_LOG",
+    "com.oculus.authtester",
+    "com.oculus.avatareditor",
+    "com.oculus.backuptransportservice",
+    "com.oculus.bodyapiservice",
+    "com.oculus.browser",
+    "com.oculus.bugreporter",
+    "com.oculus.bugreportservice",
+    "com.oculus.captionservice",
+    "com.oculus.captis",
+    "com.oculus.companion.server",
+    "com.oculus.configuration",
+    "com.oculus.cvp",
+    "com.oculus.dalmorevr",
+    "com.oculus.democi",
+    "com.oculus.deviceauthserver",
+    "com.oculus.devicecerttest",
+    "com.oculus.deviceidentitytest",
+    "com.oculus.dynamicfpstester",
+    "com.oculus.explore",
+    "com.oculus.explore.intent.action.LAUNCHED",
+    "com.oculus.externalstorage",
+    "com.oculus.extrapermissions.SPATIAL_DATA_PERMISSION_RESULT",
+    "com.oculus.facebook",
+    "com.oculus.firsttimenux",
+    "com.oculus.fitnesstracker",
+    "com.oculus.gamingactivity",
+    "com.oculus.gatekeeperservice",
+    "com.oculus.gemini.upload",
+    "com.oculus.guardian",
+    "com.oculus.guardiansetup",
+    "com.oculus.guidebook",
+    "com.oculus.handshotfixservice",
+    "com.oculus.headsetsfx",
+    "com.oculus.helpcenter",
+    "com.oculus.horizon",
+    "com.oculus.horizon.dev",
+    "com.oculus.identitymanagement.service",
+    "com.oculus.igvr",
+    "com.oculus.inputinjectionservice",
+    "com.oculus.inputmethod.pacific",
+    "com.oculus.insightstester",
+    "com.oculus.integrity",
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.linefrequencyservice",
+    "com.oculus.loaderimpl",
+    "com.oculus.location.geocoder",
+    "com.oculus.magiccarpetmr",
+    "com.oculus.magicislandcastingservice",
+    "com.oculus.memorytester",
+    "com.oculus.metacam",
+    "com.oculus.mfgapp",
+    "com.oculus.micservice",
+    "com.oculus.mobile_mrc_setup",
+    "com.oculus.mrdp.server",
+    "com.oculus.mrds",
+    "com.oculus.mrservice",
+    "com.oculus.notification_proxy",
+    "com.oculus.nux.ota",
+    "com.oculus.ocms",
+    "com.oculus.oculusrelengexample",
+    "com.oculus.oemconfig",
+    "com.oculus.os",
+    "com.oculus.os.blescanservice",
+    "com.oculus.os.chargecontrol",
+    "com.oculus.os.clearactivity",
+    "com.oculus.os.cm",
+    "com.oculus.os.dialoghost",
+    "com.oculus.os.dialoglauncher",
+    "com.oculus.os.flashdriverecording",
+    "com.oculus.os.logcollector",
+    "com.oculus.os.logviewer",
+    "com.oculus.os.memoryeater",
+    "com.oculus.os.music",
+    "com.oculus.os.nullhome",
+    "com.oculus.os.qrcodereader"
+   ]
+  },
+  "system_properties": {
+   "count": 32,
+   "items": [
+    "dalvik.vm.heapgrowthlimit",
+    "dalvik.vm.heapmaxfree",
+    "dalvik.vm.heapminfree",
+    "dalvik.vm.heapstartsize",
+    "dalvik.vm.heaptargetutilization",
+    "debug.atrace.app_cmdlines",
+    "debug.atrace.tags.enableflags",
+    "debug.fbsystrace.force_java",
+    "debug.fbsystrace.tags",
+    "debug.fbsystrace.trace_load",
+    "debug.oculus.wis.bleconn.autoconnect",
+    "debug.oculus.wis.bleconn.autoreconnect",
+    "debug.oculus.wis.bleconn.autoscan",
+    "debug.oculus.wis.bleconn.autoscan.min.rssi",
+    "debug.oculus.wis.bleconn.ceresedb",
+    "debug.oculus.wis.bleconn.ceresedb.pref",
+    "debug.oculus.wis.bleconn.ceressim",
+    "debug.oculus.wis.bleconn.ceressim.pref",
+    "debug.oculus.wis.bleconn.dbglog",
+    "debug.oculus.wis.bleconn.fakepaired.enabled",
+    "debug.oculus.wis.bleconn.lowpowerscan",
+    "debug.oculus.wis.bleconn.pair.autoaccept",
+    "debug.oculus.wis.bleconn.paired.autoreconnect",
+    "debug.oculus.wis.bleconn.persistpairing",
+    "debug.oculus.wis.bleconn.pocr",
+    "debug.oculus.wis.bleconn.pocr.mfgdevicename",
+    "debug.oculus.wis.bleconn.pocr.pref",
+    "ro.serialno",
+    "ro.vendor.build.type",
+    "ro.vendor.build.version.incremental",
+    "ro.vendor.product.model_extended",
+    "vendor.qti.hardware.cacert.server"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 3,
+   "items": [
+    "android.intent.extra.shortcut.ICON",
+    "android.intent.extra.shortcut.INTENT",
+    "android.os.IBinder"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

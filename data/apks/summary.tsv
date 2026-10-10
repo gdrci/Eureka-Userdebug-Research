@@ -1,0 +1,15 @@
+name	apk	package	version	version_code	min_sdk	target_sdk	shared_uid	classes	dex_files	native_libs	activities	services	receivers	providers	uses_permission	declared_permission	intent_actions	aidl_hidl_interfaces	system_properties	signer_sha256_16
+Assistant	system_ext_a/priv-app/Assistant/Assistant.apk	com.oculus.assistant	172.0.0.0.61	334600368	29	29		6305	2	138	7	24	16	5	50	4	376	16	26	fac61745dc090378
+Bluetooth	system_a/system/app/Bluetooth/Bluetooth.apk	com.android.bluetooth	12	32	32	32	android.uid.bluetooth	5404	1	0	10	24	2	4	61	2	52	3	16	c8a2e9bccf597c2f
+BodyApiService	system_ext_a/priv-app/BodyApiService/BodyApiService.apk	com.oculus.bodyapiservice	71.0.0.541.758	665334810	23	29		1205	1	43	1	2	0	1	10	0	5	0	1	fac61745dc090378
+Carmel	system_ext_a/app/Carmel/Carmel.apk	com.oculus.browser	35.1.0.78.167.646680531	565301467	26	35		13356	1	4	32	71	24	6	62	7	96	16	10	fac61745dc090378
+FirstTimeNuxEureka	system_a/system/app/FirstTimeNuxEureka/FirstTimeNuxEureka.apk	com.oculus.firsttimenux	71.2.0.117.949	665345994	28	28		7639	2	15	3	11	14	1	38	1	301	10	28	fac61745dc090378
+Horizon	system_ext_a/app/Horizon/Horizon.apk	com.oculus.horizon	71.0.0.894.253	665345962	23	23	com.oculus.uid	13037	2	137	3	53	37	15	57	20	558	28	124	fac61745dc090378
+Metacam	system_ext_a/app/Metacam/Metacam.apk	com.oculus.metacam	118.0.0.251.161	511400824	28	28		8627	2	15	3	12	19	2	49	1	401	18	32	fac61745dc090378
+Settings	system_ext_a/priv-app/Settings/Settings.apk	com.android.settings	12	32	32	32	android.uid.system	9525	2	0	282	15	20	11	105	1	129	6	57	c8a2e9bccf597c2f
+SpatialPersistenceService	system_ext_a/priv-app/SpatialPersistenceService/SpatialPersistenceService.apk	com.facebook.spatial_persistence_service	71.0.0.605.527	665334781	28	29		1707	1	86	0	3	2	0	20	1	260	0	6	fac61745dc090378
+SystemUX	system_ext_a/priv-app/SystemUX/SystemUX.apk	com.oculus.systemux	71.0.0.605.522	665334819	32	32		14060	2	36	13	33	21	2	108	6	551	27	25	fac61745dc090378
+VrDriver	system_a/system/priv-app/VrDriver/VrDriver.apk	com.oculus.systemdriver	71.0.0.601.498	665335459	23	24		984	1	41	1	4	4	5	55	4	336	8	9	fac61745dc090378
+VrShell	system_ext_a/priv-app/VrShell/VrShell.apk	com.oculus.vrshell	71.0.0.612.529	665334768	29	29		9752	2	143	41	52	21	7	115	16	467	48	30	fac61745dc090378
+WearableInputService	system_ext_a/priv-app/WearableInputService/WearableInputService.apk	com.oculus.wearableinputservice	80.0.0.0.0	637286716	26	26		15190	10	28	1	5	1	0	10	1	274	3	32	fac61745dc090378
+xrstreamingclient	system_a/system/app/xrstreamingclient/xrstreamingclient.apk	com.oculus.xrstreamingclient	71.0.0.601.524	665335378	24	29		4299	3	36	2	2	4	0	27	0	269	22	21	c8a2e9bccf597c2f

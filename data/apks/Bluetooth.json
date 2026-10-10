@@ -1,0 +1,879 @@
+{
+ "apk": "system_a/system/app/Bluetooth/Bluetooth.apk",
+ "package": "com.android.bluetooth",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.bluetooth",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 10,
+   "items": [
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppLauncherActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.SEND"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.SEND_MULTIPLE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.btopp.intent.action.OPEN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppBtEnableActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppBtErrorActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppBtEnablingActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppIncomingFileConfirmActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppTransferActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppTransferHistory",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "com.android.bluetooth.action.TransferHistory"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.pbap.BluetoothPbapActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": "@7F04001F",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.map.BluetoothMapSettings",
+     "exported": null,
+     "permission": null,
+     "enabled": "@7F04001B",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.BluetoothPrefs",
+     "exported": "@7F040010",
+     "permission": null,
+     "enabled": "@7F040010",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.APPLICATION_PREFERENCES"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 24,
+   "items": [
+    {
+     "name": "com.android.bluetooth.btservice.AdapterService",
+     "exported": "true",
+     "permission": "android.permission.ACCESS_BLUETOOTH_SHARE",
+     "enabled": null,
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetooth"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppService",
+     "exported": null,
+     "permission": "android.permission.ACCESS_BLUETOOTH_SHARE",
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.pbap.BluetoothPbapService",
+     "exported": "true",
+     "permission": "android.permission.BLUETOOTH_PRIVILEGED",
+     "enabled": "@7F04001F",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothPbap"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.map.BluetoothMapService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001B",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothMap",
+        "android.btmap.intent.action.SHOW_MAPS_SETTINGS",
+        "com.android.bluetooth.map.USER_CONFIRM_TIMEOUT"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.mapclient.MapClientService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001C",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothMapClient"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.sap.SapService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040021",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothSap"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.gatt.GattService",
+     "exported": "true",
+     "permission": "android.permission.ACCESS_BLUETOOTH_SHARE",
+     "enabled": "@7F040013",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothGatt"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.hfp.HeadsetService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001A",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothHeadset"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.a2dp.A2dpService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04000F",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothA2dp"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.a2dpsink.A2dpSinkService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040010",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothA2dpSink"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.avrcpcontroller.BluetoothMediaBrowserService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040010",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.media.browse.MediaBrowserService"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.avrcp.AvrcpTargetService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040012",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothAvrcp"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.avrcpcontroller.AvrcpControllerService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040011",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothAvrcpController"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.hid.HidHostService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040019",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothHidHost"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.hid.HidDeviceService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040018",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothHidDevice"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.pan.PanService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001E",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothPan"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.hfpclient.HeadsetClientService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040016",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothHeadsetClient"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.hfpclient.connserv.HfpClientConnectionService",
+     "exported": "true",
+     "permission": "android.permission.BIND_CONNECTION_SERVICE",
+     "enabled": "@7F04000B",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.telecom.ConnectionService"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.pbapclient.PbapClientService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040020",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothPbapClient"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.hearingaid.HearingAidService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothHearingAid"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.le_audio.LeAudioService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothLeAudio"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.pbapclient.AuthenticationService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040020",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.accounts.AccountAuthenticator"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.telephony.BluetoothInCallService",
+     "exported": "true",
+     "permission": "android.permission.BIND_INCALL_SERVICE",
+     "enabled": "@7F040015",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.telecom.InCallService"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.room.MultiInstanceInvalidationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F04001D",
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.btopp.intent.action.OPEN_RECEIVED_FILES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppHandoverReceiver",
+     "exported": "true",
+     "permission": "com.android.permission.ALLOWLIST_BLUETOOTH_DEVICE",
+     "enabled": null,
+     "process": "@7F0F006C",
+     "filters": [
+      {
+       "actions": [
+        "android.btopp.intent.action.ACCEPTLIST_DEVICE",
+        "android.btopp.intent.action.STOP_HANDOVER_TRANSFER"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "android.nfc.handover.intent.action.HANDOVER_SEND"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.nfc.handover.intent.action.HANDOVER_SEND_MULTIPLE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 4,
+   "items": [
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "@7F0F006C",
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.opp.BluetoothOppFileProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.map.MmsFileProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.bluetooth.avrcpcontroller.AvrcpCoverArtProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": "@7F040002",
+     "process": "@7F0F006C",
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 61,
+  "items": [
+   "android.permission.ACCESS_BLUETOOTH_SHARE",
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_ADVERTISE",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_MAP",
+   "android.permission.BLUETOOTH_PRIVILEGED",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.BLUETOOTH_STACK",
+   "android.permission.CALL_PRIVILEGED",
+   "android.permission.CHANGE_NETWORK_STATE",
+   "android.permission.CONNECTIVITY_INTERNAL",
+   "android.permission.CONTROL_INCALL_EXPERIENCE",
+   "android.permission.DEVICE_POWER",
+   "android.permission.DUMP",
+   "android.permission.GET_ACCOUNTS",
+   "android.permission.HIDE_OVERLAY_WINDOWS",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.INTERNET",
+   "android.permission.LISTEN_ALWAYS_REPORTED_SIGNAL_STRENGTH",
+   "android.permission.MANAGE_APP_OPS_MODES",
+   "android.permission.MANAGE_COMPANION_DEVICES",
+   "android.permission.MANAGE_USERS",
+   "android.permission.MEDIA_CONTENT_CONTROL",
+   "android.permission.MODIFY_AUDIO_ROUTING",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.MODIFY_PHONE_STATE",
+   "android.permission.NETWORK_FACTORY",
+   "android.permission.NET_ADMIN",
+   "android.permission.NET_TUNNELING",
+   "android.permission.NFC_HANDOVER_STATUS",
+   "android.permission.PACKAGE_USAGE_STATS",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.READ_CALL_LOG",
+   "android.permission.READ_CONTACTS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.READ_PROFILE",
+   "android.permission.READ_SMS",
+   "android.permission.REAL_GET_TASKS",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.RECEIVE_SMS",
+   "android.permission.SEND_SMS",
+   "android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND",
+   "android.permission.TETHER_PRIVILEGED",
+   "android.permission.UPDATE_APP_OPS_STATS",
+   "android.permission.UPDATE_DEVICE_STATS",
+   "android.permission.USE_RESERVED_DISK",
+   "android.permission.VIBRATE",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_APN_SETTINGS",
+   "android.permission.WRITE_CALL_LOG",
+   "android.permission.WRITE_CONTACTS",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "android.permission.WRITE_SETTINGS",
+   "android.permission.WRITE_SMS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 2,
+  "items": [
+   {
+    "name": "android.permission.ACCESS_BLUETOOTH_SHARE",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.android.permission.ALLOWLIST_BLUETOOTH_DEVICE",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "android.accounts.AccountAuthenticator",
+  "android.support.FILE_PROVIDER_PATHS",
+  "android.telecom.INCLUDE_SELF_MANAGED_CALLS"
+ ],
+ "classes": {
+  "count": 5404,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    1948
+   ],
+   [
+    "com.android.bluetooth",
+    815
+   ],
+   [
+    "com.google.protobuf",
+    229
+   ],
+   [
+    "androidx.core.view",
+    174
+   ],
+   [
+    "androidx.fragment.app",
+    152
+   ],
+   [
+    "android.support.v4",
+    130
+   ],
+   [
+    "androidx.core.app",
+    109
+   ],
+   [
+    "androidx.core.content",
+    62
+   ],
+   [
+    "com.android.vcard",
+    59
+   ],
+   [
+    "android.net.ipmemorystore",
+    49
+   ],
+   [
+    "androidx.core.graphics",
+    38
+   ],
+   [
+    "androidx.core.widget",
+    38
+   ],
+   [
+    "androidx.lifecycle.viewmodel",
+    38
+   ],
+   [
+    "androidx.activity.result",
+    32
+   ],
+   [
+    "androidx.core.provider",
+    31
+   ],
+   [
+    "androidx.core.location",
+    30
+   ],
+   [
+    "androidx.core.os",
+    29
+   ],
+   [
+    "android.net.shared",
+    28
+   ],
+   [
+    "androidx.core.text",
+    25
+   ],
+   [
+    "androidx.viewpager.widget",
+    24
+   ],
+   [
+    "android.net.netlink",
+    22
+   ],
+   [
+    "androidx.sqlite.db",
+    22
+   ],
+   [
+    "org.android.btsap",
+    21
+   ],
+   [
+    "androidx.swiperefreshlayout.widget",
+    20
+   ],
+   [
+    "androidx.legacy.coreui",
+    19
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 52,
+   "items": [
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.CALL_PRIVILEGED",
+    "android.intent.action.CREATE_DOCUMENT",
+    "android.intent.action.CREATE_REMINDER",
+    "android.intent.action.GET_CONTENT",
+    "android.intent.action.LOCALE_CHANGED",
+    "android.intent.action.MAIN",
+    "android.intent.action.MEDIA_BUTTON",
+    "android.intent.action.OPEN_DOCUMENT",
+    "android.intent.action.OPEN_DOCUMENT_TREE",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_DATA_CLEARED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PHONE_STATE",
+    "android.intent.action.PICK",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "android.intent.action.USER_SWITCHED",
+    "android.intent.action.USER_UNLOCKED",
+    "android.intent.action.VIEW",
+    "android.intent.action.VOICE_COMMAND",
+    "android.net.DataStallReportParcelable",
+    "android.net.DhcpResultsParcelable",
+    "android.net.InformationElementParcelable",
+    "android.net.InitialConfigurationParcelable",
+    "android.net.Layer2InformationParcelable",
+    "android.net.Layer2PacketParcelable",
+    "android.net.NativeNetworkConfig",
+    "android.net.NattKeepalivePacketDataParcelable",
+    "android.net.NetworkTestResultParcelable",
+    "android.net.PrivateDnsConfigParcel",
+    "android.net.ProvisioningConfigurationParcelable",
+    "android.net.ScanResultInfoParcelable",
+    "android.net.TcpKeepalivePacketDataParcelable",
+    "android.net.UidRangeParcel",
+    "android.net.conn.NETWORK_CONDITIONS_MEASURED",
+    "android.net.dhcp.DhcpLeaseParcelable",
+    "android.net.dhcp.DhcpServingParamsParcel",
+    "android.net.ipmemorystore.NetworkAttributesParcelable",
+    "android.net.ipmemorystore.SameL3NetworkResponseParcelable",
+    "android.net.ipmemorystore.StatusParcelable",
+    "android.net.netd.aidl.NativeUidRangeConfig",
+    "android.net.networkstack.aidl.dhcp.DhcpOption",
+    "android.net.networkstack.aidl.quirks.IPv6ProvisioningLossQuirkParcelable",
+    "com.android.bluetooth.btservice.action.ALARM_WAKEUP",
+    "com.android.bluetooth.btservice.action.LOAD_ADAPTER_PROPERTIES",
+    "com.android.bluetooth.btservice.action.STATE_CHANGED",
+    "com.android.bluetooth.sap.action.DISCONNECT_ACTION",
+    "com.android.launcher.action.INSTALL_SHORTCUT"
+   ]
+  },
+  "system_properties": {
+   "count": 16,
+   "items": [
+    "persist.bluetooth.a2dp_offload.disabled",
+    "persist.bluetooth.avrcpversion",
+    "persist.bluetooth.btsnoopdefaultmode",
+    "persist.bluetooth.btsnooplogmode",
+    "persist.bluetooth.disableinbandringing",
+    "persist.bluetooth.enablenewavrcp",
+    "persist.bluetooth.factoryreset",
+    "persist.bluetooth.mapversion",
+    "persist.bluetooth.maxconnectedaudiodevices",
+    "persist.bluetooth.pts",
+    "persist.bluetooth.pts.mapclient.fetchmessagetype",
+    "persist.bluetooth.pts.mapclient.sendmessagetype",
+    "ro.bluetooth.a2dp_offload.supported",
+    "ro.build.characteristics",
+    "sys.fflag.override.",
+    "sys.fflag.override.settings_bluetooth_hearing_aid"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 3,
+   "items": [
+    "android.intent.extra.shortcut.ICON",
+    "android.intent.extra.shortcut.INTENT",
+    "android.net.networkstack.aidl.quirks.IPv6ProvisioningLossQuirkParcelable"
+   ]
+  },
+  "content_authorities": {
+   "count": 5,
+   "items": [
+    "content://com.android.bluetooth.avrcpcontroller.AvrcpCoverArtProvider",
+    "content://com.android.bluetooth.map.MmsFileProvider",
+    "content://com.android.bluetooth.opp/btopp",
+    "content://media/external/images/media/",
+    "content://mms-sms/canonical-address/"
+   ]
+  }
+ }
+}
