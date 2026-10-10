@@ -50,14 +50,14 @@ These claims held in substance. The wording below replaces the original.
 - **K23** (verified): qrtr.ko (vendor): Qualcomm IPC-router driver with a nameserver description, GPL v2 and Dual BSD/GPL tags, and no dependencies. It is the net protocol family 42 (net-pf-42) and exports 8 symbols (qrtr_endpoint_register, qrtr_ns_init, qrtr_get_service_id and others). qmi_helpers.ko has soft dependency pre qrtr. init.anorak.rc defines the service vendor.qrtr-ns (line 324, class core, user and group vendor_qrtr, NET_BIND_SERVICE) with no explicit start line, so it runs as a class-core service; it runs as user vendor_qrtr.
 - **K29** (verified): modules.load is a plain list of .ko file names, one per line, with no paths and no options. Vendor has 262 entries and odm has 27, and both lists are the full module sets (K04). The vendor list precedes the odm list in the argument built for the -b * path; whether order changes load order is inferred and was not tested. The first vendor entries are lzo-rle.ko, lzo.ko, qti-regmap-debugfs.ko, regmap-spmi.ko and zram.ko. The first odm entry is as5510.ko.
 
+<!-- generated: modules start -->
 ## Module index and symbol dependencies (generated)
 
-<!-- generated: modules start -->
-This section is generated from `data/kernel/modules.tsv` (the `.modinfo` fields of the 289 `.ko` files) and `data/kernel/symbols.tsv` (the global symbols of each module), by `tools/elfindex` and `tools/elfindex/gen_module_section.py`. Every file's SHA-256 matched the inventory.
+This section is generated from `data/kernel/modules.tsv` (the `.modinfo` fields of the 289 `.ko` files) and `data/kernel/symbols.tsv` (the global and weak symbols of each module), by `tools/elfindex` and `tools/elfindex/gen_module_section.py`. Every file's SHA-256 matched the inventory.
 
 - Modules: 289 (vendor_dlkm_a 262, odm_dlkm_a 27). vermagic is identical for all: `5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64`.
 - Licenses: GPL v2 260, GPL 26, Dual BSD/GPL 3.
-- Modules with no `depends=` line: 127. `alias=` lines: 867 in total. `parm=` lines: 30 in total, in 14 modules. Modules with a `firmware=` line: 1 (`cfg80211`, `regulatory.db.p7s;regulatory.db`).
+- Modules whose `depends=` value is empty: 127. `alias=` lines: 867 in total. `parm=` lines: 30 in total, in 14 modules. Modules with a `firmware=` line: 1 (`cfg80211`, `regulatory.db.p7s;regulatory.db`).
 - Undefined global symbol references: 15,896 across all modules, naming 3,489 distinct symbols.
   - Defined by exactly one other module in the image: 1,572 references.
   - Defined by more than one other module (not attributed): 0 references.
@@ -98,7 +98,7 @@ The most frequent references that no module in the image defines:
 | `__mutex_init` | 128 |
 | `kmem_cache_alloc_trace` | 120 |
 
-The full symbol list is in `data/kernel/symbols.tsv` (72,990 rows).
+The full symbol list is in `data/kernel/symbols.tsv` (73,279 rows).
 
 <!-- generated: modules end -->
 

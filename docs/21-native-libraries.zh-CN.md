@@ -56,24 +56,18 @@
 
 | ID | 声明 | 原因 |
 |---|---|---|
-| D14.2 | 在 29 个公开条目中，有 23 个以文件或链接的形式出现在本组行中。libaaudio.so、libEGL.so、libGLESv2.so 和 libvulkan.so 等条目存在 |  |
-
-## 库索引（生成）
-
-## 库索引（生成）
-
-## 库索引（生成）
-
-## 库索引（生成）
+| D14.2 | 在 29 个公开条目中，有 23 个以文件或链接的形式出现在本组行中。libaaudio.so、libEGL.so、libGLESv2.so 和 libvulkan.so 等条目存在 | 未能复现。D14.1 中五个缺失的名称使 29 个条目中有 24 个存在，而非 23 个；未确定造成差异的文件。 |
 
 <!-- generated: libraries start -->
+## 库索引（生成）
+
 本索引涵盖原生库分组的 1,361 个文件，由 `tools/elfindex libs` 从已挂载的分区读取。每个文件的 SHA-256 都已重新计算并与清单比对：1,361 个中有 1,361 个相符。逐文件表格位于 `data/elf/libraries.tsv`。头部与动态符号由 Go 标准库 `debug/elf` 读取。
 
 - 1,351 个文件为 ELF 共享对象（ET_DYN）：854 个为 ELFCLASS64、机器类型 EM_AARCH64，497 个为 ELFCLASS32、机器类型 EM_ARM。
 - 10 个文件为 LLVM 位码，不是 ELF：`system_a/system/lib/libclcore.bc`、`system_a/system/lib/libclcore_debug.bc`、`system_a/system/lib/libclcore_debug_g.bc`、`system_a/system/lib/libclcore_g.bc`、`system_a/system/lib/libclcore_neon.bc`、`system_a/system/lib64/libclcore.bc`、`system_a/system/lib64/libclcore_debug.bc`、`system_a/system/lib64/libclcore_debug_g.bc`、`system_a/system/lib64/libclcore_g.bc`、`system_a/system/lib64/libclcore_neon.bc`。
 - 12 个文件保留了 .symtab 节；其余 1,339 个只保留动态符号表（已剥离）。
 - 1,343 个 ELF 文件（共 1,351 个）带有 GNU build-id 注释，8 个没有。51 个文件没有 SONAME。
-- 12 个文件的 .comment 字符串为 `Android (7485623, based on r416183b1) clang version 12.0.7 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee)`。
+- 12 个文件的第一个 .comment 字符串为 `Android (7485623, based on r416183b1) clang version 12.0.7 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee)`。
 
 ### 按分区
 
@@ -128,7 +122,7 @@
 
 ### 动态符号
 
-在 ELF 文件中，动态符号表共有 572,803 个已定义符号和 137,597 个未定义符号。未定义符号最多的库：
+在 ELF 文件中，动态符号表共有 572,803 个已定义符号和 137,597 个未定义符号。这些计数不含索引 0 的空项。未定义符号最多的库：
 
 | 库 | 机器类型 | 未定义 | 已定义 |
 |---|---|---|---|
@@ -151,10 +145,10 @@
 
 ## 缺口
 
-- /apex/com.android.runtime 下的 bionic 目标（libc、libdl、libm、libdl_android）不在挂载中；system_a/apex 为空，因此无法跟随这 8 个 bionic 符号链接读取其内容。
+- /apex/com.android.runtime 下的 bionic 目标（libc、libdl、libm、libdl_android）未在挂载中实体化：system_a/apex 为空，因此无法跟随这 8 个 bionic 符号链接读取其内容。APEX 包 system/apex/com.android.runtime.apex 在挂载中，其 payload 包含这些库（见结论 D1.1）。
 - libicu.so、libicui18n.so、libicuuc.so、libnativehelper.so 和 libneuralnetworks.so 在 system/etc/public.libraries.txt 中被列出，但未出现在任何子系统清单中；未确定 APEX 模块是否提供它们。
 - 857 行的角色是根据文件名推断的，453 个已验证的角色来自导出符号或 NEEDED 条目；未检查每个文件的行为。61 个未验证的行仅是基于名称的猜测（例如 com.qti.stats.common.so、libgipp.so、libkll.so、libfruit.so），并在 roles.tsv 中相应标记。
-- 全部 1,351 个 ELF 对象的 NEEDED 边已在上方生成的小节中列出。边仅与本组内的 SONAME 匹配；此处无匹配的 NEEDED 名称可能由 APEX 模块或组外文件提供，但未作核对。
+- 全部 1,351 个 ELF 对象的 NEEDED 边已在上方生成的小节中列出。边先与本组内文件的 SONAME 匹配。组外的 NEEDED 名称仅按文件名与清单中的文件匹配，未读取这些文件的 SONAME；镜像中没有文件的名称可能来自未在挂载中实体化的 APEX 模块。
 - 链接器配置（system/linkerconfig、system/etc/linker.config.pb）为二进制文件，未经解码。对 libadsprpc.so、libopenxr_loader.so 和 libmaintenanceboot.so 进行的字面 grep 在 linker.config.pb 中未找到匹配项，但搜索规则和命名空间搜索路径均未确定。
 - 未提取 bootctrl.anorak.so 的 HMI 模块 ID 字符串，也未发现 android.hardware.boot@1.0-impl-1.2-qti.so 与 bootctrl.anorak.so 之间的导入链接。使用关系仅为推断。
 - 挂载中未找到 libVkLayer_khronos_validation.so 的 Vulkan 层清单，因此其注册和启用路径未知。

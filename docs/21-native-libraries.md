@@ -56,28 +56,18 @@ These claims did not hold on reproduction.
 
 | ID | Claim | Reason |
 |---|---|---|
-| D14.2 | Of the 29 public entries, 23 are present as files or links in the group rows. Entries such as libaaudio.so, libEGL.so, libGLESv2.so and libvulkan.so are present |  |
-
-## Library index (generated)
-
-## Library index (generated)
-
-## Library index (generated)
-
-## Library index (generated)
-
-## Library index (generated)
-
-## Library index (generated)
+| D14.2 | Of the 29 public entries, 23 are present as files or links in the group rows. Entries such as libaaudio.so, libEGL.so, libGLESv2.so and libvulkan.so are present | Not reproduced. The five absent names of D14.1 leave 24 of the 29 entries, not 23; the file that accounts for the difference was not identified. |
 
 <!-- generated: libraries start -->
+## Library index (generated)
+
 This index covers the 1,361 files of the native-libraries group, read from the mounted partitions by `tools/elfindex libs`. Each file's SHA-256 was recomputed and compared with the inventory: 1,361 of 1,361 match. The per-file table is `data/elf/libraries.tsv`. Headers and dynamic symbols were read with the Go standard `debug/elf` package.
 
 - 1,351 files are ELF shared objects (ET_DYN): 854 ELFCLASS64 with machine EM_AARCH64, 497 ELFCLASS32 with machine EM_ARM.
 - 10 files are LLVM bitcode, not ELF: `system_a/system/lib/libclcore.bc`, `system_a/system/lib/libclcore_debug.bc`, `system_a/system/lib/libclcore_debug_g.bc`, `system_a/system/lib/libclcore_g.bc`, `system_a/system/lib/libclcore_neon.bc`, `system_a/system/lib64/libclcore.bc`, `system_a/system/lib64/libclcore_debug.bc`, `system_a/system/lib64/libclcore_debug_g.bc`, `system_a/system/lib64/libclcore_g.bc`, `system_a/system/lib64/libclcore_neon.bc`.
 - 12 files keep a .symtab section; the other 1,339 are stripped to the dynamic symbol table.
 - 1,343 of the 1,351 ELF files carry a GNU build-id note; 8 do not. 51 files have no SONAME.
-- The .comment string of 12 files is `Android (7485623, based on r416183b1) clang version 12.0.7 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee)`.
+- The first .comment string of 12 files is `Android (7485623, based on r416183b1) clang version 12.0.7 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee)`.
 
 ### By partition
 
@@ -132,7 +122,7 @@ Of the 160 names with no SONAME match in this group, 152 have a file of the same
 
 ### Dynamic symbols
 
-Across the ELF files, the dynamic symbol tables hold 572,803 defined and 137,597 undefined symbols. The libraries with the most undefined symbols:
+Across the ELF files, the dynamic symbol tables hold 572,803 defined and 137,597 undefined symbols. The counts exclude the null entry at index 0. The libraries with the most undefined symbols:
 
 | Library | Machine | Undefined | Defined |
 |---|---|---|---|
@@ -155,10 +145,10 @@ Bitcode files and the stripped-library limits are listed in the table; symbol-le
 
 ## Gaps
 
-- The bionic targets under /apex/com.android.runtime (libc, libdl, libm, libdl_android) are not in the mount; system_a/apex is empty, so the 8 bionic symlinks could not be followed to content.
+- The bionic targets under /apex/com.android.runtime (libc, libdl, libm, libdl_android) are not materialized in the mount: system_a/apex is empty, so the 8 bionic symlinks could not be followed to a file. The APEX package system/apex/com.android.runtime.apex is in the mount, and its payload contains these libraries (claim D1.1).
 - libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so and libneuralnetworks.so are named in system/etc/public.libraries.txt but do not appear in any subsystem inventory; whether APEX modules supply them was not determined.
 - The roles for 857 rows are inferred from file names and the 453 verified roles from exported symbols or NEEDED entries; no per-file behaviour was checked. The 61 unverified rows are name-only guesses (for example com.qti.stats.common.so, libgipp.so, libkll.so, libfruit.so) and are marked as such in roles.tsv.
-- The NEEDED edges of all 1,351 ELF objects are in the generated section above. Edges are matched to SONAMEs in this group only; a NEEDED name with no match here may be provided by an APEX module or by a file outside the group, and that was not checked.
+- The NEEDED edges of all 1,351 ELF objects are in the generated section above. Edges are matched to SONAMEs in this group. A NEEDED name outside the group was matched to files by file name only, and the SONAME of such a file was not read; a name with no file in the image may come from an APEX module that is not materialized in the mount.
 - The linker configuration (system/linkerconfig, system/etc/linker.config.pb) is binary and was not decoded. A literal grep for libadsprpc.so, libopenxr_loader.so and libmaintenanceboot.so found no matches in linker.config.pb, but the search rules and namespace search paths were not determined.
 - The HMI module id string for bootctrl.anorak.so was not extracted, and no import linkage between android.hardware.boot@1.0-impl-1.2-qti.so and bootctrl.anorak.so was found. The consumer relationship is inferred only.
 - The Vulkan layer manifest for libVkLayer_khronos_validation.so was not found in the mount, so its registration and enablement path is unknown.

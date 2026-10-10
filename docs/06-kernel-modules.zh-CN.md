@@ -50,14 +50,14 @@
 - **K23** (verified)：qrtr.ko（vendor）：带有 nameserver 描述的高通 IPC 路由器驱动，GPL v2 与双许可 BSD/GPL 标签，无依赖。它是网络协议族 42（net-pf-42），导出 8 个符号（qrtr_endpoint_register、qrtr_ns_init、qrtr_get_service_id 等）。qmi_helpers.ko 有软依赖 pre qrtr。init.anorak.rc 定义了服务 vendor.qrtr-ns（第 324 行，class core，user 和 group 为 vendor_qrtr，NET_BIND_SERVICE），没有显式的 start 行，因此它作为 class core 服务运行；其运行用户为 vendor_qrtr。
 - **K29** (verified)：modules.load 是纯文本的 .ko 文件名列表，每行一个，不含路径和选项。vendor 有 262 项，odm 有 27 项，两个列表都是完整的模块集合（K04）。在为 -b * 路径构建的参数中，vendor 列表排在 odm 列表之前；顺序是否会改变加载顺序属于推断，未经测试。vendor 的前几项是 lzo-rle.ko、lzo.ko、qti-regmap-debugfs.ko、regmap-spmi.ko 和 zram.ko。odm 的第一项是 as5510.ko。
 
+<!-- generated: modules start -->
 ## 模块索引与符号依赖（生成）
 
-<!-- generated: modules start -->
-本节由 `data/kernel/modules.tsv`（289 个 `.ko` 文件的 `.modinfo` 字段）和 `data/kernel/symbols.tsv`（每个模块的全局符号）生成，生成工具为 `tools/elfindex` 与 `tools/elfindex/gen_module_section.py`。每个文件的 SHA-256 都与清单相符。
+本节由 `data/kernel/modules.tsv`（289 个 `.ko` 文件的 `.modinfo` 字段）和 `data/kernel/symbols.tsv`（每个模块的全局与弱符号）生成，生成工具为 `tools/elfindex` 与 `tools/elfindex/gen_module_section.py`。每个文件的 SHA-256 都与清单相符。
 
 - 模块：289 个（vendor_dlkm_a 262、odm_dlkm_a 27）。vermagic 全部相同：`5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64`。
 - 许可证：GPL v2 260、GPL 26、Dual BSD/GPL 3。
-- 没有 `depends=` 行的模块：127 个。`alias=` 行共 867 行；`parm=` 行共 30 行，分布在 14 个模块中。含 `firmware=` 行的模块：1 个（`cfg80211`，`regulatory.db.p7s;regulatory.db`）。
+- `depends=` 值为空的模块：127 个。`alias=` 行共 867 行；`parm=` 行共 30 行，分布在 14 个模块中。含 `firmware=` 行的模块：1 个（`cfg80211`，`regulatory.db.p7s;regulatory.db`）。
 - 未定义的全局符号引用：15,896 条，涉及 3,489 个不同符号。
   - 恰好由镜像中另一个模块定义：1,572 条引用。
   - 由多个其他模块定义（未归属）：0 条引用。
@@ -98,7 +98,7 @@
 | `__mutex_init` | 128 |
 | `kmem_cache_alloc_trace` | 120 |
 
-完整符号列表见 `data/kernel/symbols.tsv`（72,990 行）。
+完整符号列表见 `data/kernel/symbols.tsv`（73,279 行）。
 
 <!-- generated: modules end -->
 

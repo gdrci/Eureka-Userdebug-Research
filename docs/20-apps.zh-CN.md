@@ -4,7 +4,7 @@
 
 ## 摘要
 
-应用组共有 431 行：product_a 27 行，system_a 123 行，system_ext_a 278 行，vendor_a 3 行。这些行包括 142 个 Android APK 压缩包（142 个不同的包名）、137 个 ELF odex 文件和 137 个 vdex 容器（对应 136 个包，Horizon 另有第二个 arm 变体）、2 个 ART 应用镜像、2 个 ART 配置文件，以及 11 个指向 /system_ext/lib64 的符号链接。在 APK 包中，103 个为 com.oculus/com.meta/com.facebook 包（主要位于 system_ext_a 和 product_a），37 个为 AOSP 的 com.android 包（主要位于 system_a），另有 2 个属于其他名称。大多数 APK 的清单报告的平台构建版本为 32；在声明了 targetSdkVersion 的 138 个 APK 中，有 84 个的值为 32。签名使用两个证书族：CN=Android（在 plat_mac_permissions.xml 中映射到 seinfo platform）和 CN=Android Debug（在 system_ext_mac_permissions.xml 中映射到 seinfo fbandroid_debug）。引用这些包名的配置位于本组之外，包括 privapp-permissions、default-permissions 和 sysconfig XML 文件、nonDiscretionaryAppPackageName 列表、system_ext_seapp_contexts（仅包含一个包）以及一个 vendor JSON 键。本组不含固件，也没有任何 init .rc 文件提及 15 个深入分析包中的任何一个。全部 431 行的角色信息位于 roles.tsv 中：306 个 verified，125 个 inferred。
+应用组共有 431 行：product_a 27 行，system_a 123 行，system_ext_a 278 行，vendor_a 3 行。这些行包括 142 个 Android APK 压缩包（142 个不同的包名）、137 个 ELF odex 文件和 137 个 vdex 容器（对应 136 个包，Horizon 另有第二个 arm 变体）、2 个 ART 应用镜像、2 个 ART 配置文件，以及 11 个指向 /system_ext/lib64 的符号链接。在 APK 包中，103 个为 com.oculus/com.meta/com.facebook 包（主要位于 system_ext_a 和 product_a），37 个为 AOSP 的 com.android 包（主要位于 system_a），另有 2 个属于其他名称。大多数 APK 的清单报告的平台构建版本为 32；在声明了 targetSdkVersion 的 138 个 APK 中，有 84 个的值为 32。对于 15 个深入分析 APK，对于 15 个深入分析 APK，签名使用两个证书族：CN=Android（在 plat_mac_permissions.xml 中映射到 seinfo platform）和 CN=Android Debug（在 system_ext_mac_permissions.xml 中映射到 seinfo fbandroid_debug）。引用这些包名的配置位于本组之外，包括 privapp-permissions、default-permissions 和 sysconfig XML 文件、nonDiscretionaryAppPackageName 列表、system_ext_seapp_contexts（仅包含一个包）以及一个 vendor JSON 键。本组不含固件，也没有任何 init .rc 文件提及 15 个深入分析包中的任何一个。全部 431 行的角色信息位于 roles.tsv 中：306 个 verified，125 个 inferred。
 
 角色表为本组 431 个文件各提供一行（306 verified，0 observed，125 inferred，0 unverified）。文件位于 `data/subsystems/apps/roles.tsv`。
 
@@ -65,9 +65,9 @@
 - **r02** (verified): com.android.bluetooth 未出现在已挂载 etc 目录树下的任何文件中（0 处匹配），因此 Bluetooth APK 不存在 privapp-permissions、default-permissions、sysconfig 或 SELinux 引用。其他文件中提到了 bluetooth（例如 product_a/etc/permissions/android.hardware.bluetooth.xml），但没有一个包含该包名。
 - **r15** (verified): VrShell（com.oculus.vrshell）被引用于：system_ext_a/etc/permissions/com.oculus.vrshell.xml 第 4 行（19 项 privapp 授予）；system_ext_a/etc/permissions/com.oculus.vrshell.desktop.xml 第 4 行（针对 com.oculus.vrshell.desktop）；system_ext_a/etc/nonDiscretionaryAppPackageName 第 12 至 16 行；system_ext_a/etc/default-permissions/com.oculus.vrshell.xml 第 4 行；system_a/system/etc/default-permissions/default-permissions.xml 第 185 行（com.oculus.vrshell）和第 194 行（com.oculus.vrshell.home）；system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml 第 24 行（com.oculus.vrshell）和第 25 行（com.oculus.vrshell.home）；以及 vendor_a/etc/eps_properties.json 第 47 行，其中键路径 mixer_thread.package_blocklist 列出了 com.oculus.vrshell 和 com.oculus.firsttimenux。
 
+<!-- generated: apps start -->
 ## 包索引（生成）
 
-<!-- generated: apps start -->
 本索引涵盖镜像中的 146 个 `.apk` 文件：本分组的 142 个 APK 压缩包，以及其他分组中的另外 4 个（`framework-res.apk`（framework-and-system-services）、`Provision.apk`（sensors-mcu-meta-hal）、`QuestManagedProvisioning.apk`（sensors-mcu-meta-hal）、`com.oculus.os.platform-res.apk`（sensors-mcu-meta-hal））。
 每个文件都由 `tools/apk/apkfacts.py` 使用 androguard 4.1.4 读取。事实位于 `data/apks/<name>.json`，汇总表为 `data/apks/summary.tsv`。本表由 `tools/apk/gen_all_apks_doc.py` 生成。
 
@@ -233,7 +233,7 @@
 ## 缺口
 
 - 标记为 inferred 的 125 个 APK 行，其功能描述仅来自包名和组件类名。未反编译或解析任何 dex 代码、resources.arsc 或 assets，SPGO、OCMS、CM、MRDS、QPL、CVP、Q4B 和 NUX 等缩写也未根据内容展开。
-- 下方生成的索引给出了每个 `.apk` 文件的身份信息、版本、SDK 级别、共享 UID、签名摘要、组件数量和权限数量。已导出组件、Intent 过滤器和声明的权限在每个文件的 `data/apks/<name>.json` 中；角色说明和详细小节仅涵盖第 27 页的 22 个应用。
+- 下方生成的索引给出了每个 `.apk` 文件的身份信息、版本、SDK 级别、共享 UID、签名摘要、组件数量和权限数量。已导出组件、Intent 过滤器和声明的权限在每个文件的 `data/apks/<name>.json` 中；角色说明和详细结论（d01 至 d15）仅涵盖 15 个应用，其中 9 个属于第 27 页的 22 个应用。
 - Settings.apk 的 vdex 第一个计数字段读数为 4，而该 APK 有两个 classes*.dex 条目。其含义未得到解决，仅报告了原始头部字段。叠加层 resourcesMap 的值（type0x1:7f020000 和 7f020001）未被解码。
 - init 引用仅按包名和 priv-app/app 路径模式进行了搜索。127 个非深入分析包名已在 etc 目录树（init 和 SELinux 文件所在位置）中检查，但未在 .rc 文件中逐一搜索。
 - 未找到 /system_ext/app 或 /system_ext/priv-app 的 SELinux 标签行；因此 system_ext 应用仅由通用的 system_file 规则覆盖，设备上实际使用的标签未被观察到。

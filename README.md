@@ -55,6 +55,7 @@ The super image holds the dynamic partitions. `boot`, `vendor_boot` and the kern
 
 - `data/gpu/confirmed_findings.json`: every claim in these documents, with the command and output that reproduce it.
 - `data/gpu/partitions.tsv`: the logical partitions in the super image, with sizes and SHA-256 prefixes.
+- `data/gpu/uncovered_candidates.json`: the file list returned by the first GPU integrity pass.
 - `data/inventory/files.tsv`: every file and symlink in the eight partitions, with its subsystem, size, MIME type and SHA-256.
 - `data/behaviour/`: the services, actions, imports, boot phases and service classes parsed from the `.rc` files, behind document 26.
 - `data/apks/`: the manifest and dex facts for all 146 `.apk` files, with `summary.tsv`. Document 27 describes 22 of them in detail.

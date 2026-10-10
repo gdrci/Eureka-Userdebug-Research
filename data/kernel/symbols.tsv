@@ -54,6 +54,7 @@ odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	undefined	queue_work_on
 odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	undefined	usbvdm_unsubscribe
 odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	undefined	sysfs_remove_groups
 odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	defined	__cfi_jt_cleanup_module
@@ -115,6 +116,7 @@ odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	config_value_store$b409a6cdbd
 odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	as5510_i2c_suspend$b409a6cdbdb8614327c64d9bb1f15867
 odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	as5510_i2c_resume$b409a6cdbdb8614327c64d9bb1f15867
 odm_dlkm_a	lib/modules/as5510.ko	23472	yes	undefined	i2c_del_driver
+odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/as5510.ko	23472	yes	defined	__cfi_jt_cleanup_module
@@ -163,6 +165,7 @@ odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	undefined	kmem_cache_alloc_trace
 odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	undefined	__list_add_valid
 odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	undefined	device_link_add
 odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	undefined	__list_del_entry_valid
+odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	undefined	kmalloc_caches
 odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	defined	__crc_usbvdm_register
@@ -320,6 +323,7 @@ odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	defined	do_syncboss_resume_wor
 odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	undefined	queue_work_on
 odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	undefined	__spi_register_driver
 odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	undefined	driver_unregister
+odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	defined	__this_module
 odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	defined	syncboss_spi_driver
@@ -481,6 +485,7 @@ odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	undefined	thermal_zone_of_sen
 odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	undefined	power_supply_put
 odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	undefined	sysfs_remove_groups
 odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	defined	__cfi_jt_cleanup_module
@@ -818,6 +823,7 @@ odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	undefined	power_supply_put
 odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	undefined	sysfs_remove_groups
 odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	undefined	power_supply_unreg_notifier
 odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	defined	__cfi_jt_cleanup_module
@@ -1107,6 +1113,7 @@ odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	undefined	gpiod_set_value
 odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	undefined	usleep_range
 odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	undefined	regmap_update_bits_base
 odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	undefined	i2c_del_driver
+odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	defined	__cfi_jt_cleanup_module
@@ -1153,6 +1160,7 @@ odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	defined	sgm62110_writable
 odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	defined	sgm62110_readable$549d80617685511c1954cd5ea8038035
 odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	undefined	of_find_property
 odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	undefined	i2c_del_driver
+odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	defined	__cfi_jt_cleanup_module
@@ -1234,6 +1242,7 @@ odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	undefined	regcache_cache_on
 odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	undefined	regcache_mark_dirty
 odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	undefined	regcache_sync
 odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	undefined	i2c_del_driver
+odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	defined	soc_codec_dev_max98388
 odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	defined	__cfi_jt_init_module
@@ -1307,6 +1316,7 @@ odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	defined	vd6281_suspend$bf1db2
 odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	defined	vd6281_resume$bf1db29fae4a0fe726c58ff8a583cf0b
 odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	undefined	__dynamic_pr_debug
 odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	undefined	driver_unregister
+odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	defined	__cfi_jt_cleanup_module
@@ -1369,6 +1379,7 @@ odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	defined	reset_store$4e8b0154c5
 odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	defined	blu_pm_suspend$4e8b0154c58fc8baa75c3124f9a25b1c
 odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	undefined	sysfs_remove_groups
 odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	defined	__cfi_jt_cleanup_module
@@ -1426,6 +1437,7 @@ odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	undefined	gpiod_direction_output_raw
 odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	undefined	gpio_to_desc
 odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	undefined	regcache_mark_dirty
 odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	undefined	i2c_del_driver
+odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	defined	__cfi_jt_cleanup_module
@@ -1515,6 +1527,7 @@ odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	undefined	destroy_workqueue
 odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	defined	pwm_fan_suspend$7af97599592d5147e55ce88ccc91b804
 odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	defined	pwm_fan_resume$7af97599592d5147e55ce88ccc91b804
 odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	defined	__cfi_jt_cleanup_module
@@ -1579,6 +1592,7 @@ odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	undefined	dev_err_probe
 odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	undefined	usbvdm_register
 odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	undefined	usbvdm_unregister
 odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	defined	__cfi_jt_cleanup_module
@@ -1683,6 +1697,7 @@ odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	undefined	regcache_mark_dirty
 odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	undefined	regcache_sync
 odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	undefined	snd_soc_unregister_component
 odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	undefined	i2c_del_driver
+odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	defined	ak4333_dai
 odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	defined	__cfi_jt_init_module
@@ -1766,6 +1781,7 @@ odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	undefined	miscfifo_fop_r
 odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	undefined	of_find_property
 odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	undefined	__platform_register_drivers
 odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	undefined	platform_unregister_drivers
+odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	defined	__this_module
 odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	defined	syncboss_powerstate_driver
@@ -1841,6 +1857,7 @@ odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	defined	stm32g0_swd_erase_app
 odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	defined	stm32g0_swd_write_chunk
 odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	defined	stm32g0_get_write_chunk_size
 odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	defined	stm32g0_swd_finalize
+odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	undefined	bcmp
 odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	undefined	arm64_const_caps_ready
@@ -1995,6 +2012,7 @@ odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	undefined	module_put
 odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	undefined	try_module_get
 odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	undefined	__init_rwsem
 odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	undefined	__init_waitqueue_head
+odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	undefined	kmalloc_caches
 odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	defined	__this_module
@@ -2098,6 +2116,7 @@ odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	undefined	__platform
 odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	undefined	platform_unregister_drivers
 odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	undefined	rcu_barrier_tasks
 odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	undefined	kmem_cache_destroy
+odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	defined	__this_module
 odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	defined	syncboss_direct_channel_driver
@@ -2161,6 +2180,7 @@ odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	defined	drift_limit_total_sho
 odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	undefined	sysfs_remove_files
 odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	undefined	__platform_register_drivers
 odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	undefined	platform_unregister_drivers
+odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	defined	__this_module
 odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	defined	syncboss_nsync_driver
@@ -2293,6 +2313,7 @@ odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	undefined	complete_all
 odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	undefined	destroy_workqueue
 odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	undefined	power_supply_unreg_notifier
 odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	defined	__cfi_jt_cleanup_module
@@ -2413,6 +2434,7 @@ odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	undefined	_dev_warn
 odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	undefined	miscfifo_write_buf
 odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	undefined	__platform_register_drivers
 odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	undefined	platform_unregister_drivers
+odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	defined	__this_module
 odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	defined	syncboss_miscfifo_driver
@@ -2489,6 +2511,7 @@ odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	undefined	__wake_up
 odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	undefined	devm_request_threaded_irq
 odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	undefined	disable_irq
 odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	defined	__cfi_jt_cleanup_module
@@ -2524,6 +2547,7 @@ odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	undefined	debugfs_create_blob
 odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	undefined	devm_kmalloc
 odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	undefined	debugfs_remove
 odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	defined	__cfi_jt_cleanup_module
@@ -2574,6 +2598,7 @@ odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	undefined	hrtimer_cancel
 odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	undefined	kthread_stop
 odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	undefined	sysfs_remove_group
 odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	undefined	devm_miscfifo_unregister
+odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	defined	__cfi_jt_cleanup_module
@@ -2626,6 +2651,7 @@ odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	undefined	complete
 odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	undefined	queue_work_on
 odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	undefined	pmic_glink_unregister_client
 odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	defined	__cfi_jt_cleanup_module
@@ -2673,6 +2699,7 @@ odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	undefined	__dynamic_dev_dbg
 odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	defined	nautilus_suspend$27fe68c2ea443777c072f25c646a96f1
 odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	defined	nautilus_resume$27fe68c2ea443777c072f25c646a96f1
 odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	undefined	platform_driver_unregister
+odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	defined	__cfi_check_fail
 odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	defined	__cfi_check
 odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	defined	__cfi_jt_init_module
 odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	defined	__cfi_jt_cleanup_module
@@ -2729,6 +2756,7 @@ vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	undefined	spf_core_is_ap
 vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	undefined	rproc_set_firmware
 vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	undefined	sysfs_remove_group
 vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	defined	__cfi_jt_cleanup_module
@@ -2799,6 +2827,7 @@ vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	undefined	iio_triggered_buffer_cl
 vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	defined	ak09973_i2c_suspend$427a843e923d9f8ae0dd4896fd069f21
 vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	defined	ak09973_i2c_resume$427a843e923d9f8ae0dd4896fd069f21
 vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	undefined	i2c_del_driver
+vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	defined	__cfi_jt_cleanup_module
@@ -2875,6 +2904,7 @@ vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	undefined	cancel_delayed_work_sync
 vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	defined	__cfi_jt_cleanup_module
@@ -3112,6 +3142,7 @@ vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	arm_smmu_pm_resume$142b
 vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	arm_smmu_runtime_suspend$142b5dcbfd8cdd8d39843d2cc168d361
 vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	arm_smmu_runtime_resume$142b5dcbfd8cdd8d39843d2cc168d361
 vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	undefined	of_device_is_compatible
+vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	__SCK__tp_func_tlbi_start
 vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	defined	__tracepoint_tlbi_start
@@ -3478,6 +3509,7 @@ vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	undefined	skb_put
 vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	undefined	gpr_driver_unregister
 vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	undefined	cdev_del
 vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	undefined	param_ops_int
@@ -3536,6 +3568,7 @@ vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	defined	audio_prm_service_
 vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	undefined	audio_notifier_deregister
 vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	undefined	__wake_up
 vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	undefined	gpr_driver_unregister
+vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	defined	__cfi_jt_cleanup_module
@@ -3612,6 +3645,7 @@ vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	undefined	dma_buf_map_att
 vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	undefined	get_device
 vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	undefined	put_device
 vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	undefined	cdev_del
+vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	defined	__cfi_jt_init_module
@@ -3717,6 +3751,7 @@ vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	defined	bam_dma_runtime_suspend$f
 vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	defined	bam_dma_runtime_resume$fceed307bdc7c91c4acf768678a9b2d8
 vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	undefined	pm_runtime_force_resume
 vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	defined	__cfi_jt_cleanup_module
@@ -3803,6 +3838,7 @@ vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	defined	bcl_update_clear_stats
 vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	undefined	irq_set_irq_wake
 vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	undefined	thermal_zone_of_sensor_unregister
 vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	defined	__cfi_jt_cleanup_module
@@ -3867,6 +3903,7 @@ vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	undefined	power_supply_unreg_noti
 vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	undefined	flush_work
 vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	undefined	thermal_zone_of_sensor_unregister
 vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	defined	__cfi_jt_cleanup_module
@@ -3892,6 +3929,7 @@ vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	undefined	printk
 vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	undefined	of_iomap
 vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	undefined	of_get_address
 vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	undefined	of_property_read_variable_u32_array
+vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	defined	__cfi_jt_cleanup_module
@@ -3946,6 +3984,7 @@ vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	undefined	__unregister_chrdev
 vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	undefined	snd_soc_unregister_component
 vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	defined	btfm_slim_register_codec
 vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	undefined	slim_driver_unregister
+vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	defined	btfm_feedback_ch_setting
 vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	defined	__cfi_jt_init_module
@@ -4072,6 +4111,7 @@ vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	undefined	__arch_copy_to_user
 vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	undefined	regulator_is_enabled
 vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	undefined	mbox_send_message
 vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	undefined	__unregister_chrdev
+vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	defined	__cfi_jt_cleanup_module
@@ -4206,6 +4246,7 @@ vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	undefined	argv_split
 vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	undefined	argv_free
 vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	defined	show_throttle_adj$835a4498e5ea78c0e09ecbebc9fc5a14
 vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	defined	store_throttle_adj$835a4498e5ea78c0e09ecbebc9fc5a14
+vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	defined	__this_module
@@ -4338,6 +4379,7 @@ vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	defined	show_last_sample$0e95ce68d
 vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	defined	show_client$0e95ce68dfc653746cdd1a30207c9ec2
 vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	defined	__cfi_jt_cleanup_module
@@ -4390,6 +4432,7 @@ vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	undefined	pm_runtime_force_
 vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	undefined	qcom_cc_runtime_suspend
 vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	undefined	qcom_cc_runtime_resume
 vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	defined	__cfi_jt_cleanup_module
@@ -4503,6 +4546,7 @@ vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	crm_timer_reset
 vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	cam_req_mgr_process_trigger$aa69fbda1827167b6bba81e8dd937241
 vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	undefined	__init_swait_queue_head
 vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	__cam_req_mgr_process_sof_freeze$aa69fbda1827167b6bba81e8dd937241
+vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	debug_mdl
 vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	defined	debug_priority
@@ -8501,6 +8545,7 @@ vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	undefined	of_property_read_va
 vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	undefined	rproc_shutdown
 vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	undefined	sysfs_remove_group
 vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	defined	__cfi_jt_cleanup_module
@@ -8658,6 +8703,7 @@ vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	undefined	rfkill_blocked
 vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	undefined	wireless_nlevent_flush
 vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	defined	__traceiter_rdev_set_power_mgmt
 vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	undefined	destroy_workqueue
+vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	undefined	bcmp
 vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	defined	cfg80211_rdev_list
@@ -11459,6 +11505,7 @@ vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	ulog_time_fops
 vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	ulog_time_get$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	ulog_time_set$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	defined	__cfi_jt_cleanup_module
@@ -11514,6 +11561,7 @@ vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	defined	dummy_reset_assert$0636
 vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	defined	dummy_reset_deassert$0636774e5de5e07bc0ae4e96393a5903
 vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	undefined	of_clk_del_provider
 vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	defined	clk_dummy_ops
 vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	defined	__cfi_jt_init_module
@@ -11608,6 +11656,7 @@ vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	undefined	clk_get
 vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	undefined	__pm_runtime_disable
 vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	defined	clk_debug_init
 vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	defined	clk_debug_exit
+vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	defined	qcom_reset_ops
 vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	defined	__cfi_jt_init_module
@@ -12503,6 +12552,7 @@ vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	defined	of_clk_rpmh_hw_get$0f52
 vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	undefined	__dynamic_dev_dbg
 vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	undefined	printk
 vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	defined	__cfi_jt_cleanup_module
@@ -12547,6 +12597,7 @@ vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	defined	cmd_db_debugfs_dump$e7d085
 vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	undefined	seq_puts
 vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	undefined	seq_printf
 vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	undefined	seq_putc
+vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	defined	__this_module
@@ -12841,6 +12892,7 @@ vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	defined	cnss_unregister_coex_servi
 vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	defined	cnss_bus_deinit
 vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	undefined	mbox_free_channel
 vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	defined	cnss_ipc_log_context
 vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	undefined	memstart_addr
@@ -13470,6 +13522,7 @@ vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	defined	cld80211_doit$d822486b90b
 vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	undefined	genl_register_family
 vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	undefined	genl_unregister_family
+vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	defined	__cfi_jt_cleanup_module
@@ -13532,6 +13585,7 @@ vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	undefined	idr_find
 vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	undefined	cancel_work_sync
 vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	undefined	idr_destroy
 vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	undefined	ipc_log_context_destroy
+vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	defined	cnss_plat_ipc_qmi_file_upload_ind_msg_v01_ei
 vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	defined	cnss_plat_ipc_qmi_file_download_ind_msg_v01_ei
@@ -13602,6 +13656,7 @@ vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	undefined	mempool_alloc_sla
 vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	undefined	mempool_free_slab
 vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	undefined	kmem_cache_destroy
 vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	undefined	mempool_destroy
+vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	defined	__cfi_jt_cleanup_module
@@ -13665,6 +13720,7 @@ vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	undefined	single_open
 vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	defined	cnss_utils_mac_show$2a500b3a6c4c3e9e4b8ec906de7b1004
 vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	undefined	seq_puts
 vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	undefined	seq_printf
+vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	defined	__cfi_jt_cleanup_module
@@ -13744,6 +13800,7 @@ vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	defined	attr_store$89077
 vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	undefined	sysfs_remove_group
 vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	undefined	param_ops_int
@@ -13823,6 +13880,7 @@ vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	undefined	_raw_spin_unlock
 vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	undefined	coresight_unregister
 vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	defined	__cfi_jt_cleanup_module
@@ -13924,6 +13982,7 @@ vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	undefined	pm_runtime_ena
 vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	undefined	__pm_runtime_set_status
 vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	undefined	__pm_runtime_disable
 vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	undefined	param_ops_int
@@ -14209,6 +14268,7 @@ vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	funnel_runtime_r
 vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	dynamic_funnel_probe$974d03737bee1ce513d68140352655fc
 vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	dynamic_funnel_remove$974d03737bee1ce513d68140352655fc
 vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	undefined	amba_driver_unregister
+vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	defined	__cfi_jt_cleanup_module
@@ -14278,6 +14338,7 @@ vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	replicator_r
 vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	dynamic_replicator_probe$d64f7c5c414e1e82baca4e93d0ac94e4
 vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	dynamic_replicator_remove$d64f7c5c414e1e82baca4e93d0ac94e4
 vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	undefined	amba_driver_unregister
+vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	defined	__cfi_jt_cleanup_module
@@ -14391,6 +14452,7 @@ vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	undefined	_raw_spin_lock_i
 vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	defined	tmc_etr_disable_hw
 vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	undefined	_raw_spin_unlock_irqrestore
 vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	undefined	amba_driver_unregister
+vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	defined	__cfi_jt_cleanup_module
@@ -14723,6 +14785,7 @@ vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	undefined	bus_register
 vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	defined	etm_perf_init
 vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	undefined	bus_unregister
 vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	defined	etm_perf_exit
+vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	defined	coresight_barrier_pkt
 vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	undefined	__per_cpu_offset
@@ -14918,6 +14981,7 @@ vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	defined	crypto_qti_keys
 vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	defined	crypto_qti_derive_raw_secret
 vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	undefined	crypto_qti_derive_raw_secret_platform
 vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	undefined	__const_udelay
+vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	defined	__crc_crypto_qti_init_crypto
 vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	defined	__crc_crypto_qti_enable
@@ -14954,6 +15018,7 @@ vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	defined	crypto_qti_disabl
 vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	defined	crypto_qti_derive_raw_secret_platform
 vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	undefined	qcom_scm_config_set_ice_key
 vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	undefined	qcom_scm_clear_ice_key
+vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	defined	offset
 vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	defined	__crc_crypto_qti_program_key
@@ -15050,6 +15115,7 @@ vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	undefined	of_get_property
 vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	undefined	of_find_property
 vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	undefined	device_destroy
 vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	defined	__cfi_jt_cleanup_module
@@ -15114,6 +15180,7 @@ vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	undefined	of_property_read_string
 vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	undefined	cmd_db_read_addr
 vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	undefined	cmd_db_read_aux_data
 vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	defined	ddrllcc_data
 vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	defined	__cfi_jt_init_module
@@ -15149,6 +15216,7 @@ vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	defined	ddr_get_cur_state$4e8b01
 vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	defined	ddr_set_cur_state$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	undefined	thermal_cooling_device_unregister
 vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	defined	__cfi_jt_cleanup_module
@@ -15246,6 +15314,7 @@ vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	undefined	regulator_get_voltage_rdev
 vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	undefined	tracepoint_probe_unregister
 vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	undefined	debugfs_remove
+vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	defined	__cfi_jt_cleanup_module
@@ -15314,6 +15383,7 @@ vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	undefined	clk_hw_get_name
 vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	undefined	devm_clk_register_debug_mux
 vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	undefined	clk_debug_measure_register
 vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	undefined	_dev_info
+vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	defined	__this_module
@@ -15343,6 +15413,7 @@ vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	undefined	pm_runtime_forc
 vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	undefined	qcom_cc_runtime_suspend
 vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	undefined	qcom_cc_runtime_resume
 vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	defined	__cfi_jt_cleanup_module
@@ -15388,6 +15459,7 @@ vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	undefined	pm_runtime_forc
 vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	undefined	qcom_cc_runtime_suspend
 vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	undefined	qcom_cc_runtime_resume
 vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	defined	__cfi_jt_cleanup_module
@@ -15621,6 +15693,7 @@ vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	undefined	pm_relax
 vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	undefined	pm_wakeup_dev_event
 vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	undefined	platform_driver_unregister
 vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	defined	dwc3_msm_kretprobe_exit
+vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	defined	__cfi_jt_cleanup_module
@@ -15812,6 +15885,7 @@ vendor_dlkm_a	lib/modules/eud.ko	44216	yes	undefined	uart_remove_one_port
 vendor_dlkm_a	lib/modules/eud.ko	44216	yes	defined	msm_eud_suspend$0d70ea8df2a25403c682c91fcab27128
 vendor_dlkm_a	lib/modules/eud.ko	44216	yes	defined	msm_eud_resume$0d70ea8df2a25403c682c91fcab27128
 vendor_dlkm_a	lib/modules/eud.ko	44216	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/eud.ko	44216	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/eud.ko	44216	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/eud.ko	44216	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/eud.ko	44216	yes	defined	__cfi_jt_init_module
@@ -16076,6 +16150,7 @@ vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	undefined	wakeup_source_reg
 vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	undefined	wakeup_source_unregister
 vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	undefined	of_reserved_mem_device_release
 vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	undefined	unregister_rpmsg_driver
+vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	defined	__SCK__tp_func_fastrpc_rpmsg_send
 vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	defined	__tracepoint_fastrpc_rpmsg_send
@@ -16237,6 +16312,7 @@ vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	undefined	_dev_info
 vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	undefined	regmap_update_bits_base
 vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	undefined	qcom_cc_sync_state
 vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	defined	__cfi_jt_cleanup_module
@@ -16314,6 +16390,7 @@ vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	undefined	reset_control_as
 vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	undefined	mutex_trylock
 vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	undefined	__dynamic_dev_dbg
 vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	defined	__cfi_jt_cleanup_module
@@ -16373,6 +16450,7 @@ vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	undefined	of_find_property
 vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	undefined	platform_get_irq
 vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	undefined	_dev_err
 vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	undefined	of_property_read_u64_index
+vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	defined	__cfi_jt_cleanup_module
@@ -16481,6 +16559,7 @@ vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	defined	gh_rm_get_vmid
 vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	undefined	kthread_stop
 vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	undefined	idr_destroy
 vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	defined	__cfi_jt_cleanup_module
@@ -16649,6 +16728,7 @@ vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	undefined	_dev_err
 vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	undefined	qcom_wdt_pet_suspend
 vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	undefined	qcom_wdt_pet_resume
 vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	defined	__cfi_jt_cleanup_module
@@ -16751,6 +16831,7 @@ vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	undefined	skb_put
 vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	undefined	class_destroy
 vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	undefined	unregister_chrdev_region
 vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	defined	__cfi_jt_cleanup_module
@@ -16811,6 +16892,7 @@ vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	undefined	preempt_schedule_no
 vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	defined	__cfi_jt_cleanup_module
@@ -16917,6 +16999,7 @@ vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	undefined	dma_async_device_unregiste
 vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	defined	GPII_CHAN_DIR
 vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	defined	__cfi_jt_init_module
@@ -17022,6 +17105,7 @@ vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	undefined	pm_wakeup_ws_event
 vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	undefined	idr_find
 vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	undefined	__pm_relax
 vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	undefined	unregister_rpmsg_driver
+vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	defined	gprbus
 vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	defined	__cfi_jt_init_module
@@ -17076,6 +17160,7 @@ vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	undefined	_dev_err
 vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	undefined	_dev_info
 vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	undefined	qcom_cc_sync_state
 vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	defined	__cfi_jt_cleanup_module
@@ -17160,6 +17245,7 @@ vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	defined	init_module
 vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	defined	cleanup_module
 vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	undefined	of_find_compatible_node
 vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	undefined	of_find_property
+vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	defined	ta_interface
 vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	defined	__cfi_jt_init_module
@@ -17311,6 +17397,7 @@ vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	defined	msm_ext_disp_audio_code
 vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	defined	msm_ext_disp_audio_codec_rx_dai_hw_params$53a2252512e65e323672c106c884d416
 vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	undefined	snd_soc_unregister_component
 vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	defined	__cfi_jt_cleanup_module
@@ -17348,6 +17435,7 @@ vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	undefined	printk
 vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	defined	qti_hwkm_init
 vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	undefined	tme_hwkm_master_broadcast_transportkey
 vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	undefined	usleep_range
+vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	defined	retries
 vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	defined	__crc_qti_hwkm_get_reg_data
@@ -17416,6 +17504,7 @@ vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	undefined	i2c_get_adapter
 vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	undefined	i2c_put_adapter
 vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	undefined	snprintf
 vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	undefined	bus_unregister_notifier
+vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	defined	__cfi_jt_cleanup_module
@@ -17565,6 +17654,7 @@ vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	undefined	ipc_log_context_cr
 vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	undefined	se_geni_resources_on
 vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	undefined	enable_irq
 vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	defined	__SCK__tp_func_i2c_log_info
 vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	defined	__tracepoint_i2c_log_info
@@ -17627,6 +17717,7 @@ vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	defined	qcom_icc_bcm_voter_
 vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	undefined	__mutex_init
 vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	undefined	of_property_read_variable_u32_array
+vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	defined	__this_module
@@ -17674,6 +17765,7 @@ vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	undefined	tracepoint_probe_regi
 vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	undefined	tracepoint_probe_unregister
 vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	undefined	debugfs_remove
+vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	defined	__cfi_jt_cleanup_module
@@ -17744,6 +17836,7 @@ vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	undefined	platform_get_resource
 vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	undefined	devm_ioremap_resource
 vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	undefined	__devm_regmap_init_mmio_clk
 vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	undefined	__list_add_valid
+vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	defined	__crc_qcom_icc_pre_aggregate
@@ -17791,6 +17884,7 @@ vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	undefined	icc_put
 vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	undefined	platform_device_del
 vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	undefined	platform_device_put
+vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	defined	__cfi_jt_cleanup_module
@@ -17815,6 +17909,7 @@ vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	defined	dev
 vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	undefined	devres_add
 vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	undefined	devres_free
 vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	undefined	devres_alloc_node
+vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	defined	__crc_iio_triggered_buffer_setup
 vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	defined	__crc_iio_triggered_buffer_cleanup
@@ -17837,6 +17932,7 @@ vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	undefined	iommu_group_put
 vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	undefined	kmem_cache_alloc_trace
 vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	undefined	__list_del_entry_valid
+vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	undefined	memstart_addr
 vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	undefined	kmalloc_caches
@@ -17919,6 +18015,7 @@ vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	undefined	__hwspin_lock_timeout
 vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	defined	ipclite_driver_freeze$9ccee34a4b1c12f49948da56edb7b686
 vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	defined	ipclite_driver_restore$9ccee34a4b1c12f49948da56edb7b686
 vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	defined	ipcmem_toc_global_partition_entry
 vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	defined	ipcmem_toc_partition_entries
@@ -18022,6 +18119,7 @@ vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	undefined	__kfifo_free
 vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	undefined	__kfifo_alloc
 vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	undefined	kfree
 vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	undefined	devres_alloc_node
+vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	defined	__crc_iio_kfifo_allocate
@@ -18087,6 +18185,7 @@ vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	undefined	free_percpu_irq
 vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	undefined	cpu_pm_unregister_notifier
 vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	undefined	disable_percpu_irq
 vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	defined	__cfi_jt_cleanup_module
@@ -18140,6 +18239,7 @@ vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	undefined	fwnode_property_present
 vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	undefined	devm_fwnode_gpiod_get_index
 vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	defined	__cfi_jt_cleanup_module
@@ -18197,6 +18297,7 @@ vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	defined	brightness_offse
 vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	undefined	snprintf
 vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	undefined	kstrtoint
 vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	defined	__cfi_jt_cleanup_module
@@ -18262,6 +18363,7 @@ vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	defined	spad_act_slp_wake_enabl
 vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	undefined	scnprintf
 vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	undefined	kstrtobool
 vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	defined	__cfi_jt_cleanup_module
@@ -18364,6 +18466,7 @@ vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	defined	pmgr_event_config$ea
 vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	undefined	hrtimer_active
 vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	undefined	sysfs_remove_group
 vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	defined	__cfi_jt_cleanup_module
@@ -18420,6 +18523,7 @@ vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	undefined	proc_dointvec
 vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	defined	gpu_error_data_read_handler$9cc071515dba61f4f18359bb40bfe537
 vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	undefined	proc_douintvec_minmax
 vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	undefined	unregister_sysctl_table
+vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	defined	__cfi_jt_cleanup_module
@@ -18530,6 +18634,7 @@ vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	undefined	queue_work_on
 vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	undefined	of_platform_depopulate
 vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	defined	lpass_cdc_clk_rsc_mgr_exit
 vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	defined	__cfi_jt_cleanup_module
@@ -18798,6 +18903,7 @@ vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	undefined	pm_run
 vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	undefined	pm_runtime_force_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	undefined	lpass_cdc_runtime_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	defined	__cfi_jt_cleanup_module
@@ -18977,6 +19083,7 @@ vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	undefined	pm_run
 vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	undefined	pm_runtime_force_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	undefined	lpass_cdc_runtime_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	undefined	param_ops_int
@@ -19160,6 +19267,7 @@ vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	undefined	pm_run
 vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	undefined	pm_runtime_force_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	undefined	lpass_cdc_runtime_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	undefined	param_ops_int
@@ -19346,6 +19454,7 @@ vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	undefined	pm_r
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	undefined	pm_runtime_force_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	undefined	lpass_cdc_runtime_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	defined	__cfi_jt_cleanup_module
@@ -19543,6 +19652,7 @@ vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	undefined	pm_ru
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	undefined	pm_runtime_force_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	undefined	lpass_cdc_runtime_resume
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	defined	__cfi_jt_cleanup_module
@@ -19645,6 +19755,7 @@ vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	u3_entry_store$4e8b0154c5
 vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	u3_exit_store$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	enable_compliance_store$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	undefined	usb_deregister
+vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	defined	__cfi_jt_cleanup_module
@@ -19687,6 +19798,7 @@ vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	undefined	kvfree
 vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	defined	lzorle_scompress$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	defined	lzorle_sdecompress$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	undefined	crypto_unregister_scomp
+vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	defined	__cfi_jt_cleanup_module
@@ -19723,6 +19835,7 @@ vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	undefined	kvfree
 vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	lzo_scompress$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	lzo_sdecompress$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	undefined	crypto_unregister_scomp
+vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	__cfi_jt_cleanup_module
@@ -19744,6 +19857,7 @@ vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	defined	__cfi_jt_end
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	lzogeneric1x_1_compress
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	lzo1x_1_compress
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	lzorle1x_1_compress
+vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__crc_lzo1x_1_compress
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__crc_lzorle1x_1_compress
@@ -19756,6 +19870,7 @@ vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__cfi_jt_start
 vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	defined	__cfi_jt_end
 vendor_dlkm_a	lib/modules/lzo_decompress.ko	11272	yes	defined	lzo1x_decompress_safe
+vendor_dlkm_a	lib/modules/lzo_decompress.ko	11272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/lzo_decompress.ko	11272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/lzo_decompress.ko	11272	yes	defined	__crc_lzo1x_decompress_safe
 vendor_dlkm_a	lib/modules/lzo_decompress.ko	11272	yes	defined	lzo1x_decompress_safe.cfi_jt
@@ -19871,6 +19986,7 @@ vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	defined	ieee80211_iface_init
 vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	defined	rc80211_minstrel_exit
 vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	defined	ieee80211_iface_exit
 vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	undefined	rcu_barrier
+vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	undefined	system_freezable_wq
 vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	defined	mac80211_config_ops
@@ -22434,6 +22550,7 @@ vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	undefined	snd_soc_info_enum
 vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	defined	msm_qos_ctl_get$9b343f2a3ce35e977719d88add93e782
 vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	defined	msm_qos_ctl_put$9b343f2a3ce35e977719d88add93e782
 vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	undefined	dev_pm_qos_update_request
+vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	defined	snd_card_pdata
 vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	undefined	kernel_kobj
@@ -22614,6 +22731,7 @@ vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	undefined	__init_swait_queue_h
 vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	undefined	msleep
 vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	undefined	complete
 vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	undefined	jiffies_to_msecs
+vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	undefined	jiffies
 vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	defined	__cfi_jt_init_module
@@ -22710,6 +22828,7 @@ vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	undefined	_dev_err
 vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	undefined	qcom_scm_pas_init_image
 vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	undefined	qcom_scm_pas_mem_setup
 vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	undefined	qcom_scm_pas_shutdown
+vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	defined	__crc_qcom_mdt_get_size
 vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	defined	__crc_qcom_mdt_read_metadata
@@ -22744,6 +22863,7 @@ vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	undefined	tracepoint_probe_regi
 vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	undefined	__rcu_read_lock
 vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	undefined	__rcu_read_unlock
+vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	defined	saved_tsk
@@ -22878,6 +22998,7 @@ vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	undefined	mem_buf_dma_buf_exclusi
 vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	undefined	__arch_copy_to_user
 vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	undefined	device_destroy
 vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	undefined	qcom_sg_buf_ops
@@ -23030,6 +23151,7 @@ vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	undefined	dma_set_mask
 vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	undefined	dma_set_coherent_mask
 vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	defined	mem_buf_vm_exit
 vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	defined	__SCK__tp_func_mem_buf_alloc_info
 vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	defined	__tracepoint_mem_buf_alloc_info
@@ -23378,6 +23500,7 @@ vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	defined	store_spm_freq_map$ced2387
 vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	undefined	kstrdup
 vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	undefined	strsep
 vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	undefined	kfree
+vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	undefined	__cpu_possible_mask
@@ -23500,6 +23623,7 @@ vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	undefined	__sw_hweight64
 vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	defined	register_reset_store$5f8f755adc34f5ecd4d0fd195a7c0b39
 vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	defined	format_version_show$5f8f755adc34f5ecd4d0fd195a7c0b39
 vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	defined	__cfi_jt_cleanup_module
@@ -23626,6 +23750,7 @@ vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	defined	mhi_misc_init
 vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	undefined	bus_register
 vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	defined	mhi_misc_exit
 vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	undefined	bus_unregister
+vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	defined	mhi_ee_str
 vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	defined	dev_state_tran_str
@@ -23996,6 +24121,7 @@ vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	undefined	mhi_get_device_for_
 vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	undefined	mhi_notify
 vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	undefined	mhi_prepare_for_transfer
 vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	undefined	mhi_driver_unregister
+vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	defined	__cfi_jt_cleanup_module
@@ -24112,6 +24238,7 @@ vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	undefined	netif_tx_wake_qu
 vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	undefined	skb_add_rx_frag
 vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	undefined	__alloc_skb
 vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	undefined	mhi_driver_unregister
+vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	defined	mhi_log_level_str
 vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	defined	__cfi_jt_init_module
@@ -24219,6 +24346,7 @@ vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	undefined	_raw_spin_unlock_ir
 vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	undefined	pm_wakeup_dev_event
 vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	undefined	unregister_chrdev_region
 vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	undefined	mhi_driver_unregister
+vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	defined	mhi_uci_log_level_str
 vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	defined	__cfi_jt_init_module
@@ -24329,6 +24457,7 @@ vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	defined	msm_cvp_suspend
 vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	defined	cvp_dsp_device_exit
 vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	undefined	kmem_cache_destroy
 vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	defined	__cfi_jt_cleanup_module
@@ -25160,6 +25289,7 @@ vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	defined	dump_clk_res_info_show$b
 vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	undefined	sysfs_remove_group
 vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	defined	mmrm_deinit
 vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	defined	drv_data
 vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	defined	msm_mmrm_debug
@@ -25285,6 +25415,7 @@ vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	undefined	sg_free_t
 vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	defined	msm_iommu_meta_destroy$568df67ef8f741c23132d38fe1138df6
 vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	undefined	rb_erase
+vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	undefined	arm64_const_caps_ready
 vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	undefined	cpu_hwcap_keys
@@ -25348,6 +25479,7 @@ vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	defined	sde_rot_fence_timeline_
 vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	undefined	dma_fence_release
 vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	undefined	__msecs_to_jiffies
+vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	undefined	arm64_const_caps_ready
@@ -30943,6 +31075,7 @@ vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	undefined	devm_extcon_dev_allocate
 vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	undefined	devm_extcon_dev_register
 vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	undefined	devm_extcon_dev_unregister
+vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	undefined	kmalloc_caches
@@ -31246,6 +31379,7 @@ vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	kgsl_syncsource_proces
 vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	undefined	get_unmapped_area
 vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	kgsl_mmu_svm_range
 vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	kgsl_mmu_find_svm_region
+vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	kgsl_driver
 vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	defined	__this_module
@@ -35190,6 +35324,7 @@ vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	undefined	kfree
 vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	defined	qmp_mbox_freeze$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	defined	qmp_mbox_restore$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	defined	__cfi_jt_cleanup_module
@@ -35263,6 +35398,7 @@ vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	defined	qrng_reset$4e8b0154c58fc8
 vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	undefined	mutex_lock_interruptible
 vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	undefined	crypto_unregister_rngs
 vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	defined	__cfi_jt_cleanup_module
@@ -35290,6 +35426,7 @@ vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	undefined	find_next_b
 vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	undefined	irq_find_mapping
 vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	undefined	irq_to_desc
 vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	undefined	printk
+vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	undefined	param_ops_int
@@ -35392,6 +35529,7 @@ vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	msm_vidc_adjust_all_i
 vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	msm_vidc_adjust_roi_info
 vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	msm_vidc_adjust_delivery_mode
 vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	msm_vidc_set_vui_timing_info
+vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	msm_vidc_debug
 vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	defined	vpe_csc_custom_matrix_coeff
@@ -36647,6 +36785,7 @@ vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	undefined	of_propert
 vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	undefined	regmap_bulk_read
 vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	undefined	regmap_bulk_write
 vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	defined	__cfi_jt_cleanup_module
@@ -36692,6 +36831,7 @@ vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	undefined	_dev_warn
 vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	undefined	regulator_disable
 vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	undefined	param_ops_bool
@@ -36719,6 +36859,7 @@ vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	panel_event_
 vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	init_module
 vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	cleanup_module
+vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	defined	__cfi_jt_cleanup_module
@@ -36965,6 +37106,7 @@ vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	undefined	pci_device_is_pres
 vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	undefined	pci_restore_state
 vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	undefined	queue_work_on
 vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	undefined	_raw_spin_unlock
+vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	defined	__cfi_jt_cleanup_module
@@ -37203,6 +37345,7 @@ vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	defined	ind_notif_timeout_h
 vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	undefined	panic
 vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	undefined	__warn_printk
 vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	undefined	__list_del_entry_valid
+vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	defined	servreg_location_entry_ei
 vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	defined	servreg_get_domain_list_req_ei
@@ -37318,6 +37461,7 @@ vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	undefined	regulator_disab
 vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	undefined	power_supply_put
 vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	defined	__cfi_jt_cleanup_module
@@ -37390,6 +37534,7 @@ vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	undefined	devm_regulato
 vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	undefined	devm_regulator_get_optional
 vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	undefined	usb_remove_phy
 vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	defined	__cfi_jt_cleanup_module
@@ -37430,6 +37575,7 @@ vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	defined	ufs_qcom_ph
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	undefined	ktime_get
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	undefined	usleep_range
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	defined	__cfi_jt_cleanup_module
@@ -37479,6 +37625,7 @@ vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	defined	ufs_qcom_phy_
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	defined	ufs_qcom_phy_qmp_v3_dbg_register_dump$565a8ab6d348193a6c74ca69e14f4323
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	undefined	ufs_qcom_phy_dump_regs
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	defined	__cfi_jt_cleanup_module
@@ -37532,6 +37679,7 @@ vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	defined	ufs_qc
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	defined	ufs_qcom_phy_qmp_v4_dbg_register_dump$e324ed93a50f944c7b770e9964aec00c
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	undefined	ufs_qcom_phy_dump_regs
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	defined	__cfi_jt_cleanup_module
@@ -37602,6 +37750,7 @@ vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	undefined	clk_unprepare
 vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	undefined	clk_disable
 vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	undefined	regulator_disable
 vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	undefined	__kmalloc
+vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	defined	__crc_ufs_qcom_phy_write_tbl
@@ -37649,6 +37798,7 @@ vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	defined	anorak_pinctrl_pr
 vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	undefined	msm_pinctrl_remove
 vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	undefined	msm_pinctrl_probe
 vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	defined	__cfi_jt_cleanup_module
@@ -37771,6 +37921,7 @@ vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	undefined	irq_find_matching_f
 vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	undefined	find_next_bit
 vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	undefined	generic_handle_irq
 vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	undefined	__cfi_slowpath
+vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	defined	msm_pinctrl_dev_pm_ops
 vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	defined	__this_module
@@ -37899,6 +38050,7 @@ vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	undefined	irq_find_matc
 vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	undefined	kmem_cache_alloc_trace
 vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	undefined	of_find_property
 vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	defined	__cfi_jt_cleanup_module
@@ -37988,6 +38140,7 @@ vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	defined	pmic_mpp_dbg_sho
 vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	defined	pmic_mpp_of_xlate$35368ce36b52c58f12637531da9f01c5
 vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	undefined	gpiochip_get_data
 vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	defined	__cfi_jt_cleanup_module
@@ -38092,6 +38245,7 @@ vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	undefined	__pm_runtime_u
 vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	undefined	snd_event_client_deregister
 vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	undefined	audio_notifier_deregister
 vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	defined	__cfi_jt_cleanup_module
@@ -38167,6 +38321,7 @@ vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	defined	pm8941_pwrkey_suspe
 vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	defined	pm8941_pwrkey_resume$e7c8e20ed9f85bb194a358bd9d965c17
 vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	undefined	irq_set_irq_wake
 vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	defined	__cfi_jt_cleanup_module
@@ -38209,6 +38364,7 @@ vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	undefined	panic
 vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	undefined	device_remove_file
 vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	defined	__cfi_jt_cleanup_module
@@ -38292,6 +38448,7 @@ vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	undefined	queue_work_on
 vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	undefined	unregister_rpmsg_driver
 vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	defined	__cfi_jt_cleanup_module
@@ -38328,6 +38485,7 @@ vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	undefined	scmi_driver_register
 vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	defined	scmi_pmu_probe$c07e1feac21f6eade446186a18fa0ddb
 vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	undefined	rimps_pmu_init
 vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	undefined	scmi_driver_unregister
+vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	defined	__cfi_jt_cleanup_module
@@ -38348,6 +38506,7 @@ vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	defined	scmi_pmu_map$4e8b0154c
 vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	defined	scmi_set_enable_trace$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	undefined	cpumask_next
 vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	undefined	scmi_protocol_unregister
+vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	defined	__cfi_jt_cleanup_module
@@ -38379,6 +38538,7 @@ vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	undefined	__pm_stay_awake
 vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	undefined	mutex_unlock
 vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	undefined	__pm_relax
 vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	undefined	wakeup_source_unregister
+vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	defined	__cfi_jt_cleanup_module
@@ -38419,6 +38579,7 @@ vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	undefined	regulator_disable
 vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	undefined	devres_alloc_node
+vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	defined	__crc_regulator_proxy_consumer_register
@@ -38471,6 +38632,7 @@ vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	undefined	of_get_next_availab
 vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	defined	qpnp_lpg_pwm_apply$dc31bff6ac2356f2ace3cf841d8a55bf
 vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	undefined	pwmchip_remove
 vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	defined	__cfi_jt_cleanup_module
@@ -38502,6 +38664,7 @@ vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	defined	msm_aud_evt_blocking_unre
 vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	undefined	blocking_notifier_chain_unregister
 vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	defined	msm_aud_evt_blocking_notifier_call_chain
 vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	undefined	blocking_notifier_call_chain
+vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	defined	init_module
 vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	defined	cleanup_module
@@ -38561,6 +38724,7 @@ vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	undefined	__mutex_init
 vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	undefined	srcu_init_notifier_head
 vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	defined	client_list
 vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	defined	notifier_mutex
@@ -38599,6 +38763,7 @@ vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	audio_pdr_service_der
 vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	undefined	pdr_handle_release
 vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	init_module
 vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	cleanup_module
+vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	defined	__cfi_jt_cleanup_module
@@ -38688,6 +38853,7 @@ vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	undefined	sg_init_one
 vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	defined	qce_dummy_complete$690bdae42169b8376f8634d9b6b718d8
 vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	undefined	del_timer
 vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	undefined	dma_free_attrs
+vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	defined	qce_pm_table
 vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	undefined	jiffies
@@ -38838,6 +39004,7 @@ vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	undefined	kfree_sensitive
 vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	undefined	of_property_read_variable_u32_array
 vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	undefined	tasklet_kill
 vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	defined	__cfi_jt_cleanup_module
@@ -38905,6 +39072,7 @@ vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	undefined	scnprintf
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	undefined	sysfs_create_file_ns
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	undefined	sysfs_remove_file_ns
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	defined	__cfi_jt_cleanup_module
@@ -39007,6 +39175,7 @@ vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	undefined	devm_free_irq
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	undefined	device_remove_file
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	undefined	cpufreq_unregister_driver
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	defined	__SCK__tp_func_dcvsh_freq
 vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	defined	__tracepoint_dcvsh_freq
@@ -39108,6 +39277,7 @@ vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	defined	setup_epss_l3_percpu_d
 vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	undefined	__mutex_init
 vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	undefined	__sw_hweight64
 vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	defined	__cfi_jt_cleanup_module
@@ -39359,6 +39529,7 @@ vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	undefined	atomic_notifier
 vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	undefined	unregister_reboot_notifier
 vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	undefined	iounmap
 vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	defined	__cfi_jt_init_module
@@ -39440,6 +39611,7 @@ vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	undefined	kmem_cache_alloc_trace
 vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	defined	qcom_pdc_gpio_domain_select$4d5d0ad3b7a8bf44fd12261dac6dc70e
 vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	defined	qcom_pdc_gpio_alloc$4d5d0ad3b7a8bf44fd12261dac6dc70e
 vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	defined	__cfi_jt_cleanup_module
@@ -39540,6 +39712,7 @@ vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	undefined	__cpuhp_setup_stat
 vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	undefined	cpus_read_unlock
 vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	undefined	tracepoint_probe_register
 vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	undefined	__cpu_possible_mask
 vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	undefined	__per_cpu_offset
@@ -39609,6 +39782,7 @@ vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	undefined	of_property_read_variable_u32_array
 vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	undefined	regmap_update_bits_base
 vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	defined	__cfi_jt_cleanup_module
@@ -39635,6 +39809,7 @@ vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	undefined	nvmem_cell_write
 vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	undefined	unregister_reboot_notifier
 vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	defined	__cfi_jt_cleanup_module
@@ -39809,6 +39984,7 @@ vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	undefined	queue_work_on
 vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	undefined	idr_destroy
 vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	undefined	platform_driver_unregister
 vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	defined	qtee_shmbridge_driver_exit
+vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	undefined	param_ops_bool
@@ -40159,6 +40335,7 @@ vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	undefined	thermal_zon
 vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	undefined	cancel_work_sync
 vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	defined	__cfi_jt_cleanup_module
@@ -40200,6 +40377,7 @@ vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	undefined	of_find_property
 vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	undefined	regmap_read
 vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	undefined	__dynamic_dev_dbg
 vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	undefined	driver_unregister
+vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	defined	__cfi_jt_cleanup_module
@@ -40250,6 +40428,7 @@ vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	qpnp_tm_resu
 vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	qpnp_tm_freeze$e10c61da259d613935d147ec18e74131
 vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	qpnp_tm_restore$e10c61da259d613935d147ec18e74131
 vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	defined	__cfi_jt_cleanup_module
@@ -40302,6 +40481,7 @@ vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	qcom_adc5_gen3_s
 vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	qcom_adc5_gen3_scale_hw_calib_batt_id_100$24a5f38a172609e3a87c95fa9499cd97
 vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	qcom_adc5_gen3_scale_hw_calib_usb_in_current$24a5f38a172609e3a87c95fa9499cd97
 vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	undefined	__dynamic_pr_debug
+vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	__crc_adc_tm_scale_therm_voltage_100k_gen3
 vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	defined	__crc_adc_tm_absolute_rthr_gen3
@@ -40404,6 +40584,7 @@ vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	undefined	of_genpd_del_provider
 vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	defined	aoss_qmp_mbox_freeze$18c8e92582b96ba7358b2d6209c77eef
 vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	defined	aoss_qmp_mbox_restore$18c8e92582b96ba7358b2d6209c77eef
 vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	defined	__cfi_jt_cleanup_module
@@ -40464,6 +40645,7 @@ vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	undefined	android_r
 vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	undefined	scnprintf
 vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	undefined	copy_from_kernel_nofault
 vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	defined	__cfi_jt_cleanup_module
@@ -40529,6 +40711,7 @@ vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	undefined	simple_w
 vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	undefined	qcom_scm_io_writel
 vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	defined	__cfi_jt_cleanup_module
@@ -40564,6 +40747,7 @@ vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	qcom_carveout_hea
 vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	qcom_add_cma_heap
 vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	qcom_add_bitstream_contig_heap
 vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	free_pdata
+vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	defined	__this_module
@@ -40814,6 +40998,7 @@ vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	undefined	printk
 vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	undefined	edac_device_handle_ce_count
 vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	undefined	edac_device_handle_ue_count
 vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	undefined	param_ops_int
@@ -40930,6 +41115,7 @@ vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	undefined	__sw_hweight64
 vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	defined	qcom_glink_device_release$805287cfe7753744db6c713abd937ee4
 vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	undefined	rpmsg_register_device_override
 vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	undefined	cancel_work_sync
+vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	defined	glink_native_pm_ops
 vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	undefined	arm64_const_caps_ready
@@ -41026,6 +41212,7 @@ vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	undefined	kfree
 vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	undefined	of_property_read_variable_u32_array
 vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	undefined	__memcpy_fromio
+vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	defined	__crc_qcom_glink_smem_register
@@ -41076,6 +41263,7 @@ vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	undefined	of_property_mat
 vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	undefined	of_address_to_resource
 vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	undefined	__ioremap
 vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	undefined	iounmap
+vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	undefined	arm64_use_ng_mappings
@@ -41219,6 +41407,7 @@ vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	defined	qrtr_alloc_backup$391ff6e36
 vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	defined	qrtr_ns_remove
 vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	undefined	sock_unregister
 vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	undefined	cancel_work_sync
+vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	defined	qrtr_ports_next
 vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	defined	__cfi_jt_init_module
@@ -41383,6 +41572,7 @@ vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	undefined	regmap_field_re
 vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	undefined	regmap_field_update_bits_base
 vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	undefined	printk
 vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	defined	__cfi_jt_cleanup_module
@@ -41444,6 +41634,7 @@ vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	defined	iommu_debug_nr_
 vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	defined	iommu_debug_usecase_probe$aabe0ea5067ace97199e12937638aa45
 vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	undefined	complete
+vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	undefined	memstart_addr
 vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	defined	__cfi_jt_init_module
@@ -41610,6 +41801,7 @@ vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	dma_mapping_fast
 vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	qcom_dma_iommu_generic_driver_init
 vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	qcom_arm_lpae_do_selftests
 vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	qcom_dma_iommu_generic_driver_exit
+vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	io_pgtable_av8l_fast_init_fns
 vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	defined	qcom_io_pgtable_arm_64_lpae_s1_init_fns
@@ -41904,6 +42096,7 @@ vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	defined	qcom_ipcc_pm_suspend$21
 vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	defined	qcom_ipcc_pm_resume$2115a09dc4d4efca76b67d048bad1668
 vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	undefined	irq_to_desc
 vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	defined	__cfi_jt_cleanup_module
@@ -41956,6 +42149,7 @@ vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	undefined	_raw_spin_lock_ir
 vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	undefined	ktime_get
 vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	undefined	_raw_spin_unlock_irqrestore
 vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	defined	__cfi_jt_cleanup_module
@@ -41997,6 +42191,7 @@ vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	undefined	memchr
 vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	undefined	scnprintf
 vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	undefined	tracepoint_probe_unregister
 vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	defined	__cfi_jt_cleanup_module
@@ -42096,6 +42291,7 @@ vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	defined	lpm_cpu_qos_notify$54f5
 vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	undefined	dev_pm_qos_add_notifier
 vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	undefined	preempt_schedule
 vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	undefined	dev_pm_qos_remove_notifier
+vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	defined	__SCK__tp_func_lpm_gov_select
 vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	defined	__tracepoint_lpm_gov_select
@@ -42280,6 +42476,7 @@ vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	undefined	__memcpy_toio
 vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	undefined	strnlen
 vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	defined	cleanup_module
 vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	undefined	__memset_io
+vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	undefined	arm64_use_ng_mappings
 vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	defined	__cfi_jt_cleanup_module
@@ -42329,6 +42526,7 @@ vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	undefined	mutex_lock
 vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	undefined	mutex_unlock
 vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	undefined	msleep
 vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	undefined	panic
+vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	undefined	__tracepoint_rproc_qcom_event
 vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	undefined	cpu_number
@@ -42456,6 +42654,7 @@ vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	undefined	qcom_remove_glink
 vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	undefined	qcom_remove_smd_subdev
 vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	undefined	qcom_remove_ssr_subdev
 vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	defined	__cfi_jt_cleanup_module
@@ -42521,6 +42720,7 @@ vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	undefined	kmem_cache_alloc_t
 vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	undefined	__class_create
 vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	undefined	alloc_chrdev_region
+vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	undefined	param_ops_int
@@ -42567,6 +42767,7 @@ vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	undefined	_raw_spin_unlock_irq
 vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	undefined	devm_request_threaded_irq
 vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	undefined	mbox_chan_received_data
 vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	defined	__cfi_jt_cleanup_module
@@ -42682,6 +42883,7 @@ vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	rpmh_flush
 vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	rpmh_rsc_poweroff_noirq$33a91d6f1a86059c0a50226ec96936b4
 vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	rpmh_rsc_restore_noirq$33a91d6f1a86059c0a50226ec96936b4
+vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	__SCK__tp_func_rpmh_tx_done
 vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	defined	__tracepoint_rpmh_tx_done
@@ -42842,6 +43044,7 @@ vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	qcom_smd_probe$e4b3ac0aa
 vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	qcom_smd_remove$e4b3ac0aa88198cf12ca80dc3d2a0ec8
 vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	qcom_smd_remove_edge$e4b3ac0aa88198cf12ca80dc3d2a0ec8
 vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	defined	__cfi_jt_cleanup_module
@@ -42898,6 +43101,7 @@ vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	defined	qcom_soc_show_wdt_st
 vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	undefined	qcom_wdt_pet_suspend
 vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	undefined	qcom_wdt_pet_resume
 vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	defined	__cfi_jt_cleanup_module
@@ -42987,6 +43191,7 @@ vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	undefined	qcom_remove_ssr_subde
 vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	undefined	rproc_remove_subdev
 vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	undefined	kfree_const
 vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	defined	__cfi_jt_cleanup_module
@@ -43058,6 +43263,7 @@ vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	undefined	cdev_del
 vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	undefined	device_destroy
 vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	undefined	unregister_chrdev_region
 vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	undefined	class_destroy
+vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	defined	spec_sync_fops
@@ -43146,6 +43352,7 @@ vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	defined	sysmon_remove$d3529b4
 vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	defined	sysmon_callback$d3529b462db5229ec33888c84e0461ad
 vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	undefined	rproc_get_by_child
 vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	undefined	unregister_rpmsg_driver
+vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	defined	__cfi_jt_cleanup_module
@@ -43252,6 +43459,7 @@ vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	defined	tsens_suspend$8da81ba8021d0ea26223384496b1ad95
 vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	defined	tsens_resume$8da81ba8021d0ea26223384496b1ad95
 vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	defined	__cfi_jt_cleanup_module
@@ -43427,6 +43635,7 @@ vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	undefined	register_die_noti
 vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	undefined	device_create_file
 vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	defined	wakeup_enable_show$d100cbd411b5ac9653548537e28bb3f1
 vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	defined	wakeup_enable_store$d100cbd411b5ac9653548537e28bb3f1
+vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	undefined	jiffies
 vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	undefined	panic_notifier_list
@@ -43496,6 +43705,7 @@ vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	undefined	nvmem_cell_read
 vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	undefined	kfree
 vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	defined	__cfi_jt_cleanup_module
@@ -43518,6 +43728,7 @@ vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	defined	qmi_decode_message
 vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	undefined	kmem_cache_alloc_trace
 vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	undefined	__kmalloc
 vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	undefined	strlen
+vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	defined	qmi_response_type_v01_ei
 vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	undefined	kmalloc_caches
@@ -43606,6 +43817,7 @@ vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	undefined	qcom_icc_rpmh_sync
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	undefined	qcom_icc_rpmh_probe
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	undefined	_dev_err
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	undefined	_dev_info
+vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	undefined	qcom_qnoc4_ops
@@ -43620,6 +43832,7 @@ vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	defined	__cfi_jt_start
 vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	defined	__cfi_jt_end
 vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	defined	qcom_icc_set_qos$4c67a478b4fde06e65dc103dd330a57e
 vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	undefined	regmap_update_bits_base
+vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	defined	icc_qnoc_qos_regs
 vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	defined	qcom_qnoc4_ops
@@ -43659,6 +43872,7 @@ vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	undefined	consume_skb
 vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	undefined	qrtr_endpoint_post
 vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	undefined	_dev_err
 vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	undefined	mhi_driver_unregister
+vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	defined	__cfi_jt_cleanup_module
@@ -43704,6 +43918,7 @@ vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	undefined	print_hex_dump
 vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	undefined	qcom_glink_is_wakeup
 vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	undefined	qrtr_print_wakeup_reason
 vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	undefined	unregister_rpmsg_driver
+vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	defined	__cfi_jt_cleanup_module
@@ -43764,6 +43979,7 @@ vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	undefined	class_destr
 vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	undefined	platform_driver_unregister
 vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	undefined	ipc_log_context_destroy
+vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	defined	__cfi_jt_cleanup_module
@@ -43789,6 +44005,7 @@ vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	defined	compat_qseecom_ioctl
 vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	defined	qseecom_ioctl
 vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	undefined	compat_alloc_user_space
 vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	undefined	__arch_copy_in_user
+vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	undefined	arm64_const_caps_ready
 vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	undefined	cpu_hwcap_keys
@@ -43971,6 +44188,7 @@ vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	undefined	clk_disable
 vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	undefined	devm_regulator_proxy_consumer_register
 vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	undefined	devm_regulator_debug_register
 vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	defined	__cfi_jt_cleanup_module
@@ -44013,6 +44231,7 @@ vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	undefined	regulator_noti
 vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	undefined	idr_destroy
 vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	defined	__cfi_jt_cleanup_module
@@ -44067,6 +44286,7 @@ vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	undefined	debugfs_look
 vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	undefined	dput
 vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	undefined	devres_alloc_node
+vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	undefined	arm64_const_caps_ready
@@ -44242,6 +44462,7 @@ vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	defined	qti_typ
 vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	undefined	class_unregister
 vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	defined	__cfi_jt_cleanup_module
@@ -44384,6 +44605,7 @@ vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	defined	status_open$4e8
 vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	defined	status_show$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	undefined	sysfs_remove_group
 vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	defined	__cfi_jt_cleanup_module
@@ -44452,6 +44674,7 @@ vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	undefined	queue_work_on
 vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	undefined	thermal_cooling_device_unregister
 vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	undefined	__cpuhp_remove_state
 vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	defined	__cfi_jt_cleanup_module
@@ -44500,6 +44723,7 @@ vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	undefined	dev_pm_qos_upd
 vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	undefined	queue_delayed_work_on
 vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	undefined	thermal_cooling_device_unregister
 vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	defined	__cfi_jt_cleanup_module
@@ -44550,6 +44774,7 @@ vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	devm_kmalloc
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	devm_nvmem_device_get
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	strscpy
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	__list_add_valid
+vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	defined	epm_hw_ops
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	system_wq
@@ -44610,6 +44835,7 @@ vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	__stack_chk_fa
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	undefined	__stack_chk_guard
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	defined	__cfi_jt_start
 vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	defined	__cfi_jt_end
+vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	defined	tmd_get_mitigation_device_list_req_msg_v01_ei
 vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	undefined	qmi_response_type_v01_ei
@@ -44684,6 +44910,7 @@ vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	undefined	__stack_chk_fail
 vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	undefined	__stack_chk_guard
 vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	defined	__cfi_jt_start
 vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	defined	__cfi_jt_end
+vendor_dlkm_a	lib/modules/qti_qmi_sensor_v2.ko	44448	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_qmi_sensor_v2.ko	44448	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_qmi_sensor_v2.ko	44448	yes	defined	ts_get_total_num_of_sensors_req_msg_v02_ei
 vendor_dlkm_a	lib/modules/qti_qmi_sensor_v2.ko	44448	yes	undefined	qmi_response_type_v01_ei
@@ -44780,6 +45007,7 @@ vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	defined	userspace_get_
 vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	defined	userspace_set_cur_state$4e8b0154c58fc8baa75c3124f9a25b1c
 vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	undefined	thermal_cooling_device_unregister
 vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	defined	__cfi_jt_cleanup_module
@@ -44834,6 +45062,7 @@ vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	defined	on_interrupt_from$8d3902c2ff
 vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	undefined	__mutex_init
 vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	undefined	__init_swait_queue_head
 vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	undefined	complete
+vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	defined	registers
 vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	defined	__cfi_jt_init_module
@@ -44878,6 +45107,7 @@ vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	undefined	strcmp
 vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	undefined	devres_alloc_node
+vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	defined	__crc_reboot_mode_register
 vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	defined	__crc_reboot_mode_unregister
@@ -44912,6 +45142,7 @@ vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	undefined	spmi_ext_register_w
 vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	undefined	spmi_ext_register_writel
 vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	undefined	spmi_ext_register_read
 vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	undefined	spmi_ext_register_readl
+vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	defined	__crc___regmap_init_spmi_base
 vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	defined	__crc___devm_regmap_init_spmi_base
@@ -44957,6 +45188,7 @@ vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	undefined	_raw_spin_unlock_irqr
 vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	undefined	queue_delayed_work_on
 vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	undefined	ipc_log_string
 vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	undefined	mbox_free_channel
+vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	defined	__this_module
@@ -45020,6 +45252,7 @@ vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	undefined	rpmh_write
 vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	undefined	ipc_log_string
 vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	defined	__cfi_jt_cleanup_module
@@ -45130,6 +45363,7 @@ vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	undefined	tracepoint_pr
 vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	undefined	panic
 vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	undefined	tracepoint_probe_unregister
 vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	undefined	sysfs_remove_file_ns
+vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	defined	qcom_device_shutdown_in_progress
 vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	defined	__cfi_jt_init_module
@@ -45240,6 +45474,7 @@ vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	undefined	kstrtouint
 vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	undefined	__msecs_to_jiffies
 vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	undefined	tracepoint_probe_register
 vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	undefined	queue_work_on
+vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	defined	rq_lock
@@ -45293,6 +45528,7 @@ vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	defined	pm8xxx_rtc_restore$62d
 vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	undefined	irq_set_irq_wake
 vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	undefined	devm_free_irq
 vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	defined	__cfi_jt_cleanup_module
@@ -45456,6 +45692,7 @@ vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	defined	create_util_to_cost
 vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	undefined	kfree
 vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	undefined	of_get_cpu_node
 vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	undefined	of_parse_phandle
+vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	defined	task_event_names
 vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	defined	migrate_type_names
@@ -46527,6 +46764,7 @@ vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	defined	qcom_secure_buffer_
 vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	undefined	dma_set_mask
 vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	undefined	of_find_property
 vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	defined	__SCK__tp_func_hyp_assign_info
 vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	defined	__tracepoint_hyp_assign_info
@@ -46719,6 +46957,7 @@ vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	defined	qcom_slim_ngd
 vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	undefined	__pm_runtime_suspend
 vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	undefined	sysfs_remove_file_ns
 vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	defined	__SCK__tp_func_slimbus_dbg
 vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	defined	__tracepoint_slimbus_dbg
@@ -46826,6 +47065,7 @@ vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	undefined	ktime_get_mono_fast_ns
 vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	undefined	__pm_runtime_suspend
 vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	undefined	bus_unregister
 vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	undefined	bus_register
+vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	defined	slimbus_bus
 vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	defined	__cfi_jt_cleanup_module
@@ -46955,6 +47195,7 @@ vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	undefined	kfree
 vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	undefined	refcount_warn_saturate
 vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	defined	smcinvoke_release_from_kernel_client
+vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	defined	smci_qseecomcompatapploader_uid
 vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	undefined	kmalloc_caches
@@ -47469,6 +47710,7 @@ vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	defined	qcom_smp2p_freeze$6ad07d1f5
 vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	defined	qcom_smp2p_restore$6ad07d1f5e3e913aefeb49d2755abed3
 vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	undefined	__list_del_entry_valid
 vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	defined	__cfi_jt_cleanup_module
@@ -47516,6 +47758,7 @@ vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	undefined	__pm_relax
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	undefined	unregister_pm_notifier
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	sleepstate_pm_notifier$835a4498e5ea78c0e09ecbebc9fc5a14
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	undefined	pm_wakeup_ws_event
+vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	__this_module
@@ -47527,6 +47770,7 @@ vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	undefined	__stack_chk_fa
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	undefined	__stack_chk_guard
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	__cfi_jt_start
 vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	defined	__cfi_jt_end
+vendor_dlkm_a	lib/modules/snd-usb-audio-qmi.ko	96720	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/snd-usb-audio-qmi.ko	96720	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/snd-usb-audio-qmi.ko	96720	yes	defined	qmi_uaudio_stream_req_msg_v01_ei
 vendor_dlkm_a	lib/modules/snd-usb-audio-qmi.ko	96720	yes	undefined	qmi_response_type_v01_ei
@@ -47652,6 +47896,7 @@ vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	undefined	kmem_cache_alloc
 vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	undefined	__list_del_entry_valid
+vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	defined	__crc_snd_event_client_register
@@ -47716,6 +47961,7 @@ vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	defined	ddr_stats_show$39
 vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	undefined	seq_puts
 vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	defined	ddr_gdata
 vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	defined	send_msg_time
@@ -47840,6 +48086,7 @@ vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	defined	msm_get_images$47d9d62bdf
 vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	defined	soc_info_attribute$47d9d62bdfb5eb462dec16e2543667f0
 vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	undefined	soc_device_unregister
 vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	defined	__cfi_jt_cleanup_module
@@ -47998,6 +48245,7 @@ vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	undefined	rproc_shutdown
 vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	undefined	wakeup_source_unregister
 vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	defined	__cfi_jt_cleanup_module
@@ -48065,6 +48313,7 @@ vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	undefined	__wake_up
 vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	undefined	gpr_driver_unregister
 vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	defined	digital_cdc_rsc_mgr_exit
 vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	undefined	jiffies
 vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	defined	__cfi_jt_init_module
@@ -48232,6 +48481,7 @@ vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	undefined	se_geni_clks_on
 vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	undefined	se_geni_resources_on
 vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	undefined	enable_irq
 vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	defined	__SCK__tp_func_spi_log_info
 vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	defined	__tracepoint_spi_log_info
@@ -48303,6 +48553,7 @@ vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	undefined	wait_for_compl
 vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	undefined	spmi_controller_remove
 vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	undefined	pmic_glink_unregister_client
 vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	defined	__cfi_jt_cleanup_module
@@ -48352,6 +48603,7 @@ vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	undefined	clk_disable
 vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	undefined	put_device
 vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	undefined	spmi_controller_remove
 vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	defined	__cfi_jt_cleanup_module
@@ -48475,6 +48727,7 @@ vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	defined	debug_soc_end_addr_
 vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	undefined	put_device
 vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	undefined	spmi_controller_remove
 vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	defined	__cfi_jt_cleanup_module
@@ -48606,6 +48859,7 @@ vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	defined	print_bam_pipe_reg
 vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	defined	print_bam_pipe_desc_fifo
 vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	undefined	scnprintf
 vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	undefined	find_next_bit
+vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	defined	logging_option
 vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	defined	print_limit_option
@@ -48911,6 +49165,7 @@ vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	undefined	kernel_restart
 vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	undefined	__init_swait_queue_head
 vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	undefined	qcom_unregister_ssr_notifier
 vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	defined	__cfi_jt_cleanup_module
@@ -48946,6 +49201,7 @@ vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	undefined	__dynamic_dev_dbg
 vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	undefined	snd_soc_register_component
 vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	undefined	snd_soc_unregister_component
 vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	defined	__cfi_jt_cleanup_module
@@ -48995,6 +49251,7 @@ vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	undefined	of_find_p
 vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	defined	subsytem_stats_suspend$bb02c14d8640664f772d848454922139
 vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	defined	subsytem_stats_resume$bb02c14d8640664f772d848454922139
 vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	defined	__cfi_jt_cleanup_module
@@ -49137,6 +49394,7 @@ vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	undefined	cancel_work_sync
 vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	defined	swrm_suspend$4f7a57b380afe65abf3a3fec691fe242
 vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	defined	swrm_resume$4f7a57b380afe65abf3a3fec691fe242
 vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	defined	__this_module
 vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	undefined	param_ops_int
@@ -49199,6 +49457,7 @@ vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	undefined	__kmalloc
 vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	undefined	kmem_cache_alloc_trace
 vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	defined	swr_write
 vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	defined	swr_read
+vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	defined	swr_remove_device
@@ -49399,6 +49658,7 @@ vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	undefined	snd_soc_unregiste
 vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	defined	swr_dmic_suspend$089e67a74375a66802647a567e2a34c2
 vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	defined	swr_dmic_resume$089e67a74375a66802647a567e2a34c2
 vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	undefined	swr_driver_unregister
+vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	defined	codec_name_list
 vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	defined	dai_name_list
@@ -49477,6 +49737,7 @@ vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	defined	swr_haptics_susp
 vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	defined	swr_haptics_resume$1979f192ba4a223d303c434a5991f2aa
 vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	undefined	__trace_bprintk
 vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	undefined	swr_driver_unregister
+vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	defined	swr_hap_regmap_config
 vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	defined	__cfi_jt_init_module
@@ -49631,6 +49892,7 @@ vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	undefined	fd_install
 vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	undefined	put_unused_fd
 vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	undefined	flush_workqueue
 vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	defined	synx_remove_debugfs_dir
+vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	defined	synx_debug
 vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	defined	synx_dev
@@ -49821,6 +50083,7 @@ vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	undefined	mbox_send_message
 vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	undefined	has_system_slept
 vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	undefined	has_subsystem_slept
 vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	defined	__cfi_jt_cleanup_module
@@ -49867,6 +50130,7 @@ vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	undefined	strcpy
 vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	undefined	__check_object_size
 vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	undefined	__arch_copy_from_user
 vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	undefined	debugfs_remove
+vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	defined	__cfi_jt_cleanup_module
@@ -49920,6 +50184,7 @@ vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	undefined	__check_object_size
 vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	undefined	__arch_copy_from_user
 vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	defined	__cfi_jt_cleanup_module
@@ -50011,6 +50276,7 @@ vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	undefined	proc_create_data
 vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	undefined	remove_proc_entry
 vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	undefined	dma_free_attrs
 vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	defined	tzdbg_fops
 vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	defined	__cfi_jt_init_module
@@ -50079,6 +50345,7 @@ vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	undefined	kmem_cache_alloc_tra
 vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	undefined	__list_add_valid
 vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	undefined	cancel_work_sync
 vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	defined	__cfi_jt_cleanup_module
@@ -50310,6 +50577,7 @@ vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	undefined	ufshcd_pltfrm_runtime
 vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	undefined	ufshcd_pltfrm_suspend
 vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	undefined	ufshcd_pltfrm_resume
 vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	defined	ufs_thermal_ops
 vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	defined	__cfi_jt_init_module
@@ -50420,6 +50688,7 @@ vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	undefined	crypto_qti_ke
 vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	undefined	ufshcd_release
 vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	undefined	crypto_qti_keyslot_evict
 vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	undefined	crypto_qti_derive_raw_secret
+vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	defined	__crc_ufshcd_qti_hba_init_crypto_capabilities
 vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	defined	ufshcd_crypto_qti_derive_raw_secret$37146d40067c11e25804cfabc52641f6.cfi_jt
@@ -50501,6 +50770,7 @@ vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	undefined	config_ep_by_speed
 vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	undefined	usb_ep_enable
 vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	undefined	usb_ep_disable
 vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	undefined	usb_function_unregister
+vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	defined	__cfi_jt_cleanup_module
@@ -50650,6 +50920,7 @@ vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	defined	usb_cser_write_comple
 vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	defined	port_complete_set_line_coding$94c3747b6c276f8f7191513fbaf779a3
 vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	undefined	usb_ep_set_halt
 vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	undefined	usb_function_unregister
+vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	defined	__cfi_jt_cleanup_module
@@ -50785,6 +51056,7 @@ vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	undefined	usb_ep_disable
 vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	undefined	__dynamic_dev_dbg
 vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	undefined	iounmap
 vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	undefined	usb_function_unregister
+vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	defined	__cfi_jt_cleanup_module
@@ -50977,6 +51249,7 @@ vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	undefined	destroy_workqueue
 vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	undefined	usb_function_unregister
 vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	undefined	unregister_chrdev_region
 vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	undefined	debugfs_remove
+vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	defined	__cfi_jt_cleanup_module
@@ -51115,6 +51388,7 @@ vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	undefined	usb_ep_disable
 vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	undefined	ipc_log_context_destroy
 vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	undefined	usb_function_unregister
 vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	undefined	destroy_workqueue
+vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	defined	__cfi_jt_cleanup_module
@@ -51184,6 +51458,7 @@ vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	undefined	kmem_cache_alloc_tra
 vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	undefined	__kmalloc
 vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	defined	usbip_init_eh
 vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	defined	usbip_finish_eh
+vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	defined	usbip_debug_flag
 vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	defined	__this_module
@@ -51311,6 +51586,7 @@ vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	undefined	__cfi_slowpath
 vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	undefined	__put_task_struct
 vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	undefined	refcount_warn_saturate
 vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	undefined	usb_gadget_udc_reset
+vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	undefined	kmalloc_caches
 vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	undefined	arm64_const_caps_ready
@@ -51426,6 +51702,7 @@ vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	undefined	mutex_lock
 vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	undefined	regulator_bulk_disable
 vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	undefined	mutex_unlock
 vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	defined	__cfi_jt_cleanup_module
@@ -51460,6 +51737,7 @@ vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	undefined	pm_runtime_force
 vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	undefined	qcom_cc_runtime_suspend
 vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	undefined	qcom_cc_runtime_resume
 vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	defined	__cfi_jt_cleanup_module
@@ -51624,6 +51902,7 @@ vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	defined	wcd937x_suspend$150
 vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	defined	wcd937x_resume$15060a5f378375764860780534ff45e3
 vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	undefined	msm_cdc_disable_ondemand_supply
 vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	defined	tx_master_ch_text
 vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	defined	tx_master_ch_enum
@@ -51836,6 +52115,7 @@ vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	undefined	__arch_copy_
 vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	undefined	debugfs_remove
 vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	undefined	component_del
 vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	undefined	swr_driver_unregister
+vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	defined	__cfi_jt_cleanup_module
@@ -52024,6 +52304,7 @@ vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	defined	wcd938x_resume$1fb7
 vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	undefined	msm_cdc_disable_ondemand_supply
 vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	undefined	msm_cdc_set_supplies_lpm_mode
 vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	undefined	platform_driver_unregister
+vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	defined	tx_master_ch_text
 vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	defined	tx_master_ch_enum
@@ -52240,6 +52521,7 @@ vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	undefined	debugfs_remo
 vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	undefined	component_del
 vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	undefined	swr_remove_device
 vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	undefined	swr_driver_unregister
+vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	defined	__cfi_jt_cleanup_module
@@ -52283,6 +52565,7 @@ vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	defined	wcd_clsh_state_hph_e
 vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	undefined	snprintf
 vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	undefined	strlcat
 vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	undefined	usleep_range
+vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	defined	wcdcal_get_fw_cal
 vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	undefined	printk
@@ -52384,6 +52667,7 @@ vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	cleanup_module
 vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	msm_cdc_pinctrl_drv_init
 vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	undefined	printk
 vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	msm_cdc_pinctrl_drv_exit
+vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	defined	__cfi_jt_cleanup_module
@@ -52656,6 +52940,7 @@ vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	__wlan_hdd_validate_conte
 vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	cds_get_gfp_flags
 vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	undefined	cfg80211_external_auth_request
 vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	qdf_mem_cmp
+vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	undefined	bcmp
 vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	ccp_wpa_oui00
@@ -72307,6 +72592,7 @@ vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	defined	__cfi_jt_end
 vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	defined	init_module
 vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	undefined	of_find_node_with_property
 vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	undefined	of_device_is_available
+vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	defined	wlfw_ind_register_req_msg_v01_ei
 vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	undefined	qmi_response_type_v01_ei
@@ -72634,6 +72920,7 @@ vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	defined	wsa883x_swr_suspend
 vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	defined	wsa883x_swr_resume$14f846fe77b5f6b9361f50eff6a87afa
 vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	undefined	msm_cdc_set_supplies_lpm_mode
 vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	undefined	swr_driver_unregister
+vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	defined	__cfi_jt_cleanup_module
@@ -72740,6 +73027,7 @@ vendor_dlkm_a	lib/modules/zram.ko	76440	yes	undefined	__cpuhp_state_remove_insta
 vendor_dlkm_a	lib/modules/zram.ko	76440	yes	undefined	kmem_cache_alloc_trace
 vendor_dlkm_a	lib/modules/zram.ko	76440	yes	undefined	__alloc_percpu
 vendor_dlkm_a	lib/modules/zram.ko	76440	yes	undefined	__cpuhp_state_add_instance
+vendor_dlkm_a	lib/modules/zram.ko	76440	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/zram.ko	76440	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/zram.ko	76440	yes	undefined	__per_cpu_offset
 vendor_dlkm_a	lib/modules/zram.ko	76440	yes	undefined	kmalloc_caches
@@ -72939,6 +73227,7 @@ vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	undefined	init_pseudo
 vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	undefined	__cpuhp_setup_state
 vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	undefined	kern_unmount
 vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	undefined	__cpuhp_remove_state
+vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	defined	__cfi_check_fail
 vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	defined	__cfi_check
 vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	defined	__cfi_jt_init_module
 vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	defined	__cfi_jt_cleanup_module

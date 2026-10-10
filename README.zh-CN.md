@@ -64,6 +64,7 @@ super 镜像包含动态分区。其中没有 `boot`、`vendor_boot` 与内核�
 - `data/kernel/`：289 个内核模块的 `.modinfo` 字段（`modules.tsv`）与全局符号（`symbols.tsv`），是第 06 页的依据。
 - `data/subsystems/<子系统>/`：每个子系统的角色表（`roles.tsv`）与附证据的结论（`claims.json`）。
 - `data/gpu/uncovered_candidates.json`：首轮 GPU 完整性检查返回的文件清单。
+- `tools/superunpack.go`：用于拆分 super 镜像的解包器。它以流式方式输出各逻辑分区，并依据 LP 元数据进行校验。
 - `tools/`：解包与检查所用的 Go 工具，构建方法见 `tools/README.md`。
 
 ## 证据标注
