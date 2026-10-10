@@ -1,0 +1,211 @@
+{
+ "apk": "system_a/system/priv-app/DownloadProvider/DownloadProvider.apk",
+ "package": "com.android.providers.downloads",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.media",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "465983f7791f2abeb43ea2cbdc7f21a8260b72bc08a55c839fc1a43bc741a81e"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 3,
+   "items": [
+    {
+     "name": ".DownloadJobService",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".DownloadIdleService",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".MediaScanTriggerJob",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".DownloadReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.UID_REMOVED"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "android.intent.action.MEDIA_MOUNTED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 2,
+   "items": [
+    {
+     "name": ".DownloadProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".DownloadStorageProvider",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_DOCUMENTS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.content.action.DOCUMENTS_PROVIDER"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 18,
+  "items": [
+   "android.permission.ACCESS_ALL_DOWNLOADS",
+   "android.permission.ACCESS_CACHE_FILESYSTEM",
+   "android.permission.ACCESS_DOWNLOAD_MANAGER",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.CLEAR_APP_CACHE",
+   "android.permission.CONNECTIVITY_INTERNAL",
+   "android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS",
+   "android.permission.INTERNET",
+   "android.permission.MANAGE_EXTERNAL_STORAGE",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS",
+   "android.permission.START_ACTIVITIES_FROM_BACKGROUND",
+   "android.permission.UPDATE_APP_OPS_STATS",
+   "android.permission.UPDATE_DEVICE_STATS",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "android.permission.WRITE_MEDIA_STORAGE"
+  ]
+ },
+ "declared_permissions": {
+  "count": 6,
+  "items": [
+   {
+    "name": "android.permission.ACCESS_DOWNLOAD_MANAGER",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "android.permission.DOWNLOAD_CACHE_NON_PURGEABLE",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+    "protection": "0x00000000"
+   },
+   {
+    "name": "android.permission.ACCESS_ALL_DOWNLOADS",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 334,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    298
+   ],
+   [
+    "com.android.providers",
+    36
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 12,
+   "items": [
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.DOWNLOAD_CANCEL",
+    "android.intent.action.DOWNLOAD_COMPLETE",
+    "android.intent.action.DOWNLOAD_COMPLETED",
+    "android.intent.action.DOWNLOAD_HIDE",
+    "android.intent.action.DOWNLOAD_LIST",
+    "android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED",
+    "android.intent.action.DOWNLOAD_OPEN",
+    "android.intent.action.MEDIA_MOUNTED",
+    "android.intent.action.MEDIA_SCANNER_SCAN_FILE",
+    "android.intent.action.UID_REMOVED",
+    "android.intent.action.VIEW"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "android.permission.INTERNET"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

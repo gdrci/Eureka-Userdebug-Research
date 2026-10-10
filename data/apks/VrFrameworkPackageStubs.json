@@ -1,0 +1,254 @@
+{
+ "apk": "system_ext_a/app/VrFrameworkPackageStubs/VrFrameworkPackageStubs.apk",
+ "package": "com.meta.frameworkpackagestubs",
+ "version_name": "1.0.1",
+ "version_code": "1",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 4,
+   "items": [
+    {
+     "name": ".Stubs$MediaStub",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.BROWSABLE"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.BROWSABLE"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.PICK"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.BROWSABLE"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.PICK",
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.PICK",
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": ".Stubs$DeskClockStub",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.SET_ALARM"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.SET_TIMER"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.SHOW_ALARMS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.DISMISS_ALARM"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.SHOW_TIMERS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.SNOOZE_ALARM"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": ".Stubs$CalendarStub",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.EDIT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": ".Stubs$ContactsStub",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.GET_CONTENT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.PICK"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 6,
+  "top_prefixes": [
+   [
+    "com.meta.frameworkpackagestubs",
+    6
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

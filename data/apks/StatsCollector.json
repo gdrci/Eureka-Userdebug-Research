@@ -1,0 +1,260 @@
+{
+ "apk": "system_ext_a/priv-app/StatsCollector/StatsCollector.apk",
+ "package": "com.oculus.statscollector",
+ "version_name": "1.0",
+ "version_code": "1",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 5,
+   "items": [
+    {
+     "name": "com.oculus.statscollector.StatsCollectorJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.statscollector.StatsdManager$ReceiverIntentService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.statscollector.PowerStatsCollector",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.statscollector.SetStatsdConfigService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.statscollector.DumpBatteryStatsJob",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.statscollector.BootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.LOCKED_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 6,
+  "items": [
+   "android.permission.DUMP",
+   "android.permission.PACKAGE_USAGE_STATS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.oculus.messagequeue.doctor"
+ ],
+ "classes": {
+  "count": 3306,
+  "top_prefixes": [
+   [
+    "com.android.os",
+    2165
+   ],
+   [
+    "com.google.protobuf",
+    158
+   ],
+   [
+    "android.support.v4",
+    109
+   ],
+   [
+    "com.android.internal",
+    100
+   ],
+   [
+    "android.stats.connectivity",
+    54
+   ],
+   [
+    "android.stats.docsui",
+    39
+   ],
+   [
+    "android.stats.dnsresolver",
+    35
+   ],
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "android.server.location",
+    33
+   ],
+   [
+    "android.stats.mediametrics",
+    33
+   ],
+   [
+    "com.oculus.statscollector",
+    32
+   ],
+   [
+    "android.stats.location",
+    30
+   ],
+   [
+    "android.stats.launcher",
+    24
+   ],
+   [
+    "com.android.server",
+    21
+   ],
+   [
+    "android.stats.mediametrics_message",
+    20
+   ],
+   [
+    "android.bluetooth.hci",
+    18
+   ],
+   [
+    "android.stats.hdmi",
+    18
+   ],
+   [
+    "android.app.settings",
+    15
+   ],
+   [
+    "android.hardware.biometrics",
+    12
+   ],
+   [
+    "android.service.procstats",
+    12
+   ],
+   [
+    "android.stats.style",
+    12
+   ],
+   [
+    "android.arch.lifecycle",
+    11
+   ],
+   [
+    "android.hardware.health",
+    10
+   ],
+   [
+    "android.net.wifi",
+    9
+   ],
+   [
+    "android.stats.accessibility",
+    9
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 9,
+   "items": [
+    "android.intent.action.ACTION_POWER_CONNECTED",
+    "android.intent.action.ACTION_POWER_DISCONNECTED",
+    "android.intent.action.ACTION_SHUTDOWN",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.BATTERY_LOW",
+    "android.intent.action.LOCKED_BOOT_COMPLETED",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SCREEN_ON",
+    "com.oculus.messagequeue.doctor"
+   ]
+  },
+  "system_properties": {
+   "count": 2,
+   "items": [
+    "debug.oculus.mqd.off",
+    "ro.board.platform"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

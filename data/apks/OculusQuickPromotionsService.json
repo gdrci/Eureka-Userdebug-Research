@@ -1,0 +1,515 @@
+{
+ "apk": "system_ext_a/app/OculusQuickPromotionsService/OculusQuickPromotionsService.apk",
+ "package": "com.oculus.quickpromotionservice",
+ "version_name": "71.0.0.620.696",
+ "version_code": "665330813",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 8,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.quickpromotionservice.QuickPromotionService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":QuickPromotion",
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.quickpromotionservice.api.aidl.MAIN"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 3,
+   "items": [
+    {
+     "name": "androidx.profileinstaller.ProfileInstallReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.profileinstaller.action.INSTALL_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SKIP_FILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SAVE_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_SET_CLIENT_VALUES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientDebugReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_EXPORT_CLIENT_ACCESS_LOG"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "androidx.startup.InitializationProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.INTERNET",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE_DEBUG",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.quickpromotionservice.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.quickpromotionservice.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "androidx.profileinstaller.ProfileInstallerInitializer",
+  "com.facebook.build_id",
+  "com.facebook.build_rule",
+  "com.facebook.build_time",
+  "com.facebook.package_type",
+  "com.facebook.versioncontrol.branch",
+  "com.facebook.versioncontrol.revision",
+  "com.google.android.ALLOW_PHISHING_DETECTION",
+  "com.oculus.auth.fbpermission.USE_ACCOUNTS_META",
+  "com.oculus.auth.fbpermission.USE_ACCOUNTS_OCULUS",
+  "com.oculus.deviceconfig.PARAMS_MAP_PATH",
+  "com.oculus.lazy_gpumem_allocation",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 2196,
+  "top_prefixes": [
+   [
+    "com.oculus.graphql",
+    368
+   ],
+   [
+    "com.oculus.quickpromotion",
+    208
+   ],
+   [
+    "com.fasterxml.jackson",
+    139
+   ],
+   [
+    "com.oculus.deviceconfigclient",
+    131
+   ],
+   [
+    "com.facebook.secure",
+    109
+   ],
+   [
+    "com.facebook.quicklog",
+    94
+   ],
+   [
+    "com.facebook.quickpromotion",
+    75
+   ],
+   [
+    "com.google.common",
+    69
+   ],
+   [
+    "kotlinx.coroutines.internal",
+    46
+   ],
+   [
+    "okhttp3.internal.http2",
+    35
+   ],
+   [
+    "com.facebook.graphql",
+    35
+   ],
+   [
+    "kotlin.jvm.internal",
+    34
+   ],
+   [
+    "com.facebook.mobileconfigservice",
+    32
+   ],
+   [
+    "com.oculus.aidl",
+    30
+   ],
+   [
+    "com.facebook.inject",
+    25
+   ],
+   [
+    "kotlin.collections.builders",
+    23
+   ],
+   [
+    "kotlin.jvm.functions",
+    23
+   ],
+   [
+    "com.facebook.common",
+    18
+   ],
+   [
+    "kotlin.collections.unsigned",
+    15
+   ],
+   [
+    "okhttp3.internal.connection",
+    15
+   ],
+   [
+    "kotlinx.coroutines.scheduling",
+    14
+   ],
+   [
+    "okhttp3.internal.http",
+    12
+   ],
+   [
+    "com.oculus.deviceconfigservice",
+    12
+   ],
+   [
+    "com.oculus.http",
+    12
+   ],
+   [
+    "kotlin.coroutines.jvm",
+    10
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 287,
+   "items": [
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.net.http.X509TrustManagerExtensions",
+    "com.meta.CodecAvatarSmile",
+    "com.meta.WorkspaceTemplateApp",
+    "com.meta.aether.apps.experiments.hca",
+    "com.meta.aether.ar_apps.experiments.playground",
+    "com.meta.ar.ArPlayground",
+    "com.meta.ar.Camera",
+    "com.meta.ar.Gallery",
+    "com.meta.ar.arcalling",
+    "com.meta.ar.arcellularexperience",
+    "com.meta.ar.ards",
+    "com.meta.ar.arguidebook",
+    "com.meta.ar.arlego",
+    "com.meta.ar.arshellux",
+    "com.meta.ar.arwhatsapp",
+    "com.meta.ar.augmentedig",
+    "com.meta.ar.avatars",
+    "com.meta.ar.awe",
+    "com.meta.ar.browser",
+    "com.meta.ar.bugreporter",
+    "com.meta.ar.codecdemo",
+    "com.meta.ar.copresence",
+    "com.meta.ar.endtoenddiagnostics",
+    "com.meta.ar.fbns",
+    "com.meta.ar.felios.playground",
+    "com.meta.ar.helixfusion",
+    "com.meta.ar.helixproxy",
+    "com.meta.ar.helixserver",
+    "com.meta.ar.iris.messenger",
+    "com.meta.ar.iris.umami",
+    "com.meta.ar.iris.workchat",
+    "com.meta.ar.magicframe",
+    "com.meta.ar.metaai",
+    "com.meta.ar.modelviewer",
+    "com.meta.ar.mrhorizonshortcuts",
+    "com.meta.ar.msysservice",
+    "com.meta.ar.music",
+    "com.meta.ar.peoplehub",
+    "com.meta.ar.playtorch",
+    "com.meta.ar.reactarplayground",
+    "com.meta.ar.settings",
+    "com.meta.ar.spark_experience.artisan",
+    "com.meta.ar.spark_experience.augment_api_example_experience",
+    "com.meta.ar.spark_experience.boxing",
+    "com.meta.ar.spark_experience.chess_v3",
+    "com.meta.ar.spark_experience.flippy_blocks",
+    "com.meta.ar.spark_experience.lines",
+    "com.meta.ar.spark_experience.pong",
+    "com.meta.ar.spark_experience.shooter",
+    "com.meta.ar.sparkexperiencerunnertemplate",
+    "com.meta.ar.stocks",
+    "com.meta.ar.vraugmentpack.asgardswrath2",
+    "com.meta.ar.vraugmentpack.beatsaber",
+    "com.meta.ar.vraugmentpack.populationone",
+    "com.meta.ar.vraugmentpack.superhot",
+    "com.meta.ar.vraugmentpack.supernatural",
+    "com.meta.ar.wasabi.service",
+    "com.meta.ar.wasabi.service.devapp",
+    "com.meta.ar.worldunderstandingcoapp",
+    "com.meta.automation.cowter.vr",
+    "com.meta.automation.pauldron.vr",
+    "com.meta.codecavatar.workspace",
+    "com.meta.conductor.coca",
+    "com.meta.federatedcomputing.oculus",
+    "com.meta.greenhouse",
+    "com.meta.handseducationmodule",
+    "com.meta.horizon.standalone.demo",
+    "com.meta.horizon.standalone.dev",
+    "com.meta.iap.sample",
+    "com.meta.imeiqrreader",
+    "com.meta.metasdksample",
+    "com.meta.mocklocationtool",
+    "com.meta.mr.awe",
+    "com.meta.pclink.arkio",
+    "com.meta.pclink.gravitysketch",
+    "com.meta.pclink.quill",
+    "com.meta.pclink.quill_proto",
+    "com.meta.pclink.quill_proto_quest2",
+    "com.meta.pclink.quill_proto_quest3",
+    "com.meta.pclink.quill_proto_questpro",
+    "com.meta.pclink.substance3dmodeler",
+    "com.meta.pclinkservice.server",
+    "com.meta.portal.sdk.app",
+    "com.meta.proximity.service",
+    "com.meta.quest_hard_link",
+    "com.meta.rl.trust.service",
+    "com.meta.samples.Aura",
+    "com.meta.samples.MetaXRAudioSDK",
+    "com.meta.samples.dodgearcade",
+    "com.meta.shellavatar",
+    "com.meta.testing",
+    "com.meta.transport",
+    "com.meta.wearable.aiextensibility.samples.aiactions",
+    "com.meta.wearable.mfgapp",
+    "com.meta.wirelessinsight",
+    "com.meta.work.workds.gallery",
+    "com.meta.worlds.stable",
+    "com.meta.wrist.os.power.scenariotracker",
+    "com.meta.wrist.os.sdk.resources",
+    "com.meta.xrbody.dogfooding",
+    "com.meta.xrmark",
+    "com.meta.xrteleporter",
+    "com.oculus.HapticsStudio",
+    "com.oculus.LucidApp",
+    "com.oculus.MrcCameraCalibration",
+    "com.oculus.accessibility",
+    "com.oculus.accountscenter",
+    "com.oculus.aidl.quickpromotion.service.IQuickPromotionProvider",
+    "com.oculus.aidl.quickpromotion.service.IQuickPromotionProviderCallback",
+    "com.oculus.appautomation",
+    "com.oculus.appsafety",
+    "com.oculus.asrservice",
+    "com.oculus.assistant",
+    "com.oculus.assistant.QUEUE_MIC_LOG",
+    "com.oculus.authtester",
+    "com.oculus.avatareditor",
+    "com.oculus.backuptransportservice",
+    "com.oculus.bodyapiservice",
+    "com.oculus.browser",
+    "com.oculus.bugreporter",
+    "com.oculus.bugreportservice",
+    "com.oculus.calendar",
+    "com.oculus.calibration.inspector",
+    "com.oculus.captionservice",
+    "com.oculus.captis",
+    "com.oculus.companion.server",
+    "com.oculus.configuration",
+    "com.oculus.consentplatform",
+    "com.oculus.cvp",
+    "com.oculus.dais",
+    "com.oculus.dalmorevr",
+    "com.oculus.democi",
+    "com.oculus.deviceauthserver",
+    "com.oculus.devicecerttest",
+    "com.oculus.deviceconfigtest",
+    "com.oculus.deviceidentitytest",
+    "com.oculus.dynamicfpstester",
+    "com.oculus.explore",
+    "com.oculus.explore.intent.action.LAUNCHED",
+    "com.oculus.externalstorage",
+    "com.oculus.extrapermissions.SPATIAL_DATA_PERMISSION_RESULT",
+    "com.oculus.facebook",
+    "com.oculus.firsttimenux",
+    "com.oculus.fitnesstracker",
+    "com.oculus.gamingactivity",
+    "com.oculus.gatekeeperservice",
+    "com.oculus.gemini.unifiedtelemetry",
+    "com.oculus.gemini.upload",
+    "com.oculus.govrnux",
+    "com.oculus.guardian",
+    "com.oculus.guardiansetup",
+    "com.oculus.guidebook",
+    "com.oculus.handshotfixservice",
+    "com.oculus.headsetsfx",
+    "com.oculus.helpcenter",
+    "com.oculus.home",
+    "com.oculus.horizon",
+    "com.oculus.horizon.dev",
+    "com.oculus.horizonmediaplayer",
+    "com.oculus.identitymanagement.service",
+    "com.oculus.igvr",
+    "com.oculus.inputinjectionservice",
+    "com.oculus.inputmethod.pacific",
+    "com.oculus.insightstester",
+    "com.oculus.integrity",
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.license",
+    "com.oculus.linefrequencyservice",
+    "com.oculus.livingroom",
+    "com.oculus.location.geocoder",
+    "com.oculus.loneechoavalanche",
+    "com.oculus.magiccarpetmr",
+    "com.oculus.magicislandcastingservice",
+    "com.oculus.marc",
+    "com.oculus.mediaplayer",
+    "com.oculus.memorytester",
+    "com.oculus.metacam",
+    "com.oculus.mfgapp",
+    "com.oculus.micservice",
+    "com.oculus.mobile_mrc_setup",
+    "com.oculus.mrdp.server",
+    "com.oculus.mrds",
+    "com.oculus.mrservice",
+    "com.oculus.notification_proxy",
+    "com.oculus.nux.ota",
+    "com.oculus.ocms",
+    "com.oculus.oculusrelengexample",
+    "com.oculus.oemconfig",
+    "com.oculus.os.blescanservice",
+    "com.oculus.os.chargecontrol",
+    "com.oculus.os.clearactivity",
+    "com.oculus.os.cm",
+    "com.oculus.os.dialoghost",
+    "com.oculus.os.dialoglauncher",
+    "com.oculus.os.flashdriverecording",
+    "com.oculus.os.logcollector",
+    "com.oculus.os.logviewer"
+   ]
+  },
+  "system_properties": {
+   "count": 11,
+   "items": [
+    "debug.fbsystrace.force_java",
+    "debug.fbsystrace.tags",
+    "debug.fbsystrace.trace_load",
+    "debug.qpl.output_to_logcat",
+    "persist.fb.running_e2e",
+    "persist.ovr.deviceconfig.svc",
+    "persist.ovr.e2e.http_proxy",
+    "persist.ovr.e2e.running",
+    "persist.ovr.e2e.sandbox_url",
+    "persist.ovr.e2e.x2p_proxy_url",
+    "vendor.qti.hardware.cacert.server"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 2,
+   "items": [
+    "com.oculus.aidl.quickpromotion.service.IQuickPromotionProvider",
+    "com.oculus.aidl.quickpromotion.service.IQuickPromotionProviderCallback"
+   ]
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://com.facebook.mobileconfigservice.contentprovider"
+   ]
+  }
+ }
+}

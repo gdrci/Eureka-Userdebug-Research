@@ -1,0 +1,479 @@
+{
+ "apk": "system_ext_a/priv-app/QuestManagedProvisioning/QuestManagedProvisioning.apk",
+ "package": "com.android.managedprovisioning",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 12,
+   "items": [
+    {
+     "name": "com.android.managedprovisioning.provisioning.ProvisioningActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.provisioning.AdminIntegratedFlowPrepareActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.preprovisioning.PreProvisioningActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.PROVISION_MANAGED_PROFILE",
+        "android.app.action.PROVISION_MANAGED_DEVICE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.provisioning.ResetAndReturnDeviceActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.preprovisioning.terms.TermsActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.preprovisioning.EncryptDeviceActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.preprovisioning.WebActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": ":webview",
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.TrampolineActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.preprovisioning.PostEncryptionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.HOME",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.finalization.FinalizationInsideSuwActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.PROVISION_FINALIZATION_INSIDE_SUW",
+        "android.app.action.PROVISION_FINALIZATION"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.provisioning.LandingActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.provisioning.FinancedDeviceLandingActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 5,
+   "items": [
+    {
+     "name": "com.android.managedprovisioning.provisioning.SilentDeviceOwnerProvisioningService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.provisioning.ProvisioningService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.finalization.SendDpcBroadcastService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.ota.OtaService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.managedprovisioning.analytics.ProcessMetricsJobService",
+     "exported": null,
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 5,
+   "items": [
+    {
+     "name": "com.android.managedprovisioning.provisioning.SilentDeviceOwnerProvisioningReceiver",
+     "exported": "true",
+     "permission": "android.permission.PROVISION_MANAGED_DEVICE_SILENTLY",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.PROVISION_MANAGED_DEVICE_SILENTLY"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.BootReminder",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.ota.PreBootListener",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PRE_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.manageduser.ManagedUserCreationListener",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.MANAGED_USER_CREATED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.managedprovisioning.manageduser.ManagedUserRemovalListener",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.USER_REMOVED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 39,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_PDB_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.BIND_DEVICE_ADMIN",
+   "android.permission.CHANGE_COMPONENT_ENABLED_STATE",
+   "android.permission.CHANGE_CONFIGURATION",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.CONFIGURE_INTERACT_ACROSS_PROFILES",
+   "android.permission.CRYPT_KEEPER",
+   "android.permission.DELETE_PACKAGES",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS",
+   "android.permission.INSTALL_PACKAGES",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.INTERNET",
+   "android.permission.MANAGE_ACCOUNTS",
+   "android.permission.MANAGE_APP_OPS_MODES",
+   "android.permission.MANAGE_DEVICE_ADMINS",
+   "android.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS",
+   "android.permission.MANAGE_USERS",
+   "android.permission.MARK_DEVICE_ORGANIZATION_OWNED",
+   "android.permission.MASTER_CLEAR",
+   "android.permission.NETWORK_MANAGED_PROVISIONING",
+   "android.permission.NFC",
+   "android.permission.PEERS_MAC_ADDRESS",
+   "android.permission.PERFORM_CDMA_PROVISIONING",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.SET_TIME",
+   "android.permission.SET_TIME_ZONE",
+   "android.permission.SHUTDOWN",
+   "android.permission.START_ACTIVITIES_FROM_BACKGROUND",
+   "android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND",
+   "android.permission.USE_COLORIZED_NOTIFICATIONS",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "android.permission.WRITE_SETTINGS",
+   "com.google.android.setupwizard.SETUP_COMPAT_SERVICE"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "android.permission.PROVISION_MANAGED_DEVICE_SILENTLY",
+    "protection": "0x00000402"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 2656,
+  "top_prefixes": [
+   [
+    "com.google.android",
+    573
+   ],
+   [
+    "com.android.managedprovisioning",
+    321
+   ],
+   [
+    "com.airbnb.lottie",
+    226
+   ],
+   [
+    "androidx.appcompat.widget",
+    166
+   ],
+   [
+    "com.google.protobuf",
+    159
+   ],
+   [
+    "androidx.fragment.app",
+    127
+   ],
+   [
+    "androidx.recyclerview.widget",
+    112
+   ],
+   [
+    "androidx.core.view",
+    97
+   ],
+   [
+    "androidx.appcompat.app",
+    65
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "android.support.v4",
+    50
+   ],
+   [
+    "androidx.constraintlayout.solver",
+    50
+   ],
+   [
+    "org.chromium.support_lib_boundary",
+    27
+   ],
+   [
+    "androidx.constraintlayout.widget",
+    26
+   ],
+   [
+    "androidx.core.content",
+    25
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    21
+   ],
+   [
+    "androidx.core.app",
+    19
+   ],
+   [
+    "androidx.appcompat.graphics",
+    16
+   ],
+   [
+    "androidx.core.text",
+    16
+   ],
+   [
+    "androidx.activity.result",
+    15
+   ],
+   [
+    "androidx.arch.core",
+    14
+   ],
+   [
+    "androidx.coordinatorlayout.widget",
+    13
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 15,
+   "items": [
+    "android.intent.action.DOWNLOAD_COMPLETE",
+    "android.intent.action.MAIN",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PRE_BOOT_COMPLETED",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEARCH",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.USER_REMOVED",
+    "android.intent.action.USER_UNLOCKED",
+    "android.net.wifi.PICK_WIFI_NETWORK",
+    "com.android.managedprovisioning.action.RESUME_PROVISIONING",
+    "com.android.setupwizard.action.PARTNER_CUSTOMIZATION",
+    "com.oculus.q4bservice.EXTRA_META_PROVISIONING_IS_AUTOMATED"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "persist.sys.no_req_encrypt"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

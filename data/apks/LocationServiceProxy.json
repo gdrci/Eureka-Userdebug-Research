@@ -1,0 +1,110 @@
+{
+ "apk": "system_ext_a/priv-app/LocationServiceProxy/LocationServiceProxy.apk",
+ "package": "com.facebook.wearable.system.location.proxy",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".providers.LocationProviderService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.location.service.v3.NetworkLocationProvider",
+        "com.android.location.service.v2.NetworkLocationProvider",
+        "com.android.location.service.FusedLocationProvider"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.INSTALL_LOCATION_PROVIDER",
+   "android.permission.LOCATION_HARDWARE",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "com.android.settings.INJECT_SETTINGS",
+   "com.android.settings.NETWORK_SETTINGS",
+   "com.facebook.wearable.sdk.location.permission.ACCESS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "serviceIsMultiuser",
+  "serviceVersion"
+ ],
+ "classes": {
+  "count": 41,
+  "top_prefixes": [
+   [
+    "com.facebook.wearable",
+    40
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

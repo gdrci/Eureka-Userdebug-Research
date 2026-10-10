@@ -1,0 +1,297 @@
+{
+ "apk": "system_a/system/priv-app/MrServiceEureka/MrServiceEureka.apk",
+ "package": "com.oculus.mrservice",
+ "version_name": "71.0.0.605.498",
+ "version_code": "665334866",
+ "min_sdk": "24",
+ "target_sdk": null,
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 10,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libarvr_libraries_perception_sensor_calibration_io_thrift_if_scio-cpp2-autoconv.so",
+    "size": 21144
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_libraries_perception_thrift_base_types-cpp2-autoconv.so",
+    "size": 4744
+   },
+   {
+    "path": "lib/arm64-v8a/libc++_shared.so",
+    "size": 355200
+   },
+   {
+    "path": "lib/arm64-v8a/libdouble-conversion.so",
+    "size": 3864
+   },
+   {
+    "path": "lib/arm64-v8a/libloaderimpl.so",
+    "size": 265120
+   },
+   {
+    "path": "lib/arm64-v8a/libmrservice.so",
+    "size": 3437888
+   },
+   {
+    "path": "lib/arm64-v8a/libmrservice_plugin.so",
+    "size": 700576
+   },
+   {
+    "path": "lib/arm64-v8a/libopenxr_loader.so",
+    "size": 172640
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executorAndroid.so",
+    "size": 16848
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_secure_lib_secure_string.so",
+    "size": 3376
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.mrservice.StartActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "com.oculus.mrservice",
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.mrservice.MrService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "com.oculus.mrservice",
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.mrservice.MrServiceBroadcastReceiver",
+     "exported": null,
+     "permission": null,
+     "enabled": "true",
+     "process": "com.oculus.mrservice",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "com.oculus.action.VRUI_STARTMRSERVICE"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 23,
+  "items": [
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.UPDATE_APP_OPS_STATS",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "com.oculus.permission.ACCESS_BACKGROUND_HEAD_TRACKING",
+   "com.oculus.permission.ACCESS_CAMERA_DATA",
+   "com.oculus.permission.ACCESS_TRACKING_ENV",
+   "com.oculus.permission.ALLOW_UID_HIGH_PRIORITY",
+   "com.oculus.permission.INTERACT_ACROSS_USERS",
+   "com.oculus.permission.READ_FOCUS_STATE",
+   "com.oculus.permission.READ_ONLINE_CALIBRATION",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.SECURE_TRACKING_SERVICE",
+   "com.oculus.permission.SET_VR_DEVICE_PARAMS",
+   "com.oculus.permission.USE_ANCHOR_API",
+   "com.oculus.permission.USE_CUSTOM_PROFILES",
+   "com.oculus.permission.USE_SCENE",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.vrshell.OVERLAY_HOST"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "android.hardware.vr.headtracking"
+ ],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.custom_profiles",
+  "com.oculus.messagequeue.doctor",
+  "com.oculus.persistent_service",
+  "com.oculus.supportedDevices",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 277,
+  "top_prefixes": [
+   [
+    "com.facebook.a",
+    40
+   ],
+   [
+    "com.facebook.infer",
+    36
+   ],
+   [
+    "org.intellij.lang",
+    24
+   ],
+   [
+    "org.jetbrains.annotations",
+    7
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "javax.annotation.meta",
+    6
+   ],
+   [
+    "kotlin.jvm.internal",
+    6
+   ],
+   [
+    "com.facebook.proguard",
+    4
+   ],
+   [
+    "com.oculus.mrservice",
+    4
+   ],
+   [
+    "javax.annotation.concurrent",
+    4
+   ],
+   [
+    "kotlin.annotations.jvm",
+    4
+   ],
+   [
+    "com.oculus.libloaderimpl",
+    1
+   ],
+   [
+    "javax.annotation.CheckForNull",
+    1
+   ],
+   [
+    "javax.annotation.CheckForSigned",
+    1
+   ],
+   [
+    "javax.annotation.CheckReturnValue",
+    1
+   ],
+   [
+    "javax.annotation.Detainted",
+    1
+   ],
+   [
+    "javax.annotation.MatchesPattern",
+    1
+   ],
+   [
+    "javax.annotation.Nonnegative",
+    1
+   ],
+   [
+    "javax.annotation.Nonnull",
+    1
+   ],
+   [
+    "javax.annotation.Nullable",
+    1
+   ],
+   [
+    "javax.annotation.OverridingMethodsMustInvokeSuper",
+    1
+   ],
+   [
+    "javax.annotation.ParametersAreNonnullByDefault",
+    1
+   ],
+   [
+    "javax.annotation.ParametersAreNullableByDefault",
+    1
+   ],
+   [
+    "javax.annotation.PropertyKey",
+    1
+   ],
+   [
+    "javax.annotation.RegEx",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 4,
+   "items": [
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.mrservice.JsonCmdBroadcast",
+    "com.oculus.mrservice.MrService"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "debug.oculus.mqd.off"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

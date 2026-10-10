@@ -49,7 +49,7 @@ The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](
 
 ## Behaviour and applications
 
-Two pages are built from the image's files but are not inventory subsystems. [26](26-init-boot-behaviour.md) parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. [27](27-important-apps.md) decodes 22 applications from the apps group (page 20) with androguard; its facts are in `data/apks/`, and the extraction and page-generation scripts are in `tools/apk/`.
+[26](26-init-boot-behaviour.md) and [27](27-important-apps.md) are not inventory subsystems. 26 parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. 27 decodes 22 applications from the apps group (page 20) with androguard. Three subsystem pages also carry generated sections built from the data files: page 06 (module metadata and symbol dependencies, `data/kernel/`), page 20 (the index of all 146 `.apk` files, `data/apks/`) and page 21 (the index of the 1,361 native-library files and their NEEDED graph, `data/elf/`). The readers and generators are in `tools/apk/` and `tools/elfindex/`.
 
 ## How the claims were checked
 
@@ -57,7 +57,7 @@ Each subsystem has a role table and a claims file. A separate pass re-ran each c
 
 ## Reproducing the evidence
 
-`tools/` holds the unpacker, the helper programs and the APK extraction scripts (`tools/apk/`). `tools/README.md` gives the build steps and the variables used by the evidence commands.
+`tools/` holds the unpacker, the helper programs, the APK extraction scripts (`tools/apk/`) and the ELF and module indexer (`tools/elfindex/`). `tools/README.md` gives the build steps and the variables used by the evidence commands.
 
 ## Limits
 

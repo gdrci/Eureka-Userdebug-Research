@@ -1,0 +1,103 @@
+{
+ "apk": "system_ext_a/priv-app/PCLinkService/PCLinkService.apk",
+ "package": "com.meta.pclinkservice.server",
+ "version_name": "0.0.0.0.193",
+ "version_code": "632445057",
+ "min_sdk": "32",
+ "target_sdk": "33",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.meta.pclinkservice.server.PCLinkService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.meta.pclinkservice.server.BIND_TO_SERVER_ACTION"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 5,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.INTERNET",
+   "com.oculus.permission.XRS_OAF_COMMAND",
+   "com.oculus.permission.XRS_OBSERVE_STATE"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.is_stub",
+  "com.oculus.vr.focusaware",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 1,
+  "top_prefixes": [
+   [
+    "com.facebook.buck_generated",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

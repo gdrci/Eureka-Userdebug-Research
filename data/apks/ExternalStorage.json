@@ -1,0 +1,220 @@
+{
+ "apk": "system_ext_a/app/ExternalStorage/ExternalStorage.apk",
+ "package": "com.oculus.externalstorage",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 3,
+ "components": {
+  "activity": {
+   "count": 5,
+   "items": [
+    {
+     "name": "com.oculus.externalstorage.StorageLauncherActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.externalstorage.StorageWizardError",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.externalstorage.StorageWizardFormatConfirm",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.externalstorage.StorageWizardFormatProgress",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.externalstorage.StorageWizardReady",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.externalstorage.OtgReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.hardware.usb.action.USB_DEVICE_ATTACHED",
+        "android.hardware.usb.action.USB_DEVICE_DETACHED",
+        "android.intent.action.BOOT_COMPLETED",
+        "android.os.storage.action.DISK_SCANNED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 3,
+  "items": [
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 153,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    109
+   ],
+   [
+    "com.oculus.externalstorage",
+    24
+   ],
+   [
+    "android.arch.lifecycle",
+    11
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl$1",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcel",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelable",
+    1
+   ],
+   [
+    "oculus.internal.ui",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelParcel",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 3,
+   "items": [
+    "android.intent.action.BOOT_COMPLETED",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.MainActivity"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

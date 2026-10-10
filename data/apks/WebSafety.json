@@ -1,0 +1,216 @@
+{
+ "apk": "system_ext_a/priv-app/WebSafety/WebSafety.apk",
+ "package": "com.oculus.websafety",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 4,
+   "items": [
+    {
+     "name": "com.oculus.websafety.WebSafetyService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.websafety.jobs.BlackholeHashUpdaterJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.websafety.jobs.GsbUpdaterJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.room.MultiInstanceInvalidationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 5,
+  "items": [
+   "android.permission.INTERNET",
+   "android.permission.READ_DEVICE_CONFIG",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.USE_DEVICE_AUTH"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 1689,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    421
+   ],
+   [
+    "com.oculus.websafety",
+    344
+   ],
+   [
+    "com.google.gson",
+    165
+   ],
+   [
+    "android.support.v4",
+    108
+   ],
+   [
+    "com.facebook.secure",
+    61
+   ],
+   [
+    "androidx.recyclerview.widget",
+    60
+   ],
+   [
+    "okhttp3.internal.http2",
+    39
+   ],
+   [
+    "kotlin.jvm.functions",
+    23
+   ],
+   [
+    "androidx.sqlite.db",
+    19
+   ],
+   [
+    "kotlin.jvm.internal",
+    18
+   ],
+   [
+    "okhttp3.internal.connection",
+    16
+   ],
+   [
+    "androidx.core.view",
+    14
+   ],
+   [
+    "androidx.arch.core",
+    12
+   ],
+   [
+    "okhttp3.internal.http",
+    12
+   ],
+   [
+    "androidx.room.util",
+    11
+   ],
+   [
+    "okhttp3.internal.platform",
+    10
+   ],
+   [
+    "okhttp3.internal.http1",
+    8
+   ],
+   [
+    "okhttp3.internal.cache",
+    6
+   ],
+   [
+    "okhttp3.internal.tls",
+    5
+   ],
+   [
+    "androidx.core.app",
+    4
+   ],
+   [
+    "androidx.core.widget",
+    4
+   ],
+   [
+    "com.facebook.common",
+    4
+   ],
+   [
+    "com.facebook.debug",
+    4
+   ],
+   [
+    "androidx.customview.view",
+    3
+   ],
+   [
+    "com.facebook.androidinternals",
+    3
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 2,
+   "items": [
+    "android.net.http.X509TrustManagerExtensions",
+    "com.oculus.websafety.fbpermission.VERIFY_URI"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "ro.debuggable"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

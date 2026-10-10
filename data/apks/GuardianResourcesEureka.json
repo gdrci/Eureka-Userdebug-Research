@@ -1,0 +1,79 @@
+{
+ "apk": "system_a/system/app/GuardianResourcesEureka/GuardianResourcesEureka.apk",
+ "package": "com.oculus.guardianresources",
+ "version_name": "71.0.0.0.0",
+ "version_code": "665334737",
+ "min_sdk": null,
+ "target_sdk": null,
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 93,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 1,
+  "top_prefixes": [
+   [
+    "com.facebook.buck_generated",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "apk": "system_ext_a/priv-app/MagicIslandCastingService/MagicIslandCastingService.apk",
+ "package": "com.oculus.magicislandcastingservice",
+ "version_name": "2.0.0.0.567",
+ "version_code": "638292922",
+ "min_sdk": "29",
+ "target_sdk": null,
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.magicislandcastingservice.CastingService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 6,
+  "items": [
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.RECORD_AUDIO",
+   "com.oculus.permission.MOUNT_WAKE_LOCK",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.TRACKING_INJECTION"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.dependency.required_os_version_name",
+  "com.oculus.is_stub",
+  "com.oculus.persistent_service",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 1,
+  "top_prefixes": [
+   [
+    "com.facebook.buck_generated",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

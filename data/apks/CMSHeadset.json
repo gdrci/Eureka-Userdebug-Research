@@ -1,0 +1,224 @@
+{
+ "apk": "system_ext_a/priv-app/CMSHeadset/CMSHeadset.apk",
+ "package": "com.oculus.os.cm",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 11,
+  "items": [
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WIFI_UPDATE_USABILITY_STATS_SCORE",
+   "com.oculus.permission.ACCESS_WIFI_STATE",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.updater.core.os.OTA_OPERATION"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.oculus.messagequeue.doctor",
+  "oculus_preferences_headset_cms"
+ ],
+ "classes": {
+  "count": 1272,
+  "top_prefixes": [
+   [
+    "com.oculus.os",
+    451
+   ],
+   [
+    "com.google.protobuf",
+    168
+   ],
+   [
+    "com.google.gson",
+    164
+   ],
+   [
+    "org.bouncycastle.asn1",
+    137
+   ],
+   [
+    "android.support.v4",
+    104
+   ],
+   [
+    "org.bouncycastle.jcajce",
+    36
+   ],
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "fi.iki.elonen",
+    25
+   ],
+   [
+    "org.bouncycastle.util",
+    24
+   ],
+   [
+    "android.net.netlink",
+    20
+   ],
+   [
+    "com.oculus.devicecertservice",
+    20
+   ],
+   [
+    "vendor.oculus.hardware",
+    18
+   ],
+   [
+    "androidx.fragment.app",
+    14
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "org.bouncycastle.jce",
+    5
+   ],
+   [
+    "androidx.activity.result",
+    4
+   ],
+   [
+    "androidx.customview.view",
+    3
+   ],
+   [
+    "org.bouncycastle.x509",
+    3
+   ],
+   [
+    "android.hidl.base",
+    2
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "androidx.coordinatorlayout.widget",
+    2
+   ],
+   [
+    "androidx.core.widget",
+    2
+   ],
+   [
+    "androidx.drawerlayout.widget",
+    2
+   ],
+   [
+    "androidx.slidingpanelayout.widget",
+    2
+   ],
+   [
+    "androidx.swiperefreshlayout.widget",
+    2
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 14,
+   "items": [
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SCREEN_ON",
+    "android.net.wifi.STATE_CHANGE",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "android.net.wifi.p2p.CONNECTION_STATE_CHANGE",
+    "android.net.wifi.p2p.STATE_CHANGED",
+    "com.oculus.intent.action.CONTROLLER_UPDATE_BEFORE_SHUTDOWN",
+    "com.oculus.intent.action.QUERY_TASKS_BEFORE_SHUTDOWN",
+    "com.oculus.intent.action.WIFI_STATE_LATENCY_MODE_CHANGED",
+    "com.oculus.intent.extra.BINDER",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.os.cm.REMOTE_THERMAL_SHUTDOWN",
+    "com.oculus.permission.ACCESS_WIFI_STATE",
+    "com.oculus.preshutdowntaskservice.extra.task_mode"
+   ]
+  },
+  "system_properties": {
+   "count": 10,
+   "items": [
+    "debug.oculus.mqd.off",
+    "net.igmp.group.",
+    "net.igmp.group.size",
+    "persist.ovr.starlet.ota.enabled",
+    "persist.ovr.starlet.p2p.bandswitch",
+    "persist.ovr.starlet.p2p.dfs",
+    "persist.ovr.starlet.p2p.ip.ping_max_count",
+    "persist.ovr.starlet.p2p.noa",
+    "persist.ovr.tracking.wifi_test",
+    "ro.build.branch"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "android.intent.extra.INTENT"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

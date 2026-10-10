@@ -1,0 +1,127 @@
+{
+ "apk": "system_a/system/app/EnvironmentNuxD/EnvironmentNuxD.apk",
+ "package": "com.meta.environment.prod.nuxd",
+ "version_name": "NuxD-477444881",
+ "version_code": "477444881",
+ "min_sdk": "29",
+ "target_sdk": "29",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 1,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 1634,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    1172
+   ],
+   [
+    "android.support.v7",
+    369
+   ],
+   [
+    "android.support.annotation",
+    47
+   ],
+   [
+    "android.support.graphics",
+    22
+   ],
+   [
+    "com.meta.environment",
+    14
+   ],
+   [
+    "android.support.compat",
+    2
+   ],
+   [
+    "android.support.coreui",
+    2
+   ],
+   [
+    "android.support.coreutils",
+    2
+   ],
+   [
+    "android.support.fragment",
+    2
+   ],
+   [
+    "android.support.mediacompat",
+    2
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 11,
+   "items": [
+    "android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE",
+    "android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE",
+    "android.intent.action.MAIN",
+    "android.intent.action.MEDIA_BUTTON",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "com.meta.environment.prod.nuxd"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

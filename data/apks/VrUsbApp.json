@@ -1,0 +1,293 @@
+{
+ "apk": "system_ext_a/priv-app/VrUsbApp/VrUsbApp.apk",
+ "package": "com.oculus.os.vrusb",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "28bbfe4a7b97e74681dc55c2fbb6ccb8d6c74963733f6af6ae74d8c3a6e879fd"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 9,
+   "items": [
+    {
+     "name": "com.oculus.os.vrusb.MtpAlertActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.2D"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.os.vrusb.USBDebuggingAlertActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.os.vrusb.WifiDebuggingAlertActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.os.vrusb.UsbPermissionActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USB",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.os.vrusb.UsbConfirmActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USB",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.os.vrusb.UsbResolverActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USB",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.os.vrusb.UsbAccessoryUriActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USB",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.os.vrusb.XrspAlertActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.os.vrusb.UsbContaminantActivity",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_USB",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "oculus.internal.ui.VrPanelDialog$PanelDialogService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.os.vrusb.MtpReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.hardware.usb.action.USB_STATE",
+        "android.intent.action.MEDIA_SCANNER_STARTED",
+        "android.intent.action.MEDIA_SCANNER_FINISHED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 22,
+  "items": [
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.MANAGE_DEBUGGING",
+   "android.permission.MANAGE_USB",
+   "android.permission.MANAGE_USERS",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.SYSTEM_ALERT_WINDOW",
+   "com.oculus.companion.server.permission.SEND_INTENTS",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.INTERACT_ACROSS_USERS",
+   "com.oculus.permission.MANAGE_LOCKSCREEN",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.READ_VR_DEVICE_PARAMS",
+   "com.oculus.permission.RECEIVE_BROADCASTS_IN_BACKGROUND",
+   "com.oculus.permission.SHOW_OS_PANEL_DIALOG",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "android.hardware.usb.host",
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "com.meta.vr.display_mode",
+  "com.oculus.messagequeue.doctor",
+  "oculus_preferences_vrusb"
+ ],
+ "classes": {
+  "count": 71,
+  "top_prefixes": [
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "com.oculus.os",
+    27
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ],
+   [
+    "com.facebook.infer",
+    1
+   ],
+   [
+    "oculus.internal.ui",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 6,
+   "items": [
+    "android.intent.action.MEDIA_SCANNER_FINISHED",
+    "android.intent.action.MEDIA_SCANNER_STARTED",
+    "android.intent.action.VIEW",
+    "android.net.wifi.STATE_CHANGE",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "com.oculus.messagequeue.doctor"
+   ]
+  },
+  "system_properties": {
+   "count": 2,
+   "items": [
+    "debug.oculus.mqd.off",
+    "ro.adb.secure"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 2,
+   "items": [
+    "android.intent.extra.INTENT",
+    "android.media.IMediaScannerService"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

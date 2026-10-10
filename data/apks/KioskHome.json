@@ -1,0 +1,210 @@
+{
+ "apk": "product_a/priv-app/KioskHome/KioskHome.apk",
+ "package": "com.oculus.panelapp.kiosk",
+ "version_name": "4.0.0.0.327",
+ "version_code": "1",
+ "min_sdk": "32",
+ "target_sdk": "35",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.panelapp.kiosk.KioskHomeActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":activity",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "com.oculus.vrshell.SHELL_MAIN"
+       ],
+       "categories": [
+        "android.intent.category.LAUNCHER"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.panelapp.kiosk.KioskPanelService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrshell.SHELL_MAIN"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.panelapp.kiosk.KioskDuiPanelService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":DUI",
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrshell.SHELL_MAIN"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.panelapp.kiosk.notification.NotificationDismissBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "dismiss"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.panelapp.kiosk.systembar.EndSessionTooltipBroadcastReceiver",
+     "exported": "true",
+     "permission": "com.oculus.panelapp.kiosk.permission.Q4B_EXIT_APP",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.panelapp.kiosk.action.EXIT_APP"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 36,
+  "items": [
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_ADVERTISE",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_PRIVILEGED",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.GRANT_RUNTIME_PERMISSIONS",
+   "android.permission.INTERNET",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.POST_NOTIFICATIONS",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.REAL_GET_TASKS",
+   "android.permission.REBOOT",
+   "android.permission.REVOKE_RUNTIME_PERMISSIONS",
+   "android.permission.SET_ACTIVITY_WATCHER",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "android.permission.WRITE_SETTINGS",
+   "com.oculus.panelapp.kiosk.permission.Q4B_EXIT_APP",
+   "com.oculus.permission.MODIFY_CONTROLLER_STATUS",
+   "com.oculus.permission.READ_CONTROLLER_STATUS",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.permission.XRS_OBSERVE_STATE",
+   "com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION",
+   "com.oculus.q4b.mdm.permission.Q4B_READ_IMAGE",
+   "com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION",
+   "com.oculus.vrshell.permission.ACCESS_PRIVATE_IPC",
+   "com.oculus.vrshell.permission.SEND_GUIDING_TOAST"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.panelapp.kiosk.permission.Q4B_EXIT_APP",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "android.content.APP_RESTRICTIONS",
+  "com.facebook.build_id",
+  "com.oculus.dependency.required_os_version_name",
+  "com.oculus.ocms.fbpermission.LIBRARY_PROVIDER",
+  "com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION",
+  "com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION",
+  "com.oculus.vrshell.layer_definition",
+  "com.oculus.vrshell.supports_multi_cursor",
+  "internalVersionName",
+  "oculus_preferences"
+ ],
+ "classes": {
+  "count": 8,
+  "top_prefixes": [
+   [
+    "com.oculus.panelapp",
+    8
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

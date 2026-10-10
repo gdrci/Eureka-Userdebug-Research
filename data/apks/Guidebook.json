@@ -1,0 +1,89 @@
+{
+ "apk": "system_ext_a/app/Guidebook/Guidebook.apk",
+ "package": "com.oculus.guidebook",
+ "version_name": "11.0.0.0.0",
+ "version_code": "1",
+ "min_sdk": "28",
+ "target_sdk": "28",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 1,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.INTERNET",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "com.oculus.permission.FACE_EYE_INTERNAL_API",
+   "com.oculus.permission.ORTHOFIT_DATA",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.vrruntimeservice.SEND_FACE_EYE_TRACKING_COMMAND",
+   "com.oculus.vrruntimeservice.SEND_ORTHOFIT_ACTION"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.dependency.required_build_version",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 4,
+  "top_prefixes": [
+   [
+    "com.oculus.guidebook",
+    4
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

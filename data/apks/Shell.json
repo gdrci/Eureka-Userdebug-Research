@@ -1,0 +1,504 @@
+{
+ "apk": "system_a/system/priv-app/Shell/Shell.apk",
+ "package": "com.android.shell",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.shell",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.android.shell.BugreportWarningActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.shell.HeapDumpActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.android.shell.BugreportProgressService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.android.shell.BugreportRequestedReceiver",
+     "exported": "true",
+     "permission": "android.permission.TRIGGER_SHELL_BUGREPORT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.internal.intent.action.BUGREPORT_REQUESTED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.shell.HeapDumpReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.internal.intent.action.HEAP_DUMP_FINISHED",
+        "com.android.shell.action.DELETE_HEAP_DUMP"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.shell.ProfcollectUploadReceiver",
+     "exported": "true",
+     "permission": "android.permission.TRIGGER_SHELL_PROFCOLLECT_UPLOAD",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.shell.action.PROFCOLLECT_UPLOAD"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 3,
+   "items": [
+    {
+     "name": "androidx.core.content.FileProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.shell.BugreportStorageProvider",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_DOCUMENTS",
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.content.action.DOCUMENTS_PROVIDER"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.shell.HeapDumpProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 365,
+  "items": [
+   "android.contacts.permission.MANAGE_SIM_ACCOUNTS",
+   "android.permission.ACCEPT_HANDOVER",
+   "android.permission.ACCESS_AMBIENT_LIGHT_STATS",
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_CONTENT_PROVIDERS_EXTERNALLY",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_INSTANT_APPS",
+   "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS",
+   "android.permission.ACCESS_LOCUS_ID_USAGE_STATS",
+   "android.permission.ACCESS_LOWPAN_STATE",
+   "android.permission.ACCESS_MEDIA_LOCATION",
+   "android.permission.ACCESS_MTP",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_NOTIFICATION_POLICY",
+   "android.permission.ACCESS_RCS_USER_CAPABILITY_EXCHANGE",
+   "android.permission.ACCESS_SHARED_LIBRARIES",
+   "android.permission.ACCESS_SHORTCUTS",
+   "android.permission.ACCESS_SURFACE_FLINGER",
+   "android.permission.ACCESS_TUNED_INFO",
+   "android.permission.ACCESS_TV_DESCRAMBLER",
+   "android.permission.ACCESS_TV_TUNER",
+   "android.permission.ACCESS_VIBRATOR_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.ACTIVITY_EMBEDDING",
+   "android.permission.ACTIVITY_RECOGNITION",
+   "android.permission.ANSWER_PHONE_CALLS",
+   "android.permission.AUTHENTICATE_ACCOUNTS",
+   "android.permission.BACKGROUND_CAMERA",
+   "android.permission.BACKUP",
+   "android.permission.BATTERY_PREDICTION",
+   "android.permission.BATTERY_STATS",
+   "android.permission.BIND_APPWIDGET",
+   "android.permission.BIND_CARRIER_SERVICES",
+   "android.permission.BIND_EXPLICIT_HEALTH_CHECK_SERVICE",
+   "android.permission.BIND_HOTWORD_DETECTION_SERVICE",
+   "android.permission.BIND_IMS_SERVICE",
+   "android.permission.BIND_RESUME_ON_REBOOT_SERVICE",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_ADVERTISE",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.BLUETOOTH_STACK",
+   "android.permission.BODY_SENSORS",
+   "android.permission.BRIGHTNESS_SLIDER_USAGE",
+   "android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS",
+   "android.permission.BROADCAST_STICKY",
+   "android.permission.BYPASS_ROLE_QUALIFICATION",
+   "android.permission.CACHE_CONTENT",
+   "android.permission.CALL_COMPANION_APP",
+   "android.permission.CALL_PHONE",
+   "android.permission.CAMERA",
+   "android.permission.CAMERA_OPEN_CLOSE_LISTENER",
+   "android.permission.CAPTURE_AUDIO_HOTWORD",
+   "android.permission.CAPTURE_AUDIO_OUTPUT",
+   "android.permission.CHANGE_APP_IDLE_STATE",
+   "android.permission.CHANGE_COMPONENT_ENABLED_STATE",
+   "android.permission.CHANGE_CONFIGURATION",
+   "android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST",
+   "android.permission.CHANGE_LOWPAN_STATE",
+   "android.permission.CHANGE_NETWORK_STATE",
+   "android.permission.CHANGE_OVERLAY_PACKAGES",
+   "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.CLEAR_APP_CACHE",
+   "android.permission.CLEAR_APP_USER_DATA",
+   "android.permission.CLEAR_FREEZE_PERIOD",
+   "android.permission.COMPANION_APPROVE_WIFI_CONNECTIONS",
+   "android.permission.CONFIGURE_DISPLAY_BRIGHTNESS",
+   "android.permission.CONNECTIVITY_INTERNAL",
+   "android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS",
+   "android.permission.CONTROL_DEVICE_LIGHTS",
+   "android.permission.CONTROL_DEVICE_STATE",
+   "android.permission.CONTROL_DISPLAY_BRIGHTNESS",
+   "android.permission.CONTROL_INCALL_EXPERIENCE",
+   "android.permission.CONTROL_KEYGUARD",
+   "android.permission.CONTROL_KEYGUARD_SECURE_NOTIFICATIONS",
+   "android.permission.CONTROL_UI_TRACING",
+   "android.permission.CREATE_USERS",
+   "android.permission.DELETE_CACHE_FILES",
+   "android.permission.DELETE_PACKAGES",
+   "android.permission.DEVICE_POWER",
+   "android.permission.DISABLE_HIDDEN_API_CHECKS",
+   "android.permission.DISABLE_KEYGUARD",
+   "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+   "android.permission.DUMP",
+   "android.permission.ENABLE_TEST_HARNESS_MODE",
+   "android.permission.ENTER_CAR_MODE_PRIORITIZED",
+   "android.permission.EXPAND_STATUS_BAR",
+   "android.permission.FLASHLIGHT",
+   "android.permission.FORCE_BACK",
+   "android.permission.FORCE_DEVICE_POLICY_MANAGER_LOGS",
+   "android.permission.FORCE_STOP_PACKAGES",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.FRAME_STATS",
+   "android.permission.GET_ACCOUNTS",
+   "android.permission.GET_APP_OPS_STATS",
+   "android.permission.GET_DETAILED_TASKS",
+   "android.permission.GET_INTENT_SENDER_INTENT",
+   "android.permission.GET_PACKAGE_SIZE",
+   "android.permission.GET_PROCESS_STATE_AND_OOM_SCORE",
+   "android.permission.GET_RUNTIME_PERMISSIONS",
+   "android.permission.GET_TASKS",
+   "android.permission.GET_TOP_ACTIVITY_INFO",
+   "android.permission.GRANT_RUNTIME_PERMISSIONS",
+   "android.permission.GRANT_RUNTIME_PERMISSIONS_TO_TELEPHONY_DEFAULTS",
+   "android.permission.HDMI_CEC",
+   "android.permission.HIDE_OVERLAY_WINDOWS",
+   "android.permission.HIGH_SAMPLING_RATE_SENSORS",
+   "android.permission.INJECT_EVENTS",
+   "android.permission.INSTALL_DYNAMIC_SYSTEM",
+   "android.permission.INSTALL_GRANT_RUNTIME_PERMISSIONS",
+   "android.permission.INSTALL_LOCATION_PROVIDER",
+   "android.permission.INSTALL_PACKAGES",
+   "android.permission.INSTALL_PACKAGE_UPDATES",
+   "android.permission.INSTALL_TEST_ONLY_PACKAGE",
+   "android.permission.INSTANT_APP_FOREGROUND_SERVICE",
+   "android.permission.INTERACT_ACROSS_PROFILES",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.INTERNAL_SYSTEM_WINDOW",
+   "android.permission.INTERNET",
+   "android.permission.KEEP_UNINSTALLED_PACKAGES",
+   "android.permission.KILL_BACKGROUND_PROCESSES",
+   "android.permission.LAUNCH_MULTI_PANE_SETTINGS_DEEP_LINK",
+   "android.permission.LISTEN_ALWAYS_REPORTED_SIGNAL_STRENGTH",
+   "android.permission.LOADER_USAGE_STATS",
+   "android.permission.LOCAL_MAC_ADDRESS",
+   "android.permission.LOCATION_HARDWARE",
+   "android.permission.LOG_COMPAT_CHANGE",
+   "android.permission.MANAGE_ACCESSIBILITY",
+   "android.permission.MANAGE_ACCOUNTS",
+   "android.permission.MANAGE_ACTIVITY_TASKS",
+   "android.permission.MANAGE_APPOPS",
+   "android.permission.MANAGE_APP_HIBERNATION",
+   "android.permission.MANAGE_APP_OPS_MODES",
+   "android.permission.MANAGE_APP_PREDICTIONS",
+   "android.permission.MANAGE_AUDIO_POLICY",
+   "android.permission.MANAGE_AUTO_FILL",
+   "android.permission.MANAGE_BIND_INSTANT_SERVICE",
+   "android.permission.MANAGE_BLUETOOTH_WHEN_WIRELESS_CONSENT_REQUIRED",
+   "android.permission.MANAGE_CAMERA",
+   "android.permission.MANAGE_COMPANION_DEVICES",
+   "android.permission.MANAGE_CONTENT_CAPTURE",
+   "android.permission.MANAGE_CONTENT_SUGGESTIONS",
+   "android.permission.MANAGE_CRATES",
+   "android.permission.MANAGE_CREDENTIAL_MANAGEMENT_APP",
+   "android.permission.MANAGE_DEBUGGING",
+   "android.permission.MANAGE_DEVICE_ADMINS",
+   "android.permission.MANAGE_EXTERNAL_STORAGE",
+   "android.permission.MANAGE_GAME_MODE",
+   "android.permission.MANAGE_HOTWORD_DETECTION",
+   "android.permission.MANAGE_MUSIC_RECOGNITION",
+   "android.permission.MANAGE_NETWORK_POLICY",
+   "android.permission.MANAGE_NOTIFICATIONS",
+   "android.permission.MANAGE_NOTIFICATION_LISTENERS",
+   "android.permission.MANAGE_OWN_CALLS",
+   "android.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS",
+   "android.permission.MANAGE_ROLE_HOLDERS",
+   "android.permission.MANAGE_ROLLBACKS",
+   "android.permission.MANAGE_ROTATION_RESOLVER",
+   "android.permission.MANAGE_SEARCH_UI",
+   "android.permission.MANAGE_SENSORS",
+   "android.permission.MANAGE_SENSOR_PRIVACY",
+   "android.permission.MANAGE_SMARTSPACE",
+   "android.permission.MANAGE_SOUND_TRIGGER",
+   "android.permission.MANAGE_SPEECH_RECOGNITION",
+   "android.permission.MANAGE_TEST_NETWORKS",
+   "android.permission.MANAGE_TIME_AND_ZONE_DETECTION",
+   "android.permission.MANAGE_TOAST_RATE_LIMITING",
+   "android.permission.MANAGE_UI_TRANSLATION",
+   "android.permission.MANAGE_USB",
+   "android.permission.MANAGE_WIFI_WHEN_WIRELESS_CONSENT_REQUIRED",
+   "android.permission.MEDIA_CONTENT_CONTROL",
+   "android.permission.MODIFY_APPWIDGET_BIND_PERMISSIONS",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.MODIFY_DAY_NIGHT_MODE",
+   "android.permission.MODIFY_DEFAULT_AUDIO_EFFECTS",
+   "android.permission.MODIFY_PHONE_STATE",
+   "android.permission.MODIFY_QUIET_MODE",
+   "android.permission.MODIFY_REFRESH_RATE_SWITCHING_TYPE",
+   "android.permission.MODIFY_SETTINGS_OVERRIDEABLE_BY_RESTORE",
+   "android.permission.MOUNT_FORMAT_FILESYSTEMS",
+   "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+   "android.permission.MOVE_PACKAGE",
+   "android.permission.NETWORK_SCAN",
+   "android.permission.NETWORK_SETTINGS",
+   "android.permission.NFC",
+   "android.permission.NFC_PREFERRED_PAYMENT_INFO",
+   "android.permission.NFC_TRANSACTION_EVENT",
+   "android.permission.NOTIFY_PENDING_SYSTEM_UPDATE",
+   "android.permission.OBSERVE_APP_USAGE",
+   "android.permission.OBSERVE_GRANT_REVOKE_PERMISSIONS",
+   "android.permission.OBSERVE_NETWORK_POLICY",
+   "android.permission.OBSERVE_ROLE_HOLDERS",
+   "android.permission.OBSERVE_SENSOR_PRIVACY",
+   "android.permission.OVERRIDE_COMPAT_CHANGE_CONFIG",
+   "android.permission.OVERRIDE_COMPAT_CHANGE_CONFIG_ON_RELEASE_BUILD",
+   "android.permission.OVERRIDE_DISPLAY_MODE_REQUESTS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "android.support.FILE_PROVIDER_PATHS"
+ ],
+ "classes": {
+  "count": 176,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    50
+   ],
+   [
+    "com.android.shell",
+    29
+   ],
+   [
+    "androidx.fragment.app",
+    16
+   ],
+   [
+    "androidx.core.app",
+    6
+   ],
+   [
+    "androidx.activity.result",
+    5
+   ],
+   [
+    "androidx.core.content",
+    5
+   ],
+   [
+    "androidx.customview.view",
+    3
+   ],
+   [
+    "androidx.coordinatorlayout.widget",
+    2
+   ],
+   [
+    "androidx.core.graphics",
+    2
+   ],
+   [
+    "androidx.core.widget",
+    2
+   ],
+   [
+    "androidx.drawerlayout.widget",
+    2
+   ],
+   [
+    "androidx.slidingpanelayout.widget",
+    2
+   ],
+   [
+    "androidx.swiperefreshlayout.widget",
+    2
+   ],
+   [
+    "androidx.viewpager.widget",
+    2
+   ],
+   [
+    "androidx.activity.ComponentActivity$3",
+    1
+   ],
+   [
+    "androidx.activity.ComponentActivity$4",
+    1
+   ],
+   [
+    "androidx.activity.ComponentActivity$5",
+    1
+   ],
+   [
+    "androidx.activity.ImmLeaksCleaner",
+    1
+   ],
+   [
+    "androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable",
+    1
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ],
+   [
+    "androidx.collection.ArrayMap$EntrySet",
+    1
+   ],
+   [
+    "androidx.collection.ArrayMap$KeySet",
+    1
+   ],
+   [
+    "androidx.collection.ArrayMap$MapIterator",
+    1
+   ],
+   [
+    "androidx.collection.ArrayMap$ValueCollection",
+    1
+   ],
+   [
+    "androidx.collection.ContainerHelpers",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 13,
+   "items": [
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.BUGREPORT_CANCEL",
+    "android.intent.action.BUGREPORT_INFO_LAUNCH",
+    "android.intent.action.BUGREPORT_SCREENSHOT",
+    "android.intent.action.BUGREPORT_SHARE",
+    "android.intent.action.CLOSE_SYSTEM_DIALOGS",
+    "android.intent.action.REMOTE_BUGREPORT_DISPATCH",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "com.android.internal.intent.action.BUGREPORT_FINISHED",
+    "com.android.internal.intent.action.BUGREPORT_REQUESTED",
+    "com.android.internal.intent.action.HEAP_DUMP_FINISHED",
+    "com.android.shell.action.DELETE_HEAP_DUMP"
+   ]
+  },
+  "system_properties": {
+   "count": 4,
+   "items": [
+    "ro.build.description",
+    "ro.build.id",
+    "ro.product.name",
+    "ro.serialno"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 2,
+   "items": [
+    "android.intent.extra.INFO",
+    "android.intent.extra.INTENT"
+   ]
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://com.android.shell.heapdump/"
+   ]
+  }
+ }
+}

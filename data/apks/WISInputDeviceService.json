@@ -1,0 +1,159 @@
+{
+ "apk": "system_ext_a/priv-app/WISInputDeviceService/WISInputDeviceService.apk",
+ "package": "com.meta.wearable.emginput",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.meta.wearable.emginput.WISInputDeviceService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.meta.wearable.emginput.BootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 11,
+  "items": [
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_ADVERTISE",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_PRIVILEGED",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 160,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    109
+   ],
+   [
+    "com.oculus.aidl",
+    27
+   ],
+   [
+    "android.arch.lifecycle",
+    11
+   ],
+   [
+    "com.meta.wearable",
+    5
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl$1",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcel",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelable",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelParcel",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 3,
+   "items": [
+    "android.intent.action.BOOT_COMPLETED",
+    "com.oculus.wearableinputservice",
+    "com.oculus.wearableinputservice.WearableInputService"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "ro.build.flavor"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

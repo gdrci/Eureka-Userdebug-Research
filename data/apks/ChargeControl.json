@@ -1,0 +1,113 @@
+{
+ "apk": "system_ext_a/app/ChargeControl/ChargeControl.apk",
+ "package": "com.oculus.os.chargecontrol",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".ChargeControl",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.LAUNCHER"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".ChargeMonitorService",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 19,
+  "top_prefixes": [
+   [
+    "com.oculus.os",
+    13
+   ],
+   [
+    "android.hardware.light",
+    6
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 4,
+   "items": [
+    "android.intent.action.BATTERY_CHANGED",
+    "com.oculus.os.chargecontrol.action.start",
+    "com.oculus.os.chargecontrol.action.stop",
+    "com.oculus.os.chargecontrol.notif_channel"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

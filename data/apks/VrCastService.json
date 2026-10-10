@@ -1,0 +1,201 @@
+{
+ "apk": "system_ext_a/app/VrCastService/VrCastService.apk",
+ "package": "com.oculus.vrcast",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.vrcast.projection.MediaProjectionPermissionActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.vrcast.VrCastService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.vrcast.WifiP2pProxyService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 5,
+  "items": [
+   "android.permission.CONFIGURE_WIFI_DISPLAY",
+   "android.permission.READ_DEVICE_CONFIG",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.meta.vr.display_mode",
+  "com.oculus.persistent_service",
+  "oculus_preferences_vrcast"
+ ],
+ "classes": {
+  "count": 813,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    318
+   ],
+   [
+    "com.google.protobuf",
+    169
+   ],
+   [
+    "com.oculus.vrcast",
+    142
+   ],
+   [
+    "android.support.v4",
+    104
+   ],
+   [
+    "fi.iki.elonen",
+    25
+   ],
+   [
+    "com.apple.dnssd",
+    24
+   ],
+   [
+    "com.qualcomm.wfd",
+    15
+   ],
+   [
+    "com.oculus.security",
+    5
+   ],
+   [
+    "com.oculus.trustedcallerverifier",
+    3
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl$1",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcel",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelable",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelParcel",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 17,
+   "items": [
+    "android.intent.action.MAIN",
+    "android.net.wifi.p2p.CONNECTION_STATE_CHANGE",
+    "android.net.wifi.p2p.PEERS_CHANGED",
+    "android.net.wifi.p2p.STATE_CHANGED",
+    "android.net.wifi.p2p.THIS_DEVICE_CHANGED",
+    "com.oculus.horizon",
+    "com.oculus.horizon.START_CAPTURE_TO_SURFACE",
+    "com.oculus.horizon.START_CAST_NATIVE_RECEIVER",
+    "com.oculus.horizon.STOP_CAPTURE_TO_SURFACE",
+    "com.oculus.horizon.STOP_CAST_NATIVE_RECEIVER",
+    "com.oculus.horizon.service_media.OVRMediaService",
+    "com.oculus.metacam",
+    "com.oculus.panelapp.settings",
+    "com.oculus.systemux",
+    "com.oculus.vrcast.miracast.IWifiP2pProxyCallback",
+    "com.oculus.vrcast.miracast.IWifiP2pProxyService",
+    "com.oculus.vrshell"
+   ]
+  },
+  "system_properties": {
+   "count": 7,
+   "items": [
+    "debug.oculus.gcast.",
+    "debug.oculus.gcast.bitrate",
+    "debug.oculus.gcast.disable_tdls",
+    "debug.oculus.gcast.fps",
+    "debug.oculus.gcast.height",
+    "debug.oculus.gcast.latency",
+    "debug.oculus.gcast.width"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 2,
+   "items": [
+    "com.oculus.vrcast.miracast.IWifiP2pProxyCallback",
+    "com.oculus.vrcast.miracast.IWifiP2pProxyService"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

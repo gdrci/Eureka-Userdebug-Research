@@ -1,0 +1,201 @@
+{
+ "apk": "system_ext_a/app/QplService/QplService.apk",
+ "package": "com.oculus.qplservice",
+ "version_name": "71.0.0.273.527",
+ "version_code": "650512930",
+ "min_sdk": "28",
+ "target_sdk": "29",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.qplservice.QplService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 2,
+  "items": [
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.messagequeue.doctor",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 356,
+  "top_prefixes": [
+   [
+    "com.facebook.a",
+    40
+   ],
+   [
+    "com.facebook.infer",
+    36
+   ],
+   [
+    "org.intellij.lang",
+    24
+   ],
+   [
+    "com.facebook.metagen",
+    8
+   ],
+   [
+    "org.jetbrains.annotations",
+    7
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "javax.annotation.meta",
+    6
+   ],
+   [
+    "kotlin.jvm.internal",
+    6
+   ],
+   [
+    "com.facebook.proguard",
+    4
+   ],
+   [
+    "javax.annotation.concurrent",
+    4
+   ],
+   [
+    "kotlin.annotations.jvm",
+    4
+   ],
+   [
+    "androidx.annotation.AnimRes",
+    1
+   ],
+   [
+    "androidx.annotation.AnimatorRes",
+    1
+   ],
+   [
+    "androidx.annotation.AnyRes",
+    1
+   ],
+   [
+    "androidx.annotation.AnyThread",
+    1
+   ],
+   [
+    "androidx.annotation.ArrayRes",
+    1
+   ],
+   [
+    "androidx.annotation.AttrRes",
+    1
+   ],
+   [
+    "androidx.annotation.BinderThread",
+    1
+   ],
+   [
+    "androidx.annotation.BoolRes",
+    1
+   ],
+   [
+    "androidx.annotation.CallSuper",
+    1
+   ],
+   [
+    "androidx.annotation.CheckResult",
+    1
+   ],
+   [
+    "androidx.annotation.ChecksSdkIntAtLeast",
+    1
+   ],
+   [
+    "androidx.annotation.ColorInt",
+    1
+   ],
+   [
+    "androidx.annotation.ColorLong",
+    1
+   ],
+   [
+    "androidx.annotation.ColorRes",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 1,
+   "items": [
+    "com.oculus.messagequeue.doctor"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "debug.oculus.mqd.off"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

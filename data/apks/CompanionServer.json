@@ -1,0 +1,528 @@
+{
+ "apk": "system_ext_a/priv-app/CompanionServer/CompanionServer.apk",
+ "package": "com.oculus.companion.server",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.oculus.companion.server.BatteryCycleService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.companion.server.CompanionService",
+     "exported": "true",
+     "permission": "com.oculus.companion.server.permission.SEND_INTENTS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.companion.server.RemoteWipeJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.oculus.companion.server.BootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.LOCKED_BOOT_COMPLETED"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.companion.server.CompanionDeviceAdminReceiver",
+     "exported": "true",
+     "permission": "android.permission.BIND_DEVICE_ADMIN",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.DEVICE_ADMIN_ENABLED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.companion.server.WipeReceiver",
+     "exported": "true",
+     "permission": "com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrnotifications.intent.action.SILENT_PAYLOAD"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 35,
+  "items": [
+   "GET_CASTING_DIALOG_STATUS",
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_PRIVILEGED",
+   "android.permission.CHANGE_NETWORK_STATE",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.DEVICE_POWER",
+   "android.permission.INJECT_EVENTS",
+   "android.permission.INTERNET",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.READ_SECURE_SETTINGS",
+   "android.permission.REAL_GET_TASKS",
+   "android.permission.REBOOT",
+   "android.permission.SET_TIME",
+   "android.permission.SET_TIME_ZONE",
+   "android.permission.UPDATE_DEVICE_STATS",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "com.oculus.horizon.LINKED_ACCOUNTS_WRITE_PERMISSION",
+   "com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS",
+   "com.oculus.nux.ota.permission.SEND_INTENTS",
+   "com.oculus.permission.METACAM_SCREEN_CAPTURE",
+   "com.oculus.permission.MODIFY_CONTROLLER_STATUS",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS",
+   "com.oculus.updater.core.os.OTA_OPERATION"
+  ]
+ },
+ "declared_permissions": {
+  "count": 2,
+  "items": [
+   {
+    "name": "com.oculus.companion.server.permission.SEND_INTENTS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.companion.server.permission.HANDLE_CASTING_ACTIONS",
+    "protection": "0x00000402"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "android.app.device_admin",
+  "com.oculus.messagequeue.doctor",
+  "com.oculus.vrnotifications.datanotifications",
+  "oculus_preferences_companion_server"
+ ],
+ "classes": {
+  "count": 4058,
+  "top_prefixes": [
+   [
+    "com.google.crypto",
+    887
+   ],
+   [
+    "com.oculus.companion",
+    857
+   ],
+   [
+    "android.support.v4",
+    395
+   ],
+   [
+    "com.google.common",
+    318
+   ],
+   [
+    "com.facebook.secure",
+    171
+   ],
+   [
+    "com.google.protobuf",
+    171
+   ],
+   [
+    "com.google.gson",
+    163
+   ],
+   [
+    "androidx.fragment.app",
+    122
+   ],
+   [
+    "androidx.core.view",
+    61
+   ],
+   [
+    "okhttp3.internal.http2",
+    39
+   ],
+   [
+    "com.oculus.authapi",
+    36
+   ],
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "com.oculus.library",
+    31
+   ],
+   [
+    "kotlin.jvm.functions",
+    23
+   ],
+   [
+    "androidx.viewpager.widget",
+    22
+   ],
+   [
+    "android.arch.lifecycle",
+    21
+   ],
+   [
+    "com.facebook.systrace",
+    21
+   ],
+   [
+    "androidx.core.app",
+    20
+   ],
+   [
+    "androidx.swiperefreshlayout.widget",
+    19
+   ],
+   [
+    "okhttp3.internal.connection",
+    16
+   ],
+   [
+    "androidx.activity.result",
+    15
+   ],
+   [
+    "androidx.arch.core",
+    14
+   ],
+   [
+    "android.arch.core",
+    13
+   ],
+   [
+    "androidx.coordinatorlayout.widget",
+    13
+   ],
+   [
+    "androidx.core.widget",
+    12
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 317,
+   "items": [
+    "android.intent.action.ACTION_POWER_CONNECTED",
+    "android.intent.action.ACTION_POWER_DISCONNECTED",
+    "android.intent.action.ACTION_SHUTDOWN",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.MEDIA_BUTTON",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.USER_PRESENT",
+    "android.intent.action.USER_SWITCHED",
+    "android.intent.action.USER_UNLOCKED",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.http.X509TrustManagerExtensions",
+    "android.net.wifi.SCAN_RESULTS",
+    "android.net.wifi.STATE_CHANGE",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "android.net.wifi.supplicant.CONNECTION_CHANGE",
+    "android.net.wifi.supplicant.STATE_CHANGE",
+    "com.meta.CodecAvatarSmile",
+    "com.meta.WorkspaceTemplateApp",
+    "com.meta.aether.apps.arriver",
+    "com.meta.aether.apps.experiments.arriver.location",
+    "com.meta.aether.apps.experiments.hca",
+    "com.meta.aether.ar_apps.experiments.playground",
+    "com.meta.ar.arcalling",
+    "com.meta.ar.arcellularexperience",
+    "com.meta.ar.ards",
+    "com.meta.ar.arguidebook",
+    "com.meta.ar.arlego",
+    "com.meta.ar.arshellux",
+    "com.meta.ar.arwhatsapp",
+    "com.meta.ar.augmentedig",
+    "com.meta.ar.avatars",
+    "com.meta.ar.bugreporter",
+    "com.meta.ar.codecdemo",
+    "com.meta.ar.copresence",
+    "com.meta.ar.endtoenddiagnostics",
+    "com.meta.ar.fbns",
+    "com.meta.ar.helixfusion",
+    "com.meta.ar.helixproxy",
+    "com.meta.ar.helixserver",
+    "com.meta.ar.iris.umami",
+    "com.meta.ar.metaai",
+    "com.meta.ar.modelviewer",
+    "com.meta.ar.msysservice",
+    "com.meta.ar.playtorch",
+    "com.meta.ar.settings",
+    "com.meta.ar.spark_experience.artisan",
+    "com.meta.ar.spark_experience.augment_api_example_experience",
+    "com.meta.ar.spark_experience.boxing",
+    "com.meta.ar.spark_experience.chess_v3",
+    "com.meta.ar.spark_experience.flippy_blocks",
+    "com.meta.ar.spark_experience.lines",
+    "com.meta.ar.spark_experience.pong",
+    "com.meta.ar.spark_experience.shooter",
+    "com.meta.ar.sparkexperiencerunnertemplate",
+    "com.meta.ar.wasabi.service",
+    "com.meta.ar.worldunderstandingcoapp",
+    "com.meta.automation.cowter.vr",
+    "com.meta.automation.pauldron.vr",
+    "com.meta.codecavatar.workspace",
+    "com.meta.conductor.coca",
+    "com.meta.federatedcomputing.oculus",
+    "com.meta.greenhouse",
+    "com.meta.handseducationmodule",
+    "com.meta.horizon.standalone.demo",
+    "com.meta.horizon.standalone.dev",
+    "com.meta.iap.sample",
+    "com.meta.imeiqrreader",
+    "com.meta.metasdksample",
+    "com.meta.mocklocationtool",
+    "com.meta.mr.awe",
+    "com.meta.pclink.arkio",
+    "com.meta.pclink.gravitysketch",
+    "com.meta.pclink.quill",
+    "com.meta.pclink.quill_proto",
+    "com.meta.pclink.quill_proto_quest2",
+    "com.meta.pclink.quill_proto_quest3",
+    "com.meta.pclink.quill_proto_questpro",
+    "com.meta.pclink.substance3dmodeler",
+    "com.meta.pclinkservice.server",
+    "com.meta.portal.sdk.app",
+    "com.meta.proximity.service",
+    "com.meta.quest_hard_link",
+    "com.meta.rl.trust.service",
+    "com.meta.samples.Aura",
+    "com.meta.samples.MetaXRAudioSDK",
+    "com.meta.samples.dodgearcade",
+    "com.meta.testing",
+    "com.meta.transport",
+    "com.meta.wearable.aiextensibility.samples.aiactions",
+    "com.meta.wearable.mfgapp",
+    "com.meta.wirelessinsight",
+    "com.meta.work.workds.gallery",
+    "com.meta.worlds.stable",
+    "com.meta.wrist.os.power.scenariotracker",
+    "com.meta.wrist.os.sdk.resources",
+    "com.meta.xrbody.dogfooding",
+    "com.meta.xrmark",
+    "com.meta.xrteleporter",
+    "com.oculus.HapticsStudio",
+    "com.oculus.LucidApp",
+    "com.oculus.MrcCameraCalibration",
+    "com.oculus.accessibility",
+    "com.oculus.accountscenter",
+    "com.oculus.aidl.ILocationCallback",
+    "com.oculus.aidl.ILocationServiceInterface",
+    "com.oculus.appautomation",
+    "com.oculus.appsafety",
+    "com.oculus.asrservice",
+    "com.oculus.assistant",
+    "com.oculus.assistant.QUEUE_MIC_LOG",
+    "com.oculus.auth.ACTION_AUTH_WITH_OCULUS_EMAIL_AND_PASSWORD_FOR_ACCOUNT_LINKING",
+    "com.oculus.auth.ACTION_ENSURE_DEVICE_OWNERSHIP",
+    "com.oculus.auth.ACTION_FB_CHECK_MACHINE_APPROVAL",
+    "com.oculus.auth.ACTION_FB_LOGIN",
+    "com.oculus.auth.ACTION_FB_MACHINE_APPROVAL_LOGIN",
+    "com.oculus.auth.ACTION_FB_RESEND_SMS",
+    "com.oculus.auth.ACTION_FB_VERIFY_LOGIN_APPROVALS_CODE",
+    "com.oculus.auth.ACTION_FETCH_DEVICE_SCOPED_CREDENTIALS",
+    "com.oculus.auth.ACTION_FETCH_FB_INFO_FOR_ACCOUNT_LINKING",
+    "com.oculus.auth.ACTION_FETCH_HORIZON_DEVICE_SCOPED_CREDENTIALS",
+    "com.oculus.auth.ACTION_LINK_FB_ACCOUNT",
+    "com.oculus.auth.ACTION_LOGIN_API",
+    "com.oculus.auth.ACTION_LOGIN_WITH_FB_AUTH",
+    "com.oculus.auth.ACTION_LOGOUT",
+    "com.oculus.auth.ACTION_RESEND_LOGIN_APPROVAL_CODE",
+    "com.oculus.auth.ACTION_SEND_TWO_FACTOR_CODE",
+    "com.oculus.auth.ACTION_STATUS",
+    "com.oculus.auth.ACTION_VERIFY_LOGIN",
+    "com.oculus.auth.ACTION_VERIFY_LOGIN_FOR_ACCOUNT_LINKING",
+    "com.oculus.auth.control",
+    "com.oculus.authtester",
+    "com.oculus.avatareditor",
+    "com.oculus.backuptransportservice",
+    "com.oculus.bodyapiservice",
+    "com.oculus.browser",
+    "com.oculus.bugreporter",
+    "com.oculus.bugreportservice",
+    "com.oculus.captionservice",
+    "com.oculus.captis",
+    "com.oculus.companion.identity",
+    "com.oculus.companion.identity_secure",
+    "com.oculus.companion.identity_secure_encrypted",
+    "com.oculus.companion.inbound.workers.",
+    "com.oculus.companion.server",
+    "com.oculus.companion.server.LOCALE_UPDATED",
+    "com.oculus.companion.server.WifiModule.",
+    "com.oculus.companion.server.WifiModule.INTERNET_CONNECTED",
+    "com.oculus.companion.server.WifiModule.WIFI_CONNECTED",
+    "com.oculus.companion.server.WifiModule.WIFI_CONNECTING",
+    "com.oculus.companion.server.WifiModule.WIFI_DISABLED",
+    "com.oculus.companion.server.WifiModule.WIFI_DISCONNECTED",
+    "com.oculus.companion.server.WifiModule.WIFI_ENABLED",
+    "com.oculus.companion.server.WifiModule.WIFI_SCAN_RESULTS",
+    "com.oculus.configuration",
+    "com.oculus.cvp",
+    "com.oculus.dalmorevr",
+    "com.oculus.democi",
+    "com.oculus.deviceauthserver",
+    "com.oculus.devicecerttest",
+    "com.oculus.deviceidentitytest",
+    "com.oculus.dynamicfpstester",
+    "com.oculus.explore",
+    "com.oculus.explore.intent.action.LAUNCHED",
+    "com.oculus.externalstorage",
+    "com.oculus.extrapermissions.SPATIAL_DATA_PERMISSION_RESULT",
+    "com.oculus.facebook",
+    "com.oculus.firsttimenux",
+    "com.oculus.fitnesstracker",
+    "com.oculus.gamingactivity",
+    "com.oculus.gatekeeperservice",
+    "com.oculus.gemini.upload",
+    "com.oculus.guardian",
+    "com.oculus.guardiansetup",
+    "com.oculus.guidebook",
+    "com.oculus.handshotfixservice",
+    "com.oculus.headsetsfx",
+    "com.oculus.helpcenter",
+    "com.oculus.horizon",
+    "com.oculus.horizon.REMOTE_LAUNCH_APP",
+    "com.oculus.horizon.VRCAST_CASTING_STATUS_ACTION",
+    "com.oculus.horizon.VRCAST_DISCOVER_ACTION",
+    "com.oculus.horizon.VRCAST_START_CASTING_ACTION",
+    "com.oculus.horizon.VRCAST_STOP_CASTING_ACTION",
+    "com.oculus.horizon.dev",
+    "com.oculus.horizon.service_media.OVRMediaService",
+    "com.oculus.identitymanagement.service",
+    "com.oculus.igvr",
+    "com.oculus.inputinjectionservice",
+    "com.oculus.inputmethod.pacific",
+    "com.oculus.insightstester",
+    "com.oculus.integrity",
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.intent.action.RECEIVE_CAST_RESPONSE",
+    "com.oculus.intent.action.START_CASTING_FROM_TWILIGHT",
+    "com.oculus.intent.action.STOP_CASTING_FROM_TWILIGHT",
+    "com.oculus.license",
+    "com.oculus.license.LicenseManagementService"
+   ]
+  },
+  "system_properties": {
+   "count": 17,
+   "items": [
+    "dalvik.vm.heapgrowthlimit",
+    "dalvik.vm.heapmaxfree",
+    "dalvik.vm.heapminfree",
+    "dalvik.vm.heapstartsize",
+    "dalvik.vm.heaptargetutilization",
+    "debug.atrace.app_cmdlines",
+    "debug.atrace.tags.enableflags",
+    "debug.fbsystrace.force_java",
+    "debug.fbsystrace.tags",
+    "debug.fbsystrace.trace_load",
+    "debug.oculus.mqd.off",
+    "init...",
+    "persist.ovr.ota.enabled",
+    "ro.bluetooth.profiles",
+    "ro.boot.adb",
+    "ro.boot.flash.locked",
+    "vendor.qti.hardware.cacert.server"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 3,
+   "items": [
+    "com.oculus.aidl.ILocationCallback",
+    "com.oculus.aidl.ILocationServiceInterface",
+    "com.oculus.userserver.managerservice.IOculusUserManager"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

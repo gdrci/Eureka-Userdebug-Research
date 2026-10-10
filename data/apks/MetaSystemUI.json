@@ -1,0 +1,216 @@
+{
+ "apk": "system_ext_a/priv-app/MetaSystemUI/MetaSystemUI.apk",
+ "package": "com.meta.systemui",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.meta.systemui.SystemUIService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.meta.systemui.AndroidStartingWindowService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "horizonos.service.startingwindow.AndroidStartingWindowService"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.CAPTURE_BLACKOUT_CONTENT",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.INTERNAL_SYSTEM_WINDOW",
+   "android.permission.MANAGE_ACTIVITY_TASKS",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_FRAME_BUFFER",
+   "android.permission.ROTATE_SURFACE_FLINGER"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 1584,
+  "top_prefixes": [
+   [
+    "com.android.wm",
+    415
+   ],
+   [
+    "androidx.appcompat.widget",
+    164
+   ],
+   [
+    "androidx.fragment.app",
+    120
+   ],
+   [
+    "androidx.recyclerview.widget",
+    104
+   ],
+   [
+    "androidx.core.view",
+    92
+   ],
+   [
+    "androidx.appcompat.app",
+    65
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "androidx.dynamicanimation.animation",
+    34
+   ],
+   [
+    "com.android.launcher3",
+    28
+   ],
+   [
+    "androidx.core.content",
+    25
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "kotlin.jvm.functions",
+    23
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "com.meta.systemui",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    21
+   ],
+   [
+    "kotlin.jvm.internal",
+    21
+   ],
+   [
+    "androidx.core.app",
+    17
+   ],
+   [
+    "androidx.appcompat.graphics",
+    16
+   ],
+   [
+    "androidx.activity.result",
+    15
+   ],
+   [
+    "androidx.arch.core",
+    14
+   ],
+   [
+    "android.support.v4",
+    9
+   ],
+   [
+    "com.google.protobuf",
+    9
+   ],
+   [
+    "androidx.core.util",
+    5
+   ],
+   [
+    "androidx.loader.app",
+    5
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 8,
+   "items": [
+    "android.intent.action.MAIN",
+    "android.intent.action.OVERLAY_CHANGED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEARCH",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "persist.debug.shell_transit"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

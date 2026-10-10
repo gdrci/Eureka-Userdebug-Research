@@ -1,0 +1,251 @@
+{
+ "apk": "product_a/priv-app/SpgoUploader/SpgoUploader.apk",
+ "package": "com.oculus.spgouploader",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 3,
+   "items": [
+    {
+     "name": "androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.spgouploader.SpgoUploaderJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.spgouploader.SpgoUploaderReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.spgoservice.UPLOAD_REQUEST"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 2,
+  "items": [
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.REORDER_TASKS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 556,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    196
+   ],
+   [
+    "android.support.v7",
+    101
+   ],
+   [
+    "okhttp3.internal.http2",
+    39
+   ],
+   [
+    "android.support.graphics",
+    20
+   ],
+   [
+    "androidx.test.internal",
+    16
+   ],
+   [
+    "okhttp3.internal.connection",
+    16
+   ],
+   [
+    "okhttp3.internal.http",
+    12
+   ],
+   [
+    "android.arch.lifecycle",
+    11
+   ],
+   [
+    "okhttp3.internal.platform",
+    10
+   ],
+   [
+    "okhttp3.internal.http1",
+    8
+   ],
+   [
+    "androidx.test.core",
+    6
+   ],
+   [
+    "okhttp3.internal.cache",
+    6
+   ],
+   [
+    "okhttp3.internal.tls",
+    5
+   ],
+   [
+    "com.oculus.spgouploader",
+    4
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "com.facebook.netlite",
+    2
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "android.support.compat",
+    1
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ],
+   [
+    "androidx.test.annotation",
+    1
+   ],
+   [
+    "androidx.test.platform",
+    1
+   ],
+   [
+    "androidx.test.runner",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl$1",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcel",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 4,
+   "items": [
+    "android.intent.action.PROCESS_TEXT",
+    "android.net.http.X509TrustManagerExtensions",
+    "com.oculus.spgoservice.UPLOAD_COMPLETE",
+    "com.oculus.spgoservice.UPLOAD_REQUEST"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

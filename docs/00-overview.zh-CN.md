@@ -49,7 +49,7 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 行为与应用
 
-有两页是由镜像文件生成的，但不属于清单中的子系统。[26](26-init-boot-behaviour.zh-CN.md) 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。[27](27-important-apps.zh-CN.md) 使用 androguard 解码应用分组（第 20 页）中的 22 个应用；其事实位于 `data/apks/`，提取与页面生成脚本位于 `tools/apk/`。
+[26](26-init-boot-behaviour.zh-CN.md) 和 [27](27-important-apps.zh-CN.md) 不属于清单中的子系统。26 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。27 使用 androguard 解码应用分组（第 20 页）中的 22 个应用。另有三个子系统页包含由数据文件生成的小节：第 06 页（模块元数据与符号依赖，`data/kernel/`）、第 20 页（全部 146 个 `.apk` 文件的索引，`data/apks/`）和第 21 页（1,361 个原生库文件的索引及其 NEEDED 依赖图，`data/elf/`）。读取与生成脚本位于 `tools/apk/` 和 `tools/elfindex/`。
 
 ## 声明的核查方式
 
@@ -57,7 +57,7 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 复现证据
 
-`tools/` 包含解包器、辅助程序和 APK 提取脚本（`tools/apk/`）。`tools/README.md` 给出了构建步骤以及证据命令所用的变量。
+`tools/` 包含解包器、辅助程序、APK 提取脚本（`tools/apk/`）以及 ELF 与模块索引工具（`tools/elfindex/`）。`tools/README.md` 给出了构建步骤以及证据命令所用的变量。
 
 ## 限制
 

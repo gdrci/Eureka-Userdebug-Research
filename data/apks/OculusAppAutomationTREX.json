@@ -1,0 +1,111 @@
+{
+ "apk": "system_ext_a/app/OculusAppAutomationTREX/OculusAppAutomationTREX.apk",
+ "package": "com.oculus.appautomation",
+ "version_name": "9.0.0.637.596",
+ "version_code": "665333607",
+ "min_sdk": "23",
+ "target_sdk": "23",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 2,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libtrex_app_automation_plugin_v1.so",
+    "size": 516200
+   },
+   {
+    "path": "lib/arm64-v8a/libloaderimpl.so",
+    "size": 81480
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 1,
+  "items": [
+   "android.permission.SYSTEM_ALERT_WINDOW"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.supportedDevices",
+  "com.samsung.android.vr.application.mode",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 9,
+  "top_prefixes": [
+   [
+    "com.facebook.proguard",
+    4
+   ],
+   [
+    "com.oculus.appautomation",
+    2
+   ],
+   [
+    "com.facebook.buck_generated",
+    1
+   ],
+   [
+    "com.oculus.libloaderimpl",
+    1
+   ],
+   [
+    "com.oculus.loaderimpl",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 2,
+   "items": [
+    "com.oculus.appautomation",
+    "com.oculus.loaderimpl"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

@@ -1,0 +1,250 @@
+{
+ "apk": "system_a/system/priv-app/CalendarProvider/CalendarProvider.apk",
+ "package": "com.android.providers.calendar",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.calendar",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 2,
+   "items": [
+    {
+     "name": "CalendarDebug",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "CalendarDebugActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "CalendarProviderJobService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 4,
+   "items": [
+    {
+     "name": "CalendarReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "CalendarDebugReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.provider.Telephony.SECRET_CODE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "CalendarUpgradeReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PRE_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "CalendarProviderBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.providers.calendar.intent.CalendarProvider2"
+       ],
+       "categories": [
+        "com.android.providers.calendar"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.EVENT_REMINDER"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "CalendarProvider2",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 24,
+  "items": [
+   "android.permission.GET_ACCOUNTS",
+   "android.permission.GET_ACCOUNTS_PRIVILEGED",
+   "android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERNET",
+   "android.permission.LOG_COMPAT_CHANGE",
+   "android.permission.MANAGE_ACCOUNTS",
+   "android.permission.MANAGE_USERS",
+   "android.permission.READ_CALENDAR",
+   "android.permission.READ_COMPAT_CHANGE_CONFIG",
+   "android.permission.READ_SYNC_SETTINGS",
+   "android.permission.READ_SYNC_STATS",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.SUBSCRIBED_FEEDS_READ",
+   "android.permission.SUBSCRIBED_FEEDS_WRITE",
+   "android.permission.UPDATE_APP_OPS_STATS",
+   "android.permission.USE_CREDENTIALS",
+   "android.permission.USE_RESERVED_DISK",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_CALENDAR",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "android.permission.WRITE_SYNC_SETTINGS",
+   "com.google.android.googleapps.permission.GOOGLE_AUTH",
+   "com.google.android.googleapps.permission.GOOGLE_AUTH.cl"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 357,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    298
+   ],
+   [
+    "com.android.providers",
+    32
+   ],
+   [
+    "com.android.calendarcommon2",
+    24
+   ],
+   [
+    "com.android.ex",
+    2
+   ],
+   [
+    "com.android.common",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 8,
+   "items": [
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.DEVICE_STORAGE_OK",
+    "android.intent.action.EVENT_REMINDER",
+    "android.intent.action.MAIN",
+    "android.intent.action.PROVIDER_CHANGED",
+    "android.intent.action.SEND",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "debug.calendar.check_interval"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

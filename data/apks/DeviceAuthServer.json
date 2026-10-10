@@ -1,0 +1,217 @@
+{
+ "apk": "system_ext_a/priv-app/DeviceAuthServer/DeviceAuthServer.apk",
+ "package": "com.oculus.deviceauthserver",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".DeviceAuthService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "GET_TOKEN"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 3,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.oculus.enable_strict_single_user",
+  "com.oculus.messagequeue.doctor"
+ ],
+ "classes": {
+  "count": 969,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    298
+   ],
+   [
+    "com.google.gson",
+    166
+   ],
+   [
+    "android.support.v4",
+    104
+   ],
+   [
+    "com.facebook.secure",
+    61
+   ],
+   [
+    "com.oculus.devicecertservice",
+    56
+   ],
+   [
+    "com.android.volley",
+    55
+   ],
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "com.oculus.deviceauthserver",
+    26
+   ],
+   [
+    "kotlin.jvm.functions",
+    23
+   ],
+   [
+    "org.bouncycastle.util",
+    13
+   ],
+   [
+    "kotlin.jvm.internal",
+    11
+   ],
+   [
+    "vendor.oculus.hardware",
+    10
+   ],
+   [
+    "com.oculus.restwrapper",
+    8
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "oculus.internal.gson",
+    2
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl$1",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcel",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelable",
+    1
+   ],
+   [
+    "com.facebook.infer",
+    1
+   ],
+   [
+    "kotlin.Lazy",
+    1
+   ],
+   [
+    "kotlin.LazyKt__LazyJVMKt$WhenMappings",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 9,
+   "items": [
+    "com.oculus.auth.fbpermission.USE_DEVICE_AUTH",
+    "com.oculus.calibrationsync",
+    "com.oculus.deviceauthservice.NEW_TOKEN_AVAILABLE",
+    "com.oculus.horizon",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.ocms",
+    "com.oculus.permission.USE_DEVICE_AUTH",
+    "com.oculus.q4bservice",
+    "com.oculus.updater"
+   ]
+  },
+  "system_properties": {
+   "count": 2,
+   "items": [
+    "debug.oculus.mqd.off",
+    "ro.hardware.handedness"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

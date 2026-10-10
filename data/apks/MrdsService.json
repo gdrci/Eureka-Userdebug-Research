@@ -1,0 +1,315 @@
+{
+ "apk": "system_ext_a/app/MrdsService/MrdsService.apk",
+ "package": "com.oculus.mrds",
+ "version_name": "89.0.0.0.55",
+ "version_code": "638292949",
+ "min_sdk": "28",
+ "target_sdk": "24",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "dc2f834e3c1942378b14f076c82cd1ab59ea6566bff4730b2047e98efc9f9daf"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 6,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.mrds.MrdsService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ".mrdsprocess",
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.mrds.action.FEATURE_AVAILABILITY_ACTION"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "com.oculus.intent.action.REMOTE_DESKTOP_START_DISCOVERY"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "com.oculus.intent.action.REMOTE_DESKTOP_CONNECT_TO_COMPUTER"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.secure.packagefinder.PackageFinderService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_SET_CLIENT_VALUES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientDebugReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_EXPORT_CLIENT_ACCESS_LOG"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 25,
+  "items": [
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BLUETOOTH_ADVERTISE",
+   "android.permission.BLUETOOTH_CONNECT",
+   "android.permission.BLUETOOTH_SCAN",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.INTERNET",
+   "android.permission.POST_NOTIFICATIONS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.SYSTEM_ALERT_WINDOW",
+   "com.oculus.metacam.permission.CASTING_SERVICE",
+   "com.oculus.permission.ACCESS_OVERLAY_RENDERING",
+   "com.oculus.permission.ALLOW_UID_HIGH_PRIORITY",
+   "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE_DEBUG",
+   "com.oculus.permission.PLAY_AUDIO_BACKGROUND",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.USE_SCENE",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "android.hardware.vr.headtracking",
+  "com.oculus.experimental.enabled",
+  "oculus.software.vr.app.hybrid"
+ ],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.facebook.build_rule",
+  "com.facebook.build_time",
+  "com.facebook.package_type",
+  "com.facebook.versioncontrol.branch",
+  "com.facebook.versioncontrol.revision",
+  "com.google.android.ALLOW_PHISHING_DETECTION",
+  "com.oculus.auth.fbpermission.USE_ACCOUNTS_META",
+  "com.oculus.custom_profiles",
+  "com.oculus.dependency.required_os_version_name",
+  "com.oculus.deviceconfig.PARAMS_MAP_PATH",
+  "com.oculus.persistent_service",
+  "com.oculus.supportedDevices",
+  "com.oculus.version_upgrade_block_opt_out",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 269,
+  "top_prefixes": [
+   [
+    "com.oculus.deviceconfigclient",
+    64
+   ],
+   [
+    "com.facebook.secure",
+    40
+   ],
+   [
+    "com.facebook.mobileconfigservice",
+    23
+   ],
+   [
+    "com.oculus.metacam",
+    23
+   ],
+   [
+    "com.oculus.platform",
+    18
+   ],
+   [
+    "com.facebook.common",
+    12
+   ],
+   [
+    "com.oculus.mrds",
+    11
+   ],
+   [
+    "com.facebook.soloader",
+    8
+   ],
+   [
+    "com.facebook.mobileconfig",
+    6
+   ],
+   [
+    "com.facebook.quicklog",
+    6
+   ],
+   [
+    "com.oculus.aidl",
+    6
+   ],
+   [
+    "kotlin.jvm.internal",
+    3
+   ],
+   [
+    "com.facebook.debug",
+    2
+   ],
+   [
+    "com.facebook.appperf",
+    2
+   ],
+   [
+    "com.redex.Outlined$0$0$0",
+    1
+   ],
+   [
+    "com.redex.UnreachableException",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt___StringsJvmKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt__StringsKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt__StringsJVMKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt__StringNumberConversionsKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt__StringNumberConversionsJVMKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt__StringBuilderKt",
+    1
+   ],
+   [
+    "kotlin.text.StringsKt__StringBuilderJVMKt",
+    1
+   ],
+   [
+    "kotlin.collections.ArraysKt",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 16,
+   "items": [
+    "com.oculus.aidl.OVRMediaServiceInterface",
+    "com.oculus.aidl.OVRServiceInterface",
+    "com.oculus.aidl.OVRShareServiceInterface",
+    "com.oculus.assistant.QUEUE_MIC_LOG",
+    "com.oculus.explore.intent.action.LAUNCHED",
+    "com.oculus.extrapermissions.SPATIAL_DATA_PERMISSION_RESULT",
+    "com.oculus.horizon",
+    "com.oculus.horizon.service.OVRService",
+    "com.oculus.horizon.service_media.OVRMediaService",
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.platform.util.Util",
+    "com.oculus.settings.WIFI_SETTINGS_QR_CODE_SCANNER_RESULT",
+    "com.oculus.socialplatform",
+    "com.oculus.systemutilities",
+    "com.oculus.systemutilities.SharedMemoryService",
+    "com.oculus.vrshell.home"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "persist.ovr.deviceconfig.svc"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://com.facebook.mobileconfigservice.contentprovider"
+   ]
+  }
+ }
+}

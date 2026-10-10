@@ -1,0 +1,240 @@
+{
+ "apk": "system_a/system/priv-app/InProcessNetworkStack/InProcessNetworkStack.apk",
+ "package": "com.android.networkstack.inprocess",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "29",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 2,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libnativehelper_compat_libc++.so",
+    "size": 18976
+   },
+   {
+    "path": "lib/arm64-v8a/libnetworkstackutilsjni.so",
+    "size": 202344
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.android.server.NetworkStackService",
+     "exported": "true",
+     "permission": "android.permission.MAINLINE_NETWORK_STACK",
+     "enabled": null,
+     "process": "system",
+     "filters": [
+      {
+       "actions": [
+        "android.net.INetworkStackConnector.InProcess"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.connectivity.ipmemorystore.RegularMaintenanceJobService",
+     "exported": null,
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": "system",
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 732,
+  "top_prefixes": [
+   [
+    "com.android.networkstack",
+    269
+   ],
+   [
+    "com.android.server",
+    89
+   ],
+   [
+    "android.net.dhcp",
+    81
+   ],
+   [
+    "android.net.ip",
+    47
+   ],
+   [
+    "android.net.ipmemorystore",
+    34
+   ],
+   [
+    "android.net.networkstack",
+    28
+   ],
+   [
+    "android.stats.connectivity",
+    27
+   ],
+   [
+    "android.net.apf",
+    26
+   ],
+   [
+    "android.net.netlink",
+    22
+   ],
+   [
+    "android.net.shared",
+    22
+   ],
+   [
+    "android.net.util",
+    8
+   ],
+   [
+    "android.net.captiveportal",
+    4
+   ],
+   [
+    "android.net.netd",
+    3
+   ],
+   [
+    "android.net.DataStallReportParcelable$1",
+    1
+   ],
+   [
+    "android.net.DataStallReportParcelable",
+    1
+   ],
+   [
+    "android.net.DhcpResultsParcelable$1",
+    1
+   ],
+   [
+    "android.net.DhcpResultsParcelable",
+    1
+   ],
+   [
+    "android.net.IIpMemoryStore",
+    1
+   ],
+   [
+    "android.net.IIpMemoryStoreCallbacks",
+    1
+   ],
+   [
+    "android.net.INetd",
+    1
+   ],
+   [
+    "android.net.INetdUnsolicitedEventListener",
+    1
+   ],
+   [
+    "android.net.INetworkMonitor",
+    1
+   ],
+   [
+    "android.net.INetworkMonitorCallbacks",
+    1
+   ],
+   [
+    "android.net.INetworkStackConnector",
+    1
+   ],
+   [
+    "android.net.INetworkStackStatusCallback",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 28,
+   "items": [
+    "android.intent.action.VIEW",
+    "android.net.DataStallReportParcelable",
+    "android.net.DhcpResultsParcelable",
+    "android.net.InformationElementParcelable",
+    "android.net.InitialConfigurationParcelable",
+    "android.net.Layer2InformationParcelable",
+    "android.net.Layer2PacketParcelable",
+    "android.net.NativeNetworkConfig",
+    "android.net.NattKeepalivePacketDataParcelable",
+    "android.net.NetworkTestResultParcelable",
+    "android.net.PrivateDnsConfigParcel",
+    "android.net.ProvisioningConfigurationParcelable",
+    "android.net.ScanResultInfoParcelable",
+    "android.net.TcpKeepalivePacketDataParcelable",
+    "android.net.UidRangeParcel",
+    "android.net.dhcp.DhcpLeaseParcelable",
+    "android.net.dhcp.DhcpServingParamsParcel",
+    "android.net.extra.CAPTIVE_PORTAL_PROBE_SPEC",
+    "android.net.extra.CAPTIVE_PORTAL_URL",
+    "android.net.extra.CAPTIVE_PORTAL_USER_AGENT",
+    "android.net.extra.NETWORK",
+    "android.net.ipmemorystore.NetworkAttributesParcelable",
+    "android.net.ipmemorystore.SameL3NetworkResponseParcelable",
+    "android.net.ipmemorystore.StatusParcelable",
+    "android.net.netd.aidl.NativeUidRangeConfig",
+    "android.net.netmon.launchCaptivePortalApp",
+    "android.net.networkstack.aidl.dhcp.DhcpOption",
+    "android.net.networkstack.aidl.quirks.IPv6ProvisioningLossQuirkParcelable"
+   ]
+  },
+  "system_properties": {
+   "count": 3,
+   "items": [
+    "net.hostname",
+    "ro.build.flavor",
+    "ro.debuggable"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "android.net.networkstack.aidl.quirks.IPv6ProvisioningLossQuirkParcelable"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

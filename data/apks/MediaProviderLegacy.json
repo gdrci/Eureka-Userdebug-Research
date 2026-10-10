@@ -1,0 +1,190 @@
+{
+ "apk": "system_a/system/priv-app/MediaProviderLegacy/MediaProviderLegacy.apk",
+ "package": "com.android.providers.media",
+ "version_name": "12",
+ "version_code": "1024",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.media",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "465983f7791f2abeb43ea2cbdc7f21a8260b72bc08a55c839fc1a43bc741a81e"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.android.providers.media.LegacyMediaProvider",
+     "exported": "true",
+     "permission": "android.permission.WRITE_MEDIA_STORAGE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 1166,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    303
+   ],
+   [
+    "androidx.appcompat.widget",
+    164
+   ],
+   [
+    "androidx.fragment.app",
+    120
+   ],
+   [
+    "androidx.core.view",
+    88
+   ],
+   [
+    "androidx.appcompat.app",
+    65
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "com.android.providers",
+    33
+   ],
+   [
+    "androidx.core.content",
+    25
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    21
+   ],
+   [
+    "androidx.core.app",
+    17
+   ],
+   [
+    "androidx.appcompat.graphics",
+    16
+   ],
+   [
+    "androidx.activity.result",
+    15
+   ],
+   [
+    "androidx.arch.core",
+    14
+   ],
+   [
+    "android.support.v4",
+    9
+   ],
+   [
+    "androidx.loader.app",
+    5
+   ],
+   [
+    "androidx.interpolator.view",
+    4
+   ],
+   [
+    "androidx.core.internal",
+    3
+   ],
+   [
+    "androidx.core.os",
+    3
+   ],
+   [
+    "androidx.core.text",
+    3
+   ],
+   [
+    "androidx.core.util",
+    3
+   ],
+   [
+    "androidx.customview.view",
+    3
+   ],
+   [
+    "androidx.activity.contextaware",
+    2
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 6,
+   "items": [
+    "android.intent.action.MAIN",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEARCH",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "ro.debuggable"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

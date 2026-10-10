@@ -1,0 +1,127 @@
+{
+ "apk": "system_ext_a/app/OculusXrCvpPlugin/OculusXrCvpPlugin.apk",
+ "package": "com.oculus.cvp",
+ "version_name": "71.0.0.541.529",
+ "version_code": "665335051",
+ "min_sdk": "23",
+ "target_sdk": "23",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 3,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libloaderimpl.so",
+    "size": 82856
+   },
+   {
+    "path": "lib/arm64-v8a/libcvp_service.so",
+    "size": 4464
+   },
+   {
+    "path": "lib/arm64-v8a/libcvp_plugin.so",
+    "size": 400912
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.cvp.cvpservice",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 4,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.INTERNET",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.SYSTEM_ALERT_WINDOW"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.supportedDevices",
+  "com.samsung.android.vr.application.mode",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 9,
+  "top_prefixes": [
+   [
+    "com.facebook.proguard",
+    4
+   ],
+   [
+    "com.oculus.cvp",
+    2
+   ],
+   [
+    "com.facebook.buck_generated",
+    1
+   ],
+   [
+    "com.oculus.libloaderimpl",
+    1
+   ],
+   [
+    "com.oculus.loaderimpl",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 2,
+   "items": [
+    "com.oculus.cvp",
+    "com.oculus.loaderimpl"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

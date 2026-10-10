@@ -1,0 +1,623 @@
+{
+ "apk": "system_ext_a/priv-app/com.oculus.os.platform-res/com.oculus.os.platform-res.apk",
+ "package": "oculus.platform",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 0,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "oculus.internal.rc.RemoteControlProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 135,
+  "items": [
+   {
+    "name": "com.oculus.permission.MOUNT_WAKE_LOCK",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.RECEIVE_THIRD_PARTY_PACKAGE_STARTED",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.WRITE_ONLINE_CALIBRATION",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.READ_ONLINE_CALIBRATION",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.SECURE_TRACKING_SERVICE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.SET_THREAD_POLICY",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.SET_PERF_LEVEL",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.SET_SYSTEM_MODES",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.STATUS_BAR_SERVICE",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_CAMERA_DATA",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.SET_FOREGROUND_PANEL_SERVICE",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.USE_RESERVED_CORE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.USE_CUSTOM_PROFILES",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.COLLECT_SENSOR_DATA",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_VRSREWIND",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.TASKS_BEFORE_POWER_OFF",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.READ_VR_DEVICE_PARAMS",
+    "protection": null
+   },
+   {
+    "name": "com.oculus.permission.SET_VR_DEVICE_PARAMS",
+    "protection": null
+   },
+   {
+    "name": "com.oculus.permission.RECEIVE_BROADCASTS_IN_BACKGROUND",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ALWAYS_CAPTURE_MIC_AUDIO_INPUT",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.PRIORITY_CAPTURE_MIC_AUDIO_INPUT",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.UPDATE_SECURITY_PRINCIPAL",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.permission.WRITE_SETTINGS",
+    "protection": "0x08000402"
+   },
+   {
+    "name": "com.oculus.permission.READ_SETTINGS",
+    "protection": "0x08000402"
+   },
+   {
+    "name": "com.oculus.permission.RENDER_SYSTEM_UI",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.GET_WINDOW_LAYOUT",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.CONNECT_TO_DUMPSYSPROXY",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "vros.permission.DUMP_ON_DEMAND",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "horizonos.permission.DUMP_ON_DEMAND",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.INTERACT_ACROSS_USERS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.MANAGE_LOCKSCREEN",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.MANAGE_APP_RESTRICTIONS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.CREATE_SURFACE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.COLLECT_BUG_REPORT",
+    "protection": "0x08000402"
+   },
+   {
+    "name": "com.oculus.permission.SUBMIT_BUG_REPORT",
+    "protection": "0x08000402"
+   },
+   {
+    "name": "com.oculus.permission.ALLOW_UID_HIGH_PRIORITY",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ALLOW_TID_MAXIMUM_PRIORITY",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.WRITE_GKS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.READ_CONTROLLER_STATUS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.MODIFY_CONTROLLER_STATUS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.YADI_QUEUE_DOWNLOAD",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.YADI_QUEUE_INSTALL",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.INSTALL_LICENSE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.VERIFY_USER_ACTION",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.QUERY_LICENSE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.REVOKE_LICENSE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.UNREVOKE_LICENSE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.REGISTER_LICENSE_SIGNER",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.RESET",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.RESTART",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_TRACKING_ENV",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.COLOCATION_API_READ_MAP",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.COLOCATION_API_WRITE_MAP",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.COLOCATION_API_GET_MAP_UUID",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.XRS_STREAM",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.XRS_OBSERVE_STATE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.XRS_OAF_COMMAND",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.PLAY_AUDIO_BACKGROUND",
+    "protection": "0x00000000"
+   },
+   {
+    "name": "com.oculus.permission.HAND_TRACKING",
+    "protection": "0x00000000"
+   },
+   {
+    "name": "com.oculus.permission.EYE_TRACKING",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.FACE_TRACKING",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.BODY_TRACKING",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.CODEC_AVATAR",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.CODEC_AVATAR_INTERNAL",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.permission.CODEC_AVATAR_CAMERA",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.CAMS_INTERNAL_API",
+    "protection": "0x08000002"
+   },
+   {
+    "name": "com.oculus.permission.USE_SCENE",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.FITNESS_TOOLKIT",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.ORTHOFIT_DATA",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.TRACKED_KEYBOARD",
+    "protection": "0x00000000"
+   },
+   {
+    "name": "com.oculus.permission.USE_ANCHOR_API",
+    "protection": "0x00000000"
+   },
+   {
+    "name": "com.oculus.permission.FACE_EYE_INTERNAL_API",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.TRACKING_FIDELITY_INTERNAL_API",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.IMPORT_EXPORT_IOT_MAP_DATA",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.VOICE_ASSISTANT_MIC_DATA",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.HANDLE_SYSTEM_KEYS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_MR_SENSOR_DATA",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.TRACKING_INJECTION",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.UPDATE_TELEMETRY_SESSIONS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.UPDATE_TELEMETRY_DESTINATION_SESSIONS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.UPDATE_TELEMETRY_SUB_SESSIONS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.REPORT_EVENTS",
+    "protection": "0x08000004"
+   },
+   {
+    "name": "com.oculus.permission.REPORT_EVENTS_DEBUG",
+    "protection": "0x08000004"
+   },
+   {
+    "name": "com.oculus.permission.SYSTEM_RESOURCE_READ",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.SYSTEM_RESOURCE_MODIFIER",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_BACKGROUND_HEAD_TRACKING",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_BACKGROUND_INPUT_TRACKING",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.GRANT_TRACKING_SERVICE_ACCESS_TO_DISPLAY",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_OVERLAY_RENDERING",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.READ_FOCUS_STATE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.WIFI_LOCK",
+    "protection": "0x00001000"
+   },
+   {
+    "name": "com.oculus.permission.SHOW_OS_PANEL_DIALOG",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.RENDER_OS_PANEL_DIALOG",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.BIND_PRESENCE_SERVICE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.PROVIDE_2D_DISPLAY",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.USE_ACCOUNTS_META",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.USE_ACCOUNTS_OCULUS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.PARFAIT_TRACE_CONTROL",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.USE_DEVICE_AUTH",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.BIND_VR2D_DISPLAY_RESOLVER_SERVICE",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.permission.BIND_ACTIVITY_RECOGNITION_SERVICE",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.permission.BIND_SPATIAL_WINDOW_MANAGER_SERVICE",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.permission.OBSERVE_PRIVACY_INDICATORS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.MANAGE_CUSTOM_PIN",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.STAGE_FOR_SUBSET_RESTORE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.READ_PACKAGE_SETTINGS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.WRITE_PACKAGE_SETTINGS",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.INSTALL_DOWNGRADED_PACKAGES",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.FILTER_GLOBAL_INPUT_EVENTS",
+    "protection": "0x04000012"
+   },
+   {
+    "name": "com.oculus.permission.RECORD_MR_STREAM",
+    "protection": "0x00000001"
+   },
+   {
+    "name": "com.oculus.permission.CREATE_VRDESKTOP_CONTAINERS",
+    "protection": "0x00000002"
+   },
+   {
+    "name": "com.oculus.permission.METACAM_SCREEN_CAPTURE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.MANAGE_CLOUD_BACKUP_KEYS",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.READ_PERMISSION_USAGE_HISTORY",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "com.oculus.permission.USE_GUARDIANSDK_IPC",
+    "protection": "0x08000004"
+   },
+   {
+    "name": "com.oculus.permission.USE_GUARDIANSDK_IPC_DEBUG",
+    "protection": "0x08000004"
+   },
+   {
+    "name": "com.oculus.permission.MANAGE_VOLUMETRIC_WINDOWS",
+    "protection": "0x04000004"
+   },
+   {
+    "name": "com.oculus.permission.MONITOR_VOLUMETRIC_WINDOW",
+    "protection": "0x04000012"
+   },
+   {
+    "name": "com.oculus.permission.VR_SHELL_PRIVILEGES",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.ACCESS_THEATER_VIEW",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE",
+    "protection": "0x08000002"
+   },
+   {
+    "name": "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE_DEBUG",
+    "protection": "0x08000002"
+   },
+   {
+    "name": "com.oculus.permission.SYSTEM_KEY_DISPLAY_MODE_SWITCH",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.SYSTEM_KEY_HOME_BUTTON",
+    "protection": "0x08000004"
+   },
+   {
+    "name": "com.oculus.permission.GET_SENSOR_LOCK_STATE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.SET_SENSOR_LOCK_STATE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.SET_POINTER_ICON_TYPE_LISTENER",
+    "protection": "0x04000402"
+   },
+   {
+    "name": "com.oculus.permission.SET_INPUT_VISIBILITY_LISTENER",
+    "protection": "0x04000402"
+   },
+   {
+    "name": "com.oculus.permission.SET_SPATIAL_MEDIA_LISTENER",
+    "protection": "0x04000402"
+   },
+   {
+    "name": "hzos.permission.ACCESS_SDK_UNSTABLE_SURFACES",
+    "protection": "0x04000004"
+   },
+   {
+    "name": "com.oculus.permission.USE_AUDIOTAPPER_HOST",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.QUIET_FOREGROUND_SERVICE",
+    "protection": "0x00000402"
+   },
+   {
+    "name": "com.oculus.permission.USE_RDSS_SDK_IPC",
+    "protection": "0x08000004"
+   },
+   {
+    "name": "com.oculus.permission.READ_VOLUMETRIC_WINDOW_TRACKING_ACCESS",
+    "protection": "0x04000012"
+   },
+   {
+    "name": "com.oculus.permission.GET_BARCODE",
+    "protection": "0x08000012"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "oculus_preferences_oculus_sdk"
+ ],
+ "classes": {
+  "count": 0,
+  "top_prefixes": []
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

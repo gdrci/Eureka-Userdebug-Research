@@ -58,12 +58,103 @@
 |---|---|---|
 | D14.2 | 在 29 个公开条目中，有 23 个以文件或链接的形式出现在本组行中。libaaudio.so、libEGL.so、libGLESv2.so 和 libvulkan.so 等条目存在 |  |
 
+## 库索引（生成）
+
+## 库索引（生成）
+
+## 库索引（生成）
+
+## 库索引（生成）
+
+<!-- generated: libraries start -->
+本索引涵盖原生库分组的 1,361 个文件，由 `tools/elfindex libs` 从已挂载的分区读取。每个文件的 SHA-256 都已重新计算并与清单比对：1,361 个中有 1,361 个相符。逐文件表格位于 `data/elf/libraries.tsv`。头部与动态符号由 Go 标准库 `debug/elf` 读取。
+
+- 1,351 个文件为 ELF 共享对象（ET_DYN）：854 个为 ELFCLASS64、机器类型 EM_AARCH64，497 个为 ELFCLASS32、机器类型 EM_ARM。
+- 10 个文件为 LLVM 位码，不是 ELF：`system_a/system/lib/libclcore.bc`、`system_a/system/lib/libclcore_debug.bc`、`system_a/system/lib/libclcore_debug_g.bc`、`system_a/system/lib/libclcore_g.bc`、`system_a/system/lib/libclcore_neon.bc`、`system_a/system/lib64/libclcore.bc`、`system_a/system/lib64/libclcore_debug.bc`、`system_a/system/lib64/libclcore_debug_g.bc`、`system_a/system/lib64/libclcore_g.bc`、`system_a/system/lib64/libclcore_neon.bc`。
+- 12 个文件保留了 .symtab 节；其余 1,339 个只保留动态符号表（已剥离）。
+- 1,343 个 ELF 文件（共 1,351 个）带有 GNU build-id 注释，8 个没有。51 个文件没有 SONAME。
+- 12 个文件的 .comment 字符串为 `Android (7485623, based on r416183b1) clang version 12.0.7 (https://android.googlesource.com/toolchain/llvm-project c935d99d7cf2016289302412d708641d52d2f7ee)`。
+
+### 按分区
+
+| 分区 | 文件数 | ELF 文件数 |
+|---|---|---|
+| system_a | 779 | 769 |
+| vendor_a | 367 | 367 |
+| system_ext_a | 169 | 169 |
+| odm_a | 26 | 26 |
+| product_a | 20 | 20 |
+
+### NEEDED 依赖图
+
+1,351 个 ELF 文件共列出 11,630 条 NEEDED 边，涉及 613 个不同的库。其中 10,845 条边指向本组内某个文件的 SONAME（共 453 个不同名称）。其余 785 条边指向 160 个不在本组内的不同库。最常见的 NEEDED 条目：
+
+| NEEDED | 库数 |
+|---|---|
+| `libc.so` | 1,343 |
+| `libdl.so` | 1,284 |
+| `libm.so` | 1,267 |
+| `libc++.so` | 1,224 |
+| `liblog.so` | 921 |
+| `libutils.so` | 677 |
+| `libcutils.so` | 574 |
+| `libhidlbase.so` | 348 |
+| `libbase.so` | 288 |
+| `libbinder.so` | 246 |
+| `libbinder_ndk.so` | 123 |
+| `libosutils.so` | 115 |
+| `libui.so` | 62 |
+| `libz.so` | 58 |
+| `libjsoncpp.so` | 52 |
+
+本组中没有 SONAME 的 NEEDED 名称（最常见的）：
+
+| NEEDED | 边数 | 清单中其他分组的同名文件 |
+|---|---|---|
+| `libcrypto.so` | 45 | security-keystore-crypto |
+| `libstd.dylib.so` | 40 | native-libraries |
+| `libEGL.so` | 31 | gpu |
+| `libGLESv2.so` | 25 | gpu |
+| `android.hardware.graphics.mapper@4.0.so` | 25 | display-and-composer |
+| `libdisplaydebug.so` | 23 | display-and-composer |
+| `libaudioclient.so` | 21 | audio |
+| `libnativehelper.so` | 18 | 无 |
+| `libstagefright_foundation.so` | 16 | media-codecs |
+| `libaudioutils.so` | 15 | audio |
+| `libvrsensors-hidlwrapper.so` | 15 | sensors-mcu-meta-hal |
+| `libstatssocket.so` | 14 | 无 |
+
+在没有 SONAME 匹配本组的 160 个名称中，有 152 个在清单中有同名文件。匹配仅依据文件名，因此并不确认 SONAME。列中为 `native-libraries` 表示该文件在本组中，但 SONAME 不同。其余名称在镜像中没有同名文件。
+
+### 动态符号
+
+在 ELF 文件中，动态符号表共有 572,803 个已定义符号和 137,597 个未定义符号。未定义符号最多的库：
+
+| 库 | 机器类型 | 未定义 | 已定义 |
+|---|---|---|---|
+| `system_a/system/lib/libandroid_runtime.so` | EM_ARM | 2400 | 1878 |
+| `system_a/system/lib64/libandroid_runtime.so` | EM_AARCH64 | 2398 | 1856 |
+| `system_a/system/lib/libandroid_servers.so` | EM_ARM | 815 | 908 |
+| `system_a/system/lib64/libandroid_servers.so` | EM_AARCH64 | 815 | 908 |
+| `system_a/system/lib/libhwui.so` | EM_ARM | 804 | 121 |
+| `system_a/system/lib64/libhwui.so` | EM_AARCH64 | 794 | 121 |
+| `system_a/system/lib/libmediaplayerservice.so` | EM_ARM | 784 | 1638 |
+| `system_a/system/lib/libmedia_jni.so` | EM_ARM | 679 | 542 |
+| `system_a/system/lib64/libmedia_jni.so` | EM_AARCH64 | 677 | 542 |
+| `vendor_a/lib/libfastcvopt.so` | EM_ARM | 584 | 5950 |
+| `vendor_a/lib64/libfastcvopt.so` | EM_AARCH64 | 576 | 6000 |
+| `vendor_a/lib64/libwvhidl.so` | EM_AARCH64 | 535 | 3421 |
+
+库之间的符号级匹配未在此计算。
+
+<!-- generated: libraries end -->
+
 ## 缺口
 
 - /apex/com.android.runtime 下的 bionic 目标（libc、libdl、libm、libdl_android）不在挂载中；system_a/apex 为空，因此无法跟随这 8 个 bionic 符号链接读取其内容。
 - libicu.so、libicui18n.so、libicuuc.so、libnativehelper.so 和 libneuralnetworks.so 在 system/etc/public.libraries.txt 中被列出，但未出现在任何子系统清单中；未确定 APEX 模块是否提供它们。
 - 857 行的角色是根据文件名推断的，453 个已验证的角色来自导出符号或 NEEDED 条目；未检查每个文件的行为。61 个未验证的行仅是基于名称的猜测（例如 com.qti.stats.common.so、libgipp.so、libkll.so、libfruit.so），并在 roles.tsv 中相应标记。
-- 仅为 15 个深入分析项计算了反向依赖。未构建覆盖 1351 个 ELF 对象的完整 NEEDED 图。
+- 全部 1,351 个 ELF 对象的 NEEDED 边已在上方生成的小节中列出。边仅与本组内的 SONAME 匹配；此处无匹配的 NEEDED 名称可能由 APEX 模块或组外文件提供，但未作核对。
 - 链接器配置（system/linkerconfig、system/etc/linker.config.pb）为二进制文件，未经解码。对 libadsprpc.so、libopenxr_loader.so 和 libmaintenanceboot.so 进行的字面 grep 在 linker.config.pb 中未找到匹配项，但搜索规则和命名空间搜索路径均未确定。
 - 未提取 bootctrl.anorak.so 的 HMI 模块 ID 字符串，也未发现 android.hardware.boot@1.0-impl-1.2-qti.so 与 bootctrl.anorak.so 之间的导入链接。使用关系仅为推断。
 - 挂载中未找到 libVkLayer_khronos_validation.so 的 Vulkan 层清单，因此其注册和启用路径未知。

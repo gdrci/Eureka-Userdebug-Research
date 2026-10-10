@@ -1,0 +1,136 @@
+{
+ "apk": "system_ext_a/app/ExtraPermissions/ExtraPermissions.apk",
+ "package": "com.oculus.extrapermissions",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.extrapermissions.MainActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "com.oculus.extrapermissions.DIALOG"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.LAUNCHER",
+        "com.oculus.intent.category.2D"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.extrapermissions.SharePointCloudDataConsentActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "com.oculus.intent.category.2D"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 5,
+  "items": [
+   "android.permission.INTERNAL_SYSTEM_WINDOW",
+   "android.permission.READ_DEVICE_CONFIG",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "com.meta.vr.display_mode",
+  "com.meta.vr.exclusive_system_dialog.requires_foreground_blocking",
+  "oculus_preferences_extrapermissions"
+ ],
+ "classes": {
+  "count": 37,
+  "top_prefixes": [
+   [
+    "com.oculus.extrapermissions",
+    36
+   ],
+   [
+    "com.oculus.telemetrylogger",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 4,
+   "items": [
+    "com.oculus.extrapermissions.SPATIAL_DATA_PERMISSION_RESULT",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.ShellControlBroadcastReceiver",
+    "com.oculus.vrshell.intent.action.LAUNCH"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

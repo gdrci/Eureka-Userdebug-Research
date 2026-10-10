@@ -50,6 +50,58 @@
 - **K23** (verified)：qrtr.ko（vendor）：带有 nameserver 描述的高通 IPC 路由器驱动，GPL v2 与双许可 BSD/GPL 标签，无依赖。它是网络协议族 42（net-pf-42），导出 8 个符号（qrtr_endpoint_register、qrtr_ns_init、qrtr_get_service_id 等）。qmi_helpers.ko 有软依赖 pre qrtr。init.anorak.rc 定义了服务 vendor.qrtr-ns（第 324 行，class core，user 和 group 为 vendor_qrtr，NET_BIND_SERVICE），没有显式的 start 行，因此它作为 class core 服务运行；其运行用户为 vendor_qrtr。
 - **K29** (verified)：modules.load 是纯文本的 .ko 文件名列表，每行一个，不含路径和选项。vendor 有 262 项，odm 有 27 项，两个列表都是完整的模块集合（K04）。在为 -b * 路径构建的参数中，vendor 列表排在 odm 列表之前；顺序是否会改变加载顺序属于推断，未经测试。vendor 的前几项是 lzo-rle.ko、lzo.ko、qti-regmap-debugfs.ko、regmap-spmi.ko 和 zram.ko。odm 的第一项是 as5510.ko。
 
+## 模块索引与符号依赖（生成）
+
+<!-- generated: modules start -->
+本节由 `data/kernel/modules.tsv`（289 个 `.ko` 文件的 `.modinfo` 字段）和 `data/kernel/symbols.tsv`（每个模块的全局符号）生成，生成工具为 `tools/elfindex` 与 `tools/elfindex/gen_module_section.py`。每个文件的 SHA-256 都与清单相符。
+
+- 模块：289 个（vendor_dlkm_a 262、odm_dlkm_a 27）。vermagic 全部相同：`5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64`。
+- 许可证：GPL v2 260、GPL 26、Dual BSD/GPL 3。
+- 没有 `depends=` 行的模块：127 个。`alias=` 行共 867 行；`parm=` 行共 30 行，分布在 14 个模块中。含 `firmware=` 行的模块：1 个（`cfg80211`，`regulatory.db.p7s;regulatory.db`）。
+- 未定义的全局符号引用：15,896 条，涉及 3,489 个不同符号。
+  - 恰好由镜像中另一个模块定义：1,572 条引用。
+  - 由多个其他模块定义（未归属）：0 条引用。
+  - 镜像中没有任何模块定义：14,324 条引用。这些是来自内核或镜像中不存在的模块的导入；内核不在镜像中，因此未与内核核对。
+- 从镜像中另一模块导入至少一个符号的模块：162 / 289 个。
+
+向镜像中其他模块提供最多引用的模块：
+
+| 提供模块 | 导入模块数 | 引用数 |
+|---|---|---|
+| `cfg80211` | 2 | 129 |
+| `qcom-scm` | 25 | 110 |
+| `clk-qcom` | 13 | 95 |
+| `swr_dlkm` | 8 | 70 |
+| `wcd_core_dlkm` | 9 | 67 |
+| `lpass_cdc_dlkm` | 6 | 64 |
+| `mem_buf_dev` | 10 | 62 |
+| `qmi_helpers` | 9 | 61 |
+| `wlan_firmware_service` | 1 | 61 |
+| `mhi` | 5 | 52 |
+| `cnss2` | 1 | 52 |
+| `rproc_qcom_common` | 14 | 44 |
+
+镜像中没有任何模块定义、出现最频繁的引用：
+
+| 符号 | 引用数 |
+|---|---|
+| `__stack_chk_fail` | 235 |
+| `__stack_chk_guard` | 235 |
+| `printk` | 202 |
+| `_dev_err` | 190 |
+| `__platform_driver_register` | 177 |
+| `devm_kmalloc` | 174 |
+| `platform_driver_unregister` | 165 |
+| `mutex_unlock` | 161 |
+| `mutex_lock` | 158 |
+| `kfree` | 148 |
+| `__mutex_init` | 128 |
+| `kmem_cache_alloc_trace` | 120 |
+
+完整符号列表见 `data/kernel/symbols.tsv`（72,990 行）。
+
+<!-- generated: modules end -->
+
 ## 缺口
 
 - 未确定模块的运行时行为（probe 函数、创建的设备节点、启动后实际生效的参数值）；所有结论均来自静态分析。
@@ -57,7 +109,7 @@
 - 与 of: 别名键匹配的设备树节点位于该组之外的设备树 blob 中，未予解析。
 - 模块所指定的固件文件（cfg80211 的 regulatory.db 和 regulatory.db.p7s，以及通过 wlan_firmware_service 获取的 WLAN 固件）未能在已挂载的分区中找到。
 - 27 个模块的角色仅依据名称、别名或导出符号名称得出；blu_fw_driver.ko 未经验证；bcl_pmic5、bcl_soc、icc-test、qcom_iommu_debug、qti_qmi_sensor_v2、rimps_log 和 ddr_cdev 没有基于内容的确认。
-- 未计算跨模块符号解析（每个未定义符号由哪个模块提供）；仅生成了每个模块的导出和导入计数。
+- 镜像中没有任何模块定义的未定义符号未归属到具体提供者（见生成的小节）。内核不在镜像中，因此这些符号未与内核核对。
 - 深入分析覆盖了 10 个模块、4 个配置或列表文件（modules.dep、modules.alias、modules.blocklist、modules.load），以及 init 和 SELinux 相关引用；其余 279 个模块仅根据 modinfo、别名或导出字符串进行分类。
 - 仅为带有 parm 条目的模块提取了参数描述；模块中不包含参数默认值。
 - 内核镜像和 CONFIG_ 选项不在该组中，因此未检查 5.10.205-01655-g5c5a360e9c21 的构建配置。

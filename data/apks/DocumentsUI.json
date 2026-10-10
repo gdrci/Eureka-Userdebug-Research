@@ -1,0 +1,433 @@
+{
+ "apk": "system_a/system/priv-app/DocumentsUI/DocumentsUI.apk",
+ "package": "com.android.documentsui",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "29",
+ "target_sdk": "30",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 6,
+   "items": [
+    {
+     "name": "com.android.documentsui.picker.PickActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.OPEN_DOCUMENT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.OPENABLE"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.CREATE_DOCUMENT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.OPENABLE"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.GET_CONTENT"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.OPENABLE"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.OPEN_DOCUMENT_TREE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.documentsui.files.LauncherActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.documentsui.inspector.InspectorActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.documentsui.files.FilesActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.documentsui.ScopedAccessActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.os.storage.action.OPEN_EXTERNAL_DIRECTORY"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.documentsui.selection.demo.SelectionDemoActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.android.documentsui.services.FileOperationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": ":com.android.documentsui.services",
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.android.documentsui.PackageReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PACKAGE_FULLY_REMOVED",
+        "android.intent.action.PACKAGE_DATA_CLEARED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.documentsui.roots.BootReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.documentsui.PreBootReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PRE_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.android.documentsui.picker.LastAccessedProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.documentsui.picker.PickCountRecordProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.android.documentsui.archives.ArchivesProvider",
+     "exported": "true",
+     "permission": "android.permission.MANAGE_DOCUMENTS",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.content.action.DOCUMENTS_PROVIDER"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 13,
+  "items": [
+   "android.permission.CACHE_CONTENT",
+   "android.permission.CHANGE_OVERLAY_PACKAGES",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.LOG_COMPAT_CHANGE",
+   "android.permission.MANAGE_DOCUMENTS",
+   "android.permission.MODIFY_QUIET_MODE",
+   "android.permission.QUERY_ALL_PACKAGES",
+   "android.permission.READ_COMPAT_CHANGE_CONFIG",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.REMOVE_TASKS",
+   "android.permission.START_FOREGROUND_SERVICES_FROM_BACKGROUND",
+   "android.permission.WAKE_LOCK"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "android.app.shortcuts",
+  "com.google.android.backup.api_key"
+ ],
+ "classes": {
+  "count": 3146,
+  "top_prefixes": [
+   [
+    "com.android.documentsui",
+    645
+   ],
+   [
+    "com.google.android",
+    467
+   ],
+   [
+    "com.google.common",
+    330
+   ],
+   [
+    "org.apache.commons",
+    214
+   ],
+   [
+    "androidx.appcompat.widget",
+    164
+   ],
+   [
+    "androidx.fragment.app",
+    127
+   ],
+   [
+    "androidx.recyclerview.widget",
+    112
+   ],
+   [
+    "androidx.core.view",
+    96
+   ],
+   [
+    "androidx.recyclerview.selection",
+    76
+   ],
+   [
+    "androidx.appcompat.app",
+    71
+   ],
+   [
+    "org.tukaani.xz",
+    70
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "android.support.v4",
+    50
+   ],
+   [
+    "androidx.constraintlayout.solver",
+    50
+   ],
+   [
+    "androidx.constraintlayout.widget",
+    26
+   ],
+   [
+    "androidx.core.content",
+    26
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.app",
+    24
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    21
+   ],
+   [
+    "androidx.swiperefreshlayout.widget",
+    19
+   ],
+   [
+    "androidx.activity.result",
+    17
+   ],
+   [
+    "androidx.appcompat.graphics",
+    16
+   ],
+   [
+    "androidx.core.text",
+    16
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 29,
+   "items": [
+    "android.intent.action.CREATE_DOCUMENT",
+    "android.intent.action.GET_CONTENT",
+    "android.intent.action.LOCALE_CHANGED",
+    "android.intent.action.MAIN",
+    "android.intent.action.MANAGED_PROFILE_ADDED",
+    "android.intent.action.MANAGED_PROFILE_REMOVED",
+    "android.intent.action.MANAGED_PROFILE_UNAVAILABLE",
+    "android.intent.action.MANAGED_PROFILE_UNLOCKED",
+    "android.intent.action.MEDIA_EJECT",
+    "android.intent.action.MEDIA_MOUNTED",
+    "android.intent.action.MEDIA_REMOVED",
+    "android.intent.action.OPEN_DOCUMENT",
+    "android.intent.action.OPEN_DOCUMENT_TREE",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_DATA_CLEARED",
+    "android.intent.action.PACKAGE_FULLY_REMOVED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.QUICK_VIEW",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.VIEW",
+    "android.intent.action.VIEW_DOWNLOADS",
+    "com.android.documentsui.action.ROOT_CHANGED"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "android.intent.extra.INDEX"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

@@ -1,0 +1,484 @@
+{
+ "apk": "system_ext_a/priv-app/ShellEnv/ShellEnv.apk",
+ "package": "com.oculus.shellenv",
+ "version_name": "71.0.0.605.503",
+ "version_code": "665334957",
+ "min_sdk": "29",
+ "target_sdk": "29",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 19,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_zstd__zstd.so",
+    "size": 66600
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_event_event.so",
+    "size": 20592
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_structured_data_structured_data.so",
+    "size": 3184
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_perflogger_base_base.so",
+    "size": 2920
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_shared_promise.so",
+    "size": 3184
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_coreAndroid.so",
+    "size": 298992
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_barrier.so",
+    "size": 3168
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executors_global_executorAndroid.so",
+    "size": 663680
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executorAndroid.so",
+    "size": 222328
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_zlib_z.so",
+    "size": 32776
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_libfmq_aidl_fmq-cpp.so",
+    "size": 46416
+   },
+   {
+    "path": "lib/arm64-v8a/libsslx.so",
+    "size": 300176
+   },
+   {
+    "path": "lib/arm64-v8a/libsodium.so",
+    "size": 3152
+   },
+   {
+    "path": "lib/arm64-v8a/libshellenv.so",
+    "size": 5911368
+   },
+   {
+    "path": "lib/arm64-v8a/libovrplatformloader.so",
+    "size": 829112
+   },
+   {
+    "path": "lib/arm64-v8a/libfbjni.so",
+    "size": 225728
+   },
+   {
+    "path": "lib/arm64-v8a/libdouble-conversion.so",
+    "size": 3152
+   },
+   {
+    "path": "lib/arm64-v8a/libcryptox.so",
+    "size": 1127008
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_apps_ShellEnv_Android_aidl_interfaces-cpp.so",
+    "size": 57192
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 18,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.shellenv.ShellEnvActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.HOME",
+        "android.intent.category.LAUNCHER",
+        "android.intent.category.DEFAULT",
+        "com.oculus.intent.category.VR"
+       ]
+      },
+      {
+       "actions": [
+        "com.oculus.shellenv.SHELL_ENV_CMD"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.shellenv.ShellEnvDumpService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_SET_CLIENT_VALUES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientDebugReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_EXPORT_CLIENT_ACCESS_LOG"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.profileinstaller.ProfileInstallReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.profileinstaller.action.INSTALL_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SKIP_FILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SAVE_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 3,
+   "items": [
+    {
+     "name": null,
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.startup.InitializationProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 35,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.INTERNET",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.RECORD_AUDIO",
+   "android.permission.USE_RESERVED_DISK",
+   "android.permission.WRITE_EXTERNAL_STORAGE",
+   "com.oculus.horizon.LINKED_ACCOUNTS_READ_PERMISSION",
+   "com.oculus.permission.ACCESS_BACKGROUND_HEAD_TRACKING",
+   "com.oculus.permission.ACCESS_BACKGROUND_INPUT_TRACKING",
+   "com.oculus.permission.ALWAYS_CAPTURE_MIC_AUDIO_INPUT",
+   "com.oculus.permission.BIND_AVATAR_CALLING_SERVICE",
+   "com.oculus.permission.BIND_PRESENCE_SERVICE",
+   "com.oculus.permission.CODEC_AVATAR",
+   "com.oculus.permission.CONNECT_TO_DUMPSYSPROXY",
+   "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+   "com.oculus.permission.EYE_TRACKING",
+   "com.oculus.permission.FACE_TRACKING",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE_DEBUG",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.RENDER_MODEL",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.SET_VR_DEVICE_PARAMS",
+   "com.oculus.permission.TRACKED_KEYBOARD",
+   "com.oculus.permission.USE_RESERVED_CORE",
+   "com.oculus.presence.permissions.COWATCHING",
+   "com.oculus.presence.permissions.DESTINATION_SESSION",
+   "com.oculus.presence.permissions.HYPERSPACE_CALL",
+   "com.oculus.shellenv.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+   "com.oculus.vrshell.OVERLAY_HOST",
+   "org.khronos.openxr.permission.OPENXR_SYSTEM"
+  ]
+ },
+ "declared_permissions": {
+  "count": 2,
+  "items": [
+   {
+    "name": "com.oculus.permission.BIND_AVATAR_CALLING_SERVICE",
+    "protection": "0x00000003"
+   },
+   {
+    "name": "com.oculus.shellenv.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [
+  "android.hardware.vr.headtracking",
+  "com.oculus.experimental.enabled",
+  "com.oculus.feature.RENDER_MODEL",
+  "oculus.software.codec_avatar",
+  "oculus.software.eye_tracking",
+  "oculus.software.face_tracking",
+  "oculus.software.handtracking",
+  "oculus.software.trackedkeyboard"
+ ],
+ "meta_data": [
+  "android.app.lib_name",
+  "androidx.profileinstaller.ProfileInstallerInitializer",
+  "com.facebook.build_id",
+  "com.oculus.clay.data_version",
+  "com.oculus.deviceconfig.PARAMS_MAP_PATH",
+  "com.oculus.handtracking.version",
+  "com.oculus.messagequeue.doctor",
+  "com.oculus.presence.fbpermission.COWATCHING",
+  "com.oculus.presence.fbpermission.GROUPING",
+  "com.oculus.presence.fbpermission.GROUP_PROVIDER",
+  "com.oculus.presence.fbpermission.HOME",
+  "com.oculus.presence.fbpermission.RICH_PRESENCE",
+  "com.oculus.shellenv.supports_per_user_connections",
+  "com.oculus.supportedDevices",
+  "com.oculus.systemux.fbpermission.SKYBOX_PROVIDER",
+  "com.samsung.android.vr.application.mode",
+  "internalVersionName",
+  "oculus_preferences_shellenv"
+ ],
+ "classes": {
+  "count": 1101,
+  "top_prefixes": [
+   [
+    "com.facebook.quicklog",
+    150
+   ],
+   [
+    "com.oculus.deviceconfigclient",
+    102
+   ],
+   [
+    "com.google.common",
+    60
+   ],
+   [
+    "com.facebook.g",
+    59
+   ],
+   [
+    "com.facebook.soloader",
+    51
+   ],
+   [
+    "kotlinx.coroutines.a",
+    48
+   ],
+   [
+    "com.facebook.f",
+    44
+   ],
+   [
+    "com.facebook.b",
+    40
+   ],
+   [
+    "com.facebook.common",
+    27
+   ],
+   [
+    "com.google.errorprone",
+    27
+   ],
+   [
+    "b.f.a",
+    23
+   ],
+   [
+    "com.facebook.jni",
+    20
+   ],
+   [
+    "kotlinx.coroutines.c",
+    20
+   ],
+   [
+    "c.a.a",
+    18
+   ],
+   [
+    "com.facebook.systrace",
+    18
+   ],
+   [
+    "b.f.b",
+    17
+   ],
+   [
+    "com.facebook.d",
+    17
+   ],
+   [
+    "com.google.j2objc",
+    17
+   ],
+   [
+    "com.oculus.shellenv",
+    14
+   ],
+   [
+    "androidx.b.a",
+    12
+   ],
+   [
+    "com.facebook.mobileconfig",
+    12
+   ],
+   [
+    "b.b.b",
+    11
+   ],
+   [
+    "com.oculus.b",
+    10
+   ],
+   [
+    "com.oculus.clay",
+    10
+   ],
+   [
+    "b.b.a",
+    8
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 16,
+   "items": [
+    "android.intent.action.MAIN",
+    "com.oculus.assistant.QUEUE_MIC_LOG",
+    "com.oculus.explore.intent.action.LAUNCHED",
+    "com.oculus.extrapermissions.SPATIAL_DATA_PERMISSION_RESULT",
+    "com.oculus.horizon",
+    "com.oculus.intent.action.MOUNT_STATE_CHANGED",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.settings.WIFI_SETTINGS_QR_CODE_SCANNER_RESULT",
+    "com.oculus.shellenv",
+    "com.oculus.shellenv.ShellEnvActivity",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.SHELL_ENV_NEW_INTENT",
+    "com.oculus.vrshell.SHELL_ENV_START_SERVICE",
+    "com.oculus.vrshell.ShellService",
+    "com.oculus.vrshell.desktop",
+    "com.oculus.vrshell.intent.action.LAUNCH"
+   ]
+  },
+  "system_properties": {
+   "count": 14,
+   "items": [
+    "dalvik.vm.heapgrowthlimit",
+    "dalvik.vm.heapmaxfree",
+    "dalvik.vm.heapminfree",
+    "dalvik.vm.heapstartsize",
+    "dalvik.vm.heaptargetutilization",
+    "debug.atrace.app_cmdlines",
+    "debug.atrace.tags.enableflags",
+    "debug.fbsystrace.force_java",
+    "debug.fbsystrace.tags",
+    "debug.fbsystrace.trace_load",
+    "debug.oculus.mqd.off",
+    "debug.qpl.output_to_logcat",
+    "persist.fb.running_e2e",
+    "persist.ovr.deviceconfig.svc"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 2,
+   "items": [
+    "vendor.meta.parfait.IConfigQuery",
+    "vendor.meta.parfait.ITrigger"
+   ]
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://com.facebook.mobileconfigservice.contentprovider"
+   ]
+  }
+ }
+}

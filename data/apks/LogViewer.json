@@ -1,0 +1,194 @@
+{
+ "apk": "system_ext_a/app/LogViewer/LogViewer.apk",
+ "package": "com.oculus.os.logviewer",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.os.logviewer.MainActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.LAUNCHER"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 3,
+  "items": [
+   "android.permission.READ_LOGS",
+   "android.permission.REAL_GET_TASKS",
+   "com.oculus.permission.UPDATE_TELEMETRY_SESSIONS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 122,
+  "top_prefixes": [
+   [
+    "com.oculus.os",
+    77
+   ],
+   [
+    "androidx.arch.core",
+    14
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ],
+   [
+    "androidx.lifecycle.ClassesInfoCache$CallbackInfo",
+    1
+   ],
+   [
+    "androidx.lifecycle.ClassesInfoCache$MethodReference",
+    1
+   ],
+   [
+    "androidx.lifecycle.ClassesInfoCache",
+    1
+   ],
+   [
+    "androidx.lifecycle.FullLifecycleObserverAdapter$1",
+    1
+   ],
+   [
+    "androidx.lifecycle.GeneratedAdapter",
+    1
+   ],
+   [
+    "androidx.lifecycle.Lifecycle$1",
+    1
+   ],
+   [
+    "androidx.lifecycle.Lifecycle$Event",
+    1
+   ],
+   [
+    "androidx.lifecycle.Lifecycle$State",
+    1
+   ],
+   [
+    "androidx.lifecycle.Lifecycle",
+    1
+   ],
+   [
+    "androidx.lifecycle.LifecycleObserver",
+    1
+   ],
+   [
+    "androidx.lifecycle.LifecycleOwner",
+    1
+   ],
+   [
+    "androidx.lifecycle.LifecycleRegistry$ObserverWithState",
+    1
+   ],
+   [
+    "androidx.lifecycle.Lifecycling",
+    1
+   ],
+   [
+    "androidx.lifecycle.LiveData$1",
+    1
+   ],
+   [
+    "androidx.lifecycle.LiveData$ObserverWrapper",
+    1
+   ],
+   [
+    "androidx.lifecycle.LiveData",
+    1
+   ],
+   [
+    "androidx.lifecycle.MethodCallsLogger",
+    1
+   ],
+   [
+    "androidx.lifecycle.Observer",
+    1
+   ],
+   [
+    "androidx.lifecycle.OnLifecycleEvent",
+    1
+   ],
+   [
+    "androidx.lifecycle.FullLifecycleObserver",
+    1
+   ],
+   [
+    "androidx.lifecycle.LifecycleEventObserver",
+    1
+   ],
+   [
+    "androidx.lifecycle.LifecycleRegistry",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

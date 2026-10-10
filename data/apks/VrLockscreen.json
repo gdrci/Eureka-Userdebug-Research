@@ -1,0 +1,320 @@
+{
+ "apk": "system_ext_a/priv-app/VrLockscreen/VrLockscreen.apk",
+ "package": "com.oculus.os.vrlockscreen",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.os.vrlockscreen.SensorLockActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.os.vrlockscreen.SetNewPasswordActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.app.action.SET_NEW_PASSWORD",
+        "android.app.action.SET_NEW_PARENT_PROFILE_PASSWORD"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.os.vrlockscreen.keyguard.VrKeyguardService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.os.vrlockscreen.KeyguardAutomationReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.lockscreen.action.UNLOCK"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 12,
+  "items": [
+   "android.permission.EXPAND_STATUS_BAR",
+   "android.permission.INJECT_EVENTS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.STATUS_BAR",
+   "android.permission.STATUS_BAR_SERVICE",
+   "com.oculus.permission.HANDLE_SYSTEM_KEYS",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.MOUNT_WAKE_LOCK",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.permission.LAUNCH_LOCK_SCREEN",
+    "protection": "0x00000402"
+   }
+  ]
+ },
+ "uses_feature": [
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "android.content.APP_RESTRICTIONS",
+  "com.oculus.messagequeue.doctor",
+  "oculus_preferences_vrlockscreen",
+  "oculus_preferences_vrlockscreenui"
+ ],
+ "classes": {
+  "count": 2764,
+  "top_prefixes": [
+   [
+    "com.google.android",
+    413
+   ],
+   [
+    "com.airbnb.lottie",
+    226
+   ],
+   [
+    "com.android.settingslib",
+    195
+   ],
+   [
+    "androidx.appcompat.widget",
+    166
+   ],
+   [
+    "androidx.fragment.app",
+    127
+   ],
+   [
+    "androidx.recyclerview.widget",
+    112
+   ],
+   [
+    "androidx.mediarouter.media",
+    102
+   ],
+   [
+    "androidx.core.view",
+    97
+   ],
+   [
+    "com.android.wifitrackerlib",
+    96
+   ],
+   [
+    "androidx.mediarouter.app",
+    73
+   ],
+   [
+    "com.android.systemui",
+    72
+   ],
+   [
+    "androidx.appcompat.app",
+    65
+   ],
+   [
+    "com.oculus.os",
+    61
+   ],
+   [
+    "android.support.v4",
+    59
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "androidx.constraintlayout.solver",
+    50
+   ],
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "androidx.constraintlayout.widget",
+    26
+   ],
+   [
+    "androidx.core.content",
+    26
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    22
+   ],
+   [
+    "androidx.core.app",
+    20
+   ],
+   [
+    "oculus.internal.widget",
+    19
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 43,
+   "items": [
+    "android.intent.action.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED",
+    "android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE",
+    "android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE",
+    "android.intent.action.MAIN",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.PACKAGE_RESTARTED",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SCREEN_ON",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SIM_STATE_CHANGED",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.USER_ADDED",
+    "android.intent.action.USER_INFO_CHANGED",
+    "android.intent.action.USER_PRESENT",
+    "android.intent.action.USER_REMOVED",
+    "android.intent.action.VIEW",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.wifi.CONFIGURED_NETWORKS_CHANGE",
+    "android.net.wifi.LINK_CONFIGURATION_CHANGED",
+    "android.net.wifi.RSSI_CHANGED",
+    "android.net.wifi.SCAN_RESULTS",
+    "android.net.wifi.STATE_CHANGE",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.panelapp.androiddialog.permission.DISMISS_DIALOG",
+    "com.oculus.permission.LAUNCH_LOCK_SCREEN",
+    "com.oculus.permission.MOUNT_WAKE_LOCK",
+    "com.oculus.security.dialog.DISMISSED",
+    "com.oculus.userserver.managerservice.IOculusUserManager",
+    "com.oculus.userserver.managerservice.OculusUserManagerService",
+    "com.oculus.userserver2",
+    "com.oculus.vrpowermanager.prox_automation_disable",
+    "com.oculus.vrpowermanager.prox_close",
+    "com.oculus.vrpowermanager.prox_far",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.ACCOUNTS_SETTING",
+    "com.oculus.vrshell.intent.action.LAUNCH"
+   ]
+  },
+  "system_properties": {
+   "count": 6,
+   "items": [
+    "debug.oculus.mqd.off",
+    "persist.debug.vrlockscreen.mu_ux",
+    "persist.log.tag",
+    "persist.logd.logpersistd",
+    "persist.logd.logpersistd.buffer",
+    "ro.storage_manager.enabled"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "com.oculus.userserver.managerservice.IOculusUserManager"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

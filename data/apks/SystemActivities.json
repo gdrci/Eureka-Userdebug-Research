@@ -1,0 +1,119 @@
+{
+ "apk": "system_ext_a/app/SystemActivities/SystemActivities.apk",
+ "package": "com.oculus.systemactivities",
+ "version_name": "71.0.0.601.498",
+ "version_code": "665334770",
+ "min_sdk": "28",
+ "target_sdk": "28",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 2,
+  "items": [
+   {
+    "path": "lib/armeabi-v7a/libsystemactivities.so",
+    "size": 2516
+   },
+   {
+    "path": "lib/arm64-v8a/libsystemactivities.so",
+    "size": 3568
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.systemactivities.PlatformActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.LAUNCHER",
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "com.facebook.build_id",
+  "com.oculus.supportedDevices",
+  "com.samsung.android.vr.application.mode",
+  "internalVersionName"
+ ],
+ "classes": {
+  "count": 13,
+  "top_prefixes": [
+   [
+    "com.oculus.systemactivities",
+    12
+   ],
+   [
+    "com.oculus.vrapi",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 5,
+   "items": [
+    "com.oculus.systemactivities",
+    "com.oculus.systemdriver",
+    "com.oculus.systemdriver.DriverLoader",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.intent.action.LAUNCH"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

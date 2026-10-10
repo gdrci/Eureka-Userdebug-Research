@@ -1,0 +1,290 @@
+partition	path	size	sha256_match	name	vermagic	license	description	author	depends	srcversion	alias_count	firmware	parm_count
+odm_dlkm_a	lib/modules/pdfu_initiator.ko	36784	yes	pdfu_initiator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	PDFU Initiator driver		usbvdm		0		0
+odm_dlkm_a	lib/modules/as5510.ko	23472	yes	as5510	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	Driver for AS5510 I2C Hall Effect Sensor				3		0
+odm_dlkm_a	lib/modules/usbvdm.ko	38560	yes	usbvdm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Meta USB VDM abstraction library				0		0
+odm_dlkm_a	lib/modules/syncboss_spi.ko	114312	yes	syncboss_spi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Syncboss SPI communication driver				0		0
+odm_dlkm_a	lib/modules/virtual_sensor.ko	45832	yes	virtual_sensor	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					3		0
+odm_dlkm_a	lib/modules/external_battery.ko	216336	yes	external_battery	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	External battery driver		usbvdm		0		0
+odm_dlkm_a	lib/modules/tps65132-regulator.ko	19808	yes	tps65132_regulator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	tps65132 regulator driver	Venkat Reddy Talla <vreddytalla@nvidia.com>			1		0
+odm_dlkm_a	lib/modules/sgm62110-regulator.ko	18928	yes	sgm62110_regulator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	SGM62110 BUCK-BOOST regulator driver	Tim <tim.wangjl@goertek.com>			3		0
+odm_dlkm_a	lib/modules/snd-soc-max98388.ko	75600	yes	snd_soc_max98388	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	ALSA SoC MAX98388 driver	Ryan Lee <ryans.lee@analog.com>			3		0
+odm_dlkm_a	lib/modules/vd6281_adapter.ko	34672	yes	vd6281_adapter	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	vd6281 adapter driver	Philippe LEGEARD <philippe.legeard@st.com>			4		0
+odm_dlkm_a	lib/modules/blu_fw_driver.ko	21608	yes	blu_fw_driver	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL		maksymowych@fb.com			0		0
+odm_dlkm_a	lib/modules/mp3314.ko	25040	yes	mp3314	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	MP3314 I2C driver				0		0
+odm_dlkm_a	lib/modules/pwm-tach-fan.ko	40752	yes	pwm_tach_fan	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	PWM TACH FAN driver		panel_event_notifier		3		0
+odm_dlkm_a	lib/modules/usbvdm-cypd.ko	19928	yes	usbvdm_cypd	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Meta USBVDM CYPD driver		usbvdm		0		0
+odm_dlkm_a	lib/modules/snd-soc-ak4333.ko	64040	yes	snd_soc_ak4333	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	ASoC ak4333 codec driver			0B179385E43E7D8B58222CC	3		0
+odm_dlkm_a	lib/modules/syncboss_powerstate.ko	27432	yes	syncboss_powerstate	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Syncboss Powerstate Event Driver		miscfifo		0		0
+odm_dlkm_a	lib/modules/meta_swd.ko	92392	yes	meta_swd	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Meta SWD FW-Update driver				0		0
+odm_dlkm_a	lib/modules/miscfifo.ko	33264	yes	miscfifo	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	General purpose chardev fifo implementation	Khalid Zubair <kzubair@oculus.com>			0		0
+odm_dlkm_a	lib/modules/syncboss_direct_channel.ko	54696	yes	syncboss_direct_channel	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Syncboss Direct Channel Interface Driver				0		0
+odm_dlkm_a	lib/modules/syncboss_nsync.ko	21088	yes	syncboss_nsync	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Syncboss Nsync Event Driver				0		0
+odm_dlkm_a	lib/modules/charging_dock.ko	98584	yes	charging_dock	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Charging dock driver		usbvdm		0		0
+odm_dlkm_a	lib/modules/syncboss_miscfifo.ko	28232	yes	syncboss_miscfifo	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Syncboss MiscFIFO Event Driver		miscfifo		0		0
+odm_dlkm_a	lib/modules/sensorlock.ko	31576	yes	sensorlock	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Sensorlock interrupt handler for trustzone input signals		smcinvoke_mod,debug-regulator		0		0
+odm_dlkm_a	lib/modules/uefi_logs.ko	13392	yes	uefi_logs	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Map UEFI logs memory region to userspace	Jakub Czekański <jakubczek@meta.com>			2		0
+odm_dlkm_a	lib/modules/miscfifo_benchmark.ko	23840	yes	miscfifo_benchmark	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Miscfifo Bench Driver		miscfifo		0		0
+odm_dlkm_a	lib/modules/usbvdm-glink.ko	23544	yes	usbvdm_glink	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Meta USBVDM Glink driver		pmic_glink,usbvdm		0		0
+odm_dlkm_a	lib/modules/nautilus.ko	19064	yes	nautilus	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					2		0
+vendor_dlkm_a	lib/modules/adsp_loader_dlkm.ko	33368	yes	adsp_loader_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	ADSP Loader module		spf_core_dlkm		2		0
+vendor_dlkm_a	lib/modules/ak09973.ko	45632	yes	ak09973	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	AK09973 magnetometer driver	Junichi Wakasugi <wakasugi.jb@om.asahi-kasei.co.jp>	industrialio-triggered-buffer		6		0
+vendor_dlkm_a	lib/modules/altmode-glink.ko	38448	yes	altmode_glink	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Type-C Alt Mode over GLINK		pmic_glink		0		0
+vendor_dlkm_a	lib/modules/arm_smmu.ko	325408	yes	arm_smmu	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	IOMMU API for ARM architected SMMU implementations	Will Deacon <will@kernel.org>	qcom-scm,qcom_iommu_util,iommu-logger,secure_buffer		18		2
+vendor_dlkm_a	lib/modules/audio_pkt_dlkm.ko	47400	yes	audio_pkt_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM Audio Packet Driver		gpr_dlkm,audpkt_ion_dlkm,spf_core_dlkm		4		0
+vendor_dlkm_a	lib/modules/audio_prm_dlkm.ko	27288	yes	audio_prm_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	audio prm		gpr_dlkm,q6_notifier_dlkm,spf_core_dlkm		2		0
+vendor_dlkm_a	lib/modules/audpkt_ion_dlkm.ko	54904	yes	audpkt_ion_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM Audio ION module		secure_buffer		4		0
+vendor_dlkm_a	lib/modules/bam_dma.ko	64128	yes	bam_dma	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM BAM DMA engine driver	Andy Gross <agross@codeaurora.org>			6		0
+vendor_dlkm_a	lib/modules/bcl_pmic5.ko	59520	yes	bcl_pmic5	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/bcl_soc.ko	21392	yes	bcl_soc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/boot_stats.ko	13336	yes	boot_stats	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM boot stats info driver				0		0
+vendor_dlkm_a	lib/modules/bt_fm_slim.ko	73904	yes	bt_fm_slim	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	BTFM Slimbus Slave driver		slimbus,btpower		0		0
+vendor_dlkm_a	lib/modules/btpower.ko	71768	yes	btpower	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM Bluetooth power control driver				0		0
+vendor_dlkm_a	lib/modules/bwmon.ko	89440	yes	bwmon	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM BWMON driver		qcom-dcvs		0		0
+vendor_dlkm_a	lib/modules/bwprof.ko	32464	yes	bwprof	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	QCOM BWPROF driver		qcom-dcvs		4		0
+vendor_dlkm_a	lib/modules/camcc-anorak.ko	166352	yes	camcc_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI CAM_CC ANORAK Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/camera.ko	7509712	yes	camera	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Camera Request Manager		qcom-scm,mdt_loader,llcc-qcom,qcom_iommu_util,smcinvoke_mod,frpc-adsprpc,mem_buf_dev		178		1
+vendor_dlkm_a	lib/modules/cdsp-loader.ko	23672	yes	cdsp_loader	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CDSP Loader module				2		0
+vendor_dlkm_a	lib/modules/cfg80211.ko	2174368	yes	cfg80211	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	wireless configuration support	Johannes Berg			1	regulatory.db.p7s;regulatory.db	3
+vendor_dlkm_a	lib/modules/charger-ulog-glink.ko	32296	yes	charger_ulog_glink	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI charger ulog glink driver		pmic_glink		0		0
+vendor_dlkm_a	lib/modules/clk-dummy.ko	19456	yes	clk_dummy	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Dummy Clock Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/clk-qcom.ko	398968	yes	clk_qcom	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Common QCOM clock control library		gdsc-regulator		0		0
+vendor_dlkm_a	lib/modules/clk-rpmh.ko	111776	yes	clk_rpmh	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM RPMh Clock Driver		cmd-db,qcom_rpmh		28		0
+vendor_dlkm_a	lib/modules/cmd-db.ko	21392	yes	cmd_db	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Command DB Driver				2		0
+vendor_dlkm_a	lib/modules/cnss2.ko	977328	yes	cnss2	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CNSS2 Platform Driver		pci-msm-drv,qmi_helpers,wlan_firmware_service,cmd-db,mhi,cnss_plat_ipc_qmi_svc,memory_dump_v2,qcom_ramdump		18		0
+vendor_dlkm_a	lib/modules/cnss_nl.ko	19360	yes	cnss_nl	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CNSS generic netlink module				0		0
+vendor_dlkm_a	lib/modules/cnss_plat_ipc_qmi_svc.ko	63376	yes	cnss_plat_ipc_qmi_svc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CNSS Platform IPC QMI Service		qmi_helpers		0		0
+vendor_dlkm_a	lib/modules/cnss_prealloc.ko	20112	yes	cnss_prealloc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CNSS prealloc driver				0		0
+vendor_dlkm_a	lib/modules/cnss_utils.ko	35432	yes	cnss_utils	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CNSS Utilities Driver				0		0
+vendor_dlkm_a	lib/modules/core_hang_detect.ko	24816	yes	core_hang_detect	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM Core Hang Detect Driver		qcom-scm		0		0
+vendor_dlkm_a	lib/modules/coresight-csr.ko	42976	yes	coresight_csr	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	CoreSight CSR driver		coresight		0		0
+vendor_dlkm_a	lib/modules/coresight-etm4x.ko	190712	yes	coresight_etm4x	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Arm CoreSight Program Flow Trace v4.x driver	Pratik Patel <pratikp@codeaurora.org>	coresight		17		2
+vendor_dlkm_a	lib/modules/coresight-funnel.ko	30080	yes	coresight_funnel	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Arm CoreSight Funnel Driver	Pratik Patel <pratikp@codeaurora.org>	coresight		4		0
+vendor_dlkm_a	lib/modules/coresight-replicator.ko	30312	yes	coresight_replicator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Arm CoreSight Replicator Driver	Pratik Patel <pratikp@codeaurora.org>	coresight		6		0
+vendor_dlkm_a	lib/modules/coresight-tmc.ko	167256	yes	coresight_tmc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Arm CoreSight Trace Memory Controller driver	Pratik Patel <pratikp@codeaurora.org>	usb_f_qdss,coresight-csr,sps_drv,coresight		4		0
+vendor_dlkm_a	lib/modules/coresight.ko	111424	yes	coresight	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Arm CoreSight tracer driver	Pratik Patel <pratikp@codeaurora.org>			0		0
+vendor_dlkm_a	lib/modules/crypto-qti-common.ko	27664	yes	crypto_qti_common	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Common crypto library for storage encryption		crypto-qti-hwkm		0		0
+vendor_dlkm_a	lib/modules/crypto-qti-hwkm.ko	18496	yes	crypto_qti_hwkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Crypto HWKM library for storage encryption		qcom-scm,hwkm		0		0
+vendor_dlkm_a	lib/modules/dcc_v2.ko	67520	yes	dcc_v2	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM data capture and compare engine				0		0
+vendor_dlkm_a	lib/modules/dcvs_fp.ko	18832	yes	dcvs_fp	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM DCVS FP Driver		cmd-db,qcom_rpmh		0		0
+vendor_dlkm_a	lib/modules/ddr_cdev.ko	17216	yes	ddr_cdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/debug-regulator.ko	60608	yes	debug_regulator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Regulator debug control library				0		0
+vendor_dlkm_a	lib/modules/debugcc-anorak.ko	93320	yes	debugcc_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI DEBUG CC ANORAK Driver		clk-dummy,clk-qcom		0		0
+vendor_dlkm_a	lib/modules/dispcc0-anorak.ko	110560	yes	dispcc0_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI DISP_CC_0 ANORAK Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/dispcc1-anorak.ko	110560	yes	dispcc1_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI DISP_CC_1 ANORAK Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/dwc3-msm.ko	272936	yes	dwc3_msm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	DesignWare USB3 MSM Glue Layer		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/eud.ko	44216	yes	eud	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI EUD driver		qcom-scm		2		0
+vendor_dlkm_a	lib/modules/frpc-adsprpc.ko	841528	yes	frpc_adsprpc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			rproc_qcom_common,qcom_ramdump,pdr_interface,socinfo,secure_buffer,mem_buf_dev		2		0
+vendor_dlkm_a	lib/modules/gcc-anorak.ko	208272	yes	gcc_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI GCC ANORAK Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/gdsc-regulator.ko	37040	yes	gdsc_regulator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	GDSC regulator control library		debug-regulator,proxy-consumer		0		0
+vendor_dlkm_a	lib/modules/gh_msgq.ko	33720	yes	gh_msgq	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Gunyah Message Queue Driver				0		0
+vendor_dlkm_a	lib/modules/gh_rm_drv.ko	121528	yes	gh_rm_drv	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Gunyah Resource Mgr. Driver		gh_msgq		0		0
+vendor_dlkm_a	lib/modules/gh_virt_wdt.ko	17056	yes	gh_virt_wdt	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Gunyah Watchdog Driver		qcom_wdt_core		0		0
+vendor_dlkm_a	lib/modules/glink_pkt.ko	66888	yes	glink_pkt	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM G-Link Packet Port				0		0
+vendor_dlkm_a	lib/modules/glink_probe.ko	24128	yes	glink_probe	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. GLINK probe helper driver		rproc_qcom_common,qcom_glink,qcom_glink_spss,qcom_glink_smem		0		0
+vendor_dlkm_a	lib/modules/gpi.ko	111816	yes	gpi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM GPI DMA engine driver				2		0
+vendor_dlkm_a	lib/modules/gpr_dlkm.ko	44264	yes	gpr_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI GPR Bus		snd_event_dlkm,q6_notifier_dlkm		2		0
+vendor_dlkm_a	lib/modules/gpucc-anorak.ko	40976	yes	gpucc_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI GPU_CC ANORAK Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/hdcp.ko	112128	yes	hdcp	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	HDCP driver		qcom-scm,smcinvoke_mod,qseecom-mod		0		0
+vendor_dlkm_a	lib/modules/hdmi_dlkm.ko	47776	yes	hdmi_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM External Display Audio CODEC Driver		msm_ext_display		2		0
+vendor_dlkm_a	lib/modules/hwkm.ko	20048	yes	hwkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Hardware Key Manager library		tmecom-intf		0		0
+vendor_dlkm_a	lib/modules/i2c-dev.ko	45728	yes	i2c_dev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	I2C /dev entries driver	Frodo Looijaard <frodol@dds.nl>			0		0
+vendor_dlkm_a	lib/modules/i2c-msm-geni.ko	94568	yes	i2c_msm_geni	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			gpi		3		0
+vendor_dlkm_a	lib/modules/icc-bcm-voter.ko	23360	yes	icc_bcm_voter	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm BCM Voter interconnect driver	David Dai <daidavid1@codeaurora.org>	qcom_rpmh		2		0
+vendor_dlkm_a	lib/modules/icc-debug.ko	20752	yes	icc_debug	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM ICC debug library				0		0
+vendor_dlkm_a	lib/modules/icc-rpmh.ko	30184	yes	icc_rpmh	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			socinfo,icc-bcm-voter,cmd-db		0		0
+vendor_dlkm_a	lib/modules/icc-test.ko	15896	yes	icc_test	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/industrialio-triggered-buffer.ko	14264	yes	industrialio_triggered_buffer	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	IIO helper functions for setting up triggered buffers	Lars-Peter Clausen <lars@metafoo.de>	kfifo_buf		0		0
+vendor_dlkm_a	lib/modules/iommu-logger.ko	13560	yes	iommu_logger	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI IOMMU SUPPORT				0		0
+vendor_dlkm_a	lib/modules/ipclite.ko	127024	yes	ipclite	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	IPCLite Driver		secure_buffer		2		0
+vendor_dlkm_a	lib/modules/kfifo_buf.ko	18904	yes	kfifo_buf	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL					0		0
+vendor_dlkm_a	lib/modules/kryo_arm64_edac.ko	27088	yes	kryo_arm64_edac	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Kryo EDAC driver				0		0
+vendor_dlkm_a	lib/modules/leds-gpio.ko	19240	yes	leds_gpio	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	GPIO LED driver	Raphael Assenat <raph@8d.com>, Trent Piepho <tpiepho@freescale.com>			3		0
+vendor_dlkm_a	lib/modules/leds-qti-tri-led.ko	29840	yes	leds_qti_tri_led	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI TRI_LED driver		pwm-qti-lpg		0		0
+vendor_dlkm_a	lib/modules/llcc-qcom.ko	60016	yes	llcc_qcom	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Last Level Cache Controller				0		0
+vendor_dlkm_a	lib/modules/llcc_perfmon.ko	66896	yes	llcc_perfmon	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM LLCC PMU MONITOR				2		0
+vendor_dlkm_a	lib/modules/log_gpu_error.ko	19088	yes	log_gpu_error	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Log GPU Errors Driver				0		0
+vendor_dlkm_a	lib/modules/lpass_cdc_dlkm.ko	145312	yes	lpass_cdc_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	LPASS Codec driver		wcd_core_dlkm,qti-regmap-debugfs,snd_event_dlkm,spf_core_dlkm		4		0
+vendor_dlkm_a	lib/modules/lpass_cdc_rx_macro_dlkm.ko	277272	yes	lpass_cdc_rx_macro_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	RX macro driver		lpass_cdc_dlkm,swr_ctrl_dlkm,wcd_core_dlkm		0		0
+vendor_dlkm_a	lib/modules/lpass_cdc_tx_macro_dlkm.ko	161792	yes	lpass_cdc_tx_macro_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	TX macro driver		lpass_cdc_dlkm		0		1
+vendor_dlkm_a	lib/modules/lpass_cdc_va_macro_dlkm.ko	148520	yes	lpass_cdc_va_macro_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	LPASS codec VA macro driver		lpass_cdc_dlkm,swr_ctrl_dlkm,wcd_core_dlkm		0		1
+vendor_dlkm_a	lib/modules/lpass_cdc_wsa2_macro_dlkm.ko	173768	yes	lpass_cdc_wsa2_macro_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WSA2 macro driver		lpass_cdc_dlkm,swr_ctrl_dlkm,wcd_core_dlkm		0		0
+vendor_dlkm_a	lib/modules/lpass_cdc_wsa_macro_dlkm.ko	173600	yes	lpass_cdc_wsa_macro_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WSA macro driver		lpass_cdc_dlkm,swr_ctrl_dlkm,wcd_core_dlkm		0		0
+vendor_dlkm_a	lib/modules/lvstest.ko	26832	yes	lvstest	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	Link Layer Validation System Driver				0		0
+vendor_dlkm_a	lib/modules/lzo-rle.ko	16440	yes	lzo_rle	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	LZO-RLE Compression Algorithm		lzo_decompress,lzo_compress		2		0
+vendor_dlkm_a	lib/modules/lzo.ko	16328	yes	lzo	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	LZO Compression Algorithm		lzo_decompress,lzo_compress		2		0
+vendor_dlkm_a	lib/modules/lzo_compress.ko	13376	yes	lzo_compress	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	LZO1X-1 Compressor				0		0
+vendor_dlkm_a	lib/modules/lzo_decompress.ko	11272	yes	lzo_decompress	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	LZO1X Decompressor				0		0
+vendor_dlkm_a	lib/modules/mac80211.ko	1999960	yes	mac80211	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	IEEE 802.11 subsystem		cfg80211		0		6
+vendor_dlkm_a	lib/modules/machine_dlkm.ko	184232	yes	machine_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	ALSA SoC msm		snd_event_dlkm,audio_prm_dlkm,wcd938x_dlkm,wcd937x_dlkm,wsa883x_dlkm,lpass_cdc_rx_macro_dlkm,lpass_cdc_dlkm,wcd_core_dlkm,audpkt_ion_dlkm,spf_core_dlkm		5		0
+vendor_dlkm_a	lib/modules/mbhc_dlkm.ko	204648	yes	mbhc_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	wcd MBHC v2 module				0		0
+vendor_dlkm_a	lib/modules/mdt_loader.ko	20352	yes	mdt_loader	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Firmware parser for Qualcomm MDT format		qcom-scm		0		0
+vendor_dlkm_a	lib/modules/mem-hooks.ko	17072	yes	mem_hooks	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Memory Trace Hook Call-Back Registration				0		0
+vendor_dlkm_a	lib/modules/mem_buf.ko	96400	yes	mem_buf	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Memory Buffer Sharing driver		mem_buf_dev,qcom_dma_heaps,gh_msgq		0		0
+vendor_dlkm_a	lib/modules/mem_buf_dev.ko	171904	yes	mem_buf_dev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Memory Buffer Sharing driver		gh_rm_drv,secure_buffer		0		0
+vendor_dlkm_a	lib/modules/memlat.ko	93720	yes	memlat	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM MEMLAT Driver		qcom-dcvs,qcom-pmu-lib		0		0
+vendor_dlkm_a	lib/modules/memory_dump_v2.ko	33552	yes	memory_dump_v2	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Memory Dump V2 Driver		qcom-scm		0		0
+vendor_dlkm_a	lib/modules/mhi.ko	312496	yes	mhi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MHI Host Interface		pci-msm-drv		0		0
+vendor_dlkm_a	lib/modules/mhi_dev_dtr.ko	26880	yes	mhi_dev_dtr	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MHI DTR Driver		mhi		1		0
+vendor_dlkm_a	lib/modules/mhi_dev_netdev.ko	60360	yes	mhi_dev_netdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MHI NETDEV Network Interface		mhi		0		0
+vendor_dlkm_a	lib/modules/mhi_dev_uci.ko	48136	yes	mhi_dev_uci	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MHI UCI Driver		mhi,mhi_dev_dtr		1		0
+vendor_dlkm_a	lib/modules/msm-eva.ko	1760000	yes	msm_eva	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			qcom-scm,mdt_loader,synx-driver-v2,frpc-adsprpc,secure_buffer,msm-mmrm,llcc-qcom,mem_buf_dev		16		0
+vendor_dlkm_a	lib/modules/msm-mmrm.ko	99192	yes	msm_mmrm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI MMRM Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/msm_dma_iommu_mapping.ko	28216	yes	msm_dma_iommu_mapping	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/msm_drm.ko	6289160	yes	msm_drm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	MSM DRM Driver	Rob Clark <robdclark@gmail.com	msm_dma_iommu_mapping,qcom_iommu_util,qcom_rpmh,llcc-qcom,msm-mmrm,spmi-pmic-arb,pinctrl-msm,panel_event_notifier,qcom-scm,hdcp,msm_ext_display,altmode-glink,dwc3-msm		16		7
+vendor_dlkm_a	lib/modules/msm_ext_display.ko	34520	yes	msm_ext_display	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM External Display				2		0
+vendor_dlkm_a	lib/modules/msm_kgsl.ko	2868976	yes	msm_kgsl	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	3D Graphics driver		qcom_iommu_util,qcom-scm,cmd-db,llcc-qcom,clk-qcom,log_gpu_error,mdt_loader,secure_buffer,mem_buf_dev		2		0
+vendor_dlkm_a	lib/modules/msm_qmp.ko	45384	yes	msm_qmp	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM QTI Mailbox Protocol		qcom_aoss		0		0
+vendor_dlkm_a	lib/modules/msm_rng.ko	26264	yes	msm_rng	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI MSM Random Number Driver				0		0
+vendor_dlkm_a	lib/modules/msm_show_resume_irq.ko	16416	yes	msm_show_resume_irq	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. IRQ Logging driver				0		0
+vendor_dlkm_a	lib/modules/msm_video.ko	1295424	yes	msm_video	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			llcc-qcom,qcom-scm,mdt_loader,msm-mmrm,mem_buf_dev		4		0
+vendor_dlkm_a	lib/modules/nvmem_qcom-spmi-sdam.ko	16080	yes	nvmem_qcom_spmi_sdam	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM SPMI SDAM driver				2		0
+vendor_dlkm_a	lib/modules/nvmem_qfprom.ko	23976	yes	nvmem_qfprom	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm QFPROM driver	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>			4		1
+vendor_dlkm_a	lib/modules/panel_event_notifier.ko	18576	yes	panel_event_notifier	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Panel event notifier				0		0
+vendor_dlkm_a	lib/modules/pci-msm-drv.ko	492920	yes	pci_msm_drv	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. PCIe RC driver		rproc_qcom_common,clk-qcom		2		0
+vendor_dlkm_a	lib/modules/pdr_interface.ko	32776	yes	pdr_interface	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Protection Domain Restart helpers		rproc_qcom_common,qmi_helpers		0		0
+vendor_dlkm_a	lib/modules/phy-msm-snps-hs.ko	93688	yes	phy_msm_snps_hs	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM USB HS PHY driver		qcom-scm		2		0
+vendor_dlkm_a	lib/modules/phy-msm-ssusb-qmp.ko	51160	yes	phy_msm_ssusb_qmp	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM USB SS QMP PHY driver				10		0
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-14nm.ko	18304	yes	phy_qcom_ufs_qmp_14nm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Universal Flash Storage (UFS) QCOM PHY QMP 14nm		phy-qcom-ufs		4		0
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v3.ko	21672	yes	phy_qcom_ufs_qmp_v3	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Universal Flash Storage (UFS) QCOM PHY QMP v3		phy-qcom-ufs		2		0
+vendor_dlkm_a	lib/modules/phy-qcom-ufs-qmp-v4-anarok.ko	22728	yes	phy_qcom_ufs_qmp_v4_anarok	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Universal Flash Storage (UFS) QCOM PHY QMP v4 ANAROK		phy-qcom-ufs		2		0
+vendor_dlkm_a	lib/modules/phy-qcom-ufs.ko	40672	yes	phy_qcom_ufs	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Universal Flash Storage (UFS) QCOM PHY	Yaniv Gardi <ygardi@codeaurora.org>			0		0
+vendor_dlkm_a	lib/modules/pinctrl-anorak.ko	199336	yes	pinctrl_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI anorak pinctrl driver		pinctrl-msm		2		0
+vendor_dlkm_a	lib/modules/pinctrl-msm.ko	69352	yes	pinctrl_msm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. pinctrl-msm driver		qcom-scm		0		0
+vendor_dlkm_a	lib/modules/pinctrl-spmi-gpio.ko	55992	yes	pinctrl_spmi_gpio	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm SPMI PMIC GPIO pin control driver	Ivan T. Ivanov <iivanov@mm-sol.com>			81		0
+vendor_dlkm_a	lib/modules/pinctrl-spmi-mpp.ko	35536	yes	pinctrl_spmi_mpp	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm SPMI PMIC MPP pin control driver	Ivan T. Ivanov <iivanov@mm-sol.com>			17		0
+vendor_dlkm_a	lib/modules/pinctrl_lpi_dlkm.ko	58888	yes	pinctrl_lpi_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI LPI GPIO pin control driver		q6_notifier_dlkm,snd_event_dlkm,spf_core_dlkm		2		0
+vendor_dlkm_a	lib/modules/pm8941-pwrkey.ko	25048	yes	pm8941_pwrkey	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	PM8941 Power Key driver				8		0
+vendor_dlkm_a	lib/modules/pmic-pon-log.ko	30744	yes	pmic_pon_log	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI PMIC PON log driver				2		0
+vendor_dlkm_a	lib/modules/pmic_glink.ko	45784	yes	pmic_glink	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI PMIC Glink driver		rproc_qcom_common,pdr_interface		3		0
+vendor_dlkm_a	lib/modules/pmu_scmi.ko	11520	yes	pmu_scmi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	ARM SCMI PMU driver		qcom-pmu-lib		0		0
+vendor_dlkm_a	lib/modules/pmu_vendor.ko	15120	yes	pmu_vendor	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SCMI PMU vendor Protocol				0		0
+vendor_dlkm_a	lib/modules/powerstate_mgr.ko	14680	yes	powerstate_mgr	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	POWERSTATE_MANAGER				0		0
+vendor_dlkm_a	lib/modules/proxy-consumer.ko	24296	yes	proxy_consumer	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Regulator proxy consumer library				0		0
+vendor_dlkm_a	lib/modules/pwm-qti-lpg.ko	59920	yes	pwm_qti_lpg	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI LPG driver				1		0
+vendor_dlkm_a	lib/modules/q6_dlkm.ko	16768	yes	q6_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Q6 module				0		0
+vendor_dlkm_a	lib/modules/q6_notifier_dlkm.ko	39344	yes	q6_notifier_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Audio notifier driver		rproc_qcom_common,q6_pdr_dlkm		2		0
+vendor_dlkm_a	lib/modules/q6_pdr_dlkm.ko	13008	yes	q6_pdr_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	PDR framework driver		pdr_interface		0		0
+vendor_dlkm_a	lib/modules/qce50.ko	159296	yes	qce50	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Crypto Engine driver		sps_drv		0		0
+vendor_dlkm_a	lib/modules/qcedev-mod.ko	528216	yes	qcedev_mod	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI DEV Crypto driver		mem_buf_dev,qce50		4		0
+vendor_dlkm_a	lib/modules/qcom-cpufreq-hw-debug.ko	19048	yes	qcom_cpufreq_hw_debug	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI clock driver for CPUFREQ HW debug				0		0
+vendor_dlkm_a	lib/modules/qcom-cpufreq-hw.ko	52512	yes	qcom_cpufreq_hw	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM CPUFREQ HW Driver				0		0
+vendor_dlkm_a	lib/modules/qcom-dcvs.ko	125912	yes	qcom_dcvs	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM DCVS Driver		dcvs_fp		0		0
+vendor_dlkm_a	lib/modules/qcom-dload-mode.ko	26552	yes	qcom_dload_mode	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM Download Mode Driver		qcom-scm		2		2
+vendor_dlkm_a	lib/modules/qcom-pdc.ko	30144	yes	qcom_pdc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Power Domain Controller		qcom-scm		2		0
+vendor_dlkm_a	lib/modules/qcom-pmu-lib.ko	59104	yes	qcom_pmu_lib	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM PMU Driver		qcom_llcc_pmu		0		0
+vendor_dlkm_a	lib/modules/qcom-pon.ko	13784	yes	qcom_pon	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	pm8916 Power On driver		reboot-mode		6		0
+vendor_dlkm_a	lib/modules/qcom-reboot-reason.ko	14728	yes	qcom_reboot_reason	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM Reboot Reason Driver				2		0
+vendor_dlkm_a	lib/modules/qcom-scm.ko	223472	yes	qcom_scm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. SCM driver				2		0
+vendor_dlkm_a	lib/modules/qcom-spmi-adc5-gen3.ko	66232	yes	qcom_spmi_adc5_gen3	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies Inc. PMIC5 Gen3 ADC driver		qcom-vadc-common		3		0
+vendor_dlkm_a	lib/modules/qcom-spmi-pmic.ko	22032	yes	qcom_spmi_pmic	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm SPMI PMIC driver	Josh Cartwright <joshc@codeaurora.org>	qti-regmap-debugfs,regmap-spmi		39		0
+vendor_dlkm_a	lib/modules/qcom-spmi-temp-alarm.ko	29352	yes	qcom_spmi_temp_alarm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QPNP PMIC Temperature Alarm driver				3		0
+vendor_dlkm_a	lib/modules/qcom-vadc-common.ko	34232	yes	qcom_vadc_common	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm ADC common functionality				0		0
+vendor_dlkm_a	lib/modules/qcom_aoss.ko	47008	yes	qcom_aoss	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm AOSS QMP driver				18		0
+vendor_dlkm_a	lib/modules/qcom_cpu_vendor_hooks.ko	23496	yes	qcom_cpu_vendor_hooks	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM CPU Vendor Hooks Driver				2		0
+vendor_dlkm_a	lib/modules/qcom_cpuss_sleep_stats.ko	26800	yes	qcom_cpuss_sleep_stats	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. (QTI) CPUSS sleep stats driver		qcom-scm		0		0
+vendor_dlkm_a	lib/modules/qcom_dma_heaps.ko	113936	yes	qcom_dma_heaps	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			mem_buf_dev,secure_buffer,msm_dma_iommu_mapping		0		0
+vendor_dlkm_a	lib/modules/qcom_edac.ko	19696	yes	qcom_edac	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM EDAC driver				0		0
+vendor_dlkm_a	lib/modules/qcom_glink.ko	95216	yes	qcom_glink	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm GLINK driver				0		0
+vendor_dlkm_a	lib/modules/qcom_glink_smem.ko	20864	yes	qcom_glink_smem	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm GLINK SMEM driver	Bjorn Andersson <bjorn.andersson@linaro.org>	qcom_glink		0		0
+vendor_dlkm_a	lib/modules/qcom_glink_spss.ko	20016	yes	qcom_glink_spss	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI GLINK SPSS driver		qcom_glink		0		0
+vendor_dlkm_a	lib/modules/qrtr.ko	152992	yes	qrtr	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm IPC-router driver	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>			1		0
+vendor_dlkm_a	lib/modules/qcom_hwspinlock.ko	16288	yes	qcom_hwspinlock	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Hardware spinlock driver for Qualcomm SoCs				4		0
+vendor_dlkm_a	lib/modules/qcom_iommu_debug.ko	105264	yes	qcom_iommu_debug	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			qcom_iommu_util		0		0
+vendor_dlkm_a	lib/modules/qcom_iommu_util.ko	128312	yes	qcom_iommu_util	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					2		0
+vendor_dlkm_a	lib/modules/qcom_ipcc.ko	28280	yes	qcom_ipcc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm IPCC Driver				2		0
+vendor_dlkm_a	lib/modules/qcom_llcc_pmu.ko	28432	yes	qcom_llcc_pmu	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM LLCC PMU				0		0
+vendor_dlkm_a	lib/modules/qcom_logbuf_vendor_hooks.ko	21384	yes	qcom_logbuf_vendor_hooks	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Logbuf Vendor Hooks Driver				2		0
+vendor_dlkm_a	lib/modules/qcom_lpm.ko	106960	yes	qcom_lpm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. cpuidle LPM governor				0		0
+vendor_dlkm_a	lib/modules/qcom_pil_info.ko	16960	yes	qcom_pil_info	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm PIL relocation info				0		0
+vendor_dlkm_a	lib/modules/qcom_q6v5.ko	27648	yes	qcom_q6v5	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Peripheral Image Loader for Q6V5		rproc_qcom_common,qcom_sysmon		0		0
+vendor_dlkm_a	lib/modules/qcom_q6v5_pas.ko	83824	yes	qcom_q6v5_pas	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Hexagon v5 Peripheral Authentication Service driver		rproc_qcom_common,qcom_sysmon,qcom_q6v5,qcom_pil_info,mdt_loader,qcom-scm,qcom_aoss,qcom_ramdump		82		0
+vendor_dlkm_a	lib/modules/qcom_ramdump.ko	26272	yes	qcom_ramdump	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. Ramdump driver				0		0
+vendor_dlkm_a	lib/modules/qcom_rimps.ko	17168	yes	qcom_rimps	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI RIMPS Driver				2		0
+vendor_dlkm_a	lib/modules/qcom_rpmh.ko	87160	yes	qcom_rpmh	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. RPMh Driver		cmd-db		2		0
+vendor_dlkm_a	lib/modules/qcom_smd.ko	49416	yes	qcom_smd	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Shared Memory Driver	Bjorn Andersson <bjorn.andersson@sonymobile.com>			2		0
+vendor_dlkm_a	lib/modules/qcom_soc_wdt.ko	16008	yes	qcom_soc_wdt	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Soc Watchdog Driver		qcom_wdt_core		0		0
+vendor_dlkm_a	lib/modules/qcom_spss.ko	33864	yes	qcom_spss	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Peripheral Image Loader for Secure Subsystem		rproc_qcom_common,qcom_glink,qcom_glink_spss,mdt_loader,qcom-scm,qcom_sysmon		6		0
+vendor_dlkm_a	lib/modules/qcom_sync_file.ko	38048	yes	qcom_sync_file	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Speculative Sync Driver				0		0
+vendor_dlkm_a	lib/modules/qcom_sysmon.ko	47576	yes	qcom_sysmon	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm sysmon driver		rproc_qcom_common,qmi_helpers		0		0
+vendor_dlkm_a	lib/modules/qcom_tsens.ko	101040	yes	qcom_tsens	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Temperature Sensor driver				19		0
+vendor_dlkm_a	lib/modules/qcom_wdt_core.ko	53696	yes	qcom_wdt_core	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Watchdog Driver Core		qcom-scm		0		0
+vendor_dlkm_a	lib/modules/qfprom-sys.ko	15128	yes	qfprom_sys	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. QFPROM_SYS driver				2		0
+vendor_dlkm_a	lib/modules/qmi_helpers.ko	42480	yes	qmi_helpers	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QMI encoder/decoder helper				0		0
+vendor_dlkm_a	lib/modules/qnoc-anorak.ko	220240	yes	qnoc_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Anorak NoC driver		qnoc-qos,icc-rpmh		22		0
+vendor_dlkm_a	lib/modules/qnoc-qos.ko	10776	yes	qnoc_qos	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/qrtr-mhi.ko	20024	yes	qrtr_mhi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm IPC-Router MHI interface driver	Chris Lew <clew@codeaurora.org>	mhi,qrtr		1		0
+vendor_dlkm_a	lib/modules/qrtr-smd.ko	17096	yes	qrtr_smd	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm IPC-Router SMD interface driver		qrtr,qcom_glink		1		0
+vendor_dlkm_a	lib/modules/qsee_ipc_irq_bridge.ko	44832	yes	qsee_ipc_irq_bridge	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QSEE IPC interrupt bridge		rproc_qcom_common		0		0
+vendor_dlkm_a	lib/modules/qseecom-mod.ko	811776	yes	qseecom_mod	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Secure Execution Environment Communicator		qcom-scm,mem_buf_dev		0		0
+vendor_dlkm_a	lib/modules/qti-fixed-regulator.ko	19400	yes	qti_fixed_regulator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	Fixed voltage regulator	Mark Brown <broonie@opensource.wolfsonmicro.com>	debug-regulator,proxy-consumer		7		0
+vendor_dlkm_a	lib/modules/qti-ocp-notifier.ko	19544	yes	qti_ocp_notifier	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Regulator OCP Notifier Driver				2		0
+vendor_dlkm_a	lib/modules/qti-regmap-debugfs.ko	34632	yes	qti_regmap_debugfs	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Regmap QTI debugfs library				0		0
+vendor_dlkm_a	lib/modules/qti_battery_charger_main.ko	148056	yes	qti_battery_charger_main	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Glink battery charger driver		panel_event_notifier,pmic_glink		0		0
+vendor_dlkm_a	lib/modules/qti_battery_debug.ko	41488	yes	qti_battery_debug	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI Glink battery debug driver		pmic_glink		0		0
+vendor_dlkm_a	lib/modules/qti_cpufreq_cdev.ko	23360	yes	qti_cpufreq_cdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. cpufreq cooling driver				0		0
+vendor_dlkm_a	lib/modules/qti_devfreq_cdev.ko	20104	yes	qti_devfreq_cdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. devfreq cooling device driver				0		0
+vendor_dlkm_a	lib/modules/qti_epm_hardware.ko	45800	yes	qti_epm_hardware	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. EPM Hardware driver				0		0
+vendor_dlkm_a	lib/modules/qti_qmi_cdev.ko	34712	yes	qti_qmi_cdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI QMI cooling device driver		qmi_helpers		0		0
+vendor_dlkm_a	lib/modules/qti_qmi_sensor_v2.ko	44448	yes	qti_qmi_sensor_v2	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			qmi_helpers		0		0
+vendor_dlkm_a	lib/modules/qti_userspace_cdev.ko	15888	yes	qti_userspace_cdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Userspace cooling device driver				0		0
+vendor_dlkm_a	lib/modules/rdbg.ko	43800	yes	rdbg	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	rdbg module				0		0
+vendor_dlkm_a	lib/modules/reboot-mode.ko	17248	yes	reboot_mode	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	System reboot mode core library	Andy Yan <andy.yan@rock-chips.com>			0		0
+vendor_dlkm_a	lib/modules/regmap-spmi.ko	18104	yes	regmap_spmi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL					0		0
+vendor_dlkm_a	lib/modules/rimps_log.ko	19000	yes	rimps_log	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					0		0
+vendor_dlkm_a	lib/modules/rpmh-regulator.ko	53696	yes	rpmh_regulator	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	RPMh regulator driver		qcom_rpmh,debug-regulator,proxy-consumer,cmd-db		0		0
+vendor_dlkm_a	lib/modules/rproc_qcom_common.ko	70104	yes	rproc_qcom_common	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Remoteproc helper driver		qcom_smd,qcom_glink,qcom_glink_smem		0		0
+vendor_dlkm_a	lib/modules/rq_stats.ko	15808	yes	rq_stats	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QCOM Run Queue Stats				0		0
+vendor_dlkm_a	lib/modules/rtc-pm8xxx.ko	29952	yes	rtc_pm8xxx	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	PMIC8xxx RTC driver	Anirudh Ghayal <aghayal@codeaurora.org>			13		0
+vendor_dlkm_a	lib/modules/sched-walt.ko	697488	yes	sched_walt	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			qcom-cpufreq-hw		0		0
+vendor_dlkm_a	lib/modules/secure_buffer.ko	57968	yes	secure_buffer	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			qcom-scm		2		0
+vendor_dlkm_a	lib/modules/slim-qcom-ngd-ctrl.ko	153408	yes	slim_qcom_ngd_ctrl	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm SLIMBus NGD controller		qmi_helpers,rproc_qcom_common,slimbus,pdr_interface		4		0
+vendor_dlkm_a	lib/modules/slimbus.ko	60736	yes	slimbus	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SLIMbus core				0		0
+vendor_dlkm_a	lib/modules/smcinvoke_mod.ko	307080	yes	smcinvoke_mod	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SMC Invoke driver		qcom-scm,mem_buf_dev,qseecom-mod		0		0
+vendor_dlkm_a	lib/modules/smp2p.ko	35992	yes	smp2p	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Shared Memory Point to Point driver				2		0
+vendor_dlkm_a	lib/modules/smp2p_sleepstate.ko	15808	yes	smp2p_sleepstate	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SMP2P SLEEP STATE				0		0
+vendor_dlkm_a	lib/modules/snd-usb-audio-qmi.ko	96720	yes	snd_usb_audio_qmi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	USB AUDIO QMI Service Driver		qmi_helpers		2		0
+vendor_dlkm_a	lib/modules/snd_event_dlkm.ko	29904	yes	snd_event_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SND event module				0		0
+vendor_dlkm_a	lib/modules/soc_sleep_stats.ko	36792	yes	soc_sleep_stats	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. (QTI) SoC Sleep Stats driver				0		0
+vendor_dlkm_a	lib/modules/socinfo.ko	87072	yes	socinfo	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm SoCinfo driver				1		0
+vendor_dlkm_a	lib/modules/spcom.ko	187632	yes	spcom	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Secure Processor Communication				2		0
+vendor_dlkm_a	lib/modules/spf_core_dlkm.ko	38272	yes	spf_core_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	q6 core		gpr_dlkm		2		0
+vendor_dlkm_a	lib/modules/spi-msm-geni.ko	99304	yes	spi_msm_geni	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					1		0
+vendor_dlkm_a	lib/modules/spmi-glink-debug.ko	20712	yes	spmi_glink_debug	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SPMI Glink Debug Driver		pmic_glink		2		0
+vendor_dlkm_a	lib/modules/spmi-pmic-arb-debug.ko	21712	yes	spmi_pmic_arb_debug	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					3		0
+vendor_dlkm_a	lib/modules/spmi-pmic-arb.ko	79296	yes	spmi_pmic_arb	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2					3		0
+vendor_dlkm_a	lib/modules/sps_drv.ko	591488	yes	sps_drv	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Smart Peripheral Switch (SPS)				0		0
+vendor_dlkm_a	lib/modules/spss_utils.ko	84192	yes	spss_utils	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Secure Processor Utilities		rproc_qcom_common,qcom_spss		0		0
+vendor_dlkm_a	lib/modules/stub_dlkm.ko	13272	yes	stub_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Generic MSM CODEC driver				0		0
+vendor_dlkm_a	lib/modules/subsystem_sleep_stats.ko	31440	yes	subsystem_sleep_stats	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. (QTI) subsystem sleep stats driver		soc_sleep_stats		0		0
+vendor_dlkm_a	lib/modules/swr_ctrl_dlkm.ko	182600	yes	swr_ctrl_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SoundWire Master Controller		swr_dlkm,spf_core_dlkm		1		1
+vendor_dlkm_a	lib/modules/swr_dlkm.ko	61104	yes	swr_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Soundwire module				1		0
+vendor_dlkm_a	lib/modules/swr_dmic_dlkm.ko	48728	yes	swr_dmic_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SWR DMIC driver		swr_dlkm,wcd938x_dlkm		0		0
+vendor_dlkm_a	lib/modules/swr_haptics_dlkm.ko	43976	yes	swr_haptics_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	SWR haptics driver		swr_dlkm		0		0
+vendor_dlkm_a	lib/modules/synx-driver-v2.ko	228728	yes	synx_driver_v2	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Global Synx Driver		ipclite,rproc_qcom_common		0		0
+vendor_dlkm_a	lib/modules/sys_pm_vx.ko	39368	yes	sys_pm_vx	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Qualcomm Technologies, Inc. (QTI) System PM Violators driver		subsystem_sleep_stats		1		0
+vendor_dlkm_a	lib/modules/thermal_config.ko	24064	yes	thermal_config	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	ThermalZone config debug driver				0		0
+vendor_dlkm_a	lib/modules/tmecom-intf.ko	47808	yes	tmecom_intf	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	MSM TMECom QTI mailbox protocol client				0		0
+vendor_dlkm_a	lib/modules/tz_log.ko	63504	yes	tz_log	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	TZ Log driver		qcom-scm,tmecom-intf		0		0
+vendor_dlkm_a	lib/modules/ucsi_glink.ko	43576	yes	ucsi_glink	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI UCSI Glink driver		pmic_glink		0		0
+vendor_dlkm_a	lib/modules/ufs_qcom.ko	174272	yes	ufs_qcom	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2			qcom-scm,crypto-qti-common,phy-qcom-ufs,clk-qcom,ufshcd-crypto-qti		2		0
+vendor_dlkm_a	lib/modules/ufshcd-crypto-qti.ko	16800	yes	ufshcd_crypto_qti	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	UFS Crypto ops QTI implementation		crypto-qti-common		0		0
+vendor_dlkm_a	lib/modules/usb_f_ccid.ko	73224	yes	usb_f_ccid	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	USB CCID function Driver				1		0
+vendor_dlkm_a	lib/modules/usb_f_cdev.ko	110280	yes	usb_f_cdev	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	USB Serial Character Driver				1		0
+vendor_dlkm_a	lib/modules/usb_f_diag.ko	52848	yes	usb_f_diag	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	Diag function driver				1		0
+vendor_dlkm_a	lib/modules/usb_f_gsi.ko	247216	yes	usb_f_gsi	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	GSI function driver		dwc3-msm		1		0
+vendor_dlkm_a	lib/modules/usb_f_qdss.ko	72472	yes	usb_f_qdss	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	USB QDSS Function Driver		dwc3-msm		1		0
+vendor_dlkm_a	lib/modules/usbip-core.ko	80232	yes	usbip_core	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	USB/IP Core	Takahiro Hirofuchi <hirofuchi@users.sourceforge.net>			0		1
+vendor_dlkm_a	lib/modules/usbip-vudc.ko	59808	yes	usbip_vudc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	USB over IP Device Controller	Krzysztof Opasiak, Karol Kosik, Igor Kotrasinski	usbip-core		0		1
+vendor_dlkm_a	lib/modules/userspace-consumer.ko	18232	yes	userspace_consumer	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL	Userspace consumer for voltage and current regulators	Mike Rapoport <mike@compulab.co.il>			2		0
+vendor_dlkm_a	lib/modules/videocc-anorak.ko	36992	yes	videocc_anorak	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	QTI VIDEO_CC ANORAK Driver		clk-qcom		2		0
+vendor_dlkm_a	lib/modules/wcd937x_dlkm.ko	232024	yes	wcd937x_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WCD937X Codec driver		wcd_core_dlkm,wcd9xxx_dlkm,mbhc_dlkm,swr_dlkm,qti-regmap-debugfs		0		0
+vendor_dlkm_a	lib/modules/wcd937x_slave_dlkm.ko	29720	yes	wcd937x_slave_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WCD937X Swr Slave driver		swr_dlkm		0		0
+vendor_dlkm_a	lib/modules/wcd938x_dlkm.ko	293520	yes	wcd938x_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WCD938X Codec driver		wcd9xxx_dlkm,mbhc_dlkm,wcd_core_dlkm,swr_dlkm,qti-regmap-debugfs		0		0
+vendor_dlkm_a	lib/modules/wcd938x_slave_dlkm.ko	28856	yes	wcd938x_slave_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WCD938X Swr Slave driver		swr_dlkm		0		0
+vendor_dlkm_a	lib/modules/wcd9xxx_dlkm.ko	78248	yes	wcd9xxx_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WCD Class-H Driver		audio_prm_dlkm		2		0
+vendor_dlkm_a	lib/modules/wcd_core_dlkm.ko	70472	yes	wcd_core_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WCD9XXX CODEC core init driver		pinctrl-msm		0		0
+vendor_dlkm_a	lib/modules/wlan.ko	17664800	yes	wlan	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	Dual BSD/GPL	WLAN HOST DEVICE DRIVER	Qualcomm Atheros, Inc.	cnss2,cfg80211,cnss_prealloc,cnss_nl,cnss_utils		0		0
+vendor_dlkm_a	lib/modules/wlan_firmware_service.ko	83752	yes	wlan_firmware_service	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WLAN FW QMI service		qmi_helpers		0		0
+vendor_dlkm_a	lib/modules/wsa883x_dlkm.ko	122016	yes	wsa883x_dlkm	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	GPL v2	WSA883x codec driver		swr_dlkm,wcd_core_dlkm,qti-regmap-debugfs		0		0
+vendor_dlkm_a	lib/modules/zram.ko	76440	yes	zram	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	Dual BSD/GPL	Compressed RAM Block Device	Nitin Gupta <ngupta@vflare.org>	zsmalloc		0		1
+vendor_dlkm_a	lib/modules/zsmalloc.ko	77640	yes	zsmalloc	5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64	Dual BSD/GPL		Nitin Gupta <ngupta@vflare.org>			0		0

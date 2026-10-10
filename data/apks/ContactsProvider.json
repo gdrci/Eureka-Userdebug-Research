@@ -1,0 +1,244 @@
+{
+ "apk": "system_a/system/priv-app/ContactsProvider/ContactsProvider.apk",
+ "package": "com.android.providers.contacts",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.shared",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "28bbfe4a7b97e74681dc55c2fbb6ccb8d6c74963733f6af6ae74d8c3a6e879fd"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".debug.ContactsDumpActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.android.providers.contacts.DUMP_DATABASE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 3,
+   "items": [
+    {
+     "name": "ContactsUpgradeReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PRE_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "PhoneAccountRegistrationReceiver",
+     "exported": "true",
+     "permission": "android.permission.BROADCAST_PHONE_ACCOUNT_REGISTRATION",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.telecom.action.PHONE_ACCOUNT_REGISTERED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "LocaleChangeReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.LOCALE_CHANGED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 6,
+   "items": [
+    {
+     "name": "ContactsProvider2",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "CallLogProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "CallComposerLocationProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "ShadowCallLogProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "VoicemailContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".debug.DumpFileProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 18,
+  "items": [
+   "android.permission.BIND_DIRECTORY_SEARCH",
+   "android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST",
+   "android.permission.GET_ACCOUNTS",
+   "android.permission.GET_ACCOUNTS_PRIVILEGED",
+   "android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.MANAGE_USERS",
+   "android.permission.PROCESS_PHONE_ACCOUNT_REGISTRATION",
+   "android.permission.READ_CONTACTS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_PHONE_NUMBERS",
+   "android.permission.READ_PHONE_STATE",
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.READ_SYNC_SETTINGS",
+   "android.permission.SEND_CALL_LOG_CHANGE",
+   "android.permission.UPDATE_APP_OPS_STATS",
+   "android.permission.USE_RESERVED_DISK",
+   "android.permission.WRITE_CONTACTS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 2,
+  "items": [
+   {
+    "name": "android.permission.SEND_CALL_LOG_CHANGE",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "android.contacts.permission.MANAGE_SIM_ACCOUNTS",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 525,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    302
+   ],
+   [
+    "com.android.providers",
+    206
+   ],
+   [
+    "com.android.vcard",
+    11
+   ],
+   [
+    "com.android.common",
+    4
+   ],
+   [
+    "com.android.ex",
+    2
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 8,
+   "items": [
+    "android.intent.action.NEW_VOICEMAIL",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.PROVIDER_CHANGED",
+    "android.intent.action.SEND",
+    "com.android.internal.action.CALL_LOG_CHANGE"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://com.android.contacts.dumpfile"
+   ]
+  }
+ }
+}

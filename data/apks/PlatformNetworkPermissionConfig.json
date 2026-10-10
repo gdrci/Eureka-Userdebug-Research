@@ -1,0 +1,81 @@
+{
+ "apk": "system_a/system/priv-app/PlatformNetworkPermissionConfig/PlatformNetworkPermissionConfig.apk",
+ "package": "com.android.networkstack.permissionconfig",
+ "version_name": "2019-09",
+ "version_code": "300000000",
+ "min_sdk": "29",
+ "target_sdk": "30",
+ "shared_uid": "android.uid.networkstack",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "android.permission.MAINLINE_NETWORK_STACK",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 1,
+  "top_prefixes": [
+   [
+    "com.android.server",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

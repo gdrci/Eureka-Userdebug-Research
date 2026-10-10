@@ -1,0 +1,124 @@
+{
+ "apk": "system_ext_a/priv-app/NotificationProxy/NotificationProxy.apk",
+ "package": "com.oculus.notification_proxy",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 2,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.MANAGE_USERS",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.STATUS_BAR_SERVICE",
+   "android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "com.oculus.systemdriver.DISPLAY_VR_NOTIFICATION"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.notification_proxy.ACCESS_NOTIFICATIONS",
+    "protection": "0x00000003"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "oculus_preferences_notificationproxy"
+ ],
+ "classes": {
+  "count": 375,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    302
+   ],
+   [
+    "com.oculus.notification_proxy",
+    67
+   ],
+   [
+    "vendor.oculus.hardware",
+    6
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 23,
+   "items": [
+    "android.intent.action.ACTION_SHUTDOWN",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.VIEW",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "com.oculus.notification_proxy.ACCESS_NOTIFICATIONS",
+    "com.oculus.notification_proxy.SEND_NOTIFICATION",
+    "com.oculus.notification_proxy.connecting_notification_clicked",
+    "com.oculus.notification_proxy.mtp_notification_connect",
+    "com.oculus.notification_proxy.mtp_notification_dismiss",
+    "com.oculus.notification_proxy.notif_channel",
+    "com.oculus.notification_proxy.ota_notification_clicked",
+    "com.oculus.os.cm.REMOTE_THERMAL_SHUTDOWN",
+    "com.oculus.vrapi.NOTIFICATION_DISMISS",
+    "com.oculus.vrapi.NOTIFICATION_LARGE_ACTION",
+    "com.oculus.vrapi.notify.BITMAP",
+    "com.oculus.vrapi.notify.DURATION",
+    "com.oculus.vrapi.notify.FIXED_TO_VIEW",
+    "com.oculus.vrapi.notify.NOTIFICATION_ID",
+    "com.oculus.vrapi.notify.POS_X",
+    "com.oculus.vrapi.notify.POS_Y",
+    "com.oculus.vrapi.notify.SCALE",
+    "com.oculus.vrshell.intent.action.NOTIFICATION_WAKE"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

@@ -1,0 +1,150 @@
+{
+ "apk": "system_a/system/app/CertInstaller/CertInstaller.apk",
+ "package": "com.android.certinstaller",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 4,
+   "items": [
+    {
+     "name": ".CertInstallerMain",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.credentials.INSTALL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.VIEW"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": ".CertInstaller",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".WiFiInstaller",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": ".CredentialsInstallDialog",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 5,
+  "items": [
+   "android.permission.ACCESS_ALL_DOWNLOADS",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS",
+   "android.permission.MANAGE_USERS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.android.certinstaller.INSTALL_AS_USER",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 128,
+  "top_prefixes": [
+   [
+    "org.bouncycastle.asn1",
+    84
+   ],
+   [
+    "com.android.certinstaller",
+    32
+   ],
+   [
+    "org.bouncycastle.util",
+    12
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 2,
+   "items": [
+    "android.intent.action.OPEN_DOCUMENT",
+    "android.intent.action.VIEW"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "android.credentials.INSTALL"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

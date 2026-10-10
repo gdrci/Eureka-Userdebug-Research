@@ -1,0 +1,247 @@
+{
+ "apk": "system_a/system/priv-app/NuxOta/NuxOta.apk",
+ "package": "com.oculus.nux.ota",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.oculus.nux.ota.NuxOtaService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.oculus.nux.ota.NuxOtaIntentService",
+     "exported": "true",
+     "permission": "com.oculus.nux.ota.permission.SEND_INTENTS",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.nux.ota.NuxOtaBootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.READ_PRIVILEGED_PHONE_STATE",
+   "android.permission.READ_SECURE_SETTINGS",
+   "android.permission.WAKE_LOCK",
+   "com.oculus.companion.server.permission.SEND_INTENTS",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.nux.ota.permission.SEND_INTENTS",
+    "protection": "0x00000402"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "oculus_preferences_nuxota"
+ ],
+ "classes": {
+  "count": 696,
+  "top_prefixes": [
+   [
+    "com.google.common",
+    298
+   ],
+   [
+    "android.support.v4",
+    109
+   ],
+   [
+    "com.facebook.secure",
+    84
+   ],
+   [
+    "com.oculus.nux",
+    71
+   ],
+   [
+    "com.oculus.authapi",
+    35
+   ],
+   [
+    "com.oculus.library",
+    15
+   ],
+   [
+    "android.arch.lifecycle",
+    11
+   ],
+   [
+    "com.oculus.appmanager",
+    11
+   ],
+   [
+    "com.oculus.binder",
+    5
+   ],
+   [
+    "com.oculus.security",
+    5
+   ],
+   [
+    "com.oculus.aidl",
+    4
+   ],
+   [
+    "kotlin.jvm.internal",
+    3
+   ],
+   [
+    "android.support.design",
+    2
+   ],
+   [
+    "com.oculus.auth",
+    2
+   ],
+   [
+    "com.oculus.common",
+    2
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl$1",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.ParcelImpl",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcel",
+    1
+   ],
+   [
+    "androidx.versionedparcelable.VersionedParcelable",
+    1
+   ],
+   [
+    "kotlin.Pair",
+    1
+   ],
+   [
+    "kotlin.TuplesKt",
+    1
+   ],
+   [
+    "kotlin.collections.ArraysKt__ArraysJVMKt",
+    1
+   ],
+   [
+    "kotlin.collections.ArraysUtilJVM",
+    1
+   ],
+   [
+    "kotlin.collections.CollectionsKt__CollectionsJVMKt",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 18,
+   "items": [
+    "android.intent.action.BATTERY_CHANGED",
+    "com.android.internal.intent.action.REQUEST_SHUTDOWN",
+    "com.oculus.aidl.IAuthService2",
+    "com.oculus.auth.ACTION_FB_LOGIN",
+    "com.oculus.auth.ACTION_FB_VERIFY_LOGIN_APPROVALS_CODE",
+    "com.oculus.auth.ACTION_LOGIN_API",
+    "com.oculus.auth.ACTION_LOGIN_WITH_FB_AUTH",
+    "com.oculus.auth.BROADCAST_LOGIN",
+    "com.oculus.auth.service.AuthService2",
+    "com.oculus.companion.server",
+    "com.oculus.companion.server.CompanionService",
+    "com.oculus.defaultapps.HIGH_PRI_APP_PACKAGES",
+    "com.oculus.firsttimenux",
+    "com.oculus.horizon",
+    "com.oculus.nux.ota.NUX_OTA_DOWNLOAD_HIGH_PRI_APPS",
+    "com.oculus.nux.ota.NUX_OTA_PROGRESS_UPDATE",
+    "com.oculus.nux.ota.permission.SEND_INTENTS",
+    "com.oculus.ocms"
+   ]
+  },
+  "system_properties": {
+   "count": 2,
+   "items": [
+    "persist.ovr.disable_nuxota",
+    "persist.ovr.nux_flow_version"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "com.oculus.aidl.IAuthService2"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

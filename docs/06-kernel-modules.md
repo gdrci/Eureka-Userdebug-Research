@@ -50,6 +50,58 @@ These claims held in substance. The wording below replaces the original.
 - **K23** (verified): qrtr.ko (vendor): Qualcomm IPC-router driver with a nameserver description, GPL v2 and Dual BSD/GPL tags, and no dependencies. It is the net protocol family 42 (net-pf-42) and exports 8 symbols (qrtr_endpoint_register, qrtr_ns_init, qrtr_get_service_id and others). qmi_helpers.ko has soft dependency pre qrtr. init.anorak.rc defines the service vendor.qrtr-ns (line 324, class core, user and group vendor_qrtr, NET_BIND_SERVICE) with no explicit start line, so it runs as a class-core service; it runs as user vendor_qrtr.
 - **K29** (verified): modules.load is a plain list of .ko file names, one per line, with no paths and no options. Vendor has 262 entries and odm has 27, and both lists are the full module sets (K04). The vendor list precedes the odm list in the argument built for the -b * path; whether order changes load order is inferred and was not tested. The first vendor entries are lzo-rle.ko, lzo.ko, qti-regmap-debugfs.ko, regmap-spmi.ko and zram.ko. The first odm entry is as5510.ko.
 
+## Module index and symbol dependencies (generated)
+
+<!-- generated: modules start -->
+This section is generated from `data/kernel/modules.tsv` (the `.modinfo` fields of the 289 `.ko` files) and `data/kernel/symbols.tsv` (the global symbols of each module), by `tools/elfindex` and `tools/elfindex/gen_module_section.py`. Every file's SHA-256 matched the inventory.
+
+- Modules: 289 (vendor_dlkm_a 262, odm_dlkm_a 27). vermagic is identical for all: `5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64`.
+- Licenses: GPL v2 260, GPL 26, Dual BSD/GPL 3.
+- Modules with no `depends=` line: 127. `alias=` lines: 867 in total. `parm=` lines: 30 in total, in 14 modules. Modules with a `firmware=` line: 1 (`cfg80211`, `regulatory.db.p7s;regulatory.db`).
+- Undefined global symbol references: 15,896 across all modules, naming 3,489 distinct symbols.
+  - Defined by exactly one other module in the image: 1,572 references.
+  - Defined by more than one other module (not attributed): 0 references.
+  - Defined by no module in the image: 14,324 references. These are imports from the kernel or from modules that are not in the image; the kernel is not in the image, so they are not checked against it.
+- Modules that import at least one symbol from another module in the image: 162 of 289.
+
+Modules that supply the most references from other modules in the image:
+
+| Provider module | Importing modules | References |
+|---|---|---|
+| `cfg80211` | 2 | 129 |
+| `qcom-scm` | 25 | 110 |
+| `clk-qcom` | 13 | 95 |
+| `swr_dlkm` | 8 | 70 |
+| `wcd_core_dlkm` | 9 | 67 |
+| `lpass_cdc_dlkm` | 6 | 64 |
+| `mem_buf_dev` | 10 | 62 |
+| `qmi_helpers` | 9 | 61 |
+| `wlan_firmware_service` | 1 | 61 |
+| `mhi` | 5 | 52 |
+| `cnss2` | 1 | 52 |
+| `rproc_qcom_common` | 14 | 44 |
+
+The most frequent references that no module in the image defines:
+
+| Symbol | References |
+|---|---|
+| `__stack_chk_fail` | 235 |
+| `__stack_chk_guard` | 235 |
+| `printk` | 202 |
+| `_dev_err` | 190 |
+| `__platform_driver_register` | 177 |
+| `devm_kmalloc` | 174 |
+| `platform_driver_unregister` | 165 |
+| `mutex_unlock` | 161 |
+| `mutex_lock` | 158 |
+| `kfree` | 148 |
+| `__mutex_init` | 128 |
+| `kmem_cache_alloc_trace` | 120 |
+
+The full symbol list is in `data/kernel/symbols.tsv` (72,990 rows).
+
+<!-- generated: modules end -->
+
 ## Gaps
 
 - Runtime behaviour of the modules (probe functions, device nodes created, effective parameter values after boot) was not determined; all findings are static.
@@ -57,7 +109,7 @@ These claims held in substance. The wording below replaces the original.
 - Device-tree nodes matching the of: alias keys live in device-tree blobs outside this group and were not resolved.
 - Firmware files named by modules (cfg80211 regulatory.db and regulatory.db.p7s, WLAN firmware via wlan_firmware_service) were not located in the mounted partitions.
 - Roles for 27 modules come from name, alias or exported symbol names only; blu_fw_driver.ko is unverified; bcl_pmic5, bcl_soc, icc-test, qcom_iommu_debug, qti_qmi_sensor_v2, rimps_log and ddr_cdev have no content-based confirmation.
-- Cross-module symbol resolution (which module provides each undefined symbol) was not computed; only per-module export and import counts were produced.
+- Undefined symbols that no module in the image defines are not attributed to a provider (see the generated section). The kernel is not in the image, so these symbols are not checked against it.
 - Deep dives cover 10 modules and 4 configuration or list files (modules.dep, modules.alias, modules.blocklist, modules.load) plus init and SELinux references; the other 279 modules were classified from modinfo, alias or export strings only.
 - Module parameter descriptions were extracted for modules with parm entries only; parameter defaults are not in the modules.
 - The kernel image and CONFIG_ options are not in this group, so the build configuration of 5.10.205-01655-g5c5a360e9c21 was not checked.

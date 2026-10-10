@@ -1,0 +1,221 @@
+{
+ "apk": "system_a/system/app/PlatformCaptivePortalLogin/PlatformCaptivePortalLogin.apk",
+ "package": "com.android.captiveportallogin",
+ "version_name": "s_aml_319999900",
+ "version_code": "319999900",
+ "min_sdk": "29",
+ "target_sdk": "30",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 1,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.android.captiveportallogin.CaptivePortalLoginActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.net.conn.CAPTIVE_PORTAL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.android.captiveportallogin.DownloadService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 8,
+  "items": [
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.INTERNET",
+   "android.permission.MAINLINE_NETWORK_STACK",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.REQUEST_INSTALL_PACKAGES"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 206,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    50
+   ],
+   [
+    "androidx.swiperefreshlayout.widget",
+    19
+   ],
+   [
+    "androidx.fragment.app",
+    16
+   ],
+   [
+    "com.android.captiveportallogin",
+    16
+   ],
+   [
+    "androidx.core.view",
+    13
+   ],
+   [
+    "com.google.protobuf",
+    9
+   ],
+   [
+    "androidx.core.app",
+    6
+   ],
+   [
+    "androidx.activity.result",
+    5
+   ],
+   [
+    "android.net.captiveportal",
+    3
+   ],
+   [
+    "androidx.core.widget",
+    3
+   ],
+   [
+    "androidx.customview.view",
+    3
+   ],
+   [
+    "androidx.coordinatorlayout.widget",
+    2
+   ],
+   [
+    "androidx.core.graphics",
+    2
+   ],
+   [
+    "androidx.drawerlayout.widget",
+    2
+   ],
+   [
+    "androidx.interpolator.view",
+    2
+   ],
+   [
+    "androidx.slidingpanelayout.widget",
+    2
+   ],
+   [
+    "androidx.viewpager.widget",
+    2
+   ],
+   [
+    "androidx.activity.ComponentActivity$3",
+    1
+   ],
+   [
+    "androidx.activity.ComponentActivity$4",
+    1
+   ],
+   [
+    "androidx.activity.ComponentActivity$5",
+    1
+   ],
+   [
+    "androidx.activity.ImmLeaksCleaner",
+    1
+   ],
+   [
+    "androidx.activity.OnBackPressedDispatcher$LifecycleOnBackPressedCancellable",
+    1
+   ],
+   [
+    "androidx.annotation.Keep",
+    1
+   ],
+   [
+    "androidx.collection.ArrayMap$EntrySet",
+    1
+   ],
+   [
+    "androidx.collection.ArrayMap$KeySet",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 10,
+   "items": [
+    "android.intent.action.CREATE_DOCUMENT",
+    "android.intent.action.DIAL",
+    "android.intent.action.PROXY_CHANGE",
+    "android.intent.action.SENDTO",
+    "android.intent.action.VIEW",
+    "android.net.extra.CAPTIVE_PORTAL",
+    "android.net.extra.CAPTIVE_PORTAL_PROBE_SPEC",
+    "android.net.extra.CAPTIVE_PORTAL_URL",
+    "android.net.extra.CAPTIVE_PORTAL_USER_AGENT",
+    "android.net.extra.NETWORK"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "ro.debuggable"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

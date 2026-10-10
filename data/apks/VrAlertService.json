@@ -1,0 +1,408 @@
+{
+ "apk": "system_ext_a/priv-app/VrAlertService/VrAlertService.apk",
+ "package": "com.oculus.vralertservice",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 9,
+   "items": [
+    {
+     "name": "com.oculus.vralertservice.ControllerOverheatActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.FanMalfunctionActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.ExternalTempOverheatActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.chooser.ChooserActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.CHOOSER"
+       ],
+       "categories": [
+        "android.intent.category.VOICE",
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.BatteryOverheatActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.ThermalOverheatActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.ShutdownConfirmActivity",
+     "exported": "true",
+     "permission": "android.permission.SHUTDOWN",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.UpdateBeforeShutdownActivity",
+     "exported": "true",
+     "permission": "android.permission.SHUTDOWN",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.vralertservice.MaintenanceBootActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.VR_NO_OP"
+       ],
+       "categories": [
+        "com.oculus.intent.category.VR"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.vralertservice.CriticalOverheatService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.vralertservice.AlertReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.intent.action.battery_overheat",
+        "com.oculus.intent.action.external_temp_overheat_warning",
+        "com.oculus.intent.action.fan_malfunction",
+        "com.oculus.os.cm.REMOTE_THERMAL_SHUTDOWN"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.oculus.messagequeue.MessageQueueDoctorInitProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 16,
+  "items": [
+   "android.permission.ACCESS_KEYGUARD_SECURE_STORAGE",
+   "android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.INTERNAL_SYSTEM_WINDOW",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.REBOOT",
+   "android.permission.START_ACTIVITY_AS_CALLER",
+   "android.permission.SYSTEM_ALERT_WINDOW",
+   "android.permission.WAKE_LOCK",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.LAUNCH_CLEAR_ACTIVITY",
+   "com.oculus.permission.PLAY_AUDIO_BACKGROUND",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.READ_VR_DEVICE_PARAMS",
+   "com.oculus.permission.RECEIVE_BROADCASTS_IN_BACKGROUND",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "com.oculus.messagequeue.doctor",
+  "oculus_preferences_vralerts"
+ ],
+ "classes": {
+  "count": 1014,
+  "top_prefixes": [
+   [
+    "androidx.appcompat.widget",
+    164
+   ],
+   [
+    "androidx.fragment.app",
+    120
+   ],
+   [
+    "androidx.core.view",
+    88
+   ],
+   [
+    "androidx.appcompat.app",
+    65
+   ],
+   [
+    "com.oculus.vralertservice",
+    60
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "androidx.constraintlayout.solver",
+    50
+   ],
+   [
+    "com.facebook.appperf",
+    35
+   ],
+   [
+    "androidx.constraintlayout.widget",
+    27
+   ],
+   [
+    "androidx.core.content",
+    25
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    21
+   ],
+   [
+    "androidx.core.app",
+    17
+   ],
+   [
+    "androidx.appcompat.graphics",
+    16
+   ],
+   [
+    "androidx.activity.result",
+    15
+   ],
+   [
+    "androidx.arch.core",
+    14
+   ],
+   [
+    "android.support.v4",
+    9
+   ],
+   [
+    "com.oculus.messagequeue",
+    6
+   ],
+   [
+    "androidx.loader.app",
+    5
+   ],
+   [
+    "androidx.interpolator.view",
+    4
+   ],
+   [
+    "androidx.core.internal",
+    3
+   ],
+   [
+    "androidx.core.os",
+    3
+   ],
+   [
+    "androidx.core.text",
+    3
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 17,
+   "items": [
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.CLOSE_SYSTEM_DIALOGS",
+    "android.intent.action.MAIN",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEARCH",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "com.oculus.extra.CONFIRM_UPDATES",
+    "com.oculus.intent.action.battery_overheat",
+    "com.oculus.intent.action.external_temp_overheat_warning",
+    "com.oculus.intent.action.fan_malfunction",
+    "com.oculus.messagequeue.doctor",
+    "com.oculus.os.cm.REMOTE_THERMAL_SHUTDOWN",
+    "com.oculus.preshutdowntaskservice",
+    "com.oculus.preshutdowntaskservice.PreShutdownTaskService",
+    "com.oculus.preshutdowntaskservice.showSoftwareUpdateSettings"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "debug.oculus.mqd.off"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 1,
+   "items": [
+    "android.intent.extra.INTENT"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

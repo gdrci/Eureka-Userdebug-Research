@@ -1,0 +1,744 @@
+{
+ "apk": "system_ext_a/app/GamingActivity/GamingActivity.apk",
+ "package": "com.oculus.gamingactivity",
+ "version_name": "119.0.0.3.162",
+ "version_code": "333000330",
+ "min_sdk": "28",
+ "target_sdk": "28",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/ANDROIDD.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 34,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libanalytics.so",
+    "size": 84712
+   },
+   {
+    "path": "lib/arm64-v8a/libasyncexecutor.so",
+    "size": 4512
+   },
+   {
+    "path": "lib/arm64-v8a/libbreakpad.so",
+    "size": 346528
+   },
+   {
+    "path": "lib/arm64-v8a/libbreakpad_cpp_helper.so",
+    "size": 7888
+   },
+   {
+    "path": "lib/arm64-v8a/libbsdiff.so",
+    "size": 31792
+   },
+   {
+    "path": "lib/arm64-v8a/libc++_shared.so",
+    "size": 415024
+   },
+   {
+    "path": "lib/arm64-v8a/libclasstracing.so",
+    "size": 9840
+   },
+   {
+    "path": "lib/arm64-v8a/libdexload.so",
+    "size": 147376
+   },
+   {
+    "path": "lib/arm64-v8a/libdistractmerged.so",
+    "size": 15216
+   },
+   {
+    "path": "lib/arm64-v8a/libdouble-conversion.so",
+    "size": 29128
+   },
+   {
+    "path": "lib/arm64-v8a/libfb_xzdecoder.so",
+    "size": 15200
+   },
+   {
+    "path": "lib/arm64-v8a/libfbjni_kt.so",
+    "size": 38544
+   },
+   {
+    "path": "lib/arm64-v8a/libfmt.so",
+    "size": 73488
+   },
+   {
+    "path": "lib/arm64-v8a/libfresco.so",
+    "size": 220384
+   },
+   {
+    "path": "lib/arm64-v8a/libgifimage.so",
+    "size": 41936
+   },
+   {
+    "path": "lib/arm64-v8a/libglog.so",
+    "size": 44416
+   },
+   {
+    "path": "lib/arm64-v8a/libhermes.so",
+    "size": 1462928
+   },
+   {
+    "path": "lib/arm64-v8a/libheroplayer-merged.so",
+    "size": 19672
+   },
+   {
+    "path": "lib/arm64-v8a/libpanelappsdk.so",
+    "size": 122520
+   },
+   {
+    "path": "lib/arm64-v8a/libperflogger.so",
+    "size": 168616
+   },
+   {
+    "path": "lib/arm64-v8a/libreactnative.so",
+    "size": 3268376
+   },
+   {
+    "path": "lib/arm64-v8a/libstash-jni.so",
+    "size": 4528
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_libunifex_libunifexAndroid.so",
+    "size": 4960
+   },
+   {
+    "path": "lib/arm64-v8a/libwebp.so",
+    "size": 129080
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executorAndroid.so",
+    "size": 21520
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_executors_global_executorAndroid.so",
+    "size": 408728
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_futures_coreAndroid.so",
+    "size": 117928
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_folly_logging_loggingAndroid.so",
+    "size": 48120
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_follyfex_folly_follyAndroid.so",
+    "size": 4576
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_proxygen_proxygen-parse_urlAndroid.so",
+    "size": 3840
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_FeliosErrorCounterEventAndroid.so",
+    "size": 74608
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_structuredlogger_events_QplAggregationsEventAndroid.so",
+    "size": 7256
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_third-party_event_eventAndroid.so",
+    "size": 20192
+   },
+   {
+    "path": "lib/arm64-v8a/libzstddecoder.so",
+    "size": 90432
+   }
+  ]
+ },
+ "dex_files": 2,
+ "asset_files": 80,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.facebook.react.devsupport.DevSettingsActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 9,
+   "items": [
+    {
+     "name": "com.oculus.gamingactivity.PanelService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "com.oculus.vrshell.SHELL_MAIN"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.video.heroplayer.service.HeroKeepAliveService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.service.LollipopUploadSafeService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.LollipopUploadService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "com.facebook.analytics2.logger.AlarmBasedUploadService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.SystemAlarmService",
+     "exported": "false",
+     "permission": null,
+     "enabled": "@7F050000",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.background.systemjob.SystemJobService",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": "@7F050001",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.foreground.SystemForegroundService",
+     "exported": "false",
+     "permission": null,
+     "enabled": "@7F050001",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.room.MultiInstanceInvalidationService",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 12,
+   "items": [
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientReceiver",
+     "exported": "true",
+     "permission": "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_SET_CLIENT_VALUES"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.deviceconfigclient.DeviceConfigClientDebugReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "oculus.intent.action.DC_EXPORT_CLIENT_ACCESS_LOG"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.profileinstaller.ProfileInstallReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.profileinstaller.action.INSTALL_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SKIP_FILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.SAVE_PROFILE"
+       ],
+       "categories": []
+      },
+      {
+       "actions": [
+        "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.facebook.analytics2.logger.HighPriUploadRetryReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.ACTION_POWER_CONNECTED",
+        "android.intent.action.ACTION_POWER_DISCONNECTED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BATTERY_OKAY",
+        "android.intent.action.BATTERY_LOW"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.DEVICE_STORAGE_LOW",
+        "android.intent.action.DEVICE_STORAGE_OK"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.net.conn.CONNECTIVITY_CHANGE"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.RescheduleReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.TIME_SET",
+        "android.intent.action.TIMEZONE_CHANGED"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "@7F050000",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.work.impl.background.systemalarm.UpdateProxies"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "androidx.work.impl.diagnostics.DiagnosticsReceiver",
+     "exported": "true",
+     "permission": "android.permission.DUMP",
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 1,
+   "items": [
+    {
+     "name": "androidx.startup.InitializationProvider",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 15,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.GET_ACCOUNTS",
+   "android.permission.INTERNET",
+   "android.permission.RECEIVE_BOOT_COMPLETED",
+   "android.permission.WAKE_LOCK",
+   "com.oculus.gamingactivity.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+   "com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE",
+   "com.oculus.permission.METADEVICECONFIG_RECEIVE_FROM_SERVICE_DEBUG",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.REPORT_EVENTS",
+   "com.oculus.permission.REPORT_EVENTS_DEBUG",
+   "com.oculus.vrshell.permission.ACCESS_PANEL_ACTIVITY_FEATURES"
+  ]
+ },
+ "declared_permissions": {
+  "count": 1,
+  "items": [
+   {
+    "name": "com.oculus.gamingactivity.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "protection": "0x00000002"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [
+  "androidx.lifecycle.ProcessLifecycleInitializer",
+  "androidx.profileinstaller.ProfileInstallerInitializer",
+  "com.facebook.build_id",
+  "com.facebook.build_rule",
+  "com.facebook.build_time",
+  "com.facebook.package_type",
+  "com.facebook.versioncontrol.branch",
+  "com.facebook.versioncontrol.revision",
+  "com.google.android.ALLOW_PHISHING_DETECTION",
+  "com.oculus.dependency.required_os_version_name",
+  "com.oculus.deviceconfig.PARAMS_MAP_PATH",
+  "com.oculus.ocms.fbpermission.LIBRARY_PROVIDER",
+  "com.oculus.vrshell.is_default_service",
+  "com.oculus.vrshell.layer_definition",
+  "com.oculus.vrshell.loading_state_size",
+  "com.oculus.vrshell.supports_free_resizing",
+  "com.oculus.vrshell.supports_loading_state",
+  "com.oculus.vrshell.supports_multi_cursor"
+ ],
+ "classes": {
+  "count": 6947,
+  "top_prefixes": [
+   [
+    "com.facebook.react",
+    287
+   ],
+   [
+    "com.facebook.assistant",
+    101
+   ],
+   [
+    "com.fasterxml.jackson",
+    93
+   ],
+   [
+    "com.google.common",
+    62
+   ],
+   [
+    "com.google.android",
+    44
+   ],
+   [
+    "com.facebook.jni",
+    25
+   ],
+   [
+    "android.support.v4",
+    24
+   ],
+   [
+    "com.facebook.quicklog",
+    24
+   ],
+   [
+    "com.facebook.catalyst",
+    22
+   ],
+   [
+    "com.oculus.react",
+    21
+   ],
+   [
+    "com.oculus.ocui",
+    19
+   ],
+   [
+    "com.facebook.hyperthrift",
+    18
+   ],
+   [
+    "com.facebook.video",
+    18
+   ],
+   [
+    "androidx.work.impl",
+    18
+   ],
+   [
+    "com.facebook.common",
+    17
+   ],
+   [
+    "com.facebook.exoplayer",
+    12
+   ],
+   [
+    "com.oculus.assistant",
+    12
+   ],
+   [
+    "com.facebook.imagepipeline",
+    12
+   ],
+   [
+    "com.facebook.traffic",
+    10
+   ],
+   [
+    "com.facebook.analytics2",
+    10
+   ],
+   [
+    "com.facebook.soloader",
+    9
+   ],
+   [
+    "androidx.appcompat.widget",
+    8
+   ],
+   [
+    "com.facebook.acra",
+    8
+   ],
+   [
+    "androidx.recyclerview.widget",
+    8
+   ],
+   [
+    "com.facebook.hermes",
+    8
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 62,
+   "items": [
+    "android.intent.action.ACTION_POWER_CONNECTED",
+    "android.intent.action.ACTION_POWER_DISCONNECTED",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.BATTERY_LOW",
+    "android.intent.action.BATTERY_OKAY",
+    "android.intent.action.DEVICE_STORAGE_LOW",
+    "android.intent.action.DEVICE_STORAGE_OK",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SEND",
+    "android.intent.action.VIEW",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.http.X509TrustManagerExtensions",
+    "com.meta.ar.arwhatsapp",
+    "com.meta.ar.assistant.AssistantSubscription",
+    "com.meta.ar.bugreporter",
+    "com.meta.ar.iris.umami",
+    "com.meta.mr.awe",
+    "com.meta.work",
+    "com.oculus.assistant",
+    "com.oculus.assistant.ENTRY_SERVICE",
+    "com.oculus.assistant.api.IOculusAssistantService",
+    "com.oculus.assistant.api.IOculusAssistantSubscriber",
+    "com.oculus.assistant.service.AssistantService",
+    "com.oculus.browser",
+    "com.oculus.explore",
+    "com.oculus.generic_deeplink_result",
+    "com.oculus.horizon",
+    "com.oculus.horizon.ACCESS_TOKEN_CHANGED",
+    "com.oculus.iap.package",
+    "com.oculus.iap.platform_request_id",
+    "com.oculus.intent",
+    "com.oculus.intent.action",
+    "com.oculus.intent.action.QUERY_TASKS_BEFORE_SHUTDOWN",
+    "com.oculus.intent.action.RUN_JS_AUTO_UPDATE",
+    "com.oculus.intent.extra",
+    "com.oculus.intent.extra.BINDER",
+    "com.oculus.metacam",
+    "com.oculus.modules.exceptions.OculusExceptionsManagerModule",
+    "com.oculus.ocms",
+    "com.oculus.ocms.library",
+    "com.oculus.permission.READ_FOCUS_STATE",
+    "com.oculus.preshutdowntaskservice.extra.task_mode",
+    "com.oculus.q4b.mdm",
+    "com.oculus.q4bservice",
+    "com.oculus.react.ActivityIntentModule",
+    "com.oculus.react.ActivityShellAppLaunchModule",
+    "com.oculus.react.AudioCoreSDKModule",
+    "com.oculus.react.accesstoken.AccessTokenModule",
+    "com.oculus.react.analytics.AnalyticsModule",
+    "com.oculus.react.deviceconfig.DeviceConfigModule",
+    "com.oculus.react.dictation.DictationModule",
+    "com.oculus.react.library.LibraryModule",
+    "com.oculus.react.preferencesstore.PreferencesStoreModule",
+    "com.oculus.shellenv",
+    "com.oculus.store",
+    "com.oculus.store.PanelService",
+    "com.oculus.systemux",
+    "com.oculus.userserver.managerservice.IOculusUserManager",
+    "com.oculus.userserver.managerservice.OculusUserManagerService",
+    "com.oculus.userserver2",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.intent.action.LAUNCH"
+   ]
+  },
+  "system_properties": {
+   "count": 26,
+   "items": [
+    "dalvik.vm.heapgrowthlimit",
+    "dalvik.vm.heapmaxfree",
+    "dalvik.vm.heapminfree",
+    "dalvik.vm.heapstartsize",
+    "dalvik.vm.heaptargetutilization",
+    "debug.atrace.tags.enableflags",
+    "debug.fbsystrace.force_java",
+    "debug.fbsystrace.tags",
+    "debug.fbsystrace.trace_load",
+    "debug.oculus.graphtier",
+    "debug.oculus.image_debug_overlay",
+    "debug.qpl.output_to_logcat",
+    "init.m4a",
+    "init.m4t",
+    "init.m4v",
+    "persist.fb.running_e2e",
+    "persist.ovr.automation",
+    "persist.ovr.deviceconfig.svc",
+    "persist.ovr.e2e.class_coverage.gauntlet.enable",
+    "persist.ovr.e2e.http_proxy",
+    "persist.ovr.e2e.js_coverage.gauntlet.enable",
+    "persist.ovr.e2e.running",
+    "persist.ovr.e2e.sandbox_url",
+    "persist.ovr.e2e.x2p_proxy_url",
+    "ro.build.version.incremental",
+    "ro.oculus.reality_mode"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 6,
+   "items": [
+    "android.intent.extra.INTENT",
+    "com.oculus.assistant.api.IOculusAssistantService",
+    "com.oculus.assistant.api.IOculusAssistantSubscriber",
+    "com.oculus.userserver.managerservice.IOculusUserManager",
+    "vendor.meta.parfait.IConfigQuery",
+    "vendor.meta.parfait.ITrigger"
+   ]
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://com.facebook.mobileconfigservice.contentprovider"
+   ]
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "apk": "system_ext_a/app/AccountsCenterPWA/AccountsCenterPWA.apk",
+ "package": "com.meta.AccountsCenter.pwa",
+ "version_name": "1.0.0.368134505",
+ "version_code": "368134505",
+ "min_sdk": "28",
+ "target_sdk": "29",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/ANDROIDD.RSA",
+   "sha256": "b6f96027df75ec89fa39acab9f6536407fd576e0de1cc7016d7d9a248f0d4d16"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 1,
+  "items": [
+   "com.oculus.permission.HAND_TRACKING"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "android.hardware.vr.headtracking",
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "com.oculus.pwa.APPID",
+  "com.oculus.pwa.DISPLAY",
+  "com.oculus.pwa.NAME",
+  "com.oculus.pwa.SCOPE",
+  "com.oculus.pwa.START_URL",
+  "web_manifest_url"
+ ],
+ "classes": {
+  "count": 2,
+  "top_prefixes": [
+   [
+    "com.oculus.pwa",
+    2
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

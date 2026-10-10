@@ -1,0 +1,210 @@
+{
+ "apk": "system_ext_a/app/DeviceIdentityTest/DeviceIdentityTest.apk",
+ "package": "com.oculus.deviceidentitytest",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".DeviceIdentityTestActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.LAUNCHER"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": ".DeviceIdentityTestService",
+     "exported": "true",
+     "permission": "android.permission.FOREGROUND_SERVICE",
+     "enabled": "true",
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 0,
+  "items": []
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 3228,
+  "top_prefixes": [
+   [
+    "android.support.v4",
+    1290
+   ],
+   [
+    "org.bouncycastle.jcajce",
+    381
+   ],
+   [
+    "org.bouncycastle.asn1",
+    317
+   ],
+   [
+    "org.bouncycastle.crypto",
+    189
+   ],
+   [
+    "com.google.gson",
+    180
+   ],
+   [
+    "com.android.volley",
+    122
+   ],
+   [
+    "org.bouncycastle.math",
+    121
+   ],
+   [
+    "org.bouncycastle.jce",
+    56
+   ],
+   [
+    "android.support.annotation",
+    54
+   ],
+   [
+    "org.bouncycastle.its",
+    50
+   ],
+   [
+    "org.bouncycastle.util",
+    44
+   ],
+   [
+    "android.arch.lifecycle",
+    43
+   ],
+   [
+    "com.oculus.devicecertservice",
+    32
+   ],
+   [
+    "vendor.oculus.hardware",
+    24
+   ],
+   [
+    "org.bouncycastle.x509",
+    21
+   ],
+   [
+    "android.arch.core",
+    16
+   ],
+   [
+    "android.support.mediacompat",
+    14
+   ],
+   [
+    "android.support.v13",
+    14
+   ],
+   [
+    "android.support.design",
+    12
+   ],
+   [
+    "android.support.asynclayoutinflater",
+    11
+   ],
+   [
+    "android.support.compat",
+    11
+   ],
+   [
+    "android.support.coordinatorlayout",
+    11
+   ],
+   [
+    "android.support.coreui",
+    11
+   ],
+   [
+    "android.support.coreutils",
+    11
+   ],
+   [
+    "android.support.customview",
+    11
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 7,
+   "items": [
+    "android.intent.action.MAIN",
+    "android.intent.action.MEDIA_BUTTON",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEND",
+    "android.intent.action.SEND_MULTIPLE",
+    "com.android.launcher.action.INSTALL_SHORTCUT",
+    "com.oculus.DeviceIdentityTest.Service"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 2,
+   "items": [
+    "android.intent.extra.shortcut.ICON",
+    "android.intent.extra.shortcut.INTENT"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

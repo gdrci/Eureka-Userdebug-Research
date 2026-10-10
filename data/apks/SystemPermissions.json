@@ -1,0 +1,276 @@
+{
+ "apk": "system_ext_a/priv-app/SystemPermissions/SystemPermissions.apk",
+ "package": "com.oculus.systempermissions",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 3,
+   "items": [
+    {
+     "name": "com.oculus.systempermissions.MainActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "com.oculus.systempermissions.DIALOG"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "android.intent.category.LAUNCHER",
+        "com.oculus.intent.category.2D"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.systempermissions.ConsentZeroActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "com.oculus.vrshell.intent.action.LAUNCH"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.oculus.systempermissions.WebviewActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT",
+        "com.oculus.intent.category.2D"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "service": {
+   "count": 0,
+   "items": []
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 16,
+  "items": [
+   "android.permission.ACCESS_BACKGROUND_LOCATION",
+   "android.permission.ACCESS_COARSE_LOCATION",
+   "android.permission.ACCESS_FINE_LOCATION",
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.ACCESS_WIFI_STATE",
+   "android.permission.CHANGE_WIFI_STATE",
+   "android.permission.INTERNET",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.WRITE_SECURE_SETTINGS",
+   "com.oculus.horizon.auth",
+   "com.oculus.permission.HAND_TRACKING",
+   "com.oculus.permission.READ_SETTINGS",
+   "com.oculus.permission.USE_ACCOUNTS_META",
+   "com.oculus.permission.USE_ACCOUNTS_OCULUS",
+   "com.oculus.permission.USE_DEVICE_AUTH",
+   "com.oculus.permission.WRITE_SETTINGS"
+  ]
+ },
+ "declared_permissions": {
+  "count": 3,
+  "items": [
+   {
+    "name": "android.permission.WRITE_SECURE_SETTINGS",
+    "protection": "0x00000032"
+   },
+   {
+    "name": "com.oculus.permission.USE_ACCOUNTS_META",
+    "protection": "0x00000032"
+   },
+   {
+    "name": "com.oculus.permission.USE_ACCOUNTS_OCULUS",
+    "protection": "0x00000032"
+   }
+  ]
+ },
+ "uses_feature": [
+  "android.hardware.location",
+  "oculus.software.handtracking"
+ ],
+ "meta_data": [
+  "com.meta.vr.display_mode",
+  "com.meta.vr.exclusive_system_dialog.requires_foreground_blocking",
+  "com.oculus.vrshell.supports_layers",
+  "oculus_preferences_systempermissions"
+ ],
+ "classes": {
+  "count": 629,
+  "top_prefixes": [
+   [
+    "com.google.gson",
+    160
+   ],
+   [
+    "com.facebook.secure",
+    56
+   ],
+   [
+    "okhttp3.internal.http2",
+    39
+   ],
+   [
+    "okhttp3.internal.connection",
+    16
+   ],
+   [
+    "com.oculus.systempermissions",
+    14
+   ],
+   [
+    "okhttp3.internal.http",
+    12
+   ],
+   [
+    "okhttp3.internal.platform",
+    10
+   ],
+   [
+    "kotlin.coroutines.jvm",
+    8
+   ],
+   [
+    "okhttp3.internal.http1",
+    8
+   ],
+   [
+    "kotlin.jvm.internal",
+    7
+   ],
+   [
+    "okhttp3.internal.cache",
+    6
+   ],
+   [
+    "okhttp3.internal.tls",
+    5
+   ],
+   [
+    "kotlin.coroutines.intrinsics",
+    4
+   ],
+   [
+    "retrofit2.converter.gson",
+    3
+   ],
+   [
+    "android.support.annotation",
+    1
+   ],
+   [
+    "com.oculus.telemetrylogger",
+    1
+   ],
+   [
+    "kotlin.KotlinNullPointerException",
+    1
+   ],
+   [
+    "kotlin.Pair",
+    1
+   ],
+   [
+    "kotlin.Result$Companion",
+    1
+   ],
+   [
+    "kotlin.Result$Failure",
+    1
+   ],
+   [
+    "kotlin.Result",
+    1
+   ],
+   [
+    "kotlin.ResultKt",
+    1
+   ],
+   [
+    "kotlin.TuplesKt",
+    1
+   ],
+   [
+    "kotlin.Unit",
+    1
+   ],
+   [
+    "kotlin.collections.AbstractCollection",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 8,
+   "items": [
+    "android.net.Uri",
+    "android.net.http.X509TrustManagerExtensions",
+    "com.oculus.horizon",
+    "com.oculus.systempermissions",
+    "com.oculus.vrnotifications.intent.action.SILENT_PAYLOAD",
+    "com.oculus.vrshell",
+    "com.oculus.vrshell.ShellControlBroadcastReceiver",
+    "com.oculus.vrshell.intent.action.LAUNCH"
+   ]
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}
