@@ -1,0 +1,85 @@
+trigger	command	args
+early-init	start	ueventd
+early-init	setprop	sys.usb.controller ${ro.boot.usbcontroller}
+early-init	start	set_secnvm_perms_sh
+init	start	logd
+init	start	lmkd
+init	start	servicemanager
+init	start	hwservicemanager
+init	start	vndservicemanager
+init	setprop	sys.usb.configfs 0
+init	setprop	ovr.audiotapper.monitor.consent false
+init	start	vendor.keymaster-4-1
+init	start	vendor.keymint-qti
+init	start	vendor.qseecomd
+init	start	qseecom-service
+early-fs	start	vold
+fs	setprop	sys.wifitracing.started 0
+post-fs-data	start	tombstoned
+post-fs-data	setprop	keystore.boot_level 30
+post-fs-data	setprop	apexd.status ""
+post-fs-data	restart	apexd
+post-fs-data	start	odsign
+post-fs-data	setprop	keystore.boot_level 1000000000
+post-fs-data	setprop	sys.use_memfd false
+post-fs-data	setprop	persist.sys.fuse true
+post-fs-data	start	settingsserver
+post-fs-data	setprop	vold.post_fs_data_done 1
+late-fs	class_start	early_hal
+late-fs	setprop	bootreceiver.enable ${bootreceiver.enable:-1}
+late-init	trigger	early-fs
+late-init	trigger	fs
+late-init	trigger	post-fs
+late-init	trigger	late-fs
+late-init	trigger	post-fs-data
+late-init	trigger	load_persist_props_action
+late-init	trigger	load_bpf_programs
+late-init	trigger	zygote-start
+late-init	trigger	firmware_mounts_complete
+late-init	trigger	early-boot
+late-init	trigger	boot
+boot	setprop	net.tcp_def_init_rwnd 60
+boot	class_start	hal
+boot	class_start	core
+boot	setprop	net.tcp.buffersize.wifi 524288,2097152,4194304,262144,524288,1048576
+boot	setprop	net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
+boot	setprop	net.tcp.buffersize.lte 2097152,4194304,8388608,262144,524288,1048576
+boot	setprop	net.tcp.buffersize.umts 4094,87380,110208,4096,16384,110208
+boot	setprop	net.tcp.buffersize.hspa 4094,87380,1220608,4096,16384,1220608
+boot	setprop	net.tcp.buffersize.hsupa 4094,87380,1220608,4096,16384,1220608
+boot	setprop	net.tcp.buffersize.hsdpa 4094,87380,1220608,4096,16384,1220608
+boot	setprop	net.tcp.buffersize.hspap 4094,87380,1220608,4096,16384,1220608
+boot	setprop	net.tcp.buffersize.edge 4093,26280,35040,4096,16384,35040
+boot	setprop	net.tcp.buffersize.gprs 4092,8760,11680,4096,8760,11680
+boot	setprop	net.tcp.buffersize.evdo 4094,87380,524288,4096,16384,262144
+boot	setprop	net.tcp.2g_init_rwnd 10
+boot	start	vendor.cdsprpcd
+boot	start	health-hal-2-1
+boot	setprop	sys.usb.configfs 2
+charger	class_start	charger
+charger	start	insmod_charger_sh
+charger	start	health-hal-2-1
+charger	start	charger
+charger	setprop	persist.sys.usb.config mass_storage
+charger	setprop	sys.usb.state ${sys.usb.config}
+charger	setprop	sys.usb.configfs 1
+nonencrypted	class_start	main
+nonencrypted	class_start	late_start
+factorytest	class_start	main
+factorytest	start	runtimeipcbroker
+factorytest	start	usbd
+factorytest	start	vrfocus
+factorytest	start	cameramuxmodeservice
+factorytest	start	trackingfidelityservice
+early-boot	setprop	vendor.usb.controller ${sys.usb.controller}
+early-boot	setprop	persist.device_config.oculus_shared_os_services.mros_enable_strata_composer \
+early-boot	setprop	vendor.scheduler.schedutil ${persist.device_config.oculus_shared_os_services.oculus_schedutil:-false}
+early-boot	setprop	vendor.scheduler.swqueue ${persist.device_config.oculus_shared_os_services.oculus_shared_runq:-false}
+early-boot	setprop	sys.usb.mtp.device_type 3
+early-boot	setprop	sys.usb.mtp.batchcancel true
+early-boot	start	vendor.diag-router
+property:sys.boot_completed=1	setprop	persist.device_config.attempted_boot_count 0
+property:sys.boot_completed=1	start	logd-auditctl
+property:sys.boot_completed=1	start	diagnosticscollector
+property:sys.boot_completed=1	start	panicreporter
+property:sys.boot_completed=1	start	crashreporterd

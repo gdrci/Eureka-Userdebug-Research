@@ -1,0 +1,14 @@
+import	source	line
+/init.environ.rc	system_a:system/etc/init/hw/init.rc	7
+/system/etc/init/hw/init.usb.rc	system_a:system/etc/init/hw/init.rc	8
+/init.${ro.hardware}.rc	system_a:system/etc/init/hw/init.rc	9
+/vendor/etc/init/hw/init.${ro.hardware}.rc	system_a:system/etc/init/hw/init.rc	10
+/system/etc/init/hw/init.usb.configfs.rc	system_a:system/etc/init/hw/init.rc	11
+/system/etc/init/hw/init.${ro.zygote}.rc	system_a:system/etc/init/hw/init.rc	12
+/vendor/etc/ueventd.rc	system_a:system/etc/ueventd.rc	1
+/odm/etc/ueventd.rc	system_a:system/etc/ueventd.rc	2
+/vendor/etc/init/hw/init.anorak.debug.rc	vendor_a:etc/init/hw/init.anorak.rc	1
+/vendor/etc/init/hw/init.anorak.cgroup.rc	vendor_a:etc/init/hw/init.anorak.rc	2
+/vendor/etc/init/hw/init.anorak.power.rc	vendor_a:etc/init/hw/init.anorak.rc	3
+/vendor/etc/init/hw/init.anorak.usb.rc	vendor_a:etc/init/hw/init.anorak.rc	4
+/vendor/etc/init/hw/init.anorak.rc	vendor_a:etc/init/hw/init.eureka.rc	1
