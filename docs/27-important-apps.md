@@ -2,7 +2,7 @@
 
 [中文版](27-important-apps.zh-CN.md)
 
-This page covers 14 applications from the image: settings, Bluetooth, browser, assistant, home, capture, system UI, the VR runtime, body and eye input, wearable input and first-time setup. The set was chosen by hand from the 5,685-entry inventory (`data/inventory/files.tsv`) to cover the user-facing and system functions. The facts in each section come from the manifest and the dex files. Role lines are readings of class and component names; any line that goes beyond the manifest is marked inferred.
+This page covers 22 applications from the image: settings, Bluetooth, browser, assistant, home, capture, system UI, the VR runtime, body and eye input, wearable input, first-time setup, the system WebView, device management, app installation, the Guardian boundary service, abuse reporting, telephony and the Skyguard service. The set was chosen by hand from the 5,685-entry inventory (`data/inventory/files.tsv`) to cover the user-facing and system functions. The facts in each section come from the manifest and the dex files. Role lines are readings of class and component names; any line that goes beyond the manifest is marked inferred.
 
 The facts for each application are in `data/apks/<name>.json`, and the summary table is `data/apks/summary.tsv`. The page is generated from those files by `tools/apk/gen_apps_doc.py`.
 
@@ -16,13 +16,14 @@ The facts for each application are in `data/apks/<name>.json`, and the summary t
 
 ## Signing
 
-Two certificate families appear in this set, identified by the first 16 hex digits of the SHA-256 digest:
+Certificate families in this set, identified by the first 16 hex digits of the SHA-256 digest of the signing certificate:
 
-- Family `c8a2e9bccf597c2f`: Settings, Bluetooth and xrstreamingclient.
-- Family `fac61745dc090378`: the other eleven applications.
+- Family `fac61745dc090378` (17): Carmel, Assistant, Horizon, Metacam, SystemUX, VrShell, VrDriver, BodyApiService, SpatialPersistenceService, WearableInputService, FirstTimeNuxEureka, SystemWebView, Q4BMdm, Q4BService, OCMS, Guardian, Integrity.
+- Family `c8a2e9bccf597c2f` (5): Settings, Bluetooth, xrstreamingclient, SkyguardService, Telecom.
 
-Settings and Bluetooth declare the shared UIDs `android.uid.system` and `android.uid.bluetooth`. Android accepts those shared UIDs only for applications signed with the platform certificate, so family `c8a2e9bccf597c2f` is probably the platform certificate (inferred from that rule; the certificate itself is not compared with a reference). The full digests are in each section.
+Settings (`android.uid.system`), Bluetooth (`android.uid.bluetooth`), SkyguardService (`android.uid.system`), Telecom (`android.uid.system`) declare system shared UIDs. Android requires an application that declares a system shared UID to be signed with the platform certificate, so family `c8a2e9bccf597c2f` is probably the platform certificate when all of these applications are in it (inferred from that rule; the certificate itself is not compared with a reference).
 
+The full digests are in each section.
 
 ## Settings
 
@@ -289,3 +290,155 @@ The first-time setup application. Its LAUNCHER activity is FirstTimeNuxActivity.
 - AIDL-style interface names (9): `com.oculus.assistant.api.IOculusAssistantService`, `com.oculus.assistant.api.IOculusAssistantSubscriber`, `com.oculus.userserver.managerservice.IOculusUserManager`, `com.oculus.vrshell.privateipc.ILifecycleActionIPCService`, `com.oculus.vrshell.privateipc.IModalClosedCallback`, `com.oculus.vrshell.privateipc.IModalClosedIPCService`, `com.oculus.vrshell.privateipc.ISecureScreenIPCService`, `vendor.meta.parfait.IConfigQuery`, `vendor.meta.parfait.ITrigger`.
 - Property-like strings (28); first ten: `dalvik.vm.heapgrowthlimit`, `dalvik.vm.heapmaxfree`, `dalvik.vm.heapminfree`, `dalvik.vm.heapstartsize`, `dalvik.vm.heaptargetutilization`, `debug.atrace.tags.enableflags`, `debug.fbsystrace.force_java`, `debug.fbsystrace.tags`, `debug.fbsystrace.trace_load`, `debug.oculus.graphtier`. These are string-pool matches, not confirmed reads.
 - Intent action strings: 301. Content authorities: 4: `content://com.facebook.mobileconfigservice.contentprovider`, `content://com.oculus.horizon.fbconnect/account`, `content://com.oculus.horizon.parties`, `content://com.oculus.horizon.social`.
+
+## SystemWebView (WebView)
+
+Package `com.android.webview`, version 126.0.6478.122 (code 647812201), minSdk 26, targetSdk 34, shared UID none. Source `product_a/app/SystemWebView/SystemWebView.apk`.
+
+The application with package com.android.webview (version 126.0.6478.122) appears to be the system WebView application (inferred from the package name and the file name SystemWebView.apk), and its native library libwebviewchromium.so and the org.chromium.content class prefix suggest a Chromium base (inferred from names). Two of its three activities are exported: org.chromium.android_webview.devui.MainActivity, with the action com.android.webview.SHOW_DEV_UI, and org.chromium.android_webview.nonembedded.LicenseActivity, with the action android.settings.WEBVIEW_LICENSE; the names suggest a developer UI and a license screen (inferred from names). It declares 52 services, of which 40 are SandboxedProcessService0 to SandboxedProcessService39 in org.chromium.content.app (class names), and names such as VariationsSeedServer, CrashReceiverService and MetricsUploadService suggest variations seeds, crash reports and metrics (inferred from names). It requests 6 permissions, including android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE, and declares none; it also declares a minimum SDK version of 26 and a target SDK version of 34.
+
+- Signing certificate SHA-256: `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`.
+- Classes: 3480 in 1 dex file(s). Native libraries: 4. Assets: 86.
+- Components: activities 3 (2 exported), services 52 (50 exported), receivers 0 (0 exported), providers 4 (4 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (52): `StartupFeatureMetadataHolder`, `VariationsSeedServer`, `AwVariationsSeedFetcher`, `CrashReceiverService`, `AwMinidumpUploadJobService`, `DeveloperUiService`, `SafeModeService`, `MetricsBridgeService`, `MetricsUploadService`, `AwComponentUpdateService`, `ComponentsProviderService`, `JsSandboxService0`, `SandboxedProcessService0`, `SandboxedProcessService1`, `SandboxedProcessService2`, `SandboxedProcessService3`, `SandboxedProcessService4`, `SandboxedProcessService5`, `SandboxedProcessService6`, `SandboxedProcessService7`, `SandboxedProcessService8`, `SandboxedProcessService9`, `SandboxedProcessService10`, `SandboxedProcessService11`, `SandboxedProcessService12`, `SandboxedProcessService13`, `SandboxedProcessService14`, `SandboxedProcessService15`, `SandboxedProcessService16`, `SandboxedProcessService17`, `SandboxedProcessService18`, `SandboxedProcessService19`, `SandboxedProcessService20`, `SandboxedProcessService21`, `SandboxedProcessService22`, `SandboxedProcessService23`, `SandboxedProcessService24`, `SandboxedProcessService25`, `SandboxedProcessService26`, `SandboxedProcessService27`, `SandboxedProcessService28`, `SandboxedProcessService29`, `SandboxedProcessService30`, `SandboxedProcessService31`, `SandboxedProcessService32`, `SandboxedProcessService33`, `SandboxedProcessService34`, `SandboxedProcessService35`, `SandboxedProcessService36`, `SandboxedProcessService37`, `SandboxedProcessService38`, `SandboxedProcessService39`.
+- Receivers (0 listed): none.
+- Permissions requested: 6. Sensitive subset (1): `POST_NOTIFICATIONS`.
+- Declared permissions (0): none.
+- AIDL-style interface names (3): `android.content.pm.IPackageManager`, `android.widget.directwriting.IDirectWritingService`, `android.widget.directwriting.IDirectWritingServiceCallback`.
+- Property-like strings (1); first ten: `ro.product.first_api_level`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 19. Content authorities: 0: none.
+
+## Q4BMdm (device management)
+
+Package `com.oculus.q4b.mdm`, version 103.0.0.0.166 (code 551600503), minSdk 31, targetSdk 31, shared UID none. Source `product_a/app/Q4BMdm/Q4BMdm.apk`.
+
+The package `com.oculus.q4b.mdm` declares the metadata entry `android.app.device_admin`, and its name suggests device management (inferred from the `mdm` segment of the package name). The activities `AdminPolicyComplianceActivity` and `GetProvisioningModeActivity` and the service `DeviceAdminService` require `android.permission.BIND_DEVICE_ADMIN`, and the receiver `Q4BAdminReceiver` is protected by the same permission (class names). The exported activity `com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity` requires the declared permission `com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION`. The same class name is also declared by `com.oculus.q4bservice`, where it requires `com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION`. The services `AttestationJobService`, `ConfigJobService`, `RemoteWipeJobService` and `KioskResetJobService` require `android.permission.BIND_JOB_SERVICE` (class names; the attestation, configuration, remote wipe and kiosk reset roles are a reading of names and therefore inferred). The application requests `android.permission.INSTALL_PACKAGES`, `android.permission.MANAGE_USERS` and `android.permission.USES_POLICY_WIPE_DATA`. The exported service `com.oculus.q4bservice.e2etestsupport.E2EService` and the exported provider `com.oculus.q4b.e2etestsupport.service.E2EContentProvider` (class names) carry no permission attribute, and the names suggest end-to-end test support (inferred from names).
+
+- Signing certificate SHA-256: `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`.
+- Classes: 11131 in 2 dex file(s). Native libraries: 14. Assets: 12.
+- Components: activities 3 (3 exported), services 21 (4 exported), receivers 24 (7 exported), providers 1 (1 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (21): `PackageFinderService`, `E2EService`, `DeviceAdminService`, `AttestationJobService`, `AttestationVerdictJobService`, `FbnsService`, `FbnsService`, `KioskResetJobService`, `RemoteConfigService`, `RemoteWipeJobService`, `Q4BDumpService`, `ConfigJobService`, `CertificateRenewalService`, `KioskRemoteSessionResetJobService`, `StateReporterJobService`, `IntegrationUpdateJobService`, `VirtualEnvironmentSetupService`, `SystemAlarmService`, `SystemJobService`, `SystemForegroundService`, `MultiInstanceInvalidationService`.
+- Receivers (24 listed): `Q4BAdminReceiver`, `BootReceiver`, `FbnsBroadcastReceiver`, `MqttSystemBroadcastReceiver`, `KioskCleanupBootReceiver`, `KioskHomeUpdateBootReceiver`, `RemoteConfigOcmsReceiver`, `StateReporterReceiver`, `DeviceConfigClientReceiver`, `DeviceConfigClientDebugReceiver`, `InstallReceiver`, `MixedModeBootReceiver`, `VirtualEnvironmentSetupReceiver`, `VrNotificationActionReceiver`, `PackagesCacheReceiver`, `ForceStopRunnable$BroadcastReceiver`, `ConstraintProxy$BatteryChargingProxy`, `ConstraintProxy$BatteryNotLowProxy`, `ConstraintProxy$StorageNotLowProxy`, `ConstraintProxy$NetworkStateProxy`, `RescheduleReceiver`, `ConstraintProxyUpdateReceiver`, `DiagnosticsReceiver`, `ProfileInstallReceiver`.
+- Permissions requested: 30. Sensitive subset (4): `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION`, `REQUEST_INSTALL_PACKAGES`, `WRITE_SETTINGS`.
+- Declared permissions (5): `com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION`, `com.oculus.q4b.mdm.permission.GET_Q4B_REMOTE_CONFIG`, `com.oculus.q4b.mdm.permission.Q4B_CONFIG_PROCESSED`, `com.oculus.q4b.mdm.permission.Q4B_STATUS`, `com.oculus.q4b.mdm.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+- AIDL-style interface names (55): `com.oculus.aidl.IAuthService2`, `com.oculus.aidl.IAuthenticationCallback`, `com.oculus.oemconfig.aidl.IOemConfigService`, `com.oculus.presence.IApiStatusListener`, `com.oculus.presence.IDebugApi`, `com.oculus.presence.IHomeProvider`, `com.oculus.presence.IHomeProviderListener`, `com.oculus.presence.IHomeProviderShell`, `com.oculus.presence.IIdAnonymizer`, `com.oculus.presence.ITravelManager`, `com.oculus.presence.channels.IAugmentProviderApi`, `com.oculus.presence.channels.IEnvironmentProviderApi`, `com.oculus.presence.channels.IMetaEnvironmentManager`, `com.oculus.presence.channels.IRenderingProviderApi`, `com.oculus.presence.cowatching.ICowatchingEventListener`, `com.oculus.presence.cowatching.ICowatchingManager`, `com.oculus.presence.datasync.IDataListener`, `com.oculus.presence.datasync.IDataSyncManager`, `com.oculus.presence.grouping.IProviderEventListener`, `com.oculus.presence.grouping.capabilities.audiocall.IAudioCallCapability`, `com.oculus.presence.grouping.capabilities.audiocall.IMicStateListener`, `com.oculus.presence.grouping.capabilities.datasync.IDataSyncCapability`, `com.oculus.presence.grouping.capabilities.datasync.IUserUpdateListener`, `com.oculus.presence.hyperspace.ICallsInfoUpdateListener`, `com.oculus.presence.hyperspace.IClientConnection`, `com.oculus.presence.hyperspace.IHyperspaceApiProvider`, `com.oculus.presence.hyperspace.IHyperspaceApiStatusListener`, `com.oculus.presence.hyperspace.IHyperspaceNativeApiProvider`, `com.oculus.presence.hyperspace.IHyperspaceServiceApi`, `com.oculus.presence.hyperspace.IHyperspaceServiceVideoApi`, `com.oculus.presence.hyperspace.IOutgoingVideoObserver`, `com.oculus.presence.hyperspace.IOvrDataMessageCallback`, `com.oculus.presence.hyperspace.IOvrDataReadyCallback`, `com.oculus.presence.hyperspace.IRealtimeSessionInitTransportCallback`, `com.oculus.presence.hyperspace.IStateAgreementObserver`, `com.oculus.presence.presencestate.IPresenceStateListener`, `com.oculus.presence.presencestate.IRichPresenceManager`, `com.oculus.presence.realtimeinfra.IRequestStreamService`, `com.oculus.presence.realtimeinfra.IStream`, `com.oculus.presence.realtimeinfra.IStreamEventHandler`, `com.oculus.presence.stable.IPresenceServiceApi`, `com.oculus.presence.stable.grouping.IClientEventListener`, `com.oculus.presence.stable.grouping.IClientManager`, `com.oculus.presence.stable.grouping.IGroup`, `com.oculus.presence.stable.grouping.IProviderManager`, `com.oculus.presence.stable.party.ICallStateListener`, `com.oculus.presence.stable.party.IParty`, `com.oculus.presence.stable.party.IPartyInviteListener`, `com.oculus.presence.stable.party.IPartyManager`, `com.oculus.presence.stable.party.IStreamListener`, `com.oculus.presence.travel.ITravelCallback`, `com.oculus.shellenv.IApiStatusListener`, `com.oculus.shellenv.IAvatarServiceManager`, `vendor.meta.parfait.IConfigQuery`, `vendor.meta.parfait.ITrigger`.
+- Property-like strings (86); first ten: `dalvik.vm.heapgrowthlimit`, `dalvik.vm.heapmaxfree`, `dalvik.vm.heapminfree`, `dalvik.vm.heapstartsize`, `dalvik.vm.heaptargetutilization`, `debug.atrace.tags.enableflags`, `debug.fbsystrace.force_java`, `debug.fbsystrace.tags`, `debug.fbsystrace.trace_load`, `debug.oculus.force_sideload_apps_can_update`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 439. Content authorities: 8: `content://com.facebook.mobileconfigservice.contentprovider`, `content://com.oculus.identitymanagement.capabilities.contentprovider/account`, `content://com.oculus.identitymanagement.capabilities.contentprovider/account/activeuser/capabilities`, `content://com.oculus.identitymanagement.capabilities.contentprovider/activeuser`, `content://com.oculus.identitymanagement.capabilities.contentprovider/capabilities`, `content://com.oculus.messenger.service.provider`, `content://com.oculus.q4bservice.status`, `content://com.oculus.socialplatform.messenger.service.provider`.
+
+## Q4BService (provisioning and kiosk)
+
+Package `com.oculus.q4bservice`, version 71.0.0.896.252 (code 665348098), minSdk 31, targetSdk 31, shared UID none. Source `product_a/priv-app/Q4BService/Q4BService.apk`.
+
+The Q4B service application (package com.oculus.q4bservice) appears to handle device provisioning, kiosk mode and mobile device management, judging by class names such as DeviceOwnerProvisioningActivity, com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity and RemoteWipeJobService (inferred from class names). It declares 4 activities (3 exported), 17 services (4 exported), 22 receivers (6 exported) and 5 providers (4 exported). DeviceOwnerProvisioningActivity requires the permission com.oculus.permission.LAUNCH_PROVISION. SharedModeSessionSetupActivity requires com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION, and so does com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity, which this package also declares; the same class name is declared by com.oculus.q4b.mdm with the permission com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION. It requests 40 permissions, including android.permission.MANAGE_USERS, android.permission.INSTALL_PACKAGES and android.permission.WRITE_SECURE_SETTINGS.
+
+- Signing certificate SHA-256: `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`.
+- Classes: 8314 in 2 dex file(s). Native libraries: 10. Assets: 9.
+- Components: activities 4 (3 exported), services 17 (4 exported), receivers 22 (6 exported), providers 5 (4 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (17): `NotificationJobService`, `PackageFinderService`, `E2EService`, `OemConfigService`, `Q4BDumpService`, `IntegrationUpdateJobService`, `ConfigJobService`, `DeviceProvisionedJobService`, `ProcessJobService`, `VirtualEnvironmentSetupService`, `RemoteWipeJobService`, `StateReporterJobService`, `KioskResetService`, `SystemAlarmService`, `SystemJobService`, `SystemForegroundService`, `MultiInstanceInvalidationService`.
+- Receivers (22 listed): `NotificationBootReceiver`, `InstallReceiver`, `MixedModeBootReceiver`, `SharedModeSessionReceiver`, `HomeUpdateBootReceiver`, `DeviceConfigClientReceiver`, `DeviceConfigClientDebugReceiver`, `VirtualEnvironmentSetupReceiver`, `BootReceiver`, `RequiredAppsBootReceiver`, `KioskCleanupBootReceiver`, `KioskHomeUpdateBootReceiver`, `PackagesCacheReceiver`, `ForceStopRunnable$BroadcastReceiver`, `ConstraintProxy$BatteryChargingProxy`, `ConstraintProxy$BatteryNotLowProxy`, `ConstraintProxy$StorageNotLowProxy`, `ConstraintProxy$NetworkStateProxy`, `RescheduleReceiver`, `ConstraintProxyUpdateReceiver`, `DiagnosticsReceiver`, `ProfileInstallReceiver`.
+- Permissions requested: 40. Sensitive subset (5): `ACCESS_COARSE_LOCATION`, `ACCESS_FINE_LOCATION`, `MANAGE_EXTERNAL_STORAGE`, `REQUEST_INSTALL_PACKAGES`, `WRITE_SETTINGS`.
+- Declared permissions (5): `com.oculus.permission.LAUNCH_PROVISION`, `com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION`, `com.oculus.q4bservice.status.ACCESS_PERMISSION`, `com.oculus.q4bservice.permission.Q4B_READ_IMAGE`, `com.oculus.q4bservice.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+- AIDL-style interface names (3): `com.oculus.aidl.IAuthService2`, `com.oculus.aidl.IAuthenticationCallback`, `com.oculus.oemconfig.aidl.IOemConfigService`.
+- Property-like strings (34); first ten: `dalvik.vm.heapgrowthlimit`, `dalvik.vm.heapmaxfree`, `dalvik.vm.heapminfree`, `dalvik.vm.heapstartsize`, `dalvik.vm.heaptargetutilization`, `debug.atrace.tags.enableflags`, `debug.fbsystrace.force_java`, `debug.fbsystrace.tags`, `debug.fbsystrace.trace_load`, `debug.oculus.force_sideload_apps_can_update`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 391. Content authorities: 2: `content://com.facebook.mobileconfigservice.contentprovider`, `content://com.oculus.q4bservice.status`.
+
+## OCMS (app installation)
+
+Package `com.oculus.ocms`, version 71.0.0.884.253 (code 560606331), minSdk 32, targetSdk 32, shared UID none. Source `system_ext_a/priv-app/OCMS/OCMS.apk`.
+
+The OCMS application (package com.oculus.ocms, at system_ext_a/priv-app/OCMS/OCMS.apk) declares no activities, and its component names suggest app installation, updates and an app library (inferred from names). Its services include AppManagerService, LocationService and MauiAppManagerService, which are exported and each name a permission beginning com.oculus.ocms, and its receivers include Installer2StatusReceiver and OCMSPushReceiver (class names). Three of its providers, LibraryProvider, PublicLibraryProvider and TestProvider, are exported and name no permission, and it requests 63 permissions, among them android.permission.INSTALL_PACKAGES, android.permission.DELETE_PACKAGES and android.permission.QUERY_ALL_PACKAGES, whose names suggest package management (inferred from names).
+
+- Signing certificate SHA-256: `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`.
+- Classes: 20160 in 11 dex file(s). Native libraries: 39. Assets: 11.
+- Components: activities 0 (0 exported), services 29 (9 exported), receivers 37 (20 exported), providers 6 (3 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (29): `PackageFinderService`, `OculusDownloadService`, `LoginHandlersService`, `AppManagerService`, `AntiPiracyIntentService`, `AntiPiracyJobService`, `LowBatteryNotificationJobService`, `CloudProfilesUploadJobService`, `DefaultAppsHighPriorityJobService`, `DefaultAppsSetupJobService`, `DefaultAppsPostNUXInstallJobService`, `OCMSDumpService`, `ExtractShader`, `BinaryCheckUpdateIntentService`, `BinaryRemovalIntentService`, `ThirdPartyPackageWarnOrBlockIntentService`, `LocationService`, `MauiAppManagerService`, `PushFGService`, `AutoUpdateJobService`, `AutoUpdateWhenChargingJobService`, `InstallerService`, `ConsistencyJobService`, `DozeDelayService`, `UpdatePreShutdownFGService`, `SystemAlarmService`, `SystemJobService`, `SystemForegroundService`, `MultiInstanceInvalidationService`.
+- Receivers (37 listed): `CloudBackupPreShutdownTask$QueryTaskBeforeShutdownReceiver`, `CloudBackupPreShutdownTask$RunTaskReceiver`, `ForegroundAppListener$ImmersiveAppChangedReceiver`, `OculusDownloadManagerReceiver`, `AuthBroadcastReceiver`, `DeviceConfigClientReceiver`, `DeviceConfigClientDebugReceiver`, `Q4BRemoteConfigReceiver`, `Q4BActionReceiver`, `LowBatteryUnmountAlarmReceiver`, `HighPowerUsageNotificationReceiver`, `CloudProfilesBroadcastReceiver`, `DefaultAppsBroadcastReceiver`, `Installer2StatusReceiver`, `PackageRemovedReceiver`, `ThirdPartyPackageStartedReceiver`, `InstallExistingReceiver`, `Q4BAppActionReceiver`, `OCMSPushReceiver`, `AutoUpdateOnScreenOffAlarmReceiver`, `PackagesCacheReceiver`, `SharedModeSessionReceiver`, `GrantAppUserConsentReceiver`, `VrNotificationActionReceiver`, `UninstallBroadcastReceiver`, `UpdatePreShutdownTask$QueryTaskBeforeShutdownReceiver`, `UpdatePreShutdownTask$RunTaskReceiver`, `ForceStopRunnable$BroadcastReceiver`, `ConstraintProxy$BatteryChargingProxy`, `ConstraintProxy$BatteryNotLowProxy`, `ConstraintProxy$StorageNotLowProxy`, `ConstraintProxy$NetworkStateProxy`, `RescheduleReceiver`, `ConstraintProxyUpdateReceiver`, `DiagnosticsReceiver`, `InstallerServiceBootReceiver`, `ProfileInstallReceiver`.
+- Permissions requested: 63. Sensitive subset (6): `PACKAGE_USAGE_STATS`, `POST_NOTIFICATIONS`, `READ_EXTERNAL_STORAGE`, `SYSTEM_ALERT_WINDOW`, `WRITE_EXTERNAL_STORAGE`, `WRITE_SETTINGS`.
+- Declared permissions (12): `com.oculus.permission.UPDATE_Q4B_REMOTE_CONFIG`, `com.oculus.ocms.am.service.permission.ACCESS`, `com.oculus.ocms.antipiracy.internal.REQUEST_DEVELOPER_STATUS`, `com.oculus.ocms.installer2.INSTALL_EVENT_PERMISSION`, `com.oculus.ocms.installer2.READ_EXTRACTED_FILES`, `com.oculus.ocms.BINARY_CHECK_UPDATE`, `com.oculus.ocms.BINARY_REMOVAL`, `com.oculus.ocms.locationservices.permission.ACCESS`, `com.oculus.ocms.maui.permission.ACCESS`, `com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS`, `com.oculus.ocms.updates.permission.UPDATE_NOW`, `com.oculus.ocms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+- AIDL-style interface names (11): `com.oculus.aidl.IAuthService2`, `com.oculus.aidl.IAuthenticationCallback`, `com.oculus.aidl.ILocationCallback`, `com.oculus.aidl.ILocationServiceInterface`, `com.oculus.aidl.backuptransportservice.IExtractedArchiveStager`, `com.oculus.aidl.backuptransportservice.IStageForRestoreCallback`, `com.oculus.assistant.api.IOculusAssistantService`, `com.oculus.assistant.api.IOculusAssistantSubscriber`, `com.oculus.userserver.managerservice.IOculusUserManager`, `vendor.meta.parfait.IConfigQuery`, `vendor.meta.parfait.ITrigger`.
+- Property-like strings (114); first ten: `dalvik.vm.heapgrowthlimit`, `dalvik.vm.heapmaxfree`, `dalvik.vm.heapminfree`, `dalvik.vm.heapstartsize`, `dalvik.vm.heaptargetutilization`, `debug.atrace.app_cmdlines`, `debug.atrace.tags.enableflags`, `debug.fbsystrace.force_java`, `debug.fbsystrace.tags`, `debug.fbsystrace.trace_load`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 531. Content authorities: 2: `content://com.facebook.mobileconfigservice.contentprovider`, `content://downloads/my_downloads`.
+
+## Guardian (boundary)
+
+Package `com.oculus.guardian`, version 71.0.0.613.530 (code 665334697), minSdk 24, targetSdk 23, shared UID none. Source `system_ext_a/priv-app/Guardian/Guardian.apk`.
+
+Inferred from names alone (the Guardian name, the com.oculus.vrguardianservice class prefix and the BOUNDARY_VISIBILITY permission), the Guardian application (package com.oculus.guardian, version 71.0.0.613.530, version code 665334697, minimum SDK 24, target SDK 23) appears to be a VR guardian (boundary) application. It declares no activity; its services are VrGuardianService, VrGuardianUserService and VrGuardianVideoCachingJobService (class names), and the first two are exported. Its receivers include VrGuardianUserBroadcastReceiver and DeviceConfigClientReceiver (class names), and DeviceConfigClientReceiver is exported with the permission com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT. It declares three permissions: com.oculus.permission.GUARDIAN_USER_CONTROL, com.oculus.permission.BOUNDARY_VISIBILITY and com.oculus.guardian.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION.
+
+- Signing certificate SHA-256: `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`.
+- Classes: 751 in 1 dex file(s). Native libraries: 4. Assets: 8.
+- Components: activities 0 (0 exported), services 3 (2 exported), receivers 5 (2 exported), providers 2 (0 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (3): `VrGuardianService`, `VrGuardianUserService`, `VrGuardianVideoCachingJobService`.
+- Receivers (5 listed): `VrGuardianUserBroadcastReceiver`, `VrGuardianVideoCachingBroadcastReceiver`, `DeviceConfigClientReceiver`, `DeviceConfigClientDebugReceiver`, `ProfileInstallReceiver`.
+- Permissions requested: 47. Sensitive subset (4): `ACCESS_CAMERA_DATA`, `POST_NOTIFICATIONS`, `SYSTEM_ALERT_WINDOW`, `WRITE_SETTINGS`.
+- Declared permissions (3): `com.oculus.permission.GUARDIAN_USER_CONTROL`, `com.oculus.permission.BOUNDARY_VISIBILITY`, `com.oculus.guardian.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+- AIDL-style interface names (2): `com.oculus.vrguardianservice.IVrGuardianService`, `com.oculus.vrguardianservice.IVrGuardianUserController`.
+- Property-like strings (4); first ten: `debug.oculus.mqd.off`, `persist.oculus.guardian_json_cmds_user_build`, `persist.ovr.deviceconfig.svc`, `ro.build.fingerprint`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 46. Content authorities: 2: `content://com.facebook.mobileconfigservice.contentprovider`, `content://com.oculus.ocms.publiclibrary/apps/`.
+
+## SkyguardService
+
+Package `com.meta.internal.skyguard`, version None (code None), minSdk 29, targetSdk 29, shared UID `android.uid.system`. Source `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`.
+
+The SkyguardService application (package `com.meta.internal.skyguard`) has its APK at `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`, declares the shared UID `android.uid.system`, and declares a minimum SDK level of 29 and a target SDK level of 29, with no version name or version code recorded (both null). Its native library names, such as `libskyguardservice_native.so` and `libandroid_skyguard_database.so` among its 34 native libraries, suggest a service with native code and a database (a reading of the names alone). Its manifest declares one exported service, `com.meta.internal.skyguard.SkyguardService`, with a MAIN-action and LAUNCHER-category intent filter, and one non-exported receiver, `com.meta.internal.skyguard.BootReceiver`, with an intent filter for `android.intent.action.BOOT_COMPLETED` and `android.intent.action.LOCKED_BOOT_COMPLETED`; it declares no activities and requests one permission, `android.permission.RECEIVE_BOOT_COMPLETED`. Its signing certificate file is `META-INF/PLATFORM.RSA`, with SHA-256 beginning `c8a2e9bccf597c2f`, which is probably the platform certificate (inferred from the shared UID only; the file name is not used, because Telecom carries the same digest under `META-INF/CERT.RSA`).
+
+- Signing certificate SHA-256: `c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8`.
+- Classes: 89 in 1 dex file(s). Native libraries: 34. Assets: 0.
+- Components: activities 0 (0 exported), services 1 (1 exported), receivers 1 (0 exported), providers 0 (0 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (1): `SkyguardService`.
+- Receivers (1 listed): `BootReceiver`.
+- Permissions requested: 1. Sensitive subset (0): none.
+- Declared permissions (0): none.
+- AIDL-style interface names (0): none.
+- Property-like strings (0); first ten: none. These are string-pool matches, not confirmed reads.
+- Intent action strings: 0. Content authorities: 0: none.
+
+## Integrity (abuse reporting)
+
+Package `com.oculus.integrity`, version 71.0.0.618.530 (code 665335042), minSdk 28, targetSdk 28, shared UID none. Source `system_ext_a/priv-app/Integrity/Integrity.apk`.
+
+The Integrity application (package `com.oculus.integrity`) has class names that suggest abuse reporting and video handling (inferred from names). Its service `PanelService` is exported, has no permission attribute, declares its process as `:abuse`, and has intent filters for `com.oculus.vrshell.SHELL_MAIN` and `com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES`. Its exported service `RecordingService` requires callers to hold `com.oculus.horizon.permission.OVR_PLATFORM_BROADCAST`; this APK declares `com.oculus.integrity.permission.OVR_PLATFORM_BROADCAST` instead. The services `VideoUploaderService`, `VideoFileToCacheCopierService` and `VideoURIFetcherService`, all in the `abusereport` package, and the provider `AbuseReportFileProvider` are not exported. It requests `android.permission.READ_EXTERNAL_STORAGE` and `android.permission.WRITE_EXTERNAL_STORAGE`, which fit the video-file class names (inferred from names).
+
+- Signing certificate SHA-256: `fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`.
+- Classes: 7503 in 2 dex file(s). Native libraries: 21. Assets: 18.
+- Components: activities 1 (0 exported), services 15 (3 exported), receivers 12 (3 exported), providers 2 (0 exported).
+- MAIN-action activities (0): none.
+- LAUNCHER activities (0): none.
+- Services (15): `PanelService`, `VideoFileToCacheCopierService`, `VideoUploaderCleanerService`, `RecordingService`, `VideoURIFetcherService`, `VideoUploaderService`, `LollipopUploadSafeService`, `LollipopUploadService`, `Analytics2UploadService`, `AlarmBasedUploadService`, `SystemAlarmService`, `SystemJobService`, `SystemForegroundService`, `HeroKeepAliveService`, `MultiInstanceInvalidationService`.
+- Receivers (12 listed): `DeviceConfigClientReceiver`, `DeviceConfigClientDebugReceiver`, `HighPriUploadRetryReceiver`, `ProfileInstallReceiver`, `ForceStopRunnable$BroadcastReceiver`, `ConstraintProxy$BatteryChargingProxy`, `ConstraintProxy$BatteryNotLowProxy`, `ConstraintProxy$StorageNotLowProxy`, `ConstraintProxy$NetworkStateProxy`, `RescheduleReceiver`, `ConstraintProxyUpdateReceiver`, `DiagnosticsReceiver`.
+- Permissions requested: 33. Sensitive subset (4): `GET_ACCOUNTS`, `READ_EXTERNAL_STORAGE`, `WRITE_EXTERNAL_STORAGE`, `WRITE_SETTINGS`.
+- Declared permissions (2): `com.oculus.integrity.permission.OVR_PLATFORM_BROADCAST`, `com.oculus.integrity.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`.
+- AIDL-style interface names (16): `com.oculus.assistant.api.IOculusAssistantService`, `com.oculus.assistant.api.IOculusAssistantSubscriber`, `com.oculus.metacam.ipc.ICaptureServiceBinder`, `com.oculus.metacam.ipc.ICastStateListener`, `com.oculus.metacam.ipc.ILivestreamStateListenerV2`, `com.oculus.metacam.ipc.ILivestreamingServiceBinder`, `com.oculus.metacam.ipc.IMetaCamServiceBinder`, `com.oculus.metacam.ipc.IOnCaptureStoppedListener`, `com.oculus.metacam.ipc.IScreenshotStateListener`, `com.oculus.metacam.ipc.IVirtualCameraServiceBinder`, `com.oculus.metacam.ipc.IVirtualCameraStateListener`, `com.oculus.userserver.managerservice.IOculusUserManager`, `com.oculus.vrshell.privateipc.ILifecycleActionIPCService`, `com.oculus.vrshell.privateipc.ISecureScreenIPCService`, `vendor.meta.parfait.IConfigQuery`, `vendor.meta.parfait.ITrigger`.
+- Property-like strings (27); first ten: `dalvik.vm.heapgrowthlimit`, `dalvik.vm.heapmaxfree`, `dalvik.vm.heapminfree`, `dalvik.vm.heapstartsize`, `dalvik.vm.heaptargetutilization`, `debug.atrace.tags.enableflags`, `debug.fbsystrace.force_java`, `debug.fbsystrace.tags`, `debug.fbsystrace.trace_load`, `debug.oculus.graphtier`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 295. Content authorities: 1: `content://com.facebook.mobileconfigservice.contentprovider`.
+
+## Telecom (telephony)
+
+Package `com.android.server.telecom`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.system`. Source `system_a/system/priv-app/Telecom/Telecom.apk`.
+
+The Telecom application (package `com.android.server.telecom`, version 12, shared UID `android.uid.system`) is a telephony application (inferred from names). Its two services, TelecomService (filter action `android.telecom.ITelecomService`) and BluetoothPhoneService (filter action `android.bluetooth.IBluetoothHeadsetPhone`), are both exported. Of its nine activities, four are exported, including UserCallActivity, which requires callers to hold the permission `android.permission.CALL_PHONE` and declares the filter action `android.intent.action.CALL`. Of its 28 requested permissions, several have names tied to calls, including `android.permission.CALL_PRIVILEGED`, `android.permission.MODIFY_PHONE_STATE`, `android.permission.BIND_INCALL_SERVICE`, `android.permission.BIND_CONNECTION_SERVICE` and `android.permission.HANDLE_CALL_INTENT` (inferred from names).
+
+- Signing certificate SHA-256: `c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8`.
+- Classes: 3092 in 1 dex file(s). Native libraries: 0. Assets: 0.
+- Components: activities 9 (4 exported), services 2 (2 exported), receivers 2 (1 exported), providers 0 (0 exported).
+- MAIN-action activities (2): `RespondViaSmsSettings`, `EnableAccountPreferenceActivity`.
+- LAUNCHER activities (0): none.
+- Services (2): `BluetoothPhoneService`, `TelecomService`.
+- Receivers (2 listed): `TelecomBroadcastReceiver`, `AppUninstallBroadcastReceiver`.
+- Permissions requested: 28. Sensitive subset (6): `CALL_PRIVILEGED`, `MODIFY_PHONE_STATE`, `READ_CALL_LOG`, `READ_EXTERNAL_STORAGE`, `SEND_SMS`, `WRITE_CALL_LOG`.
+- Declared permissions (5): `android.permission.BROADCAST_CALLLOG_INFO`, `android.permission.PROCESS_CALLLOG_INFO`, `android.permission.BROADCAST_PHONE_ACCOUNT_REGISTRATION`, `android.permission.PROCESS_PHONE_ACCOUNT_REGISTRATION`, `android.permission.HANDLE_CALL_INTENT`.
+- AIDL-style interface names (0): none.
+- Property-like strings (6); first ten: `debug.enable_enhanced_calling`, `persist.log.tag`, `persist.logd.logpersistd`, `persist.logd.logpersistd.buffer`, `ro.boot.revision`, `ro.storage_manager.enabled`. These are string-pool matches, not confirmed reads.
+- Intent action strings: 39. Content authorities: 1: `content://icc/adn/`.

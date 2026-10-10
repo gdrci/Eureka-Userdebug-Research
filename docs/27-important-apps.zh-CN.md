@@ -2,7 +2,7 @@
 
 [English](27-important-apps.md)
 
-本页介绍镜像中的 14 个应用：设置、蓝牙、浏览器、助手、主页、采集、系统界面、VR 运行时、身体与眼动输入、可穿戴输入以及首次设置。这些应用是从 5,685 条清单（`data/inventory/files.tsv`）中人工挑选的，用于覆盖面向用户和系统的功能。每一节的事实来自清单文件（manifest）和 dex 文件。角色描述是根据类名和组件名的读法给出的；超出清单内容的说明标注为“推断”。
+本页介绍镜像中的 22 个应用：设置、蓝牙、浏览器、助手、主页、采集、系统界面、VR 运行时、身体与眼动输入、可穿戴输入、首次设置、系统 WebView、设备管理、应用安装、Guardian 边界服务、滥用举报、电话和 Skyguard 服务。这些应用是从 5,685 条清单（`data/inventory/files.tsv`）中人工挑选的，用于覆盖面向用户和系统的功能。每一节的事实来自清单文件（manifest）和 dex 文件。角色描述是根据类名和组件名的读法给出的；超出清单内容的说明标注为“推断”。
 
 每个应用的完整事实在 `data/apks/<name>.json` 中，汇总表为 `data/apks/summary.tsv`。本页由 `tools/apk/gen_apps_doc.py` 从这些文件生成。
 
@@ -16,13 +16,14 @@
 
 ## 签名
 
-本组出现两个签名证书族，以 SHA-256 摘要的前 16 位十六进制数字区分：
+本组的签名证书族，以签名证书 SHA-256 摘要的前 16 位十六进制数字区分：
 
-- 族 `c8a2e9bccf597c2f`：Settings、Bluetooth 和 xrstreamingclient。
-- 族 `fac61745dc090378`：其余 11 个应用。
+- 族 `fac61745dc090378`（17 个）：Carmel、Assistant、Horizon、Metacam、SystemUX、VrShell、VrDriver、BodyApiService、SpatialPersistenceService、WearableInputService、FirstTimeNuxEureka、SystemWebView、Q4BMdm、Q4BService、OCMS、Guardian、Integrity。
+- 族 `c8a2e9bccf597c2f`（5 个）：Settings、Bluetooth、xrstreamingclient、SkyguardService、Telecom。
 
-Settings 和 Bluetooth 声明了共享 UID `android.uid.system` 和 `android.uid.bluetooth`。Android 只允许使用平台证书签名的应用使用这些共享 UID，因此 `c8a2e9bccf597c2f` 很可能是平台证书（根据该规则推断；未与参考证书比对）。完整摘要见各节。
+Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、SkyguardService（`android.uid.system`）、Telecom（`android.uid.system`）声明了系统共享 UID。Android 要求声明系统共享 UID 的应用使用平台证书签名，因此当这些应用都在族 `c8a2e9bccf597c2f` 中时，该族很可能是平台证书（根据该规则推断；未与参考证书比对）。
 
+完整摘要见各节。
 
 ## Settings（设置）
 
@@ -289,3 +290,155 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 - AIDL 风格的接口名（9）：`com.oculus.assistant.api.IOculusAssistantService`、`com.oculus.assistant.api.IOculusAssistantSubscriber`、`com.oculus.userserver.managerservice.IOculusUserManager`、`com.oculus.vrshell.privateipc.ILifecycleActionIPCService`、`com.oculus.vrshell.privateipc.IModalClosedCallback`、`com.oculus.vrshell.privateipc.IModalClosedIPCService`、`com.oculus.vrshell.privateipc.ISecureScreenIPCService`、`vendor.meta.parfait.IConfigQuery`、`vendor.meta.parfait.ITrigger`。
 - 类属性字符串（28）；前十个：`dalvik.vm.heapgrowthlimit`、`dalvik.vm.heapmaxfree`、`dalvik.vm.heapminfree`、`dalvik.vm.heapstartsize`、`dalvik.vm.heaptargetutilization`、`debug.atrace.tags.enableflags`、`debug.fbsystrace.force_java`、`debug.fbsystrace.tags`、`debug.fbsystrace.trace_load`、`debug.oculus.graphtier`。这些是字符串池中的匹配，不是已确认的读取。
 - Intent 动作字符串：301。内容 authority（4）：`content://com.facebook.mobileconfigservice.contentprovider`、`content://com.oculus.horizon.fbconnect/account`、`content://com.oculus.horizon.parties`、`content://com.oculus.horizon.social`。
+
+## SystemWebView（WebView）
+
+包名 `com.android.webview`，版本 126.0.6478.122（代码 647812201），minSdk 26，targetSdk 34，无共享 UID。来源 `product_a/app/SystemWebView/SystemWebView.apk`。
+
+包名为 com.android.webview（版本 126.0.6478.122）的应用似为系统 WebView 应用（根据包名和文件名 SystemWebView.apk 推断），其原生库 libwebviewchromium.so 和 org.chromium.content 类前缀暗示其以 Chromium 为基础（根据名称推断）。其三个活动中有两个导出：org.chromium.android_webview.devui.MainActivity（动作为 com.android.webview.SHOW_DEV_UI）和 org.chromium.android_webview.nonembedded.LicenseActivity（动作为 android.settings.WEBVIEW_LICENSE）；名称暗示开发者界面和许可证页面（根据名称推断）。其声明了 52 个服务，其中 40 个为 org.chromium.content.app 中的 SandboxedProcessService0 至 SandboxedProcessService39（类名），而 VariationsSeedServer、CrashReceiverService 和 MetricsUploadService 等名称暗示 Variations 种子、崩溃报告和指标（根据名称推断）。其请求 6 项权限，包括 android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE，且未声明任何权限；它还声明了最低 SDK 版本 26 和目标 SDK 版本 34。
+
+- 签名证书 SHA-256：`fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`。
+- 类：3480 个，位于 1 个 dex 文件中。原生库：4。资源（assets）：86。
+- 组件：活动 3（导出 2）；服务 52（导出 50）；广播接收器 0（导出 0）；内容提供者 4（导出 4）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（52）：`StartupFeatureMetadataHolder`、`VariationsSeedServer`、`AwVariationsSeedFetcher`、`CrashReceiverService`、`AwMinidumpUploadJobService`、`DeveloperUiService`、`SafeModeService`、`MetricsBridgeService`、`MetricsUploadService`、`AwComponentUpdateService`、`ComponentsProviderService`、`JsSandboxService0`、`SandboxedProcessService0`、`SandboxedProcessService1`、`SandboxedProcessService2`、`SandboxedProcessService3`、`SandboxedProcessService4`、`SandboxedProcessService5`、`SandboxedProcessService6`、`SandboxedProcessService7`、`SandboxedProcessService8`、`SandboxedProcessService9`、`SandboxedProcessService10`、`SandboxedProcessService11`、`SandboxedProcessService12`、`SandboxedProcessService13`、`SandboxedProcessService14`、`SandboxedProcessService15`、`SandboxedProcessService16`、`SandboxedProcessService17`、`SandboxedProcessService18`、`SandboxedProcessService19`、`SandboxedProcessService20`、`SandboxedProcessService21`、`SandboxedProcessService22`、`SandboxedProcessService23`、`SandboxedProcessService24`、`SandboxedProcessService25`、`SandboxedProcessService26`、`SandboxedProcessService27`、`SandboxedProcessService28`、`SandboxedProcessService29`、`SandboxedProcessService30`、`SandboxedProcessService31`、`SandboxedProcessService32`、`SandboxedProcessService33`、`SandboxedProcessService34`、`SandboxedProcessService35`、`SandboxedProcessService36`、`SandboxedProcessService37`、`SandboxedProcessService38`、`SandboxedProcessService39`。
+- 广播接收器（已列出 0）：无。
+- 请求的权限：6。敏感子集（1）：`POST_NOTIFICATIONS`。
+- 声明的权限（0）：无。
+- AIDL 风格的接口名（3）：`android.content.pm.IPackageManager`、`android.widget.directwriting.IDirectWritingService`、`android.widget.directwriting.IDirectWritingServiceCallback`。
+- 类属性字符串（1）；前十个：`ro.product.first_api_level`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：19。内容 authority（0）：无。
+
+## Q4BMdm（设备管理）
+
+包名 `com.oculus.q4b.mdm`，版本 103.0.0.0.166（代码 551600503），minSdk 31，targetSdk 31，无共享 UID。来源 `product_a/app/Q4BMdm/Q4BMdm.apk`。
+
+包名 `com.oculus.q4b.mdm` 的应用声明了元数据项 `android.app.device_admin`，其名称暗示设备管理（依据包名中 `mdm` 段的名称读法，推断）。活动 `AdminPolicyComplianceActivity` 和 `GetProvisioningModeActivity`、服务 `DeviceAdminService` 需要 `android.permission.BIND_DEVICE_ADMIN`，广播接收器 `Q4BAdminReceiver` 同样受该权限保护（类名）。已导出的活动 `com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity` 需要声明的权限 `com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION`；同名类也由 `com.oculus.q4bservice` 声明，在该包中需要 `com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION`。服务 `AttestationJobService`、`ConfigJobService`、`RemoteWipeJobService` 和 `KioskResetJobService` 需要 `android.permission.BIND_JOB_SERVICE`（类名；证明、配置、远程擦除和信息亭（kiosk）重置的职能属于名称读法，因此为推断）。该应用请求 `android.permission.INSTALL_PACKAGES`、`android.permission.MANAGE_USERS` 和 `android.permission.USES_POLICY_WIPE_DATA`。已导出的服务 `com.oculus.q4bservice.e2etestsupport.E2EService` 和已导出的内容提供者 `com.oculus.q4b.e2etestsupport.service.E2EContentProvider`（类名）未设置权限属性，名称暗示端到端测试支持（根据名称推断）。
+
+- 签名证书 SHA-256：`fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`。
+- 类：11131 个，位于 2 个 dex 文件中。原生库：14。资源（assets）：12。
+- 组件：活动 3（导出 3）；服务 21（导出 4）；广播接收器 24（导出 7）；内容提供者 1（导出 1）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（21）：`PackageFinderService`、`E2EService`、`DeviceAdminService`、`AttestationJobService`、`AttestationVerdictJobService`、`FbnsService`、`FbnsService`、`KioskResetJobService`、`RemoteConfigService`、`RemoteWipeJobService`、`Q4BDumpService`、`ConfigJobService`、`CertificateRenewalService`、`KioskRemoteSessionResetJobService`、`StateReporterJobService`、`IntegrationUpdateJobService`、`VirtualEnvironmentSetupService`、`SystemAlarmService`、`SystemJobService`、`SystemForegroundService`、`MultiInstanceInvalidationService`。
+- 广播接收器（已列出 24）：`Q4BAdminReceiver`、`BootReceiver`、`FbnsBroadcastReceiver`、`MqttSystemBroadcastReceiver`、`KioskCleanupBootReceiver`、`KioskHomeUpdateBootReceiver`、`RemoteConfigOcmsReceiver`、`StateReporterReceiver`、`DeviceConfigClientReceiver`、`DeviceConfigClientDebugReceiver`、`InstallReceiver`、`MixedModeBootReceiver`、`VirtualEnvironmentSetupReceiver`、`VrNotificationActionReceiver`、`PackagesCacheReceiver`、`ForceStopRunnable$BroadcastReceiver`、`ConstraintProxy$BatteryChargingProxy`、`ConstraintProxy$BatteryNotLowProxy`、`ConstraintProxy$StorageNotLowProxy`、`ConstraintProxy$NetworkStateProxy`、`RescheduleReceiver`、`ConstraintProxyUpdateReceiver`、`DiagnosticsReceiver`、`ProfileInstallReceiver`。
+- 请求的权限：30。敏感子集（4）：`ACCESS_COARSE_LOCATION`、`ACCESS_FINE_LOCATION`、`REQUEST_INSTALL_PACKAGES`、`WRITE_SETTINGS`。
+- 声明的权限（5）：`com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION`、`com.oculus.q4b.mdm.permission.GET_Q4B_REMOTE_CONFIG`、`com.oculus.q4b.mdm.permission.Q4B_CONFIG_PROCESSED`、`com.oculus.q4b.mdm.permission.Q4B_STATUS`、`com.oculus.q4b.mdm.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`。
+- AIDL 风格的接口名（55）：`com.oculus.aidl.IAuthService2`、`com.oculus.aidl.IAuthenticationCallback`、`com.oculus.oemconfig.aidl.IOemConfigService`、`com.oculus.presence.IApiStatusListener`、`com.oculus.presence.IDebugApi`、`com.oculus.presence.IHomeProvider`、`com.oculus.presence.IHomeProviderListener`、`com.oculus.presence.IHomeProviderShell`、`com.oculus.presence.IIdAnonymizer`、`com.oculus.presence.ITravelManager`、`com.oculus.presence.channels.IAugmentProviderApi`、`com.oculus.presence.channels.IEnvironmentProviderApi`、`com.oculus.presence.channels.IMetaEnvironmentManager`、`com.oculus.presence.channels.IRenderingProviderApi`、`com.oculus.presence.cowatching.ICowatchingEventListener`、`com.oculus.presence.cowatching.ICowatchingManager`、`com.oculus.presence.datasync.IDataListener`、`com.oculus.presence.datasync.IDataSyncManager`、`com.oculus.presence.grouping.IProviderEventListener`、`com.oculus.presence.grouping.capabilities.audiocall.IAudioCallCapability`、`com.oculus.presence.grouping.capabilities.audiocall.IMicStateListener`、`com.oculus.presence.grouping.capabilities.datasync.IDataSyncCapability`、`com.oculus.presence.grouping.capabilities.datasync.IUserUpdateListener`、`com.oculus.presence.hyperspace.ICallsInfoUpdateListener`、`com.oculus.presence.hyperspace.IClientConnection`、`com.oculus.presence.hyperspace.IHyperspaceApiProvider`、`com.oculus.presence.hyperspace.IHyperspaceApiStatusListener`、`com.oculus.presence.hyperspace.IHyperspaceNativeApiProvider`、`com.oculus.presence.hyperspace.IHyperspaceServiceApi`、`com.oculus.presence.hyperspace.IHyperspaceServiceVideoApi`、`com.oculus.presence.hyperspace.IOutgoingVideoObserver`、`com.oculus.presence.hyperspace.IOvrDataMessageCallback`、`com.oculus.presence.hyperspace.IOvrDataReadyCallback`、`com.oculus.presence.hyperspace.IRealtimeSessionInitTransportCallback`、`com.oculus.presence.hyperspace.IStateAgreementObserver`、`com.oculus.presence.presencestate.IPresenceStateListener`、`com.oculus.presence.presencestate.IRichPresenceManager`、`com.oculus.presence.realtimeinfra.IRequestStreamService`、`com.oculus.presence.realtimeinfra.IStream`、`com.oculus.presence.realtimeinfra.IStreamEventHandler`、`com.oculus.presence.stable.IPresenceServiceApi`、`com.oculus.presence.stable.grouping.IClientEventListener`、`com.oculus.presence.stable.grouping.IClientManager`、`com.oculus.presence.stable.grouping.IGroup`、`com.oculus.presence.stable.grouping.IProviderManager`、`com.oculus.presence.stable.party.ICallStateListener`、`com.oculus.presence.stable.party.IParty`、`com.oculus.presence.stable.party.IPartyInviteListener`、`com.oculus.presence.stable.party.IPartyManager`、`com.oculus.presence.stable.party.IStreamListener`、`com.oculus.presence.travel.ITravelCallback`、`com.oculus.shellenv.IApiStatusListener`、`com.oculus.shellenv.IAvatarServiceManager`、`vendor.meta.parfait.IConfigQuery`、`vendor.meta.parfait.ITrigger`。
+- 类属性字符串（86）；前十个：`dalvik.vm.heapgrowthlimit`、`dalvik.vm.heapmaxfree`、`dalvik.vm.heapminfree`、`dalvik.vm.heapstartsize`、`dalvik.vm.heaptargetutilization`、`debug.atrace.tags.enableflags`、`debug.fbsystrace.force_java`、`debug.fbsystrace.tags`、`debug.fbsystrace.trace_load`、`debug.oculus.force_sideload_apps_can_update`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：439。内容 authority（8）：`content://com.facebook.mobileconfigservice.contentprovider`、`content://com.oculus.identitymanagement.capabilities.contentprovider/account`、`content://com.oculus.identitymanagement.capabilities.contentprovider/account/activeuser/capabilities`、`content://com.oculus.identitymanagement.capabilities.contentprovider/activeuser`、`content://com.oculus.identitymanagement.capabilities.contentprovider/capabilities`、`content://com.oculus.messenger.service.provider`、`content://com.oculus.q4bservice.status`、`content://com.oculus.socialplatform.messenger.service.provider`。
+
+## Q4BService（配置与信息亭）
+
+包名 `com.oculus.q4bservice`，版本 71.0.0.896.252（代码 665348098），minSdk 31，targetSdk 31，无共享 UID。来源 `product_a/priv-app/Q4BService/Q4BService.apk`。
+
+Q4B 服务应用（包名 com.oculus.q4bservice）似乎负责设备配置（provisioning）、信息亭（kiosk）模式和移动设备管理（MDM），其类名如 DeviceOwnerProvisioningActivity、com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity 和 RemoteWipeJobService（根据类名推断）。其声明了 4 个活动（3 个导出）、17 个服务（4 个导出）、22 个广播接收器（6 个导出）和 5 个内容提供者（4 个导出）。DeviceOwnerProvisioningActivity 需要权限 com.oculus.permission.LAUNCH_PROVISION。SharedModeSessionSetupActivity 需要权限 com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION，同样需要该权限的还有本包声明的 com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity；该类名也由 com.oculus.q4b.mdm 声明，但其权限为 com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION。其请求 40 项权限，包括 android.permission.MANAGE_USERS、android.permission.INSTALL_PACKAGES 和 android.permission.WRITE_SECURE_SETTINGS。
+
+- 签名证书 SHA-256：`fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`。
+- 类：8314 个，位于 2 个 dex 文件中。原生库：10。资源（assets）：9。
+- 组件：活动 4（导出 3）；服务 17（导出 4）；广播接收器 22（导出 6）；内容提供者 5（导出 4）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（17）：`NotificationJobService`、`PackageFinderService`、`E2EService`、`OemConfigService`、`Q4BDumpService`、`IntegrationUpdateJobService`、`ConfigJobService`、`DeviceProvisionedJobService`、`ProcessJobService`、`VirtualEnvironmentSetupService`、`RemoteWipeJobService`、`StateReporterJobService`、`KioskResetService`、`SystemAlarmService`、`SystemJobService`、`SystemForegroundService`、`MultiInstanceInvalidationService`。
+- 广播接收器（已列出 22）：`NotificationBootReceiver`、`InstallReceiver`、`MixedModeBootReceiver`、`SharedModeSessionReceiver`、`HomeUpdateBootReceiver`、`DeviceConfigClientReceiver`、`DeviceConfigClientDebugReceiver`、`VirtualEnvironmentSetupReceiver`、`BootReceiver`、`RequiredAppsBootReceiver`、`KioskCleanupBootReceiver`、`KioskHomeUpdateBootReceiver`、`PackagesCacheReceiver`、`ForceStopRunnable$BroadcastReceiver`、`ConstraintProxy$BatteryChargingProxy`、`ConstraintProxy$BatteryNotLowProxy`、`ConstraintProxy$StorageNotLowProxy`、`ConstraintProxy$NetworkStateProxy`、`RescheduleReceiver`、`ConstraintProxyUpdateReceiver`、`DiagnosticsReceiver`、`ProfileInstallReceiver`。
+- 请求的权限：40。敏感子集（5）：`ACCESS_COARSE_LOCATION`、`ACCESS_FINE_LOCATION`、`MANAGE_EXTERNAL_STORAGE`、`REQUEST_INSTALL_PACKAGES`、`WRITE_SETTINGS`。
+- 声明的权限（5）：`com.oculus.permission.LAUNCH_PROVISION`、`com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION`、`com.oculus.q4bservice.status.ACCESS_PERMISSION`、`com.oculus.q4bservice.permission.Q4B_READ_IMAGE`、`com.oculus.q4bservice.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`。
+- AIDL 风格的接口名（3）：`com.oculus.aidl.IAuthService2`、`com.oculus.aidl.IAuthenticationCallback`、`com.oculus.oemconfig.aidl.IOemConfigService`。
+- 类属性字符串（34）；前十个：`dalvik.vm.heapgrowthlimit`、`dalvik.vm.heapmaxfree`、`dalvik.vm.heapminfree`、`dalvik.vm.heapstartsize`、`dalvik.vm.heaptargetutilization`、`debug.atrace.tags.enableflags`、`debug.fbsystrace.force_java`、`debug.fbsystrace.tags`、`debug.fbsystrace.trace_load`、`debug.oculus.force_sideload_apps_can_update`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：391。内容 authority（2）：`content://com.facebook.mobileconfigservice.contentprovider`、`content://com.oculus.q4bservice.status`。
+
+## OCMS（应用安装）
+
+包名 `com.oculus.ocms`，版本 71.0.0.884.253（代码 560606331），minSdk 32，targetSdk 32，无共享 UID。来源 `system_ext_a/priv-app/OCMS/OCMS.apk`。
+
+OCMS 应用（包名 com.oculus.ocms，位于 system_ext_a/priv-app/OCMS/OCMS.apk）没有声明任何活动，其组件名称暗示与应用安装、更新和应用资料库有关（根据名称推断）。其服务包括 AppManagerService、LocationService 和 MauiAppManagerService，这三者均为导出，且各自指定了以 com.oculus.ocms 开头的权限；其广播接收器包括 Installer2StatusReceiver 和 OCMSPushReceiver（类名）。其内容提供者中有三个（LibraryProvider、PublicLibraryProvider 和 TestProvider）均为导出且未指定权限，并请求了 63 项权限，其中包括 android.permission.INSTALL_PACKAGES、android.permission.DELETE_PACKAGES 和 android.permission.QUERY_ALL_PACKAGES，这些权限名称暗示与包管理有关（根据名称推断）。
+
+- 签名证书 SHA-256：`fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`。
+- 类：20160 个，位于 11 个 dex 文件中。原生库：39。资源（assets）：11。
+- 组件：活动 0（导出 0）；服务 29（导出 9）；广播接收器 37（导出 20）；内容提供者 6（导出 3）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（29）：`PackageFinderService`、`OculusDownloadService`、`LoginHandlersService`、`AppManagerService`、`AntiPiracyIntentService`、`AntiPiracyJobService`、`LowBatteryNotificationJobService`、`CloudProfilesUploadJobService`、`DefaultAppsHighPriorityJobService`、`DefaultAppsSetupJobService`、`DefaultAppsPostNUXInstallJobService`、`OCMSDumpService`、`ExtractShader`、`BinaryCheckUpdateIntentService`、`BinaryRemovalIntentService`、`ThirdPartyPackageWarnOrBlockIntentService`、`LocationService`、`MauiAppManagerService`、`PushFGService`、`AutoUpdateJobService`、`AutoUpdateWhenChargingJobService`、`InstallerService`、`ConsistencyJobService`、`DozeDelayService`、`UpdatePreShutdownFGService`、`SystemAlarmService`、`SystemJobService`、`SystemForegroundService`、`MultiInstanceInvalidationService`。
+- 广播接收器（已列出 37）：`CloudBackupPreShutdownTask$QueryTaskBeforeShutdownReceiver`、`CloudBackupPreShutdownTask$RunTaskReceiver`、`ForegroundAppListener$ImmersiveAppChangedReceiver`、`OculusDownloadManagerReceiver`、`AuthBroadcastReceiver`、`DeviceConfigClientReceiver`、`DeviceConfigClientDebugReceiver`、`Q4BRemoteConfigReceiver`、`Q4BActionReceiver`、`LowBatteryUnmountAlarmReceiver`、`HighPowerUsageNotificationReceiver`、`CloudProfilesBroadcastReceiver`、`DefaultAppsBroadcastReceiver`、`Installer2StatusReceiver`、`PackageRemovedReceiver`、`ThirdPartyPackageStartedReceiver`、`InstallExistingReceiver`、`Q4BAppActionReceiver`、`OCMSPushReceiver`、`AutoUpdateOnScreenOffAlarmReceiver`、`PackagesCacheReceiver`、`SharedModeSessionReceiver`、`GrantAppUserConsentReceiver`、`VrNotificationActionReceiver`、`UninstallBroadcastReceiver`、`UpdatePreShutdownTask$QueryTaskBeforeShutdownReceiver`、`UpdatePreShutdownTask$RunTaskReceiver`、`ForceStopRunnable$BroadcastReceiver`、`ConstraintProxy$BatteryChargingProxy`、`ConstraintProxy$BatteryNotLowProxy`、`ConstraintProxy$StorageNotLowProxy`、`ConstraintProxy$NetworkStateProxy`、`RescheduleReceiver`、`ConstraintProxyUpdateReceiver`、`DiagnosticsReceiver`、`InstallerServiceBootReceiver`、`ProfileInstallReceiver`。
+- 请求的权限：63。敏感子集（6）：`PACKAGE_USAGE_STATS`、`POST_NOTIFICATIONS`、`READ_EXTERNAL_STORAGE`、`SYSTEM_ALERT_WINDOW`、`WRITE_EXTERNAL_STORAGE`、`WRITE_SETTINGS`。
+- 声明的权限（12）：`com.oculus.permission.UPDATE_Q4B_REMOTE_CONFIG`、`com.oculus.ocms.am.service.permission.ACCESS`、`com.oculus.ocms.antipiracy.internal.REQUEST_DEVELOPER_STATUS`、`com.oculus.ocms.installer2.INSTALL_EVENT_PERMISSION`、`com.oculus.ocms.installer2.READ_EXTRACTED_FILES`、`com.oculus.ocms.BINARY_CHECK_UPDATE`、`com.oculus.ocms.BINARY_REMOVAL`、`com.oculus.ocms.locationservices.permission.ACCESS`、`com.oculus.ocms.maui.permission.ACCESS`、`com.oculus.horizon.notifications.receivers.RECEIVE_SILENT_NOTIFS`、`com.oculus.ocms.updates.permission.UPDATE_NOW`、`com.oculus.ocms.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`。
+- AIDL 风格的接口名（11）：`com.oculus.aidl.IAuthService2`、`com.oculus.aidl.IAuthenticationCallback`、`com.oculus.aidl.ILocationCallback`、`com.oculus.aidl.ILocationServiceInterface`、`com.oculus.aidl.backuptransportservice.IExtractedArchiveStager`、`com.oculus.aidl.backuptransportservice.IStageForRestoreCallback`、`com.oculus.assistant.api.IOculusAssistantService`、`com.oculus.assistant.api.IOculusAssistantSubscriber`、`com.oculus.userserver.managerservice.IOculusUserManager`、`vendor.meta.parfait.IConfigQuery`、`vendor.meta.parfait.ITrigger`。
+- 类属性字符串（114）；前十个：`dalvik.vm.heapgrowthlimit`、`dalvik.vm.heapmaxfree`、`dalvik.vm.heapminfree`、`dalvik.vm.heapstartsize`、`dalvik.vm.heaptargetutilization`、`debug.atrace.app_cmdlines`、`debug.atrace.tags.enableflags`、`debug.fbsystrace.force_java`、`debug.fbsystrace.tags`、`debug.fbsystrace.trace_load`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：531。内容 authority（2）：`content://com.facebook.mobileconfigservice.contentprovider`、`content://downloads/my_downloads`。
+
+## Guardian（边界）
+
+包名 `com.oculus.guardian`，版本 71.0.0.613.530（代码 665334697），minSdk 24，targetSdk 23，无共享 UID。来源 `system_ext_a/priv-app/Guardian/Guardian.apk`。
+
+仅根据名称推断（Guardian 名称、类前缀 com.oculus.vrguardianservice 和 BOUNDARY_VISIBILITY 权限），Guardian 应用（包名 com.oculus.guardian，版本 71.0.0.613.530，版本代码 665334697，最低 SDK 24，目标 SDK 23）似为 VR guardian（边界）应用。它未声明任何活动；其服务为 VrGuardianService、VrGuardianUserService 和 VrGuardianVideoCachingJobService（类名），前两个为导出。其广播接收器包括 VrGuardianUserBroadcastReceiver 和 DeviceConfigClientReceiver（类名），DeviceConfigClientReceiver 为导出，并带有权限 com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT。它声明了三个权限：com.oculus.permission.GUARDIAN_USER_CONTROL、com.oculus.permission.BOUNDARY_VISIBILITY 和 com.oculus.guardian.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION。
+
+- 签名证书 SHA-256：`fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`。
+- 类：751 个，位于 1 个 dex 文件中。原生库：4。资源（assets）：8。
+- 组件：活动 0（导出 0）；服务 3（导出 2）；广播接收器 5（导出 2）；内容提供者 2（导出 0）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（3）：`VrGuardianService`、`VrGuardianUserService`、`VrGuardianVideoCachingJobService`。
+- 广播接收器（已列出 5）：`VrGuardianUserBroadcastReceiver`、`VrGuardianVideoCachingBroadcastReceiver`、`DeviceConfigClientReceiver`、`DeviceConfigClientDebugReceiver`、`ProfileInstallReceiver`。
+- 请求的权限：47。敏感子集（4）：`ACCESS_CAMERA_DATA`、`POST_NOTIFICATIONS`、`SYSTEM_ALERT_WINDOW`、`WRITE_SETTINGS`。
+- 声明的权限（3）：`com.oculus.permission.GUARDIAN_USER_CONTROL`、`com.oculus.permission.BOUNDARY_VISIBILITY`、`com.oculus.guardian.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`。
+- AIDL 风格的接口名（2）：`com.oculus.vrguardianservice.IVrGuardianService`、`com.oculus.vrguardianservice.IVrGuardianUserController`。
+- 类属性字符串（4）；前十个：`debug.oculus.mqd.off`、`persist.oculus.guardian_json_cmds_user_build`、`persist.ovr.deviceconfig.svc`、`ro.build.fingerprint`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：46。内容 authority（2）：`content://com.facebook.mobileconfigservice.contentprovider`、`content://com.oculus.ocms.publiclibrary/apps/`。
+
+## SkyguardService
+
+包名 `com.meta.internal.skyguard`，版本 None（代码 None），minSdk 29，targetSdk 29，共享 UID `android.uid.system`。来源 `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`。
+
+SkyguardService 应用（包名 `com.meta.internal.skyguard`）的 APK 位于 `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`，声明共享 UID `android.uid.system`，并声明最低 SDK 级别为 29、目标 SDK 级别为 29，未记录版本名称和版本号（两者均为空值）。其原生库名称（例如其 34 个原生库中的 `libskyguardservice_native.so` 和 `libandroid_skyguard_database.so`）提示它是一项带有原生代码和数据库的服务（仅根据名称推断）。其清单声明了一个导出的服务 `com.meta.internal.skyguard.SkyguardService`，带有 MAIN 动作和 LAUNCHER 类别的 intent 过滤器；另有一个未导出的广播接收器 `com.meta.internal.skyguard.BootReceiver`，带有针对 `android.intent.action.BOOT_COMPLETED` 和 `android.intent.action.LOCKED_BOOT_COMPLETED` 的 intent 过滤器；它未声明任何活动，并请求一项权限 `android.permission.RECEIVE_BOOT_COMPLETED`。其签名证书文件为 `META-INF/PLATFORM.RSA`，SHA-256 摘要以 `c8a2e9bccf597c2f` 开头，可能是平台证书（仅根据共享 UID 推断；不以文件名为据，因为 Telecom 的相同摘要存放在 `META-INF/CERT.RSA` 中）。
+
+- 签名证书 SHA-256：`c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8`。
+- 类：89 个，位于 1 个 dex 文件中。原生库：34。资源（assets）：0。
+- 组件：活动 0（导出 0）；服务 1（导出 1）；广播接收器 1（导出 0）；内容提供者 0（导出 0）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（1）：`SkyguardService`。
+- 广播接收器（已列出 1）：`BootReceiver`。
+- 请求的权限：1。敏感子集（0）：无。
+- 声明的权限（0）：无。
+- AIDL 风格的接口名（0）：无。
+- 类属性字符串（0）；前十个：无。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：0。内容 authority（0）：无。
+
+## Integrity（滥用举报）
+
+包名 `com.oculus.integrity`，版本 71.0.0.618.530（代码 665335042），minSdk 28，targetSdk 28，无共享 UID。来源 `system_ext_a/priv-app/Integrity/Integrity.apk`。
+
+Integrity 应用（包名 `com.oculus.integrity`）的类名暗示其与滥用举报和视频处理有关（根据名称推断）。其服务 `PanelService` 已导出、未设置权限属性，声明进程为 `:abuse`，并带有 `com.oculus.vrshell.SHELL_MAIN` 和 `com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES` 的 Intent 过滤器。其导出的服务 `RecordingService` 要求调用方持有 `com.oculus.horizon.permission.OVR_PLATFORM_BROADCAST`；本 APK 声明的是 `com.oculus.integrity.permission.OVR_PLATFORM_BROADCAST`。服务 `VideoUploaderService`、`VideoFileToCacheCopierService` 和 `VideoURIFetcherService` 均位于 `abusereport` 包中且未导出，提供者 `AbuseReportFileProvider` 同样未导出。其请求 `android.permission.READ_EXTERNAL_STORAGE` 和 `android.permission.WRITE_EXTERNAL_STORAGE` 权限，这与视频文件相关的类名相符（根据名称推断）。
+
+- 签名证书 SHA-256：`fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c`。
+- 类：7503 个，位于 2 个 dex 文件中。原生库：21。资源（assets）：18。
+- 组件：活动 1（导出 0）；服务 15（导出 3）；广播接收器 12（导出 3）；内容提供者 2（导出 0）。
+- MAIN 动作的活动（0）：无。
+- LAUNCHER 活动（0）：无。
+- 服务（15）：`PanelService`、`VideoFileToCacheCopierService`、`VideoUploaderCleanerService`、`RecordingService`、`VideoURIFetcherService`、`VideoUploaderService`、`LollipopUploadSafeService`、`LollipopUploadService`、`Analytics2UploadService`、`AlarmBasedUploadService`、`SystemAlarmService`、`SystemJobService`、`SystemForegroundService`、`HeroKeepAliveService`、`MultiInstanceInvalidationService`。
+- 广播接收器（已列出 12）：`DeviceConfigClientReceiver`、`DeviceConfigClientDebugReceiver`、`HighPriUploadRetryReceiver`、`ProfileInstallReceiver`、`ForceStopRunnable$BroadcastReceiver`、`ConstraintProxy$BatteryChargingProxy`、`ConstraintProxy$BatteryNotLowProxy`、`ConstraintProxy$StorageNotLowProxy`、`ConstraintProxy$NetworkStateProxy`、`RescheduleReceiver`、`ConstraintProxyUpdateReceiver`、`DiagnosticsReceiver`。
+- 请求的权限：33。敏感子集（4）：`GET_ACCOUNTS`、`READ_EXTERNAL_STORAGE`、`WRITE_EXTERNAL_STORAGE`、`WRITE_SETTINGS`。
+- 声明的权限（2）：`com.oculus.integrity.permission.OVR_PLATFORM_BROADCAST`、`com.oculus.integrity.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`。
+- AIDL 风格的接口名（16）：`com.oculus.assistant.api.IOculusAssistantService`、`com.oculus.assistant.api.IOculusAssistantSubscriber`、`com.oculus.metacam.ipc.ICaptureServiceBinder`、`com.oculus.metacam.ipc.ICastStateListener`、`com.oculus.metacam.ipc.ILivestreamStateListenerV2`、`com.oculus.metacam.ipc.ILivestreamingServiceBinder`、`com.oculus.metacam.ipc.IMetaCamServiceBinder`、`com.oculus.metacam.ipc.IOnCaptureStoppedListener`、`com.oculus.metacam.ipc.IScreenshotStateListener`、`com.oculus.metacam.ipc.IVirtualCameraServiceBinder`、`com.oculus.metacam.ipc.IVirtualCameraStateListener`、`com.oculus.userserver.managerservice.IOculusUserManager`、`com.oculus.vrshell.privateipc.ILifecycleActionIPCService`、`com.oculus.vrshell.privateipc.ISecureScreenIPCService`、`vendor.meta.parfait.IConfigQuery`、`vendor.meta.parfait.ITrigger`。
+- 类属性字符串（27）；前十个：`dalvik.vm.heapgrowthlimit`、`dalvik.vm.heapmaxfree`、`dalvik.vm.heapminfree`、`dalvik.vm.heapstartsize`、`dalvik.vm.heaptargetutilization`、`debug.atrace.tags.enableflags`、`debug.fbsystrace.force_java`、`debug.fbsystrace.tags`、`debug.fbsystrace.trace_load`、`debug.oculus.graphtier`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：295。内容 authority（1）：`content://com.facebook.mobileconfigservice.contentprovider`。
+
+## Telecom（电话）
+
+包名 `com.android.server.telecom`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.system`。来源 `system_a/system/priv-app/Telecom/Telecom.apk`。
+
+Telecom 应用（包名 `com.android.server.telecom`，版本 12，共享 UID `android.uid.system`）是一款电话应用（根据名称推断）。其两个服务 TelecomService（过滤动作 `android.telecom.ITelecomService`）和 BluetoothPhoneService（过滤动作 `android.bluetooth.IBluetoothHeadsetPhone`）均为导出。其 9 个活动中有 4 个导出，其中包括 UserCallActivity，它要求调用方持有权限 `android.permission.CALL_PHONE`，并声明过滤动作 `android.intent.action.CALL`。在其请求的 28 项权限中，名称与通话相关的有若干项，包括 `android.permission.CALL_PRIVILEGED`、`android.permission.MODIFY_PHONE_STATE`、`android.permission.BIND_INCALL_SERVICE`、`android.permission.BIND_CONNECTION_SERVICE` 和 `android.permission.HANDLE_CALL_INTENT`（根据名称推断）。
+
+- 签名证书 SHA-256：`c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8`。
+- 类：3092 个，位于 1 个 dex 文件中。原生库：0。资源（assets）：0。
+- 组件：活动 9（导出 4）；服务 2（导出 2）；广播接收器 2（导出 1）；内容提供者 0（导出 0）。
+- MAIN 动作的活动（2）：`RespondViaSmsSettings`、`EnableAccountPreferenceActivity`。
+- LAUNCHER 活动（0）：无。
+- 服务（2）：`BluetoothPhoneService`、`TelecomService`。
+- 广播接收器（已列出 2）：`TelecomBroadcastReceiver`、`AppUninstallBroadcastReceiver`。
+- 请求的权限：28。敏感子集（6）：`CALL_PRIVILEGED`、`MODIFY_PHONE_STATE`、`READ_CALL_LOG`、`READ_EXTERNAL_STORAGE`、`SEND_SMS`、`WRITE_CALL_LOG`。
+- 声明的权限（5）：`android.permission.BROADCAST_CALLLOG_INFO`、`android.permission.PROCESS_CALLLOG_INFO`、`android.permission.BROADCAST_PHONE_ACCOUNT_REGISTRATION`、`android.permission.PROCESS_PHONE_ACCOUNT_REGISTRATION`、`android.permission.HANDLE_CALL_INTENT`。
+- AIDL 风格的接口名（0）：无。
+- 类属性字符串（6）；前十个：`debug.enable_enhanced_calling`、`persist.log.tag`、`persist.logd.logpersistd`、`persist.logd.logpersistd.buffer`、`ro.boot.revision`、`ro.storage_manager.enabled`。这些是字符串池中的匹配，不是已确认的读取。
+- Intent 动作字符串：39。内容 authority（1）：`content://icc/adn/`。

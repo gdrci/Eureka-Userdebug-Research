@@ -59,7 +59,7 @@ super 镜像包含动态分区。其中没有 `boot`、`vendor_boot` 与内核�
 - `data/gpu/partitions.tsv`：super 镜像中的逻辑分区，附大小与 SHA-256 前缀。
 - `data/inventory/files.tsv`：八个分区中的每个文件与符号链接，附子系统、大小、MIME 类型与 SHA-256。
 - `data/behaviour/`：从 `.rc` 文件解析出的服务、动作、导入、启动阶段与服务类，是第 26 页的依据。
-- `data/apks/`：第 27 页所列 14 个应用的清单与 dex 事实，附汇总表 `summary.tsv`。
+- `data/apks/`：第 27 页所列 22 个应用的清单与 dex 事实，附汇总表 `summary.tsv`。
 - `data/subsystems/<子系统>/`：每个子系统的角色表（`roles.tsv`）与附证据的结论（`claims.json`）。
 - `data/gpu/uncovered_candidates.json`：首轮 GPU 完整性检查返回的文件清单。
 - `tools/`：解包与检查所用的 Go 工具，构建方法见 `tools/README.md`。

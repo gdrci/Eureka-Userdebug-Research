@@ -49,7 +49,7 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 行为与应用
 
-有两页是由镜像文件生成的，但不属于清单中的子系统。[26](26-init-boot-behaviour.zh-CN.md) 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。[27](27-important-apps.zh-CN.md) 使用 androguard 解码应用分组（第 20 页）中的 14 个应用；其事实位于 `data/apks/`，提取与页面生成脚本位于 `tools/apk/`。
+有两页是由镜像文件生成的，但不属于清单中的子系统。[26](26-init-boot-behaviour.zh-CN.md) 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。[27](27-important-apps.zh-CN.md) 使用 androguard 解码应用分组（第 20 页）中的 22 个应用；其事实位于 `data/apks/`，提取与页面生成脚本位于 `tools/apk/`。
 
 ## 声明的核查方式
 

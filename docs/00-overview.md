@@ -49,7 +49,7 @@ The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](
 
 ## Behaviour and applications
 
-Two pages are built from the image's files but are not inventory subsystems. [26](26-init-boot-behaviour.md) parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. [27](27-important-apps.md) decodes 14 applications from the apps group (page 20) with androguard; its facts are in `data/apks/`, and the extraction and page-generation scripts are in `tools/apk/`.
+Two pages are built from the image's files but are not inventory subsystems. [26](26-init-boot-behaviour.md) parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. [27](27-important-apps.md) decodes 22 applications from the apps group (page 20) with androguard; its facts are in `data/apks/`, and the extraction and page-generation scripts are in `tools/apk/`.
 
 ## How the claims were checked
 
