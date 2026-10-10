@@ -1,0 +1,728 @@
+{
+ "apk": "product_a/app/SystemWebView/SystemWebView.apk",
+ "package": "com.android.webview",
+ "version_name": "126.0.6478.122",
+ "version_code": "647812201",
+ "min_sdk": "26",
+ "target_sdk": "34",
+ "shared_uid": null,
+ "signing_certificates": [
+  {
+   "file": "META-INF/IMPORTED.RSA",
+   "sha256": "fac61745dc0903786fb9ede62a962b399f7348f0bb6f899b8332667591033b9c"
+  }
+ ],
+ "native_libs": {
+  "count": 4,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libcrashpad_handler_trampoline.so",
+    "size": 5096
+   },
+   {
+    "path": "lib/arm64-v8a/libwebviewchromium.so",
+    "size": 150297336
+   },
+   {
+    "path": "lib/armeabi-v7a/libcrashpad_handler_trampoline.so",
+    "size": 3196
+   },
+   {
+    "path": "lib/armeabi-v7a/libwebviewchromium.so",
+    "size": 75909564
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 86,
+ "components": {
+  "activity": {
+   "count": 3,
+   "items": [
+    {
+     "name": "org.chromium.android_webview.devui.MainActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_apk",
+     "filters": [
+      {
+       "actions": [
+        "com.android.webview.SHOW_DEV_UI"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "org.chromium.android_webview.nonembedded.LicenseActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_apk",
+     "filters": [
+      {
+       "actions": [
+        "android.settings.WEBVIEW_LICENSE"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.google.android.gms.common.api.GoogleApiActivity",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": null,
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 52,
+   "items": [
+    {
+     "name": "org.chromium.android_webview.services.StartupFeatureMetadataHolder",
+     "exported": "true",
+     "permission": null,
+     "enabled": "false",
+     "process": null,
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.VariationsSeedServer",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.AwVariationsSeedFetcher",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.CrashReceiverService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.AwMinidumpUploadJobService",
+     "exported": "true",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.DeveloperUiService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.SafeModeService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.MetricsBridgeService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.MetricsUploadService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.nonembedded.AwComponentUpdateService",
+     "exported": "false",
+     "permission": "android.permission.BIND_JOB_SERVICE",
+     "enabled": null,
+     "process": ":webview_apk",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.ComponentsProviderService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.js_sandbox.service.JsSandboxService0",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":js_sandboxed_process0",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService0",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process0",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService1",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process1",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService2",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process2",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService3",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process3",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService4",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process4",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService5",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process5",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService6",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process6",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService7",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process7",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService8",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process8",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService9",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process9",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService10",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process10",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService11",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process11",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService12",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process12",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService13",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process13",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService14",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process14",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService15",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process15",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService16",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process16",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService17",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process17",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService18",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process18",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService19",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process19",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService20",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process20",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService21",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process21",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService22",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process22",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService23",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process23",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService24",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process24",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService25",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process25",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService26",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process26",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService27",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process27",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService28",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process28",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService29",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process29",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService30",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process30",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService31",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process31",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService32",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process32",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService33",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process33",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService34",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process34",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService35",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process35",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService36",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process36",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService37",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process37",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService38",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process38",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.content.app.SandboxedProcessService39",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":sandboxed_process39",
+     "filters": []
+    }
+   ]
+  },
+  "receiver": {
+   "count": 0,
+   "items": []
+  },
+  "provider": {
+   "count": 4,
+   "items": [
+    {
+     "name": "org.chromium.android_webview.nonembedded.LicenseContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_apk",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.DeveloperModeContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.SafeModeVariationsSeedContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    },
+    {
+     "name": "org.chromium.android_webview.services.SafeModeContentProvider",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":webview_service",
+     "filters": []
+    }
+   ]
+  }
+ },
+ "uses_permission": {
+  "count": 6,
+  "items": [
+   "android.permission.ACCESS_NETWORK_STATE",
+   "android.permission.FOREGROUND_SERVICE",
+   "android.permission.FOREGROUND_SERVICE_SPECIAL_USE",
+   "android.permission.INTERNET",
+   "android.permission.POST_NOTIFICATIONS",
+   "android.permission.RECEIVE_BOOT_COMPLETED"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [
+  "android.hardware.touchscreen",
+  "android.software.leanback"
+ ],
+ "meta_data": [
+  "STARTUP_FEATURE_SET_DATA_DIRECTORY_SUFFIX",
+  "STARTUP_FEATURE_SET_DIRECTORY_BASE_PATH",
+  "com.android.settings.PRIMARY_PROFILE_CONTROLLED",
+  "com.android.webview.WebViewLibrary",
+  "com.google.android.gms.version",
+  "org.chromium.content.browser.NUM_PRIVILEGED_SERVICES",
+  "org.chromium.content.browser.NUM_SANDBOXED_SERVICES"
+ ],
+ "classes": {
+  "count": 3480,
+  "top_prefixes": [
+   [
+    "org.chromium.content",
+    96
+   ],
+   [
+    "com.google.android",
+    78
+   ],
+   [
+    "org.chromium.android_webview",
+    70
+   ],
+   [
+    "com.android.webview",
+    61
+   ],
+   [
+    "org.chromium.components",
+    60
+   ],
+   [
+    "org.chromium.base",
+    38
+   ],
+   [
+    "org.chromium.support_lib_boundary",
+    38
+   ],
+   [
+    "org.chromium.device",
+    30
+   ],
+   [
+    "org.chromium.media",
+    27
+   ],
+   [
+    "org.chromium.ui",
+    26
+   ],
+   [
+    "androidx.fragment.app",
+    20
+   ],
+   [
+    "org.chromium.content_public",
+    17
+   ],
+   [
+    "androidx.appcompat.widget",
+    15
+   ],
+   [
+    "org.chromium.net",
+    13
+   ],
+   [
+    "com.google.protobuf",
+    10
+   ],
+   [
+    "org.chromium.mojo",
+    7
+   ],
+   [
+    "org.chromium.midi",
+    6
+   ],
+   [
+    "org.chromium.services",
+    5
+   ],
+   [
+    "androidx.concurrent.futures",
+    4
+   ],
+   [
+    "org.chromium.url",
+    4
+   ],
+   [
+    "androidx.appcompat.view",
+    3
+   ],
+   [
+    "androidx.core.widget",
+    3
+   ],
+   [
+    "WV.A",
+    2
+   ],
+   [
+    "WV.B",
+    2
+   ],
+   [
+    "WV.C",
+    2
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 19,
+   "items": [
+    "android.intent.action.ACTION_POWER_CONNECTED",
+    "android.intent.action.ACTION_POWER_DISCONNECTED",
+    "android.intent.action.APPLICATION_RESTRICTIONS_CHANGED",
+    "android.intent.action.BATTERY_CHANGED",
+    "android.intent.action.CHOOSER",
+    "android.intent.action.GET_CONTENT",
+    "android.intent.action.HEADSET_PLUG",
+    "android.intent.action.LOCALE_CHANGED",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.PROXY_CHANGE",
+    "android.intent.action.SCREEN_OFF",
+    "android.intent.action.SEND",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.USER_PRESENT",
+    "android.intent.action.VIEW",
+    "android.intent.action.WEB_SEARCH",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.wifi.RSSI_CHANGED",
+    "android.net.wifi.STATE_CHANGE"
+   ]
+  },
+  "system_properties": {
+   "count": 1,
+   "items": [
+    "ro.product.first_api_level"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 5,
+   "items": [
+    "android.content.pm.IPackageManager",
+    "android.intent.extra.INTENT",
+    "android.permission.INTERNET",
+    "android.widget.directwriting.IDirectWritingService",
+    "android.widget.directwriting.IDirectWritingServiceCallback"
+   ]
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

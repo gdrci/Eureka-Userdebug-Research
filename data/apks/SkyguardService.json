@@ -1,0 +1,346 @@
+{
+ "apk": "system_ext_a/priv-app/SkyguardService/SkyguardService.apk",
+ "package": "com.meta.internal.skyguard",
+ "version_name": null,
+ "version_code": null,
+ "min_sdk": "29",
+ "target_sdk": "29",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/PLATFORM.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 34,
+  "items": [
+   {
+    "path": "lib/arm64-v8a/libandroid_skyguard_database.so",
+    "size": 2092008
+   },
+   {
+    "path": "lib/arm64-v8a/libarvr_libraries_skyguard_protobuf_skyguard_wire_protocol.so",
+    "size": 5040
+   },
+   {
+    "path": "lib/arm64-v8a/libc++_shared.so",
+    "size": 1128128
+   },
+   {
+    "path": "lib/arm64-v8a/libfb_sqlite_3370200.so",
+    "size": 1200528
+   },
+   {
+    "path": "lib/arm64-v8a/libskyguardservice_native.so",
+    "size": 1688144
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_libmbedtls_crypto.so",
+    "size": 547720
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_libmbedtls_x509.so",
+    "size": 66368
+   },
+   {
+    "path": "lib/arm64-v8a/libthird-party_zlib_z.so",
+    "size": 92712
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_boxedalloc_boxedalloc.so",
+    "size": 19152
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_common_integrity_client.so",
+    "size": 4824
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_common_integrity_common.so",
+    "size": 5816
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_dety_dety.so",
+    "size": 8304
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_djinniMcfSample_cppModule_cppModule.so",
+    "size": 183160
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_djinniMcfSample_secondModule_secondModule.so",
+    "size": 74664
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_djinni_mcf_utils.so",
+    "size": 11056
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_djinni_record_visitor_utils_utils.so",
+    "size": 10648
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_mdms_mdms.so",
+    "size": 11032
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_messenger_auth_session_MSGCAuthSessionLogout.so",
+    "size": 11376
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_messenger_tam_TamOrderingStabilization.so",
+    "size": 4040
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_MCIAuthSessionLogout.so",
+    "size": 3568
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_MessengerCorePlugin.so",
+    "size": 17056
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_MsysCoreWritersCQL.so",
+    "size": 81976
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_experimentcache_backingstore_MsysExperimentCacheBackingStore.so",
+    "size": 15056
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_mcf_mcfDirect.so",
+    "size": 2840
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_mcf_mcfDirectBase.so",
+    "size": 473312
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msys-xplat-mobileconfig-library.so",
+    "size": 14040
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msys.so",
+    "size": 1321000
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msysCourier.so",
+    "size": 64960
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msysInfra-xplat-mobileconfig-library.so",
+    "size": 4112
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msysInfra.so",
+    "size": 352640
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msysInfraNoSqlite.so",
+    "size": 937688
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_msys_msysStandaloneEnums.so",
+    "size": 3704
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_secure_lib_secure_string.so",
+    "size": 6664
+   },
+   {
+    "path": "lib/arm64-v8a/libxplat_tourniquet_tourniquet.so",
+    "size": 7544
+   }
+  ]
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 0,
+   "items": []
+  },
+  "service": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.meta.internal.skyguard.SkyguardService",
+     "exported": "true",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.LAUNCHER"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 1,
+   "items": [
+    {
+     "name": "com.meta.internal.skyguard.BootReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": "true",
+     "process": null,
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.BOOT_COMPLETED",
+        "android.intent.action.LOCKED_BOOT_COMPLETED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 1,
+  "items": [
+   "android.permission.RECEIVE_BOOT_COMPLETED"
+  ]
+ },
+ "declared_permissions": {
+  "count": 0,
+  "items": []
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 89,
+  "top_prefixes": [
+   [
+    "com.facebook.infer",
+    37
+   ],
+   [
+    "com.facebook.metagen",
+    9
+   ],
+   [
+    "javax.annotation.meta",
+    7
+   ],
+   [
+    "javax.annotation.concurrent",
+    4
+   ],
+   [
+    "kotlin.annotations.jvm",
+    4
+   ],
+   [
+    "com.meta.internal",
+    3
+   ],
+   [
+    "com.facebook.soloader",
+    1
+   ],
+   [
+    "javax.annotation.CheckForNull",
+    1
+   ],
+   [
+    "javax.annotation.CheckForSigned",
+    1
+   ],
+   [
+    "javax.annotation.CheckReturnValue",
+    1
+   ],
+   [
+    "javax.annotation.Detainted",
+    1
+   ],
+   [
+    "javax.annotation.MatchesPattern",
+    1
+   ],
+   [
+    "javax.annotation.Nonnegative",
+    1
+   ],
+   [
+    "javax.annotation.Nonnull",
+    1
+   ],
+   [
+    "javax.annotation.Nullable",
+    1
+   ],
+   [
+    "javax.annotation.OverridingMethodsMustInvokeSuper",
+    1
+   ],
+   [
+    "javax.annotation.ParametersAreNonnullByDefault",
+    1
+   ],
+   [
+    "javax.annotation.ParametersAreNullableByDefault",
+    1
+   ],
+   [
+    "javax.annotation.PropertyKey",
+    1
+   ],
+   [
+    "javax.annotation.RegEx",
+    1
+   ],
+   [
+    "javax.annotation.Signed",
+    1
+   ],
+   [
+    "javax.annotation.Syntax",
+    1
+   ],
+   [
+    "javax.annotation.Tainted",
+    1
+   ],
+   [
+    "javax.annotation.Untainted",
+    1
+   ],
+   [
+    "javax.annotation.WillClose",
+    1
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 0,
+   "items": []
+  },
+  "system_properties": {
+   "count": 0,
+   "items": []
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 0,
+   "items": []
+  }
+ }
+}

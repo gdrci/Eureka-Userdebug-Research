@@ -1,0 +1,473 @@
+{
+ "apk": "system_a/system/priv-app/Telecom/Telecom.apk",
+ "package": "com.android.server.telecom",
+ "version_name": "12",
+ "version_code": "32",
+ "min_sdk": "32",
+ "target_sdk": "32",
+ "shared_uid": "android.uid.system",
+ "signing_certificates": [
+  {
+   "file": "META-INF/CERT.RSA",
+   "sha256": "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  }
+ ],
+ "native_libs": {
+  "count": 0,
+  "items": []
+ },
+ "dex_files": 1,
+ "asset_files": 0,
+ "components": {
+  "activity": {
+   "count": 9,
+   "items": [
+    {
+     "name": "com.android.server.telecom.settings.BlockedNumbersActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": [
+      {
+       "actions": [
+        "android.telecom.action.MANAGE_BLOCKED_NUMBERS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.telecom.settings.CallBlockDisabledActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": []
+    },
+    {
+     "name": "com.android.server.telecom.components.UserCallActivity",
+     "exported": "true",
+     "permission": "android.permission.CALL_PHONE",
+     "enabled": null,
+     "process": ":ui",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.CALL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.CALL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.CALL"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      },
+      {
+       "actions": [
+        "android.intent.action.CALL"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.telecom.RespondViaSmsSettings",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN",
+        "android.telecom.action.SHOW_RESPOND_VIA_SMS_SETTINGS"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.telecom.settings.EnableAccountPreferenceActivity",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.MAIN"
+       ],
+       "categories": [
+        "android.intent.category.DEFAULT"
+       ]
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.telecom.components.ErrorDialogActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": []
+    },
+    {
+     "name": "com.android.server.telecom.ui.ConfirmCallDialogActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": []
+    },
+    {
+     "name": "com.android.server.telecom.ui.CallRedirectionTimeoutDialogActivity",
+     "exported": null,
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": []
+    },
+    {
+     "name": "com.android.server.telecom.ui.TelecomDeveloperMenu",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": ":ui",
+     "filters": []
+    }
+   ]
+  },
+  "service": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.android.server.telecom.components.BluetoothPhoneService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "system",
+     "filters": [
+      {
+       "actions": [
+        "android.bluetooth.IBluetoothHeadsetPhone"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.telecom.components.TelecomService",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "system",
+     "filters": [
+      {
+       "actions": [
+        "android.telecom.ITelecomService"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "receiver": {
+   "count": 2,
+   "items": [
+    {
+     "name": "com.android.server.telecom.components.TelecomBroadcastReceiver",
+     "exported": "false",
+     "permission": null,
+     "enabled": null,
+     "process": "system",
+     "filters": [
+      {
+       "actions": [
+        "com.android.server.telecom.ACTION_CLEAR_MISSED_CALLS",
+        "com.android.server.telecom.ACTION_CALL_BACK_FROM_NOTIFICATION",
+        "com.android.server.telecom.ACTION_SEND_SMS_FROM_NOTIFICATION",
+        "com.android.server.telecom.ACTION_ANSWER_FROM_NOTIFICATION",
+        "com.android.server.telecom.ACTION_REJECT_FROM_NOTIFICATION",
+        "com.android.server.telecom.PROCEED_WITH_CALL",
+        "com.android.server.telecom.CANCEL_CALL",
+        "com.android.server.telecom.PROCEED_WITH_REDIRECTED_CALL",
+        "com.android.server.telecom.CANCEL_REDIRECTED_CALL"
+       ],
+       "categories": []
+      }
+     ]
+    },
+    {
+     "name": "com.android.server.telecom.components.AppUninstallBroadcastReceiver",
+     "exported": "true",
+     "permission": null,
+     "enabled": null,
+     "process": "system",
+     "filters": [
+      {
+       "actions": [
+        "android.intent.action.PACKAGE_FULLY_REMOVED"
+       ],
+       "categories": []
+      }
+     ]
+    }
+   ]
+  },
+  "provider": {
+   "count": 0,
+   "items": []
+  }
+ },
+ "uses_permission": {
+  "count": 28,
+  "items": [
+   "android.permission.BIND_CONNECTION_SERVICE",
+   "android.permission.BIND_INCALL_SERVICE",
+   "android.permission.BLUETOOTH",
+   "android.permission.BLUETOOTH_ADMIN",
+   "android.permission.BROADCAST_CALLLOG_INFO",
+   "android.permission.BROADCAST_PHONE_ACCOUNT_REGISTRATION",
+   "android.permission.CALL_PRIVILEGED",
+   "android.permission.HANDLE_CALL_INTENT",
+   "android.permission.HANDLE_CAR_MODE_CHANGES",
+   "android.permission.INTERACT_ACROSS_USERS",
+   "android.permission.INTERACT_ACROSS_USERS_FULL",
+   "android.permission.MANAGE_ROLE_HOLDERS",
+   "android.permission.MANAGE_USERS",
+   "android.permission.MODIFY_AUDIO_ROUTING",
+   "android.permission.MODIFY_AUDIO_SETTINGS",
+   "android.permission.MODIFY_PHONE_STATE",
+   "android.permission.READ_BLOCKED_NUMBERS",
+   "android.permission.READ_CALL_LOG",
+   "android.permission.READ_DEVICE_CONFIG",
+   "android.permission.READ_EXTERNAL_STORAGE",
+   "android.permission.READ_PROJECTION_STATE",
+   "android.permission.SEND_SMS",
+   "android.permission.STOP_APP_SWITCHES",
+   "android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME",
+   "android.permission.VIBRATE",
+   "android.permission.WAKE_LOCK",
+   "android.permission.WRITE_BLOCKED_NUMBERS",
+   "android.permission.WRITE_CALL_LOG"
+  ]
+ },
+ "declared_permissions": {
+  "count": 5,
+  "items": [
+   {
+    "name": "android.permission.BROADCAST_CALLLOG_INFO",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "android.permission.PROCESS_CALLLOG_INFO",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "android.permission.BROADCAST_PHONE_ACCOUNT_REGISTRATION",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "android.permission.PROCESS_PHONE_ACCOUNT_REGISTRATION",
+    "protection": "0x00000012"
+   },
+   {
+    "name": "android.permission.HANDLE_CALL_INTENT",
+    "protection": "0x00000012"
+   }
+  ]
+ },
+ "uses_feature": [],
+ "meta_data": [],
+ "classes": {
+  "count": 3092,
+  "top_prefixes": [
+   [
+    "com.android.server",
+    561
+   ],
+   [
+    "com.google.android",
+    413
+   ],
+   [
+    "com.airbnb.lottie",
+    226
+   ],
+   [
+    "com.android.settingslib",
+    194
+   ],
+   [
+    "androidx.appcompat.widget",
+    166
+   ],
+   [
+    "androidx.fragment.app",
+    127
+   ],
+   [
+    "androidx.recyclerview.widget",
+    112
+   ],
+   [
+    "androidx.mediarouter.media",
+    102
+   ],
+   [
+    "androidx.core.view",
+    97
+   ],
+   [
+    "com.android.wifitrackerlib",
+    95
+   ],
+   [
+    "androidx.mediarouter.app",
+    73
+   ],
+   [
+    "androidx.appcompat.app",
+    65
+   ],
+   [
+    "android.support.v4",
+    59
+   ],
+   [
+    "androidx.appcompat.view",
+    57
+   ],
+   [
+    "androidx.constraintlayout.solver",
+    50
+   ],
+   [
+    "androidx.constraintlayout.widget",
+    26
+   ],
+   [
+    "androidx.core.content",
+    26
+   ],
+   [
+    "androidx.core.graphics",
+    25
+   ],
+   [
+    "androidx.core.widget",
+    24
+   ],
+   [
+    "androidx.core.provider",
+    22
+   ],
+   [
+    "androidx.vectordrawable.graphics",
+    22
+   ],
+   [
+    "androidx.core.app",
+    20
+   ],
+   [
+    "androidx.appcompat.graphics",
+    16
+   ],
+   [
+    "androidx.core.text",
+    16
+   ],
+   [
+    "androidx.activity.result",
+    15
+   ]
+  ]
+ },
+ "strings": {
+  "intent_actions": {
+   "count": 39,
+   "items": [
+    "android.intent.action.ACTION_DEFAULT_DATA_SUBSCRIPTION_CHANGED",
+    "android.intent.action.BOOT_COMPLETED",
+    "android.intent.action.CALL",
+    "android.intent.action.CALL_EMERGENCY",
+    "android.intent.action.CALL_PRIVILEGED",
+    "android.intent.action.CLOSE_SYSTEM_DIALOGS",
+    "android.intent.action.DIAL",
+    "android.intent.action.DIAL_EMERGENCY",
+    "android.intent.action.DOCK_EVENT",
+    "android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE",
+    "android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE",
+    "android.intent.action.LOCALE_CHANGED",
+    "android.intent.action.MAIN",
+    "android.intent.action.NEW_OUTGOING_CALL",
+    "android.intent.action.PACKAGE_ADDED",
+    "android.intent.action.PACKAGE_CHANGED",
+    "android.intent.action.PACKAGE_FULLY_REMOVED",
+    "android.intent.action.PACKAGE_REMOVED",
+    "android.intent.action.PACKAGE_REPLACED",
+    "android.intent.action.PACKAGE_RESTARTED",
+    "android.intent.action.PROCESS_TEXT",
+    "android.intent.action.SEARCH",
+    "android.intent.action.SENDTO",
+    "android.intent.action.TIMEZONE_CHANGED",
+    "android.intent.action.TIME_SET",
+    "android.intent.action.TIME_TICK",
+    "android.intent.action.USER_ADDED",
+    "android.intent.action.USER_REMOVED",
+    "android.intent.action.USER_STARTING",
+    "android.intent.action.USER_SWITCHED",
+    "android.intent.action.VIEW",
+    "android.net.conn.CONNECTIVITY_CHANGE",
+    "android.net.wifi.CONFIGURED_NETWORKS_CHANGE",
+    "android.net.wifi.LINK_CONFIGURATION_CHANGED",
+    "android.net.wifi.RSSI_CHANGED",
+    "android.net.wifi.SCAN_RESULTS",
+    "android.net.wifi.STATE_CHANGE",
+    "android.net.wifi.WIFI_STATE_CHANGED",
+    "com.android.server.telecom.intent.action.CALLS_ADD_ENTRY"
+   ]
+  },
+  "system_properties": {
+   "count": 6,
+   "items": [
+    "debug.enable_enhanced_calling",
+    "persist.log.tag",
+    "persist.logd.logpersistd",
+    "persist.logd.logpersistd.buffer",
+    "ro.boot.revision",
+    "ro.storage_manager.enabled"
+   ]
+  },
+  "aidl_or_hidl_interfaces": {
+   "count": 0,
+   "items": []
+  },
+  "content_authorities": {
+   "count": 1,
+   "items": [
+    "content://icc/adn/"
+   ]
+  }
+ }
+}
