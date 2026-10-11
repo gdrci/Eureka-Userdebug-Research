@@ -61,8 +61,8 @@
 
 | ID | 论断 | 原因 |
 |---|---|---|
-| C21 | thermal_info_config.json 是一个 JSON 对象，有两个顶层键：Sensors（53 个对象，从第 2 行开始）和 CoolingDevices（6 个对象，从第 1178 行开始 | Confirmed：顶层键为 Sensors 和 CoolingDevices，53 个传感器和 6 个散热设备，行号 2 和 1178，八个类型计数，所有 53 个传感器中 HotThreshold 均为 7 元素，以及散热设备的 cooling-devi |
-| C24 | 字面字符串 BATTERY、SKIN、CPU、GPU、NPU、USB_PORT 和 FAN 不出现在 libthermalhalutils.so 或 perf_service 中。字符串 BCL_VOLTAGE、BCL_CURREN | BATTERY、SKIN、NPU、USB_PORT 和 FAN 在 libthermalhalutils.so 和 perf_service 中均不存在。CPU 和 GPU 不存在于 libthermalhalutils.so 中，但作为独立字符串字面量出现在 perf_serv |
+| C21 | thermal_info_config.json 是一个 JSON 对象，有两个顶层键：Sensors（53 个对象，从第 2 行开始）和 CoolingDevices（6 个对象，从第 1178 行开始）。每个传感器都有 7 元素的 HotThreshold 和 HotHysteresis 数组。传感器类型为 BATTERY 4、SKIN 14、CPU 14、GPU 8、NPU 3、BCL_VOLTAGE 6、BCL_CURRENT 2 和 USB_PORT 2。散热设备为 battery（BATTERY）、cdsp、panel0-backlight（均为 COMPONENT）、pwm-tach-fan0（FAN），以及 thermal-cpufreq-0 和 thermal-cpufreq-1（均为 CPU）。 | 已确认：顶层键为 Sensors 和 CoolingDevices，53 个传感器和 6 个散热设备，行号 2 和 1178，八个类型计数，所有 53 个传感器中 HotThreshold 均为 7 元素，以及散热设备的名称和类型。已反驳：HotHysteresis 仅出现在 53 个传感器中的 38 个（原始键出现 38 次），因此 15 个传感器缺少该键。每个传感器都有 7 元素 HotHysteresis 数组这一论断不成立。 |
+| C24 | 字面字符串 BATTERY、SKIN、CPU、GPU、NPU、USB_PORT 和 FAN 不出现在 libthermalhalutils.so 或 perf_service 中。字符串 BCL_VOLTAGE、BCL_CURRENT、BCL_PERCENTAGE、POWER_AMPLIFIER 和 COMPONENT 出现在 libthermalhalutils.so 中。SKIN 和 USB_PORT 出现在 system_a 中的 framework.jar 和 services.jar 中。 | BATTERY、SKIN、NPU、USB_PORT 和 FAN 在 libthermalhalutils.so 和 perf_service 中均不存在。CPU 和 GPU 不存在于 libthermalhalutils.so 中，但作为独立字符串字面量出现在 perf_service 中，紧邻 CPU frequencies、GPU frequencies 和 Failed to get CPU usages 等日志文本。其余事实成立：BCL_VOLTAGE、BCL_CURRENT、BCL_PERCENTAGE、POWER_AMPLIFIER 和 COMPONENT 各在 libthermalhalutils.so 中出现一次，SKIN 和 USB_PORT 在 framework.jar 和 services.jar 中为独立标记。 |
 
 ## 缺口
 

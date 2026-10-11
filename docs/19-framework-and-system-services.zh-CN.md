@@ -59,8 +59,8 @@
 
 | ID | 论断 | 原因 |
 |---|---|---|
-| C32 | preinstalled-packages-platform.xml 有 2 个 install-in-user-type 元素。其 package 属性为占位符 com.android.example。开头的注释定义 | 2 个 install-in-user-type 元素的计数正确，基础用户类型 SYSTEM（用户 0）和 FULL（任何非 profile 的人类用户）位于开头的注释块中。package 属性的论断是  |
-| C39 | 该组的 ELF 可执行文件为 PIE AArch64 二进制（32 位变体为 ARM），且该组中的每个 ELF 都使用 /system/bin/linker64 或 /system/bin/linke | 重新生成的 elf_facts.tsv 内容相同（261 个 ELF 行）。第 5 列计数：178 个 /system/bin/linker64、78 个空解释器（'-'）、3 个 /system/bin/linker、2 个 /system/bin/bootstrap/linker64。因此 183 行具有一个  |
+| C32 | preinstalled-packages-platform.xml 有 2 个 install-in-user-type 元素。其 package 属性为占位符 com.android.example。开头的注释定义了基础用户类型，包括 SYSTEM（用户 0）和 FULL（任何非 profile 的人类用户）。 | 2 个 install-in-user-type 元素的计数正确，基础用户类型 SYSTEM（用户 0）和 FULL（任何非 profile 的人类用户）位于开头的注释块中。package 属性的论断是错误的：两个元素分别带有 package=com.android.providers.settings（install-in SYSTEM、FULL 和 PROFILE）和 package=com.android.wallpaperbackup（install-in FULL）。字符串 com.android.example 仅出现在注释示例中（第 49 至 90 行）。 |
+| C39 | 该组的 ELF 可执行文件为 PIE AArch64 二进制（32 位变体为 ARM），且该组中的每个 ELF 都使用 /system/bin/linker64 或 /system/bin/linker 作为其解释器。静态链接的例外为 gdbserver、gdbserver64 和 snapuserd，它们没有解释器行。 | 重新生成的 elf_facts.tsv 内容相同（261 个 ELF 行）。第 5 列计数：178 个 /system/bin/linker64、78 个空解释器（'-'）、3 个 /system/bin/linker、2 个 /system/bin/bootstrap/linker64。因此 183 行具有解释器行（而非 166 行），78 行没有（而非 95 行）。带有 /system/bin/bootstrap/linker64 的两行分别为 apexd 和 secilc，因此并非每个 ELF 都使用 linker64 或 linker。在 78 个没有解释器的条目中，72 个为 .odex、.oat、.art 或 .vdex 镜像，6 个为 gdbserver、gdbserver64、snapuserd、bootstrap/linker、bootstrap/linker64 和 bootstrap/linkerconfig；论断仅列出了三个例外。 |
 
 ## 缺口
 

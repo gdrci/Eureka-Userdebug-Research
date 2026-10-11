@@ -55,8 +55,8 @@ selinux-policy 组是本镜像中携带的 Android SELinux 策略集：共 51 �
 
 | ID | 声明 | 原因 |
 |---|---|---|
-| C14 | vendor_sepolicy.cil 为 388,964 字节、1,190 行 CIL 形式，其中 2,150 个 allow、436 个 type、200 个 genfscon、146 个 dontaudit、130 个 typetransition、86 个 neverallow an | wc -l 给出 3951 行（grep -c '' 同样为 3951；顶层形式为 3950 个）。所声称的 1,190 行不成立。字节数 388964，allow 2150，type 436，genfscon 200，dontaudit 146，typetransition 130，nev |
-| C21 | vendor 的 seapp 表有一条规则，system_ext_seapp_contexts（39 行）包含其余规则，共 40 条规则。每条规则都带有 user、seinfo、name、domain、type | 共 40 条规则（vendor 1 条，system_ext 39 条）。user、seinfo、name、domain 和 type 在全部 40 条规则中都存在。levelFrom 出现在 36 条中。没有它的四条规则是 system_ext 中针对 com.meta.internal 的规则 |
+| C14 | vendor_sepolicy.cil 为 388,964 字节、1,190 行 CIL 形式，其中 2,150 个 allow、436 个 type、200 个 genfscon、146 个 dontaudit、130 个 typetransition、86 个 neverallow 和 25 个 allowx 形式。它为 /sys/kernel 和 /debugdriver 路径定义了 procfs genfscon 标签，并定义了进入 _32_0 域的 typetransition。 | wc -l 给出 3951 行（grep -c '' 同样为 3951；顶层形式为 3950 个）。所声称的 1,190 行不成立。字节数 388964，allow 2150，type 436，genfscon 200，dontaudit 146，typetransition 130，neverallow 86 和 allowx 25 均相符。typetransition：130 条规则。在 122 条中，源域为 _32_0 域（例如 init_32_0），但在全部 130 条中，生成的默认类型都不带后缀（例如 hal_atrace_default）。所声称的进入 _32_0 域的 typetransition 是错误的。genfscon：17 条 proc 和 183 条 sysfs。procfs 规则包括 /sys/kernel（8 条）和 /debugdriver/driverdump（1 条），以及其他路径，因此 procfs 的描述并不完整。 |
+| C21 | vendor 的 seapp 表有一条规则，system_ext_seapp_contexts（39 行）包含其余规则，共 40 条规则。每条规则都带有 user、seinfo、name、domain、type 和 levelFrom。 | 共 40 条规则（vendor 1 条，system_ext 39 条）。user、seinfo、name、domain 和 type 在全部 40 条规则中都存在。levelFrom 出现在 36 条中。没有 levelFrom 的四条规则是 system_ext 中针对 com.meta.internal.skyguard、com.oculus.os.cm、com.oculus.preloader 和 com.oculus.provisioningservice 的规则。关于每条规则都带有 levelFrom 的说法不成立。 |
 
 ## 缺口
 

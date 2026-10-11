@@ -75,7 +75,7 @@ wifi-bluetooth 组是一台设备的 Wi-Fi 与蓝牙协议栈，该设备搭载�
 
 | ID | 声明 | 原因 |
 |---|---|---|
-| WB-42 | cnss_diag 以服务 vendor.cnss_diag 运行 /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM，位于 class main 中，用户为 system，组中包括 diag。It is dis | 该服务已禁用，在 class main 中以用户 system 运行，组中包括 diag，并带有标签 vendor_wcnss_service_exec（vendor 第 411 行）。启动条件有误。The rc file has two  |
+| WB-42 | cnss_diag 以服务 vendor.cnss_diag 运行 /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM，位于 class main 中，用户为 system，组中包括 diag。该服务已禁用，仅在 persist.ovr.cnss_diag.enabled=true 或 vold.decrypt 属性为 trigger_restart_framework 时启动。其 SELinux 标签为 vendor_wcnss_service_exec。 | 该服务已禁用，在 class main 中以用户 system 运行，组中包括 diag，并带有标签 vendor_wcnss_service_exec（vendor 第 411 行）。启动条件有误。rc 文件有两个触发条件：on property:persist.ovr.cnss_diag.enabled=true，以及 on property:persist.ovr.cnss_diag.enabled=true && property:vold.decrypt=trigger_restart_framework。vold.decrypt 的值本身从不构成触发条件，只与 persist 属性一起检查。 |
 
 ## 缺口
 

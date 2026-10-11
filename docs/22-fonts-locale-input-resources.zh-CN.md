@@ -56,7 +56,7 @@
 
 | ID | 声明 | 原因 |
 |---|---|---|
-| C09 | NotoSansCJK-Regular.ttc 是包含 10 个字体面的 TrueType/CFF 集合（Noto Sans CJK JP、KR、SC、TC、HK 以及四个 Noto Sans Mono CJK 字体面）；NotoSerifCJK-Regular.ttc  |  |
+| C09 | NotoSansCJK-Regular.ttc 是包含 10 个字体面的 TrueType/CFF 集合（Noto Sans CJK JP、KR、SC、TC、HK 以及四个 Noto Sans Mono CJK 字体面）；NotoSerifCJK-Regular.ttc 有 4 个字体面（JP、KR、SC、TC）。fonts.xml 按索引选择字体面：ja=0、ko=1、zh-Hans=2、zh-Hant,zh-Bopo=3。 |  |
 
 ## 缺口
 

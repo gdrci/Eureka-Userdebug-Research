@@ -59,7 +59,7 @@
 
 | ID | 论断 | 原因 |
 |---|---|---|
-| D09 | system_a/system/lib64/android.hardware.audio@7.0.so 的 SONAME 为 android.hardware.audio@7.0.so，并依赖 android.hardware.audio.common@7.0.so、android.hardwa |  |
+| D09 | system_a/system/lib64/android.hardware.audio@7.0.so 的 SONAME 为 android.hardware.audio@7.0.so，并依赖 android.hardware.audio.common@7.0.so、android.hardware.audio.effect@7.0.so 和 android.hidl.safe_union@1.0.so。它列出了接口 IDevice、IDevicesFactory、IPrimaryDevice、IStream、IStreamIn、IStreamOut、IStreamOutCallback 和 IStreamOutEventCallback，并定义了 927 个动态符号。 |  |
 
 ## 缺口
 

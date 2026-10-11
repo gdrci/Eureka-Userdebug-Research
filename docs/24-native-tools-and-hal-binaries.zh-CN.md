@@ -75,7 +75,7 @@
 
 | ID | 断言 | 原因 |
 |---|---|---|
-| G51 | 本组 149 个 ELF 镜像中没有未剥离的；每个都报告为已剥离。 | 有两行报告为 'not stripped'：odm_a/bin/peripheralconfig-tool（含 debug_info 节）和 system_ext_a/bin/bpftrace（含 .symtab 节）。所声称的零计数来自对带连字符的 'no |
+| G51 | 本组 149 个 ELF 镜像中没有未剥离的；每个都报告为已剥离。 | 有两行报告为 'not stripped'：odm_a/bin/peripheralconfig-tool（含 debug_info 节）和 system_ext_a/bin/bpftrace（含 .symtab 节）。所声称的零计数来自对带连字符的 'not-stripped' 的匹配，而类型检测输出从不会打印 'not-stripped'（它打印的是 'not stripped'）。工作目录摘要将全部 149 个记为 'stripped'，这对这两行是错误的。 |
 
 ## 缺口
 

@@ -64,8 +64,8 @@
 
 | ID | 声明 | 原因 |
 |---|---|---|
-| C09 | init 二进制文件导出 124 个已定义的动态符号，导入 534 个未定义的符号。已定义的集合包括 fs_mgr fstab 和启动配置函数；导入的 | |
-| C37 | init.insmod.cfg（13 行）包含 1 个 modprobe、2 个 setprop 和 3 个 enable 动作。init.insmod.charger.cfg（48 行）列出了充电模式 .ko 模块的 modprobe 行 | |
+| C09 | init 二进制文件导出 124 个已定义的动态符号，导入 534 个未定义的符号。已定义的集合包括 fs_mgr fstab 和启动配置函数；导入的集合包括 bionic 属性 API 和 selinux_* 函数。该二进制文件未通过这些符号导出稳定的命令行接口。 |  |
+| C37 | init.insmod.cfg（13 行）包含 1 个 modprobe、2 个 setprop 和 3 个 enable 动作。init.insmod.charger.cfg（48 行）列出了充电模式 .ko 模块的 modprobe 行。两者都位于挂载的目录树中；它们所命名的 .ko 模块则不在其中。 |  |
 
 ## 缺口
 

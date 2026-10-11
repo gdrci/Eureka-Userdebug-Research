@@ -48,7 +48,7 @@ hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载
 
 | ID | 结论 | 原因 |
 |---|---|---|
-| GRP-24 | 对全部 385 个清单和矩阵 HAL 条目（421 个 interface/fqname 对）与 hwservice_contexts 和 service_contexts 文件进行名称级交叉引用。407 p | 在 421 个 interface/fqname 对中，414 个与上下文标签匹配，7 个不匹配。Co |
+| GRP-24 | 对组内全部 385 个 hal 元素（421 个 interface/fqname 对：100 个来自清单，321 个来自矩阵）与 hwservice_contexts 和 service_contexts 文件进行名称级交叉引用：414 个对与上下文标签匹配，7 个不匹配。这 7 个不匹配的需求全部是兼容性矩阵条目，且均未被组内任一清单声明：android.hardware.wifi.offload IOffload（矩阵 3）、vendor.oculus.hardware.peripheralconfig IPeripheralConfig（device）、android.hardware.automotive.occupant_awareness IOccupantAwareness（矩阵 5 和 6）、android.hardware.automotive.sv ISurroundViewService（矩阵 5 和 6），以及 aidl android.hardware.neuralnetworks IDevice（矩阵 6，regex 实例）。矩阵 6 中的 hidl neuralnetworks IDevice 需求与 plat_hwservice_contexts 第 50 行匹配。 | 在 421 个 interface/fqname 对中，414 个与上下文标签匹配，7 个不匹配。这 7 个不匹配的需求全部是兼容性矩阵条目，且均未被组内任一清单声明：android.hardware.wifi.offload IOffload（矩阵 3）、vendor.oculus.hardware.peripheralconfig IPeripheralConfig（device）、android.hardware.automotive.occupant_awareness IOccupantAwareness（矩阵 5 和 6）、android.hardware.automotive.sv ISurroundViewService（矩阵 5 和 6），以及 aidl android.hardware.neuralnetworks IDevice（矩阵 6，regex 实例）。矩阵 6 中的 hidl neuralnetworks IDevice 需求与 plat_hwservice_contexts 第 50 行匹配。 |
 
 ## 缺口
 
