@@ -11,9 +11,9 @@ The kgsl module is the kernel driver that loads GPU firmware and exposes the GPU
 
 ## Open items
 
-The claims below are excluded or restated; each one gives its reason.
+Each row gives the reproduction verdict and the full claim text.
 
-| ID | Label | Reproduce / refute | Claim (as produced) |
+| ID | Label | Reproduce / refute | Claim |
 |---|---|---|---|
 | F2 | verified | confirmed / needs_change | Module metadata: description '3D Graphics driver'; license 'GPL v2'; name 'msm_kgsl'; intree=Y; softdep 'pre: arm_smmu nvmem_qfprom'; vermagic '5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64'; depends 'qcom_iommu_util,qcom-scm,cmd-db,llcc-qcom,clk-qcom,log_gpu_error,mdt_loader,secure_buffer,mem_buf_dev'; alias 'of:N*T*Cqcom,kgsl-3d0' and 'of:N*T*Cqcom,kgsl-3d0C*'. |
 | F3 | verified | needs_change / needs_change | The module declares no module parameters (no parm= entries) and no author field. Only the modinfo keys listed in F2 are present. |
@@ -21,10 +21,10 @@ The claims below are excluded or restated; each one gives its reason.
 | F6 | verified | needs_change / needs_change | Device-tree match and related compatible strings: qcom,kgsl-3d0 (alias in F2); Adreno GPU compatibles qcom,adreno-gpu-a619-holi, qcom,adreno-gpu-a621, qcom,adreno-gpu-a660-shima, qcom,adreno-gpu-a662, qcom,adreno-gpu-gen6-3-26-0, qcom,adreno-gpu-gen7-0-0, qcom,adreno-gpu-gen7-0-1, qcom,adreno-gpu-gen7-3-0, qcom,adreno-gpu-gen7-4-0 and qcom,adreno-gpu-gen7-6-0. |
 | F7 | verified | confirmed / needs_change | Firmware file names present as literal strings (26 concrete names): a300_pfp.fw, a300_pm4.fw, a530_gpmu.fw2, a530_pfp.fw, a530_pm4.fw, a530v2_seq.fw2, a530v3_gpmu.fw2, a530v3_seq.fw2, a540_gpmu.fw2, a612_rgmu.bin, a619_gmu.bin, a621_gmu.bin, a630_gmu.bin, a630_sqe.fw, a640_gmu.bin, a650_gmu.bin, a650_sqe.fw, a660_gmu.bin, a660_sqe.fw, a662_gmu.bin, a710_sqe.fw, a730_sqe.fw, a740v3_sqe.fw, c500_gmu.bin, gmu_gen70000.bin, gmu_gen70200.bin. |
 | F9 | verified | confirmed / needs_change | Distinct uppercase KGSL_ tokens: 13. KGSL_EVENT_CANCELLED, KGSL_EVENT_RETIRED, KGSL_FENCE, KGSL_FT_DISABLE, KGSL_FT_OFF, KGSL_FT_REPLAY, KGSL_FT_SKIPCMD, KGSL_FT_SKIPFRAME, KGSL_FT_SKIPIB, KGSL_FT_TEMP_DISABLE, KGSL_FT_THROTTLE, KGSL_USER_MEM_TYPE_ADDR, KGSL_USER_MEM_TYPE_ION. The identifier IOCTL_KGSL_DEVICE_WAITTIMESTAMP is not counted because it begins with IOCTL_. |
-| F11 | verified | needs_change / needs_change | Unique lowercase kgsl_ symbol names: 473 after removing .cfi_jt, hash, .llvm and local suffixes. Prefix counts: kgsl_ioctl 61, kgsl_iommu 37, kgsl_mmu 30. |
-| F12 | verified | confirmed / needs_change | Ioctl handler symbols: 46 distinct kgsl_ioctl_* names (including kgsl_ioctl_funcs, kgsl_ioctl_helper, kgsl_ioctl_copy_in and kgsl_ioctl_copy_out). Com |
+| F11 | verified | needs_change / needs_change | Unique kgsl_ symbol names: 489 after removing the .cfi_jt, .llvm and hash suffixes. Prefix counts: kgsl_ioctl_ 61, kgsl_iommu 37, kgsl_mmu 30. |
+| F12 | verified | confirmed / needs_change | Ioctl handler symbols: 61 distinct kgsl_ioctl_* names in the symbol table, not counting the bare kgsl_ioctl symbol (the .cfi_jt and .llvm suffixes removed). They include kgsl_ioctl_funcs, a local read-only object, and the global functions kgsl_ioctl_helper, kgsl_ioctl_copy_in and kgsl_ioctl_copy_out. |
 | F14 | verified | confirmed / needs_change | Exported symbols: six non-GPL exports from section __ksymtab: kgsl_add_rcu_notifier, kgsl_del_rcu_notifier, kgsl_get_stats, kgsl_gpu_frame_count, kgsl_gpu_num_freqs, kgsl_gpu_stat. |
 | F15 | verified | needs_change / needs_change | No other module in the vendor_dlkm_a partition (262 .ko files) imports any of the six kgsl_ exports. The export linkage in this partition is one-directional: msm_kgsl.ko imports 35 of its 506 undefined symbols from nine sibling modules, and no module imports any symbol that msm_kgsl.ko defines. |
-| F17 | verified | confirmed / needs_change | Undefined symbols with no exporter in this partition: 471 names. Among them, vendor-style names with no exporter in the partition are icc_put, icc_set |
+| F17 | verified | confirmed / needs_change | Undefined symbols with no exporter in this partition: 471 names. Among them are icc_put, icc_set_bw, icc_set_tag and of_icc_get, which no module in vendor_dlkm_a exports. |
 | F18 | verified | needs_change / needs_change | Section sizes: .text 716632 bytes, .rodata 148096, .data 108880, .bss 17800 (NOBITS), __versions 32448, .modinfo 353, .symtab 482784, .strtab 254333.  |
 | F19 | verified | needs_change / refuted | Ftrace event classes and tracepoints for kgsl events are present, for example event_class_kgsl_gpubusy, event_class_kgsl_mem_alloc, event_class_kgsl_readtimestamp. |
