@@ -4,7 +4,7 @@
 
 ## 摘要
 
-原生库组共有 1371 行，分布在五个分区中：system_a 787 行，vendor_a 368 行，system_ext_a 169 行，odm_a 27 行，product_a 20 行。其中包含 1361 个普通文件和 10 个符号链接。普通文件包括 1351 个 ELF 共享对象（854 个 ELF64 AArch64，497 个 ELF32 ARM，均为 ET_DYN）和 10 个 LLVM 位码文件（system/lib 和 system/lib64 下的 libclc 内置库）。符号链接包括 8 个 bionic 链接（system/lib 和 system/lib64 中的 libc、libdl、libdl_android、libm），它们指向挂载中不存在的 /apex/com.android.runtime，另有 odm_a 和 vendor_a 中指向 dlkm 分区的 lib/modules 链接。system_a 包含 AOSP 平台库和 NDK 公开库，以及 HIDL/AIDL 接口库和 Rust dylib。vendor_a 包含高通 HIDL/AIDL 客户端、HAL 模块（lib/hw、lib64/hw）、FastRPC、音频（AGM/PAL）以及相机和显示库。system_ext_a、product_a 和 odm_a 包含设备专用库（Oculus/Meta 遥测、追踪、XR 加载器、维护启动、Vulkan 层）。管辖该组的配置包括 system/etc/public.libraries.txt（29 个条目）和 vendor/etc/public.libraries.txt（8 个条目），以及 SELinux 标签，位于 plat_file_contexts 第 121 行和 vendor_file_contexts 第 142-153、196 行。角色表为 roles.tsv，共 1371 行：453 verified，857 inferred，61 unverified。在证据中，<image>/mnt 即 <image>/mnt。
+原生库组共有 1371 行，分布在五个分区中：system_a 787 行，vendor_a 368 行，system_ext_a 169 行，odm_a 27 行，product_a 20 行。其中包含 1361 个普通文件和 10 个符号链接。普通文件包括 1351 个 ELF 共享对象（854 个 ELF64 AArch64，497 个 ELF32 ARM，均为 ET_DYN）和 10 个 LLVM 位码文件（system/lib 和 system/lib64 下的 libclc 内置库）。符号链接包括 8 个 bionic 链接（system/lib 和 system/lib64 中的 libc、libdl、libdl_android、libm），它们指向挂载中不存在的 /apex/com.android.runtime，另有 odm_a 和 vendor_a 中指向 dlkm 分区的 lib/modules 链接。system_a 包含 AOSP 平台库和 NDK 公开库，以及 HIDL/AIDL 接口库和 Rust dylib。vendor_a 包含高通 HIDL/AIDL 客户端、HAL 模块（lib/hw、lib64/hw）、FastRPC、音频（AGM/PAL）以及相机和显示库。system_ext_a、product_a 和 odm_a 包含设备专用库（Oculus/Meta 遥测、追踪、XR 加载器、维护启动、Vulkan 层）。管辖该组的配置包括 system/etc/public.libraries.txt（29 个条目）和 vendor/etc/public.libraries.txt（8 个条目），以及 SELinux 标签，位于 plat_file_contexts 第 121 行和 vendor_file_contexts 第 142-153、196 行。角色表为 roles.tsv，共 1371 行：453 verified，857 inferred，61 unverified。在`<image>/mnt` 是镜像各分区的挂载点。
 
 该组中的 1371 个文件各在角色表中占一行（453 verified，0 observed，857 inferred，61 unverified）。角色表位于 `data/subsystems/native-libraries/roles.tsv`。
 
@@ -39,7 +39,7 @@
 
 ## 修正措辞的声明
 
-这些声明的实质内容成立。下面的措辞取代原文。
+下方声明以数据所支持的措辞重新表述。
 
 - **G5** (verified)：1300 个 ELF 对象带有 DT_SONAME。没有 DT_SONAME 的 51 个对象是 50 个 .dylib.so 对象和 libVkLayer_khronos_validation.so。这 50 个 .dylib.so 对象遵循 Rust crate-dylib 命名方式；其中 40 个在 NEEDED 中列出了 libstd.dylib.so，而没有该条目的 9 个小型 crate（例如 libbitflags.dylib.so）的 Rust 来源是根据其名称推断的。
 - **G9** (verified)：vendor SELinux 映射将本组中的 vendor libadsprpc.so、vendor.qti.hardware.display.mapper@2.0、@3.0 和 @4.0 库，以及 vendor.qti.hardware.display.mapperextensions@1.0、@1.1 和 @1.2 库标记为 same_process_hal_file（vendor_file_contexts 第 161-166 行和第 196 行）。vendor_file_contexts 第 17 行将引导 HAL 服务可执行文件标记为 hal_bootctl_default_exec，第 108 行将 odm 维护启动服务可执行文件标记为 hal_maintenanceboot_default_exec。
@@ -52,7 +52,7 @@
 
 ## 已排除的声明
 
-这些声明在复现时不成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|
@@ -61,7 +61,7 @@
 <!-- generated: libraries start -->
 ## 库索引（生成）
 
-本索引涵盖原生库分组的 1,361 个文件，由 `tools/elfindex libs` 从已挂载的分区读取。每个文件的 SHA-256 都已重新计算并与清单比对：1,361 个中有 1,361 个相符。逐文件表格位于 `data/elf/libraries.tsv`。头部与动态符号由 Go 标准库 `debug/elf` 读取。
+原生库分组共有 1,361 个文件。来源：`data/elf/libraries.tsv`（头部与动态符号，由 Go 标准库 `debug/elf` 读取）。每个文件的 SHA-256 都与清单相符（1,361 个中有 1,361 个）。每个文件的 SHA-256 都已重新计算并与清单比对：1,361 个中有 1,361 个相符。逐文件表格位于 `data/elf/libraries.tsv`。头部与动态符号由 Go 标准库 `debug/elf` 读取。
 
 - 1,351 个文件为 ELF 共享对象（ET_DYN）：854 个为 ELFCLASS64、机器类型 EM_AARCH64，497 个为 ELFCLASS32、机器类型 EM_ARM。
 - 10 个文件为 LLVM 位码，不是 ELF：`system_a/system/lib/libclcore.bc`、`system_a/system/lib/libclcore_debug.bc`、`system_a/system/lib/libclcore_debug_g.bc`、`system_a/system/lib/libclcore_g.bc`、`system_a/system/lib/libclcore_neon.bc`、`system_a/system/lib64/libclcore.bc`、`system_a/system/lib64/libclcore_debug.bc`、`system_a/system/lib64/libclcore_debug_g.bc`、`system_a/system/lib64/libclcore_g.bc`、`system_a/system/lib64/libclcore_neon.bc`。

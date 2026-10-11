@@ -18,7 +18,7 @@ This repository documents the Eureka userdebug image (Android 12, platform `anor
 
 `data/inventory/files.tsv` lists all 5,685 entries in the eight partitions (regular files and symbolic links), with size, MIME type and SHA-256 for each regular file. Each entry is assigned to exactly one subsystem. `data/inventory/subsystem_counts.txt` gives the counts.
 
-For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file. The row count equals the number of inventory rows for that subsystem, which was checked for all 21 subsystems: the role tables total 5,685 rows. The `scratch` partition holds only empty overlay directories.
+For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file. The row count equals the number of inventory rows for that subsystem, which holds for all 21 subsystems: the role tables total 5,685 rows. The `scratch` partition holds only empty overlay directories.
 
 ## Subsystem pages
 
@@ -45,15 +45,15 @@ For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file
 | [24](24-native-tools-and-hal-binaries.md) | Native tools and HAL binaries | 346 |
 | [25](25-unclassified.md) | Miscellaneous root and small files | 13 |
 
-The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](05-init-selinux-and-hal.md) come from the first GPU run and cover the zap image, the SQE and GMU firmware, the kgsl module, the userspace GPU libraries and the GPU init entries. The subsystem run also produced a GPU group (`data/subsystems/gpu/`, 67 files) with its own claims, in `data/subsystems/gpu/claims.json`. Those claims are not merged into pages 01 to 05.
+The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](05-init-selinux-and-hal.md) cover the zap image, the SQE and GMU firmware, the kgsl module, the userspace GPU libraries and the GPU init entries. The subsystem run also produced a GPU group (`data/subsystems/gpu/`, 67 files) with its own claims, in `data/subsystems/gpu/claims.json`. Those claims are not merged into pages 01 to 05.
 
 ## Behaviour and applications
 
 [26](26-init-boot-behaviour.md) and [27](27-important-apps.md) are not inventory subsystems. 26 parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. 27 decodes 22 applications from the apps group (page 20) with androguard. Three subsystem pages also carry generated sections built from the data files: page 06 (module metadata and symbol dependencies, `data/kernel/`), page 20 (the index of all 146 `.apk` files, `data/apks/`) and page 21 (the index of the 1,361 native-library files and their NEEDED graph, `data/elf/`). The readers and generators are in `tools/apk/` and `tools/elfindex/`.
 
-## How the claims were checked
+## Claims and their evidence
 
-Each subsystem has a role table and a claims file. A separate pass re-ran each claim's command and tried to refute it. The pages state the verified claims. Claims whose wording was corrected show the corrected wording. Claims that did not hold are listed as excluded, with the reason. The totals across the 21 subsystems are 835 claims: 653 confirmed, 160 needing a wording change, and 22 refuted.
+Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. The GPU evidence is in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
 
 ## Reproducing the evidence
 
@@ -63,4 +63,4 @@ Each subsystem has a role table and a claims file. A separate pass re-ran each c
 
 - The image's boot chain, TrustZone, hypervisor and kernel are not in the super image, so the stalled items from the Greatwhite research (object `0x91`, the OEM key reader and the SBL1 jump) cannot be rechecked from these partitions.
 - The firmware signatures and their provenance are not established by these documents. The pages describe the bytes as mounted.
-- Behaviour is described from names, strings, configuration and static structure. Commands were not executed on a device.
+- Behaviour is described from names, strings, configuration and static structure. No device was used.

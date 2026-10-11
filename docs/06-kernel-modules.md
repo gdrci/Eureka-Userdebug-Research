@@ -20,7 +20,7 @@ The role table has one row for each of the 306 files in this group (278 verified
 - **K10** (verified): init.anorak.rc defines two oneshot services that run init.insmod.sh with the two configs. insmod_charger_sh runs in class charger, started by 'on charger'. insmod_sh is disabled and is started by 'on init && property:vendor.skip.init=0'.
 - **K11** (verified): init.anorak.rc calls modprobe directly for two modules, both as u:r:vendor_modprobe:s0 with exec_background: wlan with country_code=0 in 'on boot', and sched-walt in 'on boot && property:vendor.scheduler.schedutil=false'.
 - **K12** (verified): vendor_dlkm_a modules.blocklist has 69 blocklist lines naming 68 unique modules. Four blocklisted names match .ko files in the module trees: llcc_perfmon, sched-walt, usbip-vudc and wlan.
-- **K13** (inferred): wlan and sched-walt appear in vendor modules.load (lines 189 and 216), so the modprobe -b * path from init.insmod.cfg would consider them. init.anorak.rc loads both by name without -b. Behaviour follows the usual modprobe -b convention; modprobe itself was not run.
+- **K13** (inferred): wlan and sched-walt appear in vendor modules.load (lines 189 and 216), so the modprobe -b * path from init.insmod.cfg would consider them. init.anorak.rc loads both by name without -b. Behaviour follows the usual modprobe -b convention; The modprobe binary is not part of the evidence.
 - **K14** (verified): SELinux defines a vendor_modprobe domain. init may transition to it, and it may read proc_modules. vendor_file_contexts labels /vendor/bin/init.insmod.sh as init-insmod-sh_exec.
 - **K15** (verified): The platform file contexts label /vendor_dlkm and /odm_dlkm (and their vendor/ prefixed forms) as vendor_file. No vendor file-context entry names the module directories or the dlkm mount points.
 - **K17** (verified): wlan.ko (vendor): WLAN host device driver, Dual BSD/GPL, staging, direct depends on cnss2, cfg80211, cnss_prealloc, cnss_nl and cnss_utils. It has six module parameters, including country_code (charp), which init sets to 0. It defines no exported symbols and imports 503 global undefined symbols. Its transitive dependency closure in modules.dep has 22 entries.
@@ -39,7 +39,7 @@ The role table has one row for each of the 306 files in this group (278 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **K08** (verified): The two insmod configs use 38 modprobe directives, 4 enable and 4 setprop directives. The 37 named modules in init.insmod.charger.cfg all resolve to a .ko in the two module trees. Only one entry, pmic-glink.ko, differs from its file name (pmic_glink.ko); the other 36 match exactly, so name normalisation is relied on for that single entry.
 - **K09** (verified): init.insmod.cfg (boot config) contains one modprobe directive that loads everything, 'modprobe|-b *'. It is followed by setprop vendor.all.modules.ready, then enable directives for the ADSP boot, CDSP boot and CVP boot nodes (/sys/devices/virtual/cvp/cvp/boot), and finally setprop vendor.all.devices.ready.
@@ -48,12 +48,12 @@ These claims held in substance. The wording below replaces the original.
 - **K21** (verified): msm_drm.ko (vendor): two description strings ('MSM DRM Driver' and 'MSM SMMU driver'), GPL and GPL v2 licence tags, author Rob Clark. It has 13 direct depends, soft dependency pre msm-mmrm, seven parameters (including dsi_display0, dsi_display1, modeset, vram), 16 modules.alias lines that map the mdp4, mdss, sde-kms, smmu_sde_unsec, smmu_sde_sec, smmu_sde_nrt_unsec, smmu_sde_nrt_sec and msm-hdcp DT compatibles to msm_drm (each as an exact and a C* wildcard form), 41 exported symbols and 701 imported symbols. Its transitive modules.dep closure has 31 entries. It is loaded by init.insmod.charger.cfg.
 - **K22** (verified): qcom_glink.ko (vendor): 'Qualcomm GLINK driver', GPL v2, no dependencies, exports 8 symbols (qcom_glink_native_probe, qcom_glink_native_start, glink_native_pm_ops and others) and imports 91. It is listed in the modules.dep lines of 53 other vendor modules, for example audio_prm_dlkm.ko.
 - **K23** (verified): qrtr.ko (vendor): Qualcomm IPC-router driver with a nameserver description, GPL v2 and Dual BSD/GPL tags, and no dependencies. It is the net protocol family 42 (net-pf-42) and exports 8 symbols (qrtr_endpoint_register, qrtr_ns_init, qrtr_get_service_id and others). qmi_helpers.ko has soft dependency pre qrtr. init.anorak.rc defines the service vendor.qrtr-ns (line 324, class core, user and group vendor_qrtr, NET_BIND_SERVICE) with no explicit start line, so it runs as a class-core service; it runs as user vendor_qrtr.
-- **K29** (verified): modules.load is a plain list of .ko file names, one per line, with no paths and no options. Vendor has 262 entries and odm has 27, and both lists are the full module sets (K04). The vendor list precedes the odm list in the argument built for the -b * path; whether order changes load order is inferred and was not tested. The first vendor entries are lzo-rle.ko, lzo.ko, qti-regmap-debugfs.ko, regmap-spmi.ko and zram.ko. The first odm entry is as5510.ko.
+- **K29** (verified): modules.load is a plain list of .ko file names, one per line, with no paths and no options. Vendor has 262 entries and odm has 27, and both lists are the full module sets (K04). The vendor list precedes the odm list in the argument built for the -b * path; whether order changes load order is inferred and is not verified. The first vendor entries are lzo-rle.ko, lzo.ko, qti-regmap-debugfs.ko, regmap-spmi.ko and zram.ko. The first odm entry is as5510.ko.
 
 <!-- generated: modules start -->
 ## Module index and symbol dependencies (generated)
 
-This section is generated from `data/kernel/modules.tsv` (the `.modinfo` fields of the 289 `.ko` files) and `data/kernel/symbols.tsv` (the global and weak symbols of each module), by `tools/elfindex` and `tools/elfindex/gen_module_section.py`. Every file's SHA-256 matched the inventory.
+Source: `data/kernel/modules.tsv` (the `.modinfo` fields of the 289 `.ko` files) and `data/kernel/symbols.tsv` (the global and weak symbols of each module). Every file's SHA-256 matches the inventory.
 
 - Modules: 289 (vendor_dlkm_a 262, odm_dlkm_a 27). vermagic is identical for all: `5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64`.
 - Licenses: GPL v2 260, GPL 26, Dual BSD/GPL 3.

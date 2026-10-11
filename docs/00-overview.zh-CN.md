@@ -18,7 +18,7 @@
 
 `data/inventory/files.tsv` 列出了八个分区中的全部 5,685 条记录（常规文件和符号链接），每个常规文件都附有大小、MIME 类型和 SHA-256。每条记录恰好归属于一个子系统。`data/inventory/subsystem_counts.txt` 给出了计数。
 
-对于每个子系统，`data/subsystems/<subsystem>/roles.tsv` 为每个文件保存一行。行数等于该子系统的清单行数，已对全部 21 个子系统核对：角色表合计 5,685 行。`scratch` 分区只包含空的 overlay 目录。
+对于每个子系统，`data/subsystems/<subsystem>/roles.tsv` 为每个文件保存一行。行数等于该子系统的清单行数，对全部 21 个子系统成立：角色表合计 5,685 行。`scratch` 分区只包含空的 overlay 目录。
 
 ## 子系统页面
 
@@ -45,15 +45,15 @@
 | [24](24-native-tools-and-hal-binaries.md) | 原生工具和 HAL 二进制文件 | 346 |
 | [25](25-unclassified.md) | 杂项根文件和小文件 | 13 |
 
-GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-selinux-and-hal.md) 页来自第一次 GPU 运行，涵盖 zap 镜像、SQE 和 GMU 固件、kgsl 模块、用户空间 GPU 库以及 GPU init 条目。子系统运行还生成了一个 GPU 分组（`data/subsystems/gpu/`，67 个文件），其声明记录在 `data/subsystems/gpu/claims.json` 中。这些声明未并入第 01 至 05 页。
+GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-selinux-and-hal.md) 页涵盖 zap 镜像、SQE 和 GMU 固件、kgsl 模块、用户空间 GPU 库以及 GPU init 条目。子系统运行还生成了一个 GPU 分组（`data/subsystems/gpu/`，67 个文件），其声明记录在 `data/subsystems/gpu/claims.json` 中。这些声明未并入第 01 至 05 页。
 
 ## 行为与应用
 
 [26](26-init-boot-behaviour.zh-CN.md) 和 [27](27-important-apps.zh-CN.md) 不属于清单中的子系统。26 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。27 使用 androguard 解码应用分组（第 20 页）中的 22 个应用。另有三个子系统页包含由数据文件生成的小节：第 06 页（模块元数据与符号依赖，`data/kernel/`）、第 20 页（全部 146 个 `.apk` 文件的索引，`data/apks/`）和第 21 页（1,361 个原生库文件的索引及其 NEEDED 依赖图，`data/elf/`）。读取与生成脚本位于 `tools/apk/` 和 `tools/elfindex/`。
 
-## 声明的核查方式
+## 声明与证据
 
-每个子系统都有一张角色表和一份声明文件。另一轮独立核查会重新运行每条声明的命令，并尝试反驳它。各页面陈述的是已核实的声明。措辞经过修正的声明会显示修正后的措辞。未成立的声明会被列为已排除，并注明原因。21 个子系统的声明总数为 835 条：653 条已确认，160 条需修改措辞，22 条被反驳。
+每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。GPU 的证据位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json)。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
 
 ## 复现证据
 
@@ -63,4 +63,4 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 - 镜像的引导链、TrustZone、虚拟机监控器和内核都不在 super 镜像中，因此 Greatwhite 研究中搁置的项目（对象 `0x91`、OEM 密钥读取器和 SBL1 跳转）无法通过这些分区重新核查。
 - 这些文档未确立固件签名及其来源。页面描述的是挂载后的字节内容。
-- 行为描述基于名称、字符串、配置和静态结构。未在设备上执行任何命令。
+- 行为描述基于名称、字符串、配置和静态结构。未使用任何设备。

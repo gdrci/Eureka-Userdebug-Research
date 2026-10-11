@@ -20,7 +20,7 @@
 - **K10** (verified)：init.anorak.rc 定义了两个 oneshot 服务，分别使用两个配置文件运行 init.insmod.sh。insmod_charger_sh 运行在 charger 类中，由 'on charger' 启动。insmod_sh 处于禁用（disabled）状态，由 'on init && property:vendor.skip.init=0' 启动。
 - **K11** (verified)：init.anorak.rc 直接为两个模块调用 modprobe，二者都以 u:r:vendor_modprobe:s0 身份并带 exec_background 运行：wlan（country_code=0）在 'on boot' 中加载，sched-walt 在 'on boot && property:vendor.scheduler.schedutil=false' 中加载。
 - **K12** (verified)：vendor_dlkm_a 的 modules.blocklist 有 69 行黑名单记录，涉及 68 个不重复的模块。其中 4 个被列入黑名单的名称与模块目录树中的 .ko 文件匹配：llcc_perfmon、sched-walt、usbip-vudc 和 wlan。
-- **K13** (inferred)：wlan 和 sched-walt 出现在 vendor 的 modules.load 中（第 189 和 216 行），因此 init.insmod.cfg 中的 modprobe -b * 路径会考虑它们。init.anorak.rc 则不带 -b 按名称加载这两个模块。其行为遵循通常的 modprobe -b 约定；modprobe 本身并未运行。
+- **K13** (inferred)：wlan 和 sched-walt 出现在 vendor 的 modules.load 中（第 189 和 216 行），因此 init.insmod.cfg 中的 modprobe -b * 路径会考虑它们。init.anorak.rc 则不带 -b 按名称加载这两个模块。其行为遵循通常的 modprobe -b 约定；modprobe 二进制文件不在证据范围内。
 - **K14** (verified)：SELinux 定义了 vendor_modprobe 域。init 可以切换到该域，并且该域可以读取 proc_modules。vendor_file_contexts 将 /vendor/bin/init.insmod.sh 标记为 init-insmod-sh_exec。
 - **K15** (verified)：平台文件上下文将 /vendor_dlkm 和 /odm_dlkm（以及它们带 vendor/ 前缀的形式）标记为 vendor_file。没有任何 vendor 文件上下文条目指定模块目录或 dlkm 挂载点。
 - **K17** (verified)：wlan.ko（vendor）：WLAN 主机设备驱动，双许可 BSD/GPL，staging 状态，直接依赖 cnss2、cfg80211、cnss_prealloc、cnss_nl 和 cnss_utils。它有六个模块参数，其中包括 country_code（charp），init 会将其设为 0。它未导出任何符号，导入 503 个全局未定义符号。其在 modules.dep 中的传递依赖闭包有 22 项。
@@ -39,7 +39,7 @@
 
 ## 措辞已修正的结论
 
-以下结论的实质内容成立。下方措辞替换原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **K08** (verified)：两个 insmod 配置共使用 38 条 modprobe 指令、4 条 enable 指令和 4 条 setprop 指令。init.insmod.charger.cfg 中的 37 个具名模块均可在两棵模块目录树中解析到对应的 .ko。只有一个条目 pmic-glink.ko 与其文件名（pmic_glink.ko）不同；其余 36 个完全匹配，因此该条目依赖名称规范化。
 - **K09** (verified)：init.insmod.cfg（启动配置）包含一条加载全部模块的 modprobe 指令 'modprobe|-b *'。其后是 setprop vendor.all.modules.ready，然后是针对 ADSP 启动、CDSP 启动和 CVP 启动节点（/sys/devices/virtual/cvp/cvp/boot）的 enable 指令，最后是 setprop vendor.all.devices.ready。
@@ -48,12 +48,12 @@
 - **K21** (verified)：msm_drm.ko（vendor）：两个描述字符串（'MSM DRM Driver' 和 'MSM SMMU driver'），GPL 与 GPL v2 许可标签，作者为 Rob Clark。它有 13 个直接依赖，软依赖 pre msm-mmrm，七个参数（包括 dsi_display0、dsi_display1、modeset、vram），16 行 modules.alias 将 mdp4、mdss、sde-kms、smmu_sde_unsec、smmu_sde_sec、smmu_sde_nrt_unsec、smmu_sde_nrt_sec 和 msm-hdcp DT compatible 映射到 msm_drm（每个都有精确形式和 C* 通配符形式），导出 41 个符号，导入 701 个符号。其 modules.dep 传递闭包有 31 项。它由 init.insmod.charger.cfg 加载。
 - **K22** (verified)：qcom_glink.ko（vendor）：'Qualcomm GLINK driver'，GPL v2，无依赖，导出 8 个符号（qcom_glink_native_probe、qcom_glink_native_start、glink_native_pm_ops 等），导入 91 个符号。它出现在另外 53 个 vendor 模块的 modules.dep 行中，例如 audio_prm_dlkm.ko。
 - **K23** (verified)：qrtr.ko（vendor）：带有 nameserver 描述的高通 IPC 路由器驱动，GPL v2 与双许可 BSD/GPL 标签，无依赖。它是网络协议族 42（net-pf-42），导出 8 个符号（qrtr_endpoint_register、qrtr_ns_init、qrtr_get_service_id 等）。qmi_helpers.ko 有软依赖 pre qrtr。init.anorak.rc 定义了服务 vendor.qrtr-ns（第 324 行，class core，user 和 group 为 vendor_qrtr，NET_BIND_SERVICE），没有显式的 start 行，因此它作为 class core 服务运行；其运行用户为 vendor_qrtr。
-- **K29** (verified)：modules.load 是纯文本的 .ko 文件名列表，每行一个，不含路径和选项。vendor 有 262 项，odm 有 27 项，两个列表都是完整的模块集合（K04）。在为 -b * 路径构建的参数中，vendor 列表排在 odm 列表之前；顺序是否会改变加载顺序属于推断，未经测试。vendor 的前几项是 lzo-rle.ko、lzo.ko、qti-regmap-debugfs.ko、regmap-spmi.ko 和 zram.ko。odm 的第一项是 as5510.ko。
+- **K29** (verified)：modules.load 是纯文本的 .ko 文件名列表，每行一个，不含路径和选项。vendor 有 262 项，odm 有 27 项，两个列表都是完整的模块集合（K04）。在为 -b * 路径构建的参数中，vendor 列表排在 odm 列表之前；顺序是否会改变加载顺序属于推断，未经验证。vendor 的前几项是 lzo-rle.ko、lzo.ko、qti-regmap-debugfs.ko、regmap-spmi.ko 和 zram.ko。odm 的第一项是 as5510.ko。
 
 <!-- generated: modules start -->
 ## 模块索引与符号依赖（生成）
 
-本节由 `data/kernel/modules.tsv`（289 个 `.ko` 文件的 `.modinfo` 字段）和 `data/kernel/symbols.tsv`（每个模块的全局与弱符号）生成，生成工具为 `tools/elfindex` 与 `tools/elfindex/gen_module_section.py`。每个文件的 SHA-256 都与清单相符。
+来源：`data/kernel/modules.tsv`（289 个 `.ko` 文件的 `.modinfo` 字段）和 `data/kernel/symbols.tsv`（每个模块的全局与弱符号）。每个文件的 SHA-256 都与清单相符。
 
 - 模块：289 个（vendor_dlkm_a 262、odm_dlkm_a 27）。vermagic 全部相同：`5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64`。
 - 许可证：GPL v2 260、GPL 26、Dual BSD/GPL 3。

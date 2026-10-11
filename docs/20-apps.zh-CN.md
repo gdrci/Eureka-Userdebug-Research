@@ -4,7 +4,7 @@
 
 ## 摘要
 
-应用组共有 431 行：product_a 27 行，system_a 123 行，system_ext_a 278 行，vendor_a 3 行。这些行包括 142 个 Android APK 压缩包（142 个不同的包名）、137 个 ELF odex 文件和 137 个 vdex 容器（对应 136 个包，Horizon 另有第二个 arm 变体）、2 个 ART 应用镜像、2 个 ART 配置文件，以及 11 个指向 /system_ext/lib64 的符号链接。在 APK 包中，103 个为 com.oculus/com.meta/com.facebook 包（主要位于 system_ext_a 和 product_a），37 个为 AOSP 的 com.android 包（主要位于 system_a），另有 2 个属于其他名称。大多数 APK 的清单报告的平台构建版本为 32；在声明了 targetSdkVersion 的 138 个 APK 中，有 84 个的值为 32。对于 15 个深入分析 APK，对于 15 个深入分析 APK，签名使用两个证书族：CN=Android（在 plat_mac_permissions.xml 中映射到 seinfo platform）和 CN=Android Debug（在 system_ext_mac_permissions.xml 中映射到 seinfo fbandroid_debug）。引用这些包名的配置位于本组之外，包括 privapp-permissions、default-permissions 和 sysconfig XML 文件、nonDiscretionaryAppPackageName 列表、system_ext_seapp_contexts（仅包含一个包）以及一个 vendor JSON 键。本组不含固件，也没有任何 init .rc 文件提及 15 个深入分析包中的任何一个。全部 431 行的角色信息位于 roles.tsv 中：306 个 verified，125 个 inferred。
+应用组共有 431 行：product_a 27 行，system_a 123 行，system_ext_a 278 行，vendor_a 3 行。这些行包括 142 个 Android APK 压缩包（142 个不同的包名）、137 个 ELF odex 文件和 137 个 vdex 容器（对应 136 个包，Horizon 另有第二个 arm 变体）、2 个 ART 应用镜像、2 个 ART 配置文件，以及 11 个指向 /system_ext/lib64 的符号链接。在 APK 包中，103 个为 com.oculus/com.meta/com.facebook 包（主要位于 system_ext_a 和 product_a），37 个为 AOSP 的 com.android 包（主要位于 system_a），另有 2 个属于其他名称。大多数 APK 的清单报告的平台构建版本为 32；在声明了 targetSdkVersion 的 138 个 APK 中，有 84 个的值为 32。对于 15 个深入分析 APK，对于 15 个深入分析 APK，对于 15 个深入分析 APK，签名使用两个证书族：CN=Android（在 plat_mac_permissions.xml 中映射到 seinfo platform）和 CN=Android Debug（在 system_ext_mac_permissions.xml 中映射到 seinfo fbandroid_debug）。引用这些包名的配置位于本组之外，包括 privapp-permissions、default-permissions 和 sysconfig XML 文件、nonDiscretionaryAppPackageName 列表、system_ext_seapp_contexts（仅包含一个包）以及一个 vendor JSON 键。本组不含固件，也没有任何 init .rc 文件提及 15 个深入分析包中的任何一个。全部 431 行的角色信息位于 roles.tsv 中：306 个 verified，125 个 inferred。
 
 角色表为本组 431 个文件各提供一行（306 verified，0 observed，125 inferred，0 unverified）。文件位于 `data/subsystems/apps/roles.tsv`。
 
@@ -55,7 +55,7 @@
 
 ## 措辞已修正的结论
 
-这些结论实质上成立。以下措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **c08** (verified): Settings.vdex 头（魔数 'vdex'，版本 '027' 加 NUL）在偏移 8、12、...、36 处的 32 位值依次为 4、0、60、8、1、0、0、2。该文件大小为 204124 字节；Settings odex 为 95152 字节。该文件不包含 'dex' 加换行的序列。这些值的字段名称未由文件本身确定；第一个值（4）与两个 classes*.dex 条目之间的含义关系尚未解决。
 - **c17** (verified): 已挂载的 file_contexts 文件中没有针对 /system_ext/app 或 /system_ext/priv-app 的显式标签。system_ext 路径落入通用规则 '/(system_ext|system/system_ext)(/.*)?  u:object_r:system_file:s0'（plat_file_contexts 第 55 行）。显式的应用目录标签仅存在于 vendor 和 odm：plat_file_contexts 第 13 行（vendor app）和第 29 行（odm app），以及第 14 行（vendor priv-app）和第 30 行（odm priv-app）。plat_file_contexts 没有针对 /system/app 或 /system/priv-app 的显式标签。
@@ -69,7 +69,7 @@
 ## 包索引（生成）
 
 本索引涵盖镜像中的 146 个 `.apk` 文件：本分组的 142 个 APK 压缩包，以及其他分组中的另外 4 个（`framework-res.apk`（framework-and-system-services）、`Provision.apk`（sensors-mcu-meta-hal）、`QuestManagedProvisioning.apk`（sensors-mcu-meta-hal）、`com.oculus.os.platform-res.apk`（sensors-mcu-meta-hal））。
-每个文件都由 `tools/apk/apkfacts.py` 使用 androguard 4.1.4 读取。事实位于 `data/apks/<name>.json`，汇总表为 `data/apks/summary.tsv`。本表由 `tools/apk/gen_all_apks_doc.py` 生成。
+来源：`data/apks/<name>.json`（androguard 4.1.4，`tools/apk/apkfacts.py`）；汇总表为 `data/apks/summary.tsv`。
 
 - 各分区的文件数：system_a 42、system_ext_a 92、product_a 11、vendor_a 1。
 - 签名证书族（签名证书前 16 位十六进制数字）：`c8a2e9bccf597c2f` 72、`fac61745dc090378` 53、`a40da80a59d170ca` 11、`28bbfe4a7b97e746` 4、`465983f7791f2abe` 4、`b6f96027df75ec89` 1、`dc2f834e3c194237` 1。
