@@ -140,7 +140,7 @@
   "id": "04-F03",
   "label": "verified",
   "file": "lib64/libgsl.so; lib/libgsl.so",
-  "claim": "libgsl.so DT_NEEDED (9, identical in lib64 and lib): libcutils.so, liblog.so, libz.so, libsync.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so",
+  "claim": "libgsl.so DT_NEEDED (9, identical in lib64 and lib): libcutils.so, liblog.so, libz.so, libsync.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so.",
   "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libgsl.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libcutils.so,liblog.so,libz.so,libsync.so,libdmabufheap.so,libc++.so,libc.so,libm.so,libdl.so (same command on $V/lib/libgsl.so gives the identical list)"
  },
  {
@@ -148,7 +148,7 @@
   "id": "04-F04",
   "label": "verified",
   "file": "lib64/libEGL_adreno.so; lib/libEGL_adreno.so",
-  "claim": "libEGL_adreno.so DT_NEEDED (9, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so",
+  "claim": "libEGL_adreno.so DT_NEEDED (9, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so.",
   "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libEGL_adreno.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libadreno_utils.so,libgsl.so,libcutils.so,libdl.so,libz.so,liblog.so,libc++.so,libc.so,libm.so"
  },
  {
@@ -156,7 +156,7 @@
   "id": "04-F06",
   "label": "verified",
   "file": "lib64/libOpenCL_adreno.so; lib/libOpenCL_adreno.so",
-  "claim": "libOpenCL_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, libvndksupport.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so",
+  "claim": "libOpenCL_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, libvndksupport.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so.",
   "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libOpenCL_adreno.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libcutils.so,libvndksupport.so,liblog.so,libc++.so,libc.so,libm.so,libdl.so"
  },
  {
@@ -164,7 +164,7 @@
   "id": "04-F07",
   "label": "verified",
   "file": "lib64/libadreno_utils.so; lib/libadreno_utils.so",
-  "claim": "libadreno_utils.so DT_NEEDED (7, identical in lib64 and lib): libgsl.so, liblog.so, libnativewindow.so, libc++.so, libc.so, libm.so, libdl.so",
+  "claim": "libadreno_utils.so DT_NEEDED (7, identical in lib64 and lib): libgsl.so, liblog.so, libnativewindow.so, libc++.so, libc.so, libm.so, libdl.so.",
   "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libadreno_utils.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: libgsl.so,liblog.so,libnativewindow.so,libc++.so,libc.so,libm.so,libdl.so"
  },
  {
@@ -172,7 +172,7 @@
   "id": "04-F10",
   "label": "verified",
   "file": "lib64/libar-gsl.so; lib/libar-gsl.so",
-  "claim": "libar-gsl.so DT_NEEDED (8, identical in lib64 and lib): liblx-osal.so, libar-acdb.so, liblx-ar_util.so, libar-gpr.so, libc++.so, libc.so, libm.so, libdl.so",
+  "claim": "libar-gsl.so DT_NEEDED (8, identical in lib64 and lib): liblx-osal.so, libar-acdb.so, liblx-ar_util.so, libar-gpr.so, libc++.so, libc.so, libm.so, libdl.so.",
   "evidence": "V=<eureka-image>/mnt/vendor_a; readelf -d $V/lib64/libar-gsl.so | awk '/NEEDED/' | sed 's/.*\\[\\(.*\\)\\]/\\1/' | paste -sd, -  Output: liblx-osal.so,libar-acdb.so,liblx-ar_util.so,libar-gpr.so,libc++.so,libc.so,libm.so,libdl.so"
  },
  {
