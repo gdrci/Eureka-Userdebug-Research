@@ -340,7 +340,7 @@
   "id": "02-G-09",
   "label": "observed",
   "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
-  "claim": "The driver's own names for the block fields are addr and size, used in GMU block messages. No module string names the zero word, the type word, or the other two fields, which is not so: the block messages name addr and size. Only the zero word and the type word lack a name in the module.",
+  "claim": "No module string names the zero word, the type word, or the other two fields of a GMU block. This does not hold: the driver's own names for the block fields are addr and size, used in GMU block messages. Only the zero word and the type word lack a name in the module.",
   "evidence": "python3 -I on msm_kgsl.ko: read the GMU messages at the .rodata offsets used by gen7_gmu_load_fw (relocations at 0x7cf94 and 0x7cfcc) and gen7_gmu_parse_fw (relocations at 0x7e8d0, 0x7e8f0 and 0x7e914). Output: 'No backing memory for GMU FW block addr:0x%x size:0x%x' and 'Unknown block in GMU FW addr:0x%x size:0x%x' (both in gen7_gmu_load_fw); 'Invalid FW Block' (gen7_gmu_parse_fw, names no field); 'firmware_request_nowarn (%s) failed: %d' and 'Invalid prealloc block addr: 0x%x value:%d' (gen7_gmu_parse_fw). The block messages name addr and size; no message in these two functions names the zero word at +0x4 or the type word at +0x8."
  },
  {
@@ -748,7 +748,7 @@
   "id": "05-label-kgsl-node",
   "label": "verified",
   "file": "etc/selinux/vendor_file_contexts:381",
-  "claim": "/dev/kgsl-3d0 is labelled gpu_device (vendor_file_contexts line 381). The type gpu_device is declared at etc/selinux/plat_pub_versioned.cil:888 of vendor_a and its versioned attribute gpu_device_32_0 is declared at plat_pub_versioned.cil:889.",
+  "claim": "SELinux labels the KGSL device nodes as gpu_device. Only /dev/kgsl-3d0 carries that label (vendor_file_contexts line 381). The type gpu_device is declared at etc/selinux/plat_pub_versioned.cil:888 of vendor_a and its versioned attribute gpu_device_32_0 is declared at plat_pub_versioned.cil:889.",
   "evidence": "sed -n 381p etc/selinux/vendor_file_contexts; sed -n 888,889p etc/selinux/plat_pub_versioned.cil. Output: /dev/kgsl-3d0 u:object_r:gpu_device:s0 at line 381; (type gpu_device) at plat_pub_versioned.cil:888 and (typeattribute gpu_device_32_0) at line 889."
  },
  {
