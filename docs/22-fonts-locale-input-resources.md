@@ -56,7 +56,7 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| C09 | NotoSansCJK-Regular.ttc is a TrueType/CFF collection of 10 faces (Noto Sans CJK JP, KR, SC, TC, HK and four Noto Sans Mono CJK faces); NotoSerifCJK-Regular.ttc  |  |
+| C09 | NotoSansCJK-Regular.ttc is a TrueType/CFF collection of 10 faces (Noto Sans CJK JP, KR, SC, TC, HK and four Noto Sans Mono CJK faces); NotoSerifCJK-Regular.ttc has 4 faces (JP, KR, SC, TC). fonts.xml selects faces by index: ja=0, ko=1, zh-Hans=2, zh-Hant,zh-Bopo=3. |  |
 
 ## Gaps
 

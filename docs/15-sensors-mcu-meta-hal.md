@@ -52,7 +52,7 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| C29 | Permission and feature tags for the group are present for 13 system_a and system_ext_a packages. Examples: com.oculus.mrservice privileged permissions, com.ocul | The four examples hold: com.oculus.mrservice has a privapp-permissions block and a default USE_SCENE grant (fixed=true); com.oculus.xrstreamingclient has default RECORD_AUDIO (fixed=false) and POST_NO |
+| C29 | Permission and feature tags for the group are present for 13 system_a and system_ext_a packages. Examples: com.oculus.mrservice privileged permissions, com.oculus.mrservice default USE_SCENE exception, com.oculus.xrstreamingclient default RECORD_AUDIO and POST_NOTIFICATIONS exceptions, and com.oculus.systemdriver privileged permissions. | The four examples hold: com.oculus.mrservice has a privapp-permissions block and a default USE_SCENE grant (fixed=true); com.oculus.xrstreamingclient has default RECORD_AUDIO (fixed=false) and POST_NOTIFICATIONS (fixed=true) exceptions; com.oculus.systemdriver has a privapp-permissions block. The count of 13 does not reproduce under any definition tested. Distinct packages in privapp-permissions and exception blocks: 3 in system_a (com.oculus.mrservice, com.oculus.systemdriver, com.oculus.xrstreamingclient) and 49 in system_ext_a, 52 combined. Files with those blocks: 4 in system_a, 59 in system_ext_a. system_a has 13 XML rows, which may be the source of the 13 figure, but those are not packages. |
 
 ## Gaps
 

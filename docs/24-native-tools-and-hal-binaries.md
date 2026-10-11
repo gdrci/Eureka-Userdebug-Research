@@ -75,7 +75,7 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| G51 | None of the 149 ELF images in the group is unstripped; each is reported as stripped. | Two rows report 'not stripped': odm_a/bin/peripheralconfig-tool (has debug_info sections) and system_ext_a/bin/bpftrace (has a .symtab section). The claimed zero comes from matching the hyphenated 'no |
+| G51 | None of the 149 ELF images in the group is unstripped; each is reported as stripped. | Two rows report 'not stripped': odm_a/bin/peripheralconfig-tool (has debug_info sections) and system_ext_a/bin/bpftrace (has a .symtab section). The claimed zero comes from matching the hyphenated 'not-stripped', which the type-detection output never prints (it prints 'not stripped'). The work-directory summary records all 149 as 'stripped', which is wrong for these two rows. |
 
 ## Gaps
 

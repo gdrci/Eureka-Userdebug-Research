@@ -59,7 +59,7 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| D09 | system_a/system/lib64/android.hardware.audio@7.0.so has SONAME android.hardware.audio@7.0.so and depends on android.hardware.audio.common@7.0.so, android.hardwa |  |
+| D09 | system_a/system/lib64/android.hardware.audio@7.0.so has SONAME android.hardware.audio@7.0.so and depends on android.hardware.audio.common@7.0.so, android.hardware.audio.effect@7.0.so and android.hidl.safe_union@1.0.so. It names the interfaces IDevice, IDevicesFactory, IPrimaryDevice, IStream, IStreamIn, IStreamOut, IStreamOutCallback and IStreamOutEventCallback, and defines 927 dynamic symbols. |  |
 
 ## Gaps
 

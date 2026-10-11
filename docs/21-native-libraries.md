@@ -56,7 +56,7 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| D14.2 | Of the 29 public entries, 23 are present as files or links in the group rows. Entries such as libaaudio.so, libEGL.so, libGLESv2.so and libvulkan.so are present | Not reproduced. The five absent names of D14.1 leave 24 of the 29 entries, not 23; the file that accounts for the difference was not identified. |
+| D14.2 | Of the 29 public entries, 23 are present as files or links in the group rows. Entries such as libaaudio.so, libEGL.so, libGLESv2.so and libvulkan.so are present in other subsystems (audio, gpu, camera), not in this group. Meaning of the nopreload token is inferred to mark libraries excluded from preloading. | Not reproduced. The five absent names of D14.1 leave 24 of the 29 entries, not 23; the file that accounts for the difference was not identified. |
 
 <!-- generated: libraries start -->
 ## Library index (generated)

@@ -75,7 +75,7 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| WB-42 | cnss_diag runs /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM as service vendor.cnss_diag in class main, user system, with groups including diag. It is dis | The service is disabled, runs in class main as user system with groups including diag, and carries label vendor_wcnss_service_exec (vendor line 411). The start condition is wrong. The rc file has two  |
+| WB-42 | cnss_diag runs /system/vendor/bin/cnss_diag -q -f -b 128 -t HELIUM as service vendor.cnss_diag in class main, user system, with groups including diag. It is disabled and starts only when persist.ovr.cnss_diag.enabled=true or the vold.decrypt property is trigger_restart_framework. Its SELinux label is vendor_wcnss_service_exec. | The service is disabled, runs in class main as user system with groups including diag, and carries label vendor_wcnss_service_exec (vendor line 411). The start condition is wrong. The rc file has two triggers: on property:persist.ovr.cnss_diag.enabled=true, and on property:persist.ovr.cnss_diag.enabled=true && property:vold.decrypt=trigger_restart_framework. The vold.decrypt value is never a trigger on its own; it is checked only together with the persist property. |
 
 ## Gaps
 

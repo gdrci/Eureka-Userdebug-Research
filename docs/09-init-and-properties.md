@@ -64,8 +64,8 @@ The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|
-| C09 | The init binary exports 124 defined dynamic symbols and imports 534 undefined ones. The defined set includes fs_mgr fstab and boot-config functions; the importe |  |
-| C37 | init.insmod.cfg (13 lines) holds 1 modprobe, 2 setprop and 3 enable actions. init.insmod.charger.cfg (48 lines) lists modprobe lines for charge-mode .ko modules |  |
+| C09 | The init binary exports 124 defined dynamic symbols and imports 534 undefined ones. The defined set includes fs_mgr fstab and boot-config functions; the imported set includes the bionic property API and selinux_* functions. The binary exports no stable command-line interface through these symbols. |  |
+| C37 | init.insmod.cfg (13 lines) holds 1 modprobe, 2 setprop and 3 enable actions. init.insmod.charger.cfg (48 lines) lists modprobe lines for charge-mode .ko modules. Both are in the mounted tree; the .ko modules they name are not. |  |
 
 ## Gaps
 
