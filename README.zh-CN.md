@@ -55,7 +55,7 @@ super 镜像包含动态分区。其中没有 `boot`、`vendor_boot` 与内核�
 
 ## 证据
 
-- `data/gpu/confirmed_findings.json`：31 条 GPU 发现的复现记录，每条附复现命令与输出。这些记录并未覆盖第 01 至 05 页的全部发现。
+- `data/gpu/confirmed_findings.json`：第 01 至 05 页全部 105 项发现各有一条复现记录，每条附复现命令与输出。
 - `data/gpu/partitions.tsv`：super 镜像中的逻辑分区，附大小与 SHA-256 前缀。
 - `data/inventory/files.tsv`：odm_a、odm_dlkm_a、product_a、system_a、system_ext_a、vendor_a 与 vendor_dlkm_a 这七个分区中的每个文件与符号链接，附子系统、大小、MIME 类型与 SHA-256。
 - `data/behaviour/`：从 `.rc` 文件解析出的服务、动作、导入、启动阶段与服务类，是第 26 页的依据。

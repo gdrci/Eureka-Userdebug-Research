@@ -1,7 +1,7 @@
 [
  {
   "target": "zap",
-  "id": "F1",
+  "id": "01-F1",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
   "claim": "File sizes: .mdt 6284 bytes (0x188c), .b00 148 (0x94), .b01 1072 (0x430), .b02 6136 (0x17f8), .elf 5168 (0x1430), .mbn 14328 (0x37f8). Full SHA-256 values are listed in the evidence.",
@@ -9,7 +9,7 @@
  },
  {
   "target": "zap",
-  "id": "F2",
+  "id": "01-F2",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
   "claim": "The .mdt begins with an ELF32 little-endian header: EI_CLASS 1, EI_DATA 1, EI_VERSION 1, OS/ABI 0. Fields: e_type 2 (EXEC), e_machine 164 (0xa4), e_version 1, e_entry 0x1000, e_phoff 0x34, e_shoff 0 (no section header table), e_flags 0x3, e_ehsize 52, e_phentsize 32, e_phnum 3, e_shentsize 0, e_shnum 0, e_shstrndx 0.",
@@ -17,7 +17,7 @@
  },
  {
   "target": "zap",
-  "id": "F3",
+  "id": "01-F3",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
   "claim": "The .mdt program header table at 0x34 has three 32-byte entries. [0]: p_type 0, p_offset 0x0, p_vaddr 0x0, p_paddr 0x0, p_filesz 0x94 (148), p_memsz 0, p_flags 0x07000000, p_align 0. [1]: p_type 1 (PT_LOAD), p_offset 0x1000, p_vaddr 0x1000, p_paddr 0x1000, p_filesz 0x430 (1072), p_memsz 0x430, p_flags 0x08000007, p_align 0x100000. [2]: p_type 0, p_offset 0x2000, p_vaddr 0, p_paddr 0, p_filesz 0x17f8 (6136), p_memsz 0x17f8, p_flags 0x02000000, p_align 0x1000. The .mbn table contains the same three entries.",
@@ -25,7 +25,7 @@
  },
  {
   "target": "zap",
-  "id": "F5",
+  "id": "01-F5",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mdt",
   "claim": ".b00 is byte-identical to .mdt bytes 0x0 to 0x93 (148 bytes). .b02 is byte-identical to .mdt bytes from 0x94 to end (6136 bytes). The .b01 bytes do not occur anywhere in the .mdt.",
@@ -33,7 +33,7 @@
  },
  {
   "target": "zap",
-  "id": "F9",
+  "id": "01-F9",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
   "claim": "Header bytes differ between .elf and .mbn: .elf has e_phnum 1 and one program header, .mbn has e_phnum 3 and the three-entry table. Over the overlapping prefix 0x0 to 0x1430 there are 30 differing bytes, the first at 0x2c and the last at 0x91. The code bytes at 0x1000 to 0x142f are identical.",
@@ -41,7 +41,7 @@
  },
  {
   "target": "zap",
-  "id": "F13",
+  "id": "01-F13",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
   "claim": "None of the 32-byte SHA-256 digests of .b01, .b02, .mdt or .mbn appears as a raw byte sequence in the hash segment.",
@@ -49,7 +49,7 @@
  },
  {
   "target": "zap",
-  "id": "F16",
+  "id": "01-F16",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
   "claim": "The .elf, .b00 and .b01 files contain no printable run of 4 or more characters. The .b02, .mdt and .mbn files each contain 83 such runs, all located in the hash segment, and these are the certificate names, validity strings and random-looking fragments listed in F14. No build ID, version string or message name was found.",
@@ -57,7 +57,7 @@
  },
  {
   "target": "zap",
-  "id": "F17",
+  "id": "01-F17",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.b01",
   "claim": "The code segment (.b01, file offset 0x1000 in .elf and .mbn, virtual address 0x1000) starts at e_entry 0x1000. The first little-endian word is 0x01511014.",
@@ -65,7 +65,7 @@
  },
  {
   "target": "zap",
-  "id": "F19",
+  "id": "01-F19",
   "label": "verified",
   "file": "<tools>/work/a740v3_zap/b01_disasm.txt",
   "claim": "Disassembling the whole 1072-byte .b01 with the same decoder and default CPU yields 202 brace-delimited packet blocks and 60 'invalid instruction encoding' warnings. The cause of the warnings is not determined.",
@@ -73,7 +73,7 @@
  },
  {
   "target": "sqe_gmu",
-  "id": "G-01",
+  "id": "02-G-01",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
   "claim": "gmu_gen70200.bin is 67,240 bytes (0x106a8), a multiple of 4. It holds 11 descriptor records at offsets 0x000-0x0af, then four block records whose headers sit at 0x0b0, 0x29c, 0x10648 and 0x10680, each followed by its payload. The walk consumes the file exactly (0 unconsumed bytes). Payload bytes total 67,000, and 11x16 + 4x16 + 67,000 = 67,240.",
@@ -81,7 +81,7 @@
  },
  {
   "target": "sqe_gmu",
-  "id": "G-02",
+  "id": "02-G-02",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
   "claim": "Descriptor table: 11 records of 16 bytes at 0x00-0xaf. Each record is four little-endian dwords {addr, zero word, type, size}. Every zero word is 0. Type is 1 for records 0-8 and 7 for records 9-10. Values: 0x00000000/0x1dc, 0x00004000/0x1039c, 0x00000200/0x3838, 0x00100000/0x92ac, 0x00200000/0x12c80, 0x00300000/0x1b240, 0x10004000/0x2d50, 0x10007000/0xf84, 0x10007fdc/0x18 (type 1); 0x60000000/0x1000 and 0x60001000/0x1000 (type 7).",
@@ -89,7 +89,7 @@
  },
  {
   "target": "sqe_gmu",
-  "id": "S-01",
+  "id": "02-S-01",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
   "claim": "a740v3_sqe.fw is 76,148 bytes (0x12974), a multiple of 4, giving 19,037 dwords. dword0 is 0x00000000.",
@@ -97,7 +97,7 @@
  },
  {
   "target": "sqe_gmu",
-  "id": "S-03",
+  "id": "02-S-03",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_dlkm_a/lib/modules/msm_kgsl.ko",
   "claim": "Applying the driver's version rule to this file gives version 0x01511175. The low nibble of dword1 is 0x5, so the special case (nibble 0xa) does not apply, and the version is dword1 itself. dword3 is not used for this file.",
@@ -105,7 +105,7 @@
  },
  {
   "target": "sqe_gmu",
-  "id": "S-06",
+  "id": "02-S-06",
   "label": "verified",
   "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
   "claim": "dword2 is 0x01004a5c. Its low 24 bits, 0x4a5c = 19,036, equal both the dword count the loader copies (size-4)/4 and the index of the last dword in the file.",
@@ -113,7 +113,7 @@
  },
  {
   "target": "kgsl",
-  "id": "F1",
+  "id": "03-F1",
   "label": "verified",
   "file": "msm_kgsl.ko",
   "claim": "ELF type and machine: 64-bit little-endian AArch64 relocatable object (ET_REL, EM_AARCH64, ELFOSABI_NONE, EV_CURRENT). Not stripped (.symtab present). No program headers. File size 2868976 bytes. SHA-256 e5d17bec61d20020709578cac263396988524e5e08b95f27e71555011c95d21c. SHA-1 build ID a09092d7b3e78c37956e0b71ad84ba4c4b59e21f.",
@@ -121,7 +121,7 @@
  },
  {
   "target": "kgsl",
-  "id": "F16",
+  "id": "03-F16",
   "label": "verified",
   "file": "msm_kgsl.ko",
   "claim": "Imports: 506 undefined symbols (507 __versions entries; the extra one is module_layout). 35 imports are exported by sibling modules in this partition: qcom-scm 17 (qcom_scm_dcvs_ca_available, qcom_scm_dcvs_core_available, qcom_scm_dcvs_init_ca_v2, qcom_scm_dcvs_init_v2, qcom_scm_dcvs_reset, qcom_scm_dcvs_update, qcom_scm_dcvs_update_ca_v2, qcom_scm_dcvs_update_v2, qcom_scm_io_reset, qcom_scm_kgsl_set_smmu_aperture, qcom_scm_kgsl_set_smmu_lpac_aperture, qcom_scm_pas_auth_and_reset, qcom_scm_pas_shutdown_retry, qcom_scm_set_remote_state, qtee_shmbridge_allocate_shm, qtee_shmbridge_free_shm, qtee_shmbridge_is_enabled); llcc-qcom 5 (llcc_get_slice_id, llcc_slice_activate, llcc_slice_deactivate, llcc_slice_getd, llcc_slice_putd); qcom_iommu_util 3 (qcom_alloc_io_pgtable_ops, qcom_free_io_pgtable_ops, qcom_iommu_get_asid_nr); mem_buf_dev 2 (mem_buf_dma_buf_copy_vmperm, mem_buf_dma_buf_exclusive_owner); mdt_loader 2 (qcom_mdt_get_size, qcom_mdt_load); cmd-db 2 (cmd_db_read_addr, cmd_db_read_aux_data); clk-qcom 2 (qcom_clk_dump, qcom_clk_set_flags); secure_buffer 1 (hyp_assign_table); log_gpu_error 1 (log_gpu_error). These nine modules are exactly the depends= list in F2. The remaining 471 undefined names are attributed in F17.",
@@ -129,7 +129,7 @@
  },
  {
   "target": "userspace",
-  "id": "F01",
+  "id": "04-F01",
   "label": "verified",
   "file": "lib64/libEGL_adreno.so; lib64/libGLESv2_adreno.so; lib64/libq3dtools_adreno.so; lib/libEGL_adreno.so; lib/libGLESv2_adreno.so; lib/libq3dtools_adreno.so",
   "claim": "Three targets are relative symlinks into an egl/ subdirectory in both lib64 and lib: libEGL_adreno.so -> egl/libEGL_adreno.so, libGLESv2_adreno.so -> egl/libGLESv2_adreno.so, libq3dtools_adreno.so -> egl/libq3dtools_adreno.so. The other five targets are regular files in both directories (lib64 sizes: libgsl.so 2218160, libOpenCL_adreno.so 163408, libadreno_utils.so 97800, libadreno_app_profiles.so 976128, libar-gsl.so 203176 bytes).",
@@ -137,7 +137,7 @@
  },
  {
   "target": "userspace",
-  "id": "F03",
+  "id": "04-F03",
   "label": "verified",
   "file": "lib64/libgsl.so; lib/libgsl.so",
   "claim": "libgsl.so DT_NEEDED (9, identical in lib64 and lib): libcutils.so, liblog.so, libz.so, libsync.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so",
@@ -145,7 +145,7 @@
  },
  {
   "target": "userspace",
-  "id": "F04",
+  "id": "04-F04",
   "label": "verified",
   "file": "lib64/libEGL_adreno.so; lib/libEGL_adreno.so",
   "claim": "libEGL_adreno.so DT_NEEDED (9, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so",
@@ -153,7 +153,7 @@
  },
  {
   "target": "userspace",
-  "id": "F06",
+  "id": "04-F06",
   "label": "verified",
   "file": "lib64/libOpenCL_adreno.so; lib/libOpenCL_adreno.so",
   "claim": "libOpenCL_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, libvndksupport.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so",
@@ -161,7 +161,7 @@
  },
  {
   "target": "userspace",
-  "id": "F07",
+  "id": "04-F07",
   "label": "verified",
   "file": "lib64/libadreno_utils.so; lib/libadreno_utils.so",
   "claim": "libadreno_utils.so DT_NEEDED (7, identical in lib64 and lib): libgsl.so, liblog.so, libnativewindow.so, libc++.so, libc.so, libm.so, libdl.so",
@@ -169,7 +169,7 @@
  },
  {
   "target": "userspace",
-  "id": "F10",
+  "id": "04-F10",
   "label": "verified",
   "file": "lib64/libar-gsl.so; lib/libar-gsl.so",
   "claim": "libar-gsl.so DT_NEEDED (8, identical in lib64 and lib): liblx-osal.so, libar-acdb.so, liblx-ar_util.so, libar-gpr.so, libc++.so, libc.so, libm.so, libdl.so",
@@ -177,7 +177,7 @@
  },
  {
   "target": "userspace",
-  "id": "F11",
+  "id": "04-F11",
   "label": "verified",
   "file": "lib64/*.so; lib/*.so",
   "claim": "Defined dynamic-symbol totals (lib64 / lib): libgsl.so 580 / 580; libEGL_adreno.so 151 / 152; libGLESv2_adreno.so 538 / 539; libOpenCL_adreno.so 444 / 444; libadreno_utils.so 109 / 109; libq3dtools_adreno.so 556 / 556; libadreno_app_profiles.so 6 / 6; libar-gsl.so 189 / 189.",
@@ -185,7 +185,7 @@
  },
  {
   "target": "userspace",
-  "id": "F12",
+  "id": "04-F12",
   "label": "verified",
   "file": "lib64/libEGL_adreno.so; lib/libEGL_adreno.so",
   "claim": "libEGL_adreno.so exports 78 defined dynamic symbols whose names match ^egl[A-Z] (lib64 and lib both 78). No gl*, glX*, cl* or vk* names are exported by this library.",
@@ -193,7 +193,7 @@
  },
  {
   "target": "userspace",
-  "id": "F14",
+  "id": "04-F14",
   "label": "verified",
   "file": "lib64/libOpenCL_adreno.so; lib/libOpenCL_adreno.so",
   "claim": "libOpenCL_adreno.so exports 7 defined dynamic symbols matching ^cl[A-Z] (both lib64 and lib). The other 437 (lib64) defined symbols are not cl-prefixed.",
@@ -201,7 +201,7 @@
  },
  {
   "target": "initsel",
-  "id": "svc-composer-hw",
+  "id": "05-svc-composer-hw",
   "label": "verified",
   "file": "etc/init/hw/init.anorak.rc:330-340",
   "claim": "Service vendor.qti.hardware.display.composer runs /vendor/bin/hw/vendor.qti.hardware.display.composer-service with class 'hal animation', user system, group 'graphics drmrpc', capabilities SYS_NICE, no seclabel, socket pps (stream 0660 system system), onrestart 'class_restart strata' and 'restart surfaceflinger', task_profiles ServiceCapacityLow ServicePerformance, flags override and disabled. Exec label of the binary is hal_graphics_composer_default_exec.",
@@ -209,7 +209,7 @@
  },
  {
   "target": "initsel",
-  "id": "svc-oculus-gpucontrol",
+  "id": "05-svc-oculus-gpucontrol",
   "label": "verified",
   "file": "etc/selinux/vendor_sepolicy.cil:1183-1186,3338-3343; etc/selinux/vendor_file_contexts:116,118",
   "claim": "hal_oculus_gpucontrol_default has exec type hal_oculus_gpucontrol_default_exec (vendor_sepolicy.cil:1185) with init exec and transition rules at lines 3338-3343. Vendor file contexts bind only odm library paths for the gpucontrol HAL (lines 116 and 118); no binary path is bound. No service for this HAL appears in the vendor rc set. Its hwservice type hal_oculus_gpucontrol_hwservice is declared at line 1239.",
@@ -217,7 +217,7 @@
  },
  {
   "target": "initsel",
-  "id": "init-kgsl-writes",
+  "id": "05-init-kgsl-writes",
   "label": "verified",
   "file": "etc/init/hw/init.anorak.rc:129-189; etc/init/hw/init.anorak.power.rc:16-22",
   "claim": "Init writes to kgsl sysfs at boot. init.anorak.rc: 'on boot' (trigger line 129) contains 'write /sys/class/kgsl/kgsl-3d0/perfcounter 1' at line 189. init.anorak.power.rc: 'on boot' (trigger line 16) contains 'write /sys/class/kgsl/kgsl-3d0/bcl 0' at line 22.",
@@ -225,7 +225,7 @@
  },
  {
   "target": "initsel",
-  "id": "init-gpu-config-files",
+  "id": "05-init-gpu-config-files",
   "label": "verified",
   "file": "etc/init/hw/init.anorak.rc:424-437",
   "claim": "On post-fs-data, init removes /data/vendor/gpu/esx_config.txt and /data/vendor/gpu/qgl_config.txt (lines 426-427). On sys.boot_completed=1 with debug.vendor.gpu.esx_config set (trigger line 429), init creates /data/vendor/gpu (mode 0755, owner system, group system) and writes esx_config.txt, then chmod 664 (lines 430-432). The qgl_config.txt path follows the same pattern at lines 434-437. The file contexts label these paths gpu_config_override_file (vendor_file_contexts line 241, declared vendor_sepolicy.cil:1123).",
@@ -233,7 +233,7 @@
  },
  {
   "target": "initsel",
-  "id": "label-kgsl-sysfs-proc",
+  "id": "05-label-kgsl-sysfs-proc",
   "label": "verified",
   "file": "etc/selinux/vendor_sepolicy.cil:12,15,62,130,162,171,172,192,849,853,927,929",
   "claim": "genfscon labels: /sys/gpu_error is proc_gpu_error (line 12); /kgsl/proc is proc_kgsl_dbg (line 15); /devices/platform/soc/3d00000.qcom,kgsl-3d0/devfreq/3d00000.qcom,kgsl-3d0 is vendor_sysfs_kgsl (line 62); /devices/platform/soc/3d00000.qcom,kgsl-3d0/kgsl/kgsl-3d0 is vendor_sysfs_kgsl (line 130); /devices/virtual/kgsl/kgsl/pagetables is vendor_sysfs_kgsl_proc (line 162); /devices/virtual/kgsl/kgsl/thread is vendor_sysfs_kgsl (line 171); /devices/virtual/kgsl/kgsl/proc is vendor_sysfs_kgsl_proc (line 172); /devices/virtual/kgsl is vendor_sysfs_kgsl (line 192). Types are declared at lines 849 (proc_gpu_error), 853 (proc_kgsl_dbg), 927 (vendor_sysfs_kgsl) and 929 (vendor_sysfs_kgsl_proc).",
@@ -241,10 +241,602 @@
  },
  {
   "target": "initsel",
-  "id": "vintf-compat-matrix",
+  "id": "05-vintf-compat-matrix",
   "label": "verified",
   "file": "etc/vintf/compatibility_matrix.xml:14,30",
   "claim": "The compatibility matrix (root type=device version=4.0) requires android.hidl.allocator@1.0 IAllocator/ashmem (line 14, optional false) and android.hidl.memory@1.0 IMapper/ashmem (line 30, optional false). These are the only memory-allocation and mapping HAL requirements in the matrix. No graphics composer or memtrack requirement is present.",
   "evidence": "Command: <W>/vintfscan/vintfscan <ROOT>. Output: HAL compatibility_matrix.xml:14 [compatibility-matrix type=device version=4.0] GFX name=android.hidl.allocator format=hidl optional=false transport= versions=[1.0] interfaces=[IAllocator/ashmem] ; HAL compatibility_matrix.xml:30 [compatibility-matrix type=device version=4.0] - name=android.hidl.memory format=hidl optional=false versions=[1.0] interfaces=[IMapper/ashmem]"
+ },
+ {
+  "target": "zap",
+  "id": "01-F7",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.elf",
+  "claim": ".elf (5168 bytes) is an ELF32 EXEC file with e_machine 164, named Qualcomm Hexagon in the ELF header dump. e_entry is 0x1000, e_phnum is 1 and there are no section headers (e_shoff is 0 and e_shnum is 0). The same machine value is named QUALCOMM DSP6 Processor by a second ELF dump, so the name depends on the dump used.",
+  "evidence": "cd $FW && stat -c %s a740v3_zap.elf; llvm-readelf -h a740v3_zap.elf | grep -E 'Class|Type|Machine|Entry|program headers|section headers'; readelf -h a740v3_zap.elf | grep -E 'Type|Machine'. Output: 5168; Class ELF32; Type EXEC; Machine 'Qualcomm Hexagon' (llvm-readelf) and 'QUALCOMM DSP6 Processor' (readelf); Entry point address 0x1000; Start of section headers 0; Number of program headers 1; Number of section headers 0."
+ },
+ {
+  "target": "zap",
+  "id": "01-F8",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.mbn",
+  "claim": ".mbn is 14328 bytes (0x37f8) and is the same ELF image with the three-entry table. Bytes 0x0 to 0x93 equal .b00, bytes 0x1000 to 0x142f equal .b01, and bytes 0x2000 to 0x37f7 equal .b02.",
+  "evidence": "cd $FW && stat -c %s a740v3_zap.mbn; dd if=a740v3_zap.mbn bs=1 count=148 2>/dev/null | cmp - a740v3_zap.b00; dd if=a740v3_zap.mbn bs=1 skip=4096 count=1072 2>/dev/null | cmp - a740v3_zap.b01; dd if=a740v3_zap.mbn bs=1 skip=8192 count=6136 2>/dev/null | cmp - a740v3_zap.b02. Output: 14328; the three cmp commands print nothing, so each pair is identical (bytes 0x0-0x93 = b00, 0x1000-0x142f = b01, 0x2000-0x37f7 = b02)."
+ },
+ {
+  "target": "zap",
+  "id": "01-F10",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.b02",
+  "claim": "The hash segment (b02, mbn file offset 0x2000) begins with little-endian u32 words at segment offsets: +0x00 0x0, +0x04 0x7, +0x08 0x18, +0x0c 0x0, +0x10 0xe0, +0x14 0x90, +0x18 0x0, +0x1c 0x0.",
+  "evidence": "python3 -I -c \"import struct,sys; d=open(sys.argv[1],'rb').read(); print(' '.join('+0x%02x 0x%x' % (o, struct.unpack_from('<I', d, o)[0]) for o in range(0,0x20,4)))\" a740v3_zap.b02. Output: +0x00 0x0 +0x04 0x7 +0x08 0x18 +0x0c 0x0 +0x10 0xe0 +0x14 0x90 +0x18 0x0 +0x1c 0x0."
+ },
+ {
+  "target": "zap",
+  "id": "01-F11",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.b02",
+  "claim": "Hash segment (b02, 6136 bytes) layout: [0x00,0x68) header words, 13 nonzero bytes. [0x68,0x218) a 432-byte block with 205 nonzero bytes. [0x218,0x10a8) holds five X.509-style certificate structures placed back to back, C1 to C5, of 645, 772, 773, 772 and 766 bytes. [0x10a8,0x17f8) is 1872 bytes, all equal to 0xff.",
+  "evidence": "python3 -I on a740v3_zap.b02 (6136 bytes): count nonzero bytes in [0x00,0x68) and [0x68,0x218); read the DER SEQUENCE header (0x30 0x82) at 0x218, 0x49d, 0x7a1, 0xaa6, 0xdaa; check that the five certificates end at 0x10a8; count 0xff bytes in [0x10a8,0x17f8). Output: 13 and 205 nonzero bytes; certificate headers at 0x218, 0x49d, 0x7a1, 0xaa6, 0xdaa with lengths 645, 772, 773, 772, 766; end of certificates 0x10a8; 1872 of 1872 bytes in [0x10a8,0x17f8) are 0xff."
+ },
+ {
+  "target": "zap",
+  "id": "01-F14",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.b02",
+  "claim": "The hash segment contains five X.509-style certificate structures with these name and validity strings at hash-segment offsets (hex). C1 at 0x218 (645 bytes) has subject CN Eureka Qcom FW Signing Certificate at 0x338, notBefore 230516210606Z at 0x2b4 and notAfter 430511210606Z at 0x2c3. C2 at 0x49d (772 bytes), C3 at 0x7a1 (773 bytes), C4 at 0xaa6 (772 bytes) and C5 at 0xdaa (766 bytes) each have identical issuer and subject CN values Eureka_FW_Root_0, Eureka_FW_Root_1, Eureka_FW_Root_2 and Eureka_FW_Root, with notBefore strings at 0x53b, 0x83f, 0xb44 and 0xe46.",
+  "evidence": "python3 -I on a740v3_zap.b02: report every offset of each string with bytes.find. Output: 'Eureka Qcom FW Signing Certificate' at 0x338; '230516210606Z' at 0x2b4; '430511210606Z' at 0x2c3; 'Eureka_FW_Root_0' at 0x4d9, 0x566, 0x6a7; 'Eureka_FW_Root_1' at 0x7dd, 0x86a, 0x9ab; 'Eureka_FW_Root_2' at 0xae2, 0xb6f, 0xcb0; 'Eureka_FW_Root' at 0xde6 (inside the fifth certificate); the notBefore strings '230210214819Z' at 0x53b, '230210220104Z' at 0x83f, '230210220434Z' at 0xb44 and '230208001221Z' at 0xe46."
+ },
+ {
+  "target": "zap",
+  "id": "01-F18",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_zap.b01",
+  "claim": "Disassembling the first 64 bytes of .b01 with the hexagon triple (default CPU) yields ten brace-delimited packets: { r1 = memw(r5+#4) ; r4 = memub(r1+#0) }. The count does not hold: the same 64 bytes decode to 13 brace-delimited packets, and the words at file offsets 0x2c and 0x3c do not decode.",
+  "evidence": "python3 -I -c \"import sys; d=open(sys.argv[1],'rb').read()[:64]; print(' '.join('0x%02x' % b for b in d))\" a740v3_zap.b01 | llvm-mc -triple=hexagon -disassemble 2> warnings.txt | grep -c '^\\s*{'; grep -c 'invalid instruction encoding' warnings.txt; for o in 0x2c 0x3c; do python3 -I -c \"import sys; d=open(sys.argv[1],'rb').read(); o=int(sys.argv[2],16); print(' '.join('0x%02x' % b for b in d[o:o+4]))\" a740v3_zap.b01 $o | llvm-mc -triple=hexagon -disassemble 2>&1 | grep -c 'invalid instruction encoding'; done. Output: 13 brace blocks; 2 invalid-encoding warnings in the 64-byte run; one warning for the word at file offset 0x2c (0x90ac7378) alone and one for the word at 0x3c (0x98822007) alone. The first block is r1 = memw(r5+#4) and r4 = memub(r1+#0)."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-03",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "Block records start at 0x0b0 and sit between payloads. Header = {addr, size, dword +0x8, dword +0xc}; payload begins at header+0x10 and is size bytes.",
+  "evidence": "python3 -I on gmu_gen70200.bin: read the four block headers at 0x0b0, 0x29c, 0x10648 and 0x10680 as little-endian dwords {addr, size, +0x8, +0xc}; the payload is header+0x10 for size bytes. Output: 0xb0 addr 0x0 size 0x1dc, payload 0xc0-0x29c; 0x29c addr 0x4000 size 0x1039c, payload 0x2ac-0x10648; 0x10648 addr 0x10007f98 size 0x28, payload 0x10658-0x10680; 0x10680 addr 0x10007fdc size 0x18, payload 0x10690-0x106a8. The +0x8 and +0xc dwords are 0xefbeadde in all four headers."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-04",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "Descriptor versus block cross-match: descriptors at 0x00000000 (size 0x1dc), 0x00004000 (size 0x1039c) and 0x10007fdc (size 0x18) have payload blocks with the same addr and size, at block headers 0x0b0, 0x29c and 0x10680.",
+  "evidence": "python3 -I on gmu_gen70200.bin: print the eleven 16-byte descriptors at 0x00-0xaf (addr, size, type) and the block headers at 0x0b0, 0x29c and 0x10680. Output: descriptor 0 addr 0x0 size 0x1dc matches block 0xb0 addr 0x0 size 0x1dc; descriptor 1 addr 0x4000 size 0x1039c matches block 0x29c addr 0x4000 size 0x1039c; descriptor 8 addr 0x10007fdc size 0x18 matches block 0x10680 addr 0x10007fdc size 0x18."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-05",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "The first payload (file offset 0xc0) starts with four words 0x10007f80, 0x00000105, 0x00000145, 0x00000159. Words 1-3 have bit 0 set, which is the usual Thumb-mode bit. With bit 0 cleared, the words give 0x104, 0x144 and 0x158 bytes past the payload start, and the code at file offsets 0x1c4, 0x204 and 0x218 decodes as Thumb instructions, each opening with an ldr, ldr, lsl.w and add.w sequence.",
+  "evidence": "python3 -I on gmu_gen70200.bin: read the four words at 0xc0; then pipe the 16 bytes at 0x1c4, 0x204 and 0x218 into llvm-mc -triple=thumbv7 -disassemble. Output: words 0x10007f80 0x00000105 0x00000145 0x00000159; the code at 0x1c4, 0x204 and 0x218 decodes as ldr r0, [pc, #...]; ldr r1, [r0]; lsl.w r1, r1, #8; add.w r1, r1, #1 (at 0x1c4), #3 (at 0x204) and #4 (at 0x218); str r1, [r0]."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-07",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Descriptor parser gen7_gmu_parse_fw reads each 16-byte record as: +0x00 addr; +0x04 must be 0, and the first record with a non-zero word here ends the descriptor walk, and the function returns 0. Records whose type word at +0x08 is 1 or 7 are processed, and other records are skipped. The function is in msm_kgsl.ko of vendor_dlkm_a, not in gmu_gen70200.bin.",
+  "evidence": "llvm-objdump -dr --disassemble-symbols=gen7_gmu_parse_fw msm_kgsl.ko. Output: at 7e5d8 ldr w10, [x9, #0x4] is followed by cbnz w10, 0x7e808, and 0x7e808 returns w23 = 0 (the walk ends with return 0); at 7e5e4 and 7e5ec the type word at +0x8 is compared with 0x7 and 0x1 (b.eq to 0x7e5f4 processes the record); any other type branches back to the loop at 0x7e5b4. The record step is 0x10 (add x26, x9, #0x10 at 7e5c4)."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-08",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Loader gen7_gmu_load_fw reads block headers differently from the parser: +0x00 addr; +0x04 size. A zero size means skip 16 bytes. Otherwise the payload begins at header+0x10 and is size bytes long, and the next header starts directly after it.",
+  "evidence": "llvm-objdump -dr --disassemble-symbols=gen7_gmu_load_fw msm_kgsl.ko. Output: at 7ce10 add x21, x24, #0x10 (payload = header+0x10); the size is loaded from +0x4 at 7ce0c (ldr w3, [x24, #0x4]); cbz w3, 0x7cdf8 at 7ce14 skips a zero-size header with the next header at header+0x10; otherwise the payload is copied (kgsl_regmap_bulk_write or memcpy with size) and the next header is set at 7cdf4-7cdfc (add x21, x21, x9 with x9 = size). The address is read from +0x0 at 7ce1c (ldr w2, [x24])."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-09",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "The driver's own names for the block fields are addr and size, used in GMU block messages. No module string names the zero word, the type word, or the other two fields, which is not so: the block messages name addr and size. Only the zero word and the type word lack a name in the module.",
+  "evidence": "python3 -I on msm_kgsl.ko: read the GMU messages at the .rodata offsets used by gen7_gmu_load_fw (relocations at 0x7cf94 and 0x7cfcc) and gen7_gmu_parse_fw (relocations at 0x7e8d0, 0x7e8f0 and 0x7e914). Output: 'No backing memory for GMU FW block addr:0x%x size:0x%x' and 'Unknown block in GMU FW addr:0x%x size:0x%x' (both in gen7_gmu_load_fw); 'Invalid FW Block' (gen7_gmu_parse_fw, names no field); 'firmware_request_nowarn (%s) failed: %d' and 'Invalid prealloc block addr: 0x%x value:%d' (gen7_gmu_parse_fw). The block messages name addr and size; no message in these two functions names the zero word at +0x4 or the type word at +0x8."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-10",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "gmu_gen70200.bin contains no version or build identifier in any printable run of 5 characters or more: none of its 434 such runs contains the word version or build, or a dotted number. Of these runs, 164 contain four consecutive letters, among them routine names and diagnostic messages such as HfiMemReply, GmuPwrRequestPowerOn, IPCC_Attach Error and Invalid size. The other 270 runs contain no run of four letters.",
+  "evidence": "python3 -I on gmu_gen70200.bin: take every run of 5 or more bytes in 0x20-0x7e; count the runs, the runs containing version, build or a number with a dot between digits, and the runs containing four consecutive letters. Output: 434 runs; 0 contain version, build or a dotted number; 164 contain four consecutive letters; 270 contain no run of four letters."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-11",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "The driver obtains the GMU firmware version at runtime through HFI and checks it against a minimum, rather than reading it from the image. Strings: 'GMU FW version 0x%x does not satisfy the required minimum (0x%x)' is printed by gen7_gmu_version_info, the only function that refers to it. That function reads the version from five GMU registers with kgsl_regmap_read, makes no HFI call, and compares the first register value with a minimum stored at offset 0x50 of the structure that device offset 0x1508 points to. So the statement that the version is obtained through HFI does not hold for this function.",
+  "evidence": "llvm-objdump -dr --disassemble-symbols=gen7_gmu_version_info msm_kgsl.ko; readelf -rW msm_kgsl.ko; python3 -I on .rodata at file offset 0xda578 + 0x4ec9. Output: five kgsl_regmap_read calls with w1 = 0x1d3f8 to 0x1d3fc; the first value is compared with [x21 + 0x50] at 7da1c-7da20, where x21 = [x0 + 0x1508]; the only calls are kgsl_regmap_read and _dev_err, so there is no HFI call; the string at .rodata+0x4ec9 is 'GMU FW version 0x%x does not satisfy the required minimum (0x%x)'; the only relocations to it are at 0x7da4c and 0x7da50, both inside gen7_gmu_version_info."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-G-12",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/gmu_gen70200.bin",
+  "claim": "The GMU payload contains named firmware routines and diagnostics, for example HfiMemReply, HfiFeatureCtrl, GmuPwrRequestPowerOn, EcpSetupPreemptBuffers. The payload also holds diagnostic messages such as IPCC_Register Failed Arg.",
+  "evidence": "python3 -I on gmu_gen70200.bin: find each literal. Output: HfiMemReply at 0xaec8; HfiFeatureCtrl at 0xaed4; GmuPwrRequestPowerOn at 0xe968; EcpSetupPreemptBuffers at 0xaf4b; 'IPCC_Register Failed Arg' at 0x6a74."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-S-02",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
+  "claim": "The leading dwords are dword1=0x01511175, dword2=0x01004a5c, dword3=0x01511146, dword4=0x010024c8, dword5=0x010e4e50, dword6=0xb8020000, dword7=0xb80300ef.",
+  "evidence": "python3 -I on a740v3_sqe.fw: read dwords 1 to 7 as little-endian. Output: dword1 0x01511175, dword2 0x01004a5c, dword3 0x01511146, dword4 0x010024c8, dword5 0x010e4e50, dword6 0xb8020000, dword7 0xb80300ef."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-S-04",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "The SQE loader adreno_get_firmware copies file bytes from offset 4 to the end (size-4 bytes, 76,144 bytes = 19,036 dwords) into a kernel-global buffer. The buffer is allocated by kgsl_allocate_global, called with size-4 as its second argument and the string 'ucode' as its sixth argument. The copy writes to the address stored at offset 0x8 of the returned descriptor, and it runs only when the returned value is not an error pointer.",
+  "evidence": "llvm-objdump -dr --disassemble-symbols=adreno_get_firmware msm_kgsl.ko; readelf -rW msm_kgsl.ko; python3 -I on .rodata at 0xda578 + 0x2828. Output: kgsl_allocate_global is called with x1 = size - 4 (sub x1, x8, #0x4) and x5 = .rodata+0x2828, which reads 'ucode' (sixth argument); memcpy copies the file from data+4 (add x1, x9, #0x4) for size - 4 bytes to the address at [returned descriptor + 0x8]; the copy runs only when w20 is 0 (csel on cmn x0, #0x1, lsl #12), that is when the returned value is not an error pointer. The file size 76148 minus 4 is 76144 bytes, which the code stores as (size - 4) >> 2 = 19036 dwords at struct +0x8."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-S-05",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "The SQE firmware structure sits at device offset 0x1510 (gen7_microcode_read passes x0+0x1510). Its version field is at struct offset 0x10 (absolute 0x1520), and adreno_get_firmware stores the version there, taken from dword1 of the file under the version rule.",
+  "evidence": "llvm-objdump -dr --disassemble-symbols=gen7_microcode_read,adreno_get_firmware msm_kgsl.ko. Output: gen7_microcode_read computes x2 = x0 + 0x1510 (mov w8, #0x1510; add x2, x0, x8), the SQE structure, and passes the name from [x8 + 0x58] of the device structure; adreno_get_firmware stores the version with str w8, [x19, #0x10] at 3fdac, so the field is at struct offset 0x10, absolute 0x1520. The value comes from w8 = [data + 4], which is file dword1, under the rule that (dword1 & 0xf) == 0xa, which then takes bits 12-23 from dword3 (bfxil at 3fda8)."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-S-07",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
+  "claim": "dword4 is 0x010024c8: low 24 bits 0x24c8 = 9416, which indexes dword 0x01000000 (same top-byte pattern as dword4). dword5 is 0x010e4e50: low 24 bits 0x0e4e50 = 937552, which is past the end of the file (last dword index 19036).",
+  "evidence": "python3 -I on a740v3_sqe.fw: low 24 bits of dword4 and dword5; the dword at the index given by dword4 low 24 bits; the file's dword count. Output: dword4 low 24 bits 0x24c8 = 9416, and the dword at index 9416 is 0x01000000; dword5 low 24 bits 0x0e4e50 = 937552; the file has 19037 dwords (last index 19036)."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-S-08",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
+  "claim": "The SQE file ends with ASCII '01504202' at file offset 0x12964, followed by 'ESU$' and 'R' with three zero bytes. The last dword is 0x00000052. This is the file's final dword, at index 19,036 (0x4a5c) and file offset 0x12970, the last of 19,037 dwords. The file does not end with the string above: that string starts 16 bytes before the end.",
+  "evidence": "python3 -I on a740v3_sqe.fw: find '01504202' and print the last 16 bytes; read the last dword. Output: '01504202' at file offset 0x12964; the last 16 bytes are b'01504202ESU$R' followed by three zero bytes; the last dword is 0x00000052 at index 19036 (file offset 0x12970). The string starts 16 bytes before the end of the file."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-T-01",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/firmware/a740v3_sqe.fw",
+  "claim": "For both formats: the record tables, block walk, descriptor cross-match, SQE version rule and dword checks are tested. For gmu_gen70200.bin the record, block walk and descriptor cross-match checks hold (G-01, G-02, G-04). For a740v3_sqe.fw they do not apply: its first 16-byte record has a non-zero word at +0x04, so it is not in the GMU descriptor form, and a block header at offset 0 would end at 0x1511185, past the end of the 0x12974-byte file. The SQE version rule and the dword checks hold (S-03, S-06, S-07).",
+  "evidence": "python3 -I on a740v3_sqe.fw: read the first 16-byte record and compute the end of a block header at offset 0 from the word at +0x4. Output: word +0x4 of record 0 is 0x01511175, non-zero, so the file is not in the GMU descriptor form; a header at offset 0 would end at 0x10 + 0x01511175 = 0x1511185, past the file size 0x12974. The GMU checks hold for gmu_gen70200.bin (G-01, G-02, G-04)."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-X-01",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "msm_kgsl.ko contains both target file names as literal strings. gmu_gen70200.bin is the GMU name at offset 0x60 of adreno_gpu_core_gen7_6_0, which is the last of the 43 entries in adreno_gpulist. The SQE name a740v3_sqe.fw is also a literal string in the module, but it is not in that entry.",
+  "evidence": "python3 -I on msm_kgsl.ko: count each literal; readelf -sW for adreno_gpulist and adreno_gpu_core_gen7_6_0; readelf -rW for the pointers. Output: 'gmu_gen70200.bin' and 'a740v3_sqe.fw' each occur once. adreno_gpulist is 344 bytes (43 pointers); its last pointer at 0xcea8 is the adreno_gpu_core_gen7_6_0 structure at 0xe990 (216 bytes). Inside that structure, the pointer at +0x58 (0xe9e8) is 'a740v3_sqe.fw' and the pointer at +0x60 (0xe9f0) is 'gmu_gen70200.bin'. So the SQE name is in that entry, at +0x58."
+ },
+ {
+  "target": "sqe_gmu",
+  "id": "02-X-02",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "The GMU file name is read from device config +0x60 (fallback at +0x68) inside gen7_gmu_parse_fw, and the GMU firmware is requested through firmware_request_nowarn.",
+  "evidence": "llvm-objdump -dr --disassemble-symbols=gen7_gmu_parse_fw msm_kgsl.ko. Output: ldr x22, [x19, #0x1508] (device structure); ldr x21, [x22, #0x60] (GMU file name); firmware_request_nowarn is called at 7e854 with x1 = x21; if it fails, ldr x22, [x22, #0x68] (fallback name) at 7e85c and a second firmware_request_nowarn call at 7e874 with x1 = x22."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F2",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Module metadata: description '3D Graphics driver'; license 'GPL v2'; name 'msm_kgsl'; intree=Y; softdep 'pre: arm_smmu nvmem_qfprom'; vermagic '5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64'; depends 'qcom_iommu_util,qcom-scm,cmd-db,llcc-qcom,clk-qcom,log_gpu_error,mdt_loader,secure_buffer,mem_buf_dev'; alias 'of:N*T*Cqcom,kgsl-3d0' and 'of:N*T*Cqcom,kgsl-3d0C*'.",
+  "evidence": "python3 -I on msm_kgsl.ko: read the .modinfo section and split it at NUL bytes. Output: description=3D Graphics driver; license=GPL v2; softdep=pre: arm_smmu nvmem_qfprom; vermagic=5.10.205-01655-g5c5a360e9c21 SMP preempt mod_unload modversions aarch64; name=msm_kgsl; intree=Y; depends=qcom_iommu_util,qcom-scm,cmd-db,llcc-qcom,clk-qcom,log_gpu_error,mdt_loader,secure_buffer,mem_buf_dev; alias=of:N*T*Cqcom,kgsl-3d0; alias=of:N*T*Cqcom,kgsl-3d0C*."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F3",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "The module declares no module parameters (no parm= entries) and no author field. Only the modinfo keys listed in F2 are present.",
+  "evidence": "python3 -I on msm_kgsl.ko: the same .modinfo split. Output: nine entries (description, license, softdep, vermagic, name, intree, depends, alias, alias); none starts with parm= or author=."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F4",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Device, class and driver naming strings: device name kgsl-3d0 (with kgsl-3d as a related string); the bare string kgsl appears three times and is used as the class name, the character device region name and the name passed to dev_set_name in kgsl_core_init, as the name of the procfs and debugfs directories created in kgsl_core_procfs_init and kgsl_core_debugfs_init, and as the first field of 83 objects whose names begin with event_class_, such as event_class_kgsl_gpubusy.",
+  "evidence": "python3 -I on msm_kgsl.ko: count NUL-delimited 'kgsl' in .rodata; for each event_class_ symbol, follow the relocation at its offset 0 to its name string; llvm-objdump -dr --disassemble-symbols for kgsl_core_init, kgsl_core_procfs_init and kgsl_core_debugfs_init, with the ADR/ADD pairs that load the string. Output: three 'kgsl' strings at .rodata offsets 0x749a, 0xb080 and 0xb085; 83 event_class_ symbols, all of whose first field points to 'kgsl' (55 at stride 0x48 from 0xb080, 28 at stride 0x48 from 0xb085). In kgsl_core_init the string is loaded at 0x24 and 0x84 and 0xb8 and passed to alloc_chrdev_region (0x38), __class_create (0x98) and dev_set_name (0xc8, followed by device_register); kgsl_core_procfs_init passes it to proc_mkdir and kgsl_core_debugfs_init to debugfs_create_dir."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F6",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Device-tree match and related compatible strings: qcom,kgsl-3d0 (alias in F2); Adreno GPU compatibles qcom,adreno-gpu-a619-holi, qcom,adreno-gpu-a621, qcom,adreno-gpu-a660-shima, qcom,adreno-gpu-a662, qcom,adreno-gpu-gen6-3-26-0, qcom,adreno-gpu-gen7-0-0, qcom,adreno-gpu-gen7-0-1, qcom,adreno-gpu-gen7-3-0, qcom,adreno-gpu-gen7-4-0 and qcom,adreno-gpu-gen7-6-0.",
+  "evidence": "python3 -I on msm_kgsl.ko: list every string matching qcom,adreno-gpu- and test for the literal qcom,kgsl-3d0. Output: ten Adreno compatibles: qcom,adreno-gpu-a619-holi, -a621, -a660-shima, -a662, -gen6-3-26-0, -gen7-0-0, -gen7-0-1, -gen7-3-0, -gen7-4-0 and -gen7-6-0; qcom,kgsl-3d0 is present."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F7",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Firmware file names present as literal strings (26 concrete names): a300_pfp.fw, a300_pm4.fw, a530_gpmu.fw2, a530_pfp.fw, a530_pm4.fw, a530v2_seq.fw2, a530v3_gpmu.fw2, a530v3_seq.fw2, a540_gpmu.fw2, a612_rgmu.bin, a619_gmu.bin, a621_gmu.bin, a630_gmu.bin, a630_sqe.fw, a640_gmu.bin, a650_gmu.bin, a650_sqe.fw, a660_gmu.bin, a660_sqe.fw, a662_gmu.bin, a710_sqe.fw, a730_sqe.fw, a740v3_sqe.fw, c500_gmu.bin, gmu_gen70000.bin, gmu_gen70200.bin.",
+  "evidence": "python3 -I on msm_kgsl.ko: match names ending in .fw, .fw2 or .bin in .rodata. Output: 26 distinct names, the list given in the claim (a300_pfp.fw through gmu_gen70200.bin)."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F9",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Distinct uppercase KGSL_ tokens: 13. KGSL_EVENT_CANCELLED, KGSL_EVENT_RETIRED, KGSL_FENCE, KGSL_FT_DISABLE, KGSL_FT_OFF, KGSL_FT_REPLAY, KGSL_FT_SKIPCMD, KGSL_FT_SKIPFRAME, KGSL_FT_SKIPIB, KGSL_FT_TEMP_DISABLE, KGSL_FT_THROTTLE, KGSL_USER_MEM_TYPE_ADDR, KGSL_USER_MEM_TYPE_ION. The identifier IOCTL_KGSL_DEVICE_WAITTIMESTAMP is not counted because it begins with IOCTL_.",
+  "evidence": "python3 -I on msm_kgsl.ko: match KGSL_ tokens in every section and drop any preceded by IOCTL_; count of bare KGSL_DEVICE_WAITTIMESTAMP outside IOCTL_KGSL_DEVICE_WAITTIMESTAMP is 0. Output: 13 distinct tokens, all in .data: KGSL_EVENT_CANCELLED, KGSL_EVENT_RETIRED, KGSL_FENCE, KGSL_FT_DISABLE, KGSL_FT_OFF, KGSL_FT_REPLAY, KGSL_FT_SKIPCMD, KGSL_FT_SKIPFRAME, KGSL_FT_SKIPIB, KGSL_FT_TEMP_DISABLE, KGSL_FT_THROTTLE, KGSL_USER_MEM_TYPE_ADDR, KGSL_USER_MEM_TYPE_ION."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F11",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Unique kgsl_ symbol names: 489 after removing the .cfi_jt, .llvm and hash suffixes. Prefix counts: kgsl_ioctl_ 61, kgsl_iommu 37, kgsl_mmu 30.",
+  "evidence": "readelf -sW msm_kgsl.ko, then python3 -I: take every symbol name beginning kgsl_, strip the .cfi_jt, .llvm.<n> and $<hash> suffixes, count distinct names. Output: 677 symbol entries, 489 distinct names; prefixes kgsl_ioctl_ 61, kgsl_iommu 37 and kgsl_mmu 30."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F12",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Ioctl handler symbols: 61 distinct kgsl_ioctl_* names in the symbol table, not counting the bare kgsl_ioctl symbol (the .cfi_jt and .llvm suffixes removed). They include kgsl_ioctl_funcs, a local read-only object, and the global functions kgsl_ioctl_helper, kgsl_ioctl_copy_in and kgsl_ioctl_copy_out.",
+  "evidence": "readelf -sW msm_kgsl.ko, then python3 -I: take the kgsl_ioctl_ names after suffix removal (the bare kgsl_ioctl is not counted) and print binding and type of kgsl_ioctl_funcs, kgsl_ioctl_helper, kgsl_ioctl_copy_in and kgsl_ioctl_copy_out. Output: 61 distinct names; kgsl_ioctl_funcs is LOCAL OBJECT in .rodata; kgsl_ioctl_helper, kgsl_ioctl_copy_in and kgsl_ioctl_copy_out are GLOBAL FUNC in .text."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F14",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Exported symbols: six non-GPL exports from section __ksymtab: kgsl_add_rcu_notifier, kgsl_del_rcu_notifier, kgsl_get_stats, kgsl_gpu_frame_count, kgsl_gpu_num_freqs, kgsl_gpu_stat.",
+  "evidence": "python3 -I on msm_kgsl.ko: read the six 12-byte entries of __ksymtab and the name relocation at entry offset +4; __ksymtab_gpl is not present. Output: kgsl_add_rcu_notifier, kgsl_del_rcu_notifier, kgsl_get_stats, kgsl_gpu_frame_count, kgsl_gpu_num_freqs, kgsl_gpu_stat."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F15",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "No other module in the vendor_dlkm_a partition (262 .ko files) imports any of the six kgsl_ exports. The export linkage in this partition is one-directional: msm_kgsl.ko imports 35 of its 506 undefined symbols from nine sibling modules, and no module imports any symbol that msm_kgsl.ko defines.",
+  "evidence": "python3 -I over the 262 .ko files of vendor_dlkm_a: read defined and undefined symbols from .symtab of each module, and compare msm_kgsl.ko's undefined names with the other modules' definitions and imports. Output: msm_kgsl.ko has 506 named undefined symbols; 35 are defined by nine sibling modules (clk-qcom, cmd-db, llcc-qcom, log_gpu_error, mdt_loader, mem_buf_dev, qcom-scm, qcom_iommu_util, secure_buffer). No other module imports any of the six kgsl_ exports, and none imports any symbol that msm_kgsl.ko defines."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F17",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Undefined symbols with no exporter in this partition: 471 names. Among them are icc_put, icc_set_bw, icc_set_tag and of_icc_get, which no module in vendor_dlkm_a exports.",
+  "evidence": "same pass as F15: the undefined names of msm_kgsl.ko that no module in vendor_dlkm_a defines. Output: 471 names; icc_put, icc_set_bw, icc_set_tag and of_icc_get are among them, and no module defines any of the four."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F18",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Section sizes: .text 716632 bytes, .rodata 148096, .data 108880, .bss 17800 (NOBITS), __versions 32448, .modinfo 353, .symtab 482784, .strtab 254333.",
+  "evidence": "python3 -I on msm_kgsl.ko section headers. Output: .text 716632; .rodata 148096; .data 108880; .bss 17800 (NOBITS); __versions 32448; .modinfo 353; .symtab 482784; .strtab 254333."
+ },
+ {
+  "target": "kgsl",
+  "id": "03-F19",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_dlkm_a/msm_kgsl.ko",
+  "claim": "Ftrace event classes and tracepoints for kgsl events are present, for example event_class_kgsl_gpubusy, event_class_kgsl_mem_alloc, event_class_kgsl_readtimestamp.",
+  "evidence": "python3 -I on the .symtab of msm_kgsl.ko: look up the three names. Output: event_class_kgsl_gpubusy, event_class_kgsl_mem_alloc and event_class_kgsl_readtimestamp are each defined (section 20, size 72). The module also has 53 event_class_kgsl_ symbols in total."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F02",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "Every target's DT_SONAME equals its file name. lib64 copies are ELFCLASS64, EM_AARCH64, ET_DYN; lib copies are ELFCLASS32, EM_ARM, ET_DYN. No DT_RPATH or DT_RUNPATH entry is present in any of the eight targets in lib64 or lib.",
+  "evidence": "python3 -I with an ELF dynamic-table reader over the eight targets in lib64 and lib (three are zero-byte links to egl/ and are read from there): e_ident class, e_machine, e_type, DT_SONAME, DT_RPATH and DT_RUNPATH. Output: DT_SONAME equals the file name in all 16 copies; lib64 is ELFCLASS64 with machine 183 (AArch64); lib is ELFCLASS32 with machine 40 (ARM); every copy is ET_DYN (type 3); no copy has DT_RPATH or DT_RUNPATH."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F05",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/egl/libGLESv2_adreno.so",
+  "claim": "libGLESv2_adreno.so DT_NEEDED (10, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libllvm-glnext.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so and libm.so.",
+  "evidence": "python3 -I, DT_NEEDED of libGLESv2_adreno.so in lib64 and lib. Output: 10 entries in both copies: libadreno_utils.so, libgsl.so, libllvm-glnext.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F08",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/egl/libq3dtools_adreno.so",
+  "claim": "libq3dtools_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, liblog.so, libgsl.so, libc++.so, libc.so, libm.so, libdl.so.",
+  "evidence": "python3 -I, DT_NEEDED of libq3dtools_adreno.so in lib64 and lib. Output: 7 entries in both copies: libcutils.so, liblog.so, libgsl.so, libc++.so, libc.so, libm.so, libdl.so."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F09",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libadreno_app_profiles.so",
+  "claim": "libadreno_app_profiles.so DT_NEEDED (13, identical in lib64 and lib): libcutils.so, libhardware.so, libutils.so, libhidlbase.so, libhidlmemory.so, and android.hidl.memory@1.0.so, vendor.qti.qspmhal@1.0.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so.",
+  "evidence": "python3 -I, DT_NEEDED of libadreno_app_profiles.so in lib64 and lib. Output: 13 entries in both copies: libcutils.so, libhardware.so, libutils.so, libhidlbase.so, libhidlmemory.so, android.hidl.memory@1.0.so, vendor.qti.qspmhal@1.0.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F13",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/egl/libGLESv2_adreno.so",
+  "claim": "libGLESv2_adreno.so exports 500 defined dynamic symbols matching ^gl[A-Z] (GLES entry points). It exports no glX-prefixed names and no egl[A-Z] names. Its only cl-prefixed export is cl_gl_request_interface, which does not have the cl[A-Z] form.",
+  "evidence": "python3 -I over the defined dynamic symbols of libGLESv2_adreno.so, both copies. Output: 538 defined in lib64 and 539 in lib; 500 names match ^gl[A-Z] in both; none starts with glX or matches ^egl[A-Z]; the only name starting with cl is cl_gl_request_interface."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F15",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "Zero egl*, gl*, glX*, cl* and vk* exported names in libgsl.so, libadreno_utils.so, libq3dtools_adreno.so, libadreno_app_profiles.so and libar-gsl.so (lib64 and lib copies alike, each prefix matched at the start of the symbol name; libq3dtools_adreno.so exports names such as qCLShimAPI_clCreateImage, where cl is not at the start).",
+  "evidence": "python3 -I over the defined dynamic symbols of libgsl.so, libadreno_utils.so, libq3dtools_adreno.so, libadreno_app_profiles.so and libar-gsl.so, lib64 and lib copies. Output: each library has zero names starting with egl, gl, glX, cl or vk in both copies; the defined totals are 580, 109, 556, 6 and 189, the same in both copies."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F16",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libOpenCL_adreno.so",
+  "claim": "Version requirements (verneed) for libOpenCL_adreno.so, which is present in both copies. In the lib64 copy, libvndksupport.so requires LIBVNDKSUPPORT, libc.so requires LIBC and libdl.so requires LIBC. In the lib copy, libvndksupport.so requires LIBVNDKSUPPORT, libc.so requires LIBC and LIBC_N, and libdl.so requires LIBC.",
+  "evidence": "python3 -I, version needs (.gnu.version_r) of libOpenCL_adreno.so in both copies. Output: lib64: libc.so LIBC, libdl.so LIBC, libvndksupport.so LIBVNDKSUPPORT. lib: libc.so LIBC and LIBC_N, libdl.so LIBC, libvndksupport.so LIBVNDKSUPPORT."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F17",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "Version requirements for the other targets (same parse): libgsl.so: liblog.so LIBLOG; libsync.so LIBSYNC; libc.so LIBC, LIBC_N; libm.so LIBC; libdl.so LIBC. The lib64 and lib copies of libgsl.so list identical version requirements.",
+  "evidence": "python3 -I, version needs of libgsl.so in both copies. Output: libc.so LIBC and LIBC_N; libdl.so LIBC; liblog.so LIBLOG; libm.so LIBC; libsync.so LIBSYNC. The lib64 and lib lists are identical."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F18",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "The four lib64 copies checked (libgsl.so, libEGL_adreno.so, libGLESv2_adreno.so, libOpenCL_adreno.so) contain no .gnu.version_d section, so they define no symbol versions of their own. Every defined dynamic symbol in each copy has version index 1 (global), so none of them carries a version name.",
+  "evidence": "python3 -I over the four lib64 copies: presence of a .gnu.version_d section, and the versym value of every defined dynamic symbol. Output: no .gnu.version_d in libgsl.so, libEGL_adreno.so, libGLESv2_adreno.so or libOpenCL_adreno.so; every defined symbol has versym 1 (580, 151, 538 and 444 symbols)."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F19",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "Dynamic loader and property imports (undefined dynamic symbols, with version and providing library). libgsl.so: __android_log_print@LIBLOG, dlopen@LIBC, dlclose@LIBC, dlerror@LIBC and dlsym@LIBC (version LIBC required from libdl.so), and property_get (no version tag, so no providing library). The lib copy imports these named symbols with the same version names, but the two copies differ in other undefined symbols, for example the __aeabi_mem* helpers that the ARM copy imports.",
+  "evidence": "python3 -I over the undefined dynamic symbols of libgsl.so, both copies, with the version name of each. Output: both copies import __android_log_print@LIBLOG, dlopen@LIBC, dlclose@LIBC, dlerror@LIBC and dlsym@LIBC; property_get has no version tag. Only lib64 also imports memcpy and memset. Only lib also imports __aeabi_memclr, __aeabi_memclr8, __aeabi_memcpy, __aeabi_memset and __stack_chk_guard."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F21",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "Vendor and debug property names read as literal strings (property_get is imported by libgsl, libEGL, libGLESv2, libOpenCL and libq3dtools; property_set is imported only by libGLESv2 among the Adreno libraries covered here, in both the lib64 and lib copies). The covered set is the Adreno libraries directly in lib/ and lib64/ and in their egl/ subdirectories, with the hw/ subdirectory excluded. In that set, property_get is imported in both the lib64 and lib copies by libgsl.so, libEGL_adreno.so, libGLESv2_adreno.so, libOpenCL_adreno.so, libq3dtools_adreno.so, libq3dtools_esx.so and eglSubDriverAndroid.so, where libq3dtools_esx.so and eglSubDriverAndroid.so appear only in egl/; libGLESv1_CM_adreno.so, libOpenCL.so, libadreno_utils.so, libadreno_app_profiles.so and libar-gsl.so do not import it. The libq3dtools_esx.so file imports __system_property_set, a different symbol name, in both copies. The hw/ driver files lib/hw/vulkan.adreno.so and lib64/hw/vulkan.adreno.so import property_get, property_list and property_set.",
+  "evidence": "python3 -I over the Adreno-named .so files in lib64, lib and their egl/ subdirectories (hw/ excluded), reading the undefined dynamic symbols for property_get and property_set; libq3dtools_esx.so and hw/vulkan.adreno.so are read separately. Output: in both copies property_get is imported by eglSubDriverAndroid.so, libEGL_adreno.so, libGLESv2_adreno.so, libOpenCL_adreno.so, libgsl.so, libq3dtools_adreno.so and libq3dtools_esx.so; property_set is imported only by libGLESv2_adreno.so; libGLESv1_CM_adreno.so, libOpenCL.so, libadreno_utils.so, libadreno_app_profiles.so and libar-gsl.so import neither. libq3dtools_esx.so imports __system_property_set; hw/vulkan.adreno.so imports property_get, property_list and property_set."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F22",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libgsl.so",
+  "claim": "File paths present as literal strings in libgsl.so, identical in the lib64 and lib copies (18 whole strings): /dev/kgsl-3d0, /dev/kgsl-2d0, /dev/kgsl-2d1, /dev/dri, /dev/dri/%s, /dev/dri/renderD129 and /dev/ion; /data/misc/gpu/, /data/vendor/gpu/, /data/vendor/gpu/glslfs.txt, /data/vendor/gpu/glslvs.txt, /data/vendor/gpu/perfCounterDump.txt, /data/vendor/gpu/resolve_log.txt and /data/vendor/gpu/scdevdump.txt; /mnt/sdcard/profiler_records; and /proc/%d/maps, /proc/%d/smaps and /proc/meminfo.",
+  "evidence": "python3 -I, NUL-delimited whole-string search in libgsl.so, both copies. Output: 18 of 18 strings present in both copies."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F23",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/egl/libGLESv2_adreno.so",
+  "claim": "Literal sub-driver and related library names in libGLESv2_adreno.so (lib64): eglSubDriverAndroid.so, eglSubDriverDummy.so, eglSubDriverLE.so, libeglSubDriverFbdev.so, libeglSubDriverFreon.so, libeglSubDriverQnx.so, libeglSubDriverWayland.so, libeglSubDriverX11.so, eglSubDriverWin32.dll.",
+  "evidence": "python3 -I, NUL-delimited whole-string search in egl/libGLESv2_adreno.so (lib64). Output: 9 of 9 present: eglSubDriverAndroid.so, eglSubDriverDummy.so, eglSubDriverLE.so, libeglSubDriverFbdev.so, libeglSubDriverFreon.so, libeglSubDriverQnx.so, libeglSubDriverWayland.so, libeglSubDriverX11.so, eglSubDriverWin32.dll."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F24",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/egl/libGLESv2_adreno.so",
+  "claim": "GLES version strings: OpenGL ES 1.1, OpenGL ES 2.0, OpenGL ES 3.0 (also with a trailing space), OpenGL ES 3.1, OpenGL ES 3.2, GLSL ES versions OpenGL ES GLSL ES 3.00, OpenGL ES GLSL ES 3.10 and OpenGL ES GLSL ES 3.20 are present as literal strings in the egl/libGLESv2_adreno.so file in both lib64 and lib.",
+  "evidence": "python3 -I, substring search in egl/libGLESv2_adreno.so, lib64 and lib. Output: all eight literals are present in both copies, including 'OpenGL ES 3.0 ' with its trailing space."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F25",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/egl/libEGL_adreno.so",
+  "claim": "No EGL version literal exists in either libEGL_adreno.so copy: no string matches EGL followed by a version number, EGL_VERSION, or 'EGL N.N'. The EGL-prefixed exported names are 78 defined dynamic symbols matching ^egl[A-Z], and both copies export the same set.",
+  "evidence": "python3 -I, regex search of libEGL_adreno.so for 'EGL N.N', 'EGL N' and EGL_VERSION, and dynamic-symbol match ^egl[A-Z]. Output: no literal hit in either copy; 78 egl[A-Z] names in each copy, the same set in both."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F26",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libadreno_app_profiles.so",
+  "claim": "Vulkan-related literals in the eight targets: the bare token Vulkan appears in libadreno_app_profiles.so in both copies. libgsl.so in both copies contains the strings 'Error %d attempting to get the VK_DEVICE_ID property' and 'KGSL_PROP_VK_DEVICE_ID not available at run time'. No other one of the eight targets contains the token Vulkan or a VK_ name.",
+  "evidence": "python3 -I, search for the token Vulkan and for VK_ names in each of the eight targets, both copies; and the two strings in libgsl.so. Output: Vulkan appears once in libadreno_app_profiles.so (both copies) and in no other target; VK_ names appear only in libgsl.so (two each copy); both libgsl.so copies contain 'Error %d attempting to get the VK_DEVICE_ID property' and 'KGSL_PROP_VK_DEVICE_ID not available at run time'."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F27",
+  "label": "observed",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libadreno_app_profiles.so",
+  "claim": "The app-profile library defines two exported functions, ApplyApplicationProfile and AppProfDestroyStruct, plus four data objects that are C++ standard library template instantiations in the std::__1 namespace, all for char: the vtable and VTT of std::__1::basic_ostringstream, the vtable of std::__1::basic_stringbuf, and a construction vtable for std::__1::basic_ostream inside std::__1::basic_ostringstream.",
+  "evidence": "python3 -I over the defined dynamic symbols of libadreno_app_profiles.so, lib64 and lib; llvm-cxxfilt on the names. Output: FUNC ApplyApplicationProfile and AppProfDestroyStruct; four OBJECT symbols: vtable for std::__1::basic_ostringstream<char>, VTT for std::__1::basic_ostringstream<char>, construction vtable for std::__1::basic_ostream<char> in std::__1::basic_ostringstream<char>, and vtable for std::__1::basic_stringbuf<char>."
+ },
+ {
+  "target": "userspace",
+  "id": "04-F28",
+  "label": "verified",
+  "file": "<eureka-image>/mnt/vendor_a/lib64/libar-gsl.so",
+  "claim": "libar-gsl.so defines 189 dynamic symbols and imports no dl*, property or android_* symbols (lib64). libadreno_utils.so defines 109 dynamic symbols, imports 18 undefined dynamic symbols (lib64), 7 of them carrying the LIBC version requirement from libc.so, and none of them dl*, property or android_* symbols.",
+  "evidence": "python3 -I, lib64 libar-gsl.so and libadreno_utils.so: defined and undefined dynamic symbols and their version tags. Output: libar-gsl.so has 189 defined and 66 undefined symbols, none beginning dl, property or android_. libadreno_utils.so has 109 defined and 18 undefined; 7 of the undefined carry the LIBC tag from libc.so, and none begins dl, property or android_."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-composer-dup",
+  "label": "verified",
+  "file": "etc/init/vendor.qti.hardware.display.composer-service.rc:1",
+  "claim": "The same service name vendor.qti.hardware.display.composer is defined a second time at etc/init/vendor.qti.hardware.display.composer-service.rc:1 with binary /vendor/bin/hw/vendor.qti.hardware.display.composer-service, class hal animation, user system, group graphics drmrpc, capabilities SYS_NICE, socket pps stream 0660 system system and task_profiles ServiceCapacityLow ServicePerformance. The first definition at etc/init/hw/init.anorak.rc:330 also sets onrestart class_restart strata, override and disabled, which this one does not.",
+  "evidence": "sed -n 330,341p etc/init/hw/init.anorak.rc; cat etc/init/vendor.qti.hardware.display.composer-service.rc. Output: the service vendor.qti.hardware.display.composer is defined at composer-service.rc:1 (class hal animation, user system, group graphics drmrpc, capabilities SYS_NICE, onrestart restart surfaceflinger, socket pps stream 0660 system system, task_profiles ServiceCapacityLow ServicePerformance) and at init.anorak.rc:330 with the same options plus onrestart class_restart strata, override and disabled. The second definition has no onrestart class_restart strata line, no override and no disabled."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-allocator",
+  "label": "verified",
+  "file": "etc/init/vendor.qti.hardware.display.allocator-service.rc:1",
+  "claim": "Service vendor.qti.hardware.display.allocator runs /vendor/bin/hw/vendor.qti.hardware.display.allocator-service with class 'hal animation', user system, group 'graphics drmrpc', capabilities SYS_NICE, and onrestart 'restart surfaceflinger'.",
+  "evidence": "cat etc/init/vendor.qti.hardware.display.allocator-service.rc. Output: service vendor.qti.hardware.display.allocator /vendor/bin/hw/vendor.qti.hardware.display.allocator-service; class hal animation; user system; group graphics drmrpc; capabilities SYS_NICE; onrestart restart surfaceflinger."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-memtrack",
+  "label": "verified",
+  "file": "etc/init/memtrack_qti.rc:1",
+  "claim": "Service vendor.qti.hardware.memtrack runs /vendor/bin/hw/vendor.qti.hardware.memtrack-service with class hal, user nobody, group system, no capabilities, and the stanza in etc/init/memtrack_qti.rc sets no other options.",
+  "evidence": "cat etc/init/memtrack_qti.rc. Output: service vendor.qti.hardware.memtrack /vendor/bin/hw/vendor.qti.hardware.memtrack-service; class hal; user nobody; group system; no other option lines."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-health-dup",
+  "label": "verified",
+  "file": "etc/init/android.hardware.health@2.1-service.rc:1",
+  "claim": "Service health-hal-2-1 runs /vendor/bin/hw/android.hardware.health@2.1-service (exec label hal_health_default_exec) with class 'hal charger', user system, group system, capabilities WAKE_ALARM BLOCK_SUSPEND, and file /dev/kmsg w.",
+  "evidence": "cat etc/init/android.hardware.health@2.1-service.rc; sed -n 237,246p etc/init/hw/init.anorak.rc; sed -n 41p etc/selinux/vendor_file_contexts. Output: service health-hal-2-1 /vendor/bin/hw/android.hardware.health@2.1-service with class hal charger, user system, group system, capabilities WAKE_ALARM BLOCK_SUSPEND, file /dev/kmsg w; the same service is also defined at init.anorak.rc:237. File contexts line 41 labels the binary hal_health_default_exec."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-surfaceflinger",
+  "label": "verified",
+  "file": "etc/init/hw/init.anorak.rc:342",
+  "claim": "Service surfaceflinger runs /system/bin/surfaceflinger with class 'core animation', user system, group 'graphics drmrpc readproc', capabilities SYS_NICE, onrestart restart zygote, task_profiles ProcessCapacityHigh HighPerformance, and three stream sockets pdx/system/vr/display/client, pdx/system/vr/display/manager and pdx/system/vr/display/vsync, each with mode 0666 and owner system and group graphics.",
+  "evidence": "sed -n 342,354p etc/init/hw/init.anorak.rc. Output: service surfaceflinger /system/bin/surfaceflinger; class core animation; user system; group graphics drmrpc readproc; capabilities SYS_NICE; onrestart restart zygote; task_profiles ProcessCapacityHigh HighPerformance; three socket lines pdx/system/vr/display/client, pdx/system/vr/display/manager and pdx/system/vr/display/vsync, each stream 0666 system graphics."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-display-property-handler",
+  "label": "verified",
+  "file": "etc/init/display_property_handler.rc:2",
+  "claim": "Service display_property_handler runs /vendor/bin/display_property_handler (exec label disp_prop_handler_exec, vendor_file_contexts line 468) with class main, user system, group system, and the options disabled and oneshot. The same rc file starts it from an on property:vendor.skip.init=0 && property:display.enable_ddic_cac=* action.",
+  "evidence": "cat etc/init/display_property_handler.rc; sed -n 468p etc/selinux/vendor_file_contexts. Output: service display_property_handler /vendor/bin/display_property_handler; class main; user system; group system; disabled; oneshot; on property:vendor.skip.init=0 && property:display.enable_ddic_cac=* starts it. File contexts line 468 labels the binary disp_prop_handler_exec."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-charger-graphics-group",
+  "label": "verified",
+  "file": "etc/init/hw/init.anorak.rc:216",
+  "claim": "Service charger (/system/bin/charger, class charger, seclabel u:r:charger:s0, user system, group 'system graphics input', capabilities SYS_BOOT, disabled, file /dev/kmsg w, file /sys/fs/pstore/console-ramoops-0 r and file /sys/fs/pstore/console-ramoops r).",
+  "evidence": "sed -n 216,226p etc/init/hw/init.anorak.rc. Output: service charger /system/bin/charger; class charger; seclabel u:r:charger:s0; user system; group system graphics input; capabilities SYS_BOOT; file /dev/kmsg w; file /sys/fs/pstore/console-ramoops-0 r; file /sys/fs/pstore/console-ramoops r; disabled."
+ },
+ {
+  "target": "initsel",
+  "id": "05-svc-perfservice-policy",
+  "label": "verified",
+  "file": "etc/selinux/vendor_file_contexts:102",
+  "claim": "No service in the scanned vendor rc set starts hal_perfservice. Its executable path is /odm/bin/hw/perf_service (file contexts line 102, label hal_perfservice_exec). The perfservice service that runs it is defined in the odm file etc/init/perfservice.rc, outside the vendor set. The only vendor-set reference to these binaries is an exec_background of /odm/bin/set_hint in etc/init/hw/init.anorak.power.rc, and that path carries the same label (file contexts line 114), so the exec runs in the hal_perfservice domain (typetransition at vendor_sepolicy.cil line 3586).",
+  "evidence": "grep -rn 'perf_service\\|set_hint' etc/init; sed -n '102p;114p' etc/selinux/vendor_file_contexts; sed -n 3586p etc/selinux/vendor_sepolicy.cil; The inventory has odm_a etc/init/perfservice.rc, which defines the service. Output: the only reference in the vendor rc set is exec_background - root root system -- /odm/bin/set_hint in etc/init/hw/init.anorak.power.rc:2; file contexts line 102 labels /odm/bin/hw/perf_service hal_perfservice_exec and line 114 labels /odm/bin/set_hint hal_perfservice_exec; vendor_sepolicy.cil:3586 is (typetransition init_32_0 hal_perfservice_exec process hal_perfservice). The odm file etc/init/perfservice.rc defines service perfservice /odm/bin/hw/perf_service --schedutil."
+ },
+ {
+  "target": "initsel",
+  "id": "05-label-kgsl-node",
+  "label": "verified",
+  "file": "etc/selinux/vendor_file_contexts:381",
+  "claim": "/dev/kgsl-3d0 is labelled gpu_device (vendor_file_contexts line 381). The type gpu_device is declared at etc/selinux/plat_pub_versioned.cil:888 of vendor_a and its versioned attribute gpu_device_32_0 is declared at plat_pub_versioned.cil:889.",
+  "evidence": "sed -n 381p etc/selinux/vendor_file_contexts; sed -n 888,889p etc/selinux/plat_pub_versioned.cil. Output: /dev/kgsl-3d0 u:object_r:gpu_device:s0 at line 381; (type gpu_device) at plat_pub_versioned.cil:888 and (typeattribute gpu_device_32_0) at line 889."
+ },
+ {
+  "target": "initsel",
+  "id": "05-label-dri-graphics-device",
+  "label": "verified",
+  "file": "etc/selinux/vendor_file_contexts:219",
+  "claim": "The graphics_device label covers /dev/dri/card[0-9] (line 219), /dev/spec_sync (line 387), /dev/dri/controlD64 (line 399) and /dev/dri/renderD128 (line 400).",
+  "evidence": "sed -n '219p;387p;399p;400p' etc/selinux/vendor_file_contexts. Output: /dev/dri/card[0-9] (219), /dev/spec_sync (387), /dev/dri/controlD64 (399) and /dev/dri/renderD128 (400), each labelled u:object_r:graphics_device:s0."
+ },
+ {
+  "target": "initsel",
+  "id": "05-label-gpu-firmware",
+  "label": "verified",
+  "file": "etc/selinux/vendor_file_contexts:231",
+  "claim": "The /vendor/firmware(/.*)? path is labelled firmware_file (vendor_file_contexts line 231; type declared at vendor_sepolicy.cil:843). The GPU-related firmware files a740v3_sqe.fw, a740v3_zap.b00, a740v3_zap.b01, a740v3_zap.b02, a740v3_zap.elf, a740v3_zap.mbn, a740v3_zap.mdt and gmu_gen70200.bin in the vendor_a partition carry the same SELinux label, u:object_r:firmware_file:s0.",
+  "evidence": "sed -n 231p etc/selinux/vendor_file_contexts; sed -n 843p etc/selinux/vendor_sepolicy.cil; ls firmware in the vendor_a extract. Output: /vendor/firmware(/.*)? u:object_r:firmware_file:s0 at line 231; (type firmware_file) at vendor_sepolicy.cil:843. The GPU firmware files in vendor_a/firmware are a740v3_sqe.fw, a740v3_zap.b00, a740v3_zap.b01, a740v3_zap.b02, a740v3_zap.elf, a740v3_zap.mbn, a740v3_zap.mdt and gmu_gen70200.bin, all matched by that rule."
+ },
+ {
+  "target": "initsel",
+  "id": "05-label-adreno-libs",
+  "label": "verified",
+  "file": "etc/selinux/vendor_file_contexts:147",
+  "claim": "Adreno user-space libraries are labelled same_process_hal_file by vendor file contexts at lines 147, 168, 170-175, 181, 185-188, 191-192 and 195, covering libadreno_utils.so, libVkLayer_ADRENO_qprofiler.so, vulkan.adreno.so, libEGL_adreno.so, libGLESv1_CM_adreno.so, libGLESv2_adreno.so, libadreno_app_profiles.so, libRSDriver_adreno.so, librs_adreno.so, librs_adreno_sha1.so, libadreno_compiler_core.so, libadreno_compiler_gfx.so, libOpenCL_adreno.so, libadreno_compiler_cl.so and libq3dtools_adreno.so. Line 175, the last entry of the 170-175 range, is not Adreno-named: it names libgpudataproducer.so, which carries the same label and has no file under lib or lib64 in the vendor_a partition.",
+  "evidence": "sed -n '147p;168p;170,175p;181p;185,188p;191,192p;195p' etc/selinux/vendor_file_contexts; python3 -I over data/inventory/files.tsv for partition vendor_a and 'gpudataproducer' in the path. Output: lines 147, 168, 170-175, 181, 185-188, 191-192 and 195 use same_process_hal_file. Line 175 is /vendor/lib(64)?/libgpudataproducer\\.so. The inventory has 0 vendor_a rows for libgpudataproducer.so (1369 vendor_a rows in total)."
+ },
+ {
+  "target": "initsel",
+  "id": "05-types-gpu-declared",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:849",
+  "claim": "GPU, graphics-HAL and related types declared in vendor_sepolicy.cil: sysfs_graphics (865), proc_gpu_error (849), proc_kgsl_dbg (853), vendor_sysfs_kgsl (927) and vendor_sysfs_kgsl_proc (929). The list is not exhaustive: the same file declares nine other types whose names contain gpu, kgsl or graphics, including hal_graphics_allocator_default (521) and hal_graphics_composer_default (527).",
+  "evidence": "grep -n -E '^\\(type [^ )]*(gpu|kgsl|graphics)[^ )]*\\)' etc/selinux/vendor_sepolicy.cil. Output: (type proc_gpu_error) 849; (type proc_kgsl_dbg) 853; (type sysfs_graphics) 865; (type vendor_sysfs_kgsl) 927; (type vendor_sysfs_kgsl_proc) 929; and nine others: hal_graphics_allocator_default 521, hal_graphics_allocator_default_tmpfs 523, hal_graphics_allocator_default_exec 525, hal_graphics_composer_default 527, hal_graphics_composer_default_exec 529, gpu_config_override_file 1123, hal_oculus_gpucontrol_default 1183, hal_oculus_gpucontrol_default_exec 1185, hal_oculus_gpucontrol_hwservice 1239."
+ },
+ {
+  "target": "initsel",
+  "id": "05-allow-kgsl-sysfs-read",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:1919",
+  "claim": "Allow rules granting domains access to vendor_sysfs_kgsl or vendor_sysfs_kgsl_proc, by line: bootanim_32_0 (1919-1921); base_typeattr_546_32_0 (1969-1974); hal_graphics_allocator_default (2116-2118); hal_graphics_composer_default (2146-2148); hal_memtrack_default (2221-2223); hal_perfservice (2292-2294, 2304); priv_app_32_0 (2552-2554); surfaceflinger_32_0 (2779-2781); system_app_32_0 (2797-2799). These are the direct allow rules in vendor_sepolicy.cil that name either type as target (31 lines). Two more domains reach both types through allow rules on the sysfs_type attribute, which holds both types (line 210): tee_32_0 (1797-1799) and vendor_subsystem_ramdump (2770-2772). base_typeattr_546_32_0 is an attribute that holds every domain except isolated_app_32_0 (line 3940). Rules in plat_sepolicy.cil that grant access to these types through the same attribute are not listed here.",
+  "evidence": "grep -n -E '^\\(allow [^ ]+ vendor_sysfs_kgsl(_proc)? ' etc/selinux/vendor_sepolicy.cil. Output: 31 lines: 1919-1921 (bootanim_32_0), 1969-1974 (base_typeattr_546_32_0), 2116-2118 (hal_graphics_allocator_default), 2146-2148 (hal_graphics_composer_default), 2221-2223 (hal_memtrack_default), 2292-2294 and 2304 (hal_perfservice), 2552-2554 (priv_app_32_0), 2779-2781 (surfaceflinger_32_0), 2797-2799 (system_app_32_0). sysfs_type at line 210 lists vendor_sysfs_kgsl and vendor_sysfs_kgsl_proc; the rules at 1797-1799 (tee_32_0) and 2770-2772 (vendor_subsystem_ramdump) target sysfs_type; base_typeattr_546_32_0 is typeattributeset at line 3940 excluding isolated_app_32_0."
+ },
+ {
+  "target": "initsel",
+  "id": "05-allow-gpu-proc-and-config",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:2164",
+  "claim": "proc_gpu_error access: hal_health_default (2164 dir search; 2168 file ioctl read write getattr lock append map open watch watch_reads). proc_kgsl_dbg access: shell_32_0 (2687-2689). gpu_config_override_file access: appdomain (3015), hal_graphics_allocator_default (3016) and hal_graphics_composer_default (3017) with file ioctl read getattr lock map open watch watch_reads, and a dontaudit for domain (3018) with the same permissions.",
+  "evidence": "sed -n '2164p;2168p;2687,2689p;3015,3018p' etc/selinux/vendor_sepolicy.cil. Output: 2164 allow hal_health_default proc_gpu_error (dir (search)); 2168 allow hal_health_default proc_gpu_error (file (ioctl read write getattr lock append map open watch watch_reads)); 2687-2689 allow shell_32_0 proc_kgsl_dbg; 3015 allow appdomain gpu_config_override_file (file (ioctl read getattr lock map open watch watch_reads)); 3016 and 3017 the same for hal_graphics_allocator_default and hal_graphics_composer_default; 3018 dontaudit domain gpu_config_override_file with the same permissions."
+ },
+ {
+  "target": "initsel",
+  "id": "05-allow-gpu-device-ioctl",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:1755",
+  "claim": "gpu_device_32_0 chr_file rules: mediacodec read, write, getattr, lock, append, map, open, watch (1755). allowx ioctl command-number ranges on chr_file are granted to priv_app_32_0 (1992), vrdevicemanagerserver_32_0 (1993), base_typeattr_548_32_0 (1994) and hal_oculus_sensors_default (2247), and base_typeattr_548_32_0 is blocked from the 0x9c0-0x9c1 range by a neverallowx rule (1995). The rule at line 1755 also grants mediacodec the watch_reads permission on gpu_device_32_0 chr_file.",
+  "evidence": "sed -n '1755p;1992,1995p;2247p' etc/selinux/vendor_sepolicy.cil. Output: 1755 allow mediacodec gpu_device_32_0 (chr_file (ioctl read write getattr lock append map open watch watch_reads)); allowx on gpu_device_32_0 chr_file for priv_app_32_0 (1992), vrdevicemanagerserver_32_0 (1993), base_typeattr_548_32_0 (1994) and hal_oculus_sensors_default (2247); 1995 neverallowx base_typeattr_548_32_0 gpu_device_32_0 (ioctl chr_file (((range 0x9c0 0x9c1)))))."
+ },
+ {
+  "target": "initsel",
+  "id": "05-allow-gpucontrol-policy",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil:3327",
+  "claim": "hal_oculus_gpucontrol policy: hwservice find for client (3327), add and find for server (3328), hwservice_manager add for hidl_base (3329), neverallow rules at lines 3330 and 3331 forbid every domain other than hal_oculus_gpucontrol_server from adding hal_oculus_gpucontrol_hwservice, and every domain other than hal_oculus_gpucontrol_client and hal_oculus_gpucontrol_server from finding it (base_typeattr_581_32_0, defined at line 3870, and base_typeattr_582_32_0, defined at line 3868).",
+  "evidence": "sed -n '3327,3331p;3868p;3870p' etc/selinux/vendor_sepolicy.cil. Output: 3327 allow hal_oculus_gpucontrol_client hal_oculus_gpucontrol_hwservice (hwservice_manager (find)); 3328 the server add and find; 3329 the server add on hidl_base_hwservice_32_0; 3330 neverallow base_typeattr_581_32_0 hal_oculus_gpucontrol_hwservice (add); 3331 neverallow base_typeattr_582_32_0 hal_oculus_gpucontrol_hwservice (find); 3868 defines base_typeattr_582_32_0 as domains except the client and server; 3870 defines base_typeattr_581_32_0 as domains except the server."
+ },
+ {
+  "target": "initsel",
+  "id": "05-allow-graphics-domain-rules",
+  "label": "verified",
+  "file": "etc/selinux/vendor_sepolicy.cil",
+  "claim": "The rules that name a graphics, memtrack, health, syncboss, disp_prop_handler, surfaceflinger, hal_perfservice or graphics_device type total 324 lines in vendor_sepolicy.cil: 302 allow, 11 dontaudit, 10 typetransition and 1 neverallow.",
+  "evidence": "python3 -I over vendor_sepolicy.cil: take each line that begins with an allow, dontaudit, typetransition or neverallow rule and contains graphics, memtrack, health, syncboss, disp_prop_handler, surfaceflinger, hal_perfservice or graphics_device. Output: allow 302, dontaudit 11, typetransition 10, neverallow 1; total 324."
+ },
+ {
+  "target": "initsel",
+  "id": "05-vintf-gfx-hals",
+  "label": "verified",
+  "file": "vintf/vendor_a/vendor.qti.hardware.display.composer-service.xml:72",
+  "claim": "Graphics HAL entries declared by the vintf manifests: vendor.qti.hardware.display.composer@3.2 IQtiComposer/default (hwbinder, composer-service.xml:72), android.hardware.graphics.composer@2.4 IComposer/default (hwbinder, vendor.qti.hardware.display.composer-service.xml:81), android.hardware.graphics.allocator@4.0 IAllocator/default (hwbinder, vendor.qti.hardware.display.allocator-service.xml:30), vendor.qti.hardware.display.allocator@4.0 IQtiAllocator/default (hwbinder, vendor.qti.hardware.display.allocator-service.xml:39), android.hardware.graphics.mapper@4.0 IMapper/default (passthrough, android.hardware.graphics.mapper-impl-qti-display.xml:39), vendor.qti.hardware.display.mapper@4.0 IQtiMapper/default (passthrough, android.hardware.graphics.mapper-impl-qti-display.xml:30), android.hardware.memtrack IMemtrack/default (aidl, memtrack_qti.xml:30), vendor.oculus.hardware.graphics.composer@1.1 IComposer/default (passthrough, odm_a), vendor.oculus.hardware.graphics.gpucontrol@1.0 IGpuControl/default (passthrough, odm_a) and android.hardware.graphics.composer@2.4 IComposer/display (hwbinder, system_ext_a).",
+  "evidence": "sed -n 72,84p of the composer-service manifest; sed -n 28,46p of the allocator-service manifest; sed -n 28,41p of android.hardware.graphics.mapper-impl-qti-display.xml; sed -n 28,34p of memtrack_qti.xml; the odm_a and system_ext_a manifests (name, transport, version, instance). Output: <hal> at line 72 (vendor.qti.hardware.display.composer 3.2, IQtiComposer/default, hwbinder); <hal> at 81 (android.hardware.graphics.composer 2.4, hwbinder, IComposer/default at line 88); allocator manifest: <hal> at 30 (android.hardware.graphics.allocator 4.0, IAllocator/default, hwbinder) and at 39 (vendor.qti.hardware.display.allocator 4.0, IQtiAllocator/default, hwbinder); mapper manifest: <hal> at 30 (vendor.qti.hardware.display.mapper 4.0, IQtiMapper/default, passthrough) and at 39 (android.hardware.graphics.mapper, passthrough); memtrack_qti.xml: <hal> at 30 (aidl android.hardware.memtrack, IMemtrack/default); odm_a: vendor.oculus.hardware.graphics.composer 1.1 IComposer/default and vendor.oculus.hardware.graphics.gpucontrol 1.0 IGpuControl/default, both passthrough; system_ext_a: android.hardware.graphics.composer 2.4 IComposer/display, hwbinder."
+ },
+ {
+  "target": "initsel",
+  "id": "05-rc-scan-summary",
+  "label": "verified",
+  "file": "etc/init",
+  "claim": "The init rc set contains 39 .rc files with 60 service definitions and 79 action blocks. No service has a direct GPU term (gpu, kgsl, adreno, /dev/dri, or mali) in its name, executable path or option lines. The set is the vendor_a etc/init tree, including the six files under etc/init/hw, and not the .rc files on the other partitions.",
+  "evidence": "find etc/init -name '*.rc' | wc -l; grep -c '^service ' over etc/init/*.rc and etc/init/hw/*.rc; grep -c '^on ' over the same files; grep -rn -i -E 'gpu|kgsl|adreno|/dev/dri|mali' over etc/init. Output: 39 .rc files, 60 service lines, 79 on lines; every GPU term is in an on-action or comment line (for example write /sys/class/kgsl/kgsl-3d0/bcl at init.anorak.power.rc:22, and chmod on mali_systrace in the late-init action of android.hardware.atrace@1.0-service.rc:7), and none is in a service block."
  }
 ]

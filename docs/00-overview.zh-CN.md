@@ -53,10 +53,10 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 声明与证据
 
-每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。第 01 至 05 页部分发现的复现记录位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json) 中。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
+每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。第 01 至 05 页的每项发现都有复现记录，位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json) 中。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
 
 ## 限制
 
-- 镜像的引导链、TrustZone、虚拟机监控器和内核都不在 super 镜像中，因此 Greatwhite 研究中搁置的项目（对象 `0x91`、OEM 密钥读取器和 SBL1 跳转）无法通过这些分区重新核查。
+- 镜像的引导链、TrustZone、虚拟机监控器和内核都不在 super 镜像中，因此未决的引导链项目（对象 `0x91`、OEM 密钥读取器和 SBL1 跳转）无法通过这些分区重新核查。
 - 这些文档未确立固件签名及其来源。页面描述的是挂载后的字节内容。
 - 行为描述基于名称、字符串、配置和静态结构。未使用任何设备。

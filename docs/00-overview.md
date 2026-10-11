@@ -53,10 +53,10 @@ The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](
 
 ## Claims and their evidence
 
-Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. Reproduction records for some findings on pages 01 to 05 are in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
+Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. Every finding on pages 01 to 05 has a reproduction record in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
 
 ## Limits
 
-- The image's boot chain, TrustZone, hypervisor and kernel are not in the super image, so the stalled items from the Greatwhite research (object `0x91`, the OEM key reader and the SBL1 jump) cannot be rechecked from these partitions.
+- The image's boot chain, TrustZone, hypervisor and kernel are not in the super image, so the open boot-chain items (object `0x91`, the OEM key reader and the SBL1 jump) cannot be rechecked from these partitions.
 - The firmware signatures and their provenance are not established by these documents. The pages describe the bytes as mounted.
 - Behaviour is described from names, strings, configuration and static structure. No device was used.

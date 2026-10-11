@@ -55,7 +55,7 @@ The super image holds the dynamic partitions. `boot`, `vendor_boot` and the kern
 
 ## Evidence
 
-- `data/gpu/confirmed_findings.json`: 31 reproduction records for GPU findings, each with the command and output that reproduce it. They do not cover every finding on pages 01 to 05.
+- `data/gpu/confirmed_findings.json`: one reproduction record for each of the 105 findings on pages 01 to 05, with the command and output that reproduce it.
 - `data/gpu/partitions.tsv`: the logical partitions in the super image, with sizes and SHA-256 prefixes.
 - `data/gpu/uncovered_candidates.json`: 143 image paths, each with a classification note.
 - `data/inventory/files.tsv`: every file and symlink in the seven partitions odm_a, odm_dlkm_a, product_a, system_a, system_ext_a, vendor_a and vendor_dlkm_a, with its subsystem, size, MIME type and SHA-256.
