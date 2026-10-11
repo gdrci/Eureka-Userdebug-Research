@@ -35,7 +35,7 @@ The role table has one row for each of the 243 files in this group (153 verified
 - **D10** (verified): Data.msc and Data20.msc are text WLAN firmware message catalogs. Each has a VERSION:536936572 header and id-coded records of the form id,args,[ file : line ] text: 10,298 records in Data.msc and 10,579 in Data20.msc.
 - **D10b** (inferred): regdb.bin is a WLAN regulatory database in binary form; its record layout was not decoded.
 - **D11** (verified): xra_config_render and xra_config_capture are JSON configs for the XRA audio pipeline. They name resource files under /vendor/lib/rfsa/adsp/xra_resources, pin mappings and sampling (48 kHz, sample types), and debug output under /data/data_collection.
-- **D12** (observed): xra_render_capi.so and xra_capture_capi.so are DSP6 CAPI modules for XRA. Their strings include xra_capi_get_static_properties, 13 capi_utils_props_* helper names and C++ symbols in the facebook2xr5audio namespace. readelf does not list xra_capi_get_static_properties in the dynamic symbol table.
+- **D12** (observed): xra_render_capi.so and xra_capture_capi.so are DSP6 CAPI modules for XRA. Their strings include xra_capi_get_static_properties, 13 capi_utils_props_* helper names and C++ symbols in the facebook2xr5audio namespace. The dynamic symbol table does not list xra_capi_get_static_properties.
 - **D13** (observed): The DSP-side FastRPC shell libraries (fastrpc_shell_0, fastrpc_shell_3, fastrpc_shell_unsigned_3) are DSP6 DYN objects with no NEEDED entries and about 1,550 to 1,600 defined global functions. Their exports include the HAP and qurt APIs. The synx library exports the synx_* sync-object API.
 - **D13b** (observed): Several DSP skel libraries carry QAIC-generated invoke entry points (for example loadalgo_skel_handle_invoke_qaic_version, sysmonquery_skel_handle_invoke_qaic_version), indicating the FastRPC IDL skel pattern.
 - **D14** (verified): The five servreg JSON files (adspr, cdspr, adsps, adspua, battmgr) declare an sr_domain and one or two sr_service entries with QMI instance IDs 74 (adsp) and 76 (cdsp). adspua.jsn adds an avs audio service entry.
@@ -61,7 +61,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Gaps
 
-- Export tables could not be enumerated for several DSP libraries: readelf --dyn-syms reports no defined symbols for libdspCV_skel.so, libhexagon_skel.so, libdfs_skel.so, libboltEva_skel.so, libQnnBoltnnOpPackageV69.so, the rfsa copy of libevadsp_3_0.so, and the XRA CAPI modules. Their roles rest on names, sonames and strings.
+- Several DSP libraries have no defined symbols in their export tables: libdspCV_skel.so, libhexagon_skel.so, libdfs_skel.so, libboltEva_skel.so, libQnnBoltnnOpPackageV69.so, the rfsa copy of libevadsp_3_0.so, and the XRA CAPI modules. Their roles rest on names, sonames and strings.
 - Hexagon, Xtensa, ARM and AArch64 image bodies were not disassembled. The functions of the EVA, SPSS, VPU, attestation, sensor-lock, OVR and trusted-application images are inferred from names and strings only.
 - regdb.bin layout was not decoded. The Eureka_Dev1.efm8 format was not decoded.
 - The bodies of the adsp.b31 segment (p_filesz 0 in the program header, 7528-byte file) and of the zero-length segments were not interpreted.

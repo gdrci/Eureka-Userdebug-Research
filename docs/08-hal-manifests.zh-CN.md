@@ -48,7 +48,7 @@ hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载
 
 | ID | 结论 | 原因 |
 |---|---|---|
-| GRP-24 | 对全部 385 个清单和矩阵 HAL 条目（414 个名称/实例对）与 hwservice_contexts 和 service_contexts 文件进行名称级交叉引用。407 p | 该交叉引用脚本使用相同参数（mnt 和 hal_inventory.tsv）运行，输出 found=414 和 missing=7。414 是匹配对的数量，7 个未匹配项是在此之外另行计入的。Co |
+| GRP-24 | 对全部 385 个清单和矩阵 HAL 条目（421 个 interface/fqname 对）与 hwservice_contexts 和 service_contexts 文件进行名称级交叉引用。407 p | 在 421 个 interface/fqname 对中，414 个与上下文标签匹配，7 个不匹配。Co |
 
 ## 缺口
 

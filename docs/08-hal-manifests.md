@@ -48,7 +48,7 @@ These claims did not hold on reproduction.
 
 | ID | Claim | Reason |
 |---|---|---|
-| GRP-24 | Name-level cross-reference of all 385 manifest and matrix HAL entries (414 name/instance pairs) against the hwservice_contexts and service_contexts files. 407 p | The cross-reference script, run with the same arguments (mnt and hal_inventory.tsv), prints found=414 and missing=7. The 414 is the number of matched pairs, and the 7 misses are added on top of it. Co |
+| GRP-24 | Name-level cross-reference of all 385 manifest and matrix HAL entries (421 interface/fqname pairs) against the hwservice_contexts and service_contexts files. 407 p | Of the 421 interface/fqname pairs, 414 match a context label and 7 do not. Co |
 
 ## Gaps
 

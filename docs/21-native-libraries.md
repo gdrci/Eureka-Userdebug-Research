@@ -155,4 +155,4 @@ Bitcode files and the stripped-library limits are listed in the table; symbol-le
 - The OpenXR loader's consumer apps were not identified. The runtime manifest points at a different library inside VrDriver.apk.
 - The 50 Rust .dylib.so crate objects and the 10 bitcode files were classified from names and format only, apart from the Rust NEEDED check and the bitcode magic bytes.
 - The 15 deep-dive items are a selection of the most important files by name and role. The remaining binaries were not deep-dived beyond the role table.
-- Symbol counts from pyelftools (in facts.jsonl) differ from readelf by one for undefined symbols because readelf counts the null entry. Claims cite readelf counts.
+- Undefined-symbol counts in the claims include the null symbol-table entry, so they are one higher than counts that exclude it. The claims cite the higher counts.

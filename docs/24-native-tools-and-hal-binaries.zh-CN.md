@@ -4,8 +4,7 @@
 
 ## 摘要
 
-该组包含 346 行：157 个普通文件（132 个 PIE 可执行文件、17 个共享对象格式的可执行文件，以及 8 个脚本）和 189 个符号链接，分布在 vendor_a（241）、system_ext_a（55）、odm_a（38）、system_a（10）和 product_a（2）中。核心部分包括一个 toybox 多调用二进制文件（172 个 applet 符号链接）和一个 toolbox 多调用二进制文件（6 个符号链接）、一个 mksh shell、一个 vendor binder 服务管理器，以及 14 个 HAL 服务可执行文件（vendor_a/bin/hw 中 10 个，odm_a/bin/hw 中 4 个），这些服务注册 HIDL 或 AIDL 接口，并由 init 服务启动。odm 分区包含 SyncBoss 传感器控制器工具集：fw_init（一个 oneshot 固件更新程序，读取 /odm/etc/fw_init.cfg），以及 17 个共享对象格式的工具，每个都导出 main。system_ext_a 包含 50 个平台服务和命令行可执行文件以及 4 个 shell 包装器；product_a 包含 2 个崩溃上传器可执行文件。所有 157 个文件的 sha256 和字节大小均与清单一致，init 或 SELinux 文本中有 62 个通过完整路径引用了它们。证据中的命令以挂载根目录作为工作目录运行：<image>/mnt。
-
+该组包含 346 行：157 个普通文件（132 个 PIE 可执行文件、17 个共享对象格式的可执行文件，以及 8 个脚本）和 189 个符号链接，分布在 vendor_a（241）、system_ext_a（55）、odm_a（38）、system_a（10）和 product_a（2）中。核心部分包括一个 toybox 多调用二进制文件（172 个 applet 符号链接）和一个 toolbox 多调用二进制文件（6 个符号链接）、一个 mksh shell、一个 vendor binder 服务管理器，以及 14 个 HAL 服务可执行文件（vendor_a/bin/hw 中 10 个，odm_a/bin/hw 中 4 个），这些服务注册 HIDL 或 AIDL 接口，并由 init 服务启动。odm 分区包含 SyncBoss 传感器控制器工具集：fw_init（一个 oneshot 固件更新程序，读取 /odm/etc/fw_init.cfg），以及 17 个共享对象格式的工具，每个都导出 main。system_ext_a 包含 50 个平台服务和命令行可执行文件以及 4 个 shell 包装器；product_a 包含 2 个崩溃上传器可执行文件。所有 157 个文件的 sha256 和字节大小均与清单一致，init 或 SELinux 文本中有 62 个通过完整路径引用了它们。
 该角色表为本组中 346 个文件各有一行（190 verified，139 observed，16 inferred，1 unverified）。它位于 `data/subsystems/native-tools-and-hal-binaries/roles.tsv`。
 
 ## 已验证的断言

@@ -28,7 +28,7 @@ These claims were reproduced but judged wrong in wording or label, or they were 
 | F09 | verified | confirmed / needs_change | libadreno_app_profiles.so DT_NEEDED (13, identical in lib64 and lib): libcutils.so, libhardware.so, libutils.so, libhidlbase.so, libhidlmemory.so, and |
 | F13 | verified | confirmed / needs_change | libGLESv2_adreno.so exports 500 defined dynamic symbols matching ^gl[A-Z] (GLES entry points; no glX-prefixed names, no egl or cl names). Count is 500 |
 | F15 | verified | needs_change / needs_change | Zero egl*, gl*, glX*, cl* and vk* exported names in libgsl.so, libadreno_utils.so, libq3dtools_adreno.so, libadreno_app_profiles.so and libar-gsl.so ( |
-| F16 | observed | confirmed / needs_change | Version requirements (verneed, from the version section) cross-checked with readelf for two lib64 copies: libvndksupport.so requires LIBVNDKSUPPORT; l |
+| F16 | observed | confirmed / needs_change | Version requirements (verneed, from the version section) for two lib64 copies: libvndksupport.so requires LIBVNDKSUPPORT; l |
 | F17 | observed | needs_change / needs_change | Version requirements for the other targets (same parse): libgsl.so: liblog.so LIBLOG; libsync.so LIBSYNC; libc.so LIBC, LIBC_N; libm.so LIBC; libdl.so |
 | F18 | verified | confirmed / needs_change | The four lib64 copies checked (libgsl.so, libEGL_adreno.so, libGLESv2_adreno.so, libOpenCL_adreno.so) contain no .gnu.version_d section, so they defin |
 | F19 | verified | confirmed / needs_change | Dynamic loader and property imports (undefined dynamic symbols, with version and providing library). libgsl.so: __android_log_print@LIBLOG, dlopen@LIB |

@@ -35,7 +35,7 @@
 - **D10**（verified）：Data.msc 和 Data20.msc 是文本格式的 WLAN 固件消息目录。每个文件都有一个 VERSION:536936572 头部，以及形如 id,args,[ file : line ] text 的带 id 编码记录：Data.msc 有 10,298 条记录，Data20.msc 有 10,579 条。
 - **D10b**（inferred）：regdb.bin 是二进制形式的 WLAN 监管数据库；其记录布局未被解码。
 - **D11**（verified）：xra_config_render 和 xra_config_capture 是 XRA 音频管线的 JSON 配置。它们指向 /vendor/lib/rfsa/adsp/xra_resources 下的资源文件，给出引脚映射和采样参数（48 kHz，采样类型），以及 /data/data_collection 下的调试输出。
-- **D12**（observed）：xra_render_capi.so 和 xra_capture_capi.so 是 XRA 的 DSP6 CAPI 模块。其字符串包括 xra_capi_get_static_properties、13 个 capi_utils_props_* 辅助函数名，以及 facebook2xr5audio 命名空间中的 C++ 符号。readelf 未在动态符号表中列出 xra_capi_get_static_properties。
+- **D12**（observed）：xra_render_capi.so 和 xra_capture_capi.so 是 XRA 的 DSP6 CAPI 模块。其字符串包括 xra_capi_get_static_properties、13 个 capi_utils_props_* 辅助函数名，以及 facebook2xr5audio 命名空间中的 C++ 符号。动态符号表中未列出 xra_capi_get_static_properties。
 - **D13**（observed）：DSP 侧的 FastRPC shell 库（fastrpc_shell_0、fastrpc_shell_3、fastrpc_shell_unsigned_3）是 DSP6 DYN 目标，没有 NEEDED 条目，定义了约 1,550 至 1,600 个全局函数。它们的导出包括 HAP 和 qurt API。synx 库导出 synx_* 同步对象 API。
 - **D13b**（observed）：若干 DSP skel 库带有 QAIC 生成的 invoke 入口点（例如 loadalgo_skel_handle_invoke_qaic_version、sysmonquery_skel_handle_invoke_qaic_version），表明采用了 FastRPC IDL skel 模式。
 - **D14**（verified）：五个 servreg JSON 文件（adspr、cdspr、adsps、adspua、battmgr）声明了一个 sr_domain 以及一到两个 sr_service 条目，QMI 实例 ID 分别为 74（adsp）和 76（cdsp）。adspua.jsn 另外添加了一个 avs 音频服务条目。
@@ -61,7 +61,7 @@
 
 ## 缺口
 
-- 无法枚举若干 DSP 库的导出表：readelf --dyn-syms 对 libdspCV_skel.so、libhexagon_skel.so、libdfs_skel.so、libboltEva_skel.so、libQnnBoltnnOpPackageV69.so、rfsa 副本的 libevadsp_3_0.so 以及 XRA CAPI 模块均报告未定义任何符号。它们的角色仅基于名称、soname 和字符串。
+- 若干 DSP 库的导出表中没有已定义符号：libdspCV_skel.so、libhexagon_skel.so、libdfs_skel.so、libboltEva_skel.so、libQnnBoltnnOpPackageV69.so、rfsa 副本的 libevadsp_3_0.so 以及 XRA CAPI 模块均报告未定义任何符号。它们的角色仅基于名称、soname 和字符串。
 - Hexagon、Xtensa、ARM 和 AArch64 镜像的主体未经反汇编。EVA、SPSS、VPU、证明（attestation）、传感器锁、OVR 以及可信应用镜像的功能仅根据名称和字符串推断。
 - regdb.bin 的布局未被解码。Eureka_Dev1.efm8 的格式也未被解码。
 - adsp.b31 段（程序头中 p_filesz 为 0，文件为 7528 字节）以及各零长度段的主体均未被解释。

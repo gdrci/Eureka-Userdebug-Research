@@ -4,8 +4,7 @@
 
 ## 摘要
 
-selinux-policy 组是本镜像中携带的 Android SELinux 策略集：共 51 个文件，分布在 system_a（22 个）、system_ext_a（15 个）、vendor_a（11 个）和 odm_a（3 个）中。它包含：以 CIL 格式保存的平台策略源码（plat_sepolicy.cil，28,911 行，mls true，27 个 sid，4 个 policycap）；vendor 与 system_ext 的策略源码（vendor_sepolicy.cil、system_ext_sepolicy.cil）；vendor 策略所依赖的带版本号的平台公共策略（plat_pub_versioned.cil，2,077 个以 _32_0 结尾的名称）；odm 上一个预编译的二进制策略（文件头报告 SE Linux policy v30）；按版本划分的映射文件（26.0 至 32.0）及兼容桩文件；标签与查找表（file_contexts、seapp_contexts、property_contexts、service_contexts、hwservice_contexts、keystore2_key_contexts）；签名到 seinfo 的 XML 表；一份拒绝元数据表；以及一个内容为 32.0 的平台版本文件。每个分区有两条校验和记录，用于将预编译策略绑定到其输入；平台和 system_ext 的记录已重新计算，并与策略源码加 mapping/32.0.cil 的拼接结果相符。Init 与 libselinux 按名称引用这些路径。证据中的命令使用 M=<image>/mnt（已挂载，只读）和 W=<image>-tools/work/subsystems/selinux-policy。
-
+selinux-policy 组是本镜像中携带的 Android SELinux 策略集：共 51 个文件，分布在 system_a（22 个）、system_ext_a（15 个）、vendor_a（11 个）和 odm_a（3 个）中。它包含：以 CIL 格式保存的平台策略源码（plat_sepolicy.cil，28,911 行，mls true，27 个 sid，4 个 policycap）；vendor 与 system_ext 的策略源码（vendor_sepolicy.cil、system_ext_sepolicy.cil）；vendor 策略所依赖的带版本号的平台公共策略（plat_pub_versioned.cil，2,077 个以 _32_0 结尾的名称）；odm 上一个预编译的二进制策略（文件头报告 SE Linux policy v30）；按版本划分的映射文件（26.0 至 32.0）及兼容桩文件；标签与查找表（file_contexts、seapp_contexts、property_contexts、service_contexts、hwservice_contexts、keystore2_key_contexts）；签名到 seinfo 的 XML 表；一份拒绝元数据表；以及一个内容为 32.0 的平台版本文件。每个分区有两条校验和记录，用于将预编译策略绑定到其输入；平台和 system_ext 的记录已重新计算，并与策略源码加 mapping/32.0.cil 的拼接结果相符。Init 与 libselinux 按名称引用这些路径。
 该角色表为本组的 51 个文件各提供一行（46 个 verified，2 个 observed，3 个 inferred，0 个 unverified）。它位于 `data/subsystems/selinux-policy/roles.tsv`。
 
 ## 已验证的声明

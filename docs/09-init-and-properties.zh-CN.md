@@ -75,7 +75,7 @@
 - 未识别出 init 二进制文件的版本或构建横幅字符串。
 - 第一阶段 ramdisk 的 init.rc（first_stage_ramdisk）和启动镜像不在本组中；只检查了系统和厂商的副本。
 - rc 文件所命名的服务二进制文件（位于 /vendor/bin、/system/bin、/system_ext/bin、/product/bin、/odm/bin 下）属于其他子系统，未被检查；只记录了脚本所声明的内容。
-- 较大的脚本未逐行通读全文：init.rc（55,112 字节）、atrace.rc（24,276）、init.anorak.rc（18,409，部分读取）、init.anorak.cgroup.rc（9,637）、init.anorak.usb.rc（8,663）、init.usb.configfs.rc（7,690）、wifi.rc（5,715）、perfetto.rc（4,858）。其结构取自 service、trigger、import 和计数提取。
+- 较大脚本的全文未作覆盖：init.rc（55,112 字节）、atrace.rc（24,276）、init.anorak.rc（18,409，部分覆盖）、init.anorak.cgroup.rc（9,637）、init.anorak.usb.rc（8,663）、init.usb.configfs.rc（7,690）、wifi.rc（5,715）、perfetto.rc（4,858）。其相关部分仅列出 service、trigger、import 和计数。
 - 挂载的目录树中缺失：/vendor/bin/install-recovery.sh、/system/bin/move_widevine_data.sh、/system/bin/linkerconfig（bootstrap/linkerconfig 变体存在）、/odm/etc/ueventd.rc。init.insmod.cfg 和 init.insmod.charger.cfg 中命名的 .ko 模块不在本组中。
 - 清单中的 2 个符号链接行没有 sha256；其目标仅通过 readlink 检查。
 - 已编译的 SELinux 策略（odm_a 中的 precompiled_sepolicy）未被解码；SELinux 证据来自源码形式的 file_contexts、property_contexts 和 CIL。rc 文件和 build.prop 文件的标签继承自未被检查的目录级规则。

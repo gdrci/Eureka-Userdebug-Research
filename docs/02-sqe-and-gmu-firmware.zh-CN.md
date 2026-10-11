@@ -34,4 +34,4 @@ SQE 是命令处理器微码，GMU 是电源与时钟控制器固件。两者各
 | S-08 | verified | needs_change / needs_change | The SQE file ends with ASCII '01504202' at file offset 0x12964, followed by 'ESU$' and 'R' with three zero bytes. The last dword is 0x00000052. This i |
 | X-01 | verified | confirmed / needs_change | msm_kgsl.ko contains both target file names as literal strings. The SQE name a740v3_sqe.fw is a candidate in the SQE table, and gmu_gen70200.bin is th |
 | X-02 | observed | confirmed / needs_change | The GMU file name is read from device config +0x60 (fallback at +0x68) inside gen7_gmu_parse_fw, and the GMU firmware is requested through firmware_re |
-| T-01 | verified | needs_change / confirmed | A standalone dumper for both formats was built and run. It reproduces the record tables, block walk, descriptor cross-match, SQE version rule and dwor |
+| T-01 | verified | needs_change / confirmed | For both formats: the record tables, block walk, descriptor cross-match, SQE version rule and dwor |
