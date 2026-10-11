@@ -18,9 +18,9 @@ Zap is the GPU firmware that the secure world loads. The image is split into thr
 
 ## Open items
 
-The claims below are excluded or restated; each one gives its reason.
+Each row gives the reproduction verdict and the full claim text.
 
-| ID | Label | Reproduce / refute | Claim (as produced) |
+| ID | Label | Reproduce / refute | Claim |
 |---|---|---|---|
 | F7 | verified | confirmed / needs_change | .elf (5168 bytes) is an ELF32 EXEC file with e_machine 164, named Qualcomm Hexagon in the ELF header dump. e_entry is 0x1000, e_phnum is 1 and there are no section headers (e_shoff is 0 and e_shnum is 0). The same machine value is named QUALCOMM DSP6 Processor by a second ELF dump, so the name depends on the dump used. |
 | F8 | verified | confirmed / needs_change | .mbn is 14328 bytes (0x37f8) and is the same ELF image with the three-entry table. Bytes 0x0 to 0x93 equal .b00, bytes 0x1000 to 0x142f equal .b01, and bytes 0x2000 to 0x37f7 equal .b02. |

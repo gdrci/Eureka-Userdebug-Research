@@ -18,13 +18,13 @@ Zap 是安全世界加载的 GPU 固件。镜像分为三部分，同一个代�
 
 ## 开放项
 
-下方声明已排除或重新表述；每条都给出了原因。
+下表每行给出复现或推翻的结论，以及声明的完整文字。
 
-| ID | 标注 | 复现 / 推翻 | 结论（原文） |
+| ID | 标注 | 复现 / 推翻 | 声明 |
 |---|---|---|---|
-| F7 | verified | confirmed / needs_change | .elf (5168 bytes) is an ELF32 EXEC file with e_machine 164, named Qualcomm Hexagon in the ELF header dump. e_entry is 0x1000, e_phnum is 1 and there are no section headers (e_shoff is 0 and e_shnum is 0). The same machine value is named QUALCOMM DSP6 Processor by a second ELF dump, so the name depends on the dump used. |
-| F8 | verified | confirmed / needs_change | .mbn is 14328 bytes (0x37f8) and is the same ELF image with the three-entry table. Bytes 0x0 to 0x93 equal .b00, bytes 0x1000 to 0x142f equal .b01, and bytes 0x2000 to 0x37f7 equal .b02. |
-| F10 | verified | confirmed / needs_change | The hash segment (b02, mbn file offset 0x2000) begins with little-endian u32 words at segment offsets: +0x00 0x0, +0x04 0x7, +0x08 0x18, +0x0c 0x0, +0x10 0xe0, +0x14 0x90, +0x18 0x0, +0x1c 0x0. |
-| F11 | verified | needs_change / needs_change | Hash segment (b02, 6136 bytes) layout: [0x00,0x68) header words, 13 nonzero bytes. [0x68,0x218) a 432-byte block with 205 nonzero bytes. [0x218,0x10a8) holds five X.509-style certificate structures placed back to back, C1 to C5, of 645, 772, 773, 772 and 766 bytes. [0x10a8,0x17f8) is 1872 bytes, all equal to 0xff. |
-| F14 | verified | needs_change / needs_change | The hash segment contains five X.509-style certificate structures with these name and validity strings at hash-segment offsets (hex). C1 at 0x218 (645 bytes) has subject CN Eureka Qcom FW Signing Certificate at 0x338, notBefore 230516210606Z at 0x2b4 and notAfter 430511210606Z at 0x2c3. C2 at 0x49d (772 bytes), C3 at 0x7a1 (773 bytes), C4 at 0xaa6 (772 bytes) and C5 at 0xdaa (766 bytes) each have identical issuer and subject CN values Eureka_FW_Root_0, Eureka_FW_Root_1, Eureka_FW_Root_2 and Eureka_FW_Root, with notBefore strings at 0x53b, 0x83f, 0xb44 and 0xe46. |
-| F18 | verified | needs_change / needs_change | Disassembling the first 64 bytes of .b01 with the hexagon triple (default CPU) yields ten brace-delimited packets: { r1 = memw(r5+#4) ; r4 = memub(r1+#0) }. The count does not hold: the same 64 bytes decode to 13 brace-delimited packets, and the words at file offsets 0x2c and 0x3c do not decode. |
+| F7 | verified | confirmed / needs_change | .elf（5168 字节）是 ELF32 EXEC 文件，e_machine 为 164，在 ELF 头部转储中被命名为 Qualcomm Hexagon。e_entry 为 0x1000，e_phnum 为 1，且不存在节头表（e_shoff 为 0，e_shnum 为 0）。同一机器值在另一种 ELF 转储中被命名为 QUALCOMM DSP6 Processor，因此名称取决于所用的转储。 |
+| F8 | verified | confirmed / needs_change | .mbn 为 14328 字节（0x37f8），与 .elf 为同一 ELF 映像，带有三项程序头表。字节 0x0 至 0x93 与 .b00 相同，字节 0x1000 至 0x142f 与 .b01 相同，字节 0x2000 至 0x37f7 与 .b02 相同。 |
+| F10 | verified | confirmed / needs_change | 哈希段（b02，mbn 文件偏移 0x2000）以小端 u32 字开头，段内偏移为：+0x00 0x0，+0x04 0x7，+0x08 0x18，+0x0c 0x0，+0x10 0xe0，+0x14 0x90，+0x18 0x0，+0x1c 0x0。 |
+| F11 | verified | needs_change / needs_change | 哈希段（b02，6136 字节）布局：[0x00,0x68) 为头部字，其中 13 个字节非零。[0x68,0x218) 为 432 字节的块，其中 205 个字节非零。[0x218,0x10a8) 依次排列五个 X.509 风格的证书结构 C1 至 C5，长度分别为 645、772、773、772 和 766 字节。[0x10a8,0x17f8) 为 1872 字节，全部等于 0xff。 |
+| F14 | verified | needs_change / needs_change | 哈希段包含五个 X.509 风格的证书结构，其名称与有效期字符串位于以下哈希段偏移（十六进制）处。C1 位于 0x218（645 字节），其主题 CN 为 Eureka Qcom FW Signing Certificate，位于 0x338；notBefore 230516210606Z 位于 0x2b4，notAfter 430511210606Z 位于 0x2c3。C2 位于 0x49d（772 字节）、C3 位于 0x7a1（773 字节）、C4 位于 0xaa6（772 字节）、C5 位于 0xdaa（766 字节），各自的颁发者与主题 CN 值相同，依次为 Eureka_FW_Root_0、Eureka_FW_Root_1、Eureka_FW_Root_2 和 Eureka_FW_Root，notBefore 字符串位于 0x53b、0x83f、0xb44 和 0xe46。 |
+| F18 | verified | needs_change / needs_change | 对 .b01 的前 64 字节以 hexagon 三元组（默认 CPU）反汇编，得到 10 个大括号分隔的包：{ r1 = memw(r5+#4) ; r4 = memub(r1+#0) }。计数不成立：同样的 64 字节解码为 13 个大括号分隔的包，且文件偏移 0x2c 与 0x3c 处的字不能解码。 |
