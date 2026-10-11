@@ -16,7 +16,7 @@
 
 ## 清单与覆盖范围
 
-`data/inventory/files.tsv` 列出了八个分区中的全部 5,685 条记录（常规文件和符号链接），每个常规文件都附有大小、MIME 类型和 SHA-256。每条记录恰好归属于一个子系统。`data/inventory/subsystem_counts.txt` 给出了计数。
+`data/inventory/files.tsv` 列出了 odm_a、odm_dlkm_a、product_a、system_a、system_ext_a、vendor_a 和 vendor_dlkm_a 这七个分区中的全部 5,685 条记录（常规文件和符号链接），每个常规文件都附有大小、MIME 类型和 SHA-256。超级镜像的第八个分区 scratch 在清单中没有记录。每条记录恰好归属于一个子系统。`data/inventory/subsystem_counts.txt` 给出了计数。
 
 对于每个子系统，`data/subsystems/<subsystem>/roles.tsv` 为每个文件保存一行。行数等于该子系统的清单行数，对全部 21 个子系统成立：角色表合计 5,685 行。`scratch` 分区只包含空的 overlay 目录。
 
@@ -45,7 +45,7 @@
 | [24](24-native-tools-and-hal-binaries.md) | 原生工具和 HAL 二进制文件 | 346 |
 | [25](25-unclassified.md) | 杂项根文件和小文件 | 13 |
 
-GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-selinux-and-hal.md) 页涵盖 zap 镜像、SQE 和 GMU 固件、kgsl 模块、用户空间 GPU 库以及 GPU init 条目。子系统运行还生成了一个 GPU 分组（`data/subsystems/gpu/`，67 个文件），其声明记录在 `data/subsystems/gpu/claims.json` 中。这些声明未并入第 01 至 05 页。
+GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-selinux-and-hal.md) 页涵盖 zap 镜像、SQE 和 GMU 固件、kgsl 模块、用户空间 GPU 库以及 GPU init 条目。GPU 分组（`data/subsystems/gpu/`，角色表中列出 67 个文件）有其自身的声明，记录在 `data/subsystems/gpu/claims.json` 中。这些声明未并入第 01 至 05 页。
 
 ## 行为与应用
 
@@ -53,7 +53,7 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 声明与证据
 
-每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。GPU 的证据位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json)。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
+每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。第 01 至 05 页部分发现的复现记录位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json) 中。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
 
 ## 限制
 

@@ -2,7 +2,7 @@
 
 [English](README.md)
 
-本仓库记录 Eureka userdebug 镜像（Android 12，平台 `anorak`）的各个子系统：先列出镜像中的每个文件，再为每个子系统给出角色表与经过复现检查的结论，并包括 Adreno GPU 子系统的详细分析。
+本仓库记录 Eureka userdebug 镜像（Android 12，平台 `anorak`）的各个子系统：先列出超级镜像中七个分区的每个文件，再为每个子系统给出角色表与经过复现检查的结论，并包括 Adreno GPU 子系统的详细分析。
 
 Discord：[discord.gg/oculus](https://discord.gg/oculus) · gdrci（Discord）
 
@@ -55,15 +55,15 @@ super 镜像包含动态分区。其中没有 `boot`、`vendor_boot` 与内核�
 
 ## 证据
 
-- `data/gpu/confirmed_findings.json`：GPU 首轮分析中每项结论的复现命令与输出。
+- `data/gpu/confirmed_findings.json`：31 条 GPU 发现的复现记录，每条附复现命令与输出。这些记录并未覆盖第 01 至 05 页的全部发现。
 - `data/gpu/partitions.tsv`：super 镜像中的逻辑分区，附大小与 SHA-256 前缀。
-- `data/inventory/files.tsv`：八个分区中的每个文件与符号链接，附子系统、大小、MIME 类型与 SHA-256。
+- `data/inventory/files.tsv`：odm_a、odm_dlkm_a、product_a、system_a、system_ext_a、vendor_a 与 vendor_dlkm_a 这七个分区中的每个文件与符号链接，附子系统、大小、MIME 类型与 SHA-256。
 - `data/behaviour/`：从 `.rc` 文件解析出的服务、动作、导入、启动阶段与服务类，是第 26 页的依据。
 - `data/apks/`：全部 146 个 `.apk` 文件的清单与 dex 事实，附汇总表 `summary.tsv`。第 27 页详细描述其中 22 个。
 - `data/elf/libraries.tsv`：原生库分组中 1,361 个文件的 ELF 头、NEEDED、动态符号计数与 build-id，是第 21 页的依据。
 - `data/kernel/`：289 个内核模块的 `.modinfo` 字段（`modules.tsv`）与全局符号（`symbols.tsv`），是第 06 页的依据。
 - `data/subsystems/<子系统>/`：每个子系统的角色表（`roles.tsv`）与附证据的结论（`claims.json`）。
-- `data/gpu/uncovered_candidates.json`：首轮 GPU 完整性检查返回的文件清单。
+- `data/gpu/uncovered_candidates.json`：143 个镜像路径，每个附分类说明。
 
 ## 证据标注
 

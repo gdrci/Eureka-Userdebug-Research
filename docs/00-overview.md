@@ -16,7 +16,7 @@ This repository documents the Eureka userdebug image (Android 12, platform `anor
 
 ## Inventory and coverage
 
-`data/inventory/files.tsv` lists all 5,685 entries in the eight partitions (regular files and symbolic links), with size, MIME type and SHA-256 for each regular file. Each entry is assigned to exactly one subsystem. `data/inventory/subsystem_counts.txt` gives the counts.
+`data/inventory/files.tsv` lists all 5,685 entries in the seven partitions odm_a, odm_dlkm_a, product_a, system_a, system_ext_a, vendor_a and vendor_dlkm_a (regular files and symbolic links), with size, MIME type and SHA-256 for each regular file. The eighth partition of the super image, scratch, has no entries in the inventory. Each entry is assigned to exactly one subsystem. `data/inventory/subsystem_counts.txt` gives the counts.
 
 For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file. The row count equals the number of inventory rows for that subsystem, which holds for all 21 subsystems: the role tables total 5,685 rows. The `scratch` partition holds only empty overlay directories.
 
@@ -45,7 +45,7 @@ For each subsystem, `data/subsystems/<subsystem>/roles.tsv` has one row per file
 | [24](24-native-tools-and-hal-binaries.md) | Native tools and HAL binaries | 346 |
 | [25](25-unclassified.md) | Miscellaneous root and small files | 13 |
 
-The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](05-init-selinux-and-hal.md) cover the zap image, the SQE and GMU firmware, the kgsl module, the userspace GPU libraries and the GPU init entries. The subsystem run also produced a GPU group (`data/subsystems/gpu/`, 67 files) with its own claims, in `data/subsystems/gpu/claims.json`. Those claims are not merged into pages 01 to 05.
+The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](05-init-selinux-and-hal.md) cover the zap image, the SQE and GMU firmware, the kgsl module, the userspace GPU libraries and the GPU init entries. The GPU group (`data/subsystems/gpu/`, 67 files in its role table) has its own claims, in `data/subsystems/gpu/claims.json`. Those claims are not merged into pages 01 to 05.
 
 ## Behaviour and applications
 
@@ -53,7 +53,7 @@ The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](
 
 ## Claims and their evidence
 
-Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. The GPU evidence is in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
+Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. Reproduction records for some findings on pages 01 to 05 are in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
 
 ## Limits
 

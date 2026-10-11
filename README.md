@@ -1,8 +1,10 @@
-# Eureka userdebug (Adreno GPU subsystem)
+# Eureka userdebug (all subsystems)
 
-Documentation of the GPU subsystem in the Eureka userdebug build (Android 12, platform `anorak`): the Adreno 740 firmware, the kgsl kernel driver, the userspace GPU libraries, and the init and SELinux entries that start them.
+This repository documents the subsystems of the Eureka userdebug build (Android 12, platform `anorak`): an inventory of every file in seven partitions of the super image, a role table and checked claims for each subsystem, and a detailed analysis of the Adreno GPU subsystem.
 
 Chinese version: [README.zh-CN.md](README.zh-CN.md)
+
+Discord: [discord.gg/oculus](https://discord.gg/oculus) · gdrci (Discord)
 
 ## Scope
 
@@ -53,10 +55,10 @@ The super image holds the dynamic partitions. `boot`, `vendor_boot` and the kern
 
 ## Evidence
 
-- `data/gpu/confirmed_findings.json`: every claim in these documents, with the command and output that reproduce it.
+- `data/gpu/confirmed_findings.json`: 31 reproduction records for GPU findings, each with the command and output that reproduce it. They do not cover every finding on pages 01 to 05.
 - `data/gpu/partitions.tsv`: the logical partitions in the super image, with sizes and SHA-256 prefixes.
-- `data/gpu/uncovered_candidates.json`: the file list returned by the first GPU integrity pass.
-- `data/inventory/files.tsv`: every file and symlink in the eight partitions, with its subsystem, size, MIME type and SHA-256.
+- `data/gpu/uncovered_candidates.json`: 143 image paths, each with a classification note.
+- `data/inventory/files.tsv`: every file and symlink in the seven partitions odm_a, odm_dlkm_a, product_a, system_a, system_ext_a, vendor_a and vendor_dlkm_a, with its subsystem, size, MIME type and SHA-256.
 - `data/behaviour/`: the services, actions, imports, boot phases and service classes parsed from the `.rc` files, behind document 26.
 - `data/apks/`: the manifest and dex facts for all 146 `.apk` files, with `summary.tsv`. Document 27 describes 22 of them in detail.
 - `data/elf/libraries.tsv`: the ELF headers, NEEDED and dynamic symbol counts and build-ids of the 1,361 native-library files, behind document 21.
