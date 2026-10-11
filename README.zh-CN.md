@@ -1,4 +1,4 @@
-# Eureka userdebug（全部子系统）
+# Eureka userdebug
 
 [English](README.md)
 
