@@ -50,7 +50,7 @@ sensors-mcu-meta-hal 组共有 263 行：259 个普通文件和 4 个符号链�
 
 下方声明已排除；每条都给出了原因。
 
-| ID | Claim | Reason |
+| ID | 声明 | 原因 |
 |---|---|---|
 | C29 | 组内权限与 feature 标签存在于 13 个 system_a 与 system_ext_a 包中。示例：com.oculus.mrservice 特权权限，com.oculus.mrservice 默认 USE_SCENE 例外，com.oculus.xrstreamingclient 默认 RECORD_AUDIO 与 POST_NOTIFICATIONS 例外，以及 com.oculus.systemdriver 特权权限。 | 四个示例均成立：com.oculus.mrservice 具有 privapp-permissions 块，并有默认 USE_SCENE 授权（fixed=true）；com.oculus.xrstreamingclient 具有默认 RECORD_AUDIO（fixed=false）与 POST_NOTIFICATIONS（fixed=true）例外；com.oculus.systemdriver 具有 privapp-permissions 块。在所检验的任何定义下，13 这一计数均无法复现。privapp-permissions 块与例外块中不同包的数量：system_a 中为 3 个（com.oculus.mrservice、com.oculus.systemdriver、com.oculus.xrstreamingclient），system_ext_a 中为 49 个，合计 52 个。包含这些块的文件：system_a 中 4 个，system_ext_a 中 59 个。system_a 有 13 行 XML，可能是 13 这一数字的来源，但这些并非包。 |
 
