@@ -32,7 +32,7 @@ The role table has one row for each of the 62 files in this group (59 verified, 
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **GRP-04** (observed): Three files are classified text/xml (parfait.xml and the two DRM manifests), and file(1) agrees with that class for all three, reporting XML 1.0 document. Of the 59 text/plain files, file(1) reports exported SGML document for 18 (for example system_a/system/etc/vintf/manifest.xml) and plain ASCII text for 41.
 - **GRP-06** (verified): Name-level coverage by the 56 manifest roots (of the 62 files) is 28 of 30 device-matrix names. The two names with no provider are vendor.oculus.hardware.mixedreality (optional true) and vendor.oculus.hardware.peripheralconfig 1.0 (optional true). The full HAL name vendor.oculus.hardware.peripheralconfig occurs only in system_a/system/etc/vintf/compatibility_matrix.device.xml on the mount; the bare token peripheralconfig also appears in 10 other files as library, tool and path names.
@@ -44,7 +44,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

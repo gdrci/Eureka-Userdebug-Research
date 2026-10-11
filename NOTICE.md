@@ -24,6 +24,7 @@ The image contains components from other owners. The evidence records their name
 - **Chromium-based WebView** (`com.android.webview`, Chromium project, BSD-style license). Its package, class and string names are in `data/apks/`.
 - **Linux kernel modules** (GPL-2.0). `data/kernel/` records each module's name, licence string, author line, parameters and symbol names. The module binaries are not included.
 - **Qualcomm components** (vendor drivers and libraries, Qualcomm Technologies, Inc.). Their names and metadata are in `data/elf/` and `data/kernel/`.
+- **AndroidX, Google and Meta/Facebook libraries** (the licences belong to their respective projects). Their package and class names appear in `data/apks/`; no code is copied.
 
 ## Trademarks
 

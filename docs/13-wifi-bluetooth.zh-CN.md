@@ -56,7 +56,7 @@ wifi-bluetooth 组是一台设备的 Wi-Fi 与蓝牙协议栈，该设备搭载�
 
 ## 修正措辞的声明
 
-这些声明的实质内容成立。以下措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **WB-02** (verified)：全部 104 个输入行都位于其挂载路径上。103 个普通文件的大小与 sha256 与记录一致（ok=103 bad=0）。唯一的符号链接 system_a/system/app/Bluetooth/lib/arm64/libbluetooth_jni.so 存在，其目标 /system/lib64/libbluetooth_jni.so 在 system_a 挂载中存在。
 - **WB-05** (verified)：组内的 init 服务定义位于：vendor_a/etc/init/hw/init.anorak.rc（wpa_supplicant、cnss-daemon）、vendor_a/etc/init/hw/init.anorak.debug.rc（vendor.cnss_diag）、vendor_a/etc/init/android.hardware.wifi@1.0-service.rc（vendor.wifi_hal_legacy）、vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc（vendor.bluetooth-1-0-qti）、vendor_a/etc/init/hostapd.android.rc（hostapd）、system_a/system/etc/init/wificond.rc（wificond）、system_ext_a/etc/init/wifitelemetry.rc（wifitelemetry）以及 odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc（vendor.oculus.wifi-hal-1-0）。system_a/system/etc/init/wifi.rc 未定义任何服务，它只包含 restorecon 与内核 tracing 步骤。
@@ -71,7 +71,7 @@ wifi-bluetooth 组是一台设备的 Wi-Fi 与蓝牙协议栈，该设备搭载�
 
 ## 已排除的声明
 
-这些声明在复现时不成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

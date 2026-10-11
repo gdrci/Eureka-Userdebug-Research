@@ -18,7 +18,7 @@ Zap is the GPU firmware that the secure world loads. The image is split into thr
 
 ## Open items
 
-These claims were reproduced but judged wrong in wording or label, or they were refuted. They are not stated above until the wording is corrected.
+The claims below are excluded or restated; each one gives its reason.
 
 | ID | Label | Reproduce / refute | Claim (as produced) |
 |---|---|---|---|

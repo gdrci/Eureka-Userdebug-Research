@@ -33,7 +33,7 @@
 
 ## 修正措辞后的结论
 
-这些结论实质上成立。以下措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **U04** (verified)：su 有 11 个程序头：PHDR、INTERP、三个 LOAD 段（R、R+E、RW；对齐为 0x1000）、TLS、DYNAMIC、GNU_RELRO、GNU_EH_FRAME、GNU_STACK（RW）和 NOTE。一个未分配的 .gnu_debugdata 段位于文件偏移 0x23de 处，大小为 0x130。
 - **U10** (verified)：二进制文件内嵌了 --help、setuid failed、setgid failed、invalid uid/gid '%s'、setgroups failed、not allowed、too many group ids 和 failed to exec %s 等字符串，以及环境变量名 PATH、USER、LOGNAME、IFS。文件中还内嵌了默认 shell 路径 /system/bin/sh 和默认 PATH 字面量（/product/bin:/apex/com.android.runtime/bin:...:/vendor/xbin）。该二进制文件将 PATH、USER 和 LOGNAME 传给 setenv（PATH 的值为默认字面量），并在不同的调用位置用 unsetenv 清除 IFS、USER 和 LOGNAME。它没有导入 getenv，因此这些名称是被设置或清除，而非被读取。

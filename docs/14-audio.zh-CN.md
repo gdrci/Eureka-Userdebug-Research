@@ -43,7 +43,7 @@
 
 ## 措辞已修正的论断
 
-以下论断的实质内容成立。下文的措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **A04**（已验证）：product_a/media/audio/ 下音频组的全部 49 个 .ogg 片段（闹钟 9、通知 11、铃声 12、界面 17）均为 Ogg 容器中的 Vorbis 编码，采样率为 44100 或 48000 Hz，声道数为 1 或 2。该目录共有 51 个 .ogg 文件；camera_click.ogg 和 camera_focus.ogg 属于相机组，未计入。
 - **A05**（已验证）：有 10 个共享对象导出 HAL 模块符号 HMI：audio.a2dp.default.so（system 下的 lib 与 lib64 中各一个），以及 audio.r_submix.default.so、audio.primary.default.so、audio.usb.default.so 和 audio.primary.anorak.so，每个都在 vendor 的 lib 和 lib64 中各一份。
@@ -55,7 +55,7 @@
 
 ## 已排除的论断
 
-以下论断在复现时不成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 论断 | 原因 |
 |---|---|---|

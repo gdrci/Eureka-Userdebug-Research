@@ -45,7 +45,7 @@ The role table has one row for each of the 21 files in this group (19 verified, 
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C11** (inferred): The charger has no DT_NEEDED entry for libexternalbattery.so and no .symtab section. It is stripped, but its .gnu_debugdata section holds a compressed symbol table that defines the IExternalBattery proxy and stub classes and the hardware::oculus::health::ExternalBattery wrapper, so the binary contains its own compiled copy of that code rather than loading libexternalbattery.so at run time.
 - **C17** (verified): The thermal HAL libraries are linked by 15 files. In odm_a: perf_service (1.0 and 2.0) and wattsup (2.0). In system_a: libandroid_servers.so in lib and lib64 (1.0); libvrsrecorder.so, libvrsrecorder_plugin_temperaturereader.so, libvrsrecorder_utils_camera.so and libvrsrecorder_utils_sensorapishim.so (2.0); and the lib and lib64 copies of android.hardware.thermal@2.0.so (each linking @1.0). In system_ext_a: perfstream, vrdevicemanagerserver and libperfstreamprovider.so (2.0). In vendor_a: the vendor copies of libthermalhalutils.so (1.0 and 2.0) and android.hardware.thermal@2.0.so (@1.0).
@@ -57,7 +57,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

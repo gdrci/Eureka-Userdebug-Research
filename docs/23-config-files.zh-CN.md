@@ -56,7 +56,7 @@ config-files 组共有 392 行，分布在五个分区中：system_a 270 行、s
 
 ## 已修正措辞的论断
 
-这些论断实质上成立。下面的措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **D09a**（已验证）：system/etc/bpf/netd.o（16552 字节）是一个面向 Linux BPF 的 ELF64 可重定位对象。其程序段为 cgroupskb/ingress/stats、cgroupskb/egress/stats、cgroupsock/inet/create，以及四个 skfilter/*/xtbpf 段（ingress、egress、allowlist、denylist）。存在段 maps、progs、license、critical、bpfloader_min_ver、bpfloader_max_ver、size_of_bpf_map_def 和 size_of_bpf_prog_def。license 段包含 11 字节的字符串 'Apache 2.0' 加一个 NUL 终止符。size_of_bpf_map_def 为 0x30 字节。十个映射名：uid_counterset_map、iface_stats_map、app_uid_stats_map、uid_owner_map、configuration_map、uid_permission_map、cookie_tag_map、iface_index_name_map、stats_map_A、stats_map_B。
 - **D14a**（已验证）：system/etc/facetracking/runtime/config.json（9393 字节）的顶层键为 lipsyncSmoothing（minCutoff 2.0，beta 20.0，dCutoff 1.0）、lipsyncBlendshapes（14 个条目）、lipsync（只有一个键 modelPath）和 audioToExpression（17 个条目）。其 modelPath 值位于第 368 和 371 行，分别为 models/lipsync/prod/nn_config.json 和 models/a2e/prod/nn_config.json。这两个 nn_config.json 文件都是后端条目的 JSON 列表（Backend TorchScript；QEngine QNNPACK 或 FBGEMM），分别指向 bolt/model.pt、htp/qnn_model.ptl 和 cpu/model.pt（lipsync），以及在 CpuModel 键下指向 bolt/a2e.ptl 和 cpu/a2e.ptl（a2e）。在这些被引用的模型文件中，只有 bolt/model.pt 和 bolt/a2e.ptl 存在于挂载镜像中。

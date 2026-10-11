@@ -49,7 +49,7 @@
 
 ## 措辞已修正的论断
 
-这些论断实质上成立。下面的措辞取代原有表述。
+下方结论以数据所支持的措辞重新表述。
 
 - **D6b**（observed）：变体后缀 p 或 t 也出现在签名容器 crypt1p.sig 和 crypt1t.sig 上。两者的 organizationalUnit 值均为 'Qualcomm Cryptographic Operations'。它们的 commonName 值不同：'SPU MBNv7 Image Signing Root CA 6 SubCA 1'（crypt1p.sig）和 'SPU MBNv7 Image Signing Test Root CA 6 SubCA 1'（crypt1t.sig）。组织单位之后出现的数字串 1200 和 1705 是 DER 头字节，并不属于主体字符串。
 - **D8b**（observed）：QCA6490 WLAN 配置 WCNSS_qcom_cfg.ini 共有 126 行：99 行 key=value、14 行注释、12 行空行，以及结尾的 END 行。amss.bin 内嵌了其子镜像的名称，WLAN 配置和标签引用也出现在已挂载的 SELinux file contexts 中。

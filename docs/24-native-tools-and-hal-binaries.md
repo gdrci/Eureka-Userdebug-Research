@@ -60,7 +60,7 @@ The role table has one row for each of the 346 files in this group (190 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **G10** (observed): toolbox carries the getprop and setprop usage strings, imports __system_property_foreach and __system_property_read_callback from libc, and its string table contains the path /dev/__properties__/property_info. Reading through that file is inferred from the path string; no import or open call shows it.
 - **G17** (observed): hal_proxy_daemon imports wifi_* functions (for example wifi_initialize, wifi_get_ifaces and wifi_start_gscan, which are undefined dynamic symbols resolved from its NEEDED library libwifi-hal-qcom.so), and its string table holds WifiLogger command descriptions numbered 1 to 13.
@@ -71,7 +71,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

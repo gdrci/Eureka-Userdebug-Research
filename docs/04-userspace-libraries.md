@@ -18,7 +18,7 @@ The Adreno userspace stack is a set of shared libraries: the GPU core library, t
 
 ## Open items
 
-These claims were reproduced but judged wrong in wording or label, or they were refuted. They are not stated above until the wording is corrected.
+The claims below are excluded or restated; each one gives its reason.
 
 | ID | Label | Reproduce / refute | Claim (as produced) |
 |---|---|---|---|

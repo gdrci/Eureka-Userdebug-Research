@@ -34,7 +34,7 @@ The role table has one row for each of the 60 files in this group (40 verified, 
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **ks2-interfaces** (observed): keystore2's binary strings contain the android.system.keystore2 service names (IKeystoreService/default, IKeystoreOperation) and the maintenance, metrics, authorization, compat, APC, legacy keystore and remote provisioning interface names, plus the KeyMint, secure clock and shared secret HAL interface names. It imports AServiceManager_addService and logs 'Successfully registered Keystore 2.0 service.' next to the IKeystoreService/default, APC, authorization, metrics, remote provisioning, maintenance and legacy keystore names. Whether each listed interface is served by the binary or only referenced is not determined from strings.
 - **set-verity-refs** (verified): Four binaries in the mounted partitions contain the verity-state command names: system_a/system/bin/init, snapshotctl, update_engine and set-verity-state itself (three besides set-verity-state). The verity-state rows (set-verity-state, enable-verity, disable-verity) and the tee symlink rows are not named in any init.rc or file_contexts entry in the checked partitions.

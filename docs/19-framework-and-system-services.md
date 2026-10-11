@@ -40,7 +40,7 @@ The role table has one row for each of the 707 files in this group (324 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C05** (verified): The 229 symlinks resolve to: 173 toybox, 6 toolbox, 5 netutils-wrapper-1.0, 5 iptables, 3 mke2fs, 3 fsck.f2fs, 2 ziptool, 2 logpersist.start, 2 bzip2, 2 /apex/com.android.runtime/bin/linker64, 2 /apex/com.android.runtime/bin/linker, 18 relative ../boot-*.vdex links (9 boot names, each under system/framework/arm and system/framework/arm64), and singles: system/bin/linkerconfig into /apex/com.android.runtime/bin/linkerconfig, system/bin/dex2oat into /apex/com.android.art/bin/dex2oat64, system/bin/dalvikvm into /apex/com.android.art/bin/dalvikvm, system/bin/app_process into app_process64, and the bootstrap aliases system/bin/bootstrap/linker_asan -> linker and linker_asan64 -> linker64.
 - **C06** (verified): Eight symlinks that exist on the mounted tree are not in this group: system/bin/disable-verity, enable-verity, hwclock, tee, touch, ueventd, and the two system/framework/arm and arm64 boot-com.oculus.os.platform.vdex links. They belong to four other subsystems in classified.tsv: security-keystore-crypto (disable-verity, enable-verity, tee), display-and-composer (hwclock), sensors-mcu-meta-hal (touch and the two boot-com.oculus.os.platform.vdex links), and init-and-properties (ueventd).
@@ -55,7 +55,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

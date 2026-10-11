@@ -24,6 +24,7 @@
 - **基于 Chromium 的 WebView**（`com.android.webview`，Chromium 项目，BSD 式许可证）。其包名、类名与字符串位于 `data/apks/`。
 - **Linux 内核模块**（GPL-2.0）。`data/kernel/` 记录每个模块的名称、许可证字符串、作者行、参数与符号名。模块二进制文件未包含在内。
 - **Qualcomm 组件**（厂商驱动与库，Qualcomm Technologies, Inc.）。其名称与元数据位于 `data/elf/` 与 `data/kernel/`。
+- **AndroidX、Google 与 Meta/Facebook 库**（许可证归各自项目所有）。其包名与类名出现在 `data/apks/` 中；未复制任何代码。
 
 ## 商标
 

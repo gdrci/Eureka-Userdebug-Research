@@ -37,7 +37,7 @@ sensors-mcu-meta-hal 组共有 263 行：259 个普通文件和 4 个符号链�
 
 ## 修正措辞后的声明
 
-这些声明在实质上成立。下列措辞替换原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C08** (verified)：debug init 文件定义了 vendor.oculus.sensors-hal-1-0（类 hal，用户 system，组 system camera，capabilities SYS_NICE，task_profiles sensorServicePolicy，接口 vendor.oculus.hardware.sensors@1.0::IExternalTimingProvider default，已禁用）。其唯一的启动触发器在 persist.vendor.oculus.sensor.service.impl=sensorservice 时启动它，该值由 odm_a/etc/build.prop 第 47 行设置。sensoremu 与 sensor-emulator 服务使用同一属性，其值分别为 sensoremu 和 sensor-emulator。该服务还会在运行时由 shell 脚本 virtualcontroller_ctl（system_ext_a/bin）和 syncboss_consumers_ctl（odm_a/bin）按名称启动和停止。
 - **C19** (verified)：android.hardware.sensors@2.1.so（lib64）是 HIDL 2.1 客户端库，SONAME 为 android.hardware.sensors@2.1.so。它链接 android.hardware.sensors@1.0.so 和 android.hardware.sensors@2.0.so，以及 libhidlbase.so、liblog.so、libutils.so、libcutils.so、libc++.so、libc.so、libm.so 和 libdl.so。它在 2.1 命名空间中定义了 ISensors 与 ISensorsCallback。其 AOSP 来源为推断，组数据并未显示。
@@ -48,7 +48,7 @@ sensors-mcu-meta-hal 组共有 263 行：259 个普通文件和 4 个符号链�
 
 ## 已排除的声明
 
-这些声明在复现时未成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | Claim | Reason |
 |---|---|---|

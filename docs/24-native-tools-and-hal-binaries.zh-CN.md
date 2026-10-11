@@ -60,7 +60,7 @@
 
 ## 更正措辞的断言
 
-这些断言的实质内容成立。以下措辞替换原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **G10** (observed)：toolbox 含有 getprop 和 setprop 的用法字符串，从 libc 导入 __system_property_foreach 和 __system_property_read_callback，其字符串表包含路径 /dev/__properties__/property_info。通过该文件读取属于推断，依据是路径字符串；没有任何导入或 open 调用能证明这一点。
 - **G17** (observed)：hal_proxy_daemon 导入 wifi_* 函数（例如 wifi_initialize、wifi_get_ifaces 和 wifi_start_gscan，它们是由其 NEEDED 库 libwifi-hal-qcom.so 解析的未定义动态符号），其字符串表中保存编号为 1 至 13 的 WifiLogger 命令描述。
@@ -71,7 +71,7 @@
 
 ## 被排除的断言
 
-这些断言在复现时未能成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 断言 | 原因 |
 |---|---|---|

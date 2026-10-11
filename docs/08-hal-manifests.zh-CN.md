@@ -32,7 +32,7 @@ hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载
 
 ## 修正措辞后的结论
 
-这些结论在实质上成立。下面的措辞替换原有表述。
+下方结论以数据所支持的措辞重新表述。
 
 - **GRP-04** (observed)：三个文件被归类为 text/xml（parfait.xml 和两个 DRM 清单），file(1) 对这三个文件的判断与该分类一致，均报告为 XML 1.0 document。在 59 个 text/plain 文件中，file(1) 对其中 18 个（例如 system_a/system/etc/vintf/manifest.xml）报告为 exported SGML document，对其中 41 个报告为 plain ASCII text。
 - **GRP-06** (verified)：由 56 个 manifest 根元素（在 62 个文件中）提供的名称级覆盖率为：30 个设备矩阵名称中有 28 个。没有提供方的两个名称是 vendor.oculus.hardware.mixedreality（optional true）和 vendor.oculus.hardware.peripheralconfig 1.0（optional true）。完整 HAL 名称 vendor.oculus.hardware.peripheralconfig 仅出现在挂载分区上的 system_a/system/etc/vintf/compatibility_matrix.device.xml 中；裸词 peripheralconfig 还出现在其他 10 个文件中，作为库、工具和路径名称出现。
@@ -44,7 +44,7 @@ hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载
 
 ## 已排除的结论
 
-这些结论在复现时未成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 结论 | 原因 |
 |---|---|---|

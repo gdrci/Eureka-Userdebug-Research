@@ -43,7 +43,7 @@ The role table has one row for each of the 239 files in this group (230 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **A04** (verified): All 49 audio-group .ogg clips under product_a/media/audio/ (alarms 9, notifications 11, ringtones 12, ui 17) are Vorbis in an Ogg container, with sample rates of 44100 or 48000 Hz and 1 or 2 channels. The directory holds 51 .ogg files; camera_click.ogg and camera_focus.ogg belong to the camera group and are not counted.
 - **A05** (verified): Ten shared objects export the HAL module symbol HMI: audio.a2dp.default.so (system lib and lib64), and audio.r_submix.default.so, audio.primary.default.so, audio.usb.default.so and audio.primary.anorak.so, each in both vendor lib and vendor lib64.
@@ -55,7 +55,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

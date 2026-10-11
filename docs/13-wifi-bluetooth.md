@@ -56,7 +56,7 @@ The role table has one row for each of the 104 files in this group (91 verified,
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **WB-02** (verified): All 104 input rows are present at their mount paths. The 103 regular files match their recorded size and sha256 (ok=103 bad=0). The one symlink, system_a/system/app/Bluetooth/lib/arm64/libbluetooth_jni.so, is present and its target /system/lib64/libbluetooth_jni.so exists in the system_a mount.
 - **WB-05** (verified): Init service definitions for the group are in: vendor_a/etc/init/hw/init.anorak.rc (wpa_supplicant, cnss-daemon), vendor_a/etc/init/hw/init.anorak.debug.rc (vendor.cnss_diag), vendor_a/etc/init/android.hardware.wifi@1.0-service.rc (vendor.wifi_hal_legacy), vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc (vendor.bluetooth-1-0-qti), vendor_a/etc/init/hostapd.android.rc (hostapd), system_a/system/etc/init/wificond.rc (wificond), system_ext_a/etc/init/wifitelemetry.rc (wifitelemetry) and odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc (vendor.oculus.wifi-hal-1-0). system_a/system/etc/init/wifi.rc defines no service; it holds restorecon and kernel tracing steps.
@@ -71,7 +71,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

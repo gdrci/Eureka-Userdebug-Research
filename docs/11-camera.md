@@ -52,7 +52,7 @@ The role table has one row for each of the 83 files in this group (38 verified, 
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C07** (observed): camera.qcom.so holds literal paths for its file and component locations (/vendor/lib64/camera/components/, /vendor/etc/camera, /data/vendor/camera, /data/vendor/camera/metadata), format patterns %s/%s%s_%s_%d.bin, %s/GlobalUsecase%s_%d.bin and %s/PerUsecase%s_%d.bin, and property keys such as persist.vendor.camera.isp.enablePiAEC, persist.vendor.camera.eeprom.reload and persist.vendor.camera.enablemetahashmap.
 - **C12** (verified): odm_a/lib64/libcamerahal.so is a stripped AArch64 shared object (SONAME libcamerahal.so, 36,896 bytes). Its C-linkage exports are CameraHalC_Init, CameraHalC_Start, CameraHalC_Stop and CameraHalC_Deinit; it also exports 14 mangled C++ symbols in the CameraHal namespace. It NEEDs libbase, libimagebuffer, liblog, libmros_vendor_sysprops, libsensortelemetry, libui and libutils (plus libc++, libc, libm and libdl).
@@ -66,7 +66,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

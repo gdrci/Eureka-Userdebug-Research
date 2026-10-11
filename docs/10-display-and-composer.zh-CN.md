@@ -41,7 +41,7 @@
 
 ## 措辞已修正的论断
 
-这些论断的实质内容成立。下列措辞替换原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C01**（verified）：该组有 132 个输入行：130 个普通文件和 2 个符号链接，分布于 odm_a（6）、system_a（65）、system_ext_a（7）和 vendor_a（54）。四个分区均以只读方式挂载。每个普通文件都存在于挂载点下，且与其记录的大小和 sha256 一致。2 个符号链接行（system_a/system/bin/hwclock -> toybox、vendor_a/bin/hwclock -> toybox_vendor）未记录 sha256（字段为 '-'），仅作为链接进行检查。
 - **C08**（observed）：高通 composer 服务二进制文件包含 41 个以 vendor.display.、vendor.gralloc. 或 vendor.debug. 开头的字符串；其中 39 个是具体的属性键（另外两个是单纯的前缀 vendor.display. 以及模板 vendor.display.cac_ipd_adjust_%zu）。示例：vendor.display.enable_verbose_log、vendor.display.cac_scale_red、vendor.display.idle_time、vendor.display.disable_skip_validate、vendor.gralloc.disable_ubwc。

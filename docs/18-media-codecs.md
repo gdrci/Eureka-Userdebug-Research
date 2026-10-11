@@ -46,7 +46,7 @@ The role table has one row for each of the 163 files in this group (103 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **sysext-01** (verified): system_ext_a/lib64/libcodecwrapper.so is a protobuf-based encode and decode wrapper for wearable input telemetry (IMU, EMG, gesture, battery, device-state and haptics messages in the com::oculus::wearableinputservice namespace), not a media codec. It embeds the protobuf runtime and has no libprotobuf dependency. Its references are WearableInputService.apk, which packages lib/arm64-v8a/libcodecwrapper.so and lib/arm64-v8a/libwis_input_device.so, and two system_ext libraries that link it: libwis_input_device.so (also packaged in the APK) and wis_handlers.so (a standalone system_ext library).
 - **apex-05** (verified): The APEX media_codecs.xml lists 9 Codec2 decoders and 6 encoders, all named with the c2.android.* prefix. Fourteen of the 15 carry an OMX.google alias; c2.android.opus.encoder has none. The file has no Include elements.

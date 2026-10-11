@@ -33,7 +33,7 @@ The role table has one row for each of the 13 files in this group (13 verified, 
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **U04** (verified): su has 11 program headers: PHDR, INTERP, three LOAD segments (R, R+E, RW; alignment 0x1000), TLS, DYNAMIC, GNU_RELRO, GNU_EH_FRAME, GNU_STACK (RW) and NOTE. A non-allocated .gnu_debugdata section sits at file offset 0x23de with size 0x130.
 - **U10** (verified): The binary embeds --help, setuid failed, setgid failed, invalid uid/gid '%s', setgroups failed, not allowed, too many group ids and failed to exec %s, plus the environment names PATH, USER, LOGNAME, IFS. The default shell path /system/bin/sh and a default PATH literal (/product/bin:/apex/com.android.runtime/bin:...:/vendor/xbin) are embedded. The binary passes PATH, USER and LOGNAME to setenv (PATH with the default literal as value), and clears IFS, USER and LOGNAME with unsetenv at separate call sites. It imports no getenv, so these names are set or cleared rather than read.

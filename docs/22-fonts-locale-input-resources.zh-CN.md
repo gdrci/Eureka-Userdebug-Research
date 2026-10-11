@@ -42,7 +42,7 @@
 
 ## 已更正措辞的声明
 
-这些声明的实质内容成立。下方的措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C10** (verified)：产品字体：OptimisticDisplay-VF.ttf 是一个可变 TrueType 字体，名称为 'Optimistic Disp VF Cyrl Md'（版本 2.000，wght 200-800，默认值 500，341 个字形，unitsPerEm 2000）。OptimisticText-{Light,Regular,Medium,Bold,Black}.ttf 是静态 TrueType 字体（版本 1.000，430 个字形，unitsPerEm 2000），属于排版字体族 'Optimistic Text App'（name ID 16，Regular 和 Bold 中不存在）。它们的完整名称分别为 'Optimistic Text App Light'、'Optimistic Text App'（Regular）、'Optimistic Text App Medium'、'Optimistic Text App Bold' 和 'Optimistic Text App ExtraBold'（文件名为 Black）。这六个文件均位于 product_a/fonts 中。
 - **C15** (observed)：fonts.xml 说明其选择规则：字体依次按包含脚本在内的完整 BCP-47 语言标签匹配，然后按语言匹配，最后按顺序匹配（即第一个包含该字形的字体）。出现顺序也用于在字重匹配时打破平局。
@@ -52,7 +52,7 @@
 
 ## 已排除的声明
 
-这些声明在复现时不成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

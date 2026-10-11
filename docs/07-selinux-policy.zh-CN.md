@@ -37,7 +37,7 @@ selinux-policy 组是本镜像中携带的 Android SELinux 策略集：共 51 �
 
 ## 已修正措辞的声明
 
-这些声明的实质内容成立。下列措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C08** (verified): plat_sepolicy.cil 为 28,911 行、1,897,754 字节的 CIL。它以三条 role 声明和两行 cil_gen_require 开头，随后是 (handleunknown deny) 和 (mls true)、四个 policycap，以及 27 个 sid 及其 sidcontext 形式。用户 u 的范围从 s0（无类别）到 s0 加类别范围 c0 至 c1023。
 - **C16** (verified): plat_file_contexts（644 行）、vendor_file_contexts（492）和 system_ext_file_contexts（86）中的标签均可解析为五个 CIL 文件之一中声明的类型。这五个文件共声明 2,275 个不同的类型名称。各文件的不同标签数为 423（plat）、248（vendor）和 80（system_ext），没有无法解析的标签。
@@ -51,7 +51,7 @@ selinux-policy 组是本镜像中携带的 Android SELinux 策略集：共 51 �
 
 ## 已排除的声明
 
-这些声明在复现时未能成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

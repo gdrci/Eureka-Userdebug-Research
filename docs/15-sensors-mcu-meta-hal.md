@@ -37,7 +37,7 @@ The role table has one row for each of the 263 files in this group (175 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C08** (verified): The debug init file defines vendor.oculus.sensors-hal-1-0 (class hal, user system, group system camera, capabilities SYS_NICE, task_profiles sensorServicePolicy, interface vendor.oculus.hardware.sensors@1.0::IExternalTimingProvider default, disabled). Its only boot trigger starts it when persist.vendor.oculus.sensor.service.impl=sensorservice, which odm_a/etc/build.prop line 47 sets. The sensoremu and sensor-emulator services use the same property with the values sensoremu and sensor-emulator. The service is also started and stopped at runtime by name from the shell scripts virtualcontroller_ctl (system_ext_a/bin) and syncboss_consumers_ctl (odm_a/bin).
 - **C19** (verified): android.hardware.sensors@2.1.so (lib64) is a HIDL 2.1 client library with SONAME android.hardware.sensors@2.1.so. It links android.hardware.sensors@1.0.so and android.hardware.sensors@2.0.so, plus libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so and libdl.so. It defines ISensors and ISensorsCallback in the 2.1 namespace. Its AOSP origin is inferred, not shown by the group data.
@@ -48,7 +48,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

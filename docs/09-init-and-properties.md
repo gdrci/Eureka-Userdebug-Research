@@ -47,7 +47,7 @@ The role table has one row for each of the 183 files in this group (178 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C13** (observed): The init binary's property-service strings include init.svc. prefixes, ro.boottime.init, ro.cold_boot_done, persist. and ro. prefixes (for example ro.boot. and ro.boottime.), and /dev/__properties__/property_info. These strings are consistent with init setting init.svc.<name> state properties (inferred; runtime writes were not observed).
 - **C19** (inferred): The ro.hardware value that selects init.eureka.rc and fstab.eureka is inferred to be eureka. It is not set in any of the five build.prop files of this group, and its source is outside the group. The name is consistent with ro.product.<partition>.device=eureka in each build.prop (for example ro.product.vendor.device=eureka) and with ro.product.board=eureka in the vendor build.prop.
@@ -60,7 +60,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

@@ -46,7 +46,7 @@
 
 ## 措辞已修正的论断
 
-这些论断实质上成立。下面的措辞替换了原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **sysext-01** (verified)：system_ext_a/lib64/libcodecwrapper.so 是基于 protobuf 的可穿戴输入遥测编解码封装库（包括 com::oculus::wearableinputservice 命名空间中的 IMU、EMG、手势、电池、设备状态和触觉消息），不是媒体编解码器。它内嵌 protobuf 运行时，且没有 libprotobuf 依赖。其引用方包括 WearableInputService.apk（其中打包了 lib/arm64-v8a/libcodecwrapper.so 和 lib/arm64-v8a/libwis_input_device.so），以及两个链接它的 system_ext 库：libwis_input_device.so（同样打包在 APK 中）和 wis_handlers.so（一个独立的 system_ext 库）。
 - **apex-05** (verified)：APEX 的 media_codecs.xml 列出 9 个 Codec2 解码器和 6 个编码器，均以 c2.android.* 前缀命名。15 个中有 14 个带有 OMX.google 别名；c2.android.opus.encoder 没有别名。该文件中没有 Include 元素。

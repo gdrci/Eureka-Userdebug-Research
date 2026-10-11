@@ -37,7 +37,7 @@ The role table has one row for each of the 51 files in this group (46 verified, 
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C08** (verified): plat_sepolicy.cil is 28,911 lines and 1,897,754 bytes of CIL. It opens with three role declarations and two cil_gen_require lines, then (handleunknown deny) and (mls true), four policycaps, and 27 sids with their sidcontext forms. The user u range runs from s0 with no categories to s0 with the category range c0 through c1023.
 - **C16** (verified): Labels in plat_file_contexts (644 lines), vendor_file_contexts (492) and system_ext_file_contexts (86) all resolve to a type declared in one of the five CIL files. The five files together declare 2,275 distinct type names. The distinct labels per file are 423 (plat), 248 (vendor) and 80 (system_ext), and none is unresolved.
@@ -51,7 +51,7 @@ These claims held in substance. The wording below replaces the original.
 
 ## Excluded claims
 
-These claims did not hold on reproduction.
+The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

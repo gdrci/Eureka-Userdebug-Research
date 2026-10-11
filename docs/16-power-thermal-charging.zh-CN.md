@@ -45,7 +45,7 @@
 
 ## 措辞已修正的论断
 
-这些论断在实质内容上成立。下列措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C11** (inferred)：充电器的 DT_NEEDED 中没有 libexternalbattery.so 条目，也没有 .symtab 段。它已被剥离，但其 .gnu_debugdata 段中保存了一个压缩的符号表，其中定义了 IExternalBattery 代理类和存根类，以及 hardware::oculus::health::ExternalBattery 包装类。因此该二进制文件包含这些代码自身编译的副本，而不是在运行时加载 libexternalbattery.so。
 - **C17** (verified)：热管理 HAL 库被 15 个文件链接。在 odm_a 中：perf_service（1.0 和 2.0）和 wattsup（2.0）。在 system_a 中：lib 和 lib64 中的 libandroid_servers.so（1.0）；libvrsrecorder.so、libvrsrecorder_plugin_temperaturereader.so、libvrsrecorder_utils_camera.so 和 libvrsrecorder_utils_sensorapishim.so（2.0）；以及 android.hardware.thermal@2.0.so 的 lib 和 lib64 副本（各自链接 @1.0）。在 system_ext_a 中：perfstream、vrdevicemanagerserver 和 libperfstreamprovider.so（2.0）。在 vendor_a 中：libthermalhalutils.so（1.0 和 2.0）的 vendor 副本，以及 android.hardware.thermal@2.0.so（@1.0）的 vendor 副本。
@@ -57,7 +57,7 @@
 
 ## 已排除的论断
 
-这些论断在复现时不成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 论断 | 原因 |
 |---|---|---|

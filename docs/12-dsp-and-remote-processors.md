@@ -49,7 +49,7 @@ The role table has one row for each of the 243 files in this group (153 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **D6b** (observed): The variant suffix p or t also appears on the signature containers crypt1p.sig and crypt1t.sig. Both carry the organizationalUnit value 'Qualcomm Cryptographic Operations'. Their commonName values differ: 'SPU MBNv7 Image Signing Root CA 6 SubCA 1' (crypt1p.sig) and 'SPU MBNv7 Image Signing Test Root CA 6 SubCA 1' (crypt1t.sig). The digit strings 1200 and 1705 that appear after the organizational unit are DER header bytes, not part of a subject string.
 - **D8b** (observed): The QCA6490 WLAN config WCNSS_qcom_cfg.ini has 126 lines: 99 key=value lines, 14 comment lines, 12 blank lines and a final END line. amss.bin embeds the names of its sub-images, and WLAN config and label references appear in the mounted SELinux file contexts.

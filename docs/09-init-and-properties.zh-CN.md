@@ -47,7 +47,7 @@
 
 ## 更正表述的声明
 
-这些声明实质上成立。下面的表述替换原始表述。
+下方结论以数据所支持的措辞重新表述。
 
 - **C13** (observed): init 二进制文件的属性服务字符串包括 init.svc. 前缀、ro.boottime.init、ro.cold_boot_done、persist. 和 ro. 前缀（例如 ro.boot. 和 ro.boottime.），以及 /dev/__properties__/property_info。这些字符串与 init 设置 init.svc.<name> 状态属性的行为一致（inferred；未观察到运行时写入）。
 - **C19** (inferred): 选择 init.eureka.rc 和 fstab.eureka 的 ro.hardware 值被推断为 eureka。它不在本组的五个 build.prop 文件中设置，其来源在本组之外。该名称与每个 build.prop 中的 ro.product.<partition>.device=eureka（例如 ro.product.vendor.device=eureka），以及厂商 build.prop 中的 ro.product.board=eureka 一致。
@@ -60,7 +60,7 @@
 
 ## 已排除的声明
 
-这些声明在复现时未成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

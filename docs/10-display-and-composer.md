@@ -41,7 +41,7 @@ The role table has one row for each of the 132 files in this group (114 verified
 
 ## Claims with corrected wording
 
-These claims held in substance. The wording below replaces the original.
+The claims below are restated with the wording that the data supports.
 
 - **C01** (verified): The group has 132 input rows: 130 regular files and 2 symlinks, across odm_a (6), system_a (65), system_ext_a (7) and vendor_a (54). All four partitions are mounted read-only. Every regular file exists under the mount and matches its recorded size and sha256. The 2 symlink rows (system_a/system/bin/hwclock -> toybox, vendor_a/bin/hwclock -> toybox_vendor) record no sha256 (field '-') and are checked as links only.
 - **C08** (observed): The Qualcomm composer service binary contains 41 strings beginning vendor.display., vendor.gralloc. or vendor.debug.; 39 of them are concrete property keys (the other two are the bare prefix vendor.display. and the template vendor.display.cac_ipd_adjust_%zu). Examples: vendor.display.enable_verbose_log, vendor.display.cac_scale_red, vendor.display.idle_time, vendor.display.disable_skip_validate, vendor.gralloc.disable_ubwc.

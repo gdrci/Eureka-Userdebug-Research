@@ -40,7 +40,7 @@
 
 ## 措辞已更正的论断
 
-这些论断实质上成立。下方的措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C05** (verified): 229 个符号链接解析为：173 个 toybox、6 个 toolbox、5 个 netutils-wrapper-1.0、5 个 iptables、3 个 mke2fs、3 个 fsck.f2fs、2 个 ziptool、2 个 logpersist.start、2 个 bzip2、2 个 /apex/com.android.runtime/bin/linker64、2 个 /apex/com.android.runtime/bin/linker，18 个相对的 ../boot-*.vdex 链接（9 个 boot 名称，各位于 system/framework/arm 和 system/framework/arm64 下），以及其余单个链接：system/bin/linkerconfig 指向 /apex/com.android.runtime/bin/linkerconfig，system/bin/dex2oat 指向 /apex/com.android.art/bin/dex2oat64，system/bin/dalvikvm 指向 /apex/com.android.art/bin/dalvikvm，system/bin/app_process 指向 app_process64，以及引导别名 system/bin/bootstrap/linker_asan -> linker 和 linker_asan64 -> linker64。
 - **C06** (verified): 挂载树中存在的 8 个符号链接不在本组中：system/bin/disable-verity、enable-verity、hwclock、tee、touch、ueventd，以及 system/framework/arm 和 arm64 下的两个 boot-com.oculus.os.platform.vdex 链接。它们在 classified.tsv 中属于另外四个子系统：security-keystore-crypto（disable-verity、enable-verity、tee）、display-and-composer（hwclock）、sensors-mcu-meta-hal（touch 以及两个 boot-com.oculus.os.platform.vdex 链接）和 init-and-properties（ueventd）。
@@ -55,7 +55,7 @@
 
 ## 已排除的论断
 
-这些论断在复现时未能成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 论断 | 原因 |
 |---|---|---|

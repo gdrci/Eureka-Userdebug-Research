@@ -52,7 +52,7 @@
 
 ## 修正措辞后的声明
 
-这些声明的实质内容成立。下方的措辞替换了原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **C07** (observed)：camera.qcom.so 中保存了其文件与组件位置的字面路径（/vendor/lib64/camera/components/、/vendor/etc/camera、/data/vendor/camera、/data/vendor/camera/metadata）、格式模式 %s/%s%s_%s_%d.bin、%s/GlobalUsecase%s_%d.bin 和 %s/PerUsecase%s_%d.bin，以及属性键，例如 persist.vendor.camera.isp.enablePiAEC、persist.vendor.camera.eeprom.reload 和 persist.vendor.camera.enablemetahashmap。
 - **C12** (verified)：odm_a/lib64/libcamerahal.so 是一个已剥离符号的 AArch64 共享对象（SONAME 为 libcamerahal.so，36,896 字节）。其 C 链接导出符号为 CameraHalC_Init、CameraHalC_Start、CameraHalC_Stop 和 CameraHalC_Deinit；它还导出 CameraHal 命名空间下的 14 个 C++ 修饰符号。其 NEEDED 条目包括 libbase、libimagebuffer、liblog、libmros_vendor_sysprops、libsensortelemetry、libui 和 libutils（另有 libc++、libc、libm 和 libdl）。
@@ -66,7 +66,7 @@
 
 ## 已排除的声明
 
-这些声明在复现时不成立。
+下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

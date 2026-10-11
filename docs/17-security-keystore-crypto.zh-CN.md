@@ -34,7 +34,7 @@
 
 ## 措辞已修正的论断
 
-这些论断的实质内容成立。以下措辞取代原文。
+下方结论以数据所支持的措辞重新表述。
 
 - **ks2-interfaces** (observed)：keystore2 的二进制字符串中包含 android.system.keystore2 服务名（IKeystoreService/default、IKeystoreOperation），以及维护、指标、授权、compat、APC、legacy keystore 和远程配置（remote provisioning）接口名称，另有 KeyMint、安全时钟和共享密钥 HAL 接口名称。它导入了 AServiceManager_addService，并在 IKeystoreService/default、APC、授权、指标、远程配置、维护和 legacy keystore 名称旁记录日志 'Successfully registered Keystore 2.0 service.'。无法仅凭字符串确定每个列出的接口是由该二进制提供服务，还是仅被引用。
 - **set-verity-refs** (verified)：已挂载分区中有四个二进制文件包含 verity 状态命令名：system_a/system/bin/init、snapshotctl、update_engine 以及 set-verity-state 本身（其中除 set-verity-state 外为三个）。verity 状态相关行（set-verity-state、enable-verity、disable-verity）以及 tee 符号链接行，在已检查分区的任何 init.rc 或 file_contexts 条目中均未被提及。

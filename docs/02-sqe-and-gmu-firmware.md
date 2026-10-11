@@ -14,7 +14,7 @@ The SQE is the command-processor microcode. The GMU is the power and clock contr
 
 ## Open items
 
-These claims were reproduced but judged wrong in wording or label, or they were refuted. They are not stated above until the wording is corrected.
+The claims below are excluded or restated; each one gives its reason.
 
 | ID | Label | Reproduce / refute | Claim (as produced) |
 |---|---|---|---|

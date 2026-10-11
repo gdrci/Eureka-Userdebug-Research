@@ -11,7 +11,7 @@ The kgsl module is the kernel driver that loads GPU firmware and exposes the GPU
 
 ## Open items
 
-These claims were reproduced but judged wrong in wording or label, or they were refuted. They are not stated above until the wording is corrected.
+The claims below are excluded or restated; each one gives its reason.
 
 | ID | Label | Reproduce / refute | Claim (as produced) |
 |---|---|---|---|
