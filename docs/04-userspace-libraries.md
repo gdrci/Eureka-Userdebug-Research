@@ -7,11 +7,11 @@ The Adreno userspace stack is a set of shared libraries: the GPU core library, t
 ## Verified claims
 
 - **F01** (verified): Three targets are relative symlinks into an egl/ subdirectory in both lib64 and lib: libEGL_adreno.so -> egl/libEGL_adreno.so, libGLESv2_adreno.so -> egl/libGLESv2_adreno.so, libq3dtools_adreno.so -> egl/libq3dtools_adreno.so. The other five targets are regular files in both directories (lib64 sizes: libgsl.so 2218160, libOpenCL_adreno.so 163408, libadreno_utils.so 97800, libadreno_app_profiles.so 976128, libar-gsl.so 203176 bytes).
-- **F03** (verified): libgsl.so DT_NEEDED (9, identical in lib64 and lib): libcutils.so, liblog.so, libz.so, libsync.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so
-- **F04** (verified): libEGL_adreno.so DT_NEEDED (9, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so
-- **F06** (verified): libOpenCL_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, libvndksupport.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so
-- **F07** (verified): libadreno_utils.so DT_NEEDED (7, identical in lib64 and lib): libgsl.so, liblog.so, libnativewindow.so, libc++.so, libc.so, libm.so, libdl.so
-- **F10** (verified): libar-gsl.so DT_NEEDED (8, identical in lib64 and lib): liblx-osal.so, libar-acdb.so, liblx-ar_util.so, libar-gpr.so, libc++.so, libc.so, libm.so, libdl.so
+- **F03** (verified): libgsl.so DT_NEEDED (9, identical in lib64 and lib): libcutils.so, liblog.so, libz.so, libsync.so, libdmabufheap.so, libc++.so, libc.so, libm.so, libdl.so.
+- **F04** (verified): libEGL_adreno.so DT_NEEDED (9, identical in lib64 and lib): libadreno_utils.so, libgsl.so, libcutils.so, libdl.so, libz.so, liblog.so, libc++.so, libc.so, libm.so.
+- **F06** (verified): libOpenCL_adreno.so DT_NEEDED (7, identical in lib64 and lib): libcutils.so, libvndksupport.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so.
+- **F07** (verified): libadreno_utils.so DT_NEEDED (7, identical in lib64 and lib): libgsl.so, liblog.so, libnativewindow.so, libc++.so, libc.so, libm.so, libdl.so.
+- **F10** (verified): libar-gsl.so DT_NEEDED (8, identical in lib64 and lib): liblx-osal.so, libar-acdb.so, liblx-ar_util.so, libar-gpr.so, libc++.so, libc.so, libm.so, libdl.so.
 - **F11** (verified): Defined dynamic-symbol totals (lib64 / lib): libgsl.so 580 / 580; libEGL_adreno.so 151 / 152; libGLESv2_adreno.so 538 / 539; libOpenCL_adreno.so 444 / 444; libadreno_utils.so 109 / 109; libq3dtools_adreno.so 556 / 556; libadreno_app_profiles.so 6 / 6; libar-gsl.so 189 / 189.
 - **F12** (verified): libEGL_adreno.so exports 78 defined dynamic symbols whose names match ^egl[A-Z] (lib64 and lib both 78). No gl*, glX*, cl* or vk* names are exported by this library.
 - **F14** (verified): libOpenCL_adreno.so exports 7 defined dynamic symbols matching ^cl[A-Z] (both lib64 and lib). The other 437 (lib64) defined symbols are not cl-prefixed.
