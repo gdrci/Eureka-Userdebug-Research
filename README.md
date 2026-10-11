@@ -1,4 +1,4 @@
-# Eureka userdebug (all subsystems)
+# Eureka userdebug
 
 This repository documents the subsystems of the Eureka userdebug build (Android 12, platform `anorak`): an inventory of every file in seven partitions of the super image, a role table and checked claims for each subsystem, and a detailed analysis of the Adreno GPU subsystem.
 
