@@ -4,7 +4,7 @@
 
 本页介绍镜像中的 22 个应用：设置、蓝牙、浏览器、助手、主页、采集、系统界面、VR 运行时、身体与眼动输入、可穿戴输入、首次设置、系统 WebView、设备管理、应用安装、Guardian 边界服务、滥用举报、电话和 Skyguard 服务。这些应用是从 5,685 条清单（`data/inventory/files.tsv`）中人工挑选的，用于覆盖面向用户和系统的功能。每一节的事实来自清单文件（manifest）和 dex 文件。角色描述是根据类名和组件名的读法给出的；超出清单内容的说明标注为“推断”。
 
-每个应用的完整事实在 `data/apks/<name>.json` 中，汇总表为 `data/apks/summary.tsv`。本页由 `tools/apk/gen_apps_doc.py` 从这些文件生成。
+每个应用的完整事实在 `data/apks/<name>.json` 中，汇总表为 `data/apks/summary.tsv`。
 
 ## 方法和限制
 

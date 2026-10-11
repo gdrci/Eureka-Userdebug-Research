@@ -61,7 +61,7 @@ The claims below are excluded; the reason for each is given.
 <!-- generated: libraries start -->
 ## Library index (generated)
 
-The native-libraries group has 1,361 files. Source: `data/elf/libraries.tsv` (headers and dynamic symbols, read with the Go standard `debug/elf` package). Every file's SHA-256 matches the inventory (1,361 of 1,361).
+The native-libraries group has 1,361 files. Source: `data/elf/libraries.tsv` (headers and dynamic symbols). Every file's SHA-256 matches the inventory (1,361 of 1,361).
 
 - 1,351 files are ELF shared objects (ET_DYN): 854 ELFCLASS64 with machine EM_AARCH64, 497 ELFCLASS32 with machine EM_ARM.
 - 10 files are LLVM bitcode, not ELF: `system_a/system/lib/libclcore.bc`, `system_a/system/lib/libclcore_debug.bc`, `system_a/system/lib/libclcore_debug_g.bc`, `system_a/system/lib/libclcore_g.bc`, `system_a/system/lib/libclcore_neon.bc`, `system_a/system/lib64/libclcore.bc`, `system_a/system/lib64/libclcore_debug.bc`, `system_a/system/lib64/libclcore_debug_g.bc`, `system_a/system/lib64/libclcore_g.bc`, `system_a/system/lib64/libclcore_neon.bc`.

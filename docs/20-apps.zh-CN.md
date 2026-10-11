@@ -69,7 +69,7 @@
 ## 包索引（生成）
 
 本索引涵盖镜像中的 146 个 `.apk` 文件：本分组的 142 个 APK 压缩包，以及其他分组中的另外 4 个（`framework-res.apk`（framework-and-system-services）、`Provision.apk`（sensors-mcu-meta-hal）、`QuestManagedProvisioning.apk`（sensors-mcu-meta-hal）、`com.oculus.os.platform-res.apk`（sensors-mcu-meta-hal））。
-来源：`data/apks/<name>.json`（androguard 4.1.4，`tools/apk/apkfacts.py`）；汇总表为 `data/apks/summary.tsv`。
+来源：`data/apks/<name>.json`；汇总表为 `data/apks/summary.tsv`。
 
 - 各分区的文件数：system_a 42、system_ext_a 92、product_a 11、vendor_a 1。
 - 签名证书族（签名证书前 16 位十六进制数字）：`c8a2e9bccf597c2f` 72、`fac61745dc090378` 53、`a40da80a59d170ca` 11、`28bbfe4a7b97e746` 4、`465983f7791f2abe` 4、`b6f96027df75ec89` 1、`dc2f834e3c194237` 1。

@@ -69,7 +69,7 @@ The claims below are restated with the wording that the data supports.
 ## Package index (generated)
 
 This index covers the 146 `.apk` files of the image: the 142 APK archives of the apps group, and 4 more in other groups (`framework-res.apk` (framework-and-system-services), `Provision.apk` (sensors-mcu-meta-hal), `QuestManagedProvisioning.apk` (sensors-mcu-meta-hal), `com.oculus.os.platform-res.apk` (sensors-mcu-meta-hal)).
-Source: `data/apks/<name>.json` (androguard 4.1.4, `tools/apk/apkfacts.py`); the summary is `data/apks/summary.tsv`.
+Source: `data/apks/<name>.json`; the summary is `data/apks/summary.tsv`.
 
 - Files by partition: system_a 42, system_ext_a 92, product_a 11, vendor_a 1.
 - Certificate families (first 16 hex digits of the signing certificate): `c8a2e9bccf597c2f` 72, `fac61745dc090378` 53, `a40da80a59d170ca` 11, `28bbfe4a7b97e746` 4, `465983f7791f2abe` 4, `b6f96027df75ec89` 1, `dc2f834e3c194237` 1.

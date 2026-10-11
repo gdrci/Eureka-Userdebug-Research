@@ -62,7 +62,6 @@ The super image holds the dynamic partitions. `boot`, `vendor_boot` and the kern
 - `data/elf/libraries.tsv`: the ELF headers, NEEDED and dynamic symbol counts and build-ids of the 1,361 native-library files, behind document 21.
 - `data/kernel/`: the `.modinfo` fields (`modules.tsv`) and the global symbols (`symbols.tsv`) of the 289 kernel modules, behind document 06.
 - `data/subsystems/<subsystem>/`: the role table (`roles.tsv`) and the claims with their evidence (`claims.json`) for each subsystem.
-- `tools/superunpack.go`: the unpacker used to split the super image. It streams the logical partitions and checks them against the LP metadata.
 
 ## Evidence labels
 

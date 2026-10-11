@@ -49,15 +49,11 @@ The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](
 
 ## Behaviour and applications
 
-[26](26-init-boot-behaviour.md) and [27](27-important-apps.md) are not inventory subsystems. 26 parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. 27 decodes 22 applications from the apps group (page 20) with androguard. Three subsystem pages also carry generated sections built from the data files: page 06 (module metadata and symbol dependencies, `data/kernel/`), page 20 (the index of all 146 `.apk` files, `data/apks/`) and page 21 (the index of the 1,361 native-library files and their NEEDED graph, `data/elf/`). The readers and generators are in `tools/apk/` and `tools/elfindex/`.
+[26](26-init-boot-behaviour.md) and [27](27-important-apps.md) are not inventory subsystems. 26 parses the `.rc` files of the init group (page 09) into services, actions, imports and boot phases; its tables are in `data/behaviour/`. 27 describes 22 applications from the apps group (page 20). Three subsystem pages also carry generated sections built from the data files: page 06 (module metadata and symbol dependencies, `data/kernel/`), page 20 (the index of all 146 `.apk` files, `data/apks/`) and page 21 (the index of the 1,361 native-library files and their NEEDED graph, `data/elf/`).
 
 ## Claims and their evidence
 
 Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. The GPU evidence is in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
-
-## Reproducing the evidence
-
-`tools/` holds the unpacker, the helper programs, the APK extraction scripts (`tools/apk/`) and the ELF and module indexer (`tools/elfindex/`). `tools/README.md` gives the build steps and the variables used by the evidence commands.
 
 ## Limits
 

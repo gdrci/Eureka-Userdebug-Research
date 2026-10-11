@@ -61,7 +61,7 @@
 <!-- generated: libraries start -->
 ## 库索引（生成）
 
-原生库分组共有 1,361 个文件。来源：`data/elf/libraries.tsv`（头部与动态符号，由 Go 标准库 `debug/elf` 读取）。每个文件的 SHA-256 都与清单相符（1,361 个中有 1,361 个）。每个文件的 SHA-256 都已重新计算并与清单比对：1,361 个中有 1,361 个相符。逐文件表格位于 `data/elf/libraries.tsv`。头部与动态符号由 Go 标准库 `debug/elf` 读取。
+原生库分组共有 1,361 个文件。来源：`data/elf/libraries.tsv`（头部与动态符号）。每个文件的 SHA-256 都与清单相符（1,361 个中有 1,361 个）。
 
 - 1,351 个文件为 ELF 共享对象（ET_DYN）：854 个为 ELFCLASS64、机器类型 EM_AARCH64，497 个为 ELFCLASS32、机器类型 EM_ARM。
 - 10 个文件为 LLVM 位码，不是 ELF：`system_a/system/lib/libclcore.bc`、`system_a/system/lib/libclcore_debug.bc`、`system_a/system/lib/libclcore_debug_g.bc`、`system_a/system/lib/libclcore_g.bc`、`system_a/system/lib/libclcore_neon.bc`、`system_a/system/lib64/libclcore.bc`、`system_a/system/lib64/libclcore_debug.bc`、`system_a/system/lib64/libclcore_debug_g.bc`、`system_a/system/lib64/libclcore_g.bc`、`system_a/system/lib64/libclcore_neon.bc`。

@@ -4,7 +4,7 @@
 
 This page covers 22 applications from the image: settings, Bluetooth, browser, assistant, home, capture, system UI, the VR runtime, body and eye input, wearable input, first-time setup, the system WebView, device management, app installation, the Guardian boundary service, abuse reporting, telephony and the Skyguard service. The set was chosen by hand from the 5,685-entry inventory (`data/inventory/files.tsv`) to cover the user-facing and system functions. The facts in each section come from the manifest and the dex files. Role lines are readings of class and component names; any line that goes beyond the manifest is marked inferred.
 
-The facts for each application are in `data/apks/<name>.json`, and the summary table is `data/apks/summary.tsv`. The page is generated from those files by `tools/apk/gen_apps_doc.py`.
+The facts for each application are in `data/apks/<name>.json`, and the summary table is `data/apks/summary.tsv`.
 
 ## Method and limits
 

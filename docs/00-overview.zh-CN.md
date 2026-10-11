@@ -49,15 +49,11 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 行为与应用
 
-[26](26-init-boot-behaviour.zh-CN.md) 和 [27](27-important-apps.zh-CN.md) 不属于清单中的子系统。26 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。27 使用 androguard 解码应用分组（第 20 页）中的 22 个应用。另有三个子系统页包含由数据文件生成的小节：第 06 页（模块元数据与符号依赖，`data/kernel/`）、第 20 页（全部 146 个 `.apk` 文件的索引，`data/apks/`）和第 21 页（1,361 个原生库文件的索引及其 NEEDED 依赖图，`data/elf/`）。读取与生成脚本位于 `tools/apk/` 和 `tools/elfindex/`。
+[26](26-init-boot-behaviour.zh-CN.md) 和 [27](27-important-apps.zh-CN.md) 不属于清单中的子系统。26 将 init 分组（第 09 页）中的 `.rc` 文件解析为服务、动作、导入和启动阶段；其表格位于 `data/behaviour/`。27 描述应用分组（第 20 页）中的 22 个应用。另有三个子系统页包含由数据文件生成的小节：第 06 页（模块元数据与符号依赖，`data/kernel/`）、第 20 页（全部 146 个 `.apk` 文件的索引，`data/apks/`）和第 21 页（1,361 个原生库文件的索引及其 NEEDED 依赖图，`data/elf/`）。
 
 ## 声明与证据
 
 每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。GPU 的证据位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json)。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
-
-## 复现证据
-
-`tools/` 包含解包器、辅助程序、APK 提取脚本（`tools/apk/`）以及 ELF 与模块索引工具（`tools/elfindex/`）。`tools/README.md` 给出了构建步骤以及证据命令所用的变量。
 
 ## 限制
 
