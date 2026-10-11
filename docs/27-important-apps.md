@@ -27,7 +27,7 @@ The full digests are in each section.
 
 ## Settings
 
-Package `com.android.settings`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.system`. Source `system_ext_a/priv-app/Settings/Settings.apk`.
+Package `com.android.settings`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.system`. Source `system_ext_a/priv-app/Settings/Settings.apk`; facts taken from `data/apks/Settings.json`.
 
 The platform settings application. The 51 MAIN-action activities are settings screens, named by function (Wi-Fi, display, accessibility, privacy and others); this reading is from the names. No activity in the 200 listed has the LAUNCHER category.
 
@@ -46,7 +46,7 @@ The platform settings application. The 51 MAIN-action activities are settings sc
 
 ## Bluetooth
 
-Package `com.android.bluetooth`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.bluetooth`. Source `system_a/system/app/Bluetooth/Bluetooth.apk`.
+Package `com.android.bluetooth`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.bluetooth`. Source `system_a/system/app/Bluetooth/Bluetooth.apk`; facts taken from `data/apks/Bluetooth.json`.
 
 The Bluetooth stack application. Its services are the adapter (AdapterService), GATT, A2DP and A2DP sink, HFP (HeadsetService), HID host, AVRCP controller and target, OPP, PBAP, MAP, MAP client, SAP and the media browser service (class names).
 
@@ -65,7 +65,7 @@ The Bluetooth stack application. Its services are the adapter (AdapterService), 
 
 ## Carmel (browser)
 
-Package `com.oculus.browser`, version 35.1.0.78.167.646680531 (code 565301467), minSdk 26, targetSdk 35, shared UID none. Source `system_ext_a/app/Carmel/Carmel.apk`.
+Package `com.oculus.browser`, version 35.1.0.78.167.646680531 (code 565301467), minSdk 26, targetSdk 35, shared UID none. Source `system_ext_a/app/Carmel/Carmel.apk`; facts taken from `data/apks/Carmel.json`.
 
 The browser application. Its dex is dominated by Chromium packages, counted by class-name prefix: org.chromium.chrome, org.chromium.components and org.chromium.content. Its MAIN-action activities include the WebXR and WebVR activities, and PanelActivity is the LAUNCHER activity.
 
@@ -84,7 +84,7 @@ The browser application. Its dex is dominated by Chromium packages, counted by c
 
 ## Assistant
 
-Package `com.oculus.assistant`, version 172.0.0.0.61 (code 334600368), minSdk 29, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/Assistant/Assistant.apk`.
+Package `com.oculus.assistant`, version 172.0.0.0.61 (code 334600368), minSdk 29, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/Assistant/Assistant.apk`; facts taken from `data/apks/Assistant.json`.
 
 The assistant application (package com.oculus.assistant). Its services include AssistantService, CaptionService, PlatformDictationService and MRVIService (class names). Its LAUNCHER activity is AssistantHelpActivity.
 
@@ -103,7 +103,7 @@ The assistant application (package com.oculus.assistant). Its services include A
 
 ## Horizon (home)
 
-Package `com.oculus.horizon`, version 71.0.0.894.253 (code 665345962), minSdk 23, targetSdk 23, shared UID `com.oculus.uid`. Source `system_ext_a/app/Horizon/Horizon.apk`.
+Package `com.oculus.horizon`, version 71.0.0.894.253 (code 665345962), minSdk 23, targetSdk 23, shared UID `com.oculus.uid`. Source `system_ext_a/app/Horizon/Horizon.apk`; facts taken from `data/apks/Horizon.json`.
 
 The home application (package com.oculus.horizon, shared UID com.oculus.uid). The manifest has no MAIN or LAUNCHER activity. Its services by class name cover the Gk configuration (GkService), MobileConfig, authentication (AuthService2 and the authenticator services), media upload (MediaUploaderService), cloud storage (CloudStorageIntentService) and downloads (OculusDownloadService).
 
@@ -122,7 +122,7 @@ The home application (package com.oculus.horizon, shared UID com.oculus.uid). Th
 
 ## Metacam (capture)
 
-Package `com.oculus.metacam`, version 118.0.0.251.161 (code 511400824), minSdk 28, targetSdk 28, shared UID none. Source `system_ext_a/app/Metacam/Metacam.apk`.
+Package `com.oculus.metacam`, version 118.0.0.251.161 (code 511400824), minSdk 28, targetSdk 28, shared UID none. Source `system_ext_a/app/Metacam/Metacam.apk`; facts taken from `data/apks/Metacam.json`.
 
 The capture and camera application (package com.oculus.metacam). Its services are CaptureService, CameraSdkService, CastingService, LivestreamingService and VirtualCameraService (class names). Its LAUNCHER activities are SharingPanelActivity and LivestreamYoutubeChatActivity.
 
@@ -141,7 +141,7 @@ The capture and camera application (package com.oculus.metacam). Its services ar
 
 ## SystemUX
 
-Package `com.oculus.systemux`, version 71.0.0.605.522 (code 665334819), minSdk 32, targetSdk 32, shared UID none. Source `system_ext_a/priv-app/SystemUX/SystemUX.apk`.
+Package `com.oculus.systemux`, version 71.0.0.605.522 (code 665334819), minSdk 32, targetSdk 32, shared UID none. Source `system_ext_a/priv-app/SystemUX/SystemUX.apk`; facts taken from `data/apks/SystemUX.json`.
 
 The system user-interface application (package com.oculus.systemux). Its panel services (class names) cover dialogs (AndroidDialogPanelService), the assistant (AssistantPanelService), anytime UI (AnytimeUIPanelService), the library and notifications. All 13 activities are exported.
 
@@ -160,7 +160,7 @@ The system user-interface application (package com.oculus.systemux). Its panel s
 
 ## VrShell
 
-Package `com.oculus.vrshell`, version 71.0.0.612.529 (code 665334768), minSdk 29, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/VrShell/VrShell.apk`.
+Package `com.oculus.vrshell`, version 71.0.0.612.529 (code 665334768), minSdk 29, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/VrShell/VrShell.apk`; facts taken from `data/apks/VrShell.json`.
 
 The VR shell application (package com.oculus.vrshell). Its services include ShellSpatialWindowManagerService, ShellService, DisplayResolverService, KeyboardInputMethodService and VrNotificationService (class names). Many of its LAUNCHER activities have the LaunchCheck prefix; the names suggest checks that run before an application starts (inferred from names).
 
@@ -179,7 +179,7 @@ The VR shell application (package com.oculus.vrshell). Its services include Shel
 
 ## VrDriver
 
-Package `com.oculus.systemdriver`, version 71.0.0.601.498 (code 665335459), minSdk 23, targetSdk 24, shared UID none. Source `system_a/system/priv-app/VrDriver/VrDriver.apk`.
+Package `com.oculus.systemdriver`, version 71.0.0.601.498 (code 665335459), minSdk 23, targetSdk 24, shared UID none. Source `system_a/system/priv-app/VrDriver/VrDriver.apk`; facts taken from `data/apks/VrDriver.json`.
 
 The VR driver application in `system/priv-app` (package com.oculus.systemdriver). Its services are VrRuntimeService, ScreenCaptureService, RuntimeDumpService and PackageFinderService (class names). It declares SEND_FACE_EYE_TRACKING_COMMAND and SEND_PROTECTED_CAPTURE_COMMAND.
 
@@ -198,7 +198,7 @@ The VR driver application in `system/priv-app` (package com.oculus.systemdriver)
 
 ## xrstreamingclient
 
-Package `com.oculus.xrstreamingclient`, version 71.0.0.601.524 (code 665335378), minSdk 24, targetSdk 29, shared UID none. Source `system_a/system/app/xrstreamingclient/xrstreamingclient.apk`.
+Package `com.oculus.xrstreamingclient`, version 71.0.0.601.524 (code 665335378), minSdk 24, targetSdk 29, shared UID none. Source `system_a/system/app/xrstreamingclient/xrstreamingclient.apk`; facts taken from `data/apks/xrstreamingclient.json`.
 
 The XR streaming client (package com.oculus.xrstreamingclient). Its LAUNCHER activity is MainActivity. Its services are SpeedTestService and HighwindService, and BootReceiver is a boot receiver (class names).
 
@@ -217,7 +217,7 @@ The XR streaming client (package com.oculus.xrstreamingclient). Its LAUNCHER act
 
 ## BodyApiService
 
-Package `com.oculus.bodyapiservice`, version 71.0.0.541.758 (code 665334810), minSdk 23, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/BodyApiService/BodyApiService.apk`.
+Package `com.oculus.bodyapiservice`, version 71.0.0.541.758 (code 665334810), minSdk 23, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/BodyApiService/BodyApiService.apk`; facts taken from `data/apks/BodyApiService.json`.
 
 The body API service (package com.oculus.bodyapiservice). Its services are BodyApiService and EyeTrackingService (class names).
 
@@ -236,7 +236,7 @@ The body API service (package com.oculus.bodyapiservice). Its services are BodyA
 
 ## SpatialPersistenceService
 
-Package `com.facebook.spatial_persistence_service`, version 71.0.0.605.527 (code 665334781), minSdk 28, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/SpatialPersistenceService/SpatialPersistenceService.apk`.
+Package `com.facebook.spatial_persistence_service`, version 71.0.0.605.527 (code 665334781), minSdk 28, targetSdk 29, shared UID none. Source `system_ext_a/priv-app/SpatialPersistenceService/SpatialPersistenceService.apk`; facts taken from `data/apks/SpatialPersistenceService.json`.
 
 The spatial anchor persistence service (package com.facebook.spatial_persistence_service). Its services are AnchorPersistenceService, AnchorPersistenceDurableService and AnchorPersistenceDumpService. AnchorPersistenceServiceSweeper is a receiver. It requests the COLOCATION_API permissions listed below.
 
@@ -255,7 +255,7 @@ The spatial anchor persistence service (package com.facebook.spatial_persistence
 
 ## WearableInputService
 
-Package `com.oculus.wearableinputservice`, version 80.0.0.0.0 (code 637286716), minSdk 26, targetSdk 26, shared UID none. Source `system_ext_a/priv-app/WearableInputService/WearableInputService.apk`.
+Package `com.oculus.wearableinputservice`, version 80.0.0.0.0 (code 637286716), minSdk 26, targetSdk 26, shared UID none. Source `system_ext_a/priv-app/WearableInputService/WearableInputService.apk`; facts taken from `data/apks/WearableInputService.json`.
 
 The wearable input application (package com.oculus.wearableinputservice). Its services include EMGService, WearableInputService and WearableInputCLIService2, and two test services (class names). The name EMGService suggests electromyography input (inferred from the name only).
 
@@ -274,7 +274,7 @@ The wearable input application (package com.oculus.wearableinputservice). Its se
 
 ## FirstTimeNuxEureka
 
-Package `com.oculus.firsttimenux`, version 71.2.0.117.949 (code 665345994), minSdk 28, targetSdk 28, shared UID none. Source `system_a/system/app/FirstTimeNuxEureka/FirstTimeNuxEureka.apk`.
+Package `com.oculus.firsttimenux`, version 71.2.0.117.949 (code 665345994), minSdk 28, targetSdk 28, shared UID none. Source `system_a/system/app/FirstTimeNuxEureka/FirstTimeNuxEureka.apk`; facts taken from `data/apks/FirstTimeNuxEureka.json`.
 
 The first-time setup application. Its LAUNCHER activity is FirstTimeNuxActivity. ReloginService and MiniNuxBroadcastReceiver (class names) are the relogin and mini-setup entry points. The upload services (Lollipop, Analytics2 and alarm-based) suggest that data is uploaded after setup (inferred from names).
 
@@ -293,7 +293,7 @@ The first-time setup application. Its LAUNCHER activity is FirstTimeNuxActivity.
 
 ## SystemWebView (WebView)
 
-Package `com.android.webview`, version 126.0.6478.122 (code 647812201), minSdk 26, targetSdk 34, shared UID none. Source `product_a/app/SystemWebView/SystemWebView.apk`.
+Package `com.android.webview`, version 126.0.6478.122 (code 647812201), minSdk 26, targetSdk 34, shared UID none. Source `product_a/app/SystemWebView/SystemWebView.apk`; facts taken from `data/apks/SystemWebView.json`.
 
 The application with package com.android.webview (version 126.0.6478.122) appears to be the system WebView application (inferred from the package name and the file name SystemWebView.apk), and its native library libwebviewchromium.so and the org.chromium.content class prefix suggest a Chromium base (inferred from names). Two of its three activities are exported: org.chromium.android_webview.devui.MainActivity, with the action com.android.webview.SHOW_DEV_UI, and org.chromium.android_webview.nonembedded.LicenseActivity, with the action android.settings.WEBVIEW_LICENSE; the names suggest a developer UI and a license screen (inferred from names). It declares 52 services, of which 40 are SandboxedProcessService0 to SandboxedProcessService39 in org.chromium.content.app (class names), and names such as VariationsSeedServer, CrashReceiverService and MetricsUploadService suggest variations seeds, crash reports and metrics (inferred from names). It requests 6 permissions, including android.permission.INTERNET and android.permission.ACCESS_NETWORK_STATE, and declares none; it also declares a minimum SDK version of 26 and a target SDK version of 34.
 
@@ -312,7 +312,7 @@ The application with package com.android.webview (version 126.0.6478.122) appear
 
 ## Q4BMdm (device management)
 
-Package `com.oculus.q4b.mdm`, version 103.0.0.0.166 (code 551600503), minSdk 31, targetSdk 31, shared UID none. Source `product_a/app/Q4BMdm/Q4BMdm.apk`.
+Package `com.oculus.q4b.mdm`, version 103.0.0.0.166 (code 551600503), minSdk 31, targetSdk 31, shared UID none. Source `product_a/app/Q4BMdm/Q4BMdm.apk`; facts taken from `data/apks/Q4BMdm.json`.
 
 The package `com.oculus.q4b.mdm` declares the metadata entry `android.app.device_admin`, and its name suggests device management (inferred from the `mdm` segment of the package name). The activities `AdminPolicyComplianceActivity` and `GetProvisioningModeActivity` and the service `DeviceAdminService` require `android.permission.BIND_DEVICE_ADMIN`, and the receiver `Q4BAdminReceiver` is protected by the same permission (class names). The exported activity `com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity` requires the declared permission `com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION`. The same class name is also declared by `com.oculus.q4bservice`, where it requires `com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION`. The services `AttestationJobService`, `ConfigJobService`, `RemoteWipeJobService` and `KioskResetJobService` require `android.permission.BIND_JOB_SERVICE` (class names; the attestation, configuration, remote wipe and kiosk reset roles are a reading of names and therefore inferred). The application requests `android.permission.INSTALL_PACKAGES`, `android.permission.MANAGE_USERS` and `android.permission.USES_POLICY_WIPE_DATA`. The exported service `com.oculus.q4bservice.e2etestsupport.E2EService` and the exported provider `com.oculus.q4b.e2etestsupport.service.E2EContentProvider` (class names) carry no permission attribute, and the names suggest end-to-end test support (inferred from names).
 
@@ -331,7 +331,7 @@ The package `com.oculus.q4b.mdm` declares the metadata entry `android.app.device
 
 ## Q4BService (provisioning and kiosk)
 
-Package `com.oculus.q4bservice`, version 71.0.0.896.252 (code 665348098), minSdk 31, targetSdk 31, shared UID none. Source `product_a/priv-app/Q4BService/Q4BService.apk`.
+Package `com.oculus.q4bservice`, version 71.0.0.896.252 (code 665348098), minSdk 31, targetSdk 31, shared UID none. Source `product_a/priv-app/Q4BService/Q4BService.apk`; facts taken from `data/apks/Q4BService.json`.
 
 The Q4B service application (package com.oculus.q4bservice) appears to handle device provisioning, kiosk mode and mobile device management, judging by class names such as DeviceOwnerProvisioningActivity, com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity and RemoteWipeJobService (inferred from class names). It declares 4 activities (3 exported), 17 services (4 exported), 22 receivers (6 exported) and 5 providers (4 exported). DeviceOwnerProvisioningActivity requires the permission com.oculus.permission.LAUNCH_PROVISION. SharedModeSessionSetupActivity requires com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION, and so does com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity, which this package also declares; the same class name is declared by com.oculus.q4b.mdm with the permission com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION. It requests 40 permissions, including android.permission.MANAGE_USERS, android.permission.INSTALL_PACKAGES and android.permission.WRITE_SECURE_SETTINGS.
 
@@ -350,7 +350,7 @@ The Q4B service application (package com.oculus.q4bservice) appears to handle de
 
 ## OCMS (app installation)
 
-Package `com.oculus.ocms`, version 71.0.0.884.253 (code 560606331), minSdk 32, targetSdk 32, shared UID none. Source `system_ext_a/priv-app/OCMS/OCMS.apk`.
+Package `com.oculus.ocms`, version 71.0.0.884.253 (code 560606331), minSdk 32, targetSdk 32, shared UID none. Source `system_ext_a/priv-app/OCMS/OCMS.apk`; facts taken from `data/apks/OCMS.json`.
 
 The OCMS application (package com.oculus.ocms, at system_ext_a/priv-app/OCMS/OCMS.apk) declares no activities, and its component names suggest app installation, updates and an app library (inferred from names). Its services include AppManagerService, LocationService and MauiAppManagerService, which are exported and each name a permission beginning com.oculus.ocms, and its receivers include Installer2StatusReceiver and OCMSPushReceiver (class names). Three of its providers, LibraryProvider, PublicLibraryProvider and TestProvider, are exported and name no permission, and it requests 63 permissions, among them android.permission.INSTALL_PACKAGES, android.permission.DELETE_PACKAGES and android.permission.QUERY_ALL_PACKAGES, whose names suggest package management (inferred from names).
 
@@ -369,7 +369,7 @@ The OCMS application (package com.oculus.ocms, at system_ext_a/priv-app/OCMS/OCM
 
 ## Guardian (boundary)
 
-Package `com.oculus.guardian`, version 71.0.0.613.530 (code 665334697), minSdk 24, targetSdk 23, shared UID none. Source `system_ext_a/priv-app/Guardian/Guardian.apk`.
+Package `com.oculus.guardian`, version 71.0.0.613.530 (code 665334697), minSdk 24, targetSdk 23, shared UID none. Source `system_ext_a/priv-app/Guardian/Guardian.apk`; facts taken from `data/apks/Guardian.json`.
 
 Inferred from names alone (the Guardian name, the com.oculus.vrguardianservice class prefix and the BOUNDARY_VISIBILITY permission), the Guardian application (package com.oculus.guardian, version 71.0.0.613.530, version code 665334697, minimum SDK 24, target SDK 23) appears to be a VR guardian (boundary) application. It declares no activity; its services are VrGuardianService, VrGuardianUserService and VrGuardianVideoCachingJobService (class names), and the first two are exported. Its receivers include VrGuardianUserBroadcastReceiver and DeviceConfigClientReceiver (class names), and DeviceConfigClientReceiver is exported with the permission com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT. It declares three permissions: com.oculus.permission.GUARDIAN_USER_CONTROL, com.oculus.permission.BOUNDARY_VISIBILITY and com.oculus.guardian.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION.
 
@@ -388,7 +388,7 @@ Inferred from names alone (the Guardian name, the com.oculus.vrguardianservice c
 
 ## SkyguardService
 
-Package `com.meta.internal.skyguard`, version None (code None), minSdk 29, targetSdk 29, shared UID `android.uid.system`. Source `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`.
+Package `com.meta.internal.skyguard`, version None (code None), minSdk 29, targetSdk 29, shared UID `android.uid.system`. Source `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`; facts taken from `data/apks/SkyguardService.json`.
 
 The SkyguardService application (package `com.meta.internal.skyguard`) has its APK at `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`, declares the shared UID `android.uid.system`, and declares a minimum SDK level of 29 and a target SDK level of 29, with no version name or version code recorded (both null). Its native library names, such as `libskyguardservice_native.so` and `libandroid_skyguard_database.so` among its 34 native libraries, suggest a service with native code and a database (a reading of the names alone). Its manifest declares one exported service, `com.meta.internal.skyguard.SkyguardService`, with a MAIN-action and LAUNCHER-category intent filter, and one non-exported receiver, `com.meta.internal.skyguard.BootReceiver`, with an intent filter for `android.intent.action.BOOT_COMPLETED` and `android.intent.action.LOCKED_BOOT_COMPLETED`; it declares no activities and requests one permission, `android.permission.RECEIVE_BOOT_COMPLETED`. Its signing certificate file is `META-INF/PLATFORM.RSA`, with SHA-256 beginning `c8a2e9bccf597c2f`, which is probably the platform certificate (inferred from the shared UID only; the file name is not used, because Telecom carries the same digest under `META-INF/CERT.RSA`).
 
@@ -407,7 +407,7 @@ The SkyguardService application (package `com.meta.internal.skyguard`) has its A
 
 ## Integrity (abuse reporting)
 
-Package `com.oculus.integrity`, version 71.0.0.618.530 (code 665335042), minSdk 28, targetSdk 28, shared UID none. Source `system_ext_a/priv-app/Integrity/Integrity.apk`.
+Package `com.oculus.integrity`, version 71.0.0.618.530 (code 665335042), minSdk 28, targetSdk 28, shared UID none. Source `system_ext_a/priv-app/Integrity/Integrity.apk`; facts taken from `data/apks/Integrity.json`.
 
 The Integrity application (package `com.oculus.integrity`) has class names that suggest abuse reporting and video handling (inferred from names). Its service `PanelService` is exported, has no permission attribute, declares its process as `:abuse`, and has intent filters for `com.oculus.vrshell.SHELL_MAIN` and `com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES`. Its exported service `RecordingService` requires callers to hold `com.oculus.horizon.permission.OVR_PLATFORM_BROADCAST`; this APK declares `com.oculus.integrity.permission.OVR_PLATFORM_BROADCAST` instead. The services `VideoUploaderService`, `VideoFileToCacheCopierService` and `VideoURIFetcherService`, all in the `abusereport` package, and the provider `AbuseReportFileProvider` are not exported. It requests `android.permission.READ_EXTERNAL_STORAGE` and `android.permission.WRITE_EXTERNAL_STORAGE`, which fit the video-file class names (inferred from names).
 
@@ -426,7 +426,7 @@ The Integrity application (package `com.oculus.integrity`) has class names that 
 
 ## Telecom (telephony)
 
-Package `com.android.server.telecom`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.system`. Source `system_a/system/priv-app/Telecom/Telecom.apk`.
+Package `com.android.server.telecom`, version 12 (code 32), minSdk 32, targetSdk 32, shared UID `android.uid.system`. Source `system_a/system/priv-app/Telecom/Telecom.apk`; facts taken from `data/apks/Telecom.json`.
 
 The Telecom application (package `com.android.server.telecom`, version 12, shared UID `android.uid.system`) is a telephony application (inferred from names). Its two services, TelecomService (filter action `android.telecom.ITelecomService`) and BluetoothPhoneService (filter action `android.bluetooth.IBluetoothHeadsetPhone`), are both exported. Of its nine activities, four are exported, including UserCallActivity, which requires callers to hold the permission `android.permission.CALL_PHONE` and declares the filter action `android.intent.action.CALL`. Of its 28 requested permissions, several have names tied to calls, including `android.permission.CALL_PRIVILEGED`, `android.permission.MODIFY_PHONE_STATE`, `android.permission.BIND_INCALL_SERVICE`, `android.permission.BIND_CONNECTION_SERVICE` and `android.permission.HANDLE_CALL_INTENT` (inferred from names).
 

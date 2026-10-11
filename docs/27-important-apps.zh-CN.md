@@ -27,7 +27,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## Settings（设置）
 
-包名 `com.android.settings`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.system`。来源 `system_ext_a/priv-app/Settings/Settings.apk`。
+包名 `com.android.settings`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.system`。来源 `system_ext_a/priv-app/Settings/Settings.apk`，事实取自 `data/apks/Settings.json`。
 
 平台设置应用。MAIN 动作的 51 个活动是按功能命名的设置页面（Wi-Fi、显示、无障碍、隐私等）；这一判断来自名称。列出的 200 个活动中没有任何一个带 LAUNCHER 类别。
 
@@ -46,7 +46,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## Bluetooth（蓝牙）
 
-包名 `com.android.bluetooth`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.bluetooth`。来源 `system_a/system/app/Bluetooth/Bluetooth.apk`。
+包名 `com.android.bluetooth`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.bluetooth`。来源 `system_a/system/app/Bluetooth/Bluetooth.apk`，事实取自 `data/apks/Bluetooth.json`。
 
 蓝牙协议栈应用。其服务包括适配器（AdapterService）、GATT、A2DP 和 A2DP sink、HFP（HeadsetService）、HID host、AVRCP 控制器和目标端、OPP、PBAP、MAP、MAP client、SAP 以及媒体浏览服务（均为类名）。
 
@@ -65,7 +65,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## Carmel（浏览器）
 
-包名 `com.oculus.browser`，版本 35.1.0.78.167.646680531（代码 565301467），minSdk 26，targetSdk 35，无共享 UID。来源 `system_ext_a/app/Carmel/Carmel.apk`。
+包名 `com.oculus.browser`，版本 35.1.0.78.167.646680531（代码 565301467），minSdk 26，targetSdk 35，无共享 UID。来源 `system_ext_a/app/Carmel/Carmel.apk`，事实取自 `data/apks/Carmel.json`。
 
 浏览器应用。按类名前缀统计，其 dex 主要由 Chromium 包构成：org.chromium.chrome、org.chromium.components 和 org.chromium.content。其 MAIN 动作活动包括 WebXR 和 WebVR 活动，PanelActivity 是 LAUNCHER 活动。
 
@@ -84,7 +84,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## Assistant（助手）
 
-包名 `com.oculus.assistant`，版本 172.0.0.0.61（代码 334600368），minSdk 29，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/Assistant/Assistant.apk`。
+包名 `com.oculus.assistant`，版本 172.0.0.0.61（代码 334600368），minSdk 29，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/Assistant/Assistant.apk`，事实取自 `data/apks/Assistant.json`。
 
 助手应用（包名 com.oculus.assistant）。其服务包括 AssistantService、CaptionService、PlatformDictationService 和 MRVIService（类名）。其 LAUNCHER 活动为 AssistantHelpActivity。
 
@@ -103,7 +103,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## Horizon（主页）
 
-包名 `com.oculus.horizon`，版本 71.0.0.894.253（代码 665345962），minSdk 23，targetSdk 23，共享 UID `com.oculus.uid`。来源 `system_ext_a/app/Horizon/Horizon.apk`。
+包名 `com.oculus.horizon`，版本 71.0.0.894.253（代码 665345962），minSdk 23，targetSdk 23，共享 UID `com.oculus.uid`。来源 `system_ext_a/app/Horizon/Horizon.apk`，事实取自 `data/apks/Horizon.json`。
 
 主页应用（包名 com.oculus.horizon，共享 UID com.oculus.uid）。清单中没有 MAIN 或 LAUNCHER 活动。按类名看，其服务涵盖 Gk 配置（GkService）、MobileConfig、身份验证（AuthService2 及身份验证器服务）、媒体上传（MediaUploaderService）、云存储（CloudStorageIntentService）和下载（OculusDownloadService）。
 
@@ -122,7 +122,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## Metacam（采集）
 
-包名 `com.oculus.metacam`，版本 118.0.0.251.161（代码 511400824），minSdk 28，targetSdk 28，无共享 UID。来源 `system_ext_a/app/Metacam/Metacam.apk`。
+包名 `com.oculus.metacam`，版本 118.0.0.251.161（代码 511400824），minSdk 28，targetSdk 28，无共享 UID。来源 `system_ext_a/app/Metacam/Metacam.apk`，事实取自 `data/apks/Metacam.json`。
 
 采集与相机应用（包名 com.oculus.metacam）。其服务为 CaptureService、CameraSdkService、CastingService、LivestreamingService 和 VirtualCameraService（类名）。其 LAUNCHER 活动为 SharingPanelActivity 和 LivestreamYoutubeChatActivity。
 
@@ -141,7 +141,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## SystemUX（系统界面）
 
-包名 `com.oculus.systemux`，版本 71.0.0.605.522（代码 665334819），minSdk 32，targetSdk 32，无共享 UID。来源 `system_ext_a/priv-app/SystemUX/SystemUX.apk`。
+包名 `com.oculus.systemux`，版本 71.0.0.605.522（代码 665334819），minSdk 32，targetSdk 32，无共享 UID。来源 `system_ext_a/priv-app/SystemUX/SystemUX.apk`，事实取自 `data/apks/SystemUX.json`。
 
 系统用户界面应用（包名 com.oculus.systemux）。其面板服务（类名）涵盖对话框（AndroidDialogPanelService）、助手（AssistantPanelService）、随时界面（AnytimeUIPanelService）、资料库和通知。全部 13 个活动均为导出。
 
@@ -160,7 +160,7 @@ Settings（`android.uid.system`）、Bluetooth（`android.uid.bluetooth`）、Sk
 
 ## VrShell（VR 外壳）
 
-包名 `com.oculus.vrshell`，版本 71.0.0.612.529（代码 665334768），minSdk 29，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/VrShell/VrShell.apk`。
+包名 `com.oculus.vrshell`，版本 71.0.0.612.529（代码 665334768），minSdk 29，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/VrShell/VrShell.apk`，事实取自 `data/apks/VrShell.json`。
 
 VR 外壳应用（包名 com.oculus.vrshell）。其服务包括 ShellSpatialWindowManagerService、ShellService、DisplayResolverService、KeyboardInputMethodService 和 VrNotificationService（类名）。其大部分 LAUNCHER 活动带有 LaunchCheck 前缀；从名称看，这些是在应用启动前执行的检查（根据名称推断）。
 
@@ -179,7 +179,7 @@ VR 外壳应用（包名 com.oculus.vrshell）。其服务包括 ShellSpatialWin
 
 ## VrDriver（VR 驱动）
 
-包名 `com.oculus.systemdriver`，版本 71.0.0.601.498（代码 665335459），minSdk 23，targetSdk 24，无共享 UID。来源 `system_a/system/priv-app/VrDriver/VrDriver.apk`。
+包名 `com.oculus.systemdriver`，版本 71.0.0.601.498（代码 665335459），minSdk 23，targetSdk 24，无共享 UID。来源 `system_a/system/priv-app/VrDriver/VrDriver.apk`，事实取自 `data/apks/VrDriver.json`。
 
 位于 `system/priv-app` 的 VR 驱动应用（包名 com.oculus.systemdriver）。其服务为 VrRuntimeService、ScreenCaptureService、RuntimeDumpService 和 PackageFinderService（类名）。它声明了 SEND_FACE_EYE_TRACKING_COMMAND 和 SEND_PROTECTED_CAPTURE_COMMAND。
 
@@ -198,7 +198,7 @@ VR 外壳应用（包名 com.oculus.vrshell）。其服务包括 ShellSpatialWin
 
 ## xrstreamingclient（XR 串流客户端）
 
-包名 `com.oculus.xrstreamingclient`，版本 71.0.0.601.524（代码 665335378），minSdk 24，targetSdk 29，无共享 UID。来源 `system_a/system/app/xrstreamingclient/xrstreamingclient.apk`。
+包名 `com.oculus.xrstreamingclient`，版本 71.0.0.601.524（代码 665335378），minSdk 24，targetSdk 29，无共享 UID。来源 `system_a/system/app/xrstreamingclient/xrstreamingclient.apk`，事实取自 `data/apks/xrstreamingclient.json`。
 
 XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活动为 MainActivity。其服务为 SpeedTestService 和 HighwindService，BootReceiver 是开机广播接收器（类名）。
 
@@ -217,7 +217,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## BodyApiService（身体 API）
 
-包名 `com.oculus.bodyapiservice`，版本 71.0.0.541.758（代码 665334810），minSdk 23，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/BodyApiService/BodyApiService.apk`。
+包名 `com.oculus.bodyapiservice`，版本 71.0.0.541.758（代码 665334810），minSdk 23，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/BodyApiService/BodyApiService.apk`，事实取自 `data/apks/BodyApiService.json`。
 
 身体 API 服务（包名 com.oculus.bodyapiservice）。其服务为 BodyApiService 和 EyeTrackingService（类名）。
 
@@ -236,7 +236,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## SpatialPersistenceService（空间锚点持久化）
 
-包名 `com.facebook.spatial_persistence_service`，版本 71.0.0.605.527（代码 665334781），minSdk 28，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/SpatialPersistenceService/SpatialPersistenceService.apk`。
+包名 `com.facebook.spatial_persistence_service`，版本 71.0.0.605.527（代码 665334781），minSdk 28，targetSdk 29，无共享 UID。来源 `system_ext_a/priv-app/SpatialPersistenceService/SpatialPersistenceService.apk`，事实取自 `data/apks/SpatialPersistenceService.json`。
 
 空间锚点持久化服务（包名 com.facebook.spatial_persistence_service）。其服务为 AnchorPersistenceService、AnchorPersistenceDurableService 和 AnchorPersistenceDumpService。AnchorPersistenceServiceSweeper 是广播接收器。它请求下文列出的 COLOCATION_API 权限。
 
@@ -255,7 +255,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## WearableInputService（可穿戴输入）
 
-包名 `com.oculus.wearableinputservice`，版本 80.0.0.0.0（代码 637286716），minSdk 26，targetSdk 26，无共享 UID。来源 `system_ext_a/priv-app/WearableInputService/WearableInputService.apk`。
+包名 `com.oculus.wearableinputservice`，版本 80.0.0.0.0（代码 637286716），minSdk 26，targetSdk 26，无共享 UID。来源 `system_ext_a/priv-app/WearableInputService/WearableInputService.apk`，事实取自 `data/apks/WearableInputService.json`。
 
 可穿戴输入应用（包名 com.oculus.wearableinputservice）。其服务包括 EMGService、WearableInputService 和 WearableInputCLIService2，以及两个测试服务（类名）。名称 EMGService 暗示肌电输入（仅根据名称推断）。
 
@@ -274,7 +274,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## FirstTimeNuxEureka（首次设置）
 
-包名 `com.oculus.firsttimenux`，版本 71.2.0.117.949（代码 665345994），minSdk 28，targetSdk 28，无共享 UID。来源 `system_a/system/app/FirstTimeNuxEureka/FirstTimeNuxEureka.apk`。
+包名 `com.oculus.firsttimenux`，版本 71.2.0.117.949（代码 665345994），minSdk 28，targetSdk 28，无共享 UID。来源 `system_a/system/app/FirstTimeNuxEureka/FirstTimeNuxEureka.apk`，事实取自 `data/apks/FirstTimeNuxEureka.json`。
 
 首次设置应用。其 LAUNCHER 活动为 FirstTimeNuxActivity。ReloginService 和 MiniNuxBroadcastReceiver（类名）分别是重新登录和迷你设置的入口。上传服务（Lollipop、Analytics2 和基于闹钟的）暗示设置后会上传数据（根据名称推断）。
 
@@ -293,7 +293,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## SystemWebView（WebView）
 
-包名 `com.android.webview`，版本 126.0.6478.122（代码 647812201），minSdk 26，targetSdk 34，无共享 UID。来源 `product_a/app/SystemWebView/SystemWebView.apk`。
+包名 `com.android.webview`，版本 126.0.6478.122（代码 647812201），minSdk 26，targetSdk 34，无共享 UID。来源 `product_a/app/SystemWebView/SystemWebView.apk`，事实取自 `data/apks/SystemWebView.json`。
 
 包名为 com.android.webview（版本 126.0.6478.122）的应用似为系统 WebView 应用（根据包名和文件名 SystemWebView.apk 推断），其原生库 libwebviewchromium.so 和 org.chromium.content 类前缀暗示其以 Chromium 为基础（根据名称推断）。其三个活动中有两个导出：org.chromium.android_webview.devui.MainActivity（动作为 com.android.webview.SHOW_DEV_UI）和 org.chromium.android_webview.nonembedded.LicenseActivity（动作为 android.settings.WEBVIEW_LICENSE）；名称暗示开发者界面和许可证页面（根据名称推断）。其声明了 52 个服务，其中 40 个为 org.chromium.content.app 中的 SandboxedProcessService0 至 SandboxedProcessService39（类名），而 VariationsSeedServer、CrashReceiverService 和 MetricsUploadService 等名称暗示 Variations 种子、崩溃报告和指标（根据名称推断）。其请求 6 项权限，包括 android.permission.INTERNET 和 android.permission.ACCESS_NETWORK_STATE，且未声明任何权限；它还声明了最低 SDK 版本 26 和目标 SDK 版本 34。
 
@@ -312,7 +312,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## Q4BMdm（设备管理）
 
-包名 `com.oculus.q4b.mdm`，版本 103.0.0.0.166（代码 551600503），minSdk 31，targetSdk 31，无共享 UID。来源 `product_a/app/Q4BMdm/Q4BMdm.apk`。
+包名 `com.oculus.q4b.mdm`，版本 103.0.0.0.166（代码 551600503），minSdk 31，targetSdk 31，无共享 UID。来源 `product_a/app/Q4BMdm/Q4BMdm.apk`，事实取自 `data/apks/Q4BMdm.json`。
 
 包名 `com.oculus.q4b.mdm` 的应用声明了元数据项 `android.app.device_admin`，其名称暗示设备管理（依据包名中 `mdm` 段的名称读法，推断）。活动 `AdminPolicyComplianceActivity` 和 `GetProvisioningModeActivity`、服务 `DeviceAdminService` 需要 `android.permission.BIND_DEVICE_ADMIN`，广播接收器 `Q4BAdminReceiver` 同样受该权限保护（类名）。已导出的活动 `com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity` 需要声明的权限 `com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION`；同名类也由 `com.oculus.q4bservice` 声明，在该包中需要 `com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION`。服务 `AttestationJobService`、`ConfigJobService`、`RemoteWipeJobService` 和 `KioskResetJobService` 需要 `android.permission.BIND_JOB_SERVICE`（类名；证明、配置、远程擦除和信息亭（kiosk）重置的职能属于名称读法，因此为推断）。该应用请求 `android.permission.INSTALL_PACKAGES`、`android.permission.MANAGE_USERS` 和 `android.permission.USES_POLICY_WIPE_DATA`。已导出的服务 `com.oculus.q4bservice.e2etestsupport.E2EService` 和已导出的内容提供者 `com.oculus.q4b.e2etestsupport.service.E2EContentProvider`（类名）未设置权限属性，名称暗示端到端测试支持（根据名称推断）。
 
@@ -331,7 +331,7 @@ XR 串流客户端（包名 com.oculus.xrstreamingclient）。其 LAUNCHER 活�
 
 ## Q4BService（配置与信息亭）
 
-包名 `com.oculus.q4bservice`，版本 71.0.0.896.252（代码 665348098），minSdk 31，targetSdk 31，无共享 UID。来源 `product_a/priv-app/Q4BService/Q4BService.apk`。
+包名 `com.oculus.q4bservice`，版本 71.0.0.896.252（代码 665348098），minSdk 31，targetSdk 31，无共享 UID。来源 `product_a/priv-app/Q4BService/Q4BService.apk`，事实取自 `data/apks/Q4BService.json`。
 
 Q4B 服务应用（包名 com.oculus.q4bservice）似乎负责设备配置（provisioning）、信息亭（kiosk）模式和移动设备管理（MDM），其类名如 DeviceOwnerProvisioningActivity、com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity 和 RemoteWipeJobService（根据类名推断）。其声明了 4 个活动（3 个导出）、17 个服务（4 个导出）、22 个广播接收器（6 个导出）和 5 个内容提供者（4 个导出）。DeviceOwnerProvisioningActivity 需要权限 com.oculus.permission.LAUNCH_PROVISION。SharedModeSessionSetupActivity 需要权限 com.oculus.q4bservice.permission.Q4B_KIOSK_SESSION，同样需要该权限的还有本包声明的 com.oculus.q4b.mdm.kiosk.KioskSessionSetupActivity；该类名也由 com.oculus.q4b.mdm 声明，但其权限为 com.oculus.q4b.mdm.permission.Q4B_KIOSK_SESSION。其请求 40 项权限，包括 android.permission.MANAGE_USERS、android.permission.INSTALL_PACKAGES 和 android.permission.WRITE_SECURE_SETTINGS。
 
@@ -350,7 +350,7 @@ Q4B 服务应用（包名 com.oculus.q4bservice）似乎负责设备配置（pro
 
 ## OCMS（应用安装）
 
-包名 `com.oculus.ocms`，版本 71.0.0.884.253（代码 560606331），minSdk 32，targetSdk 32，无共享 UID。来源 `system_ext_a/priv-app/OCMS/OCMS.apk`。
+包名 `com.oculus.ocms`，版本 71.0.0.884.253（代码 560606331），minSdk 32，targetSdk 32，无共享 UID。来源 `system_ext_a/priv-app/OCMS/OCMS.apk`，事实取自 `data/apks/OCMS.json`。
 
 OCMS 应用（包名 com.oculus.ocms，位于 system_ext_a/priv-app/OCMS/OCMS.apk）没有声明任何活动，其组件名称暗示与应用安装、更新和应用资料库有关（根据名称推断）。其服务包括 AppManagerService、LocationService 和 MauiAppManagerService，这三者均为导出，且各自指定了以 com.oculus.ocms 开头的权限；其广播接收器包括 Installer2StatusReceiver 和 OCMSPushReceiver（类名）。其内容提供者中有三个（LibraryProvider、PublicLibraryProvider 和 TestProvider）均为导出且未指定权限，并请求了 63 项权限，其中包括 android.permission.INSTALL_PACKAGES、android.permission.DELETE_PACKAGES 和 android.permission.QUERY_ALL_PACKAGES，这些权限名称暗示与包管理有关（根据名称推断）。
 
@@ -369,7 +369,7 @@ OCMS 应用（包名 com.oculus.ocms，位于 system_ext_a/priv-app/OCMS/OCMS.ap
 
 ## Guardian（边界）
 
-包名 `com.oculus.guardian`，版本 71.0.0.613.530（代码 665334697），minSdk 24，targetSdk 23，无共享 UID。来源 `system_ext_a/priv-app/Guardian/Guardian.apk`。
+包名 `com.oculus.guardian`，版本 71.0.0.613.530（代码 665334697），minSdk 24，targetSdk 23，无共享 UID。来源 `system_ext_a/priv-app/Guardian/Guardian.apk`，事实取自 `data/apks/Guardian.json`。
 
 仅根据名称推断（Guardian 名称、类前缀 com.oculus.vrguardianservice 和 BOUNDARY_VISIBILITY 权限），Guardian 应用（包名 com.oculus.guardian，版本 71.0.0.613.530，版本代码 665334697，最低 SDK 24，目标 SDK 23）似为 VR guardian（边界）应用。它未声明任何活动；其服务为 VrGuardianService、VrGuardianUserService 和 VrGuardianVideoCachingJobService（类名），前两个为导出。其广播接收器包括 VrGuardianUserBroadcastReceiver 和 DeviceConfigClientReceiver（类名），DeviceConfigClientReceiver 为导出，并带有权限 com.oculus.permission.DEVICE_CONFIG_PUSH_TO_CLIENT。它声明了三个权限：com.oculus.permission.GUARDIAN_USER_CONTROL、com.oculus.permission.BOUNDARY_VISIBILITY 和 com.oculus.guardian.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION。
 
@@ -388,7 +388,7 @@ OCMS 应用（包名 com.oculus.ocms，位于 system_ext_a/priv-app/OCMS/OCMS.ap
 
 ## SkyguardService
 
-包名 `com.meta.internal.skyguard`，版本 None（代码 None），minSdk 29，targetSdk 29，共享 UID `android.uid.system`。来源 `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`。
+包名 `com.meta.internal.skyguard`，版本 None（代码 None），minSdk 29，targetSdk 29，共享 UID `android.uid.system`。来源 `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`，事实取自 `data/apks/SkyguardService.json`。
 
 SkyguardService 应用（包名 `com.meta.internal.skyguard`）的 APK 位于 `system_ext_a/priv-app/SkyguardService/SkyguardService.apk`，声明共享 UID `android.uid.system`，并声明最低 SDK 级别为 29、目标 SDK 级别为 29，未记录版本名称和版本号（两者均为空值）。其原生库名称（例如其 34 个原生库中的 `libskyguardservice_native.so` 和 `libandroid_skyguard_database.so`）提示它是一项带有原生代码和数据库的服务（仅根据名称推断）。其清单声明了一个导出的服务 `com.meta.internal.skyguard.SkyguardService`，带有 MAIN 动作和 LAUNCHER 类别的 intent 过滤器；另有一个未导出的广播接收器 `com.meta.internal.skyguard.BootReceiver`，带有针对 `android.intent.action.BOOT_COMPLETED` 和 `android.intent.action.LOCKED_BOOT_COMPLETED` 的 intent 过滤器；它未声明任何活动，并请求一项权限 `android.permission.RECEIVE_BOOT_COMPLETED`。其签名证书文件为 `META-INF/PLATFORM.RSA`，SHA-256 摘要以 `c8a2e9bccf597c2f` 开头，可能是平台证书（仅根据共享 UID 推断；不以文件名为据，因为 Telecom 的相同摘要存放在 `META-INF/CERT.RSA` 中）。
 
@@ -407,7 +407,7 @@ SkyguardService 应用（包名 `com.meta.internal.skyguard`）的 APK 位于 `s
 
 ## Integrity（滥用举报）
 
-包名 `com.oculus.integrity`，版本 71.0.0.618.530（代码 665335042），minSdk 28，targetSdk 28，无共享 UID。来源 `system_ext_a/priv-app/Integrity/Integrity.apk`。
+包名 `com.oculus.integrity`，版本 71.0.0.618.530（代码 665335042），minSdk 28，targetSdk 28，无共享 UID。来源 `system_ext_a/priv-app/Integrity/Integrity.apk`，事实取自 `data/apks/Integrity.json`。
 
 Integrity 应用（包名 `com.oculus.integrity`）的类名暗示其与滥用举报和视频处理有关（根据名称推断）。其服务 `PanelService` 已导出、未设置权限属性，声明进程为 `:abuse`，并带有 `com.oculus.vrshell.SHELL_MAIN` 和 `com.facebook.secure.packagefinder.intent.ACTION_QUERY_PACKAGES` 的 Intent 过滤器。其导出的服务 `RecordingService` 要求调用方持有 `com.oculus.horizon.permission.OVR_PLATFORM_BROADCAST`；本 APK 声明的是 `com.oculus.integrity.permission.OVR_PLATFORM_BROADCAST`。服务 `VideoUploaderService`、`VideoFileToCacheCopierService` 和 `VideoURIFetcherService` 均位于 `abusereport` 包中且未导出，提供者 `AbuseReportFileProvider` 同样未导出。其请求 `android.permission.READ_EXTERNAL_STORAGE` 和 `android.permission.WRITE_EXTERNAL_STORAGE` 权限，这与视频文件相关的类名相符（根据名称推断）。
 
@@ -426,7 +426,7 @@ Integrity 应用（包名 `com.oculus.integrity`）的类名暗示其与滥用�
 
 ## Telecom（电话）
 
-包名 `com.android.server.telecom`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.system`。来源 `system_a/system/priv-app/Telecom/Telecom.apk`。
+包名 `com.android.server.telecom`，版本 12（代码 32），minSdk 32，targetSdk 32，共享 UID `android.uid.system`。来源 `system_a/system/priv-app/Telecom/Telecom.apk`，事实取自 `data/apks/Telecom.json`。
 
 Telecom 应用（包名 `com.android.server.telecom`，版本 12，共享 UID `android.uid.system`）是一款电话应用（根据名称推断）。其两个服务 TelecomService（过滤动作 `android.telecom.ITelecomService`）和 BluetoothPhoneService（过滤动作 `android.bluetooth.IBluetoothHeadsetPhone`）均为导出。其 9 个活动中有 4 个导出，其中包括 UserCallActivity，它要求调用方持有权限 `android.permission.CALL_PHONE`，并声明过滤动作 `android.intent.action.CALL`。在其请求的 28 项权限中，名称与通话相关的有若干项，包括 `android.permission.CALL_PRIVILEGED`、`android.permission.MODIFY_PHONE_STATE`、`android.permission.BIND_INCALL_SERVICE`、`android.permission.BIND_CONNECTION_SERVICE` 和 `android.permission.HANDLE_CALL_INTENT`（根据名称推断）。
 

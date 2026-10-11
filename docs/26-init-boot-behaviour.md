@@ -16,6 +16,8 @@ The 170 `.rc` files are in the `init-and-properties` group (page 09).
 
 ## Import chain
 
+(taken from `data/behaviour/imports.tsv`)
+
 The main file is `system/etc/init/hw/init.rc` in `system_a`. It imports:
 
 - `/init.environ.rc` (`system_a`);
@@ -28,6 +30,8 @@ The vendor file `vendor_a:etc/init/hw/init.eureka.rc` imports `init.anorak.rc`, 
 The two `${...}` imports depend on properties that are not in the image. Which branch runs at boot is therefore not established from these files.
 
 ## Boot phases
+
+(taken from `data/behaviour/boot_phases.tsv` and `data/behaviour/actions.tsv`)
 
 The table gives the triggers in the order init runs them. Commands are listed in the order of the source files.
 
@@ -47,6 +51,8 @@ The `late-init` trigger issues these triggers in turn: `early-fs`, `fs`, `post-f
 
 ## Services by class
 
+(taken from `data/behaviour/service_classes.tsv` and `data/behaviour/services.tsv`)
+
 | Class | Count | Services |
 |---|---:|---|
 | `main` | 59 | See `data/behaviour/service_classes.tsv` |
@@ -65,6 +71,8 @@ Some class lists repeat a name because the service is defined in more than one `
 The users of the 190 services are: `system` 83, `root` 36, none set 24, `nobody` 8, `media` 8, `logd` 4, `wifi` 3 and `audioserver` 3. Of the services, 56 are `oneshot` and 82 are `disabled` at definition, so they start only when a trigger or another service starts them.
 
 ## Property-driven behaviour
+
+(taken from `data/behaviour/actions.tsv`)
 
 Many of the 371 action blocks depend on properties. Three groups are the most consequential:
 

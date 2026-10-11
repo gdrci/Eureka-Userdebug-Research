@@ -16,6 +16,8 @@
 
 ## 导入链
 
+（取自 `data/behaviour/imports.tsv`）
+
 主文件是 `system_a` 中的 `system/etc/init/hw/init.rc`。它导入：
 
 - `/init.environ.rc`（`system_a`）；
@@ -28,6 +30,8 @@ vendor 文件 `vendor_a:etc/init/hw/init.eureka.rc` 导入 `init.anorak.rc`，�
 两个 `${...}` 导入依赖镜像中不存在的属性，因此仅凭这些文件无法确定本构建在启动时执行哪个分支。
 
 ## 启动阶段
+
+（取自 `data/behaviour/boot_phases.tsv` 与 `data/behaviour/actions.tsv`）
 
 下表按 init 执行的顺序列出各触发器。命令按源文件的顺序排列。
 
@@ -47,6 +51,8 @@ vendor 文件 `vendor_a:etc/init/hw/init.eureka.rc` 导入 `init.anorak.rc`，�
 
 ## 按类列出的服务
 
+（取自 `data/behaviour/service_classes.tsv` 与 `data/behaviour/services.tsv`）
+
 | 类 | 数量 | 服务 |
 |---|---:|---|
 | `main` | 59 | 见 `data/behaviour/service_classes.tsv` |
@@ -65,6 +71,8 @@ vendor 文件 `vendor_a:etc/init/hw/init.eureka.rc` 导入 `init.anorak.rc`，�
 190 个服务的用户分别为：`system` 83 个、`root` 36 个、未设置 24 个、`nobody` 8 个、`media` 8 个、`logd` 4 个、`wifi` 3 个和 `audioserver` 3 个。在这些服务中，56 个为 `oneshot`，82 个在定义时即为 `disabled`，因此它们只在某个触发器或其他服务启动它们时才会启动。
 
 ## 属性驱动的行为
+
+（取自 `data/behaviour/actions.tsv`）
 
 371 个动作块中有很多依赖属性。其中最重要的三组如下：
 
