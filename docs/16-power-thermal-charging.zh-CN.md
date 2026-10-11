@@ -6,7 +6,7 @@
 
 电源-热管理-充电组包含 21 个文件：product_a 中 3 个，system_a 中 7 个，vendor_a 中 11 个。其中包括：Android 充电模式二进制文件（AArch64 PIE）及其动画描述和两个 PNG 图标；HIDL 热管理 HAL 1.0 和 2.0 接口库，有 32 位和 64 位 system 副本以及 64 位 vendor 副本（system 与 vendor 的 64 位副本仅 build-id 不同）；热管理辅助库 libthermalhalutils.so 及其 JSON 传感器和散热设备配置，由 odm 的 perf_service 二进制链接并读取；供电源 HAL 使用的两个 TOML 电源提示配置；由 init.insmod.sh 运行的充电器类 init 模块列表；由音频 HAL 通过 dlopen 加载的电池监听库；被健康 HAL 实现链接的外部电池客户端库；以及被 libsensorservice 链接的 IBatteryStats AIDL 库。热管理 HAL 的服务进程（odm perf_service）和外部电池 HAL 的服务进程（odm vendor.oculus.hardware.externalbattery@1.0-service）位于 odm_a 中，不属于本组。深入分析覆盖：13 项。
 
-角色表为本组 21 个文件各有一行（19 verified，2 observed，0 inferred，0 unverified）。该表位于 `data/subsystems/power-thermal-charging/roles.tsv`。
+角色表：`data/subsystems/power-thermal-charging/roles.tsv`（21 个文件：19 个 verified，2 个 observed，0 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -45,8 +45,6 @@
 
 ## 措辞已修正的论断
 
-下方结论以数据所支持的措辞重新表述。
-
 - **C11** (inferred)：充电器的 DT_NEEDED 中没有 libexternalbattery.so 条目，也没有 .symtab 段。它已被剥离，但其 .gnu_debugdata 段中保存了一个压缩的符号表，其中定义了 IExternalBattery 代理类和存根类，以及 hardware::oculus::health::ExternalBattery 包装类。因此该二进制文件包含这些代码自身编译的副本，而不是在运行时加载 libexternalbattery.so。
 - **C17** (verified)：热管理 HAL 库被 15 个文件链接。在 odm_a 中：perf_service（1.0 和 2.0）和 wattsup（2.0）。在 system_a 中：lib 和 lib64 中的 libandroid_servers.so（1.0）；libvrsrecorder.so、libvrsrecorder_plugin_temperaturereader.so、libvrsrecorder_utils_camera.so 和 libvrsrecorder_utils_sensorapishim.so（2.0）；以及 android.hardware.thermal@2.0.so 的 lib 和 lib64 副本（各自链接 @1.0）。在 system_ext_a 中：perfstream、vrdevicemanagerserver 和 libperfstreamprovider.so（2.0）。在 vendor_a 中：libthermalhalutils.so（1.0 和 2.0）的 vendor 副本，以及 android.hardware.thermal@2.0.so（@1.0）的 vendor 副本。
 - **C25** (verified)：非表键包括 629 个路径条目（以 / 开头的键）、14 个时钟级别条目（clocks_cpu 和 clocks_gpu 中的 VR_MODE_*）、106 个 priority 条目和 9 个 duration 条目。
@@ -56,8 +54,6 @@
 - **C41** (observed)：vendor 属性上下文将 persist.vendor.enable.thermal.genl 映射到 vendor_thermal_prop。其使用者不在这 21 个组文件之中；该属性名出现在 odm_a/bin/hw/perf_service 中，而 vendor_a/build.prop 第 64 行将其设为 true。未确定其中哪一个读取了该属性。
 
 ## 已排除的论断
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 论断 | 原因 |
 |---|---|---|

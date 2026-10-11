@@ -5,7 +5,7 @@
 ## Summary
 
 The group holds 346 rows: 157 regular files (132 PIE executables and 17 shared-object-format executables, plus 8 scripts) and 189 symlinks, spread over vendor_a (241), system_ext_a (55), odm_a (38), system_a (10) and product_a (2). The core is a toybox multi-call binary (172 applet symlinks) and a toolbox multi-call binary (6 symlinks), an mksh shell, a vendor binder service manager, and 14 HAL service executables (10 in vendor_a/bin/hw, 4 in odm_a/bin/hw) that register HIDL or AIDL interfaces and are started by init services. The odm partition carries the SyncBoss sensor-controller toolset: fw_init, a oneshot firmware updater that reads /odm/etc/fw_init.cfg, plus 17 shared-object-format tools that each export main. system_ext_a carries 50 platform service and command-line executables and 4 shell wrappers; product_a carries 2 crash-uploader executables. All 157 files match the manifest sha256 and byte size, and init or SELinux text references 62 of them by full path.
-The role table has one row for each of the 346 files in this group (190 verified, 139 observed, 16 inferred, 1 unverified). It is at `data/subsystems/native-tools-and-hal-binaries/roles.tsv`.
+Role table: `data/subsystems/native-tools-and-hal-binaries/roles.tsv` (346 files: 190 verified, 139 observed, 16 inferred, 1 unverified).
 
 ## Verified claims
 
@@ -60,8 +60,6 @@ The role table has one row for each of the 346 files in this group (190 verified
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **G10** (observed): toolbox carries the getprop and setprop usage strings, imports __system_property_foreach and __system_property_read_callback from libc, and its string table contains the path /dev/__properties__/property_info. Reading through that file is inferred from the path string; no import or open call shows it.
 - **G17** (observed): hal_proxy_daemon imports wifi_* functions (for example wifi_initialize, wifi_get_ifaces and wifi_start_gscan, which are undefined dynamic symbols resolved from its NEEDED library libwifi-hal-qcom.so), and its string table holds WifiLogger command descriptions numbered 1 to 13.
 - **G21** (observed): The light HAL binary references, as undefined dynamic-symbol imports, the method symbols of android.hardware.light.V2_0.ILight, vendor.oculus.hardware.light.V2_0.ILight and android.hidl.base.V1_0.IBase (31 symbols, none defined in the binary).
@@ -70,8 +68,6 @@ The claims below are restated with the wording that the data supports.
 - **G26** (observed): The health HAL 2.1 service health-hal-2-1 (classes hal and charger; user and group system; capabilities WAKE_ALARM and BLOCK_SUSPEND) is labelled hal_health_default_exec at vendor_file_contexts line 41. Its binary references, as undefined imports, android.hardware.health.V2_0.IHealth and android.hardware.health.V2_0.IHealthInfoCallback.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

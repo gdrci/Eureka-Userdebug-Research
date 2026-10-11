@@ -6,7 +6,7 @@
 
 未分类组包含来自两个分区的 13 行记录：12 个符号链接（system_a 中 11 个，vendor_a 中 1 个）和一个普通文件 system/xbin/su。这些链接是指向以下绝对路径的别名：/data/cache、/system/bin、/system/etc、/storage/self/primary、/sys/kernel/debug、/odm/odm_dlkm/etc、/vendor/vendor_dlkm/etc、/data 下的 shell bugreports 目录，以及 /system_ext、/vendor、/product 和 /odm 分区根目录。plat_file_contexts 将这些路径标记为 rootfs、cache_file、vendor_file 或 system_file。su 文件是一个经过剥离的 AArch64 PIE ELF，解释器为 /system/bin/linker64。它依赖 libc.so、libc++.so、libm.so 和 libdl.so，其中 libc、libm 和 libdl 的名称通过符号链接解析到 com.android.runtime APEX 中。其用法文本为 "su [WHO [COMMAND...]]"，默认 shell 为 /system/bin/sh，模式位为 4750，所有者为 0:2000，其 file_contexts 标签为 su_exec。策略中声明了 su 和 su_exec，并包含一条从 shell 到 su 的进程转换。镜像中的系统 build.prop 报告 Android 版本为 12，构建类型为 userdebug。
 
-角色表为本组中的 13 个文件各含一行（13 verified，0 observed，0 inferred，0 unverified）。该表位于 `data/subsystems/unclassified/roles.tsv`。
+角色表：`data/subsystems/unclassified/roles.tsv`（13 个文件：13 个 verified，0 个 observed，0 个 inferred，0 个 unverified）。
 
 ## 已验证结论
 
@@ -32,8 +32,6 @@
 - **U29** (inferred)：su 二进制文件是一个切换用户命令。根据其字符串和导入项，它接受可选的 WHO 和 COMMAND，设置组 ID、用户 ID 和附加组列表，然后执行 COMMAND 或 /system/bin/sh。辅助函数的名称表明，一个辅助函数将 WHO 字符串解析为 ID，另一个提取 UID、GID 和组列表。
 
 ## 修正措辞后的结论
-
-下方结论以数据所支持的措辞重新表述。
 
 - **U04** (verified)：su 有 11 个程序头：PHDR、INTERP、三个 LOAD 段（R、R+E、RW；对齐为 0x1000）、TLS、DYNAMIC、GNU_RELRO、GNU_EH_FRAME、GNU_STACK（RW）和 NOTE。一个未分配的 .gnu_debugdata 段位于文件偏移 0x23de 处，大小为 0x130。
 - **U10** (verified)：二进制文件内嵌了 --help、setuid failed、setgid failed、invalid uid/gid '%s'、setgroups failed、not allowed、too many group ids 和 failed to exec %s 等字符串，以及环境变量名 PATH、USER、LOGNAME、IFS。文件中还内嵌了默认 shell 路径 /system/bin/sh 和默认 PATH 字面量（/product/bin:/apex/com.android.runtime/bin:...:/vendor/xbin）。该二进制文件将 PATH、USER 和 LOGNAME 传给 setenv（PATH 的值为默认字面量），并在不同的调用位置用 unsetenv 清除 IFS、USER 和 LOGNAME。它没有导入 getenv，因此这些名称是被设置或清除，而非被读取。

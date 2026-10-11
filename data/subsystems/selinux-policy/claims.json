@@ -10,7 +10,7 @@
    "file": "<image>/classified.tsv",
    "claim": "The selinux-policy group has 51 rows: system_a 22, system_ext_a 15, vendor_a 11, odm_a 3. All 51 are kind file: 41 text/plain, 6 inode/x-empty, 3 text/xml, 1 application/octet-stream.",
    "evidence": "cd <image> && awk -F'\\t' 'NR>1 && $1==\"selinux-policy\"' classified.tsv > $W/input_rows.tsv; cut -f2 $W/input_rows.tsv | sort | uniq -c. Excerpt: '3 odm_a', '22 system_a', '15 system_ext_a', '11 vendor_a'. cut -f6 $W/input_rows.tsv | sort | uniq -c. Excerpt: '1 application/octet-stream', '6 inode/x-empty', '41 text/plain', '3 text/xml'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "awk NR>1 filter on classified.tsv gives 51 rows. cut -f2 gives odm_a 3, system_a 22, system_ext_a 15, vendor_a 11. cut -f4 gives file 51. cut -f6 gives application/octet-stream 1, inode/x-empty 6, text/plain 41, text/xml 3.",
    "corrected_claim": ""
   },
@@ -20,7 +20,7 @@
    "file": "<image>/mnt",
    "claim": "All 51 mapped files exist under the mount, and the recomputed SHA-256 and byte size of each match columns 7 and 5 of the inventory row.",
    "evidence": "cd <image>/mnt; while IFS=$'\\t' read -r s p path k size mime sha; do ...sha256sum \"$p/$path\"...; done < $W/input_rows.tsv. Excerpt: 'checked=51 mismatches=0'. A second loop comparing stat -c %s against column 5 printed no mismatch lines.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Loop over the 51 rows: sha256sum of mnt/partition/path and stat -c %s compared with columns 7 and 5. Output: checked=51 missing=0 mismatches=0 size_mismatches=0.",
    "corrected_claim": ""
   },
@@ -30,7 +30,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy_and_mapping.sha256",
    "claim": "The platform checksum record equals SHA-256 of plat_sepolicy.cil followed by mapping/32.0.cil. Plat CIL alone does not match.",
    "evidence": "cd <image>/mnt/system_a/system/etc/selinux; cat plat_sepolicy.cil mapping/32.0.cil | sha256sum -> 'bf6094e8b16600f0c27320e4f8d09c693d5f111691af436a6743ef3b898232d0  -'; cat plat_sepolicy_and_mapping.sha256 -> 'bf6094e8b16600f0c27320e4f8d09c693d5f111691af436a6743ef3b898232d0' (65 bytes with newline); cat plat_sepolicy.cil | sha256sum -> '91b8a91713262cf659e6443b861bf2988af8335c218f8b065ce4445ac16b1722  -'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "cat plat_sepolicy.cil mapping/32.0.cil | sha256sum gives bf6094e8b16600f0c27320e4f8d09c693d5f111691af436a6743ef3b898232d0. plat_sepolicy_and_mapping.sha256 holds the same digest, 65 bytes with trailing newline. plat_sepolicy.cil alone gives 91b8a91713262cf659e6443b861bf2988af8335c218f8b065ce4445ac16b1722, which does not match.",
    "corrected_claim": ""
   },
@@ -40,7 +40,7 @@
    "file": "<image>/mnt/system_ext_a/etc/selinux/system_ext_sepolicy_and_mapping.sha256",
    "claim": "The system_ext checksum record equals SHA-256 of system_ext_sepolicy.cil followed by the system_ext copy of mapping/32.0.cil. The system_a copy of mapping/32.0.cil gives a different digest, and the two 32.0.cil files differ.",
    "evidence": "cd <image>/mnt/system_ext_a/etc/selinux; cat system_ext_sepolicy.cil mapping/32.0.cil | sha256sum -> 'fb074d015bba1746caaf3df39caf107bdcc63d9240e8dfa6f5b73985e45480d0  -'; cat system_ext_sepolicy_and_mapping.sha256 -> 'fb074d015bba1746caaf3df39caf107bdcc63d9240e8dfa6f5b73985e45480d0'. cat system_ext_sepolicy.cil ../../../system_a/system/etc/selinux/mapping/32.0.cil | sha256sum -> 'f254d712e6a20e3308da7b4d8093e6b9c1c847fa3800cb75bab463e2c96758e5'. cmp mapping/32.0.cil vs system_a mapping/32.0.cil -> 'differ: char 19, line 1'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "cat system_ext_sepolicy.cil mapping/32.0.cil | sha256sum gives fb074d015bba1746caaf3df39caf107bdcc63d9240e8dfa6f5b73985e45480d0, equal to the system_ext record. system_ext_sepolicy.cil with the system_a mapping/32.0.cil gives f254d712e6a20e3308da7b4d8093e6b9c1c847fa3800cb75bab463e2c96758e5. cmp: the two 32.0.cil files differ at char 19, line 1.",
    "corrected_claim": ""
   },
@@ -50,7 +50,7 @@
    "file": "<image>/mnt/odm_a/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256",
    "claim": "The two odm checksum files named precompiled_sepolicy.<name> are byte-identical to the platform and system_ext records respectively.",
    "evidence": "cmp <image>/mnt/system_a/system/etc/selinux/plat_sepolicy_and_mapping.sha256 <image>/mnt/odm_a/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 && echo 'IDENTICAL bytes' -> 'IDENTICAL bytes'. cmp <image>/mnt/odm_a/etc/selinux/precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 <image>/mnt/system_ext_a/etc/selinux/system_ext_sepolicy_and_mapping.sha256 -> 'IDENTICAL'. Both files are 65 bytes.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "cmp: odm precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 is identical to the system_a platform record. cmp: odm precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 is identical to the system_ext record. Both are 65 bytes.",
    "corrected_claim": ""
   },
@@ -60,7 +60,7 @@
    "file": "<image>/mnt/odm_a/etc/selinux/precompiled_sepolicy",
    "claim": "odm precompiled_sepolicy is a binary SELinux policy of 1,006,142 bytes. Its first 64 bytes give magic 0xf97cff8c, a length-prefixed string 'SE Linux', version 30, config word 0x80000001, 8 symbol tables and 7 ocontext records. The field names are inferred from the usual policy header order.",
    "evidence": "od -A d -t x1 -N 64 <image>/mnt/odm_a/etc/selinux/precompiled_sepolicy -> '0000000 8c ff 7c f9 08 00 00 00 53 45 20 4c 69 6e 75 78' / '0000016 1e 00 00 00 01 00 00 80 08 00 00 00 07 00 00 00' / '0000032 40 00 00 00 40 00 00 00 01 00 00 00 00 00 00 00'. file -b <image>/mnt/odm_a/etc/selinux/precompiled_sepolicy -> 'SE Linux policy v30 8 symbols 7 ocons'. sha256sum -> 'b858613dbfb2b04d141b830de01c68223cf23ebb4a496e77c19a5e8fc1204871'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "stat -c %s gives 1006142. od -A d -t x1 -N 64: 8c ff 7c f9 | 08 00 00 00 | 53 45 20 4c 69 6e 75 78 (SE Linux) | 1e 00 00 00 | 01 00 00 80 | 08 00 00 00 | 07 00 00 00. Independent little-endian parse: magic 0xf97cff8c, string length 8, version 30, config 0x80000001, 8, 7. file -b: SE Linux policy v30 8 symbols 7 ocons. sha256: b858613dbfb2b04d141b830de01c68223cf23ebb4a496e77c19a5e8fc1204871. Gap: the field names (symbol and ocontext counts) and the meaning of the config bits are inferred from header order, not established.",
    "corrected_claim": ""
   },
@@ -70,7 +70,7 @@
    "file": "<image>/mnt/odm_a/etc/selinux/precompiled_sepolicy",
    "claim": "The binary embeds identifiers named after the context families (for example file_contexts_file, seapp_contexts_file, service_contexts_file, hwservice_contexts_file, property_contexts_file, keystore2_key_contexts_file, vendor_service_contexts_file, vndservice_contexts_file, nonplat_service_contexts_file). Their use is inferred.",
    "evidence": "strings -n 6 <image>/mnt/odm_a/etc/selinux/precompiled_sepolicy | grep contexts -> 'vendor_service_contexts_file', 'keystore2_key_contexts_file', 'file_contexts_file', 'nonplat_service_contexts_file', 'hwservice_contexts_file', 'service_contexts_file', 'vndservice_contexts_file', 'seapp_contexts_file', 'property_contexts_file'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings -n 6 | grep contexts returns vendor_service_contexts_file, keystore2_key_contexts_file, file_contexts_file, property_contexts_file, nonplat_service_contexts_file, hwservice_contexts_file, service_contexts_file, vndservice_contexts_file and seapp_contexts_file. grep -a -o confirms each once. Use of these identifiers is not established.",
    "corrected_claim": ""
   },
@@ -80,7 +80,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil",
    "claim": "plat_sepolicy.cil is 28,911 lines and 1,897,754 bytes of CIL. It opens with role, handleunknown deny, mls true, four policycaps (network_peer_controls, open_perms, extended_socket_class, nnp_nosuid_transition), 27 sids and their sidcontext forms, and a MLS range of c0 to c1023.",
    "evidence": "wc -l <image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil -> '28911'. head -n 30 plat_sepolicy.cil excerpt: '(handleunknown deny)', '(mls true)', '(policycap network_peer_controls)', '(policycap open_perms)', '(policycap extended_socket_class)', '(policycap nnp_nosuid_transition)', '(sid devnull)', '(sidcontext devnull (u object_r null_device ((s0) (s0))))'. grep -E '^\\(userrange ' plat_sepolicy.cil -> '(userrange u ((s0 ) (s0 (range c0 c1023))))'. grep -c '^(sid ' -> 27.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "wc -l gives 28911 and stat gives 1897754 bytes. sid count 27 and sidcontext count 27 match. policycap lines 8-11 match. The userrange line is (userrange u ((s0 ) (s0 (range c0 c1023)))): the low level is s0 with no categories, and the high level is s0 with the category range c0 through c1023. c0 and c1023 are category bounds, not a sensitivity range, so 'MLS range of c0 to c1023' is misleading. The opening also has three role declarations and two cil_gen_require lines (lines 4-5) before handleunknown (line 6) and mls (line 7).",
    "corrected_claim": "plat_sepolicy.cil is 28,911 lines and 1,897,754 bytes of CIL. It opens with three role declarations and two cil_gen_require lines, then (handleunknown deny) and (mls true), four policycaps, and 27 sids with their sidcontext forms. The user u range runs from s0 with no categories to s0 with the category range c0 through c1023."
   },
@@ -90,7 +90,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_sepolicy.cil",
    "claim": "Top-level form counts in plat_sepolicy.cil: 9,891 allow, 3,773 neverallow, 1,483 roletype, 1,482 type, 1,212 typeattribute, 1,068 typeattributeset, 1,024 category, 562 dontaudit, 365 genfscon, 261 typetransition, 102 class, 89 mlsconstrain, 74 classcommon, 27 sid, 27 sidcontext, 20 fsuse, 5 common, 4 policycap.",
    "evidence": "grep -oE '^\\((\\w|-)+' plat_sepolicy.cil | sort | uniq -c | sort -rn | head -30. Excerpt: '9891 (allow', '3773 (neverallow', '1483 (roletype', '1482 (type', '1212 (typeattribute', '1068 (typeattributeset', '1024 (category', '562 (dontaudit', '365 (genfscon', '261 (typetransition', '102 (class', '74 (classcommon', '27 (sid', '27 (sidcontext', '20 (fsuse', '5 (common', '4 (policycap'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -oE '^\\((\\w|-)+' | sort | uniq -c gives allow 9891, neverallow 3773, roletype 1483, type 1482, typeattribute 1212, typeattributeset 1068, category 1024, dontaudit 562, genfscon 365, typetransition 261, class 102, mlsconstrain 89, classcommon 74, sid 27, sidcontext 27, fsuse 20, common 5, policycap 4. All match. The list is partial: it omits neverallowx 309, expandtypeattribute 214, allowx 193, auditallow 32 and others, and does not claim to be complete.",
    "corrected_claim": ""
   },
@@ -100,7 +100,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/mapping/32.0.cil",
    "claim": "mapping/32.0.cil (system_a) is 189,038 bytes and 3,714 lines. It holds 1,238 each of typeattribute, typeattributeset and expandtypeattribute forms, each attribute suffixed _32_0. The system_ext copy is 49,528 bytes with 299 such triples.",
    "evidence": "grep -oE '^\\((\\w|-)+' mapping/32.0.cil | sort | uniq -c. Excerpt: '1238 (typeattributeset', '1238 (typeattribute', '1238 (expandtypeattribute'. wc -l mapping/32.0.cil -> '3714'. head -n 2 mapping/32.0.cil -> '(typeattributeset mediadrmserver_service_32_0 (mediadrmserver_service))', '(expandtypeattribute (mediadrmserver_service_32_0) true)'. system_ext copy: grep -c '^(typeattribute ' -> '299'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "system_a mapping/32.0.cil: stat 189038 bytes, wc -l 3714. uniq -c gives 1238 each of typeattribute, typeattributeset and expandtypeattribute. Names not ending in _32_0: 0 in each form. system_ext mapping/32.0.cil: stat 49528 bytes, 299 of each form.",
    "corrected_claim": ""
   },
@@ -110,7 +110,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/mapping",
    "claim": "Mapping set for versions 26.0 to 32.0: .cil files of 44,069 / 80,908 / 95,919 / 111,009 / 124,230 / 140,511 / 189,038 bytes (lines 754 / 1476 / 1726 / 1977 / 2188 / 2470 / 3714). Compat files are 987, 987, 987, 846, 902 bytes for 26.0 to 30.0, and 29 bytes for 31.0. The 31.0 compat file reads ';; This file can\\'t be empty.' In system_ext, every compat file for 26.0 to 31.0 is 0 bytes. The content of the 26.0, 28.0 and 29.0 compat files was not read.",
    "evidence": "stat -c '%s' mapping/*.cil and wc -l mapping/*.cil in system_a; stat -c %s system_ext_a/etc/selinux/mapping/*.compat.cil -> '0' for each. cat system_a/system/etc/selinux/mapping/31.0.compat.cil -> ';; This file can't be empty.' head -n 1 mapping/26.0.cil -> '(type alarm_device)'. head -n 2 mapping/27.0.compat.cil -> '(typeattribute vendordomain)' then '(typeattributeset vendordomain ((and (domain) ((not (coredomain))))))'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "stat and wc -l over mapping/*.cil (system_a): 26.0 44069/754, 27.0 80908/1476, 28.0 95919/1726, 29.0 111009/1977, 30.0 124230/2188, 31.0 140511/2470, 32.0 189038/3714. Compat sizes: 26.0 987, 27.0 987, 28.0 987, 29.0 846, 30.0 902, 31.0 29. 31.0.compat.cil reads ';; This file can't be empty.' All six system_ext compat files are 0 bytes.",
    "corrected_claim": ""
   },
@@ -120,7 +120,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/plat_pub_versioned.cil",
    "claim": "plat_pub_versioned.cil (1,028,727 bytes) is a versioned copy of the platform public policy. It has 2,077 distinct names with the _32_0 suffix, 4,695 allow rules, 1,675 neverallow rules and 2,463 typeattribute forms. Its first declarations include typeattribute dev_type, bdev_type and domain.",
    "evidence": "grep -oE '[A-Za-z0-9_]+_32_0' plat_pub_versioned.cil | sort -u | wc -l -> '2077'. grep -oE '^\\((\\w|-)+' plat_pub_versioned.cil | sort | uniq -c | sort -rn | head -4 -> '4695 (allow', '2463 (typeattribute', '1675 (neverallow', '1538 (roletype'. head -n 6 -> '(roletype r domain)', '(typeattribute dev_type)'. grep -n '^(typeattribute ' -> '(typeattribute bdev_type)', '(typeattribute domain)'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "stat 1028727 bytes. Distinct _32_0 names: 2077 by substring pattern, 2077 word-bounded, 2077 hyphen-aware. uniq -c: allow 4695, neverallow 1675, typeattribute 2463. Lines 2, 4 and 6 declare dev_type, bdev_type and domain.",
    "corrected_claim": ""
   },
@@ -130,7 +130,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_sepolicy.cil",
    "claim": "vendor_sepolicy.cil refers to 1,589 distinct _32_0 names. Of these, 54 are not defined in plat_pub_versioned.cil. All 54 are the generated form base_typeattr_N_32_0 and are declared in vendor_sepolicy.cil itself as typeattribute forms. No other reference is unresolved.",
    "evidence": "grep -oE '\\b[A-Za-z0-9_]+_32_0\\b' vendor_sepolicy.cil | sort -u | wc -l -> '1589'. comm -23 vendor_refs.txt pubver_defs.txt | wc -l -> '54'. comm output minus the base_typeattr_ prefix -> '0'. grep -ohE '\\(typeattribute (base_typeattr_[0-9]+_32_0)\\)' vendor_sepolicy.cil | wc -l -> '54'. grep -m1 -oE '.{0,60}base_typeattr_541_32_0.{0,20}' -> '(allow vndservicemanager_32_0 base_typeattr_541_32_0 (binder (transfer))'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -oE '\\b[A-Za-z0-9_]+_32_0\\b' over vendor_sepolicy.cil, sort -u | wc -l gives 1589. comm against plat_pub_versioned.cil tokens leaves 54 names. All 54 are base_typeattr_N_32_0. All 54 have a (typeattribute ...) declaration in vendor_sepolicy.cil. No other reference is unresolved. Note: the word-bounded pattern splits systemupdate-delivery_32_0, systemupdate-orchestrator_32_0 and systemupdate-storage_32_0 (and their _exec forms) at the hyphen, producing six fragment names. A hyphen-aware pattern gives the same 1589 and the same 54, and those six hyphenated names are declared in plat_pub_versioned.cil.",
    "corrected_claim": ""
   },
@@ -140,7 +140,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_sepolicy.cil",
    "claim": "vendor_sepolicy.cil is 388,964 bytes and 1,190 lines of CIL forms, with 2,150 allow, 436 type, 200 genfscon, 146 dontaudit, 130 typetransition, 86 neverallow and 25 allowx forms. It defines procfs genfscon labels for /sys/kernel and /debugdriver paths and typetransitions into _32_0 domains.",
    "evidence": "grep -oE '^\\((\\w|-)+' vendor_sepolicy.cil | sort | uniq -c | sort -rn | head -12 -> '2150 (allow', '436 (type', '200 (genfscon', '146 (dontaudit', '130 (typetransition', '86 (neverallow', '25 (allowx'. head -n 12 vendor_sepolicy.cil -> '(genfscon proc /sys/kernel/sched_pelt_multiplier (u object_r proc_sched ((s0) (s0))))', '(genfscon proc /debugdriver/driverdump (u object_r proc_wifi_dbg ((s0) (s0))))'. grep -m3 '^(typetransition' -> '(typetransition init_32_0 hal_atrace_default_exec process hal_atrace_default)'.",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "wc -l gives 3951 lines (grep -c '' also 3951; 3950 top-level forms). The claimed 1,190 lines does not hold. Byte size 388964, allow 2150, type 436, genfscon 200, dontaudit 146, typetransition 130, neverallow 86 and allowx 25 all match. typetransition: 130 rules. The source is a _32_0 domain in 122 (for example init_32_0), but the resulting default type carries no suffix in all 130 (for example hal_atrace_default). The claim 'typetransitions into _32_0 domains' is wrong. genfscon: 17 proc and 183 sysfs. Procfs rules include /sys/kernel (8) and /debugdriver/driverdump (1), plus other paths, so the procfs description is partial.",
    "corrected_claim": "vendor_sepolicy.cil is 388,964 bytes and 3,951 lines (3,950 top-level forms): 2,150 allow, 436 type, 436 roletype, 277 typeattributeset, 200 genfscon (17 procfs, 183 sysfs), 146 dontaudit, 130 typetransition, 86 neverallow, 63 typeattribute and 25 allowx. Its procfs genfscon labels include /sys/kernel paths (8 rules) and /debugdriver/driverdump. Its 130 typetransition rules take a _32_0 source domain in 122 cases (for example init_32_0) and name an unsuffixed default type (for example hal_atrace_default)."
   },
@@ -150,7 +150,7 @@
    "file": "<image>/mnt/system_ext_a/etc/selinux/system_ext_sepolicy.cil",
    "claim": "system_ext_sepolicy.cil is 400,885 bytes and 4,724 lines, with 3,159 allow, 357 type, 230 neverallow, 228 typeattributeset, 222 typeattribute and 93 typetransition forms.",
    "evidence": "wc -l system_ext_sepolicy.cil -> '4724'. grep -oE '^\\((\\w|-)+' system_ext_sepolicy.cil | sort | uniq -c | sort -rn | head -8 -> '3159 (allow', '357 (type', '357 (roletype', '230 (neverallow', '228 (typeattributeset', '222 (typeattribute', '93 (typetransition', '60 (dontaudit'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "wc -l gives 4724 lines. stat gives 400885 bytes. uniq -c gives allow 3159, type 357, neverallow 230, typeattributeset 228, typeattribute 222, typetransition 93. All match.",
    "corrected_claim": ""
   },
@@ -160,7 +160,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
    "claim": "Labels in plat_file_contexts (644 lines), vendor_file_contexts (492) and system_ext_file_contexts (86) all resolve to a type declared in one of the five CIL files: 2,275 names in total. Distinct labels: 423 for plat, 248 for vendor, 80 for system_ext.",
    "evidence": "cat plat_sepolicy.cil mapping/32.0.cil plat_pub_versioned.cil vendor_sepolicy.cil system_ext_sepolicy.cil | grep -oE '\\(type [^ )]+' | awk '{print $2}' | sort -u | wc -l -> '2275'. For each file: grep -oE 'u:object_r:[^: ]+:s0' FILE | sed -E 's/u:object_r:([^:]+):s0/\\1/' | sort -u > labels; then grep -vxFf declared_types.txt labels | wc -l -> '0' for plat (423 labels), vendor (248), system_ext (80).",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "wc -l: plat_file_contexts 644, vendor_file_contexts 492, system_ext_file_contexts 86. Distinct labels: 423, 248, 80. Labels absent from the declared-type set of the five CIL files: 0 for each file. The 2,275 figure is the number of distinct (type X) names declared across the five files. It is not a count of labels, and the wording reads as if it were.",
    "corrected_claim": "Labels in plat_file_contexts (644 lines), vendor_file_contexts (492) and system_ext_file_contexts (86) all resolve to a type declared in one of the five CIL files. The five files together declare 2,275 distinct type names. The distinct labels per file are 423 (plat), 248 (vendor) and 80 (system_ext), and none is unresolved."
   },
@@ -170,7 +170,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
    "claim": "plat_file_contexts labels the policy files with sepolicy_file (lines 623, 624, 642, 644, plus the mapping pattern at 333). The on-disk checksum file plat_sepolicy_and_mapping.sha256 is matched only by the broad rule at line 88, /system(/.*)? (system_file). The line 642 and 644 regexes do not match the on-disk checksum names. The odm checksum file is matched by line 28, /(odm|vendor/odm)/etc(/.*)? (vendor_configs_file), and not by line 644.",
    "evidence": "grep -n 'sepolicy' plat_file_contexts -> '623:/system/etc/selinux/plat_sepolicy\\.cil u:object_r:sepolicy_file:s0', '624:/odm/etc/selinux/precompiled_sepolicy u:object_r:sepolicy_file:s0', '642:/system/etc/selinux/plat_and_mapping_sepolicy\\.cil\\.sha256 u:object_r:sepolicy_file:s0', '644:/odm/etc/selinux/precompiled_sepolicy\\.plat_and_mapping\\.sha256 u:object_r:sepolicy_file:s0'. grep -n '^/system(/' -> '88:/system(/.*)?  u:object_r:system_file:s0'. Pattern test: grep -qxE -- \"$re\" over the 644 patterns for /system/etc/selinux/plat_sepolicy_and_mapping.sha256 -> only line 88; for /odm/etc/selinux/precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 -> lines 23 and 28 only.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "grep -n sepolicy plat_file_contexts gives 11 sepolicy_file rules: lines 36, 66, 333, 371, 445, 495, 496, 623, 624, 642, 644. The claim lists only 623, 624, 642, 644 and 333. Line 88 (/system(/.*)? system_file) is the only match for plat_sepolicy_and_mapping.sha256. For precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 the matches are line 23 (/(odm|vendor/odm)(/.*)?, vendor_file) and line 28 (/(odm|vendor/odm)/etc(/.*)?, vendor_configs_file). Line 644 does not match. The claim omits line 23.",
    "corrected_claim": "plat_file_contexts labels policy files with sepolicy_file in 11 rules (lines 36, 66, 333, 371, 445, 495, 496, 623, 624, 642, 644). The platform checksum name matches only line 88 (system_file). The odm checksum name matches line 23 (vendor_file) and line 28 (vendor_configs_file), and does not match line 644."
   },
@@ -180,7 +180,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_file_contexts",
    "claim": "plat_file_contexts is a two-column table of path regex and SELinux context. 627 entries have two fields and 17 have a third field, '--', that restricts to regular files. Patterns use (vendor|system/vendor) alternations and (/.*)? suffixes.",
    "evidence": "grep -vE '^\\s*(#|$)' plat_file_contexts | awk '{print NF}' | sort | uniq -c -> '627 2', '17 3'. awk 'NF==3{print $2}' | sort | uniq -c -> '17 --'. head -n 3 excerpt: '/(vendor|system/vendor)(/.*)?                  u:object_r:vendor_file:s0', '/(vendor|system/vendor)/bin/sh                 u:object_r:vendor_shell_exec:s0'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "awk NF over non-comment rows: 627 with 2 fields and 17 with 3 fields. The 3rd field is '--' in all 17. Head rows match the claimed excerpt.",
    "corrected_claim": ""
   },
@@ -190,7 +190,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
    "claim": "vendor_file_contexts (492 entries) and system_ext_file_contexts (86 entries) are two-column path-regex to context tables with no file-type field.",
    "evidence": "grep -vE '^\\s*(#|$)' vendor_file_contexts | awk '{print NF}' | sort | uniq -c -> '492 2'. grep -vE '^\\s*(#|$)' system_ext_a/etc/selinux/system_ext_file_contexts | awk '{print NF}' | sort | uniq -c -> '86 2'. head -n 1 vendor_file_contexts -> '/(vendor|system/vendor)/bin/hw/android\\.hardware\\.atrace@1\\.0-service         u:object_r:hal_atrace_default_exec:s0'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "awk NF: vendor_file_contexts 492 rows, all 2 fields. system_ext_file_contexts 86 rows, all 2 fields. head -1 of vendor_file_contexts is the /(vendor|system/vendor)/bin/hw/android.hardware.atrace@1.0-service row with hal_atrace_default_exec.",
    "corrected_claim": ""
   },
@@ -200,7 +200,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_seapp_contexts",
    "claim": "plat_seapp_contexts (34 lines) maps app identity to a domain and data type. Selector keys are user, seinfo, name, isPrivApp, isSystemServer, isEphemeralApp, minTargetSdkVersion and fromRunAs. Output keys are domain, type and levelFrom. The first rule maps isSystemServer=true to system_server_startup.",
    "evidence": "grep -vE '^\\s*(#|$)' plat_seapp_contexts | grep -oE '[A-Za-z_]+=' | sort | uniq -c | sort -rn -> 'domain= 34', 'user= 33', 'type= 26', 'levelFrom= 26', 'seinfo= 13', 'name= 12', 'isPrivApp= 12', 'minTargetSdkVersion= 5', 'fromRunAs= 2', 'isSystemServer= 1', 'isEphemeralApp= 1'. head -n 1 -> 'isSystemServer=true domain=system_server_startup'. Excerpt: 'user=_app isPrivApp=true name=com.android.traceur domain=traceur_app type=app_data_file levelFrom=all'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "wc -l 34, all rows non-comment. Key counts: domain 34, user 33, type 26, levelFrom 26, seinfo 13, name 12, isPrivApp 12, minTargetSdkVersion 5, fromRunAs 2, isSystemServer 1, isEphemeralApp 1. Line 1 is isSystemServer=true domain=system_server_startup. The traceur row matches the excerpt.",
    "corrected_claim": ""
   },
@@ -210,7 +210,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_seapp_contexts",
    "claim": "The vendor seapp table has one rule and system_ext_seapp_contexts (39 lines) has the rest, 40 rules in total. Each rule carries user, seinfo, name, domain, type and levelFrom.",
    "evidence": "cat vendor_a/etc/selinux/vendor_seapp_contexts -> 'user=_app seinfo=platform name=com.qualcomm.timeservice domain=vendor_timeservice_app type=app_data_file levelFrom=all'. cat vendor_seapp_contexts system_ext_a/etc/selinux/system_ext_seapp_contexts | grep -oE 'user=' | wc -l -> '40'. Same pipeline with grep -oE 'domain=' -> '40', 'levelFrom=' -> '36'. wc -l system_ext_seapp_contexts -> '39'.",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "40 rules in total (vendor 1, system_ext 39). user, seinfo, name, domain and type are present on all 40. levelFrom is present on 36. The four rules without it are system_ext rules for com.meta.internal.skyguard, com.oculus.os.cm, com.oculus.preloader and com.oculus.provisioningservice. The claim that each rule carries levelFrom does not hold.",
    "corrected_claim": "The vendor seapp table has one rule and system_ext_seapp_contexts (39 rules) has the rest, 40 rules in total. Each rule carries user, seinfo, name, domain and type. levelFrom appears in 36 of the 40 rules; four system_ext rules omit it."
   },
@@ -220,7 +220,7 @@
    "file": "<image>/mnt/system_ext_a/etc/selinux/system_ext_seapp_contexts",
    "claim": "system_ext seapp rules select on the Oculus and Facebook seinfo values (oculus_apps, oculus_apps_v2, fbandroid_debug) and map to domains such as asr_app, mrds_service_app and spatial_persistence.",
    "evidence": "head -n 6 system_ext_a/etc/selinux/system_ext_seapp_contexts. Excerpt: 'user=_app seinfo=oculus_apps_v2 name=com.oculus.asrservice domain=asr_app type=app_data_file levelFrom=all', 'user=_app seinfo=oculus_apps name=.mrdsprocess domain=mrds_service_app type=app_data_file levelFrom=all', 'user=_app seinfo=fbandroid_debug name=com.facebook.spatial_persistence_service domain=spatial_persistence type=app_data_file levelFrom=all'.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "head -6 of system_ext_seapp_contexts: seinfo oculus_apps_v2 maps to asr_app, fbandroid_debug to asr_app and mrds_service_app, oculus_apps to mrds_service_app, and fbandroid_debug and oculus_apps_v2 to spatial_persistence. The seinfo values and domains are observed. Attributing them to Oculus and Facebook is inferred from the names, but the claim presents it under the observed label.",
    "corrected_claim": "system_ext seapp rules select on the seinfo values oculus_apps, oculus_apps_v2 and fbandroid_debug, and map to domains such as asr_app, mrds_service_app and spatial_persistence. The Oculus and Facebook attribution of these values is inferred from their names."
   },
@@ -230,7 +230,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_mac_permissions.xml",
    "claim": "The mac_permissions XML files are signature-to-seinfo tables. plat has 3 signer elements (seinfo platform, media, network_stack), vendor has 1 (platform), system_ext has 11 (echovr, fbandroid_debug, oculus_apps, oculus_apps_v2, oculus_core, oculus_inhouse, oculus_loneechoavalanche, oculus_privapps, oculus_prod, ...). Each signer has a hex signature beginning with a DER certificate header (308204a8 in plat).",
    "evidence": "grep -o '<signer' FILE | wc -l -> plat '3', vendor '1', system_ext '11'. grep -o 'seinfo value=\"[^\"]*\"' per file gives the seinfo values. head -n 4 plat_mac_permissions.xml -> '<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>', '<!-- AUTOGENERATED FILE DO NOT MODIFY -->', '<policy><signer signature=\"308204a830820390a003020102020900b3998086d056cffa300d06092a864886f70d0101040500308194310b'.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Signer counts: plat 3, vendor 1, system_ext 11. The seinfo values match. Every signature begins with 3082 (a DER SEQUENCE header). The plat signature headers are 308204a8 (two signers) and 308205dc (one signer), so the single example '308204a8 in plat' is incomplete. The plat XML is a single physical line (wc -l 0), not three lines as the excerpt shows.",
    "corrected_claim": "The mac_permissions XML files are signature-to-seinfo tables. plat has 3 signer elements (seinfo platform, media, network_stack), vendor has 1 (platform), and system_ext has 11 (echovr, fbandroid_debug, oculus_apps, oculus_apps_v2, oculus_core, oculus_inhouse, oculus_loneechoavalanche, oculus_privapps, oculus_prod, oculus_workrooms, oculus_workrooms_dev). Each signature is hex beginning with 3082, a DER SEQUENCE header. In plat, two begin 308204a8 and one begins 308205dc."
   },
@@ -240,7 +240,7 @@
    "file": "<image>/mnt/system_a/system/framework/oat/arm64/services.art",
    "claim": "The services framework code refers to the mac_permissions files by path (plat, odm and nonplat variants). The services.jar archive itself is compressed, so the path strings were read from the compiled oat image.",
    "evidence": "strings -n 8 <image>/mnt/system_a/system/framework/oat/arm64/services.art | grep -m3 mac_permissions -> '/etc/selinux/plat_mac_permissions.xml', '/etc/selinux/odm_mac_permissions.xml', 'x/etc/selinux/nonplat_mac_permissions.xmlX'. grep -ac mac_permissions services.jar -> '2' (compressed archive).",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings -n 8 services.art | grep -m3 mac_permissions returns x/etc/selinux/nonplat_mac_permissions.xmlX, v/etc/selinux/odm_mac_permissions.xml and /etc/selinux/plat_mac_permissions.xml. The substance matches; the excerpt lists them in a different order. grep -ac mac_permissions services.jar gives 2. Reading the strings as path references is observed; the load behaviour is not established.",
    "corrected_claim": ""
   },
@@ -250,7 +250,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_property_contexts",
    "claim": "plat_property_contexts has 932 data lines: 197 with two fields (name and label) and 735 with a match keyword and type (exact 726, prefix 9). Types are string 376, int 164, bool 177, enum 11, uint 6, double 1. 108 names end with a dot (older prefix style) and 824 do not.",
    "evidence": "grep -vE '^\\s*(#|$)' plat_property_contexts | awk '{print NF}' | sort | uniq -c -> '197 2', '724 4', '3 6', '7 7', '1 8'. awk 'NF>=3{print $3}' | sort | uniq -c -> '726 exact', '9 prefix'. awk 'NF>=4{print $4}' -> 'string 376', 'int 164', 'bool 177', 'enum 11', 'uint 6', 'double 1'. Excerpts: 'wrap.                   u:object_r:zygote_wrap_prop:s0 prefix string', 'suspend.max_sleep_time_millis u:object_r:suspend_prop:s0 exact uint', 'perf.drop_caches        u:object_r:perf_drop_caches_prop:s0 exact enum 0 3'.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "932 data rows. awk NF: 197 with 2 fields, 724 with 4, 3 with 6, 7 with 7, 1 with 8. Match keyword: exact 726, prefix 9. Types: string 376, bool 177, int 164, enum 11, uint 6, double 1. Names ending in a dot: 108 (99 of them on two-field rows); not ending in a dot: 824. The counts are verified. 'Older prefix style' is an interpretation.",
    "corrected_claim": "plat_property_contexts has 932 data lines: 197 two-field lines (name and label) and 735 with a match keyword and type (exact 726, prefix 9). Types are string 376, int 164, bool 177, enum 11, uint 6 and double 1. 108 names end with a dot (99 of them on two-field lines) and 824 do not. The characterization of the dot-suffixed names as an older style is inferred."
   },
@@ -260,7 +260,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_service_contexts",
    "claim": "plat_service_contexts maps binder service names to labels: 312 two-field entries over 272 distinct labels, all declared in the policy. The last entry is the '*' default mapping to default_android_service.",
    "evidence": "grep -vE '^\\s*(#|$)' plat_service_contexts | awk '{print NF}' | sort | uniq -c -> '312 2'. tail -n 3 excerpt: 'wifirtt                                   u:object_r:rttmanager_service:s0', 'window                                    u:object_r:window_service:s0', '*                                         u:object_r:default_android_service:s0'. Label resolution: 272 distinct, 0 unresolved (C16 method).",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "312 two-field rows over 272 distinct labels. Labels absent from the five-file declared-type set: 0. Last row is '*' mapped to default_android_service. The first line is the #line directive for system/sepolicy/private/service_contexts.",
    "corrected_claim": ""
   },
@@ -270,7 +270,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_hwservice_contexts",
    "claim": "hwservice contexts map 'package::Interface' names to labels: 85 entries over 74 distinct labels for plat, 50 for vendor (31 labels), 3 for system_ext. All labels resolve.",
    "evidence": "grep -vE '^\\s*(#|$)' plat_hwservice_contexts | awk '{print NF}' | sort | uniq -c -> '85 2'. Excerpt: 'android.frameworks.sensorservice::ISensorManager   u:object_r:fwk_sensor_hwservice:s0'. wc -l vendor_hwservice_contexts -> '50' data lines. Label resolution per C16 method.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "plat_hwservice_contexts: 85 rows, 74 distinct labels. vendor_hwservice_contexts: 50 rows, 31 distinct labels. system_ext_hwservice_contexts: 3 rows, 3 labels. All rows have 2 fields. Labels absent from the declared-type set: 0 in each file.",
    "corrected_claim": ""
   },
@@ -280,7 +280,7 @@
    "file": "<image>/mnt/system_a/system/bin/hwservicemanager",
    "claim": "The service manager binaries read the service and hwservice context files: hwservicemanager reads hwservice_contexts and both servicemanager and hwservicemanager reference service_contexts.",
    "evidence": "strings -n 6 system_a/system/bin/hwservicemanager | grep contexts -> 'No match for interface %s in hwservice_contexts'. strings -n 6 system_a/system/bin/servicemanager | grep contexts -> ' in service_contexts.'. grep -l service_contexts over system_a/system/bin -> hwservicemanager, servicemanager.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "strings -n 6 on hwservicemanager gives 'No match for interface %s in hwservice_contexts'. Its only context-file token is hwservice_contexts. strings on servicemanager gives ' in service_contexts.'. grep -l service_contexts matches hwservicemanager only because hwservice_contexts contains the substring service_contexts, so hwservicemanager does not reference a separate service_contexts file. 'Reads' is an inference from error text.",
    "corrected_claim": "The service manager binaries carry context-file names: hwservicemanager contains the error text 'No match for interface %s in hwservice_contexts', and servicemanager contains ' in service_contexts.'. hwservicemanager has no separate service_contexts reference; its match is a substring of hwservice_contexts. That these files are read is inferred from the strings."
   },
@@ -290,7 +290,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_keystore2_key_contexts",
    "claim": "plat_keystore2_key_contexts maps integer Keystore2 namespaces to key labels: 7 entries. Namespaces must be integers in [0, 2^31). Examples are 0 to su_key, 1 to shell_key, 100 to vold_key.",
    "evidence": "grep -vE '^\\s*(#|$)' plat_keystore2_key_contexts | wc -l -> '7'. cat excerpt: '# <namespace> must be an integer in the interval [0 ...  2^31)', '0              u:object_r:su_key:s0', '100            u:object_r:vold_key:s0'. strings -n 6 system_a/system/lib64/libselinux.so | grep plat_keystore2 -> '/plat_keystore2_key_contexts'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "7 non-comment rows. Rows: 0 u:object_r:su_key, 1 u:object_r:shell_key, 100 u:object_r:vold_key, plus four more. The comment reads '<namespace> must be an integer in the interval [0 ... 2^31)'. libselinux strings include /plat_keystore2_key_contexts.",
    "corrected_claim": ""
   },
@@ -300,7 +300,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/selinux_denial_metadata",
    "claim": "selinux_denial_metadata is a 35-row annotation table with four whitespace-separated fields: source domain, target type, object class and a bug reference of the form b/NNNNNNNN. The logd binary references this path.",
    "evidence": "awk '{print NF}' selinux_denial_metadata | sort | uniq -c -> '35 4'. awk '{print $3}' | sort | uniq -c | sort -rn -> 'dir 9', 'file 8', 'unix_stream_socket 6', 'process 3', 'chr_file 2', 'blk_file 2', 'sock_file 1', 'netlink_route_socket 1'. Excerpt: 'init shell_data_file file b/77873135'. strings -n 6 system_a/system/bin/logd | grep denial_metadata -> '/vendor/etc/selinux/selinux_denial_metadata'.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "35 rows with 4 fields each. Object class ($3) has 11 values summing to 35: dir 9, file 8, unix_stream_socket 6, process 3, chr_file 2, blk_file 2, sock_file 1, netlink_route_socket 1, lnk_file 1, filesystem 1, fifo_file 1. The claim's excerpt omits three of these. Bug references ($4): 27 are b/ followed by 8 digits and 8 are b/ followed by 9 digits (for example b/146166941). The logd strings include /vendor/etc/selinux/selinux_denial_metadata.",
    "corrected_claim": "selinux_denial_metadata is a 35-row annotation table with four whitespace-separated fields: source domain, target type, object class and a bug reference of the form b/ followed by 8 or 9 digits (27 rows with 8 digits, 8 rows with 9). The logd binary references this path."
   },
@@ -310,7 +310,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/plat_sepolicy_vers.txt",
    "claim": "plat_sepolicy_vers.txt holds the platform policy version '32.0' (5 bytes). This matches mapping/32.0.cil, which the platform checksum chain uses.",
    "evidence": "cat vendor_a/etc/selinux/plat_sepolicy_vers.txt -> '32.0'. stat -c %s -> '5'. Checksum recipe in C03 uses mapping/32.0.cil.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "cat plat_sepolicy_vers.txt gives 32.0 with a trailing newline (od: 3 2 . 0 \\n). stat gives 5 bytes. The platform checksum recipe in C03 uses mapping/32.0.cil.",
    "corrected_claim": ""
   },
@@ -320,7 +320,7 @@
    "file": "<image>/mnt/odm_a/etc/selinux/precompiled_sepolicy",
    "claim": "The precompiled binary reports policy version 30 while the platform version file and mapping set are 32.0. The cause (for example a build-time target policy version) is not determined from these files.",
    "evidence": "file -b odm_a/etc/selinux/precompiled_sepolicy -> 'SE Linux policy v30 8 symbols 7 ocons'. cat vendor_a/etc/selinux/plat_sepolicy_vers.txt -> '32.0'. od header version word (C06) -> '1e 00 00 00' (30).",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "file -b reports SE Linux policy v30. The od header version word is 0x1e (30). plat_sepolicy_vers.txt reads 32.0. The mapping directory holds 13 files spanning 26.0 to 32.0 (7 .cil, 6 compat), and mapping/32.0.cil is the one the checksum chain uses. 'Mapping set are 32.0' overstates the match. The cause of the mismatch is not determined from these files.",
    "corrected_claim": "The precompiled binary reports policy version 30, while the platform version file reads 32.0 and the mapping directory includes mapping/32.0.cil (the directory spans 26.0 to 32.0). The cause of the difference is not determined from these files."
   },
@@ -330,7 +330,7 @@
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_service_contexts",
    "claim": "vendor_service_contexts maps three services (two drm entries and one display config entry). The label hal_drm_service is not declared in any CIL file in the mounted partitions, so that label does not resolve in this set.",
    "evidence": "cat vendor_a/etc/selinux/vendor_service_contexts -> 'android.hardware.drm.IDrmFactory/clearkey u:object_r:hal_drm_service:s0', 'android.hardware.drm.IDrmFactory/widevine u:object_r:hal_drm_service:s0', 'vendor.qti.hardware.display.config.IDisplayConfig/default u:object_r:vendor_hal_vnddisplayconfig_service:s0'. grep -rln 'hal_drm_service' --include=*.cil --include=*_contexts . -> './vendor_a/etc/selinux/vendor_service_contexts' only. grep -rhoE '\\((type|typeattribute) hal_drm_service\\)' . -> no output.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_service_contexts has 3 entries (two hal_drm_service rows and one vendor_hal_vnddisplayconfig_service row) plus a #line line. grep -rln hal_drm_service over the whole mount returns only vendor_service_contexts. No (type or typeattribute hal_drm_service) declaration exists in any file. The odm precompiled binary has no occurrence of the string.",
    "corrected_claim": ""
   },
@@ -340,7 +340,7 @@
    "file": "<image>/mnt/odm_a/etc/selinux",
    "claim": "The only precompiled policy files in the inventory are the three odm_a files. The vendor_a partition has no precompiled entry, and product_a has no etc/selinux directory in the mount.",
    "evidence": "grep -c precompiled classified.tsv -> '3' (all odm_a). ls -la product_a/etc/selinux/ -> 'No such file or directory'. ls odm_a/etc/selinux -> 'precompiled_sepolicy', 'precompiled_sepolicy.plat_sepolicy_and_mapping.sha256', 'precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -c precompiled classified.tsv gives 3, all odm_a. inventory.tsv also gives 3. find over the mount returns the three odm_a files only. product_a/etc/selinux does not exist. vendor_a has no precompiled entry.",
    "corrected_claim": ""
   },
@@ -350,7 +350,7 @@
    "file": "<image>/mnt/system_a/system/bin/init",
    "claim": "The init binary carries the path strings for the policy inputs: the platform, system_ext, vendor, odm and product policy CIL files, the platform property contexts, precompiled policy paths for odm and vendor, the mapping directories, the platform version file, and the checksum suffixes. The binary is stripped, so the load order is not established.",
    "evidence": "strings -n 4 system_a/system/bin/init | grep -E 'sepolicy|contexts|mapping|sha256' | sort -u. Excerpt: '/odm/etc/selinux/precompiled_sepolicy', '/vendor/etc/selinux/precompiled_sepolicy', '/system/etc/selinux/plat_sepolicy.cil', '/system_ext/etc/selinux/system_ext_sepolicy.cil', '/vendor/etc/selinux/nonplat_sepolicy.cil', '/vendor/etc/selinux/plat_pub_versioned.cil', '/vendor/etc/selinux/vendor_sepolicy.cil', '/vendor/etc/selinux/plat_sepolicy_vers.txt', '/system/etc/selinux/mapping/', '/system/etc/selinux/plat_sepolicy_and_mapping.sha256', '/odm/etc/selinux/odm_sepolicy.cil', '/product/etc/selinux/product_sepolicy.cil', '/debug_ramdisk/userdebug_plat_sepolicy.cil', '/mfgmode_plat_sepolicy.cil', '.plat_sepolicy_and_mapping.sha256', '.system_ext_sepolicy_and_mapping.sha256', 'file -b system_a/system/bin/init -> ELF 64-bit LSB pie executable, ARM aarch64, ... stripped'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "file -b on init: ELF 64-bit LSB pie executable, ARM aarch64, dynamically linked, stripped. Each listed path string is present in the binary (grep -cF counts 1 or 2 each), including /odm/etc/selinux/precompiled_sepolicy, /vendor/etc/selinux/precompiled_sepolicy, /system/etc/selinux/plat_sepolicy.cil, /vendor/etc/selinux/plat_pub_versioned.cil (offset 125969), /debug_ramdisk/userdebug_plat_sepolicy.cil and the .sha256 suffixes. Gap: load order is not established because the binary is stripped.",
    "corrected_claim": ""
   },
@@ -360,7 +360,7 @@
    "file": "<image>/mnt/system_a/system/etc/selinux/plat_property_contexts",
    "claim": "Seven context files begin with a '#line 1' provenance directive that gives the build-tree source path. Examples are system/sepolicy/private/property_contexts, vendor/meta/sepolicy/sepolicy-common/private/property_contexts and device/meta/anorak-common/sepolicy/vendor/service_contexts.",
    "evidence": "grep -l '^#line' system_a/system/etc/selinux/*_contexts vendor_a/etc/selinux/*_contexts system_ext_a/etc/selinux/*_contexts | wc -l -> '7'. head -n 1 plat_service_contexts -> '#line 1 \"system/sepolicy/private/service_contexts\"'. head -n 1 vendor_service_contexts -> '#line 1 \"device/meta/anorak-common/sepolicy/vendor/service_contexts\"'.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -l '^#line' over the three directories' *_contexts files gives 7. Each has '#line 1' on line 1. The three example paths are the line-1 directives of plat_property_contexts (system/sepolicy/private/property_contexts), system_ext_property_contexts (vendor/meta/sepolicy/sepolicy-common/private/property_contexts) and vendor_service_contexts (device/meta/anorak-common/sepolicy/vendor/service_contexts). Two files also carry mid-file #line directives (vendor_property_contexts line 28, system_ext_property_contexts line 67), which the claim does not mention.",
    "corrected_claim": ""
   }

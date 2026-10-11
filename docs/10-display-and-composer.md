@@ -6,7 +6,7 @@
 
 The group holds 132 rows (odm_a 6, system_a 65, system_ext_a 7, vendor_a 54; 130 regular files and 2 symlinks) that make up the Android display, graphics-composition and DRM stack of a Qualcomm SDM/SDE-based device with Oculus VR (VROS) components. Two IComposer 2.4 HAL implementations are registered in VINTF: the Qualcomm vendor.qti.hardware.display.composer-service (IQtiComposer 3.2, DisplayConfig AIDL) and the Oculus StrataComposer service (instance "display", disabled at boot and enabled only when a persist.device_config property is true). surfaceflinger is the HIDL client of both, and gralloc, mapper, allocator and DisplayConfig client libraries sit beneath them. Display tuning comes from /system/etc/display.conf (JSON), /vendor/etc/display/DPU930.xml (Qualcomm SDE930 parameter table, read by libdisplayqos.so) and the vendor property vendor.display.*. About 70 rows are DRM and media-DRM material (ClearKey and Widevine HAL services, DRM framework, MediaDrm metrics, forward-lock engine, memtrack). libdrm.so here is the userspace kernel-DRM library, not Android content-protection DRM.
 
-The role table has one row for each of the 132 files in this group (114 verified, 13 observed, 5 inferred, 0 unverified). It is at `data/subsystems/display-and-composer/roles.tsv`.
+Role table: `data/subsystems/display-and-composer/roles.tsv` (132 files: 114 verified, 13 observed, 5 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -40,8 +40,6 @@ The role table has one row for each of the 132 files in this group (114 verified
 - **C38** (verified): The Widevine and ClearKey HAL service binaries are lazy, disabled until started, and use the same interface numbering. The Widevine service registers the widevine DRM and crypto factories over interfaces 1.0 to 1.4.
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **C01** (verified): The group has 132 input rows: 130 regular files and 2 symlinks, across odm_a (6), system_a (65), system_ext_a (7) and vendor_a (54). All four partitions are mounted read-only. Every regular file exists under the mount and matches its recorded size and sha256. The 2 symlink rows (system_a/system/bin/hwclock -> toybox, vendor_a/bin/hwclock -> toybox_vendor) record no sha256 (field '-') and are checked as links only.
 - **C08** (observed): The Qualcomm composer service binary contains 41 strings beginning vendor.display., vendor.gralloc. or vendor.debug.; 39 of them are concrete property keys (the other two are the bare prefix vendor.display. and the template vendor.display.cac_ipd_adjust_%zu). Examples: vendor.display.enable_verbose_log, vendor.display.cac_scale_red, vendor.display.idle_time, vendor.display.disable_skip_validate, vendor.gralloc.disable_ubwc.

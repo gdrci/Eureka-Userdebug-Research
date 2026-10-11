@@ -6,7 +6,7 @@
 
 本组涵盖 183 条清单记录（181 个普通文件、2 个符号链接），分布于五个分区（odm_a 24、product_a 2、system_a 80、system_ext_a 31、vendor_a 46）。它包含 init 可执行文件及其两个符号链接、带有 zygote 与 USB 变体的主系统 init 脚本、定义 191 个服务和 371 个 on-trigger 的 170 个 .rc 文件、面向 anorak SoC 和 eureka 设备的厂商 init 脚本、三个厂商 shell 辅助脚本、两个 fstab 文件、两个 ueventd.rc 规则文件，以及包含 395 个不同属性键的五个 build.prop 文件。文件所声明的启动流程如下：init 二进制文件读取 /system/etc/init/hw/init.rc，该文件导入 /init.environ.rc、USB 脚本、/vendor/etc/init/hw/init.${ro.hardware}.rc（即 init.eureka.rc，它又导入 init.anorak.rc），以及 /system/etc/init/hw/init.${ro.zygote}.rc（即 init.zygote64_stub32.rc，由厂商 build.prop 中的 ro.zygote=zygote64_stub32 选定）。由 ro.hardware 选定的 fstab 为 /vendor/etc/fstab.eureka，由 init.anorak.rc 中的 mount_all 加载。ro.hardware 本身的值不在本组的任何 build.prop 中。
 
-角色表为本组 183 个文件各提供一行（178 verified、5 observed、0 inferred、0 unverified）。它位于 `data/subsystems/init-and-properties/roles.tsv`。
+角色表：`data/subsystems/init-and-properties/roles.tsv`（183 个文件：178 个 verified，5 个 observed，0 个 inferred，0 个 unverified）。
 
 ## 已验证的声明
 
@@ -47,8 +47,6 @@
 
 ## 更正表述的声明
 
-下方结论以数据所支持的措辞重新表述。
-
 - **C13** (observed): init 二进制文件的属性服务字符串包括 init.svc. 前缀、ro.boottime.init、ro.cold_boot_done、persist. 和 ro. 前缀（例如 ro.boot. 和 ro.boottime.），以及 /dev/__properties__/property_info。这些字符串与 init 设置 init.svc.<name> 状态属性的行为一致（inferred；未观察到运行时写入）。
 - **C19** (inferred): 选择 init.eureka.rc 和 fstab.eureka 的 ro.hardware 值被推断为 eureka。它不在本组的五个 build.prop 文件中设置，其来源在本组之外。该名称与每个 build.prop 中的 ro.product.<partition>.device=eureka（例如 ro.product.vendor.device=eureka），以及厂商 build.prop 中的 ro.product.board=eureka 一致。
 - **C21** (verified): 厂商 build.prop 设置了 ro.zygote=zygote64_stub32、ro.board.platform=anorak、ro.product.board=eureka 和 ro.soc.model=SXR2230P。ro.zygote 通过导入 /system/etc/init/hw/init.${ro.zygote}.rc 选定 init.zygote64_stub32.rc。anorak 脚本由 init.eureka.rc 按固定路径导入。本组中没有 rc 文件引用 ro.board.platform、ro.product.board 或 ro.soc.model，因此这三个键在本组中没有选择作用。
@@ -59,8 +57,6 @@
 - **C44** (verified): 本组的行级角色标签为 178 个 verified 和 5 个 observed（共 183 行）。这五个 observed 行是 system_a 中没有服务定义的 rc 文件：flags_health_check.rc、atrace_userdebug.rc、wifi.rc、oculus.perfetto.rc 和 bootstat.rc。它们的角色文本描述的是由触发器驱动的动作。
 
 ## 已排除的声明
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

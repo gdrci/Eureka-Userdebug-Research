@@ -6,7 +6,7 @@
 
 应用组共有 431 行：product_a 27 行，system_a 123 行，system_ext_a 278 行，vendor_a 3 行。这些行包括 142 个 Android APK 压缩包（142 个不同的包名）、137 个 ELF odex 文件和 137 个 vdex 容器（对应 136 个包，Horizon 另有第二个 arm 变体）、2 个 ART 应用镜像、2 个 ART 配置文件，以及 11 个指向 /system_ext/lib64 的符号链接。在 APK 包中，103 个为 com.oculus/com.meta/com.facebook 包（主要位于 system_ext_a 和 product_a），37 个为 AOSP 的 com.android 包（主要位于 system_a），另有 2 个属于其他名称。大多数 APK 的清单报告的平台构建版本为 32；在声明了 targetSdkVersion 的 138 个 APK 中，有 84 个的值为 32。对于 15 个深入分析 APK，对于 15 个深入分析 APK，对于 15 个深入分析 APK，签名使用两个证书族：CN=Android（在 plat_mac_permissions.xml 中映射到 seinfo platform）和 CN=Android Debug（在 system_ext_mac_permissions.xml 中映射到 seinfo fbandroid_debug）。引用这些包名的配置位于本组之外，包括 privapp-permissions、default-permissions 和 sysconfig XML 文件、nonDiscretionaryAppPackageName 列表、system_ext_seapp_contexts（仅包含一个包）以及一个 vendor JSON 键。本组不含固件，也没有任何 init .rc 文件提及 15 个深入分析包中的任何一个。全部 431 行的角色信息位于 roles.tsv 中：306 个 verified，125 个 inferred。
 
-角色表为本组 431 个文件各提供一行（306 verified，0 observed，125 inferred，0 unverified）。文件位于 `data/subsystems/apps/roles.tsv`。
+角色表：`data/subsystems/apps/roles.tsv`（431 个文件：306 个 verified，0 个 observed，125 个 inferred，0 个 unverified）。
 
 ## 已验证的结论
 
@@ -54,8 +54,6 @@
 - **r14** (verified): Carmel（com.oculus.browser）被引用于 system_ext_a/etc/nonDiscretionaryAppPackageName 第 137 行，以及 system_a/system/etc/default-permissions/default-permissions.xml 第 57 行（针对 com.oculus.browser 的例外块，BLUETOOTH_CONNECT fixed=true）。它没有 privapp 块（证据见 `data/subsystems/apps/claims.json`，编号 r14）。
 
 ## 措辞已修正的结论
-
-下方结论以数据所支持的措辞重新表述。
 
 - **c08** (verified): Settings.vdex 头（魔数 'vdex'，版本 '027' 加 NUL）在偏移 8、12、...、36 处的 32 位值依次为 4、0、60、8、1、0、0、2。该文件大小为 204124 字节；Settings odex 为 95152 字节。该文件不包含 'dex' 加换行的序列。这些值的字段名称未由文件本身确定；第一个值（4）与两个 classes*.dex 条目之间的含义关系尚未解决（证据见 `data/subsystems/apps/claims.json`，编号 c08）。
 - **c17** (verified): 已挂载的 file_contexts 文件中没有针对 /system_ext/app 或 /system_ext/priv-app 的显式标签。system_ext 路径落入通用规则 '/(system_ext|system/system_ext)(/.*)?  u:object_r:system_file:s0'（plat_file_contexts 第 55 行）。显式的应用目录标签仅存在于 vendor 和 odm：plat_file_contexts 第 13 行（vendor app）和第 29 行（odm app），以及第 14 行（vendor priv-app）和第 30 行（odm priv-app）。plat_file_contexts 没有针对 /system/app 或 /system/priv-app 的显式标签（证据见 `data/subsystems/apps/claims.json`，编号 c17）。

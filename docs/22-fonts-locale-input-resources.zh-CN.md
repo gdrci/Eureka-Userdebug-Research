@@ -6,7 +6,7 @@
 
 该组包含 448 个输入行：system_a 中 434 个，odm_a 中 8 个，product_a 中 6 个。它分为三个部分。字体：210 个系统字体条目（204 个 TrueType 或 OpenType 文件、两个 CJK TrueType 集合、四个符号链接），以及六个产品字体。系统字体由 system_a/system/etc/fonts.xml 索引（familyset 版本 23，157 个字体族，24 个别名），默认无衬线字体为 Roboto；产品字体通过 product_a/etc/fonts_customization.xml 添加。区域设置数据：一个带有 tz_version 字符串的 tzdata2021a 包、37 个断字模式（.hyb）文件、两个由 libFFTEm.so 读取的 BMD 二进制表，以及一个指向 com.android.i18n APEX 的 usr/icu 符号链接。输入配置：176 个 Linux 按键布局（.kl）文件、六个按键字符映射（.kcm）和八个输入设备配置（.idc）文件，主要是游戏手柄和遥控器设备，另有模拟器和 VR 条目。所有 443 个普通文件的大小和 sha256 都与记录一致，五个符号链接均可解析。
 
-角色表为该组中 448 个文件各含一行（258 verified，187 observed，3 inferred，0 unverified）。它位于 `data/subsystems/fonts-locale-input-resources/roles.tsv`。
+角色表：`data/subsystems/fonts-locale-input-resources/roles.tsv`（448 个文件：258 个 verified，187 个 observed，3 个 inferred，0 个 unverified）。
 
 ## 已验证的声明
 
@@ -42,8 +42,6 @@
 
 ## 已更正措辞的声明
 
-下方结论以数据所支持的措辞重新表述。
-
 - **C10** (verified)：产品字体：OptimisticDisplay-VF.ttf 是一个可变 TrueType 字体，名称为 'Optimistic Disp VF Cyrl Md'（版本 2.000，wght 200-800，默认值 500，341 个字形，unitsPerEm 2000）。OptimisticText-{Light,Regular,Medium,Bold,Black}.ttf 是静态 TrueType 字体（版本 1.000，430 个字形，unitsPerEm 2000），属于排版字体族 'Optimistic Text App'（name ID 16，Regular 和 Bold 中不存在）。它们的完整名称分别为 'Optimistic Text App Light'、'Optimistic Text App'（Regular）、'Optimistic Text App Medium'、'Optimistic Text App Bold' 和 'Optimistic Text App ExtraBold'（文件名为 Black）。这六个文件均位于 product_a/fonts 中。
 - **C15** (observed)：fonts.xml 说明其选择规则：字体依次按包含脚本在内的完整 BCP-47 语言标签匹配，然后按语言匹配，最后按顺序匹配（即第一个包含该字形的字体）。出现顺序也用于在字重匹配时打破平局。
 - **C18** (verified)：在组内 176 个按键布局文件中，指令统计为：key 2986，axis 1294，led 38，sensor 96。传感器类型为 ACCELEROMETER 和 GYROSCOPE（各 48 个）。轴名称包括 X、Y、Z、RZ、HAT_X 和 HAT_Y，每个都出现在 176 个文件中的 162 个里（system_a 的 169 个文件中有 156 个，odm_a 的 7 个文件中有 6 个）。
@@ -51,8 +49,6 @@
 - **C34** (verified)：RFFstd_501.bmd（19586 字节）和 RFFspeed_501.bmd（12862 字节）都以一个小端 u32 开头，其值乘以 2 等于文件大小（9793 和 6431）。字符串 usr/share/bmd/RFFstd_501.bmd 存在于 libFFTEm.so 中；字符串 RFFspeed 未出现在 lib、lib64、bin 或 framework 目录的库中。libFFTEm.so 导出 945 个已定义的动态符号，大多数带有前缀 bts_（297）、bbs_（221）、bbf_（211）、bim_（120）、bpi_（56）和 btk_（36，其中 10 个以 btk_SDK_ 开头），另外还有四个无前缀名称，包括 JNI_OnLoad。
 
 ## 已排除的声明
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

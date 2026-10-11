@@ -6,7 +6,7 @@
 
 媒体编解码器组共有 163 个文件：system_a 中 49 个，system_ext_a 中 1 个，vendor_a 中 113 个。system 一侧包含 Stagefright 和 Codec2 框架库（32 位和 64 位）、media.extractor 与 media 服务可执行文件，以及一个 Mainline APEX（com.android.media.swcodec，版本 319999900），该 APEX 内含 mediaswcodec 服务、一组 Codec2 软件插件，以及其自带的 media_codecs.xml、init.rc 和 seccomp 策略。vendor 一侧包含每种位数 29 个 Codec2 软件插件（每个都导出 CreateCodec2Factory）、14 个旧版 OMX 软件插件（createSoftOMXComponent）、高通 QC2 层（libqcodec2_*，包括一个 V4L2 插件）、供 vendor.qti.media.c2 HAL 使用的 Codec2 HIDL 服务端库、一个 ClearKey MediaCas 插件，以及 XML/JSON 配置（media_codecs_anorak.xml、media_codecs_performance_anorak.xml、media_profiles_V1_0.xml、media_profiles_anorak.xml、media_anorak/video_system_specs.json）。变体后缀 _anorak 来自 vendor build.prop 中的 ro.media.xml_variant.codecs 和 ro.media.xml_variant.codecs_performance。其中一行 system_ext_a/lib64/libcodecwrapper.so 是用于可穿戴输入遥测的 protobuf 封装库，不是媒体编解码器。media_codecs_anorak.xml 所引用的若干 XML 包含文件在已挂载的分区中不存在。
 
-角色表为该组中 163 个文件各有一行（103 verified，56 observed，4 inferred，0 unverified）。文件位于 `data/subsystems/media-codecs/roles.tsv`。
+角色表：`data/subsystems/media-codecs/roles.tsv`（163 个文件：103 个 verified，56 个 observed，4 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -45,8 +45,6 @@
 - **hwservice-01** (observed)：Codec2 HIDL 接口在两个分区中均以 hwservice 名称注册，标签为 hal_codec2_hwservice。平台属性 media.c2.dmabuf.padding 的标签为 codec2_config_prop。
 
 ## 措辞已修正的论断
-
-下方结论以数据所支持的措辞重新表述。
 
 - **sysext-01** (verified)：system_ext_a/lib64/libcodecwrapper.so 是基于 protobuf 的可穿戴输入遥测编解码封装库（包括 com::oculus::wearableinputservice 命名空间中的 IMU、EMG、手势、电池、设备状态和触觉消息），不是媒体编解码器。它内嵌 protobuf 运行时，且没有 libprotobuf 依赖。其引用方包括 WearableInputService.apk（其中打包了 lib/arm64-v8a/libcodecwrapper.so 和 lib/arm64-v8a/libwis_input_device.so），以及两个链接它的 system_ext 库：libwis_input_device.so（同样打包在 APK 中）和 wis_handlers.so（一个独立的 system_ext 库）。
 - **apex-05** (verified)：APEX 的 media_codecs.xml 列出 9 个 Codec2 解码器和 6 个编码器，均以 c2.android.* 前缀命名。15 个中有 14 个带有 OMX.google 别名；c2.android.opus.encoder 没有别名。该文件中没有 Include 元素。

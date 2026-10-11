@@ -6,7 +6,7 @@
 
 hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载分区上仅有的 etc/vintf 文件：vendor_a 20 个，odm_a 18 个，system_ext_a 12 个，system_a 11 个，product_a 1 个。没有任何文件是二进制、库或固件镜像。这些文件为框架（system_a manifest.xml、基于级别的兼容性矩阵 3 至 6，以及一个设备矩阵）、system_ext、vendor 和 odm 各层声明 HAL 的包名、版本、传输方式和实例。大多数已声明的 HAL 也在 init 服务条目以及 SELinux 的 hwservice_contexts 或 service_contexts 文件中被提及。基于名称的交叉引用将 414 个清单和矩阵条目与上下文文件进行了匹配；另有 7 个矩阵需求名称在上下文文件中没有对应条目。两个设备矩阵需求（vendor.oculus.hardware.mixedreality 和 vendor.oculus.hardware.peripheralconfig@1.0，均为可选）在这 62 个文件中没有提供方。对于两个 odm HAL（sensors 和 usb），init rc 或 hwservice 上下文声明的接口或版本比清单片段更多。
 
-角色表为本组中的 62 个文件各提供一行（59 verified，0 observed，3 inferred，0 unverified）。它位于 `data/subsystems/hal-manifests/roles.tsv`。
+角色表：`data/subsystems/hal-manifests/roles.tsv`（62 个文件：59 个 verified，0 个 observed，3 个 inferred，0 个 unverified）。
 
 ## 已验证结论
 
@@ -32,8 +32,6 @@ hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载
 
 ## 修正措辞后的结论
 
-下方结论以数据所支持的措辞重新表述。
-
 - **GRP-04** (observed)：三个文件被归类为 text/xml（parfait.xml 和两个 DRM 清单），file(1) 对这三个文件的判断与该分类一致，均报告为 XML 1.0 document。在 59 个 text/plain 文件中，file(1) 对其中 18 个（例如 system_a/system/etc/vintf/manifest.xml）报告为 exported SGML document，对其中 41 个报告为 plain ASCII text。
 - **GRP-06** (verified)：由 56 个 manifest 根元素（在 62 个文件中）提供的名称级覆盖率为：30 个设备矩阵名称中有 28 个。没有提供方的两个名称是 vendor.oculus.hardware.mixedreality（optional true）和 vendor.oculus.hardware.peripheralconfig 1.0（optional true）。完整 HAL 名称 vendor.oculus.hardware.peripheralconfig 仅出现在挂载分区上的 system_a/system/etc/vintf/compatibility_matrix.device.xml 中；裸词 peripheralconfig 还出现在其他 10 个文件中，作为库、工具和路径名称出现。
 - **GRP-11** (verified)：这四个接口的 SELinux 标签出现在三个上下文文件中：vendor_a/etc/selinux/vendor_hwservice_contexts（IQtiComposer 位于第 9 行，vendor.display.config::IDisplayConfig 位于第 2 行）、vendor_a/etc/selinux/vendor_service_contexts（AIDL vendor.qti.hardware.display.config.IDisplayConfig/default 位于第 4 行），以及 system_a/system/etc/selinux/plat_hwservice_contexts（android.hardware.graphics.composer::IComposer 位于第 36 行）。
@@ -43,8 +41,6 @@ hal-manifests 组由 62 个 VINTF XML 文件构成，这些文件全部是挂载
 - **GRP-27** (verified)：兼容性矩阵包含 hidl（261）和 aidl（37）需求。在 298 个矩阵需求条目中，260 个为 optional true，38 个为 optional false。在这 62 个文件的全部 385 个 hal 元素中，268 个为 optional true，38 个为 false，79 个没有该属性（后两组包括清单条目）。框架矩阵 compatibility_matrix.device.xml 的 30 个条目全部为 optional true；设备类型矩阵 vendor_a/etc/vintf/compatibility_matrix.xml 的 6 个条目全部为 optional false。
 
 ## 已排除的结论
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 结论 | 原因 |
 |---|---|---|

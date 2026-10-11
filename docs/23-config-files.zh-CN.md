@@ -6,7 +6,7 @@
 
 config-files 组共有 392 行，分布在五个分区中：system_a 270 行、system_ext_a 73 行、vendor_a 28 行、odm_a 11 行、product_a 10 行（389 个普通文件，3 个符号链接）。该组包括 123 个信任锚 PEM 证书（system_a 的 security/cacerts，每个文件以其 OpenSSL 主题哈希命名）、41 个已编译的 terminfo 条目、37 个断字（hyphenation）许可证文本、5 个 gzip 压缩的 NOTICE 索引、38 个 zip 容器模型归档（.ptl、.pt、.jit）、4 个 ExecuTorch 程序文件（.pte、.ff），以及 3 个 octet-stream 类型的 .ptl 模型，分别用于身体、手部、面部、输入、物体、IoT、被动追踪、唤醒词、深度和音频功能；此外还有运行时配置，由 init、进程组库、动态链接器、字体栈、相机和音频 HAL、OpenXR 加载器以及遥测服务读取。二进制项包括两个 eBPF 对象（netd.o、clatd.o）、一个 AArch64 PIE 辅助程序（ip-up-vpn）、一份 Cap'n Proto HMD 配置、一个二进制链接器命名空间 protobuf，以及一个 fs_config 目录表。每一行对应的文件都存在，且 sha256 与记录一致。15 个深入分析条目给出了格式事实、键，以及在挂载镜像中找到的字面量或 SELinux 引用。
 
-角色表为该组中的 392 个文件各有一行（261 项已验证，96 项已观察，35 项为推断，0 项未验证）。它位于 `data/subsystems/config-files/roles.tsv`。
+角色表：`data/subsystems/config-files/roles.tsv`（392 个文件：261 个 verified，96 个 observed，35 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -55,8 +55,6 @@ config-files 组共有 392 行，分布在五个分区中：system_a 270 行、s
 - **X02**（已观察）：SELinux 文件上下文映射了若干组内文件：/system/etc/event-log-tags 映射到 system_event_log_tags_file（plat_file_contexts 第 579 行），/system/etc/task_profiles/cgroups_[0-9]+.json 映射到 cgroup_desc_api_file（第 343 行），/system/etc/task_profiles/task_profiles_[0-9]+.json 映射到 task_profiles_api_file（第 347 行）。组内其他许多文件（fonts、facetracking、perfstream、threadpolicy、openxr、resourcemanager、linker.config.pb、fs_config_dirs）在挂载的上下文文件中没有对应的上下文行。
 
 ## 已修正措辞的论断
-
-下方结论以数据所支持的措辞重新表述。
 
 - **D09a**（已验证）：system/etc/bpf/netd.o（16552 字节）是一个面向 Linux BPF 的 ELF64 可重定位对象。其程序段为 cgroupskb/ingress/stats、cgroupskb/egress/stats、cgroupsock/inet/create，以及四个 skfilter/*/xtbpf 段（ingress、egress、allowlist、denylist）。存在段 maps、progs、license、critical、bpfloader_min_ver、bpfloader_max_ver、size_of_bpf_map_def 和 size_of_bpf_prog_def。license 段包含 11 字节的字符串 'Apache 2.0' 加一个 NUL 终止符。size_of_bpf_map_def 为 0x30 字节。十个映射名：uid_counterset_map、iface_stats_map、app_uid_stats_map、uid_owner_map、configuration_map、uid_permission_map、cookie_tag_map、iface_index_name_map、stats_map_A、stats_map_B。
 - **D14a**（已验证）：system/etc/facetracking/runtime/config.json（9393 字节）的顶层键为 lipsyncSmoothing（minCutoff 2.0，beta 20.0，dCutoff 1.0）、lipsyncBlendshapes（14 个条目）、lipsync（只有一个键 modelPath）和 audioToExpression（17 个条目）。其 modelPath 值位于第 368 和 371 行，分别为 models/lipsync/prod/nn_config.json 和 models/a2e/prod/nn_config.json。这两个 nn_config.json 文件都是后端条目的 JSON 列表（Backend TorchScript；QEngine QNNPACK 或 FBGEMM），分别指向 bolt/model.pt、htp/qnn_model.ptl 和 cpu/model.pt（lipsync），以及在 CpuModel 键下指向 bolt/a2e.ptl 和 cpu/a2e.ptl（a2e）。在这些被引用的模型文件中，只有 bolt/model.pt 和 bolt/a2e.ptl 存在于挂载镜像中。

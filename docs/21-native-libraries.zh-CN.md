@@ -6,7 +6,7 @@
 
 原生库组共有 1371 行，分布在五个分区中：system_a 787 行，vendor_a 368 行，system_ext_a 169 行，odm_a 27 行，product_a 20 行。其中包含 1361 个普通文件和 10 个符号链接。普通文件包括 1351 个 ELF 共享对象（854 个 ELF64 AArch64，497 个 ELF32 ARM，均为 ET_DYN）和 10 个 LLVM 位码文件（system/lib 和 system/lib64 下的 libclc 内置库）。符号链接包括 8 个 bionic 链接（system/lib 和 system/lib64 中的 libc、libdl、libdl_android、libm），它们指向挂载中不存在的 /apex/com.android.runtime，另有 odm_a 和 vendor_a 中指向 dlkm 分区的 lib/modules 链接。system_a 包含 AOSP 平台库和 NDK 公开库，以及 HIDL/AIDL 接口库和 Rust dylib。vendor_a 包含高通 HIDL/AIDL 客户端、HAL 模块（lib/hw、lib64/hw）、FastRPC、音频（AGM/PAL）以及相机和显示库。system_ext_a、product_a 和 odm_a 包含设备专用库（Oculus/Meta 遥测、追踪、XR 加载器、维护启动、Vulkan 层）。管辖该组的配置包括 system/etc/public.libraries.txt（29 个条目）和 vendor/etc/public.libraries.txt（8 个条目），以及 SELinux 标签，位于 plat_file_contexts 第 121 行和 vendor_file_contexts 第 142-153、196 行。角色表为 roles.tsv，共 1371 行：453 verified，857 inferred，61 unverified。在`<image>/mnt` 是镜像各分区的挂载点。
 
-该组中的 1371 个文件各在角色表中占一行（453 verified，0 observed，857 inferred，61 unverified）。角色表位于 `data/subsystems/native-libraries/roles.tsv`。
+角色表：`data/subsystems/native-libraries/roles.tsv`（1371 个文件：453 个 verified，0 个 observed，857 个 inferred，61 个 unverified）。
 
 ## 已验证的声明
 
@@ -51,8 +51,6 @@
 - **D14.1** (verified)：system/etc/public.libraries.txt 在注释头之后列出 29 个条目。条目 libneuralnetworks.so 末尾带有 nopreload 标记。列出的五个名称（libicu.so、libicui18n.so、libicuuc.so、libnativehelper.so 和 libneuralnetworks.so）在这些确切名称下没有文件或已分类的行，并且不在挂载中。子字符串 libneuralnetworks 只匹配 libneuralnetworks_packageinfo.so（native-libraries，system_a）（证据见 `data/subsystems/native-libraries/claims.json`，编号 D14.1）。
 
 ## 已排除的声明
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

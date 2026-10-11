@@ -9,7 +9,7 @@
    "label": "verified",
    "claim": "The group has 21 input rows: 3 in product_a, 7 in system_a and 11 in vendor_a. The base directory used by every later command is E=<image>.",
    "evidence": "E=<image>; awk -F'\\t' '$1==\"power-thermal-charging\"' $E/classified.tsv | wc -l -> 21; awk -F'\\t' '$1==\"power-thermal-charging\"' $E/classified.tsv | cut -f2 | sort | uniq -c -> 3 product_a / 7 system_a / 11 vendor_a",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The classified table has 21 rows for this group, split product_a 3, system_a 7, vendor_a 11. The stated base directory holds the table.",
    "corrected_claim": ""
   },
@@ -18,7 +18,7 @@
    "label": "verified",
    "claim": "All 21 files exist under $E/mnt/<partition>/<path> and their sha256 values equal the sha256 column of classified.tsv.",
    "evidence": "awk -F'\\t' '$1==\"power-thermal-charging\"{print $2\"\\t\"$3\"\\t\"$7}' $E/classified.tsv | while IFS=$'\\t' read -r part path sha; do h=$(sha256sum $E/mnt/$part/$path | cut -c1-64); [ \"$h\" = \"$sha\" ] && echo \"hash-match $path\" || echo \"hash-MISMATCH $path\"; done -> 21 lines hash-match (for example hash-match system/bin/charger, hash-match lib64/libthermalhalutils.so); 0 hash-MISMATCH lines",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Recomputed SHA-256 of all 21 files at their mounted paths: 21 matches, 0 mismatches.",
    "corrected_claim": ""
   },
@@ -28,7 +28,7 @@
    "claim": "system/bin/charger is a stripped ELF64 AArch64 PIE, interpreter /system/bin/linker64, 261472 bytes, with DT_NEEDED entries android.hardware.health@2.0.so, android.hardware.health@2.1.so, libbase.so, libcutils.so, libhidlbase.so, libiad-utils.so, liblog.so, libutils.so, libpng.so, libc++.so, libc.so, libm.so and libdl.so.",
    "file": "system_a/system/bin/charger",
    "evidence": "file -b $E/mnt/system_a/system/bin/charger -> ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, BuildID[md5/uuid]=48be9ad2dc41a3fcf4af0fccd3df91a6, stripped; readelf -h $E/mnt/system_a/system/bin/charger | grep -E 'Class|Machine|Type|Entry' -> Class ELF64, Type DYN, Machine AArch64, Entry point 0x14000; readelf -d $E/mnt/system_a/system/bin/charger | grep NEEDED -> 13 entries as listed",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "ELF64 little-endian PIE, AArch64, dynamically linked, interpreter /system/bin/linker64, stripped, 261472 bytes. The 13 NEEDED entries match the list exactly.",
    "corrected_claim": ""
   },
@@ -38,7 +38,7 @@
    "claim": "The init service that runs the charger is defined as service charger /system/bin/charger in class charger, with seclabel u:r:charger:s0, user system, group system graphics input, capabilities SYS_BOOT, file access to /dev/kmsg and two pstore console files, and it starts disabled.",
    "file": "vendor_a/etc/init/hw/init.anorak.rc",
    "evidence": "sed -n '216,225p' $E/mnt/vendor_a/etc/init/hw/init.anorak.rc -> service charger /system/bin/charger / class charger / seclabel u:r:charger:s0 / user system / group system graphics input / capabilities SYS_BOOT / file /dev/kmsg w / file /sys/fs/pstore/console-ramoops-0 r / file /sys/fs/pstore/console-ramoops r / disabled",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Lines 216-225 of init.anorak.rc match: service charger, class charger, seclabel u:r:charger:s0, user system, group system graphics input, capabilities SYS_BOOT, /dev/kmsg and two pstore file rules, disabled.",
    "corrected_claim": ""
   },
@@ -48,7 +48,7 @@
    "claim": "SELinux maps /system/bin/charger to type charger_exec; the boot-mode properties sys.boot_from_charger_mode and ro.enable_boot_charger_mode map to charger_status_prop and charger_config_prop; type charger and type charger_exec are declared in plat_pub_versioned.cil.",
    "file": "system_a/system/etc/selinux/plat_file_contexts",
    "evidence": "grep -n charger $E/mnt/system_a/system/etc/selinux/plat_file_contexts -> 472:/system/bin/charger u:object_r:charger_exec:s0; grep -n charger $E/mnt/system_a/system/etc/selinux/plat_property_contexts -> 282:sys.boot_from_charger_mode u:object_r:charger_status_prop:s0 exact int / 283:ro.enable_boot_charger_mode u:object_r:charger_config_prop:s0 exact bool; grep -n charger $E/mnt/vendor_a/etc/selinux/plat_pub_versioned.cil -> 804:(type charger) / 807:(type charger_exec)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "plat_file_contexts line 472 maps /system/bin/charger to charger_exec. plat_property_contexts lines 282-283 map the two boot-mode properties as stated. plat_pub_versioned.cil lines 804 and 807 declare charger and charger_exec. The same two declarations also appear in plat_sepolicy.cil (lines 1476 and 1478), which the claim does not mention.",
    "corrected_claim": ""
   },
@@ -58,7 +58,7 @@
    "claim": "The system init script stops the charger class and triggers late-init when sys.boot_from_charger_mode is set to 1, so the charger process hands over to a full boot.",
    "file": "system_a/system/etc/init/hw/init.rc",
    "evidence": "sed -n '505,520p' $E/mnt/system_a/system/etc/init/hw/init.rc -> '# Healthd can trigger a full boot from charger mode by signaling this property when the power button is held.' / 'on property:sys.boot_from_charger_mode=1' / '    class_stop charger' / '    trigger late-init'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "init.rc lines 505-520: on property:sys.boot_from_charger_mode=1 runs class_stop charger and trigger late-init, under the comment about healthd and a full boot.",
    "corrected_claim": ""
   },
@@ -68,7 +68,7 @@
    "claim": "The charger binary reads these system properties: ro.charger.no_ui, ro.charger.draw_split_screen, ro.charger.draw_split_offset, ro.charger.enable_suspend, ro.charger.disable_init_blank, ro.enable_boot_charger_mode, sys.boot_from_charger_mode, ro.minui.overscan_percent, ro.minui.pixel_format, ro.minui.default_rotation, ro.boot.fake_battery, ro.boot.bootloader_screen_rotation and ro.product.charger.unplugged_shutdown_time.",
    "file": "system_a/system/bin/charger",
    "evidence": "strings -n 4 $E/mnt/system_a/system/bin/charger | grep -E '(^|[^A-Za-z])(ro|persist|sys|vendor|init)\\.[a-z0-9_.-]+' | sort -u -> ro.boot.bootloader_screen_rotation / ro.boot.fake_battery / ro.charger.disable_init_blank / ro.charger.draw_split_offset / ro.charger.draw_split_screen / ro.charger.enable_suspend / ro.charger.no_ui / ro.enable_boot_charger_mode / ro.minui.default_rotation / ro.minui.overscan_percent / ro.minui.pixel_format / ro.product.charger.unplugged_shutdown_time / sys.boot_from_charger_mode",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All 13 named properties appear as string literals in the charger binary.",
    "corrected_claim": ""
   },
@@ -78,7 +78,7 @@
    "claim": "The charger reads battery state from sysfs under /sys/class/power_supply using per-supply format paths (capacity, status, present, current_now, voltage_now, temp, type, health, online, cycle_count and others), and it accesses /sys/power/wakeup_count, /sys/power/state, /dev/graphics/fb0, /dev/dri, /dev/input and /proc/last_kmsg.",
    "file": "system_a/system/bin/charger",
    "evidence": "strings -n 4 $E/mnt/system_a/system/bin/charger | grep -E '%s/%s/|/sys/|/proc/|/dev/' -> %s/%s/capacity / %s/%s/status / %s/%s/present / %s/%s/current_now / %s/%s/voltage_now / %s/%s/temp / %s/%s/type / %s/%s/health / %s/%s/online / /sys/class/power_supply / /sys/power/wakeup_count / /sys/power/state / /dev/graphics/fb0 / /dev/dri / /dev/input / /proc/last_kmsg",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Format strings %s/%s/<attr> exist for capacity, status, present, current_now, voltage_now, temp, type, health, online, cycle_count and others. Also present: /sys/class/power_supply, /sys/power/wakeup_count, /sys/power/state, /dev/graphics/fb0, /dev/dri, /dev/input and /proc/last_kmsg.",
    "corrected_claim": ""
   },
@@ -88,7 +88,7 @@
    "claim": "The charger searches for its animation description and images in these paths: /product/etc/res/values/charger/animation.txt, /res/values/charger/animation.txt, /product/etc/res/images/, /system/etc/res/images/ and /res/images/. It refers to charger/battery_scale.png and charger/battery_fail.png by relative name.",
    "file": "system_a/system/bin/charger",
    "evidence": "strings -n 4 $E/mnt/system_a/system/bin/charger | grep -E 'animation|/res|images|battery_scale|battery_fail' -> /product/etc/res/values/charger/animation.txt / /res/values/charger/animation.txt / /product/etc/res/images/ / /system/etc/res/images/ / /res/images/ / charger/battery_scale.png / charger/battery_fail.png",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All five animation paths and both relative PNG names appear as string literals in the charger binary.",
    "corrected_claim": ""
   },
@@ -98,7 +98,7 @@
    "claim": "The charger has no DT_NEEDED entry for libexternalbattery.so, but its strings contain the IExternalBattery interface name vendor.oculus.hardware.externalbattery@1.0::IExternalBattery and HIDL client, server and passthrough instrumentation names for IExternalBattery methods.",
    "file": "system_a/system/bin/charger",
    "evidence": "readelf -d $E/mnt/system_a/system/bin/charger | grep -c externalbattery -> 0; strings -n 4 $E/mnt/system_a/system/bin/charger | grep -i oculus -> vendor.oculus.hardware.externalbattery@1.0::IExternalBattery / vendor.oculus.hardware.externalbattery@1.0; strings -n 4 $E/mnt/system_a/system/bin/charger | grep 'IExternalBattery::getBatteryLevel' -> HIDL::IExternalBattery::getBatteryLevel::client / HIDL::IExternalBattery::getBatteryLevel::passthrough",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The dynamic section has no externalbattery entry. String literals include vendor.oculus.hardware.externalbattery@1.0::IExternalBattery and HIDL::IExternalBattery::getBatteryLevel with the server, client and passthrough suffixes.",
    "corrected_claim": ""
   },
@@ -108,7 +108,7 @@
    "claim": "The charger contains its own copy of the IExternalBattery client code rather than loading libexternalbattery.so at run time. The binary is stripped and has no symbol table.",
    "file": "system_a/system/bin/charger",
    "evidence": "readelf --dyn-syms -W $E/mnt/system_a/system/bin/charger | awk '$7!=\"UND\"' | c++filt | grep -i externalbattery -> no output; readelf -S -W $E/mnt/system_a/system/bin/charger | grep -E '\\.symtab|\\.debug' -> no output; readelf -d shows no libexternalbattery.so entry (C10)",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The own-copy part holds and is stronger than stated. The binary has no symbol-table section, but its .gnu_debugdata section (XZ/LZMA-compressed, 69480 bytes after decompression) holds a 585-entry symbol table. That table defines, at code addresses such as 0x14180 and not as undefined references, the IExternalBattery proxy and stub classes and the hardware::oculus::health::ExternalBattery wrapper (constructor, getBatteryLevel, getCombinedBatteryLevel(int), isConnected, DeathRecipient). So has no symbol table is wrong; there is no .symtab section, but a symbol table is present in the debug section.",
    "corrected_claim": "The charger has no DT_NEEDED entry for libexternalbattery.so and no .symtab section. It is stripped, but its .gnu_debugdata section holds a compressed symbol table that defines the IExternalBattery proxy and stub classes and the hardware::oculus::health::ExternalBattery wrapper, so the binary contains its own compiled copy of that code rather than loading libexternalbattery.so at run time."
   },
@@ -118,7 +118,7 @@
    "claim": "The health HAL implementation android.hardware.health@2.0-impl-2.1-anorak.so has DT_NEEDED libexternalbattery.so and imports four ExternalBattery methods: the constructor, getCombinedBatteryLevel, isChargerPlugged and isConnected.",
    "file": "vendor_a/lib64/hw/android.hardware.health@2.0-impl-2.1-anorak.so",
    "evidence": "readelf -d $E/mnt/vendor_a/lib64/hw/android.hardware.health@2.0-impl-2.1-anorak.so | grep NEEDED -> ... libexternalbattery.so ... ; readelf --dyn-syms -W $E/mnt/vendor_a/lib64/hw/android.hardware.health@2.0-impl-2.1-anorak.so | awk '$7==\"UND\"' | c++filt | grep ExternalBattery -> hardware::oculus::health::ExternalBattery::ExternalBattery / ::getCombinedBatteryLevel / ::isChargerPlugged / ::isConnected",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED includes libexternalbattery.so. The undefined dynamic symbols are exactly the four ExternalBattery imports: the constructor, getCombinedBatteryLevel(int), isChargerPlugged() and isConnected().",
    "corrected_claim": ""
   },
@@ -128,7 +128,7 @@
    "claim": "libexternalbattery.so (64-bit vendor copy, SONAME libexternalbattery.so, 102 defined dynamic symbols) exports the wrapper class hardware::oculus::health::ExternalBattery (getBatteryLevel, getChargingStatus, getCombinedBatteryLevel(int), isChargerPlugged, isConnected, getServiceLocked, handleServiceDeath, DeathRecipient) and the IExternalBattery 1.0 proxy and stub classes (BpHwExternalBattery with _hidl_getBatteryLevel, _hidl_getStatus, _hidl_isChargerPlugged, _hidl_isConnected; BnHwExternalBattery; BsExternalBattery). It needs libbase.so, libcutils.so, libhidlbase.so, liblog.so and libutils.so.",
    "file": "vendor_a/lib64/libexternalbattery.so",
    "evidence": "readelf --dyn-syms -W $E/mnt/vendor_a/lib64/libexternalbattery.so | awk 'NR>3 && $7!=\"UND\"{print $8}' | c++filt | grep -E '^hardware::oculus::health::ExternalBattery::' -> ExternalBattery::getBatteryLevel / getChargingStatus / getCombinedBatteryLevel(int) / isChargerPlugged / isConnected / getServiceLocked / handleServiceDeath; readelf -d ... | grep -E 'SONAME|NEEDED' -> Library soname: [libexternalbattery.so]; descriptor string vendor.oculus.hardware.externalbattery@1.0::IExternalBattery",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "SONAME libexternalbattery.so, 102 defined dynamic symbols. The wrapper methods and the Bp, Bn and Bs classes with the listed _hidl_ methods are present. The NEEDED list also includes libc++.so, libc.so, libm.so and libdl.so, which the claim's list omits.",
    "corrected_claim": ""
   },
@@ -138,7 +138,7 @@
    "claim": "android.hardware.thermal@2.0.so (64-bit system copy, SONAME android.hardware.thermal@2.0.so, 174 defined dynamic symbols) declares the HIDL interfaces android.hardware.thermal@2.0::IThermal and android.hardware.thermal@2.0::IThermalChangedCallback. It exports the 2.0 IThermal methods getCurrentTemperatures, getTemperatureThresholds, getCurrentCoolingDevices, registerThermalChangedCallback and unregisterThermalChangedCallback, the inherited 1.0 methods getTemperatures, getCpuUsages and getCoolingDevices, and the callback method notifyThrottling. It depends on android.hardware.thermal@1.0.so.",
    "file": "system_a/system/lib64/android.hardware.thermal@2.0.so",
    "evidence": "strings -n 8 $E/mnt/system_a/system/lib64/android.hardware.thermal@2.0.so | grep -E '^android\\.hardware\\.thermal@[0-9.]+(::[A-Za-z]+)?$' | sort -u -> android.hardware.thermal@2.0::IThermal / android.hardware.thermal@2.0::IThermalChangedCallback / android.hardware.thermal@2.0::Thermal; readelf --dyn-syms -W ... | awk 'NR>3 && $7!=\"UND\"' | wc -l -> 174; demangled BpHwThermal method list from readelf output includes getCurrentTemperatures, getTemperatureThresholds, getCurrentCoolingDevices, registerThermalChangedCallback, getTemperatures, getCpuUsages, getCoolingDevices",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "SONAME android.hardware.thermal@2.0.so, 174 defined dynamic symbols, NEEDED android.hardware.thermal@1.0.so only. IThermal and IThermalChangedCallback are present as interface names. All nine listed methods are present under V2_0 names.",
    "corrected_claim": ""
   },
@@ -148,7 +148,7 @@
    "claim": "android.hardware.thermal@1.0.so (64-bit system copy, SONAME android.hardware.thermal@1.0.so, 92 defined dynamic symbols) declares android.hardware.thermal@1.0::IThermal with methods getTemperatures, getCpuUsages, getCoolingDevices, debug and getDebugInfo. It depends on libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so and libdl.so.",
    "file": "system_a/system/lib64/android.hardware.thermal@1.0.so",
    "evidence": "readelf -d $E/mnt/system_a/system/lib64/android.hardware.thermal@1.0.so | grep -E 'NEEDED|SONAME' -> libhidlbase.so / liblog.so / libutils.so / libcutils.so / libc++.so / libc.so / libm.so / libdl.so / Library soname: [android.hardware.thermal@1.0.so]; strings -n 8 ... | grep -E '^android\\.hardware\\.thermal@1\\.0::IThermal$' -> android.hardware.thermal@1.0::IThermal",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "SONAME android.hardware.thermal@1.0.so, 92 defined dynamic symbols. The NEEDED list matches exactly (libhidlbase, liblog, libutils, libcutils, libc++, libc, libm, libdl). IThermal 1.0 methods getTemperatures, getCpuUsages, getCoolingDevices, debug and getDebugInfo are present.",
    "corrected_claim": ""
   },
@@ -158,7 +158,7 @@
    "claim": "The 64-bit system and vendor copies of android.hardware.thermal@1.0.so and android.hardware.thermal@2.0.so are the same size and differ in exactly 16 bytes, at file offsets 0x298 to 0x2a7. These bytes are the build-id in the second NOTE section (at 0x288). The two copies have different BuildIDs.",
    "file": "vendor_a/lib64/android.hardware.thermal@1.0.so",
    "evidence": "cmp -l $E/mnt/system_a/system/lib64/android.hardware.thermal@1.0.so $E/mnt/vendor_a/lib64/android.hardware.thermal@1.0.so | wc -l -> 16 (same count for @2.0); cmp -l ... | awk '{printf \"%d\\n\", $1-1}' -> min 0x298, max 0x2a7; readelf -S -W ... | grep NOTE -> [1] NOTE 000270 / [2] NOTE 000288; readelf -n ... Build ID: system @1.0 fbabafd27810473a07731908f7c3aefc, vendor @1.0 79d89b912c492e9f9e761d2b48d67877; sizes 84216 and 140680 match",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Each pair is the same size (84216 and 140680 bytes) and differs in exactly 16 bytes, all at offsets 0x298 to 0x2a7. That range is the 16-byte descriptor of .note.gnu.build-id, which starts at 0x288. The BuildIDs differ within each pair.",
    "corrected_claim": ""
   },
@@ -167,7 +167,7 @@
    "label": "verified",
    "claim": "The thermal HAL libraries are linked by 15 files across the mounted partitions. The linking files are perf_service and wattsup in odm_a, libandroid_servers.so and libvrsrecorder family libraries in system_a, perfstream, vrdevicemanagerserver and libperfstreamprovider in system_ext_a, and the vendor copies of libthermalhalutils.so and android.hardware.thermal@2.0.so.",
    "evidence": "grep -rlaF android.hardware.thermal@ $E/mnt -> 21 candidate files; each candidate tested with readelf -d | grep NEEDED. DT_NEEDED matches: odm_a/bin/hw/perf_service (1.0, 2.0); odm_a/bin/wattsup (2.0); system_a/system/lib/android.hardware.thermal@2.0.so (1.0, 2.0); system_a/system/lib/libandroid_servers.so (1.0); system_a/system/lib64/android.hardware.thermal@2.0.so (1.0, 2.0); system_a/system/lib64/libandroid_servers.so (1.0); system_a/system/lib64/libvrsrecorder.so (2.0); libvrsrecorder_plugin_temperaturereader.so (2.0); libvrsrecorder_utils_camera.so (2.0); libvrsrecorder_utils_sensorapishim.so (2.0); system_ext_a/bin/perfstream (2.0); system_ext_a/bin/vrdevicemanagerserver (2.0); system_ext_a/lib64/libperfstreamprovider.so (2.0); vendor_a/lib64/android.hardware.thermal@2.0.so (1.0, 2.0); vendor_a/lib64/libthermalhalutils.so (1.0, 2.0)",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The count of 15 is right: 15 of the 21 candidate files have a NEEDED entry naming a thermal HAL library. The enumerated list reaches only 13 entries because it omits the two system_a copies of android.hardware.thermal@2.0.so (lib and lib64), which do link android.hardware.thermal@1.0.so. The evidence also said the @2.0 libraries link @2.0 as well; each thermal@2.0 copy links only @1.0.",
    "corrected_claim": "The thermal HAL libraries are linked by 15 files. In odm_a: perf_service (1.0 and 2.0) and wattsup (2.0). In system_a: libandroid_servers.so in lib and lib64 (1.0); libvrsrecorder.so, libvrsrecorder_plugin_temperaturereader.so, libvrsrecorder_utils_camera.so and libvrsrecorder_utils_sensorapishim.so (2.0); and the lib and lib64 copies of android.hardware.thermal@2.0.so (each linking @1.0). In system_ext_a: perfstream, vrdevicemanagerserver and libperfstreamprovider.so (2.0). In vendor_a: the vendor copies of libthermalhalutils.so (1.0 and 2.0) and android.hardware.thermal@2.0.so (@1.0)."
   },
@@ -177,7 +177,7 @@
    "claim": "The odm perfservice init service runs /odm/bin/hw/perf_service and registers the default instance of android.hardware.thermal@1.0::IThermal and android.hardware.thermal@2.0::IThermal. Its VINTF manifest entry lists android.hardware.thermal versions 1.0 and 2.0 with instance default.",
    "file": "odm_a/etc/init/perfservice.rc",
    "evidence": "sed -n '1,7p' $E/mnt/odm_a/etc/init/perfservice.rc -> service perfservice /odm/bin/hw/perf_service --schedutil ${vendor.scheduler.schedutil:-false} / ... interface android.hardware.thermal@1.0::IThermal default / interface android.hardware.thermal@2.0::IThermal default; grep -n thermal $E/mnt/odm_a/etc/vintf/manifest/perfservice.xml -> <name>android.hardware.thermal</name> with <version>1.0</version> and <version>2.0</version>",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Init lines 1-7 declare interface android.hardware.thermal@1.0::IThermal default and @2.0::IThermal default for the service that runs /odm/bin/hw/perf_service. The VINTF manifest perfservice.xml lists android.hardware.thermal versions 1.0 and 2.0 with instance default.",
    "corrected_claim": ""
   },
@@ -187,7 +187,7 @@
    "claim": "perf_service links libthermalhalutils.so and imports V2_0::IThermal::registerAsService, the parser functions ParseSensorInfo and ParseCoolingDevice, and ThermalFiles::readThermalFile and addThermalFile. It is therefore the process that registers the thermal HAL and uses the helper library.",
    "file": "odm_a/bin/hw/perf_service",
    "evidence": "readelf -d $E/mnt/odm_a/bin/hw/perf_service | grep NEEDED -> ... [android.hardware.thermal@1.0.so] / [android.hardware.thermal@2.0.so] / ... / [libthermalhalutils.so] ...; readelf --dyn-syms -W $E/mnt/odm_a/bin/hw/perf_service | awk '$7==\"UND\"{print $8}' | c++filt | grep -E 'thermal|ThermalFiles|ParseSensorInfo|ParseCoolingDevice|registerAsService' -> android::hardware::thermal::V2_0::IThermal::registerAsService(...) / V2_0::implementation::ParseCoolingDevice(std::string_view) / V2_0::implementation::ParseSensorInfo(std::string_view) / ThermalFiles::addThermalFile(...) / ThermalFiles::readThermalFile(...)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED includes android.hardware.thermal@1.0.so, android.hardware.thermal@2.0.so and libthermalhalutils.so. Undefined dynamic symbols include V2_0::IThermal::registerAsService, ParseSensorInfo, ParseCoolingDevice, ThermalFiles::readThermalFile and ThermalFiles::addThermalFile.",
    "corrected_claim": ""
   },
@@ -197,7 +197,7 @@
    "claim": "libthermalhalutils.so (64-bit vendor copy, SONAME libthermalhalutils.so, 29 defined dynamic symbols) exports ParseSensorInfo, ParseCoolingDevice, the ThermalFiles methods getThermalFilePath, readThermalFile and addThermalFile, and hidl_enum_values for V2_0::CoolingType and V2_0::TemperatureType. It parses JSON with jsoncpp (Json::CharReaderBuilder, Json::Value::asFloat, asString, asBool, isString) and depends on android.hardware.thermal@1.0.so and @2.0.so.",
    "file": "vendor_a/lib64/libthermalhalutils.so",
    "evidence": "readelf -d $E/mnt/vendor_a/lib64/libthermalhalutils.so | grep -E 'SONAME|NEEDED' -> libthermalhalutils.so / android.hardware.thermal@1.0.so / android.hardware.thermal@2.0.so / libbase.so / libjsoncpp.so / libc++.so / libc.so / libm.so / libdl.so; readelf --dyn-syms -W ... | awk '$7!=\"UND\"' | c++filt | grep -E 'ThermalFiles|ParseSensorInfo|ParseCoolingDevice|hidl_enum_values' -> ThermalFiles::getThermalFilePath / readThermalFile / addThermalFile / ParseSensorInfo / ParseCoolingDevice / hidl_enum_values<V2_0::CoolingType> / hidl_enum_values<V2_0::TemperatureType>; readelf --dyn-syms undefined list -> Json::CharReaderBuilder::newCharReader / Json::Value::asFloat / Json::Value::asString / Json::Value::isString",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "SONAME libthermalhalutils.so, 29 defined dynamic symbols. The listed exports and the hidl_enum_values for CoolingType and TemperatureType are present. Undefined JSON symbols include CharReaderBuilder::newCharReader, Value::asBool, asFloat, asString and isString. NEEDED also lists libbase.so, libjsoncpp.so and the C/C++ runtime libraries, which the claim does not list.",
    "corrected_claim": ""
   },
@@ -207,7 +207,7 @@
    "claim": "thermal_info_config.json is a JSON object with two top-level keys: Sensors (53 objects, starting at line 2) and CoolingDevices (6 objects, starting at line 1178). Every sensor has 7-element HotThreshold and HotHysteresis arrays. Sensor types are BATTERY 4, SKIN 14, CPU 14, GPU 8, NPU 3, BCL_VOLTAGE 6, BCL_CURRENT 2 and USB_PORT 2. Cooling devices are battery (BATTERY), cdsp, panel0-backlight (both COMPONENT), pwm-tach-fan0 (FAN), and thermal-cpufreq-0 and thermal-cpufreq-1 (both CPU).",
    "file": "vendor_a/etc/thermal_info_config.json",
    "evidence": "python3 -I -c 'import json; d=json.load(open(\"$E/mnt/vendor_a/etc/thermal_info_config.json\"))' -> top keys ['Sensors', 'CoolingDevices']; len(Sensors)=53; len(CoolingDevices)=6; Counter of Type over Sensors -> {'BATTERY': 4, 'SKIN': 14, 'CPU': 14, 'GPU': 8, 'NPU': 3, 'BCL_VOLTAGE': 6, 'BCL_CURRENT': 2, 'USB_PORT': 2}; len(HotThreshold)==7 for all 53; grep -n '\"Sensors\"\\|\"CoolingDevices\"' -> 2 and 1178",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "Confirmed: top-level keys Sensors and CoolingDevices, 53 sensors and 6 cooling devices, line numbers 2 and 1178, the eight type counts, a 7-element HotThreshold in all 53 sensors, and the cooling-device names and types. Refuted: HotHysteresis appears in only 38 of the 53 sensors (38 raw key occurrences), so 15 sensors lack it. The claim that every sensor has a 7-element HotHysteresis array does not hold.",
    "corrected_claim": "Every sensor has a 7-element HotThreshold array. HotHysteresis is a 7-element array in 38 of the 53 sensors and absent from the other 15."
   },
@@ -217,7 +217,7 @@
    "claim": "The parser in libthermalhalutils.so recognises these JSON keys: Sensors, CoolingDevices, Name, Type, Monitor, HotThreshold, ColdThreshold, HotHysteresis, ColdHysteresis, Multiplier and VrThreshold. Its defaults are documented in messages: ColdThreshold defaults to NAN, HotHysteresis and ColdHysteresis default to 0.0, and Monitor defaults to false.",
    "file": "vendor_a/lib64/libthermalhalutils.so",
    "evidence": "strings -n 3 $E/mnt/vendor_a/lib64/libthermalhalutils.so -> Sensors / CoolingDevices / Name / Type / Monitor / HotThreshold / ColdThreshold / HotHysteresis / ColdHysteresis / Multiplier / VrThreshold / NrSensors; messages ']'s ColdThreshold, default all to NAN' / ']'s HotHysteresis, default all to 0.0' / ']'s ColdHysteresis, default all to 0.0' / ']'s Monitor, set to 'false'' / 'Duplicate Sensor[' / 'Duplicate CoolingDevice['",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "ColdThreshold, ColdHysteresis, Name, Type, Monitor, HotThreshold, HotHysteresis, Multiplier, VrThreshold and CoolingDevices appear as parser string literals. The default messages match: ColdThreshold default all to NAN, HotHysteresis and ColdHysteresis default all to 0.0, Monitor set to false. Sensors is not a standalone string literal; it occurs only inside NrSensors and in the log text Sensors parsed successfully, so its key use is indirect evidence.",
    "corrected_claim": ""
   },
@@ -227,7 +227,7 @@
    "claim": "The config file omits ColdThreshold and ColdHysteresis in all sensors. The Monitor key is present in 37 of 53 sensors and absent in 16. Multiplier is 0.001 in 45 sensors and 1 in 8. The sensor key set is Name, Type, HotThreshold, HotHysteresis, VrThreshold, Monitor and Multiplier.",
    "file": "vendor_a/etc/thermal_info_config.json",
    "evidence": "python3 -I key analysis of $E/mnt/vendor_a/etc/thermal_info_config.json -> sorted union of sensor keys ['HotHysteresis', 'HotThreshold', 'Monitor', 'Multiplier', 'Name', 'Type', 'VrThreshold']; Counter Monitor -> {'True': 37, '<absent>': 16}; Counter Multiplier -> {'0.001': 45, '1': 8}",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "ColdThreshold and ColdHysteresis occur zero times in the file. Monitor occurs 37 times (all true) and is absent in 16 sensors. Multiplier is 0.001 in 45 sensors and 1 in 8. The key set is the union across sensors; HotHysteresis is present in 38 of them, as noted under C21.",
    "corrected_claim": ""
   },
@@ -236,7 +236,7 @@
    "label": "verified",
    "claim": "The literal strings BATTERY, SKIN, CPU, GPU, NPU, USB_PORT and FAN do not occur in libthermalhalutils.so or in perf_service. The strings BCL_VOLTAGE, BCL_CURRENT, BCL_PERCENTAGE, POWER_AMPLIFIER and COMPONENT do occur in libthermalhalutils.so. SKIN and USB_PORT occur in framework.jar and services.jar in system_a.",
    "evidence": "grep -c -a -x -e BATTERY -e SKIN -e CPU -e GPU -e NPU -e USB_PORT -e FAN over $E/mnt/vendor_a/lib64/libthermalhalutils.so -> 0 for each; grep -c -a 'BCL_VOLTAGE' -> 1; 'BCL_CURRENT' -> 1; 'BCL_PERCENTAGE' -> 1; 'POWER_AMPLIFIER' -> 1; 'COMPONENT' -> 1; grep -rlaw SKIN $E/mnt -> vendor_a/etc/thermal_info_config.json, system_a/system/framework/framework.jar, system_a/system/framework/services.jar, system_a/system/apex/com.android.i18n.apex; grep -rlaw USB_PORT $E/mnt -> framework.jar, services.jar, thermal_info_config.json",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "BATTERY, SKIN, NPU, USB_PORT and FAN are absent from both libthermalhalutils.so and perf_service. CPU and GPU are absent from libthermalhalutils.so but occur as standalone string literals in perf_service, next to log text such as CPU frequencies, GPU frequencies and Failed to get CPU usages. The other facts hold: BCL_VOLTAGE, BCL_CURRENT, BCL_PERCENTAGE, POWER_AMPLIFIER and COMPONENT occur once each in libthermalhalutils.so, and SKIN and USB_PORT are standalone tokens in framework.jar and services.jar.",
    "corrected_claim": "The literal strings BATTERY, SKIN, CPU, GPU, NPU, USB_PORT and FAN do not occur in libthermalhalutils.so. In perf_service, BATTERY, SKIN, NPU, USB_PORT and FAN do not occur, but CPU and GPU do. BCL_VOLTAGE, BCL_CURRENT, BCL_PERCENTAGE, POWER_AMPLIFIER and COMPONENT occur in libthermalhalutils.so. SKIN and USB_PORT occur as standalone tokens in framework.jar and services.jar in system_a."
   },
@@ -246,7 +246,7 @@
    "claim": "powerhint.cfg is valid TOML with 108 tables. The default table has 146 entries. Non-table keys are path entries (643), priority (106) and duration (9). clocks_cpu has 6 entries (VR_MODE_0 to VR_MODE_5) and clocks_gpu has 8 entries (VR_MODE_0 to VR_MODE_7). Its sysfs thermal entries use tz-by-name zone limit paths, with 12 distinct keys such as /sys/devices/virtual/thermal/tz-by-name/cpu-1-0-0-limit/cdev0_upper_limit.",
    "file": "vendor_a/etc/powerhint.cfg",
    "evidence": "python3 -I -c 'import tomllib; d=tomllib.load(open(\"$E/mnt/vendor_a/etc/powerhint.cfg\",\"rb\"))' -> parsed OK; len(d)=108; len(d[\"default\"])=146; key kinds {'path': 643, 'priority': 106, 'duration': 9}; grep -n -E '^\\[' $E/mnt/vendor_a/etc/powerhint.cfg -> 38:[clocks_cpu] 46:[clocks_gpu] 56:[default] 204:[BOOST_EARLY_INIT] ... 1009:[BACKOUT_RESOURCE_PROTECTION]",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: valid TOML with 108 tables, a default table of 146 entries, 106 priority and 9 duration entries, clocks_cpu with 6 entries and clocks_gpu with 8, and 12 distinct tz-by-name keys. The 643 figure labelled path includes 14 clock-level entries (VR_MODE_0 to VR_MODE_5 in clocks_cpu, VR_MODE_0 to VR_MODE_7 in clocks_gpu). Keys beginning with a slash number 629.",
    "corrected_claim": "Non-table keys are 629 path entries (keys beginning with /), 14 clock-level entries (VR_MODE_* in clocks_cpu and clocks_gpu), 106 priority entries and 9 duration entries."
   },
@@ -256,7 +256,7 @@
    "claim": "powerhint_holdout.cfg is valid TOML with 27 tables. Every table name also exists in powerhint.cfg. Its default table has 102 entries, and sched_migration_cost_ns is 500000 there, against 0 in powerhint.cfg. Its header says the content was copied from the 1/1/2024 powerhint.cfg with experiments removed.",
    "file": "vendor_a/etc/powerhint_holdout.cfg",
    "evidence": "python3 -I -c 'import tomllib' comparison of $E/mnt/vendor_a/etc/powerhint.cfg and $E/mnt/vendor_a/etc/powerhint_holdout.cfg -> len(holdout)=27; only in holdout: []; len(holdout default)=102; default /proc/sys/kernel/sched_migration_cost_ns = 500000 (holdout) vs 0 (powerhint.cfg); sed -n '3p' holdout -> '# The content is copied from 1/1/2024 powerhint.cfg with experiments removed.'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The holdout file has 27 tables, all of which exist in powerhint.cfg. Its default table has 102 entries. /proc/sys/kernel/sched_migration_cost_ns is 500000 in the holdout file and 0 in powerhint.cfg. Header line 3 matches the description.",
    "corrected_claim": ""
   },
@@ -266,7 +266,7 @@
    "claim": "The powerhint.cfg header defines the format. The file is TOML. Path and value pairs are TOML basic strings. duration and priority are integers that apply to their whole table. The default table is required, and the clocks_cpu and clocks_gpu tables are required. Experiments go under an Experiments Section and backouts go under a Backout Section.",
    "file": "vendor_a/etc/powerhint.cfg",
    "evidence": "sed -n '1,45p' $E/mnt/vendor_a/etc/powerhint.cfg -> '# This powerhint config file is written in TOML' / 'All path/value pairs are basic string to basic string' / '\"duration\" and \"priority\" ... integer' / 'the \"default\" hint is REQUIRED' / 'The \"clocks_cpu\" and \"clocks_gpu\" tables are also required' / 'Experiments must go under the Experiments Section' / 'Backouts must go under the Backout Section'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Header lines 1-45 state: TOML format; path and value pairs as basic strings; duration and priority as integers applying to the whole table; default table required; clocks_cpu and clocks_gpu required; experiments under the Experiments Section; backouts under the Backout Section.",
    "corrected_claim": ""
   },
@@ -276,7 +276,7 @@
    "claim": "perf_service reads /vendor/etc/powerhint.cfg, /vendor/etc/powerhint_holdout.cfg, /vendor/etc/irqhint.cfg and /vendor/etc/thermal_info_config.json. set_hint reads /vendor/etc/powerhint.cfg. Both print the message powerhint.cfg configuration is missing default table! when the default table is absent.",
    "file": "odm_a/bin/hw/perf_service",
    "evidence": "grep -rlaF powerhint.cfg $E/mnt -> odm_a/bin/set_hint / odm_a/bin/hw/perf_service / vendor_a/etc/powerhint_holdout.cfg; strings -n 6 $E/mnt/odm_a/bin/hw/perf_service | grep -E '\\.cfg|\\.json|/vendor/' -> /vendor/etc/ / thermal_info_config.json / powerhint.cfg configuration is missing default table! / /vendor/etc/powerhint.cfg / /vendor/etc/powerhint_holdout.cfg / /vendor/etc/irqhint.cfg; strings ... set_hint -> /vendor/etc/powerhint.cfg",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "perf_service contains /vendor/etc/, powerhint.cfg, powerhint_holdout.cfg, irqhint.cfg and thermal_info_config.json (the last as a relative name). set_hint contains /vendor/etc/powerhint.cfg. Both binaries contain the message powerhint.cfg configuration is missing default table! irqhint.cfg is referenced but not present in the mounted partitions.",
    "corrected_claim": ""
   },
@@ -286,7 +286,7 @@
    "claim": "init.insmod.charger.cfg is a list of 37 modprobe actions, 2 setprop actions and 1 enable action in the form action|argument. It is run by the oneshot, disabled service insmod_charger_sh in class charger, which invokes /vendor/bin/init.insmod.sh with this file. The script reads each line with IFS='|' and dispatches on insmod, setprop, enable, modprobe and wait. It finishes by setting vendor.all.modules.ready and vendor.all.devices.ready.",
    "file": "vendor_a/etc/init.insmod.charger.cfg",
    "evidence": "grep -v '^#' $E/mnt/vendor_a/etc/init.insmod.charger.cfg | grep '|' | cut -d'|' -f1 | sort | uniq -c -> 1 enable / 37 modprobe / 2 setprop; sed -n '253,258p' $E/mnt/vendor_a/etc/init/hw/init.anorak.rc -> service insmod_charger_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.charger.cfg / class charger / user root / group root system / disabled / oneshot; sed -n '1,8p' $E/mnt/vendor_a/bin/init.insmod.sh -> '### [insmod|setprop|enable/moprobe|wait] [path|prop name] ###'; grep -n init.insmod $E/mnt/vendor_a/etc/selinux/vendor_file_contexts -> 433:/vendor/bin/init\\.insmod\\.sh u:object_r:init-insmod-sh_exec:s0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The config has 40 action lines: 37 modprobe, 2 setprop, 1 enable, and no other line type. Service lines 253-258 match (oneshot, disabled, class charger, runs the script with the config file). The script loop reads with IFS=| and dispatches on insmod, setprop, enable, modprobe and wait. It ends by setting vendor.all.modules.ready and vendor.all.devices.ready to 1. The script's file-context label is at line 433.",
    "corrected_claim": ""
   },
@@ -296,7 +296,7 @@
    "claim": "animation.txt is a directive file. It has one animation directive (3 cycles, 2 first-frame repeats, file charger/battery_scale), one percent_display directive and 12 frame directives. Each frame directive has a display time of 750 ms and a battery-level range: 0-9, 10-24, 25-49, 50-74, 75-99 and 100-100, each range repeated twice. The charger scans the percent_display line with the pattern c %d %d %d %d %d %n%*s%n, and frame lines with frame: %d %d %d.",
    "file": "product_a/etc/res/values/charger/animation.txt",
    "evidence": "cat -A $E/mnt/product_a/etc/res/values/charger/animation.txt -> '# x y r g b a font_file' / 'percent_display: c 1150 216 216 216 255 font' / 'animation: 3 2 charger/battery_scale' / 'frame: 750  0 9' (2 lines) / ... / 'frame: 750 100 100' (2 lines); strings -n 4 $E/mnt/system_a/system/bin/charger | grep -E 'c %d %d %d %d %d %n|frame: %d' -> 'c %d %d %d %d %d %n%*s%n' / ' frame: %d %d %d'",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: one percent_display line, one animation line (3 cycles, 2 first-frame repeats, charger/battery_scale), and 12 frame lines in six pairs covering 0-9, 10-24, 25-49, 50-74, 75-99 and 100-100, each with display value 750. The file's header names that column disp_time with no unit, so the unit ms is not supported by the file.",
    "corrected_claim": "animation.txt is a directive file with one animation directive (3 cycles, 2 first-frame repeats, file charger/battery_scale), one percent_display directive and 12 frame directives. Each frame directive has a display time (disp_time column) of 750; the file does not state the unit. The six battery-level ranges 0-9, 10-24, 25-49, 50-74, 75-99 and 100-100 are each used by two frames. The charger scans the percent_display line with the pattern c %d %d %d %d %d %n%*s%n and frame lines with frame: %d %d %d."
   },
@@ -306,7 +306,7 @@
    "claim": "In the percent_display line, the leading c is a literal scan token. The five integers that follow are read as 1150, 216, 216, 216 and 255. The header comment names them x, y, r, g, b and a, and the font file name follows. The assignment of the values to position and colour is inferred from the header and not confirmed in code.",
    "file": "product_a/etc/res/values/charger/animation.txt",
    "evidence": "strings -n 4 $E/mnt/system_a/system/bin/charger | grep 'Bad percent_display format' -> '<3>charger: Bad percent_display format: %s' ; scan pattern c %d %d %d %d %d %n%*s%n (C30); header line '# x y r g b a font_file' (C30)",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The scan format c %d %d %d %d %d %n%*s%n reads five integers after the literal c. The header line '# x y r g b a font_file' names six numeric fields. The header therefore cannot name the five values one-for-one as x, y, r, g, b and a, and neither source establishes the mapping.",
    "corrected_claim": "The percent_display line is scanned as a literal c followed by five integers (1150, 216, 216, 216, 255) and a font name. The header lists six numeric fields (x, y, r, g, b, a) before the font, so the assignment of the five values to header fields is not established by the file or the charger."
   },
@@ -316,7 +316,7 @@
    "claim": "battery_scale.png is an 8-bit palette PNG, 120 wide by 1440 high. Its tEXt chunk Frames holds 12, so the sheet is 12 stacked 120x120 frames. It matches the 12 frame directives in animation.txt.",
    "file": "product_a/etc/res/images/charger/battery_scale.png",
    "evidence": "python3 -I -c 'parse PNG chunks of $E/mnt/product_a/etc/res/images/charger/battery_scale.png' -> IHDR width=120 height=1440 bitdepth=8 colortype=3 interlace=0; chunks ['IHDR', 'gAMA', 'cHRM', 'PLTE', 'tIME', 'tEXt', 'IDAT', 'tEXt', 'tEXt', 'IEND']; tEXt b'Frames\\x0012'; tEXt date:create 2020-05-19T23:10:32+00:00; 1440/120 = 12.0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "IHDR gives 120 by 1440, bit depth 8, colour type 3 (palette), not interlaced. The tEXt chunk Frames holds 12, and 1440 divided by 120 is 12.",
    "corrected_claim": ""
   },
@@ -326,7 +326,7 @@
    "claim": "battery_fail.png is a 96x96 4-bit palette PNG with chunks IHDR, PLTE, IDAT and IEND. Visually it shows a battery outline inside a circle. The charger log messages show that a custom battery_fail image is loaded when present and a built-in image is used otherwise.",
    "file": "product_a/etc/res/images/charger/battery_fail.png",
    "evidence": "python3 -I -c 'parse PNG chunks of $E/mnt/product_a/etc/res/images/charger/battery_fail.png' -> IHDR width=96 height=96 bitdepth=4 colortype=3 interlace=0; chunks ['IHDR', 'PLTE', 'IDAT', 'IEND']; strings -n 4 $E/mnt/system_a/system/bin/charger | grep battery_fail -> 'Cannot load custom battery_fail image. Reverting to built in: %d' / 'Cannot load built in battery_fail image'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "IHDR gives 96 by 96, bit depth 4, colour type 3. Chunks are IHDR, PLTE, IDAT, IEND. The rendered image shows a battery glyph inside a ring; whether the glyph is an outline or filled is not determined. The charger contains the strings Cannot load custom battery_fail image. Reverting to built in and Cannot load built in battery_fail image.",
    "corrected_claim": ""
   },
@@ -336,7 +336,7 @@
    "claim": "libbatterystats_aidl.so (32-bit and 64-bit system copies) implements the AIDL interface com.android.internal.app.IBatteryStats. The descriptor is stored as UTF-16LE at offset 0x61fc in the 64-bit copy and at 0x3924 in the 32-bit copy. Exports include IBatteryStats::asInterface, getDefaultImpl, setDefaultImpl, descriptor and BnBatteryStats::onTransact. It depends on libbinder.so.",
    "file": "system_a/system/lib64/libbatterystats_aidl.so",
    "evidence": "python3 -I scan of $E/mnt/system_a/system/lib64/libbatterystats_aidl.so for UTF-16LE runs -> @0x61fc 'com.android.internal.app.IBatteryStats'; same scan of system_a/system/lib/libbatterystats_aidl.so -> @0x3924 'com.android.internal.app.IBatteryStats'; readelf -d ... | grep NEEDED -> libbinder.so / libutils.so / libc++.so / libc.so / libm.so / libdl.so; readelf --dyn-syms ... c++filt -> android::IBatteryStats::asInterface / getDefaultImpl / setDefaultImpl / descriptor; android::BnBatteryStats::onTransact",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The UTF-16LE string com.android.internal.app.IBatteryStats starts at 0x61fc in the 64-bit copy and at 0x3924 in the 32-bit copy. The exports asInterface, getDefaultImpl, setDefaultImpl, descriptor and BnBatteryStats::onTransact are present. NEEDED includes libbinder.so.",
    "corrected_claim": ""
   },
@@ -346,7 +346,7 @@
    "claim": "The only DT_NEEDED consumer of libbatterystats_aidl.so in the mounted partitions is libsensorservice.so, in both the 32-bit and 64-bit system copies.",
    "file": "system_a/system/lib64/libsensorservice.so",
    "evidence": "grep -rlaF libbatterystats_aidl.so $E/mnt -> system_a/system/lib/libsensorservice.so / system_a/system/lib64/libsensorservice.so / (the library itself); readelf -d for each -> [libbatterystats_aidl.so] NEEDED present in both libsensorservice.so copies",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The library name appears in four mounted files: both copies of libbatterystats_aidl.so and both copies of libsensorservice.so. Only the two libsensorservice.so copies have a NEEDED entry for it. The search covered extracted mounted files only.",
    "corrected_claim": ""
   },
@@ -356,7 +356,7 @@
    "claim": "libbatterylistener.so (64-bit vendor copy) exports seven C functions: battery_properties_listener_init, battery_properties_listener_deinit, battery_properties_is_charging, battery_properties_remaining_capacity, battery_properties_current_temperature, pause_battery_listener and resume_battery_listener. It implements IHealthInfoCallback 2.0 and 2.1, imports IHealth 2.1 getService, and depends on health@1.0, @2.0, @2.1, power@1.2 and libaudioutils.so.",
    "file": "vendor_a/lib64/libbatterylistener.so",
    "evidence": "readelf --dyn-syms -W $E/mnt/vendor_a/lib64/libbatterylistener.so | awk '$7!=\"UND\"' | grep -E 'battery_properties|pause_battery|resume_battery' -> 7 FUNC GLOBAL names as listed; c++filt of defined names -> construction vtable for android::hardware::health::V2_0::IHealthInfoCallback-in-android::BatteryListenerImpl / V2_1::IHealthInfoCallback-in-android::BatteryListenerImpl; readelf --dyn-syms undefined -> android::hardware::health::V2_1::IHealth::getService; readelf -d ... | grep NEEDED -> android.hardware.health@1.0.so / @2.0.so / @2.1.so / android.hardware.power@1.2.so / libaudioutils.so / libbase.so / libcutils.so / libhidlbase.so / liblog.so / libutils.so",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Seven exported FUNC GLOBAL battery_properties, pause and resume functions are present. The IHealthInfoCallback 2.0 and 2.1 implementations and the IHealth 2.1 getService import are present. The NEEDED list also includes libbase.so, libcutils.so, libhidlbase.so, liblog.so, libutils.so, libc++.so, libc.so, libm.so and libdl.so, which the claim does not list.",
    "corrected_claim": ""
   },
@@ -366,7 +366,7 @@
    "claim": "The audio HAL audio.primary.anorak.so loads libbatterylistener.so with dlopen and dlsym at run time, using the absolute path /vendor/lib64/libbatterylistener.so. It has no DT_NEEDED entry for that library. Its AudioExtn wrappers declare battery_properties_listener_init(void (*)(bool, int, int)), battery_properties_is_charging(), battery_properties_remaining_capacity(), battery_properties_current_temperature(), battery_properties_listener_deinit(), pause_battery_listener() and resume_battery_listener().",
    "file": "vendor_a/lib64/hw/audio.primary.anorak.so",
    "evidence": "readelf -d $E/mnt/vendor_a/lib64/hw/audio.primary.anorak.so | grep -c libbatterylistener -> 0; readelf --dyn-syms -W ... | awk '$7==\"UND\"' | grep -E '^dlopen|^dlsym' -> dlopen@LIBC / dlsym@LIBC; strings -n 6 ... | grep libbatterylistener.so -> /vendor/lib64/libbatterylistener.so; strings -n 6 ... | grep '^_ZN9AudioExtn.*battery' | c++filt -> AudioExtn::battery_properties_listener_init(void (*)(bool, int, int)) / AudioExtn::battery_properties_is_charging() / AudioExtn::battery_properties_remaining_capacity() / AudioExtn::battery_properties_current_temperature() / AudioExtn::battery_properties_listener_deinit() / AudioExtn::pause_battery_listener() / AudioExtn::resume_battery_listener()",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "No NEEDED entry for libbatterylistener.so in the audio HAL. dlopen and dlsym are undefined dynamic symbols. The string /vendor/lib64/libbatterylistener.so is present. The seven AudioExtn wrapper names with the stated signatures are present; the HAL also has battery_listener_feature_init(bool), which the claim omits.",
    "corrected_claim": ""
   },
@@ -376,7 +376,7 @@
    "claim": "The seven slots in each HotThreshold and HotHysteresis array correspond to the seven throttling severity levels of the thermal HAL. The index-to-level mapping is not confirmed in these binaries.",
    "file": "vendor_a/etc/thermal_info_config.json",
    "evidence": "python3 -I len(s['HotThreshold']) over the 53 sensors -> 7 for all; sample cpu-0-0-0: HotThreshold ['NAN', '89.0', '92.0', '95.0', 'NAN', 'NAN', '115.0'] with index 0 NAN",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All 53 HotThreshold arrays have 7 elements. cpu-0-0-0 has NAN at index 0. The seven level names do not appear as string literals in either thermal library, so the seven-level reading rests on the array length alone, as the inferred label says.",
    "corrected_claim": ""
   },
@@ -386,7 +386,7 @@
    "claim": "The clocks_cpu values are kHz and the clocks_gpu values are Hz. The units are inferred from magnitude and from the table names, and are not confirmed by code.",
    "file": "vendor_a/etc/powerhint.cfg",
    "evidence": "sed -n '38,54p' $E/mnt/vendor_a/etc/powerhint.cfg -> [clocks_cpu] VR_MODE_0 = 691200 ... VR_MODE_5 = 2054400; [clocks_gpu] VR_MODE_0 = 285000000 ... VR_MODE_7 = 690000000",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "clocks_cpu runs from VR_MODE_0 = 691200 to VR_MODE_5 = 2054400. clocks_gpu runs from VR_MODE_0 = 285000000 to VR_MODE_7 = 690000000. Neither the file nor its header states units; the inferred label is appropriate.",
    "corrected_claim": ""
   },
@@ -396,7 +396,7 @@
    "claim": "SELinux and VINTF files map the thermal HAL server binaries and the external battery service to their own labels, and map the thermal and external battery HIDL services to hwservice labels. They also define sysfs labels for the thermal tree and the external battery supply.",
    "file": "vendor_a/etc/selinux/vendor_file_contexts",
    "evidence": "grep -n -E 'thermal|externalbattery' $E/mnt/vendor_a/etc/selinux/vendor_file_contexts -> 72:(vendor|system/vendor)/bin/hw/android\\.hardware\\.thermal@1\\.[01]-service u:object_r:hal_thermal_default_exec:s0 / 103:(odm|vendor/odm)/bin/hw/vendor\\.oculus\\.hardware\\.externalbattery@1\\.0-service u:object_r:hal_oculus_battery_default_exec:s0; grep -n 'android.hardware.thermal' $E/mnt/system_a/system/etc/selinux/plat_hwservice_contexts -> 65:android.hardware.thermal::IThermal u:object_r:hal_thermal_hwservice:s0; grep -n externalbattery $E/mnt/vendor_a/etc/selinux/vendor_hwservice_contexts -> 20:vendor.oculus.hardware.externalbattery::IExternalBattery u:object_r:hal_oculus_battery_hwservice:s0; grep -n -E 'external_battery|/devices/virtual/thermal' $E/mnt/vendor_a/etc/selinux/vendor_sepolicy.cil -> 136:(genfscon sysfs /devices/platform/vendor/vendor:oculus,external_battery (u object_r sysfs_battery_supply ...)) / 189:(genfscon sysfs /devices/virtual/thermal (u object_r sysfs_thermal ...))",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The SELinux and hwservice mappings are confirmed: vendor_file_contexts lines 72 and 103 (thermal HAL and external battery service executables), plat_hwservice_contexts line 65 (android.hardware.thermal::IThermal), vendor_hwservice_contexts line 20 (IExternalBattery), and vendor_sepolicy.cil genfscon lines 136 (external battery supply path) and 189 (thermal tree). The VINTF manifest files contain no label mappings, so VINTF is not a source of label mappings.",
    "corrected_claim": "SELinux file-context and hwservice-context files map the thermal HAL server binaries and the external battery service to their own labels, and map the thermal and external battery HIDL services to hwservice labels. The sysfs labels for the thermal tree and the external battery supply are defined in the vendor SELinux policy file."
   },
@@ -406,7 +406,7 @@
    "claim": "The vendor property context maps persist.vendor.enable.thermal.genl to vendor_thermal_prop. The consumer of this property was not identified among the group files.",
    "file": "vendor_a/etc/selinux/vendor_property_contexts",
    "evidence": "grep -n -E 'charg|thermal|batter|powerhint' $E/mnt/vendor_a/etc/selinux/vendor_property_contexts -> 30:persist.vendor.enable.thermal.genl u:object_r:vendor_thermal_prop:s0",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "vendor_property_contexts line 30 maps persist.vendor.enable.thermal.genl to vendor_thermal_prop, as stated. No group file contains the property name, so the statement holds for the group. However, the name also occurs in odm_a/bin/hw/perf_service, a thermal-HAL process outside the group, next to the text Error reading cpu usage file. vendor_a/build.prop line 64 sets it to true.",
    "corrected_claim": "The vendor property context maps persist.vendor.enable.thermal.genl to vendor_thermal_prop. The consumer is not among the 21 group files; the property name occurs in odm_a/bin/hw/perf_service, and vendor_a/build.prop line 64 sets it to true. Which of these reads it was not determined."
   }

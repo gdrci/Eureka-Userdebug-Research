@@ -6,7 +6,7 @@
 
 The kernel-modules group is 306 files in two read-only ext4 images: vendor_dlkm_a (271 files, 262 modules) and odm_dlkm_a (35 files, 27 modules). The 289 .ko files are 64-bit little-endian AArch64 ELF relocatable objects, all built for kernel 5.10.205-01655-g5c5a360e9c21 (identical vermagic). Each image carries modules.alias, modules.dep, modules.load, modules.softdep, a build.prop, a NOTICE.xml.gz (empty licence list) and two empty fs_config lists; vendor_dlkm_a also carries modules.blocklist. fstab.eureka mounts the images at /vendor_dlkm and /odm_dlkm, and /vendor/lib/modules and /odm/lib/modules are symlinks into them. Loading is done by /vendor/bin/init.insmod.sh, which reads init.insmod.charger.cfg (charger class, 37 named modprobe entries) or init.insmod.cfg (boot, modprobe -b * against both modules.load files). init.anorak.rc additionally loads wlan and sched-walt directly with modprobe. Module families visible from modinfo and aliases: Qualcomm SoC platform drivers (clocks, interconnect, SMMU, GLINK/QRTR transports, KGSL graphics, MSM DRM, cfg80211/mac80211 WLAN stack, WCD/LPASS audio codecs, SPMI PMIC, UFS) in vendor_dlkm_a, and device drivers for Oculus/Meta peripherals (USB VDM, syncboss, sensors, regulators, charging dock) in odm_dlkm_a.
 
-The role table has one row for each of the 306 files in this group (278 verified, 0 observed, 27 inferred, 1 unverified). It is at `data/subsystems/kernel-modules/roles.tsv`.
+Role table: `data/subsystems/kernel-modules/roles.tsv` (306 files: 278 verified, 0 observed, 27 inferred, 1 unverified).
 
 ## Verified claims
 
@@ -38,8 +38,6 @@ The role table has one row for each of the 306 files in this group (278 verified
 - **K34** (inferred): The 289 modules fall into two groups. vendor_dlkm_a holds Qualcomm SoC platform drivers (clocks, interconnect, SMMU, GLINK/QRTR transports, KGSL, MSM DRM, cfg80211/mac80211 WLAN, WCD/LPASS audio, SPMI PMIC, UFS). odm_dlkm_a holds device drivers for Meta/Oculus peripherals (USB VDM, syncboss, sensors, regulators). The grouping comes from author strings, descriptions and DT compatibles, not from the device tree (proof in `data/subsystems/kernel-modules/claims.json`, id K34).
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **K08** (verified): The two insmod configs use 38 modprobe directives, 4 enable and 4 setprop directives. The 37 named modules in init.insmod.charger.cfg all resolve to a .ko in the two module trees. Only one entry, pmic-glink.ko, differs from its file name (pmic_glink.ko); the other 36 match exactly, so name normalisation is relied on for that single entry (proof in `data/subsystems/kernel-modules/claims.json`, id K08).
 - **K09** (verified): init.insmod.cfg (boot config) contains one modprobe directive that loads everything, 'modprobe|-b *'. It is followed by setprop vendor.all.modules.ready, then enable directives for the ADSP boot, CDSP boot and CVP boot nodes (/sys/devices/virtual/cvp/cvp/boot), and finally setprop vendor.all.devices.ready (proof in `data/subsystems/kernel-modules/claims.json`, id K09).

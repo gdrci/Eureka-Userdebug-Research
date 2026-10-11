@@ -6,7 +6,7 @@
 
 The audio group holds 239 rows: 238 regular files and one symbolic link, spread over product_a (51), system_a (111), system_ext_a (12) and vendor_a (65). It contains the Android audio framework (audioserver binary, AudioFlinger and AudioPolicy libraries, AAudio, AIDL client stubs, and HIDL audio interface libraries for versions 4.0 to 7.0), the vendor HAL service and HAL modules (a primary HAL for the anorak platform linked against vendor.qti PAL and AGM components, plus generic primary, USB, remote-submix and A2DP modules), an effects stack of 26 AELI effect libraries (13 per lib directory, plus effects factory and HAL impl libraries), policy, effects, IO-profile and mixer-path configuration files, a system_ext audiotapper service with latency and capture test tools, and 49 Vorbis-in-Ogg UI, alarm, notification and ringtone clips. Init and SELinux references are present for audioserver (system init file, process and service labels), the vendor HAL service (two init definitions of the same service name, HAL labels), the audiotapper pair (disabled services with property triggers and SELinux types), and the Qualcomm ADSP RPC daemon. The roles file has a header and 239 data rows.
 
-The role table has one row for each of the 239 files in this group (230 verified, 2 observed, 7 inferred, 0 unverified). It is at `data/subsystems/audio/roles.tsv`.
+Role table: `data/subsystems/audio/roles.tsv` (239 files: 230 verified, 2 observed, 7 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -43,8 +43,6 @@ The role table has one row for each of the 239 files in this group (230 verified
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **A04** (verified): All 49 audio-group .ogg clips under product_a/media/audio/ (alarms 9, notifications 11, ringtones 12, ui 17) are Vorbis in an Ogg container, with sample rates of 44100 or 48000 Hz and 1 or 2 channels. The directory holds 51 .ogg files; camera_click.ogg and camera_focus.ogg belong to the camera group and are not counted.
 - **A05** (verified): Ten shared objects export the HAL module symbol HMI: audio.a2dp.default.so (system lib and lib64), and audio.r_submix.default.so, audio.primary.default.so, audio.usb.default.so and audio.primary.anorak.so, each in both vendor lib and vendor lib64.
 - **D08** (verified): /vendor/bin/hw/android.hardware.audio.service* is hal_audio_default_exec per vendor_file_contexts line 347, the entry whose pattern names the service glob. Lines 2 and 3 carry the same label for the @2.0- and @7.0-service.example path forms. The HIDL name android.hardware.audio::IDevicesFactory is hal_audio_hwservice (plat_hwservice_contexts line 10).
@@ -54,8 +52,6 @@ The claims below are restated with the wording that the data supports.
 - **I02** (inferred): In this build the pre_processing library and the agc, aec and ns entries in audio_effects.xml sit inside XML comments, so they are not active, and the XML defines no active pre- or postprocessing blocks. Which configuration file the framework reads at runtime was not traced, so the effect libraries in use are not established. An active v2.0 entry names noise_suppressor (libnseffect.so), which is absent from the image.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

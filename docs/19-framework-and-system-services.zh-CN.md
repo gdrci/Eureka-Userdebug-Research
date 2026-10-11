@@ -6,7 +6,7 @@
 
 该组共有 707 行：229 个符号链接和 478 个普通文件，分布在 system_a（681）、system_ext_a（15）、product_a（9）和 odm_a（2）中。它包含框架层：字节码与 ART 产物（services.jar、framework.jar、framework-res.apk、services.odex/.vdex/.art 一组文件、arm 和 arm64 的 boot-framework 镜像）；system/bin 中的原生守护进程和命令客户端（servicemanager、hwservicemanager、用于 zygote 启动的 app_process32/64、toybox 和 toolbox 的 applet 链接、cmd、service，以及约 180 个其他文件）；22 个 APEX 模块包；约 33 个用于 exec app_process 或 cmd 的 shell 包装脚本；以及 XML 配置（platform.xml、privapp-permissions、default-permissions、framework-sysconfig、hidden-API 白名单、功能与库声明）。启动接线可在 init rc 文件（zygote 变体、servicemanager、hwservicemanager）以及二进制文件在 plat_file_contexts 中的条目中看到。挂载的 system_a 树中，init 文件和 SELinux 文件均未提及任何 XML 配置文件。所有角色与事实均取自挂载副本；未执行任何内容。
 
-角色表为该组中的 707 个文件各包含一行（324 verified、281 observed、101 inferred、1 unverified）。该表位于 `data/subsystems/framework-and-system-services/roles.tsv`。
+角色表：`data/subsystems/framework-and-system-services/roles.tsv`（707 个文件：324 个 verified，281 个 observed，101 个 inferred，1 个 unverified）。
 
 ## 已验证的论断
 
@@ -40,8 +40,6 @@
 
 ## 措辞已更正的论断
 
-下方结论以数据所支持的措辞重新表述。
-
 - **C05** (verified): 229 个符号链接解析为：173 个 toybox、6 个 toolbox、5 个 netutils-wrapper-1.0、5 个 iptables、3 个 mke2fs、3 个 fsck.f2fs、2 个 ziptool、2 个 logpersist.start、2 个 bzip2、2 个 /apex/com.android.runtime/bin/linker64、2 个 /apex/com.android.runtime/bin/linker，18 个相对的 ../boot-*.vdex 链接（9 个 boot 名称，各位于 system/framework/arm 和 system/framework/arm64 下），以及其余单个链接：system/bin/linkerconfig 指向 /apex/com.android.runtime/bin/linkerconfig，system/bin/dex2oat 指向 /apex/com.android.art/bin/dex2oat64，system/bin/dalvikvm 指向 /apex/com.android.art/bin/dalvikvm，system/bin/app_process 指向 app_process64，以及引导别名 system/bin/bootstrap/linker_asan -> linker 和 linker_asan64 -> linker64。
 - **C06** (verified): 挂载树中存在的 8 个符号链接不在本组中：system/bin/disable-verity、enable-verity、hwclock、tee、touch、ueventd，以及 system/framework/arm 和 arm64 下的两个 boot-com.oculus.os.platform.vdex 链接。它们在 classified.tsv 中属于另外四个子系统：security-keystore-crypto（disable-verity、enable-verity、tee）、display-and-composer（hwclock）、sensors-mcu-meta-hal（touch 以及两个 boot-com.oculus.os.platform.vdex 链接）和 init-and-properties（ueventd）。
 - **C07** (verified): 该组中有 22 个 APEX 类型的包：system_a 中 20 个（system/apex），product_a 中 1 个（apex/com.meta.quest.apex），odm_a 中 1 个（apex/com.meta.xr.apex）。两个包的清单名称与文件名不同：com.android.vndk.current.apex（清单名称为 com.android.vndk.v32）和 com.android.tethering.inprocess.capex（清单名称为 com.android.tethering）。每个 .apex 都有一个 ext4 类型的 apex_payload.img。每个 .capex 没有负载，并包含一个 original_apex 成员。com.android.art.capex 的 original_apex 大小为 60,234,888 字节。
@@ -54,8 +52,6 @@
 - **C38** (inferred): 所列的 15 个 ELF 可执行文件（VRStool、vrs-recorder、vrs-recorder2、vrsbuilder、vrfocusserver、xrspd、resource_control、resource_load、stream-publisher、runtimeipcbroker、wattsdown、flags_health_check、clean_scratch_files、profcollectd、profcollectctl）均为 PIE AArch64 二进制。它们的角色是根据名称和链接的库推断的。profcollectd、profcollectctl 和 flags_health_check 是平台组件（plat_file_contexts 第 553、577、607 行），因此它们不是 Meta 或 Oculus 专有的。
 
 ## 已排除的论断
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 论断 | 原因 |
 |---|---|---|

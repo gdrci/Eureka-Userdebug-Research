@@ -53,7 +53,7 @@ GPU 子系统有两套页面。第 [01](01-zap-firmware.md) 至 [05](05-init-sel
 
 ## 声明与证据
 
-每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。第 01 至 05 页的每项发现都有复现记录，位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json) 中。21 个子系统共 835 条声明：653 条已确认，160 条修正了措辞，22 条被反驳。
+每条声明都记录在 [`data/subsystems/<子系统>/claims.json`](../data/subsystems/) 中，包括其证据、结论与原因。角色表位于 `data/subsystems/<子系统>/roles.tsv`。第 01 至 05 页的每项发现都有复现记录，位于 [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json) 中。21 个子系统共 835 条声明：653 条成立，160 条已更正，22 条不成立。
 
 ## 限制
 

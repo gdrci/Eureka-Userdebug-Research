@@ -5,7 +5,7 @@
 ## Summary
 
 The selinux-policy group is the Android SELinux policy set carried in this image: 51 files across system_a (22), system_ext_a (15), vendor_a (11) and odm_a (3). It holds the platform policy source in CIL (plat_sepolicy.cil, 28,911 lines, mls true, 27 sids, 4 policycaps), vendor and system_ext policy sources (vendor_sepolicy.cil, system_ext_sepolicy.cil), a versioned platform public policy (plat_pub_versioned.cil, 2,077 names suffixed _32_0) that vendor policy builds on, one precompiled binary policy on odm (header reports SE Linux policy v30), per-version mapping files (26.0 to 32.0) with compat stubs, label and lookup tables (file_contexts, seapp_contexts, property_contexts, service_contexts, hwservice_contexts, keystore2_key_contexts), signature-to-seinfo XML tables, a denial-metadata table, and a platform version file reading 32.0. Two checksum records per partition bind the precompiled policy to its inputs; the platform and system_ext records were recomputed and match the concatenation of policy source plus mapping/32.0.cil. Init and libselinux reference these paths by name.
-The role table has one row for each of the 51 files in this group (46 verified, 2 observed, 3 inferred, 0 unverified). It is at `data/subsystems/selinux-policy/roles.tsv`.
+Role table: `data/subsystems/selinux-policy/roles.tsv` (51 files: 46 verified, 2 observed, 3 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -37,8 +37,6 @@ The role table has one row for each of the 51 files in this group (46 verified, 
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **C08** (verified): plat_sepolicy.cil is 28,911 lines and 1,897,754 bytes of CIL. It opens with three role declarations and two cil_gen_require lines, then (handleunknown deny) and (mls true), four policycaps, and 27 sids with their sidcontext forms. The user u range runs from s0 with no categories to s0 with the category range c0 through c1023.
 - **C16** (verified): Labels in plat_file_contexts (644 lines), vendor_file_contexts (492) and system_ext_file_contexts (86) all resolve to a type declared in one of the five CIL files. The five files together declare 2,275 distinct type names. The distinct labels per file are 423 (plat), 248 (vendor) and 80 (system_ext), and none is unresolved.
 - **C17** (verified): plat_file_contexts labels policy files with sepolicy_file in 11 rules (lines 36, 66, 333, 371, 445, 495, 496, 623, 624, 642, 644). The platform checksum name matches only line 88 (system_file). The odm checksum name matches line 23 (vendor_file) and line 28 (vendor_configs_file), and does not match line 644.
@@ -50,8 +48,6 @@ The claims below are restated with the wording that the data supports.
 - **C32** (observed): The precompiled binary reports policy version 30, while the platform version file reads 32.0 and the mapping directory includes mapping/32.0.cil (the directory spans 26.0 to 32.0). The cause of the difference is not determined from these files.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

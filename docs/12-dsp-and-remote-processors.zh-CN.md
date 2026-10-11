@@ -6,7 +6,7 @@
 
 该组共有 243 行（237 个普通文件和 6 个符号链接）：odm_a 中 20 行，vendor_a 中 223 行。它包含远程处理器的固件和运行时集合：用于 ADSP 和 CDSP 的 Hexagon DSP6 根镜像（拆分的 .mdt 加 .bNN 段）、FastRPC 用户态守护进程（adsprpcd、cdsprpcd）以及 DSP 侧的 shell 和 skel 库；XRA 音频管线的 CAPI 模块，附带 JSON 配置和调优数据块；一个 EVA Xtensa 镜像和一个 SPSS ARM 镜像；QCA6490 WLAN 固件，附带 board-data ELF、消息目录和 ini 配置；带有 servreg JSON 配置的 AArch64 安全应用镜像；ODM 微控制器镜像（SyncBoss、SantanaManager，以及附带 unwind ELF 的 MCU tar 包）、PDFU 更新包和一个 EFM8 镜像。已挂载的 ueventd.rc、vendor_file_contexts、vendor_sepolicy.cil 以及 init .rc 文件确认了固件搜索路径、/vendor/bin/adsprpcd 和 /vendor/bin/cdsprpcd 的标签、三个 remoteproc 实例（spss、adsp、cdsp），以及 adsprpcd 和 cdsprpcd 的 init 服务。大多数固件镜像名称未被任何已挂载的 init 或 SELinux 文本文件按名称引用。
 
-角色表为本组中的 243 个文件各提供一行（153 verified、79 observed、11 inferred、0 unverified）。该表位于 `data/subsystems/dsp-and-remote-processors/roles.tsv`。
+角色表：`data/subsystems/dsp-and-remote-processors/roles.tsv`（243 个文件：153 个 verified，79 个 observed，11 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -48,8 +48,6 @@
 - **D19**（observed）：ODM fw_init.cfg 的 [blu] 段指向 /vendor/firmware/blu.bin 和 blu.toml，但本组的 vendor_a/firmware 中没有这些文件。
 
 ## 措辞已修正的论断
-
-下方结论以数据所支持的措辞重新表述。
 
 - **D6b**（observed）：变体后缀 p 或 t 也出现在签名容器 crypt1p.sig 和 crypt1t.sig 上。两者的 organizationalUnit 值均为 'Qualcomm Cryptographic Operations'。它们的 commonName 值不同：'SPU MBNv7 Image Signing Root CA 6 SubCA 1'（crypt1p.sig）和 'SPU MBNv7 Image Signing Test Root CA 6 SubCA 1'（crypt1t.sig）。组织单位之后出现的数字串 1200 和 1705 是 DER 头字节，并不属于主体字符串。
 - **D8b**（observed）：QCA6490 WLAN 配置 WCNSS_qcom_cfg.ini 共有 126 行：99 行 key=value、14 行注释、12 行空行，以及结尾的 END 行。amss.bin 内嵌了其子镜像的名称，WLAN 配置和标签引用也出现在已挂载的 SELinux file contexts 中。

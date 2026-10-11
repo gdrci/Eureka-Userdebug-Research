@@ -9,7 +9,7 @@
    "label": "verified",
    "claim": "The group has 243 input rows: 237 regular files and 6 symlinks, with 20 rows in odm_a and 223 in vendor_a.",
    "evidence": "cd <image> && awk -F'<TAB>' '$1==\"dsp-and-remote-processors\"' classified.tsv > $W/input_rows.tsv && wc -l < $W/input_rows.tsv -> 243 ; cut -f2 $W/input_rows.tsv | sort | uniq -c -> 20 odm_a / 223 vendor_a ; cut -f4 $W/input_rows.tsv | sort | uniq -c -> 237 file / 6 symlink. Here W=<image>-tools/work/subsystems/dsp-and-remote-processors and M=<image>/mnt (read-only mount root used by all later commands).",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "awk with a real tab delimiter on classified.tsv (field 1 equal to dsp-and-remote-processors) gives 243 rows (wc -l). cut -f2 gives 223 vendor_a and 20 odm_a. cut -f4 gives 237 file and 6 symlink. Cross-tab: odm_a 16 file and 4 symlink; vendor_a 221 file and 2 symlink. The evidence text's literal placeholder must be a real tab character.",
    "corrected_claim": ""
   },
@@ -18,7 +18,7 @@
    "label": "verified",
    "claim": "All 237 regular input files exist under the mount root and match their recorded sha256 values.",
    "evidence": "cd <image>/mnt && while IFS=$'\\t' read -r sub part path kind size mime sha; do if [ \"$kind\" = file ]; then h=$(sha256sum \"$part/$path\" | cut -d' ' -f1); [ \"$h\" = \"$sha\" ] && echo OK || echo BAD; fi; done < $W/input_rows.tsv | sort | uniq -c -> '237 OK'. A separate existence loop over all 243 rows reported missing=0.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Read loop over input_rows.tsv running sha256sum on each of the 237 file rows: ok=237 bad=0. Existence check over all 243 rows (regular file or symlink): missing=0.",
    "corrected_claim": ""
   },
@@ -27,7 +27,7 @@
    "label": "verified",
    "claim": "The six symlinks point outside the mounted set (four to /persist calibration paths from odm_a, two WLAN links from vendor_a). The WLAN config target exists inside vendor_a/etc/wifi; the /persist targets are not in the mount root.",
    "evidence": "readlink on each symlink row: odm_a/firmware/PROX_PS_THDH -> /persist/calibration/prox/min_ipd/PROX_PS_THDH_20mm ; odm_a/firmware/PROX_PS_CANC -> /persist/calibration/prox/min_ipd/PROX_PS_POFFSETL ; odm_a/firmware/PROX_PS_CAL_VERSION -> /persist/calibration/prox/min_ipd/PROX_PS_CAL_VERSION_20mm ; odm_a/firmware/PROX_PS_THDL -> /persist/calibration/prox/min_ipd/PROX_PS_THDH_30mm ; vendor_a/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini -> /vendor/etc/wifi/WCNSS_qcom_cfg.ini ; vendor_a/firmware/wlan/qca_cld/wlan_mac.bin -> /persist/wlan_mac.bin . ls <image>/mnt -> odm_a odm_dlkm_a product_a scratch system_a system_ext_a vendor_a vendor_dlkm_a (no persist directory). ls <image>/mnt/vendor_a/etc/wifi -> WCNSS_qcom_cfg.ini icm.conf p2p_supplicant_overlay.conf wpa_supplicant.conf wpa_supplicant_overlay.conf",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readlink on the six symlink rows: odm_a/firmware/PROX_PS_THDH -> /persist/calibration/prox/min_ipd/PROX_PS_THDH_20mm; PROX_PS_CANC -> .../PROX_PS_POFFSETL; PROX_PS_CAL_VERSION -> .../PROX_PS_CAL_VERSION_20mm; PROX_PS_THDL -> .../PROX_PS_THDH_30mm. vendor_a/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini -> /vendor/etc/wifi/WCNSS_qcom_cfg.ini (present at vendor_a/etc/wifi/WCNSS_qcom_cfg.ini, 2809 bytes); wlan_mac.bin -> /persist/wlan_mac.bin. The mount root has no persist directory, so the /persist targets are absent.",
    "corrected_claim": ""
   },
@@ -36,7 +36,7 @@
    "label": "verified",
    "claim": "Nine firmware stems are split images: an ELF program-header file (.mdt) plus numbered segment files (.bNN). For every stem, each present segment file size equals its program-header p_filesz, except adsp.b31 (see D3).",
    "evidence": "python3 -I $W/scripts/split_check.py <image>/mnt/vendor_a/firmware adsp cdsp spss1p spss1t evass hdcp1 hdcp2p2 hdcpsrm loadalgota64 -> adsp.mdt ELF32 machine=0xa4 entry=0x87a00000 phnum=47 ; segments_with_b_file=46 size_mismatch=1 | cdsp.mdt ELF32 machine=0xa4 entry=0x8b500000 phnum=16 ; segments_with_b_file=15 size_mismatch=0 | spss1p.mdt ELF32 machine=0x28 entry=0x1000 phnum=3 ; 3 / 0 | spss1t.mdt ELF32 machine=0x28 entry=0x1000 phnum=3 ; 3 / 0 | evass.mdt ELF32 machine=0x5e entry=0xf500000 phnum=20 ; 20 / 0 | hdcp1.mdt, hdcp2p2.mdt, hdcpsrm.mdt, loadalgota64.mdt ELF64 machine=0xb7 entry=0x0 phnum=9 ; 9 / 0 each",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Independent parse of program headers (ELF32 e_phoff at 0x1c, ELF64 at 0x20), comparing each present stem.bNN size with its p_filesz. adsp: 47 headers, 46 files, one mismatch at index 31 (file 7528 bytes, p_filesz 0); index 45 has no file and p_filesz 0. cdsp: 16 headers, 15 files, index 14 has no file and p_filesz 0, no mismatch. spss1p, spss1t: 3/3 files, no mismatch. evass: 20/20, no mismatch. hdcp1, hdcp2p2, hdcpsrm, loadalgota64: 9/9 each, no mismatch. EI_DATA byte is 1 (little-endian) for all nine. split_check.py gives the same counts.",
    "corrected_claim": ""
   },
@@ -45,7 +45,7 @@
    "label": "observed",
    "claim": "Image identity strings present in the group: DSP root images, EVA, video firmware and QCA6490 WLAN each carry a QC_IMAGE_VERSION_STRING and IMAGE_VARIANT_STRING.",
    "evidence": "for each regular file: strings -n 8 \"$part/$path\" | grep -E -m3 'QC_IMAGE_VERSION_STRING=|IMAGE_VARIANT_STRING=' -> vendor_a/firmware/cdsp.b04 QC_IMAGE_VERSION_STRING=DSP.XT.1.1-00646-HALLIDAY-1 IMAGE_VARIANT_STRING=halliday.cdsp.prodQ ; vendor_a/firmware/qca6490/amss.bin IMAGE_VARIANT_STRING=6490.wlanfw.eval_v1_TOQ QC_IMAGE_VERSION_STRING=WLAN.HSP.2.0.c13-00124-QCAHSPSWPL_Halliday_V2_TO_SILICONZ-1 ; vendor_a/firmware/qca6490/amss20.bin IMAGE_VARIANT_STRING=6490.wlanfw.eval_v2_TOQ (same WLAN.HSP.2.0 build) ; vendor_a/firmware/evass.mbn and evass.b08 QC_IMAGE_VERSION_STRING=EVA.FIRMWARE.3.6-11 IMAGE_VARIANT_STRING=PROD ; vendor_a/firmware/vpu33_4v.mbn QC_IMAGE_VERSION_STRING=video-firmware.3.3-44c75b50972f87ad916f58da4a929521a61ecd36 IMAGE_VARIANT_STRING=PROD ; vendor_a/firmware/adsp.b08 QC_IMAGE_VERSION_STRING=DSP.XT.1.1-00646-HALLIDAY-1 IMAGE_VARIANT_STRING=halliday.adsp.prodQ . An OEM_IMAGE_VERSION_STRING field also appears in some of these images; it contains a build-host identifier and is not reproduced here.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings with grep for QC_IMAGE_VERSION_STRING= and IMAGE_VARIANT_STRING= gives: adsp.b08 DSP.XT.1.1-00646-HALLIDAY-1 and halliday.adsp.prodQ; cdsp.b04 same version and halliday.cdsp.prodQ; evass.mbn and evass.b08 EVA.FIRMWARE.3.6-11 and PROD; vpu33_4v.mbn video-firmware.3.3-44c75b50972f87ad916f58da4a929521a61ecd36 and PROD; qca6490/amss.bin WLAN.HSP.2.0.c13-00124-QCAHSPSWPL_Halliday_V2_TO_SILICONZ-1 and 6490.wlanfw.eval_v1_TOQ; qca6490/amss20.bin same version and eval_v2_TOQ. The variant line in adsp.b08 is a separate output line, so a grep on QC_IMAGE alone shows only the version line. The OEM_IMAGE_VERSION_STRING field is not reproduced, as the claim states.",
    "corrected_claim": ""
   },
@@ -55,7 +55,7 @@
    "claim": "The mounted configuration names the firmware search paths and three remoteproc instances used by the images in this group.",
    "evidence": "sed -n '29,34p' <image>/mnt/vendor_a/etc/ueventd.rc -> 'firmware_directories /vendor/firmware/ /persist/calibration/audio/ /odm/etc/firmware/' ; comment '# Use Meta PDFU Depot handler for any request for Meta VID (0x2833)' ; 'external_firmware_handler /devices/platform/vendor/vendor:meta,pdfu_initiator/firmware/2833-*.pdfu system /odm/bin/pdfu_depot-meta'. sed -n '231p' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts -> '/vendor/firmware(/.*)? u:object_r:firmware_file:s0'. grep -n 'remoteproc' <image>/mnt/vendor_a/etc/selinux/vendor_sepolicy.cil (sysfs labels vendor_sysfs_ssr): lines 39,40,59 cdsp (32300000.remoteproc-cdsp, remoteproc2); lines 41,42,60 spss (188101c.remoteproc-spss, remoteproc0); lines 43,44,61 adsp (3000000.remoteproc-adsp, remoteproc1).",
    "file": "<image>/mnt/vendor_a/etc/ueventd.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sed -n 29,34p on vendor_a/etc/ueventd.rc: firmware_directories /vendor/firmware/ /persist/calibration/audio/ /odm/etc/firmware/; comment line 33 (Meta PDFU Depot handler, VID 0x2833); external_firmware_handler line 34 for 2833-*.pdfu to /odm/bin/pdfu_depot-meta. vendor_sepolicy.cil genfscon sysfs vendor_sysfs_ssr lines: 39, 40, 59 for remoteproc2 (32300000.remoteproc-cdsp); 41, 42, 60 for remoteproc0 (188101c.remoteproc-spss); 43, 44, 61 for remoteproc1 (3000000.remoteproc-adsp). vendor_file_contexts line 231: /vendor/firmware(/.*)? firmware_file.",
    "corrected_claim": ""
   },
@@ -64,7 +64,7 @@
    "label": "verified",
    "claim": "The roles table covers all 243 rows once each, with confidence counts of 153 verified, 79 observed and 11 inferred.",
    "evidence": "cut -f4 $W/roles.tsv | tail -n +2 | sort | uniq -c -> 153 verified / 79 observed / 11 inferred ; tail -n +2 $W/roles.tsv | cut -f1,2 | sort | uniq -d | wc -l -> 0 duplicate rows ; wc -l $W/roles.tsv -> 244 (header plus 243 rows). Built by $W/scripts/build_roles.py.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "roles.tsv has 244 lines (header plus 243 rows). cut -f4 with uniq -c on the rows: 153 verified, 79 observed, 11 inferred (sums to 243). Duplicate (partition, path) keys: 0. The set of (partition, path) keys equals the input rows' set (comm -3 gives no output). Counts and set equality were checked; the role text itself was not reviewed.",
    "corrected_claim": ""
   },
@@ -74,7 +74,7 @@
    "claim": "bin/adsprpcd is an AArch64 PIE FastRPC user-side daemon for the ADSP that dynamically links liblog, libc++, libc, libm and libdl.",
    "evidence": "readelf -h <image>/mnt/vendor_a/bin/adsprpcd | grep -E 'Class|Type|Machine' -> Class: ELF64 ; Type: DYN (Position-Independent Executable file) ; Machine: AArch64 . readelf -d <image>/mnt/vendor_a/bin/adsprpcd | grep NEEDED -> liblog.so, libc++.so, libc.so, libm.so, libdl.so . strings -n 6 ... | grep '^/' -> /system/bin/linker64 (interpreter)",
    "file": "<image>/mnt/vendor_a/bin/adsprpcd",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h vendor_a/bin/adsprpcd: Class ELF64, Type DYN (Position-Independent Executable file), Machine AArch64. readelf -d NEEDED: liblog.so, libc++.so, libc.so, libm.so, libdl.so. strings -n 6 with grep for lines starting with a slash gives /system/bin/linker64 as the interpreter.",
    "corrected_claim": ""
   },
@@ -83,7 +83,7 @@
    "label": "observed",
    "claim": "adsprpcd log strings describe its loop: it starts the 'adsp daemon', loads libadsp_default_listener.so through a listener start function, and restarts after 25 ms when an error occurs.",
    "evidence": "strings -n 6 <image>/mnt/vendor_a/bin/adsprpcd | grep -E 'adsp|dlclose|fastRPC' -> 'adsp daemon starting' ; 'adsp_default_listener_start called' ; 'adsp daemon error %s' ; 'fastRPC device driver is disabled, retrying...' ; 'adsp daemon will restart after 25ms...' ; 'adsp daemon exiting %x' ; 'libadsp_default_listener.so' ; source path 'vendor/qcom/proprietary/adsprpc/src/adsprpcd.c'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings -n 6 adsprpcd with grep for adsp, dlclose or fastRPC: 'adsp daemon starting' (adsprpcd.c:38); 'adsp_default_listener_start called' (:46); 'adsp daemon error %s' (:53); 'fastRPC device driver is disabled, retrying...' (:56); 'adsp daemon will restart after 25ms...' (:58); 'adsp daemon exiting %x' (:67); 'libadsp_default_listener.so'; source path vendor/qcom/proprietary/adsprpc/src/adsprpcd.c.",
    "corrected_claim": ""
   },
@@ -92,7 +92,7 @@
    "label": "observed",
    "claim": "adsprpcd is started by a main-class init service running as user system in group media, and its executable is labeled vendor_adsprpcd_exec with init transition and device rules defined.",
    "evidence": "sed -n '34,37p' <image>/mnt/vendor_a/etc/init/vendor.qti.adsprpc-guestos-service.rc -> 'service vendor.adsprpcd /vendor/bin/adsprpcd' / 'class main' / 'user system' / 'group media' . grep -n 'adsprpcd' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts -> '404:/vendor/bin/adsprpcd u:object_r:vendor_adsprpcd_exec:s0' . vendor_sepolicy.cil lines 681-684 declare vendor_adsprpcd and vendor_adsprpcd_exec ; line 1863 '(typetransition init_32_0 vendor_adsprpcd_exec process vendor_adsprpcd)' ; lines 1864-1869 grant device and property access (vendor_dmabuf_adsp_heap_device, vendor_qdsp_device, vendor_xdsp_device, vendor_adsprpc_prop).",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sed -n 34,37p on vendor.qti.adsprpc-guestos-service.rc: service vendor.adsprpcd /vendor/bin/adsprpcd; class main; user system; group media. grep adsprpcd vendor_file_contexts: line 404 /vendor/bin/adsprpcd u:object_r:vendor_adsprpcd_exec:s0. vendor_sepolicy.cil lines 681-684 declare vendor_adsprpcd and vendor_adsprpcd_exec; line 1863 (typetransition init_32_0 vendor_adsprpcd_exec process vendor_adsprpcd); lines 1864-1869 allow device and property access (dmabuf heap devices, vendor_qdsp_device, vendor_xdsp_device, vendor_adsprpc_prop). The claim lists a subset of the granted devices.",
    "corrected_claim": ""
   },
@@ -102,7 +102,7 @@
    "claim": "bin/cdsprpcd has the same ELF type and NEEDED list as adsprpcd and differs from it in 1226 byte positions; its log strings describe a CDSP listener loop with a 100 ms restart delay.",
    "evidence": "readelf -h and readelf -d on <image>/mnt/vendor_a/bin/cdsprpcd show ELF64 DYN AArch64 with NEEDED liblog.so, libc++.so, libc.so, libm.so, libdl.so (same as D1). cmp -l <image>/mnt/vendor_a/bin/adsprpcd <image>/mnt/vendor_a/bin/cdsprpcd | wc -l -> 1226 . strings -n 6 cdsprpcd | grep -E 'cdsp' -> 'cdsp daemon starting' ; 'cdsp daemon will restart after 100ms...' ; 'fastRPC device driver is disabled, daemon exiting...' ; 'libcdsp_default_listener.so' ; 'cdsp_default_listener_start called'.",
    "file": "<image>/mnt/vendor_a/bin/cdsprpcd",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h and -d on cdsprpcd: ELF64, DYN, AArch64; NEEDED liblog.so, libc++.so, libc.so, libm.so, libdl.so, the same as adsprpcd. cmp -l adsprpcd cdsprpcd | wc -l = 1226 (both files 15152 bytes). strings -n 6 with grep cdsp: 'cdsp daemon starting' (cdsprpcd.c:37); 'cdsp daemon will restart after 100ms...' (:58); 'fastRPC device driver is disabled, daemon exiting...' (:55); 'libcdsp_default_listener.so'; 'cdsp_default_listener_start called' (:45).",
    "corrected_claim": ""
   },
@@ -111,7 +111,7 @@
    "label": "observed",
    "claim": "cdsprpcd init service is disabled by default and started on boot for listed SKUs and devices, and stopped by the property vendor.fastrpc.disable.cdsprpcd.daemon=1. Its executable is labeled vendor_cdsprpcd_exec.",
    "evidence": "sed -n '34,36p;61,62p' <image>/mnt/vendor_a/etc/init/vendor.qti.cdsprpc-service.rc -> 'service vendor.cdsprpcd /vendor/bin/cdsprpcd' / 'class main' / 'user system' ; 'on property:vendor.fastrpc.disable.cdsprpcd.daemon=1' / 'stop vendor.cdsprpcd'. The same file has 'disabled' and 'on boot && property:ro.boot.product.vendor.sku=<taro|diwali|parrot|cape|ukee>' and 'on boot && property:ro.product.device=<sm6150|anorak>' blocks that start vendor.cdsprpcd. sed -n '189,192p' <image>/mnt/vendor_a/etc/init/hw/init.anorak.rc -> '    start vendor.cdsprpcd' . grep -n cdsprpcd vendor_file_contexts -> '405:/vendor/bin/cdsprpcd u:object_r:vendor_cdsprpcd_exec:s0' . vendor_sepolicy.cil lines 693-696 and 1925-1936 define the type and rules.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor.qti.cdsprpc-service.rc: line 34 service vendor.cdsprpcd /vendor/bin/cdsprpcd; line 35 class main; line 36 user system; line 38 disabled. Line 61 on property:vendor.fastrpc.disable.cdsprpcd.daemon=1 with line 62 stop vendor.cdsprpcd. Boot-gated blocks at lines 40, 43, 46, 49, 52 (ro.boot.product.vendor.sku taro, diwali, parrot, cape, ukee) and 55, 58 (ro.product.device sm6150, anorak), each followed by start vendor.cdsprpcd. init.anorak.rc lines 189-192: write line, blank, start vendor.cdsprpcd (line 191), blank; the claim's excerpt is a partial of that range. vendor_file_contexts line 405: /vendor/bin/cdsprpcd u:object_r:vendor_cdsprpcd_exec:s0. vendor_sepolicy.cil lines 693-696 and 1925-1936 define the type and rules.",
    "corrected_claim": ""
   },
@@ -121,7 +121,7 @@
    "claim": "adsp.mdt is an ELF32 Hexagon DSP6 EXEC with entry 0x87a00000 and 47 program headers; 46 segment files exist. Segment 31 has p_filesz 0 but a 7528-byte file, and segment 45 has p_filesz 0 with no file. The segment sizes total 13,393,180 bytes.",
    "evidence": "readelf -h <image>/mnt/vendor_a/firmware/adsp.mdt | grep -E 'Type|Machine|Entry|Number of program' -> Type: EXEC ; Machine: QUALCOMM DSP6 Processor ; Entry point address: 0x87a00000 ; Number of program headers: 47 . python3 -I split_check.py (see G4) -> size_mismatch=1 . readelf -l -W adsp.mdt, row 31: 'LOAD 0x86cbf8 0xb2007bf8 0x88e36bf8 0x00000 0x281a0 RW' ; ls -la adsp.b31 -> 7528 adsp.b31 ; row 45: 'LOAD 0xcd6000 0xfe400000 0x89657000 0x00000 0x4a9000 R' with no adsp.b45 . python3 sum of adsp.b* sizes -> 13393180",
    "file": "<image>/mnt/vendor_a/firmware/adsp.mdt",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h adsp.mdt: Class ELF32, little-endian, Type EXEC, Machine QUALCOMM DSP6 Processor, Entry 0x87a00000, 47 program headers. readelf -l rows by index: 31 = LOAD 0x86cbf8 0xb2007bf8 0x88e36bf8 FileSiz 0x00000 MemSiz 0x281a0 RW; 45 = LOAD 0xcd6000 0xfe400000 0x89657000 FileSiz 0x00000 MemSiz 0x4a9000 R. ls -la adsp.b31 = 7528 bytes; no adsp.b45 file. Count of adsp.b* = 46. Sum of sizes = 13393180 bytes.",
    "corrected_claim": ""
   },
@@ -130,7 +130,7 @@
    "label": "observed",
    "claim": "ADSP image labels in configuration: /vendor/firmware is labeled firmware_file; the ADSP remoteproc1 SSR sysfs nodes are labeled vendor_sysfs_ssr; the adsp image carries DSP.XT.1.1-00646-HALLIDAY-1 with variant halliday.adsp.prodQ.",
    "evidence": "sed -n '231p' vendor_file_contexts -> '/vendor/firmware(/.*)? u:object_r:firmware_file:s0' ; vendor_sepolicy.cil lines 43, 44, 61 -> '(genfscon sysfs /devices/platform/soc/3000000.remoteproc-adsp/remoteproc/remoteproc1/recovery ...)' and the coredump and name nodes ; strings -n 8 adsp.b08 | grep QC_IMAGE -> 'QC_IMAGE_VERSION_STRING=DSP.XT.1.1-00646-HALLIDAY-1 IMAGE_VARIANT_STRING=halliday.adsp.prodQ'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_file_contexts line 231: /vendor/firmware(/.*)? u:object_r:firmware_file:s0. vendor_sepolicy.cil lines 43, 44, 61: genfscon sysfs for 3000000.remoteproc-adsp/remoteproc/remoteproc1 recovery, coredump and name nodes with vendor_sysfs_ssr. strings adsp.b08: QC_IMAGE_VERSION_STRING=DSP.XT.1.1-00646-HALLIDAY-1 and IMAGE_VARIANT_STRING=halliday.adsp.prodQ (variant on its own line).",
    "corrected_claim": ""
   },
@@ -140,7 +140,7 @@
    "claim": "cdsp.mdt is an ELF32 Hexagon DSP6 EXEC with entry 0x8b500000 and 16 program headers; 15 segment files exist (none for index 14, whose p_filesz is 0) and all present sizes match.",
    "evidence": "readelf -h <image>/mnt/vendor_a/firmware/cdsp.mdt | grep -E 'Machine|Entry' -> QUALCOMM DSP6 Processor ; 0x8b500000 . readelf -l -W cdsp.mdt row 14: 'LOAD 0x443000 0xfe200000 0x8c258000 0x00000 0x1a8000 R' . ls <image>/mnt/vendor_a/firmware | grep -E '^cdsp\\.b[0-9]{2}$' lists cdsp.b00 to cdsp.b13 and cdsp.b15 (no cdsp.b14). split_check.py -> segments_with_b_file=15 size_mismatch=0 . python3 sum of cdsp.b* sizes -> 4446789",
    "file": "<image>/mnt/vendor_a/firmware/cdsp.mdt",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h cdsp.mdt: ELF32, Type EXEC, Machine QUALCOMM DSP6 Processor, Entry 0x8b500000, 16 program headers. Strict-filtered readelf -l listing by index: index 14 = LOAD 0x443000 0xfe200000 0x8c258000 FileSiz 0x00000 MemSiz 0x1a8000 R (index 13 = LOAD 0x440000 with FileSiz 0x03000). ls cdsp.b*: b00 through b13 and b15 (15 files, no b14). Sum of sizes = 4446789. Per-index comparison: no size mismatch.",
    "corrected_claim": ""
   },
@@ -149,7 +149,7 @@
    "label": "observed",
    "claim": "The CDSP image is identified as DSP.XT.1.1-00646-HALLIDAY-1 (variant halliday.cdsp.prodQ) and is paired with servreg domain cdsp/root_pd (QMI instance 76).",
    "evidence": "strings -n 8 <image>/mnt/vendor_a/firmware/cdsp.b04 | grep QC_IMAGE -> 'QC_IMAGE_VERSION_STRING=DSP.XT.1.1-00646-HALLIDAY-1 IMAGE_VARIANT_STRING=halliday.cdsp.prodQ' . file <image>/mnt/vendor_a/firmware/cdsp.b09 -> 'Matlab v4 mat-file' (file(1) misreads this segment; it is kept as a segment because its size matches its program header). See D14 for cdspr.jsn.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings -n 8 cdsp.b04 with grep QC_IMAGE and IMAGE_VARIANT: QC_IMAGE_VERSION_STRING=DSP.XT.1.1-00646-HALLIDAY-1 and IMAGE_VARIANT_STRING=halliday.cdsp.prodQ. file cdsp.b09: 'Matlab v4 mat-file (little endian)'; the segment size equals p_filesz of index 9, so it is kept as a segment. The servreg pairing (QMI 76, cdsp root_pd) is confirmed by the servreg JSON check.",
    "corrected_claim": ""
   },
@@ -159,7 +159,7 @@
    "claim": "evass.mdt is an ELF32 Tensilica Xtensa image with entry 0xf500000 and 20 program headers; 20 segment files exist, eight of them zero-length (b10 to b17). evass.mbn is a separate single-file Xtensa ELF of 2,333,480 bytes that does not begin with the .mdt bytes.",
    "evidence": "readelf -h <image>/mnt/vendor_a/firmware/evass.mdt | grep -E 'Machine|Entry' -> Tensilica Xtensa Processor ; 0xf500000 . find <image>/mnt/vendor_a/firmware -maxdepth 1 -name 'evass.b*' -size 0 -> evass.b10 evass.b11 evass.b12 evass.b13 evass.b14 evass.b15 evass.b16 evass.b17 . split_check.py -> evass.mdt segments_with_b_file=20 size_mismatch=0 . python3 compare of evass.mbn[0:7644] with evass.mdt -> False ; evass.mbn size 2333480 ; readelf -h evass.mbn -> ELF32 Xtensa EXEC",
    "file": "<image>/mnt/vendor_a/firmware/evass.mbn",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h evass.mdt: ELF32, Machine Tensilica Xtensa Processor, Entry 0xf500000, 20 program headers. find evass.b* -size 0: evass.b10 through evass.b17 (8 files); total evass.b* files = 20. evass.mbn: 2333480 bytes; readelf -h gives ELF32, Type EXEC, Machine Tensilica Xtensa. Python byte comparison of evass.mbn[0:7644] with evass.mdt gives False.",
    "corrected_claim": ""
   },
@@ -168,7 +168,7 @@
    "label": "observed",
    "claim": "The EVA image is identified as EVA.FIRMWARE.3.6-11 (variant PROD). A vendor property prefix vendor.runtime.eva. is labeled vendor_adsprpc_prop, tying EVA runtime properties to the FastRPC property label.",
    "evidence": "strings -n 8 <image>/mnt/vendor_a/firmware/evass.mbn | grep QC_IMAGE -> 'QC_IMAGE_VERSION_STRING=EVA.FIRMWARE.3.6-11 IMAGE_VARIANT_STRING=PROD' . sed -n '23p' <image>/mnt/vendor_a/etc/selinux/vendor_property_contexts -> 'vendor.runtime.eva.                 u:object_r:vendor_adsprpc_prop:s0'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings -n 8 evass.mbn with grep QC_IMAGE: QC_IMAGE_VERSION_STRING=EVA.FIRMWARE.3.6-11 and IMAGE_VARIANT_STRING=PROD. sed -n 23p vendor_property_contexts: vendor.runtime.eva. u:object_r:vendor_adsprpc_prop:s0.",
    "corrected_claim": ""
   },
@@ -178,7 +178,7 @@
    "claim": "spss1p and spss1t are ARM EABI5 split images (machine 0x28, entry 0x1000, three program headers each), each with three matching segment files. Their single-file .mbn forms are also ARM ELF images.",
    "evidence": "readelf -h <image>/mnt/vendor_a/firmware/spss1p.mdt | grep -E 'Machine|Entry|Flags' -> ARM ; 0x1000 ; 0x5000002, Version5 EABI . python3 -I split_check.py ... spss1p spss1t -> segments_with_b_file=3 size_mismatch=0 (both) . file on spss1p.mbn and spss1t.mbn -> 'ELF 32-bit LSB executable, ARM, EABI5 ... statically linked, no section header'",
    "file": "<image>/mnt/vendor_a/firmware/spss1p.mdt",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h spss1p.mdt and spss1t.mdt: Machine ARM, Entry point 0x1000, Flags 0x5000002 Version5 EABI, 3 program headers each. Files .b00, .b01, .b02 present for each, with sizes equal to p_filesz (148, 1028096, and 6136 for p or 3116 for t). file on spss1p.mbn and spss1t.mbn: 'ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, no section header'.",
    "corrected_claim": ""
   },
@@ -187,7 +187,7 @@
    "label": "observed",
    "claim": "The SPSS image is bound to the remoteproc0 instance 188101c.remoteproc-spss through vendor_sepolicy.cil sysfs labels. The variant suffix t or p also appears on the signature containers, whose certificate subject strings differ (for example 'Qualcomm Cryptographic Operations1200' for p and '...1705' for t).",
    "evidence": "sed -n '41,42p;60p' <image>/mnt/vendor_a/etc/selinux/vendor_sepolicy.cil -> '(genfscon sysfs /devices/platform/soc/188101c.remoteproc-spss/remoteproc/remoteproc0/recovery ...)', '.../coredump ...', '.../name ...' . strings -n 6 <image>/mnt/vendor_a/firmware/crypt1p.sig | grep 'Cryptographic' -> 'Qualcomm Cryptographic Operations1200' ; crypt1t.sig -> 'Qualcomm Cryptographic Operations1705'",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Lines 41, 42 and 60 of vendor_sepolicy.cil are the recovery, coredump and name labels for 188101c.remoteproc-spss/remoteproc/remoteproc0, as stated. The signature part misreads DER bytes. In crypt1p.sig the four bytes before the commonName OID are 31 32 30 30; in crypt1t.sig they are 31 37 30 35. These are DER SET and SEQUENCE header bytes (lengths), not subject text. The organizationalUnit value 'Qualcomm Cryptographic Operations' (declared length 0x21) is identical in both files. Decoding the commonName UTF8String (declared length 41 in crypt1p.sig, 46 in crypt1t.sig) gives 'SPU MBNv7 Image Signing Root CA 6 SubCA 1' and 'SPU MBNv7 Image Signing Test Root CA 6 SubCA 1'.",
    "corrected_claim": "The variant suffix p or t also appears on the signature containers crypt1p.sig and crypt1t.sig. Both carry the organizationalUnit value 'Qualcomm Cryptographic Operations'. Their commonName values differ: 'SPU MBNv7 Image Signing Root CA 6 SubCA 1' (crypt1p.sig) and 'SPU MBNv7 Image Signing Test Root CA 6 SubCA 1' (crypt1t.sig). The digit strings 1200 and 1705 that appear after the organizational unit are DER header bytes, not part of a subject string."
   },
@@ -197,7 +197,7 @@
    "claim": "hdcp1.mdt, hdcp2p2.mdt, hdcpsrm.mdt and loadalgota64.mdt are AArch64 ELF64 split images with nine program headers each and matching segment files. Their strings name a root certificate 'Eureka_FW_Root1' and the subject 'Meta Platforms, Inc.'. widevine.mbn links libcmnlib.so.",
    "evidence": "readelf -h <image>/mnt/vendor_a/firmware/hdcp1.mdt | grep Machine -> AArch64 ; split_check.py -> hdcp1 / hdcp2p2 / hdcpsrm / loadalgota64 each 9 / 0 . strings -n 7 hdcp1.mdt | grep Eureka -> 'Eureka_FW_Root1' ; 'Meta Platforms, Inc.' (same strings in hdcp2p2.mdt, hdcpsrm.mdt, loadalgota64.mdt) . readelf -d <image>/mnt/vendor_a/firmware/widevine.mbn | grep NEEDED -> 'Shared library: [libcmnlib.so]'",
    "file": "<image>/mnt/vendor_a/firmware/hdcp1.mdt",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h hdcp1.mdt, hdcp2p2.mdt, hdcpsrm.mdt, loadalgota64.mdt: Class ELF64, Machine AArch64. Program headers: 9 each (independent parse). Per-index file sizes match p_filesz; no missing segment has non-zero p_filesz. strings -n 7 with grep Eureka or Meta Platforms: 'Eureka_FW_Root1' and 'Meta Platforms, Inc.' in each. readelf -d widevine.mbn NEEDED: libcmnlib.so. readelf -l on these .mdt files also prints 'dynamic segment offset + size exceeds the size of the file'; the .mdt holds headers only, so the DYNAMIC segment content is in the .bNN files. This message is not part of the claim.",
    "corrected_claim": ""
   },
@@ -206,7 +206,7 @@
    "label": "observed",
    "claim": "Other trusted-application images in this group carry identifying strings: eyetz64.mbn has tz_app_init and 'calling command test', and sp_license.mbn prints 'SP license app Init'. No mounted init or SELinux text file names these .mbn or .mdt images (grep count 0), apart from a Widevine HAL service entry that starts a separate HAL binary.",
    "evidence": "strings -n 6 <image>/mnt/vendor_a/firmware/eyetz64.mbn | grep -E 'tz_app_init|calling command test' -> 'tz_app_init' ; 'calling command test' . strings -n 6 sp_license.mbn | grep 'SP license' -> 'SP license app Init' . grep -rIl -E 'widevine\\.mbn|eyetz|sp_license|vpu33|evass|spss1|hdcp1\\.mdt' <image>/mnt/vendor_a/etc <image>/mnt/odm_a/etc <image>/mnt/product_a/etc <image>/mnt/system_ext_a/etc <image>/mnt/system_a/system/etc -> no files. sed -n '12p' <image>/mnt/vendor_a/etc/init/android.hardware.drm@1.4-service-lazy.widevine.rc -> 'service vendor.drm-widevine-hal-1-4 /vendor/bin/hw/android.hardware.drm@1.4-service-lazy.widevine'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings -n 6 eyetz64.mbn with grep: 'tz_app_init' and '%s: calling command test' (contains 'calling command test'). strings -n 6 sp_license.mbn with grep 'SP license': 'SP license app Init' and 'SP license app shutdown'. grep -rIl -E 'widevine\\.mbn|eyetz|sp_license|vpu33|evass|spss1|hdcp1\\.mdt' over vendor_a/etc, odm_a/etc, product_a/etc, system_ext_a/etc and system_a/system/etc: 0 files. sed -n 12p of android.hardware.drm@1.4-service-lazy.widevine.rc: service vendor.drm-widevine-hal-1-4 /vendor/bin/hw/android.hardware.drm@1.4-service-lazy.widevine (does not name the .mbn images).",
    "corrected_claim": ""
   },
@@ -215,7 +215,7 @@
    "label": "verified",
    "claim": "amss.bin is the QCA6490 WLAN firmware image: ARM ELF32 EXEC with entry 0x143a800 and size 5,523,568 bytes. amss20.bin is a second build of the same WLAN.HSP.2.0 build (eval_v2) at 5,603,328 bytes. m3.bin is a WLAN ucode image with an ELF32 header whose e_machine field is 3 (EM_386).",
    "evidence": "readelf -h <image>/mnt/vendor_a/firmware/qca6490/amss.bin | grep -E 'Class|Type|Machine|Entry' -> ELF32 ; EXEC ; ARM ; 0x143a800 . ls -la <image>/mnt/vendor_a/firmware/qca6490 -> 5523568 amss.bin ; 5603328 amss20.bin ; 266684 m3.bin . od -A x -t x1z -N 32 m3.bin -> '7f 45 4c 46 01 01 01 00 ... 02 00 03 00' (e_type 2, e_machine 3) ; readelf -h m3.bin -> Intel 80386 ; Entry 0x401 . strings -n 6 m3.bin -> 'WLAN_UCODE_HASTINGSPRIME_4.1.4-00000' ; '2023/10/12 18:14:56' ; 'M3 exception triggered'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h qca6490/amss.bin: Class ELF32, Type EXEC, Machine ARM, Entry 0x143a800; ls -la size 5523568. amss20.bin: ELF32 EXEC, ARM, size 5603328; same WLAN.HSP.2.0 version string with variant eval_v2_TOQ. m3.bin: 266684 bytes; od -A x -t x1z -N 32 gives bytes at 0x10-0x13 as 02 00 03 00 (e_type 2, e_machine 3); readelf -h: ELF32, EXEC, Machine Intel 80386, Entry 0x401. strings -n 6 m3.bin: WLAN_UCODE_HASTINGSPRIME_4.1.4-00000, 2023/10/12 18:14:56, 'M3 exception triggered'. The 'WLAN ucode image' reading is inferred from the names and strings.",
    "corrected_claim": ""
   },
@@ -225,7 +225,7 @@
    "claim": "amss.bin embeds the names of its sub-images and the QCA6490 WLAN config file is a 126-line key=value ini. WLAN config and label references are in the mounted SELinux files.",
    "evidence": "strings -n 6 <image>/mnt/vendor_a/firmware/qca6490/amss.bin | grep -E 'bin$' -> Q6-SRAM.bin ; ETB_SOC.bin ; ETB_WCSS.bin ; PHYA-M3.3.bin ; PHYB-M3.3.bin ; Q6-SFR.bin ; page_log.bin ; heap.bin ; arena.bin ; backup_pf.bin . wc -l <image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini -> 126 ; grep -c '=' -> 99 . grep -E 'FastRoamEnabled|RoamRssiDiff|gNeighborScanTimerPeriod' -> FastRoamEnabled=1 ; RoamRssiDiff=5 ; gNeighborScanTimerPeriod=200 . vendor_file_contexts: '240:/persist/wlan_mac.bin u:object_r:persist_cal_file:s0' ; '367:/dev/wlan u:object_r:vendor_wlan_device:s0' ; '341:/sys/devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup/wakeup[0-9]+(/.*)? u:object_r:sysfs_wakeup:s0'",
    "file": "<image>/mnt/vendor_a/etc/wifi/WCNSS_qcom_cfg.ini",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "strings -n 6 amss.bin with grep bin$: Q6-SRAM.bin, ETB_SOC.bin, ETB_WCSS.bin, PHYA-M3.3.bin, PHYB-M3.3.bin, Q6-SFR.bin, page_log.bin, heap.bin, arena.bin, backup_pf.bin and others. WCNSS_qcom_cfg.ini: wc -l = 126; lines containing '=' = 99; lines starting with '#' = 14; blank lines = 12; the remaining line is END. grep for FastRoamEnabled, RoamRssiDiff, gNeighborScanTimerPeriod: FastRoamEnabled=1, RoamRssiDiff=5, gNeighborScanTimerPeriod=200. vendor_file_contexts line 240 (/persist/wlan_mac.bin persist_cal_file), line 341 (sysfs wakeup, sysfs_wakeup), line 367 (/dev/wlan vendor_wlan_device) match the claim.",
    "corrected_claim": "The QCA6490 WLAN config WCNSS_qcom_cfg.ini has 126 lines: 99 key=value lines, 14 comment lines, 12 blank lines and a final END line. amss.bin embeds the names of its sub-images, and WLAN config and label references appear in the mounted SELinux file contexts."
   },
@@ -235,7 +235,7 @@
    "claim": "The fourteen qca6490 eureka_*.elf and bdwlan*.elf files are board-data ELF wrappers around one embedded bdwlan.bin blob, in four distinct content groups (sizes 60,028 bytes each).",
    "evidence": "sha256sum <image>/mnt/vendor_a/firmware/qca6490/*.elf | awk '{print substr($1,1,12), $2}' | sort -> group 1 bdwlan.elf, eureka_dvt1.0_bdwlan.elf, eureka_evt2.0_bdwlan.elf, eureka_pvt1.0_bdwlan.elf (6577124590d3) ; group 2 bdwlang.elf, eureka_dvt1.0_bdwlang.elf, eureka_evt2.0_bdwlang.elf, eureka_pvt1.0_bdwlang.elf (7cc6330e8ecf) ; group 3 eureka_dvt1.1_bdwlan.elf, eureka_evt2.1_bdwlan.elf, eureka_pvt1.1_bdwlan.elf (0fa666f5956a) ; group 4 eureka_dvt1.1_bdwlang.elf, eureka_evt2.1_bdwlang.elf, eureka_pvt1.1_bdwlang.elf (552b331dc8d4) . readelf -h bdwlan.elf -> ELF32 ARM EXEC ; Entry 0x8000 . readelf -S bdwlan.elf -> .data PROGBITS 00001000 size 00e344 ; .persistent ; .noinit NOBITS ; .symtab ; .strtab ; .shstrtab",
    "file": "<image>/mnt/vendor_a/firmware/qca6490/bdwlan.elf",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "sha256sum of the 14 *.elf files gives four whole-file groups, each file 60028 bytes: bdwlan.elf, eureka_dvt1.0_bdwlan.elf, eureka_evt2.0_bdwlan.elf, eureka_pvt1.0_bdwlan.elf (6577124590d3); bdwlang.elf, eureka_dvt1.0_bdwlang.elf, eureka_evt2.0_bdwlang.elf, eureka_pvt1.0_bdwlang.elf (7cc6330e8ecf); eureka_dvt1.1, evt2.1, pvt1.1 _bdwlan.elf (0fa666f5956a); eureka_dvt1.1, evt2.1, pvt1.1 _bdwlang.elf (552b331dc8d4). readelf -h bdwlan.elf: ELF32, ARM, EXEC, Entry 0x8000; readelf -S: .data PROGBITS at 0x1000, size 0xe344 (58180). Extracting .data from each file gives four distinct payloads, one per group (SHA-256 prefixes 2c2e487d89ce, 22009c7ff0a0, 0a16cc1d2689, 2a2980decc6a). Each group's file therefore embeds its own payload; the payloads are not one shared blob.",
    "corrected_claim": "The fourteen qca6490 eureka_*.elf and bdwlan*.elf files are board-data ELF wrappers of 60,028 bytes each, in four content groups. Each group embeds its own 58,180-byte .data payload, so the four groups carry four distinct payloads."
   },
@@ -244,7 +244,7 @@
    "label": "observed",
    "claim": "The board-data ELFs embed a binary through linker symbols named _binary_tempDir_d10day120bdwlan_bin_start, _end and _size. File names carry revision tags dvt1.0, dvt1.1, evt2.0, evt2.1, pvt1.0 and pvt1.1.",
    "evidence": "strings -n 6 <image>/mnt/vendor_a/firmware/qca6490/eureka_pvt1.0_bdwlang.elf | grep bdwlan -> '_binary_tempDir_d10day120bdwlan_bin_end' ; '_binary_tempDir_d10day120bdwlan_bin_start' ; '_binary_tempDir_d10day120bdwlan_bin_size' . ls <image>/mnt/vendor_a/firmware/qca6490 -> eureka_<dvt1.0|dvt1.1|evt2.0|evt2.1|pvt1.0|pvt1.1>_bdwlan[g].elf",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "strings -n 6 on the board-data ELFs gives group-specific linker symbol names. bdwlan.elf and eureka_pvt1.0_bdwlan.elf: _binary_tempDir_d10day120bdwlan_bin_{start,end,size}. eureka_evt2.1_bdwlan.elf: _binary_tempDir_d11day120bdwlan_bin_{start,end,size}. bdwlang.elf: _binary_tempDir_d10day120bdwlang_bin_{start,end,size}. eureka_pvt1.1_bdwlang.elf: _binary_tempDir_d11day120bdwlang_bin_{start,end,size}. The quoted evidence for eureka_pvt1.0_bdwlang.elf shows the bdwlang_bin names, not the bdwlan_bin names the claim gives. The revision tags in file names (dvt1.0, dvt1.1, evt2.0, evt2.1, pvt1.0, pvt1.1) are as stated.",
    "corrected_claim": "The board-data ELFs embed their payload through linker symbols named _binary_tempDir_d1Xday120bdwlan_bin_start, _end and _size (bdwlan group) or _binary_tempDir_d1Xday120bdwlang_bin_start, _end and _size (bdwlang group), where X depends on the group: d10 for bdwlan.elf and bdwlang.elf, d11 for eureka_evt2.1_bdwlan.elf and eureka_pvt1.1_bdwlang.elf."
   },
@@ -253,7 +253,7 @@
    "label": "verified",
    "claim": "Data.msc and Data20.msc are text WLAN firmware message catalogs. Each has a VERSION:536936572 header and id-coded records of the form id,args,[ file : line ] text: 10,298 records in Data.msc and 10,579 in Data20.msc.",
    "evidence": "head -1 <image>/mnt/vendor_a/firmware/qca6490/Data.msc -> VERSION:536936572 . python3 -I parse with regex '^(\\d+),([A-Za-z]*),\\[ ([^:]+?) : (\\d+) \\] (.*)$' -> Data.msc records 10298, other non-empty lines 21 ; Data20.msc records 10579, other non-empty lines 20 . top source files in Data.msc: phy_dev_paprd_device.c 428 ; phyrf_debug_cmd.c 235 ; wlan_nan20_ndp.c 151 ; wlan_rtt.c 148 . sample record: '2,,[ LMGoProcessing.c : 62 ] LM_DBG: NULL pdev return'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "head -1 Data.msc and Data20.msc: VERSION:536936572. Python parse with the claim's regex: Data.msc 10298 records; Data20.msc 10579 records. Non-empty lines that are not records, counting the VERSION header line: 21 for Data.msc and 20 for Data20.msc (19 excluding the header). Top sources in Data.msc: phy_dev_paprd_device.c 428; phyrf_debug_cmd.c 235; wlan_nan20_ndp.c 151; wlan_rtt.c 148. Sample record: '2,,[ LMGoProcessing.c : 62 ] LM_DBG: NULL pdev return'.",
    "corrected_claim": ""
   },
@@ -262,7 +262,7 @@
    "label": "inferred",
    "claim": "regdb.bin is a WLAN regulatory database in binary form; its record layout was not decoded.",
    "evidence": "od -A x -t x1z -N 32 <image>/mnt/vendor_a/firmware/qca6490/regdb.bin -> '92 6e 04 00 37 00 00 41 46 00 41 46 00 28 a0 00 ...'. The name suggests a regulatory database; no field decoding was done.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "od -A x -t x1z -N 32 regdb.bin: 92 6e 04 00 37 00 00 41 46 00 41 46 00 28 a0 00 (file size 24278). The record layout was not decoded; the reading from the name is labelled inferred, as the claim states.",
    "corrected_claim": ""
   },
@@ -272,7 +272,7 @@
    "claim": "xra_config_render and xra_config_capture are JSON configs for the XRA audio pipeline. They name resource files under /vendor/lib/rfsa/adsp/xra_resources, pin mappings and sampling (48 kHz, sample types), and debug output under /data/data_collection.",
    "evidence": "python3 -I json.load of xra_config_render: keys xra, debug, liveTuningSession, ports ; xra.resourcePath = /vendor/lib/rfsa/adsp/xra_resources/resources_render.dat ; xra.kpps = 200000 ; xra.data_bw = 29360128 ; ports.input has 6 entries with pinId 0,2,3,1,4,7 and aopdb 114 ; ports.output has 1 entry (pinId 5). json.load of xra_config_capture: keys xra, experimental, debug, ports ; experimental.xra.resourcePath = /vendor/lib/rfsa/adsp/xra_resources/resources_capture_ex.dat ; xra.data_bw = 117440512 ; ports.input 2 entries ; ports.output 3 entries ; ports.output[0].injectSine = {enable: false, frequency: 500, gain: 0.5} ; xra.onInit has 5 entries with keys [1,85] [1,88] [1,87] [1,86] [4,2,127] and int32 values 0 0 0 0 1 . sed -n '232p' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts -> '/vendor/lib/rfsa(/.*)? u:object_r:same_process_hal_file:s0' . grep -rIl 'xra_config|xra_render_capi|resources_render' over the etc trees -> no files",
    "file": "<image>/mnt/vendor_a/lib/rfsa/adsp/xra_resources/xra_config_render",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python json.load on xra_config_render: keys xra, debug, liveTuningSession, ports; xra.resourcePath /vendor/lib/rfsa/adsp/xra_resources/resources_render.dat; kpps 200000; data_bw 29360128; ports.input 6 entries with pinId [0, 2, 3, 1, 4, 7] and aopdb 114; ports.output 1 entry, pinId 5. xra_config_capture: keys xra, experimental, debug, ports; experimental.xra.resourcePath resources_capture_ex.dat; xra.data_bw 117440512; ports.input 2 entries, ports.output 3 entries; output[0].injectSine {enable false, frequency 500, gain 0.5}; xra.onInit 5 entries with keys [1,85], [1,88], [1,87], [1,86], [4,2,127] and values 0, 0, 0, 0, 1. Sampling: render ports are 48000 Hz; capture ports are 16000 and 48000 Hz, so the 48 kHz figure applies to both files and capture also has 16 kHz ports. sed -n 232p vendor_file_contexts: /vendor/lib/rfsa(/.*)? same_process_hal_file. Debug path /data/data_collection/data_collection_render.bin.",
    "corrected_claim": ""
   },
@@ -281,7 +281,7 @@
    "label": "observed",
    "claim": "The XRA tuning resource blobs carry text profile headers naming the tuning profiles stinson (render and capture) and stinsonExperimentalWola (experimental capture).",
    "evidence": "strings -n 6 <image>/mnt/vendor_a/lib/rfsa/adsp/xra_resources/resources_render.dat | head -1 -> 'Tuning Profile Name=Stinson_EVT2v1.4,RTT version=v2.24.0,Tunner version=1.11.0.0,Commit Hash=...' . strings -n 6 resources_capture.dat | head -1 -> 'stinsonWola' . strings -n 6 resources_capture_ex.dat | head -1 -> 'stinsonExperimentalWola'",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "strings -n 6 | head -1: resources_render.dat gives 'Tuning Profile Name=Stinson_EVT2v1.4,RTT version=v2.24.0,Tunner version=1.11.0.0,Commit Hash=...'; resources_capture.dat gives 'stinsonWola'; resources_capture_ex.dat gives 'stinsonExperimentalWola'. The render header is Stinson_EVT2v1.4 and the capture header is stinsonWola, so 'stinson' does not name the render and capture profiles as one.",
    "corrected_claim": "The XRA tuning resource blobs carry text profile headers naming Stinson_EVT2v1.4 (resources_render.dat), stinsonWola (resources_capture.dat) and stinsonExperimentalWola (resources_capture_ex.dat)."
   },
@@ -291,7 +291,7 @@
    "claim": "xra_render_capi.so and xra_capture_capi.so are DSP6 CAPI modules for XRA. Their strings include xra_capi_get_static_properties, 13 capi_utils_props_* helper names and C++ symbols in the facebook2xr5audio namespace. readelf does not list xra_capi_get_static_properties in the dynamic symbol table.",
    "evidence": "readelf -h <image>/mnt/vendor_a/lib/rfsa/adsp/xra_render_capi.so | grep Machine -> QUALCOMM DSP6 Processor . readelf -d xra_render_capi.so -> SONAME [xra_render_capi.so] ; NEEDED [libc.so] ; NEEDED [libgcc.so] . strings -n 8 xra_render_capi.so | grep -c '^capi_utils_props_' -> 13 . strings -n 8 xra_render_capi.so | grep -E 'xra_capi_get_static_properties|facebook2xr5audio' -> xra_capi_get_static_properties ; _ZN8facebook2xr5audio13DataCollectorC1EPNS1_7XRABaseEjPKc ; _ZN8facebook2xr5audio19WindSuppressorBasic... . readelf --dyn-syms -W xra_render_capi.so | grep -c xra_capi_get_static_properties -> 0",
    "file": "<image>/mnt/vendor_a/lib/rfsa/adsp/xra_render_capi.so",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h xra_render_capi.so and xra_capture_capi.so: Machine QUALCOMM DSP6 Processor. readelf -d render: SONAME xra_render_capi.so; NEEDED libc.so and libgcc.so. strings -n 8 with grep -c for ^capi_utils_props_: 13 for render and 13 for capture. strings: 'xra_capi_get_static_properties' (count 1) and facebook2xr5audio C++ symbols. readelf --dyn-syms with grep -c xra_capi_get_static_properties: 0.",
    "corrected_claim": ""
   },
@@ -301,7 +301,7 @@
    "claim": "The DSP-side FastRPC shell libraries (fastrpc_shell_0, fastrpc_shell_3, fastrpc_shell_unsigned_3) are DSP6 DYN objects with no NEEDED entries and about 1,550 to 1,600 defined global functions. Their exports include the HAP and qurt APIs. The synx library exports the synx_* sync-object API.",
    "evidence": "readelf -h <image>/mnt/vendor_a/dsp/cdsp/fastrpc_shell_3 -> Type: DYN (Shared object file) ; Machine: QUALCOMM DSP6 Processor ; Flags 0x69 . readelf -d shows no NEEDED lines . readelf --dyn-syms -W fastrpc_shell_3 | awk '$5==\"GLOBAL\" && $7!=\"UND\" && $4==\"FUNC\"' | wc -l -> 1597 (fastrpc_shell_unsigned_3 1597 ; adsp fastrpc_shell_0 1548) . exports sample: HAP_get_dsp_domain ; qurt_power_wait_for_active ; compute_resource_attr_get_vtcm_ptr_v2 ; pthread_create . readelf --dyn-syms -W <image>/mnt/vendor_a/dsp/cdsp/libsynx.so | awk ... | head -15 -> synx_initialize ; synx_signal ; synx_import ; synx_cancel_async_wait ; NEEDED: libsynx_os.so, libsynx_threadutils.so (readelf -d)",
    "file": "<image>/mnt/vendor_a/dsp/cdsp/fastrpc_shell_3",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -h cdsp/fastrpc_shell_3: Type DYN (Shared object file), Machine QUALCOMM DSP6, Flags 0x69; readelf -d NEEDED count 0. Global defined FUNC dynamic symbols: fastrpc_shell_3 1597; fastrpc_shell_unsigned_3 1597 (cdsp); fastrpc_shell_0 1548 (adsp). All three have NEEDED count 0 and DSP6 DYN type. Exports include HAP_get_dsp_domain, qurt_power_wait_for_active, compute_resource_attr_get_vtcm_ptr_v2 and pthread_create. cdsp/libsynx.so global symbols include synx_initialize, synx_signal, synx_import and synx_cancel_async_wait; NEEDED libsynx_os.so and libsynx_threadutils.so (also libc++.so.1 and libc++abi.so.1).",
    "corrected_claim": ""
   },
@@ -310,7 +310,7 @@
    "label": "observed",
    "claim": "Several DSP skel libraries carry QAIC-generated invoke entry points (for example loadalgo_skel_handle_invoke_qaic_version, sysmonquery_skel_handle_invoke_qaic_version), indicating the FastRPC IDL skel pattern.",
    "evidence": "readelf --dyn-syms -W <image>/mnt/vendor_a/dsp/cdsp/libloadalgo_skel.so | awk '$5==\"GLOBAL\" && $7!=\"UND\"' | awk '{print $8}' -> secure_pd_thread_create ; loadalgo_open ; loadalgo_close ; loadalgo_Gaussian7x7u8 ; loadalgo_skel_handle_invoke_qaic_version ; loadalgo_skel_handle_invoke_uri . strings -n 8 <image>/mnt/vendor_a/dsp/adsp/libsysmonquery_skel.so | grep qaic -> sysmonquery_skel_handle_invoke_qaic_version",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf --dyn-syms -W on cdsp/libloadalgo_skel.so, global defined symbols: loadalgo_open, loadalgo_close, loadalgo_Gaussian7x7u8, loadalgo_skel_handle_invoke_qaic_version, loadalgo_skel_handle_invoke_uri and secure_pd_thread_create. strings -n 8 adsp/libsysmonquery_skel.so with grep qaic: sysmonquery_skel_handle_invoke_qaic_version.",
    "corrected_claim": ""
   },
@@ -320,7 +320,7 @@
    "claim": "The five servreg JSON files (adspr, cdspr, adsps, adspua, battmgr) declare an sr_domain and one or two sr_service entries with QMI instance IDs 74 (adsp) and 76 (cdsp). adspua.jsn adds an avs audio service entry.",
    "evidence": "python3 -I -c json.load for each file: adspr.jsn -> adsp root_pd 74 [('tms','servreg')] ; cdspr.jsn -> cdsp root_pd 76 [('tms','servreg')] ; adsps.jsn -> adsp sensor_pd 74 [('tms','servreg')] ; adspua.jsn -> adsp audio_pd 74 [('tms','servreg'), ('avs','audio')] ; battmgr.jsn -> adsp charger_pd 74 [('tms','servreg')] . Each file has sr_version {major 1, minor 1, patch 1} and a dcomment string 'data can be used to configure ACK timeout...'. grep -rIl over the mounted etc trees for these file names -> no files.",
    "file": "<image>/mnt/vendor_a/firmware/adspr.jsn",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python json.load: adspr.jsn: sr_domain adsp/root_pd, qmi_instance_id 74, one sr_service (tms, servreg). cdspr.jsn: cdsp/root_pd, 76, (tms, servreg). adsps.jsn: adsp/sensor_pd, 74, (tms, servreg). adspua.jsn: adsp/audio_pd, 74, with (tms, servreg) and (avs, audio). battmgr.jsn: adsp/charger_pd, 74, (tms, servreg). All five have sr_version 1.1.1. grep -rIl for the five file names over the mounted etc trees: 0 files.",
    "corrected_claim": ""
   },
@@ -330,7 +330,7 @@
    "claim": "The ODM syncboss.bin and santana_manager.bin images are ARM Cortex-M firmware with vector tables (SyncBoss SP 0x2001e000, reset at 0x000006e8; SantanaManager SP 0x20008000, reset at 0x080005e0). They are launched by fw_init using the paths and serial devices in the ODM config files.",
    "evidence": "file <image>/mnt/odm_a/firmware/syncboss.bin -> 'ARM Cortex-M firmware, initial SP at 0x2001e000, reset at 0x000006e8, NMI at 0x00000710' ; file santana_manager.bin -> 'ARM Cortex-M firmware, initial SP at 0x20008000, reset at 0x080005e0' . cat <image>/mnt/odm_a/etc/fw_init.cfg -> [syncboss] path = \"/odm/firmware/syncboss.bin\" id = 1 busy_path = \"/sys/devices/virtual/misc/syncboss0/spi/control/streaming\" ; [secondary] path = \"/odm/firmware/santana_manager.bin\" id = 0 ; [blu] path = \"/vendor/firmware/blu.bin\" uart = \"/dev/ttyHS13\" ; cat <image>/mnt/odm_a/etc/catty.cfg -> [syncboss] prefix \"SyncBossFW\" dev \"/dev/ttyHS14\" baud 460800 ; [santanamanager] prefix \"SantanaManagerFW\" dev \"/dev/ttyHS12\" baud 115200 . sed -n '1,3p' <image>/mnt/odm_a/etc/init/fw_init.rc -> 'service fw_init /vendor/odm/bin/fw_init' ; file_contexts line 97 '(odm|vendor/odm)/bin/fw_init u:object_r:syncboss_exec:s0' ; line 376 '/dev/ttyHS14 u:object_r:syncboss_device:s0'",
    "file": "<image>/mnt/odm_a/firmware/syncboss.bin",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "file: syncboss.bin 'ARM Cortex-M firmware, initial SP at 0x2001e000, reset at 0x000006e8'; santana_manager.bin 'initial SP at 0x20008000, reset at 0x080005e0'. fw_init.cfg names /odm/firmware/syncboss.bin, /odm/firmware/santana_manager.bin and the busy path. catty.cfg names /dev/ttyHS14 (SyncBossFW, 460800) and /dev/ttyHS12 (SantanaManagerFW, 115200). fw_init.rc: service fw_init /vendor/odm/bin/fw_init. strings on odm_a/bin/fw_init: contains /odm/etc/fw_init.cfg and syncboss init symbols, but no catty or /dev/tty string. The component that reads catty.cfg was not identified.",
    "corrected_claim": "The ODM syncboss.bin and santana_manager.bin images are ARM Cortex-M firmware with vector tables (SyncBoss SP 0x2001e000, reset 0x000006e8; SantanaManager SP 0x20008000, reset 0x080005e0). fw_init.cfg names their paths, and catty.cfg names their serial devices (/dev/ttyHS14 and /dev/ttyHS12). The fw_init binary references /odm/etc/fw_init.cfg; the component that reads catty.cfg was not identified, so the launch relationship is inferred."
   },
@@ -339,7 +339,7 @@
    "label": "observed",
    "claim": "The syncboss-app.bin image has a dAeH-prefixed header with a 12-hex-digit build identifier, and the MCU tar bundles hold per-device app and SPL-updater images with dated sets (2020 to 2024).",
    "evidence": "od -A x -t x1z -N 48 <image>/mnt/odm_a/firmware/syncboss-app.bin -> '64 41 65 48 b5 43 3e 29 2e 00 00 00 04 03 02 01' and at 0x20 'fd5b251dbae5' . od on jedi.bin, elk-app.bin -> same 'dAeH' magic with build ids d64d4df478de and 307b9c94ed2b . tar -tvf <image>/mnt/odm_a/firmware/ruby_archive.bin -> elk-app.bin, elk-spl-updater.bin, deerfly-app.bin, deerfly-spl-updater.bin (2024-11-19) . tar -tvf jedi_archive.bin -> jedi.bin, jedi-spl-updater.bin, jedi-spl-updater.devsigned.bin, jedi-captouch.bin (2022-07-07) . tar -tvf coulee_archive.tar -> coulee-app.bin, coulee-spl-updater.bin, amcu_0.bin (2024-09) . tar -tvf jade_archive.tar -> jade-app.bin, jade-spl-updater.bin (2024-07)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "od -A x -t x1z -N 48 syncboss-app.bin: magic 64 41 65 48 ('dAeH'); 12-hex identifier at offset 0x20: fd5b251dbae5. jedi.bin and elk-app.bin are not loose files in the mount; their headers were read from the archive members (tar -xOf jedi_archive.bin jedi.bin; tar -xOf ruby_archive.bin elk-app.bin). Both begin with dAeH, with identifiers d64d4df478de and 307b9c94ed2b. tar -tvf dates: ruby_archive.bin 2024-11-19; jedi_archive.bin 2022-07-07; coulee_archive.tar 2024-09; jade_archive.tar 2024-07; jedi-downgrade.bin 2020-02-19; ruby-downgrade.bin 2023-06; ruby_prq-downgrade.bin 2024-03; ruby_prq_archive.bin 2024-11. Dates span 2020 to 2024.",
    "corrected_claim": ""
   },
@@ -348,7 +348,7 @@
    "label": "observed",
    "claim": "The unwind ELF images (unwind-elk-app.bin, unwind-coulee-app.bin, syncboss-unwind.bin) hold only .debug_frame and symbol sections and no code section.",
    "evidence": "readelf -S -W <image>/mnt/odm_a/firmware/unwind-elk-app.bin -> [1] .debug_frame PROGBITS 0000d4 ; [2] .symtab SYMTAB ; [3] .strtab STRTAB ; [4] .shstrtab STRTAB (no .text). readelf -h -> Machine ARM ; Entry 0x2ba71 . the same section list appears for unwind-coulee-app.bin and syncboss-unwind.bin.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readelf -S -W on unwind-elk-app.bin, unwind-coulee-app.bin and syncboss-unwind.bin: each has sections NULL, .debug_frame (PROGBITS), .symtab, .strtab, .shstrtab; no .text. unwind-elk-app.bin: Machine ARM, Entry 0x2ba71; .debug_frame at offset 0xd4.",
    "corrected_claim": ""
   },
@@ -357,7 +357,7 @@
    "label": "observed",
    "claim": "The ODM odm_dlkm modules list includes syncboss kernel modules (syncboss_spi.ko, syncboss_miscfifo.ko, syncboss_powerstate.ko, syncboss_direct_channel.ko, syncboss_nsync.ko), and vendor init sets syncboss sysfs permissions and waits for the firmware update node.",
    "evidence": "grep -n syncboss <image>/mnt/odm_dlkm_a/lib/modules/modules.load -> 20 syncboss_spi.ko ; 21 syncboss_direct_channel.ko ; 22 syncboss_miscfifo.ko ; 23 syncboss_nsync.ko ; 24 syncboss_powerstate.ko . grep -n 'syncboss' <image>/mnt/vendor_a/etc/init/hw/init.anorak.rc -> 355 'on property:vendor.syncbosshal.fw_update_complete=true' ; 471 'wait /sys/devices/virtual/misc/syncboss0/swd/update_firmware' ; 499-501 comment 'Tell fw_init to suppress syncboss reset until the sensorservice starts' and 'setprop vendor.syncbosshal.wait_for_service true'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -n syncboss odm_dlkm_a/lib/modules/modules.load: lines 20-24 syncboss_spi.ko, syncboss_direct_channel.ko, syncboss_miscfifo.ko, syncboss_nsync.ko, syncboss_powerstate.ko. init.anorak.rc: line 355 on property:vendor.syncbosshal.fw_update_complete=true; lines 456-488 chown and chmod on /sys/devices/virtual/misc/syncboss0 nodes; line 471 wait .../swd/update_firmware; lines 499-501 comment 'Tell fw_init to suppress syncboss reset until the sensorservice starts' and setprop vendor.syncbosshal.wait_for_service true.",
    "corrected_claim": ""
   },
@@ -367,7 +367,7 @@
    "claim": "The PDFU update packages begin with a 46-byte ASCII hex header terminated by CRLF at offset 0x2e. The payload begins with words 0x20003000 and a reset vector, the layout of a Cortex-M vector table.",
    "evidence": "python3 -I: d=open(file,'rb').read(); d.find(b'\\r\\n') -> 46 (0x2e) for both files ; header text '000000001750444655000133280F500100010000000C00' (Lehua) and '000000001750444655000133280650000001000F000000' (Moku) . od -A x -t x1 -j 48 -N 8 -> '00 30 00 20 01 2a 00 00' (Lehua) ; '00 30 00 20 01 59 00 00' (Moku)",
    "file": "<image>/mnt/odm_a/etc/firmware/PDFU/Lehua-2833-500F-000100010000000C-00-20240726224740.pdfu",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python: first CRLF at offset 46 (0x2e) in Lehua-2833-500F-000100010000000C-00-20240726224740.pdfu (121648 bytes) and Moku-2833-5006-00000001000F0000-00-20240726224808.pdfu (109616 bytes). Header text 000000001750444655000133280F500100010000000C00 (Lehua) and 000000001750444655000133280650000001000F000000 (Moku). Bytes at offset 48: 00 30 00 20 01 2a 00 00 (Lehua) and 00 30 00 20 01 59 00 00 (Moku): word 0x20003000 then reset vector 0x2a01 and 0x5901.",
    "corrected_claim": ""
   },
@@ -376,7 +376,7 @@
    "label": "observed",
    "claim": "The PDFU packages are dispatched through the Meta PDFU path: the ueventd external handler matches 2833-*.pdfu (Meta VID 0x2833), the PDFU HAL is labeled hal_pdfu_default_exec, and /odm/bin/pdfu_depot is labeled pdfu_depot_exec. The stored file names begin with product names (Lehua-, Moku-), not 2833-.",
    "evidence": "sed -n '33,34p' <image>/mnt/vendor_a/etc/ueventd.rc -> '# Use Meta PDFU Depot handler for any request for Meta VID (0x2833)' ; 'external_firmware_handler /devices/platform/vendor/vendor:meta,pdfu_initiator/firmware/2833-*.pdfu system /odm/bin/pdfu_depot-meta' . vendor_file_contexts line 109 '/(odm|vendor/odm)/bin/hw/vendor\\.oculus\\.hardware\\.pdfu@1\\.0-service hal_pdfu_default_exec' ; line 248 '/odm/bin/pdfu_depot(.*)? pdfu_depot_exec' . vendor_sepolicy.cil line 144 '(genfscon sysfs /devices/platform/vendor/vendor:meta,pdfu_initiator ... sysfs_meta_pdfu ...)' . ls <image>/mnt/odm_a/etc/firmware/PDFU -> Lehua-2833-500F-000100010000000C-00-20240726224740.pdfu ; Moku-2833-5006-00000001000F0000-00-20240726224808.pdfu",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sed -n 33,34p ueventd.rc: comment 'Use Meta PDFU Depot handler for any request for Meta VID (0x2833)'; external_firmware_handler .../firmware/2833-*.pdfu system /odm/bin/pdfu_depot-meta. vendor_file_contexts line 109: vendor.oculus.hardware.pdfu@1.0-service -> hal_pdfu_default_exec; line 248: /odm/bin/pdfu_depot(.*)? -> pdfu_depot_exec. vendor_sepolicy.cil line 144: genfscon sysfs for vendor:meta,pdfu_initiator with sysfs_meta_pdfu. ls odm_a/etc/firmware/PDFU: Lehua-2833-500F-... and Moku-2833-5006-... (file names begin with product names).",
    "corrected_claim": ""
   },
@@ -385,7 +385,7 @@
    "label": "observed",
    "claim": "The EFM8 image Eureka_Dev1.efm8 is a raw binary (not ELF) with a device tag and LED label strings. No mounted init or SELinux text names it.",
    "evidence": "od -A x -t x1z -N 48 <image>/mnt/vendor_a/firmware/Eureka_Dev1.efm8 -> '24 04 31 a5 f1 00 24 83 32 00 00 ff 06 63 02 07 ...' ; strings -n 6 Eureka_Dev1.efm8 | head -8 -> ':EurekaDEV01' ; 'HDroom0   =0000' ; '80000-L LED-00mA' ; \"'0000-R LED-00mA\" . grep -rIl -E 'efm8|Eureka_Dev1' over the mounted etc trees -> no files.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "od -A x -t x1z -N 48 Eureka_Dev1.efm8: 24 04 31 a5 f1 00 24 83 32 00 00 ff 06 63 02 07 (no ELF magic). strings -n 6 | head -8: ':EurekaDEV01', 'HDroom0   =0000', '80000-L LED-00mA', and \"'0000-R LED-00mA\". grep -rIl -E 'efm8|Eureka_Dev1' over the mounted etc trees: 0 files.",
    "corrected_claim": ""
   },
@@ -394,7 +394,7 @@
    "label": "observed",
    "claim": "The PROX_PS calibration links are referenced by the SELinux label for /persist PROX files and the generic /persist/calibration label, but no mounted init or ODM config names them (grep count 0).",
    "evidence": "grep -n 'PROX' <image>/mnt/vendor_a/etc/selinux/vendor_file_contexts -> '224:/persist/PROX[A-Z_]+ u:object_r:persist_cal_file:s0' ; grep -n 'calibration' -> '252:/persist/calibration(/.*)? u:object_r:persist_cal_file:s0' . grep -rIl -E 'PROX_PS|min_ipd' over the mounted etc trees -> no files.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "grep -n PROX vendor_file_contexts: line 224 '/persist/PROX[A-Z_]+' persist_cal_file. grep -n calibration: line 252 '/persist/calibration(/.*)?' persist_cal_file; line 267 covers /persist/calibration/online. Full-path regex test: the four PROX_PS link targets under /persist/calibration/prox/min_ipd/ match line 252 (True) and do not match line 224 (False). grep -rIl -E 'PROX_PS|min_ipd' over the mounted etc trees: 0 files.",
    "corrected_claim": "The PROX_PS calibration link targets under /persist/calibration/prox/min_ipd/ are covered only by the generic /persist/calibration label (vendor_file_contexts line 252, persist_cal_file). The /persist/PROX[A-Z_]+ label (line 224) does not match these targets. No mounted init or ODM config names PROX_PS or min_ipd (grep count 0)."
   },
@@ -403,7 +403,7 @@
    "label": "observed",
    "claim": "The ODM fw_init.cfg [blu] section names /vendor/firmware/blu.bin and blu.toml, but no such file is in vendor_a/firmware in this group.",
    "evidence": "grep -n 'blu' <image>/mnt/odm_a/etc/fw_init.cfg -> 'path = \"/vendor/firmware/blu.bin\"' ; 'version_path = \"/vendor/firmware/blu.toml\"' . ls <image>/mnt/vendor_a/firmware/blu* -> 'ls: cannot access ... No such file or directory'",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -n blu odm_a/etc/fw_init.cfg: line 10 [blu] section header; line 11 path = /vendor/firmware/blu.bin; line 12 version_path = /vendor/firmware/blu.toml. ls vendor_a/firmware/blu*: no such file or directory.",
    "corrected_claim": ""
   }

@@ -53,7 +53,7 @@ The GPU subsystem has two sets of pages. Pages [01](01-zap-firmware.md) to [05](
 
 ## Claims and their evidence
 
-Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. Every finding on pages 01 to 05 has a reproduction record in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 confirmed, 160 with corrected wording and 22 refuted.
+Each claim is recorded in [`data/subsystems/<subsystem>/claims.json`](../data/subsystems/), with its evidence, verdict and reason. The role tables are in `data/subsystems/<subsystem>/roles.tsv`. Every finding on pages 01 to 05 has a reproduction record in [`data/gpu/confirmed_findings.json`](../data/gpu/confirmed_findings.json). Across the 21 subsystems there are 835 claims: 653 hold, 160 are corrected and 22 do not hold.
 
 ## Limits
 

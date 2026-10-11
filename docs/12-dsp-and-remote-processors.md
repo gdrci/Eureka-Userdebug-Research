@@ -6,7 +6,7 @@
 
 The group has 243 rows (237 regular files and 6 symlinks): 20 in odm_a and 223 in vendor_a. It holds the remote-processor firmware and runtime set: Hexagon DSP6 root images for ADSP and CDSP (split .mdt plus .bNN segments), the FastRPC user daemons (adsprpcd, cdsprpcd) and DSP-side shell and skel libraries, the XRA audio-pipeline CAPI modules with JSON configs and tuning blobs, an EVA Xtensa image, an SPSS ARM image, the QCA6490 WLAN firmware with board-data ELFs, message catalogs and an ini config, AArch64 secure-app images with servreg JSON configs, ODM microcontroller images (SyncBoss, SantanaManager, MCU tar bundles with unwind ELFs), PDFU update packages and an EFM8 image. The mounted ueventd.rc, vendor_file_contexts, vendor_sepolicy.cil and init .rc files confirm the firmware search paths, the labels for /vendor/bin/adsprpcd and /vendor/bin/cdsprpcd, the three remoteproc instances (spss, adsp, cdsp) and the adsprpcd and cdsprpcd init services. Most firmware image names are not referenced by name in any mounted init or SELinux text file.
 
-The role table has one row for each of the 243 files in this group (153 verified, 79 observed, 11 inferred, 0 unverified). It is at `data/subsystems/dsp-and-remote-processors/roles.tsv`.
+Role table: `data/subsystems/dsp-and-remote-processors/roles.tsv` (243 files: 153 verified, 79 observed, 11 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -48,8 +48,6 @@ The role table has one row for each of the 243 files in this group (153 verified
 - **D19** (observed): The ODM fw_init.cfg [blu] section names /vendor/firmware/blu.bin and blu.toml, but no such file is in vendor_a/firmware in this group.
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **D6b** (observed): The variant suffix p or t also appears on the signature containers crypt1p.sig and crypt1t.sig. Both carry the organizationalUnit value 'Qualcomm Cryptographic Operations'. Their commonName values differ: 'SPU MBNv7 Image Signing Root CA 6 SubCA 1' (crypt1p.sig) and 'SPU MBNv7 Image Signing Test Root CA 6 SubCA 1' (crypt1t.sig). The digit strings 1200 and 1705 that appear after the organizational unit are DER header bytes, not part of a subject string.
 - **D8b** (observed): The QCA6490 WLAN config WCNSS_qcom_cfg.ini has 126 lines: 99 key=value lines, 14 comment lines, 12 blank lines and a final END line. amss.bin embeds the names of its sub-images, and WLAN config and label references appear in the mounted SELinux file contexts.

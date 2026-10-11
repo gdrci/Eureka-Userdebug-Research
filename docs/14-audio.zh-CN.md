@@ -6,7 +6,7 @@
 
 音频组包含 239 行：238 个普通文件和 1 个符号链接，分布在 product_a（51）、system_a（111）、system_ext_a（12）和 vendor_a（65）中。该组包含：Android 音频框架（audioserver 可执行文件、AudioFlinger 与 AudioPolicy 库、AAudio、AIDL 客户端存根，以及 4.0 至 7.0 版的 HIDL 音频接口库）；厂商 HAL 服务和 HAL 模块（为 anorak 平台链接 vendor.qti PAL 与 AGM 组件的 primary HAL，以及通用的 primary、USB、remote-submix 和 A2DP 模块）；包含 26 个 AELI 效果库的效果栈（每个 lib 目录 13 个，另有效果工厂和 HAL 实现库）；策略、效果、IO 配置文件和 mixer-path 配置文件；system_ext 中的 audiotapper 服务，以及延迟和录音测试工具；49 个 Vorbis-in-Ogg 格式的界面、闹钟、通知和铃声音频片段。init 与 SELinux 引用涵盖 audioserver（系统 init 文件、进程和服务标签）、厂商 HAL 服务（同一服务名的两个 init 定义，以及 HAL 标签）、audiotapper 对（带属性触发器的已禁用服务及 SELinux 类型），以及高通 ADSP RPC 守护进程。roles 文件包含一行表头和 239 行数据。
 
-角色表为本组 239 个文件各有一行（230 已验证，2 已观察，7 推断，0 未验证）。该表位于 `data/subsystems/audio/roles.tsv`。
+角色表：`data/subsystems/audio/roles.tsv`（239 个文件：230 个 verified，2 个 observed，7 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -43,8 +43,6 @@
 
 ## 措辞已修正的论断
 
-下方结论以数据所支持的措辞重新表述。
-
 - **A04**（已验证）：product_a/media/audio/ 下音频组的全部 49 个 .ogg 片段（闹钟 9、通知 11、铃声 12、界面 17）均为 Ogg 容器中的 Vorbis 编码，采样率为 44100 或 48000 Hz，声道数为 1 或 2。该目录共有 51 个 .ogg 文件；camera_click.ogg 和 camera_focus.ogg 属于相机组，未计入。
 - **A05**（已验证）：有 10 个共享对象导出 HAL 模块符号 HMI：audio.a2dp.default.so（system 下的 lib 与 lib64 中各一个），以及 audio.r_submix.default.so、audio.primary.default.so、audio.usb.default.so 和 audio.primary.anorak.so，每个都在 vendor 的 lib 和 lib64 中各一份。
 - **D08**（已验证）：根据 vendor_file_contexts 第 347 行，/vendor/bin/hw/android.hardware.audio.service* 的标签为 hal_audio_default_exec，该条目的模式即为该服务的通配符。第 2 和第 3 行为 @2.0- 与 @7.0-service.example 两种路径形式标注了相同的标签。HIDL 名称 android.hardware.audio::IDevicesFactory 的标签为 hal_audio_hwservice（plat_hwservice_contexts 第 10 行）。
@@ -54,8 +52,6 @@
 - **I02**（推断）：在此构建中，audio_effects.xml 里的 pre_processing 库以及 agc、aec 和 ns 条目位于 XML 注释中，因此它们并未启用，且该 XML 没有定义任何启用的前处理或后处理块。框架在运行时读取哪个配置文件未被追踪，因此正在使用的效果库尚无法确定。一个已启用的 v2.0 条目指定了 noise_suppressor（libnseffect.so），而该文件不在镜像中。
 
 ## 已排除的论断
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 论断 | 原因 |
 |---|---|---|

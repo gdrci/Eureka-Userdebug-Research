@@ -6,7 +6,7 @@
 
 The power-thermal-charging group holds 21 files: 3 in product_a, 7 in system_a and 11 in vendor_a. It contains the Android charger-mode binary (AArch64 PIE) with its animation description and two PNG icons; HIDL thermal HAL 1.0 and 2.0 interface libraries in 32-bit and 64-bit system copies and 64-bit vendor copies (the system and vendor 64-bit copies differ only in build-id); the thermal helper library libthermalhalutils.so and its JSON sensor and cooling-device configuration, which the odm perf_service binary links and reads; two TOML power-hint configurations for the power HAL; a charger-class init module list run by init.insmod.sh; the battery-listener library loaded by dlopen from the audio HAL; the external battery client library linked by the health HAL implementation; and the IBatteryStats AIDL library linked by libsensorservice. The server processes for the thermal HAL (odm perf_service) and the external battery HAL (odm vendor.oculus.hardware.externalbattery@1.0-service) sit in odm_a and are outside this group. Deep-dive coverage: 13 items.
 
-The role table has one row for each of the 21 files in this group (19 verified, 2 observed, 0 inferred, 0 unverified). It is at `data/subsystems/power-thermal-charging/roles.tsv`.
+Role table: `data/subsystems/power-thermal-charging/roles.tsv` (21 files: 19 verified, 2 observed, 0 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -45,8 +45,6 @@ The role table has one row for each of the 21 files in this group (19 verified, 
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **C11** (inferred): The charger has no DT_NEEDED entry for libexternalbattery.so and no .symtab section. It is stripped, but its .gnu_debugdata section holds a compressed symbol table that defines the IExternalBattery proxy and stub classes and the hardware::oculus::health::ExternalBattery wrapper, so the binary contains its own compiled copy of that code rather than loading libexternalbattery.so at run time.
 - **C17** (verified): The thermal HAL libraries are linked by 15 files. In odm_a: perf_service (1.0 and 2.0) and wattsup (2.0). In system_a: libandroid_servers.so in lib and lib64 (1.0); libvrsrecorder.so, libvrsrecorder_plugin_temperaturereader.so, libvrsrecorder_utils_camera.so and libvrsrecorder_utils_sensorapishim.so (2.0); and the lib and lib64 copies of android.hardware.thermal@2.0.so (each linking @1.0). In system_ext_a: perfstream, vrdevicemanagerserver and libperfstreamprovider.so (2.0). In vendor_a: the vendor copies of libthermalhalutils.so (1.0 and 2.0) and android.hardware.thermal@2.0.so (@1.0).
 - **C25** (verified): Non-table keys are 629 path entries (keys beginning with /), 14 clock-level entries (VR_MODE_* in clocks_cpu and clocks_gpu), 106 priority entries and 9 duration entries.
@@ -56,8 +54,6 @@ The claims below are restated with the wording that the data supports.
 - **C41** (observed): The vendor property context maps persist.vendor.enable.thermal.genl to vendor_thermal_prop. The consumer is not among the 21 group files; the property name occurs in odm_a/bin/hw/perf_service, and vendor_a/build.prop line 64 sets it to true. Which of these reads it was not determined.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

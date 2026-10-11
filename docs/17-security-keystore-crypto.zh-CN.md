@@ -6,7 +6,7 @@
 
 该组包含 60 行已分类记录：56 个普通文件和 4 个符号链接，分布在 system_a（40）、system_ext_a（1）和 vendor_a（19）中。它涵盖四个层面。（1）系统 keystore2 技术栈：Rust 实现的 keystore2 守护进程、其 AIDL/NDK 与 C++ 桩代码、Rust 加密与认证（attestation）辅助库、keystore 客户端 CLI，以及 wait_for_keymaster 启动辅助程序。（2）Gatekeeper：gatekeeperd 与 gatekeeperserver 守护进程、gatekeeper 核心库、OVR gatekeeper 服务与客户端库，以及高通 gatekeeper 1.0 HAL 服务及其实现。（3）Keymaster 与 KeyMint：系统分区和 vendor 分区中的 HIDL 3.0、4.0 和 4.1 接口库，软件 keymaster 库，高通 keymaster 4.1 HAL 服务及其后端，以及供 vendor 服务使用的 qseecomd TEE 守护进程。（4）fs-verity 与 AVB verity：fsverity_init（由 init.rc 启动）、set-verity-state 及其 enable-verity 和 disable-verity 链接、libfsverity，以及 fs-verity 发布用 X.509 证书。跨模块共用的库包括 BoringSSL libcrypto（32 位和 64 位）以及 Widevine OEMCrypto 库。全部 56 个普通文件的 sha256 和大小均与其记录一致。二进制文件已去除符号信息，因此其行为依据导出及导入的符号、NEEDED 条目、字符串，以及 init 和 SELinux 文本文件推断得出。
 
-角色表为本组 60 个文件各包含一行（40 个 verified、11 个 observed、9 个 inferred、0 个 unverified）。该表位于 `data/subsystems/security-keystore-crypto/roles.tsv`。
+角色表：`data/subsystems/security-keystore-crypto/roles.tsv`（60 个文件：40 个 verified，11 个 observed，9 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -33,8 +33,6 @@
 - **libqtikeymaster4** (observed)：lib64/libqtikeymaster4.so 是高通 keymaster 4.x 后端，vendor keymaster 4.1 服务链接了它。它依赖 vendor keymaster 设备库与工具库、libqcbor，以及 4.0 和 4.1 HIDL 接口。它导出 239 个已定义符号，其中包括一组 CR* 系列的 getter 函数。
 
 ## 措辞已修正的论断
-
-下方结论以数据所支持的措辞重新表述。
 
 - **ks2-interfaces** (observed)：keystore2 的二进制字符串中包含 android.system.keystore2 服务名（IKeystoreService/default、IKeystoreOperation），以及维护、指标、授权、compat、APC、legacy keystore 和远程配置（remote provisioning）接口名称，另有 KeyMint、安全时钟和共享密钥 HAL 接口名称。它导入了 AServiceManager_addService，并在 IKeystoreService/default、APC、授权、指标、远程配置、维护和 legacy keystore 名称旁记录日志 'Successfully registered Keystore 2.0 service.'。无法仅凭字符串确定每个列出的接口是由该二进制提供服务，还是仅被引用。
 - **set-verity-refs** (verified)：已挂载分区中有四个二进制文件包含 verity 状态命令名：system_a/system/bin/init、snapshotctl、update_engine 以及 set-verity-state 本身（其中除 set-verity-state 外为三个）。verity 状态相关行（set-verity-state、enable-verity、disable-verity）以及 tee 符号链接行，在已检查分区的任何 init.rc 或 file_contexts 条目中均未被提及。

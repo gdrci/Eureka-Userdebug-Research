@@ -5,7 +5,7 @@
 ## 摘要
 
 该组包含 346 行：157 个普通文件（132 个 PIE 可执行文件、17 个共享对象格式的可执行文件，以及 8 个脚本）和 189 个符号链接，分布在 vendor_a（241）、system_ext_a（55）、odm_a（38）、system_a（10）和 product_a（2）中。核心部分包括一个 toybox 多调用二进制文件（172 个 applet 符号链接）和一个 toolbox 多调用二进制文件（6 个符号链接）、一个 mksh shell、一个 vendor binder 服务管理器，以及 14 个 HAL 服务可执行文件（vendor_a/bin/hw 中 10 个，odm_a/bin/hw 中 4 个），这些服务注册 HIDL 或 AIDL 接口，并由 init 服务启动。odm 分区包含 SyncBoss 传感器控制器工具集：fw_init（一个 oneshot 固件更新程序，读取 /odm/etc/fw_init.cfg），以及 17 个共享对象格式的工具，每个都导出 main。system_ext_a 包含 50 个平台服务和命令行可执行文件以及 4 个 shell 包装器；product_a 包含 2 个崩溃上传器可执行文件。所有 157 个文件的 sha256 和字节大小均与清单一致，init 或 SELinux 文本中有 62 个通过完整路径引用了它们。
-该角色表为本组中 346 个文件各有一行（190 verified，139 observed，16 inferred，1 unverified）。它位于 `data/subsystems/native-tools-and-hal-binaries/roles.tsv`。
+角色表：`data/subsystems/native-tools-and-hal-binaries/roles.tsv`（346 个文件：190 个 verified，139 个 observed，16 个 inferred，1 个 unverified）。
 
 ## 已验证的断言
 
@@ -60,8 +60,6 @@
 
 ## 更正措辞的断言
 
-下方结论以数据所支持的措辞重新表述。
-
 - **G10** (observed)：toolbox 含有 getprop 和 setprop 的用法字符串，从 libc 导入 __system_property_foreach 和 __system_property_read_callback，其字符串表包含路径 /dev/__properties__/property_info。通过该文件读取属于推断，依据是路径字符串；没有任何导入或 open 调用能证明这一点。
 - **G17** (observed)：hal_proxy_daemon 导入 wifi_* 函数（例如 wifi_initialize、wifi_get_ifaces 和 wifi_start_gscan，它们是由其 NEEDED 库 libwifi-hal-qcom.so 解析的未定义动态符号），其字符串表中保存编号为 1 至 13 的 WifiLogger 命令描述。
 - **G21** (observed)：light HAL 二进制文件将 android.hardware.light.V2_0.ILight、vendor.oculus.hardware.light.V2_0.ILight 和 android.hidl.base.V1_0.IBase 的方法符号作为未定义的动态符号导入引用（共 31 个符号，二进制文件中均未定义）。
@@ -70,8 +68,6 @@
 - **G26** (observed)：health HAL 2.1 服务 health-hal-2-1（classes hal 和 charger；用户和用户组为 system；capabilities WAKE_ALARM 和 BLOCK_SUSPEND）在 vendor_file_contexts 第 41 行被标记为 hal_health_default_exec。其二进制文件将 android.hardware.health.V2_0.IHealth 和 android.hardware.health.V2_0.IHealthInfoCallback 作为未定义导入引用。
 
 ## 被排除的断言
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 断言 | 原因 |
 |---|---|---|

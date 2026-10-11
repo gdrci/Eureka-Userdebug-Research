@@ -6,7 +6,7 @@
 
 The hal-manifests group is 62 VINTF XML files, all of them the only etc/vintf files on the mounted partitions: vendor_a 20, odm_a 18, system_ext_a 12, system_a 11, product_a 1. None is a binary, library or firmware image. The files declare HAL package, version, transport and instance for the framework (system_a manifest.xml, level-based compatibility matrices 3 to 6 and a device matrix), system_ext, vendor and odm layers. Most declared HALs are also named in init service entries and in the SELinux hwservice_contexts or service_contexts files. A name-level cross-reference matched 414 manifest and matrix entries to context files; 7 matrix requirement names had no context entry. Two device-matrix requirements (vendor.oculus.hardware.mixedreality and vendor.oculus.hardware.peripheralconfig@1.0, both optional) have no provider among the 62 files. For two odm HALs (sensors and usb) the init rc or the hwservice context declares more interfaces or versions than the manifest fragment does.
 
-The role table has one row for each of the 62 files in this group (59 verified, 0 observed, 3 inferred, 0 unverified). It is at `data/subsystems/hal-manifests/roles.tsv`.
+Role table: `data/subsystems/hal-manifests/roles.tsv` (62 files: 59 verified, 0 observed, 3 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -32,8 +32,6 @@ The role table has one row for each of the 62 files in this group (59 verified, 
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **GRP-04** (observed): Three files are classified text/xml (parfait.xml and the two DRM manifests), and file(1) agrees with that class for all three, reporting XML 1.0 document. Of the 59 text/plain files, file(1) reports exported SGML document for 18 (for example system_a/system/etc/vintf/manifest.xml) and plain ASCII text for 41.
 - **GRP-06** (verified): Name-level coverage by the 56 manifest roots (of the 62 files) is 28 of 30 device-matrix names. The two names with no provider are vendor.oculus.hardware.mixedreality (optional true) and vendor.oculus.hardware.peripheralconfig 1.0 (optional true). The full HAL name vendor.oculus.hardware.peripheralconfig occurs only in system_a/system/etc/vintf/compatibility_matrix.device.xml on the mount; the bare token peripheralconfig also appears in 10 other files as library, tool and path names.
 - **GRP-11** (verified): The four interfaces have SELinux labels in three context files: vendor_a/etc/selinux/vendor_hwservice_contexts (IQtiComposer at line 9 and vendor.display.config::IDisplayConfig at line 2), vendor_a/etc/selinux/vendor_service_contexts (AIDL vendor.qti.hardware.display.config.IDisplayConfig/default at line 4), and system_a/system/etc/selinux/plat_hwservice_contexts (android.hardware.graphics.composer::IComposer at line 36).
@@ -43,8 +41,6 @@ The claims below are restated with the wording that the data supports.
 - **GRP-27** (verified): The compatibility matrices contain hidl (261) and aidl (37) requirements. Of the 298 matrix requirement entries, 260 are optional true and 38 optional false. Across all 385 hal elements in the 62 files, 268 are optional true, 38 false and 79 have no attribute (the last two groups include manifest entries). The framework matrix compatibility_matrix.device.xml has 30 of 30 entries optional true; the device-type matrix vendor_a/etc/vintf/compatibility_matrix.xml has 6 of 6 entries optional false.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

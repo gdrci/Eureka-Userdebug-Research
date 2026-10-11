@@ -6,7 +6,7 @@
 
 The media-codecs group has 163 files: 49 in system_a, 1 in system_ext_a and 113 in vendor_a. The system side holds the Stagefright and Codec2 framework libraries (32-bit and 64-bit), the media.extractor and media service executables, and a Mainline APEX (com.android.media.swcodec, version 319999900) that ships the mediaswcodec service, a Codec2 software plugin set, its own media_codecs.xml, init.rc and seccomp policy. The vendor side holds 29 Codec2 software plugins per bitness (each exporting CreateCodec2Factory), 14 legacy OMX software plugins (createSoftOMXComponent), Qualcomm QC2 layers (libqcodec2_*) including a V4L2 plugin, a Codec2 HIDL server library used by the vendor.qti.media.c2 HAL, a ClearKey MediaCas plugin, and XML/JSON configuration (media_codecs_anorak.xml, media_codecs_performance_anorak.xml, media_profiles_V1_0.xml, media_profiles_anorak.xml, media_anorak/video_system_specs.json). The variant suffix _anorak comes from ro.media.xml_variant.codecs and ro.media.xml_variant.codecs_performance in vendor build.prop. One row, system_ext_a/lib64/libcodecwrapper.so, is a protobuf wrapper for wearable input telemetry and is not a media codec. Several XML includes named by media_codecs_anorak.xml are not present in the mounted partitions.
 
-The role table has one row for each of the 163 files in this group (103 verified, 56 observed, 4 inferred, 0 unverified). It is at `data/subsystems/media-codecs/roles.tsv`.
+Role table: `data/subsystems/media-codecs/roles.tsv` (163 files: 103 verified, 56 observed, 4 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -45,8 +45,6 @@ The role table has one row for each of the 163 files in this group (103 verified
 - **hwservice-01** (observed): The Codec2 HIDL interfaces are registered as hwservice names with the hal_codec2_hwservice label in both partitions. The platform property media.c2.dmabuf.padding is labelled codec2_config_prop.
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **sysext-01** (verified): system_ext_a/lib64/libcodecwrapper.so is a protobuf-based encode and decode wrapper for wearable input telemetry (IMU, EMG, gesture, battery, device-state and haptics messages in the com::oculus::wearableinputservice namespace), not a media codec. It embeds the protobuf runtime and has no libprotobuf dependency. Its references are WearableInputService.apk, which packages lib/arm64-v8a/libcodecwrapper.so and lib/arm64-v8a/libwis_input_device.so, and two system_ext libraries that link it: libwis_input_device.so (also packaged in the APK) and wis_handlers.so (a standalone system_ext library).
 - **apex-05** (verified): The APEX media_codecs.xml lists 9 Codec2 decoders and 6 encoders, all named with the c2.android.* prefix. Fourteen of the 15 carry an OMX.google alias; c2.android.opus.encoder has none. The file has no Include elements.

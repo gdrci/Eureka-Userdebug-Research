@@ -6,7 +6,7 @@
 
 The init-and-properties group covers 183 manifest rows (181 regular files, 2 symlinks) across five partitions (odm_a 24, product_a 2, system_a 80, system_ext_a 31, vendor_a 46). It contains the init executable and its two symlinks, the main system init script with zygote and USB variants, 170 .rc files defining 191 services and 371 on-triggers, vendor init scripts for the anorak SoC and eureka device, three vendor shell helpers, two fstab files, two ueventd.rc rule files, and five build.prop files holding 395 distinct property keys. Boot flow as declared by the files: the init binary reads /system/etc/init/hw/init.rc, which imports /init.environ.rc, the USB scripts, /vendor/etc/init/hw/init.${ro.hardware}.rc (init.eureka.rc, which imports init.anorak.rc) and /system/etc/init/hw/init.${ro.zygote}.rc (init.zygote64_stub32.rc, selected by ro.zygote=zygote64_stub32 in the vendor build.prop). The fstab selected by ro.hardware is /vendor/etc/fstab.eureka, loaded by mount_all in init.anorak.rc. The ro.hardware value itself is not in any build.prop of this group.
 
-The role table has one row for each of the 183 files in this group (178 verified, 5 observed, 0 inferred, 0 unverified). It is at `data/subsystems/init-and-properties/roles.tsv`.
+Role table: `data/subsystems/init-and-properties/roles.tsv` (183 files: 178 verified, 5 observed, 0 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -47,8 +47,6 @@ The role table has one row for each of the 183 files in this group (178 verified
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **C13** (observed): The init binary's property-service strings include init.svc. prefixes, ro.boottime.init, ro.cold_boot_done, persist. and ro. prefixes (for example ro.boot. and ro.boottime.), and /dev/__properties__/property_info. These strings are consistent with init setting init.svc.<name> state properties (inferred; runtime writes were not observed).
 - **C19** (inferred): The ro.hardware value that selects init.eureka.rc and fstab.eureka is inferred to be eureka. It is not set in any of the five build.prop files of this group, and its source is outside the group. The name is consistent with ro.product.<partition>.device=eureka in each build.prop (for example ro.product.vendor.device=eureka) and with ro.product.board=eureka in the vendor build.prop.
 - **C21** (verified): The vendor build.prop sets ro.zygote=zygote64_stub32, ro.board.platform=anorak, ro.product.board=eureka and ro.soc.model=SXR2230P. ro.zygote selects init.zygote64_stub32.rc through the import /system/etc/init/hw/init.${ro.zygote}.rc. The anorak script is imported by fixed path from init.eureka.rc. No rc file in the group references ro.board.platform, ro.product.board or ro.soc.model, so those three keys have no selecting role in this group.
@@ -59,8 +57,6 @@ The claims below are restated with the wording that the data supports.
 - **C44** (verified): The group's line-level role labels are 178 verified and 5 observed (183 rows). The five observed rows are system_a rc files with no service definitions: flags_health_check.rc, atrace_userdebug.rc, wifi.rc, oculus.perfetto.rc and bootstat.rc. Their role text describes trigger-driven actions.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

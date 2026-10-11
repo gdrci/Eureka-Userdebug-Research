@@ -10,7 +10,7 @@
    "label": "verified",
    "evidence": "Command: cut -f2 <image>-tools/work/subsystems/fonts-locale-input-resources/input_rows.tsv | sort | uniq -c. Excerpt: 8 odm_a / 6 product_a / 434 system_a. Command: cut -f4 (same file) | sort | uniq -c. Excerpt: 443 file / 5 symlink.",
    "file": "classified.tsv subset",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Legend for all reasons: WK = <image>-tools/work/subsystems/fonts-locale-input-resources ; MNT = <image>/mnt. Command: cut -f2 WK/input_rows.tsv | sort | uniq -c. Output: 8 odm_a, 6 product_a, 434 system_a. Command: cut -f4 WK/input_rows.tsv | sort | uniq -c. Output: 443 file, 5 symlink. wc -l WK/input_rows.tsv gives 448.",
    "corrected_claim": ""
   },
@@ -19,7 +19,7 @@
    "claim": "Every regular file row is present in the mount with the recorded size and sha256; no row is missing.",
    "label": "verified",
    "evidence": "Command: python3 -I <image>-tools/work/subsystems/fonts-locale-input-resources/check.py <WK> <image>/mnt . Excerpt: {'ok': 443, 'missing': 0, 'sha_bad': 0, 'size_bad': 0, 'link': 5, 'dir': 0}",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/check.py WK MNT. Output: {'ok': 443, 'missing': 0, 'sha_bad': 0, 'size_bad': 0, 'link': 5, 'dir': 0}. check.py tests each file row for existence, SHA-256 and byte length.",
    "corrected_claim": ""
   },
@@ -29,7 +29,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I check.py (same as C02). Excerpt: LINK exists=True target=Roboto-Regular.ttf system_a system/fonts/DroidSans-Bold.ttf / LINK exists=True target=FacebookEmoji64.ttf system_a system/fonts/NotoColorEmoji.lnk / LINK exists=True target=/apex/com.android.i18n/etc/icu system_a system/usr/icu. Command: ls -l <image>/mnt/system_a/system/usr/icu. Excerpt: lrw-r--r--. 1 root root 30 Jan 1 2009 system_a/system/usr/icu -> /apex/com.android.i18n/etc/icu",
    "file": "system_a/system/usr/icu",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/check.py WK MNT. Output LINK lines: target=Roboto-Regular.ttf for system_a system/fonts/DroidSans-Bold.ttf and system/fonts/DroidSans.ttf; target=FacebookEmoji64.ttf for system/fonts/NotoColorEmoji.lnk and system/fonts/NotoColorEmoji.ttf; target=/apex/com.android.i18n/etc/icu for system/usr/icu. Command: ls -l MNT/system_a/system/usr/icu. Output: lrw-r--r--. 1 root root 30 Jan 1 2009 .../usr/icu -> /apex/com.android.i18n/etc/icu.",
    "corrected_claim": ""
   },
@@ -38,7 +38,7 @@
    "claim": "Role categories cover all 448 rows: 210 system font entries (204 TTF/OTF, 2 TTC, 4 symlinks), 6 product fonts, 1 ICU symlink, 176 key layouts (171 vendor-named incl. 6 in odm_a, 1 gpio-keys in odm_a, 4 other), 8 IDC files (7 system, 1 odm), 6 key character maps, 37 hyb files, 2 bmd files, 2 zoneinfo files.",
    "label": "verified",
    "evidence": "Command: python3 -I WK/make_roles.py WK MNT. Excerpt: {'idc_odm': 1, 'kl_vendor': 171, 'kl_gpio': 1, 'product_font': 6, 'font_ttf': 204, 'link_font': 4, 'ttc': 2, 'link_icu': 1, 'hyb': 37, 'kl_other': 4, 'idc': 7, 'kcm': 6, 'bmd': 2, 'tz': 2} then rows: 448 UNCLASSIFIED: 0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/make_roles.py WK/recheck MNT, run on a scratch copy of the inputs at WK/recheck so the role table under review is not overwritten. Output: {'idc_odm': 1, 'kl_vendor': 171, 'kl_gpio': 1, 'product_font': 6, 'font_ttf': 204, 'link_font': 4, 'ttc': 2, 'link_icu': 1, 'hyb': 37, 'kl_other': 4, 'idc': 7, 'kcm': 6, 'bmd': 2, 'tz': 2}; rows: 448 UNCLASSIFIED: 0. cmp shows the regenerated roles.tsv is identical to WK/roles.tsv. Category sum: 210 + 6 + 1 + 176 + 8 + 6 + 37 + 2 + 2 = 448. Partition check: odm_a holds 6 vendor .kl, 1 gpio-keys .kl and 1 .idc.",
    "corrected_claim": ""
   },
@@ -48,7 +48,7 @@
    "label": "verified",
    "evidence": "Command: awk -F'\\t' 'NR>1{print $1\"\\t\"$2}' WK/roles.tsv | sort > WK/r_keys.txt; awk -F'\\t' '{print $2\"\\t\"$3}' WK/input_rows.tsv | sort > WK/i_keys.txt; diff WK/r_keys.txt WK/i_keys.txt. Excerpt: no output (identical). Command: wc -l WK/roles.tsv. Excerpt: 449. Command: cut -f4 WK/roles.tsv | sort | uniq -c. Excerpt: 3 inferred / 187 observed / 258 verified (plus header).",
    "file": "roles.tsv",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: awk -F tab NR>1 print partition/path on WK/roles.tsv, sorted, diffed against partition/path of WK/input_rows.tsv, sorted. Output: no diff. wc -l WK/roles.tsv: 449 (header plus 448). Unique partition/path keys: 448. Rows with NF != 4: 0. Command: cut -f4 WK/roles.tsv | sort | uniq -c. Output: 1 confidence (header), 3 inferred, 187 observed, 258 verified.",
    "corrected_claim": ""
   },
@@ -58,7 +58,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/Roboto-Regular.ttf. Excerpt: sfnt tag: b'\\x00\\x01\\x00\\x00' numTables: 18 / tables: GDEF,GPOS,GSUB,HVAR,OS/2,STAT,avar,cmap,fvar,glyf,gvar,head,hhea,hmtx,loca,maxp,name,post / name(3,1)='Roboto' / name(3,5)='Version 3.002; 2020' / fvar axes: [('wght', 100.0, 400.0, 900.0), ('wdth', 75.0, 100.0, 100.0), ('ital', 0.0, 0.0, 1.0)] / head: unitsPerEm=2048 / maxp numGlyphs=3362",
    "file": "system_a/system/fonts/Roboto-Regular.ttf",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/Roboto-Regular.ttf. Output: sfnt 00010000, numTables 18 (GDEF, GPOS, GSUB, HVAR, OS/2, STAT, avar, cmap, fvar, glyf, gvar, head, hhea, hmtx, loca, maxp, name, post); name(3,1)='Roboto'; name(3,5)='Version 3.002; 2020'; fvar wght 100.0/400.0/900.0, wdth 75.0/100.0/100.0, ital 0.0/0.0/1.0; unitsPerEm=2048; numGlyphs=3362.",
    "corrected_claim": ""
   },
@@ -68,7 +68,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/fontsxml_summary.py MNT. Excerpt: family sans-serif -> [('100', 'normal', 'Roboto-Regular.ttf'), ('200', 'normal', 'Roboto-Regular.ttf'), ('300', 'normal', 'Roboto-Regular.ttf'), ('400', 'normal', 'RobotoStatic-Regular.ttf')]. Command: grep -n -E 'familyset|first font is default|family name=.sans-serif.' MNT/system_a/system/etc/fonts.xml. Excerpt: 24:<familyset version=\"23\"> / 25: <!-- first font is default --> / 26: <family name=\"sans-serif\">",
    "file": "system_a/system/etc/fonts.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/fontsxml_summary.py MNT. Output: family sans-serif lists weights 100, 200, 300 as Roboto-Regular.ttf and 400 as RobotoStatic-Regular.ttf. Command: grep -n -E 'familyset|first font is default|family name=.sans-serif.' MNT/system_a/system/etc/fonts.xml. Output: 24 familyset version=23; 25 comment first font is default; 26 family name=sans-serif. Parsing family sans-serif-condensed (line 126) shows weights 100 to 600 all as Roboto-Regular.ttf.",
    "corrected_claim": ""
   },
@@ -78,7 +78,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/FacebookEmoji64.ttf. Excerpt: file bytes: 9438164 / tables: CBDT,CBLC,GSUB,OS/2,cmap,head,hhea,hmtx,maxp,meta,name,post,vhea,vmtx / name(3,1)='Facebook Emoji' / name(3,5)='Version 1.0' / maxp numGlyphs=3902. Command: sed -n '1331,1333p' MNT/system_a/system/etc/fonts.xml. Excerpt: <family lang=\"und-Zsye\"> / <font weight=\"400\" style=\"normal\">NotoColorEmoji.ttf</font> / </family>",
    "file": "system_a/system/fonts/FacebookEmoji64.ttf",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/FacebookEmoji64.ttf. Output: sfnt 00010000; tables include CBDT and CBLC; name(3,1)='Facebook Emoji'; name(3,5)='Version 1.0'; numGlyphs=3902; file size 9438164 bytes. Command: sed -n 1331,1333p MNT/system_a/system/etc/fonts.xml. Output: family lang=und-Zsye with font NotoColorEmoji.ttf at weight 400. Symlink targets of NotoColorEmoji.ttf and NotoColorEmoji.lnk are FacebookEmoji64.ttf (see C03).",
    "corrected_claim": ""
   },
@@ -88,7 +88,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/NotoSansCJK-Regular.ttc 2. Excerpt: magic: b'ttcf' / TTC version: 0x00010000 numFonts: 10 / offsets: [52, 16465772, ...] / font@0x34 numTables=16 family(1)='Noto Sans CJK JP'. Command: python3 (ttf_mod names over each collection member) on NotoSansCJK-Regular.ttc. Excerpt: 0 Noto Sans CJK JP / 1 Noto Sans CJK KR / 2 Noto Sans CJK SC / 3 Noto Sans CJK TC / 4 Noto Sans CJK HK / 5 Noto Sans Mono CJK JP ... 9 Noto Sans Mono CJK HK. Command: python3 on NotoSerifCJK-Regular.ttc. Excerpt: 0 Noto Serif CJK JP / 1 Noto Serif CJK KR / 2 Noto Serif CJK SC / 3 Noto Serif CJK TC. Command: sed -n '1296,1316p' MNT/system_a/system/etc/fonts.xml. Excerpt: <family lang=\"zh-Hans\"> ... index=\"2\" ...; <family lang=\"zh-Hant,zh-Bopo\"> ... index=\"3\"; <family lang=\"ja\"> ... index=\"0\".",
    "file": "system_a/system/fonts/NotoSansCJK-Regular.ttc",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/NotoSansCJK-Regular.ttc 2. Output: magic b'ttcf', TTC version 0x00010000, numFonts 10. A per-member listing (python3 -I WK/recheck/ttc_members.py WK MNT/system_a/system/fonts/NotoSansCJK-Regular.ttc) shows sfnt tag OTTO and a CFF table in all 10 members, so the outlines are CFF, not TrueType. Members 0-4: Noto Sans CJK JP, KR, SC, TC, HK. Members 5-9: Noto Sans Mono CJK JP, KR, SC, TC, HK, which is five Mono faces, not four. NotoSerifCJK-Regular.ttc: numFonts 4 (JP, KR, SC, TC), also OTTO/CFF. Command: sed -n 1296,1316p MNT/system_a/system/etc/fonts.xml and grep -n lang=ko in the same file. Output: zh-Hans index 2, zh-Hant,zh-Bopo index 3, ja index 0, ko index 1 (line 1323). The index mapping holds.",
    "corrected_claim": "NotoSansCJK-Regular.ttc is an OpenType collection with CFF outlines (sfnt tag OTTO in each member) of 10 faces: Noto Sans CJK JP, KR, SC, TC and HK, then five Noto Sans Mono CJK faces (JP, KR, SC, TC, HK). NotoSerifCJK-Regular.ttc is a CFF collection of 4 faces (JP, KR, SC, TC). fonts.xml selects faces by index: ja=0, ko=1, zh-Hans=2, zh-Hant,zh-Bopo=3."
   },
@@ -98,7 +98,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/ttf_inspect.py MNT/product_a/fonts/OptimisticDisplay-VF.ttf. Excerpt: name(3,1)='Optimistic Disp VF Cyrl Md' / name(3,5)='Version 2.000' / fvar axes: [('wght', 200.0, 500.0, 800.0)] / head: unitsPerEm=2000 / maxp numGlyphs=341. Command: python3 -I WK/ttf_inspect.py MNT/product_a/fonts/OptimisticText-Regular.ttf. Excerpt: name(3,1)='Optimistic Text App' / name(3,5)='Version 1.000' / maxp numGlyphs=430. Command: ls MNT/product_a/fonts. Excerpt: OptimisticDisplay-VF.ttf OptimisticText-Black.ttf OptimisticText-Bold.ttf OptimisticText-Light.ttf OptimisticText-Medium.ttf OptimisticText-Regular.ttf",
    "file": "product_a/fonts/OptimisticDisplay-VF.ttf",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Command: python3 -I WK/ttf_inspect.py on MNT/product_a/fonts/OptimisticDisplay-VF.ttf. Output: name(3,1)='Optimistic Disp VF Cyrl Md'; name(3,5)='Version 2.000'; fvar wght 200.0/500.0/800.0; unitsPerEm=2000; numGlyphs=341. Display values hold. Command: the same tool on the five OptimisticText files. Output: no fvar table; version 1.000; numGlyphs 430; unitsPerEm 2000 for all five. The names differ by file: name(3,1) is 'Optimistic Text App' for Regular and Bold, 'Optimistic Text App Light' for Light, 'Optimistic Text App Medium' for Medium, and 'Optimistic Text App ExtraBold' for the file named Black. Name ID 16 (typographic family) is 'Optimistic Text App' for Light, Medium and Black and absent for Regular and Bold. Command: ls MNT/product_a/fonts lists all six files.",
    "corrected_claim": "Product fonts: OptimisticDisplay-VF.ttf is a variable TrueType font named 'Optimistic Disp VF Cyrl Md' (version 2.000, wght 200-800 with default 500, 341 glyphs, unitsPerEm 2000). OptimisticText-{Light,Regular,Medium,Bold,Black}.ttf are static TrueType fonts (version 1.000, 430 glyphs, unitsPerEm 2000) in the typographic family 'Optimistic Text App' (name ID 16, absent in Regular and Bold). Their full names are 'Optimistic Text App Light', 'Optimistic Text App' (Regular), 'Optimistic Text App Medium', 'Optimistic Text App Bold' and 'Optimistic Text App ExtraBold' (the file named Black). All six sit in product_a/fonts."
   },
@@ -108,7 +108,7 @@
    "label": "verified",
    "evidence": "Command: grep -n family MNT/product_a/etc/fonts_customization.xml. Excerpt: 3: <family customizationType=\"new-named-family\" name=\"ms-neo-gothic\"> / 6: ... name=\"optimistic\"> / 13: ... name=\"optimistic display\"> . Command: cat MNT/product_a/etc/fonts_customization.xml (lines 13-19). Excerpt: <font weight=\"900\" style=\"normal\">OptimisticDisplay-VF.ttf</font>. Axis range from C10 (wght 200.0-800.0).",
    "file": "product_a/etc/fonts_customization.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -n family MNT/product_a/etc/fonts_customization.xml. Output: line 3 ms-neo-gothic; line 6 optimistic; line 13 optimistic display. Command: cat MNT/product_a/etc/fonts_customization.xml. Output: ms-neo-gothic lists MSNeoGothic.ttf at 400; optimistic lists OptimisticText-Light at 300, -Regular at 400, -Medium at 500, -Black at 900, -Bold at 700; optimistic display lists OptimisticDisplay-VF.ttf at 300, 400, 500, 900 and 700. The wght axis of that file runs 200-800 (C10).",
    "corrected_claim": ""
   },
@@ -118,7 +118,7 @@
    "label": "verified",
    "evidence": "Command: od -A x -t x1z -N 16 MNT/system_a/system/fonts/AndroidClock.ttf. Excerpt: 000000 00 01 00 00 00 0c 00 80 00 03 00 40 47 44 45 46. Command: file -b on the same file. Excerpt: SIMH tape data. Command: python3 -I WK/ttf_inspect.py on the same file. Excerpt: name(3,1)='AndroidClock' / name(3,5)='Version 1.00000; 2012' / maxp numGlyphs=16. Command: grep -c -E 'AndroidClock' MNT/system_a/system/etc/fonts.xml. Excerpt: 0",
    "file": "system_a/system/fonts/AndroidClock.ttf",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: od -A x -t x1z -N 16 MNT/system_a/system/fonts/AndroidClock.ttf. Output: 00 01 00 00 00 0c 00 80 00 03 00 40 47 44 45 46, which is sfnt 0x00010000 with numTables 12 and first table GDEF. Command: python3 -I WK/ttf_inspect.py on the same file. Output: 12 tables; name(3,4)='AndroidClock Regular' (full name); name(3,1)='AndroidClock'; name(3,5)='Version 1.00000; 2012'; numGlyphs=16. Command: file -b on the same file. Output: SIMH tape data. The input row carries mime application/SIMH-tape-data, while the other font rows carry font/sfnt. Command: grep -c AndroidClock MNT/system_a/system/etc/fonts.xml. Output: 0. No other file in the mounted partitions contains the name.",
    "corrected_claim": ""
   },
@@ -128,7 +128,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/MSNeoGothic.ttf. Excerpt: name(3,1)='Microsoft NeoGothic' / name(3,5)='Version 2.00' / maxp numGlyphs=14606. Command: grep -c -E 'MSNeoGothic' MNT/system_a/system/etc/fonts.xml. Excerpt: 0. Command: grep -n ms-neo-gothic MNT/product_a/etc/fonts_customization.xml. Excerpt: 3: <family customizationType=\"new-named-family\" name=\"ms-neo-gothic\">",
    "file": "system_a/system/fonts/MSNeoGothic.ttf",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/ttf_inspect.py MNT/system_a/system/fonts/MSNeoGothic.ttf. Output: name(3,1)='Microsoft NeoGothic'; name(3,5)='Version 2.00'; numGlyphs=14606. The input row size is 755716, which matches the file's byte length. Command: grep -c MSNeoGothic MNT/system_a/system/etc/fonts.xml. Output: 0. Command: grep -n ms-neo-gothic MNT/product_a/etc/fonts_customization.xml. Output: line 3. Command: grep -rla MSNeoGothic over all mounted partitions. Output: product_a/etc/fonts_customization.xml only.",
    "corrected_claim": ""
   },
@@ -138,7 +138,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/fontsxml_summary.py MNT. Excerpt: familyset version: 23 / family elements: 157 alias elements: 24 / font elements: 366 distinct font files: 204 / axis tags: ['ital', 'wdth', 'wght']. Command: python3 (parse of fonts.xml against system/fonts listing, members of the group absent from fonts.xml). Excerpt: group fonts NOT referenced by fonts.xml (6): AndroidClock.ttf DroidSans-Bold.ttf DroidSans.ttf FacebookEmoji64.ttf MSNeoGothic.ttf NotoColorEmoji.lnk. Referenced but missing under system_a/system/fonts: [].",
    "file": "system_a/system/etc/fonts.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/fontsxml_summary.py MNT. Output: familyset version 23; family elements 157; alias elements 24; font elements 366; distinct font files 204; axis tags ['ital', 'wdth', 'wght']. Command: set comparison of fonts.xml font texts with the group system_a/system/fonts entries. Output: refs missing from system/fonts = []; group entries not referenced = AndroidClock.ttf, DroidSans-Bold.ttf, DroidSans.ttf, FacebookEmoji64.ttf, MSNeoGothic.ttf, NotoColorEmoji.lnk (six); refs not in group = []; referenced group entries = 204.",
    "corrected_claim": ""
   },
@@ -148,7 +148,7 @@
    "label": "observed",
    "evidence": "Command: head -c 1500 MNT/system_a/system/etc/fonts.xml. Excerpt (comment block): 'Fonts are chosen based on a match: full BCP-47 language tag including script, then just language, and finally order (the first font containing the glyph).' and 'Order of appearance is also the tiebreaker for weight matching.'",
    "file": "system_a/system/etc/fonts.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Command: head -c 1500 MNT/system_a/system/etc/fonts.xml. Output comment: 'Fonts are chosen based on a match: full BCP-47 language tag including script, then just language, and finally order (the first font containing the glyph).' and 'Order of appearance is also the tiebreaker for weight matching.' The rule is stated for fonts being chosen, not for families being matched.",
    "corrected_claim": "fonts.xml states its selection rule: fonts are chosen by a match on the full BCP-47 language tag including script, then on language, then on order (the first font containing the glyph). Order of appearance also breaks ties for weight matching."
   },
@@ -158,7 +158,7 @@
    "label": "observed",
    "evidence": "Command: strings -n 6 MNT/system_a/system/lib64/libandroid.so | grep -n -E '/system/fonts|fonts.xml|fonts_customization|/product/fonts|/data/fonts'. Excerpt: 727:/product/etc/fonts_customization.xml / 761:/product/fonts/ / 882:/system/etc/fonts.xml / 898:/system/fonts/",
    "file": "system_a/system/lib64/libandroid.so",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: strings -n 6 MNT/system_a/system/lib64/libandroid.so | grep -n -E '/system/fonts|fonts.xml|fonts_customization|/product/fonts|/data/fonts'. Output: 727 /product/etc/fonts_customization.xml; 761 /product/fonts/; 882 /system/etc/fonts.xml; 898 /system/fonts/. No /data/fonts match.",
    "corrected_claim": ""
   },
@@ -168,7 +168,7 @@
    "label": "verified",
    "evidence": "Command: grep -n -E '^key (1|2|14|28) ' MNT/system_a/system/usr/keylayout/Generic.kl. Excerpt: 23:key 1 ESCAPE / 24:key 2 1 / 36:key 14 DEL / 50:key 28 ENTER. Command: grep -c -E '^key ' ... Excerpt: 254. Command: grep -c '^axis ' ... Excerpt: 13. Command: grep -c '^led ' ... Excerpt: 11. Command: grep -E '^axis ' Generic.kl | head -3. Excerpt: axis 0x00 X / axis 0x01 Y / axis 0x02 Z",
    "file": "system_a/system/usr/keylayout/Generic.kl",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -n -E '^key (1|2|14|28) ' MNT/system_a/system/usr/keylayout/Generic.kl. Output: 23 key 1 ESCAPE; 24 key 2 1; 36 key 14 DEL; 50 key 28 ENTER. Command: grep -c '^key ' gives 254; grep -c '^axis ' gives 13; grep -c '^led ' gives 11. Header line 16: 'Generic key layout file for full alphabetic US English PC style external keyboards.'",
    "corrected_claim": ""
   },
@@ -178,7 +178,7 @@
    "label": "verified",
    "evidence": "Command: python3 (regex count of leading directive words over the 176 .kl rows of input_rows.tsv). Excerpt: kl directive totals over 176 files: {'key': 2986, 'axis': 1294, 'led': 38, 'sensor': 96}. Command: grep -h -E '^axis ' MNT/system_a/system/usr/keylayout/*.kl | awk '{print $3}' | sort | uniq -c | sort -rn | head -6. Excerpt: 156 Z / 156 Y / 156 X / 156 RZ / 156 HAT_Y / 156 HAT_X. Command: grep -h -E '^sensor ' ... | awk '{print $3}' | sort | uniq -c. Excerpt: 48 GYROSCOPE / 48 ACCELEROMETER",
    "file": "system_a/system/usr/keylayout",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Command: python3 counting leading directive words over the 176 .kl rows of WK/input_rows.tsv. Output: key 2986, axis 1294, led 38, sensor 96; sensor ACCELEROMETER 48 and GYROSCOPE 48. Axis names X, Y, Z, RZ, HAT_X and HAT_Y each appear in 162 of the 176 files. The 156 in the claim's command is the system_a count only: grep -h '^axis ' over MNT/system_a/system/usr/keylayout/*.kl gives 156 lines per name, and 156 system_a files contain an X axis line. The 6 odm_a vendor files supply the other 6.",
    "corrected_claim": "Across the 176 key layout files in the group the directives are: key 2986, axis 1294, led 38, sensor 96. Sensor types are ACCELEROMETER and GYROSCOPE (48 each). Axis names include X, Y, Z, RZ, HAT_X and HAT_Y, each in 162 of the 176 files (156 of the 169 system_a files and 6 of the 7 odm_a files)."
   },
@@ -188,7 +188,7 @@
    "label": "observed",
    "evidence": "Command: for each .kl/.kcm/.idc row, grep '^#' with license lines removed, first remaining line written to WK/kl_comments.txt; then awk -F' [|] ' '$2!=\"\"' WK/kl_comments.txt | head -120. Excerpt: Vendor_045e_Product_0b13.kl | # XBox X/S wireless controller - Model 1914 QAU-00002 / Vendor_054c_Product_05c4.kl | # Sony Playstation(R) DualShock 4 Controller / Vendor_1532_Product_0705.kl | # Razer Raiju Mobile Controller with wired USB interface. / AVRCP.kl | # Key layout used for Bluetooth AVRCP support. / Vendor_0957_Product_0001.kl | Key Layout file for Google Reference RCU Remote. / Vendor_0e6f_Product_0161.kl | # PDP Xbox One Controller",
    "file": "system_a/system/usr/keylayout",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 reading the first non-license comment line of each of the 171 Vendor_ key layouts in WK/input_rows.tsv. Output: all 171 have one. Samples: Vendor_045e_Product_0b13.kl '# XBox X/S wireless controller - Model 1914 QAU-00002'; Vendor_045e_Product_0b0c.kl '# XBox One Adaptive Controller'; Vendor_057e_Product_2009.kl '# Nintendo Switch Pro Controller - HAC-013 - Bluetooth'; Vendor_046d_Product_b335.kl '# Logitech K830'; AVRCP.kl '# Key layout used for Bluetooth AVRCP support.' Command: grep -c _Version_ WK/input_rows.tsv. Output: 10 (for example Vendor_054c_Product_0268_Version_8000.kl). Vendor-named key layouts number 171 of 176.",
    "corrected_claim": ""
   },
@@ -198,7 +198,7 @@
    "label": "verified",
    "evidence": "Command: grep -n '^key ' MNT/odm_a/usr/keylayout/gpio-keys.kl. Excerpt: 28:key 115 VOLUME_UP / 29:key 114 VOLUME_DOWN / 30:key 102 HOME / 33:key 227 TV_INPUT / 35:key 528 FOCUS / 36:key 766 CAMERA",
    "file": "odm_a/usr/keylayout/gpio-keys.kl",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -n '^key ' MNT/odm_a/usr/keylayout/gpio-keys.kl. Output: 28 key 115 VOLUME_UP; 29 key 114 VOLUME_DOWN; 30 key 102 HOME; 33 key 227 TV_INPUT; 35 key 528 FOCUS; 36 key 766 CAMERA; six key lines in total. Header: 'Copyright (c) 2013-2015, The Linux Foundation' license block.",
    "corrected_claim": ""
   },
@@ -208,7 +208,7 @@
    "label": "verified",
    "evidence": "Command: grep -H '^type ' MNT/system_a/system/usr/keychars/*.kcm. Excerpt: Generic.kcm:type FULL / Vendor_18d1_Product_0200.kcm:type FULL / Vendor_18d1_Product_5018.kcm:type FULL / Virtual.kcm:type FULL / qwerty.kcm:type ALPHA / qwerty2.kcm:type ALPHA. Command: grep -c '^key ' qwerty.kcm and Generic.kcm. Excerpt: 54 and 107. Command: head -12 MNT/system_a/system/usr/keychars/qwerty.kcm (non-comment lines). Excerpt: type ALPHA / key A { / label: 'A' / number: '2' / base: 'a' / shift, capslock: 'A' / alt: '#' / shift+alt, capslock+alt: none / }",
    "file": "system_a/system/usr/keychars/qwerty.kcm",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -H '^type ' MNT/system_a/system/usr/keychars/*.kcm. Output: Generic FULL; Vendor_18d1_Product_0200 FULL; Vendor_18d1_Product_5018 FULL; Virtual FULL; qwerty ALPHA; qwerty2 ALPHA. Command: grep -c '^key ' on qwerty.kcm gives 54 and on Generic.kcm gives 107. Command: grep -v '^#' on qwerty.kcm. Output: the key A block lists label, number, base, shift/capslock, alt and shift+alt/capslock+alt entries.",
    "corrected_claim": ""
   },
@@ -218,7 +218,7 @@
    "label": "verified",
    "evidence": "Command: grep -v '^#' MNT/system_a/system/usr/idc/qwerty.idc | grep -v '^$'. Excerpt: touch.deviceType = touchScreen / touch.orientationAware = 1 / keyboard.layout = qwerty / keyboard.characterMap = qwerty / keyboard.orientationAware = 1 / keyboard.builtIn = 1 / cursor.mode = navigation / cursor.orientationAware = 1",
    "file": "system_a/system/usr/idc/qwerty.idc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -v '^#' MNT/system_a/system/usr/idc/qwerty.idc | grep -v '^$'. Output: touch.deviceType = touchScreen; touch.orientationAware = 1; keyboard.layout = qwerty; keyboard.characterMap = qwerty; keyboard.orientationAware = 1; keyboard.builtIn = 1; cursor.mode = navigation; cursor.orientationAware = 1. Header line 16: 'Emulator keyboard configuration file #1.'",
    "corrected_claim": ""
   },
@@ -228,7 +228,7 @@
    "label": "verified",
    "evidence": "Command: cat MNT/system_a/system/usr/idc/*.idc MNT/odm_a/usr/idc/*.idc | grep -v '^#' | grep -E '=' | cut -d= -f1 | sed 's/[[:space:]]*$//' | sort | uniq -c | sort -rn | head -30. Excerpt: keyboard.layout 5 / keyboard.characterMap 3 / touch.deviceType 2 / sensor.gyroscope.power 2 / sensor.accelerometer.power 2 / device.type 1 (and the other keys listed). Command: grep -v '^#' MNT/system_a/system/usr/idc/Vendor_054c_Product_09cc.idc | grep -v '^$'. Excerpt: sensor.accelerometer.reportingMode = 0 / sensor.accelerometer.maxDelay = 100000 / sensor.accelerometer.minDelay = 5000 / sensor.accelerometer.power = 1.5 / sensor.gyroscope.reportingMode = 0 / sensor.gyroscope.maxDelay = 100000 / sensor.gyroscope.minDelay = 5000 / sensor.gyroscope.power = 0.8",
    "file": "system_a/system/usr/idc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: cat MNT/system_a/system/usr/idc/*.idc MNT/odm_a/usr/idc/*.idc | grep -v '^#' | grep '=' | cut -d= -f1 | sort | uniq -c. Output includes keyboard.layout 5, keyboard.characterMap 3, keyboard.builtIn 2, keyboard.doNotWakeByDefault 2, device.internal 2, device.type 1, touch.deviceType 2, cursor.mode 2, audio.mic 2, and sensor.accelerometer and sensor.gyroscope with reportingMode, maxDelay, minDelay and power (2 each). Command: grep -v '^#' MNT/system_a/system/usr/idc/Vendor_054c_Product_09cc.idc. Output: accelerometer reportingMode 0, maxDelay 100000, minDelay 5000, power 1.5; gyroscope reportingMode 0, maxDelay 100000, minDelay 5000, power 0.8. Header line 16: '# Sony DS4 motion sensor configuration file.'",
    "corrected_claim": ""
   },
@@ -238,7 +238,7 @@
    "label": "verified",
    "evidence": "Command: cat MNT/odm_a/usr/idc/Vendor_2833_Product_0160.idc. Excerpt: keyboard.layout = oculus-device / keyboard.characterMap = oculus-device / device.internal=1 / device.type=vrPeripheral. Command: ls -l MNT/odm_a/usr/keychars/oculus-device.kcm MNT/odm_a/usr/keylayout/oculus-device.kl. Excerpt: 187 and 29 bytes. Command: grep -P 'oculus-device' classified.tsv | cut -f1-4. Excerpt: sensors-mcu-meta-hal odm_a usr/keychars/oculus-device.kcm file / sensors-mcu-meta-hal odm_a usr/keylayout/oculus-device.kl file",
    "file": "odm_a/usr/idc/Vendor_2833_Product_0160.idc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: cat MNT/odm_a/usr/idc/Vendor_2833_Product_0160.idc. Output: keyboard.layout = oculus-device; keyboard.characterMap = oculus-device; device.internal=1; device.type=vrPeripheral. Command: ls -l of odm_a/usr/keychars/oculus-device.kcm and odm_a/usr/keylayout/oculus-device.kl. Output: 187 bytes and 29 bytes. The .idc is 113 bytes. The .kl has key 172 HOME and key 159 FORWARD. The .kcm is type FULL with key FORWARD base: fallback HOME. Command: grep -P oculus-device WK/../classified.tsv (classified.tsv in eureka/). Output: both files are in group sensors-mcu-meta-hal.",
    "corrected_claim": ""
   },
@@ -248,7 +248,7 @@
    "label": "verified",
    "evidence": "Command: sed -n '33,35p;266p;325p' MNT/system_a/system/etc/selinux/plat_file_contexts. Excerpt: /(odm|vendor/odm|vendor|system/vendor)/usr/keylayout(/.*)?\\.kl u:object_r:vendor_keylayout_file:s0 / ... usr/keychars ... vendor_keychars_file / ... usr/idc ... vendor_idc_file / /data/misc/zoneinfo(/.*)? u:object_r:zoneinfo_data_file:s0 / /system/usr/share/zoneinfo(/.*)? u:object_r:system_zoneinfo_file:s0. Command: grep -n 'fonts' MNT/system_a/system/etc/selinux/plat_file_contexts. Excerpt: 231:/data/fonts/files(/.*)? u:object_r:font_data_file:s0",
    "file": "system_a/system/etc/selinux/plat_file_contexts",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: sed -n 33,35p;266p;325p MNT/system_a/system/etc/selinux/plat_file_contexts. Output: line 33 keylayout to vendor_keylayout_file; line 34 keychars to vendor_keychars_file; line 35 idc to vendor_idc_file; line 266 /data/misc/zoneinfo to zoneinfo_data_file; line 325 /system/usr/share/zoneinfo to system_zoneinfo_file. Command: grep -n fonts on the same file. Output: 231 /data/fonts/files(/.*)? font_data_file only.",
    "corrected_claim": ""
   },
@@ -258,7 +258,7 @@
    "label": "verified",
    "evidence": "Command: grep -n -E '[(]type (vendor_keylayout_file|vendor_keychars_file|vendor_idc_file|font_data_file|system_zoneinfo_file|zoneinfo_data_file|tzdatacheck_exec)[)]' MNT/system_a/system/etc/selinux/plat_sepolicy.cil. Excerpt: 2006:(type system_zoneinfo_file) / 2046:(type vendor_keylayout_file) / 2048:(type vendor_keychars_file) / 2050:(type vendor_idc_file) / 2268:(type zoneinfo_data_file) / 3814:(type tzdatacheck_exec) / 4026:(type font_data_file)",
    "file": "system_a/system/etc/selinux/plat_sepolicy.cil",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -n -E '[(]type (vendor_keylayout_file|vendor_keychars_file|vendor_idc_file|font_data_file|system_zoneinfo_file|zoneinfo_data_file|tzdatacheck_exec)[)]' MNT/system_a/system/etc/selinux/plat_sepolicy.cil. Output: 2006 system_zoneinfo_file; 2046 vendor_keylayout_file; 2048 vendor_keychars_file; 2050 vendor_idc_file; 2268 zoneinfo_data_file; 3814 tzdatacheck_exec; 4026 font_data_file.",
    "corrected_claim": ""
   },
@@ -268,7 +268,7 @@
    "label": "verified",
    "evidence": "Command: sed -n '778p;838,840p;996p' MNT/system_a/system/etc/init/hw/init.rc. Excerpt: mkdir /data/misc/zoneinfo 0775 system system / mkdir /data/fonts/ 0771 root root encryption=Require / mkdir /data/fonts/files 0771 system system / mkdir /data/fonts/config 0770 system system / exec - system system -- /system/bin/tzdatacheck /apex/com.android.tzdata/etc/tz /data/misc/zoneinfo. Command: awk 'NR<=996 && /^on /{h=NR\": \"$0} END{print h}' MNT/system_a/system/etc/init/hw/init.rc. Excerpt: 672: on post-fs-data. Command: sed -n '8,11p' MNT/system_a/init.environ.rc. Excerpt: export ANDROID_I18N_ROOT /apex/com.android.i18n / export ANDROID_TZDATA_ROOT /apex/com.android.tzdata",
    "file": "system_a/system/etc/init/hw/init.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: sed -n 778p;838,840p;996p MNT/system_a/system/etc/init/hw/init.rc. Output: 778 mkdir /data/misc/zoneinfo 0775 system system; 838 mkdir /data/fonts/ 0771 root root encryption=Require; 839 mkdir /data/fonts/files 0771 system system; 840 mkdir /data/fonts/config 0770 system system; 996 exec - system system -- /system/bin/tzdatacheck /apex/com.android.tzdata/etc/tz /data/misc/zoneinfo. Section headers between lines 660 and 1000 are 662 on property and 672 on post-fs-data, with no service line, so line 996 is in the post-fs-data action. Command: sed -n 8,11p MNT/system_a/init.environ.rc. Output: export ANDROID_I18N_ROOT /apex/com.android.i18n; export ANDROID_TZDATA_ROOT /apex/com.android.tzdata (init syntax, written with = in the claim).",
    "corrected_claim": ""
   },
@@ -278,7 +278,7 @@
    "label": "verified",
    "evidence": "Command: grep -rIn -E 'keylayout|keychars|usr/idc|/fonts|hyphen|share/bmd|usr/icu' --include='*.rc' --include='ueventd*' --include='init*' MNT. Excerpt: only ./system_a/system/etc/init/hw/init.rc:838-840 (mkdir /data/fonts ...); no other matches.",
    "file": "system_a/system/etc/init/hw/init.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: grep -rIn -E 'keylayout|keychars|usr/idc|/fonts|hyphen|share/bmd|usr/icu' --include='*.rc' --include='ueventd*' --include='init*' MNT. Output: only init.rc lines 838, 839 and 840 (mkdir /data/fonts, /data/fonts/files, /data/fonts/config).",
    "corrected_claim": ""
   },
@@ -288,7 +288,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/verify_misc.py MNT. Excerpt: tzdata magic=b'tzdata' version=b'2021a' / index_offset=24 data_offset=30860 final_offset=491837 file_size=491837 records=593 / first record name=b'Africa/Abidjan' start=0 len=156. Command: file -b on the same file. Excerpt: data (not text).",
    "file": "system_a/system/usr/share/zoneinfo/tzdata",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/verify_misc.py MNT. Output: tzdata magic b'tzdata', version b'2021a'; index_offset=24, data_offset=30860, final_offset=491837, file_size=491837; records=593; first record name b'Africa/Abidjan', start=0, len=156. (30860 - 24) / 52 = 593 exactly. Command: file -b on the tzdata file. Output: data.",
    "corrected_claim": ""
   },
@@ -298,7 +298,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/verify_misc.py MNT (tz_version line). Excerpt: tz_version=b'005.001|2021a|001'. Command: od -A x -t x1z MNT/system_a/system/usr/share/zoneinfo/tz_version. Excerpt: 30 30 35 2e 30 30 31 7c 32 30 32 31 61 7c 30 30 31 = 005.001|2021a|001",
    "file": "system_a/system/usr/share/zoneinfo/tz_version",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/verify_misc.py MNT. Output: tz_version=b'005.001|2021a|001'. Command: od -A x -t x1z MNT/system_a/system/usr/share/zoneinfo/tz_version. Output: 30 30 35 2e 30 30 31 7c 32 30 32 31 61 7c 30 30 31 (005.001|2021a|001). The meaning of the three fields is inferred, not stated in the file.",
    "corrected_claim": ""
   },
@@ -308,7 +308,7 @@
    "label": "observed",
    "evidence": "Command: strings -n 6 MNT/system_a/system/lib64/bootstrap/libc.so | grep -n -E 'tzdata|couldn.t find any'. Excerpt: 1873:/apex/com.android.tzdata/etc/tz/tzdata / 2078:/data/misc/zoneinfo/current/tzdata / 2250:/system/usr/share/zoneinfo/tzdata / 2736:%s: couldn't find any tzdata when looking for %s!",
    "file": "system_a/system/lib64/bootstrap/libc.so",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: strings -n 6 MNT/system_a/system/lib64/bootstrap/libc.so | grep -n -E 'tzdata|couldn.t find any'. Output: 1873 /apex/com.android.tzdata/etc/tz/tzdata; 2078 /data/misc/zoneinfo/current/tzdata; 2250 /system/usr/share/zoneinfo/tzdata; 2736 %s: couldn't find any tzdata when looking for %s!",
    "corrected_claim": ""
   },
@@ -318,7 +318,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/verify_misc.py MNT. Excerpt: hyb files=37 magic+size-field match=37. Command: od -A x -t x1z -N 48 MNT/system_a/system/usr/hyphen-data/hyph-en-us.hyb. Excerpt: 000000 68 79 ad 62 00 00 00 00 18 00 00 00 60 00 00 00 / 000010 1c d0 00 00 9a e9 00 00 00 00 00 00 41 00 00 00 / 000020 7b 00 00 00 01 02 03 04 05 06 07 08 09 0a 0b 0c. Command: ls -l hyph-en-us.hyb size. Excerpt: 59802 bytes.",
    "file": "system_a/system/usr/hyphen-data/hyph-en-us.hyb",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: python3 -I WK/verify_misc.py MNT. Output: hyb files=37; magic and size-field match=37. Command: od -A x -t x1z -N 48 MNT/system_a/system/usr/hyphen-data/hyph-en-us.hyb. Output: 000000 68 79 ad 62 00 00 00 00 18 00 00 00 60 00 00 00; 000010 1c d0 00 00 9a e9 00 00. Decoded little-endian: 0x08 = 24, 0x0C = 96, 0x10 = 0xd01c = 53276, 0x14 = 0xe99a = 59802. ls -l gives 59802 bytes.",
    "corrected_claim": ""
   },
@@ -328,7 +328,7 @@
    "label": "observed",
    "evidence": "Command: strings -n 6 MNT/system_a/system/lib64/libandroid_runtime.so | grep -n 'hyphen-data'. Excerpt: 8829:/system/usr/hyphen-data/hyph-",
    "file": "system_a/system/lib64/libandroid_runtime.so",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Command: strings -n 6 MNT/system_a/system/lib64/libandroid_runtime.so | grep -n hyphen-data. Output: 8829 /system/usr/hyphen-data/hyph-. The literal prefix is observed. The statement that this is how the files are located at run time is an inference from the string alone; the lookup code was not traced.",
    "corrected_claim": "libandroid_runtime.so contains the literal prefix /system/usr/hyphen-data/hyph- (observed). The prefix is consistent with run-time lookup of the hyphenation files by language tag (inferred; the lookup code was not traced)."
   },
@@ -338,7 +338,7 @@
    "label": "verified",
    "evidence": "Command: python3 -I WK/verify_misc.py MNT. Excerpt: RFFstd_501.bmd first_u32=9793 x2=19586 size=19586 / RFFspeed_501.bmd first_u32=6431 x2=12862 size=12862. Command: strings -n 6 MNT/system_a/system/lib64/libFFTEm.so | grep -n bmd. Excerpt: 1030:usr/share/bmd/RFFstd_501.bmd. Command: grep -rlaF 'RFFspeed' MNT/system_a/system/lib64 MNT/system_a/system/lib MNT/system_a/system/bin MNT/system_a/system/framework. Excerpt: no output. Command: readelf --dyn-syms -W MNT/system_a/system/lib64/libFFTEm.so | awk 'NR>3 && $7!=\"UND\"{print $8}' | head -12. Excerpt: bts_Int16Rect_init / bbs_DynMemManager_exit / bbf_BitParam_init / bts_Flt16Alt3D_init / bpi_DCR_init",
    "file": "system_a/system/usr/share/bmd/RFFstd_501.bmd",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Command: python3 -I WK/verify_misc.py MNT. Output: RFFstd_501.bmd first_u32=9793, x2=19586, size=19586; RFFspeed_501.bmd first_u32=6431, x2=12862, size=12862. Command: strings -n 6 libFFTEm.so | grep -n bmd. Output: 1030 usr/share/bmd/RFFstd_501.bmd. Command: grep -rlaF RFFspeed over lib64, lib, bin and framework. Output: no match (exit 1). Command: readelf --dyn-syms -W MNT/system_a/system/lib64/libFFTEm.so, then awk for defined symbols and prefix counts. Output: 945 defined symbols: bts_ 297, bbs_ 221, bbf_ 211, bim_ 120, bpi_ 56, btk_ 36 (of which btk_SDK_ 10); four unprefixed names including JNI_OnLoad. The claim's prefix list omits bim_ and most btk_ names.",
    "corrected_claim": "RFFstd_501.bmd (19586 bytes) and RFFspeed_501.bmd (12862 bytes) begin with a little-endian u32 whose value times 2 equals the file size (9793 and 6431). The string usr/share/bmd/RFFstd_501.bmd is in libFFTEm.so; the string RFFspeed does not occur in the lib, lib64, bin or framework directories. libFFTEm.so exports 945 defined dynamic symbols, most with prefixes bts_ (297), bbs_ (221), bbf_ (211), bim_ (120), bpi_ (56) and btk_ (36, of which 10 begin btk_SDK_), plus four unprefixed names including JNI_OnLoad."
   },
@@ -348,7 +348,7 @@
    "label": "verified",
    "evidence": "Command: ls -l MNT/system_a/system/usr/icu. Excerpt: system_a/system/usr/icu -> /apex/com.android.i18n/etc/icu. Command: sed -n '9p' MNT/system_a/init.environ.rc. Excerpt: export ANDROID_I18N_ROOT /apex/com.android.i18n. Command: python3 -I (zipfile listing of system_a/system/apex/com.android.i18n.apex). Excerpt: apex_payload.img 36581376 / apex_manifest.pb 151 / apex_build_info.pb 1318",
    "file": "system_a/system/usr/icu",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Command: ls -l MNT/system_a/system/usr/icu. Output: lrw-r--r--. ... usr/icu -> /apex/com.android.i18n/etc/icu. Command: sed -n 9p MNT/system_a/init.environ.rc. Output: export ANDROID_I18N_ROOT /apex/com.android.i18n. Command: ls -l MNT/system_a/system/apex/com.android.i18n.apex. Output: 36649148 bytes. Python zipfile listing of the same file: apex_payload.img 36581376 bytes, apex_manifest.pb 151, apex_build_info.pb 1318.",
    "corrected_claim": ""
   }

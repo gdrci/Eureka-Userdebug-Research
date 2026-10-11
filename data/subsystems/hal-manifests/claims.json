@@ -10,7 +10,7 @@
    "label": "verified",
    "evidence": "cd <image>/mnt && find . -path '*etc/vintf*' -type f | sed 's|^\\./||' | awk -F/ '{print $1}' | sort | uniq -c ; excerpt: '18 odm_a / 1 product_a / 11 system_a / 12 system_ext_a / 20 vendor_a'. Then: find . -path '*etc/vintf*' -type f | sed 's|^\\./||' | sort > mounted_vintf.txt; awk -F'\\t' '$1==\"hal-manifests\"{print $2\"/\"$3}' classified.tsv | sort > group_paths.txt; comm -23 mounted_vintf.txt group_paths.txt; comm -13 mounted_vintf.txt group_paths.txt; excerpt: 'mounted vintf files: 62 / in group: 62' and both comm outputs empty.",
    "file": "<image>/classified.tsv",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "find under the mount for paths matching etc/vintf gives 62 files; sort then uniq -c per partition: odm_a 18, product_a 1, system_a 11, system_ext_a 12, vendor_a 20. Sorted mounted paths compared with the sorted partition/path rows of the group using comm: no lines in either direction (62 each). odm_dlkm_a, vendor_dlkm_a and scratch each have 0 vintf paths. Three further paths match the vintf pattern but are shared libraries, not etc/vintf files: system_a/system/lib/libvintf.so, system_a/system/lib64/libvintf.so, system_a/system/lib64/libkeystore2_vintf_cpp.so.",
    "corrected_claim": ""
   },
@@ -20,7 +20,7 @@
    "label": "verified",
    "evidence": "Loop over awk -F'\\t' '$1==\"hal-manifests\"{print $2\"\\t\"$3\"\\t\"$7}' classified.tsv, running sha256sum on mnt/<partition>/<path> and comparing. Excerpt: 'checked=62 mismatches=0'. Second loop: xmllint --noout mnt/<partition>/<path>. Excerpt: 'xml files=62 not_wellformed=0'.",
    "file": "<image>/mnt",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sha256sum of each mount path for the 62 group rows, compared with the sha256 column (column 7) of classified.tsv: checked=62 mismatches=0. xmllint --noout over the same 62 files: xml files=62 not_wellformed=0.",
    "corrected_claim": ""
   },
@@ -30,7 +30,7 @@
    "label": "verified",
    "evidence": "python3 -I ET script over rows.list, counting root tags and hal attributes. Excerpt: \"root tags: {'manifest': 56, 'compatibility-matrix': 6}\" / \"hal format attr: {'(unset)': 14, 'hidl': 309, 'aidl': 61, 'native': 1}\" / \"transport: {'hwbinder': 57, 'passthrough arch=32+64': 5}\" / \"optional attr on <hal>: {'(unset)': 79, 'false': 38, 'true': 268}\" / \"hal with override: 2\".",
    "file": "<image>-tools/work/subsystems/hal-manifests/hal_inventory.tsv",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 -I ElementTree census over the 62 files. Root tags: manifest 56, compatibility-matrix 6. hal elements: 385. format: hidl 309, aidl 61, native 1, unset 14. transport elements: 62 in total (hwbinder 57, passthrough with arch=32+64 5), present in 39 files, so the transport figures are element counts and not one per file. optional on hal: true 268, false 38, unset 79. override attribute present on 2 hal elements.",
    "corrected_claim": ""
   },
@@ -40,7 +40,7 @@
    "label": "observed",
    "evidence": "awk -F'\\t' '$1==\"hal-manifests\" && $6==\"text/xml\"{print $2\"/\"$3}' classified.tsv. Excerpt: system_ext_a/etc/vintf/manifest/parfait.xml; vendor_a/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.clearkey.xml; vendor_a/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml. file -b mnt/system_ext_a/etc/vintf/manifest/parfait.xml -> 'XML 1.0 document, ASCII text'. file on system_a/system/etc/vintf/manifest.xml -> 'exported SGML document, ASCII text'.",
    "file": "<image>/classified.tsv",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The mime column of classified.tsv tallies 59 text/plain and 3 text/xml. file -b returns XML 1.0 document, ASCII text for parfait.xml and for both DRM manifests, which agrees with the text/xml class, so the claim that these labels differ from the classification is wrong for those three files. file -b returns exported SGML document, ASCII text for 18 of the 59 text/plain files (including system_a/system/etc/vintf/manifest.xml) and ASCII text for the other 41. The label should be verified, since the command output was reproduced.",
    "corrected_claim": "Three files are classified text/xml (parfait.xml and the two DRM manifests), and file(1) agrees with that class for all three, reporting XML 1.0 document. Of the 59 text/plain files, file(1) reports exported SGML document for 18 (for example system_a/system/etc/vintf/manifest.xml) and plain ASCII text for 41."
   },
@@ -50,7 +50,7 @@
    "label": "verified",
    "evidence": "python3 -I parse script (ET root and hal census). Excerpt: \"system_a/system/etc/vintf/manifest.xml | <manifest version=4.0 type=framework> | hal=9 | children=hal,system-sdk\". sed -n '/<manifest/,$p' manifest.xml | tr -s ' ' excerpt: '<hal format=\"hidl\" max-level=\"5\">' followed by '<name>android.frameworks.schedulerservice</name>'; '<system-sdk>' followed by '<version>28</version>' through '<version>32</version>'.",
    "file": "<image>/mnt/system_a/system/etc/vintf/manifest.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 -I ElementTree dump of system_a/system/etc/vintf/manifest.xml: root manifest version 4.0 type framework; 9 hal elements; system-sdk versions 28, 29, 30, 31, 32. HALs: android.frameworks.displayservice IDisplayService 1.0 hidl; android.frameworks.schedulerservice ISchedulingPolicyService 1.0 hidl with max-level 5; android.frameworks.sensorservice ISensorManager 1.0; android.hidl.manager IServiceManager 1.2; android.hidl.memory IMapper 1.0 passthrough, arch 32+64, instance ashmem; android.hidl.token ITokenManager 1.0; android.system.net.netd INetd 1.1; android.system.wifi.keystore IKeystore 1.0; netutils-wrapper 1.0 native.",
    "corrected_claim": ""
   },
@@ -60,7 +60,7 @@
    "label": "verified",
    "evidence": "python3 -I coverage script over rows.list: \"system/etc/vintf/compatibility_matrix.device.xml entries=30 distinct_names=30 names_provided_by_group_manifests=28\". Second python run: \"device matrix names not provided by group manifests: ('vendor.oculus.hardware.mixedreality', 'true', '') ('vendor.oculus.hardware.peripheralconfig', 'true', '1.0')\". grep -rIl 'peripheralconfig' mnt -> only ./system_a/system/etc/vintf/compatibility_matrix.device.xml. sed excerpt: '<sepolicy> <kernel-sepolicy-version>30</kernel-sepolicy-version> ... <avb> <vbmeta-version>1.0</vbmeta-version>'.",
    "file": "<image>/mnt/system_a/system/etc/vintf/compatibility_matrix.device.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The device matrix root is compatibility-matrix version 4.0 type framework, with 30 hal children, sepolicy kernel-sepolicy-version 30, sepolicy-version 26.0 to 32.0 and avb vbmeta-version 1.0 (all confirmed). Name-level matching against the 56 manifest roots gives 28 of 30 names. The unmatched entries are vendor.oculus.hardware.mixedreality (aidl, optional true, no version) and vendor.oculus.hardware.peripheralconfig (hidl, version 1.0, optional true). The full name vendor.oculus.hardware.peripheralconfig occurs in no other file on the mount (grep -rl over the whole mount, without -I). The claim's wording is wrong for the bare token: grep -rl finds peripheralconfig in 10 other files (vendor_a/lib64/peripheralconfig*.so, vendor_a/lib64/hw/com.qti.chi.override.so with a /vendor/etc/peripheralconfig path string, odm_a/bin/peripheralconfig-tool, odm_a/lib64/libdevicesensors.so and libdevicesensors-mock.so). The evidence command grep -rIl skips binaries, which is why it lists one file.",
    "corrected_claim": "Name-level coverage by the 56 manifest roots (of the 62 files) is 28 of 30 device-matrix names. The two names with no provider are vendor.oculus.hardware.mixedreality (optional true) and vendor.oculus.hardware.peripheralconfig 1.0 (optional true). The full HAL name vendor.oculus.hardware.peripheralconfig occurs only in system_a/system/etc/vintf/compatibility_matrix.device.xml on the mount; the bare token peripheralconfig also appears in 10 other files as library, tool and path names."
   },
@@ -70,7 +70,7 @@
    "label": "verified",
    "evidence": "grep -c '<hal' on each file, cross-checked by python ET count: compatibility_matrix.3.xml 57, .4.xml 61, .5.xml 66, .6.xml 78. grep -oE '<kernel[^>]*>' compatibility_matrix.6.xml | sort | uniq -c. Excerpt: '8 <kernel version=\"4.19.191\" level=\"6\">' / '9 <kernel version=\"5.10.43\" level=\"6\">' / '9 <kernel version=\"5.4.86\" level=\"6\">'. Header excerpt: 'matrix_kernel_config_s_4.19.xml / matrix_kernel_config_s_5.4.xml / matrix_kernel_config_s_5.10.xml'. find . -name 'matrix_kernel_config*' | wc -l -> 0.",
    "file": "<image>/mnt/system_a/system/etc/vintf/compatibility_matrix.6.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -c with <hal gives 57, 61, 66 and 78 for compatibility_matrix.3.xml, .4.xml, .5.xml and .6.xml; python ET hal counts agree. grep -oE of kernel elements in compatibility_matrix.6.xml, sorted and counted: 8 x 4.19.191, 9 x 5.10.43, 9 x 5.4.86 (level 6). Levels 3, 4 and 5 each carry kernel lines with their own level attribute. Each matrix header names matrix_kernel_config_*.xml inputs. find of the mount for matrix_kernel_config* returns 0 files.",
    "corrected_claim": ""
   },
@@ -80,7 +80,7 @@
    "label": "verified",
    "evidence": "python3 ET parse: \"vendor_a/etc/vintf/manifest.xml | <manifest version=4.0 type=device target-level=4> | hal=8 | children=hal,kernel,sepolicy\". sed excerpt: '<sepolicy> <version>32.0</version> </sepolicy> <kernel target-level=\"6\"/>'. cat vendor_a/etc/selinux/plat_sepolicy_vers.txt -> '32.0'.",
    "file": "<image>/mnt/vendor_a/etc/vintf/manifest.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: root manifest version 4.0 type device target-level 4; 8 hal elements (android.hardware.audio, audio.effect, bluetooth IBluetoothHci, bluetooth.audio, gatekeeper, keymaster with fqname @4.1::IKeymasterDevice/default and no version element, media.omx IOmx and IOmxStore, vendor.qti.hardware.qseecom IQSEECom); sepolicy version 32.0; kernel target-level 6. vendor_a/etc/selinux/plat_sepolicy_vers.txt contains 32.0.",
    "corrected_claim": ""
   },
@@ -90,7 +90,7 @@
    "label": "verified",
    "evidence": "sed -n '/<compatibility-matrix/,$p' compatibility_matrix.xml | tr -s ' ' excerpt: '<compatibility-matrix version=\"4.0\" type=\"device\">' ... '<vendor-ndk> <version>32</version> </vendor-ndk> <system-sdk> <version>32</version> </system-sdk>'. python ET: \"vendor_a/etc/vintf/compatibility_matrix.xml | <compatibility-matrix version=4.0 type=device> | hal=6 | children=hal,system-sdk,vendor-ndk\".",
    "file": "<image>/mnt/vendor_a/etc/vintf/compatibility_matrix.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET dump of vendor_a/etc/vintf/compatibility_matrix.xml: root compatibility-matrix version 4.0 type device; 6 hal elements (android.frameworks.sensorservice ISensorManager, android.hidl.allocator IAllocator instance ashmem, android.hidl.manager IServiceManager, android.hidl.memory IMapper instance ashmem, android.hidl.token ITokenManager, android.system.wifi.keystore IKeystore), all optional false; vendor-ndk version 32; system-sdk version 32.",
    "corrected_claim": ""
   },
@@ -100,7 +100,7 @@
    "label": "verified",
    "evidence": "python ET: \"system_ext_a/etc/vintf/manifest.xml | <manifest version=4.0 type=framework> | hal=0 | children=vendor-ndk\". cat excerpt: '<manifest version=\"4.0\" type=\"framework\"> <vendor-ndk> <version>32</version> </vendor-ndk>'.",
    "file": "<image>/mnt/system_ext_a/etc/vintf/manifest.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: root manifest version 4.0 type framework; 0 hal elements; the only child is vendor-ndk with version 32. The XML comment Input block names system_ext_manifest.default.xml at line 3 of system_ext_a/etc/vintf/manifest.xml.",
    "corrected_claim": ""
   },
@@ -110,7 +110,7 @@
    "label": "verified",
    "evidence": "python ET: \"vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml | <manifest version=1.0 type=device> | hal=4\". grep -n 'display.composer' vendor_a/etc/selinux/vendor_hwservice_contexts excerpt: '9:vendor.qti.hardware.display.composer::IQtiComposer u:object_r:hal_graphics_composer_hwservice:s0'. vendor_service_contexts:4 excerpt: 'vendor.qti.hardware.display.config.IDisplayConfig/default'. vendor_a/etc/init/vendor.qti.hardware.display.composer-service.rc: 'service vendor.qti.hardware.display.composer /vendor/bin/hw/vendor.qti.hardware.display.composer-service' / 'class hal animation'. ls -la vendor_a/bin/hw/ shows 832376 vendor.qti.hardware.display.composer-service.",
    "file": "<image>/mnt/vendor_a/etc/vintf/manifest/vendor.qti.hardware.display.composer-service.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Manifest confirmed: 4 hal elements, vendor.qti.hardware.display.composer 3.2 IQtiComposer (hidl), android.hardware.graphics.composer 2.4 IComposer (hidl), vendor.display.config 2.0 IDisplayConfig (hidl), and vendor.qti.hardware.display.config version 10 aidl IDisplayConfig/default. The init service vendor.qti.hardware.display.composer and binary size 832376 are confirmed. Labels: vendor_a/etc/selinux/vendor_hwservice_contexts line 9 (IQtiComposer) and line 2 (vendor.display.config::IDisplayConfig); vendor_a/etc/selinux/vendor_service_contexts line 4 (AIDL IDisplayConfig/default). The android.hardware.graphics.composer::IComposer label is not in vendor_hwservice_contexts; it is at system_a/system/etc/selinux/plat_hwservice_contexts line 36.",
    "corrected_claim": "The four interfaces have SELinux labels in three context files: vendor_a/etc/selinux/vendor_hwservice_contexts (IQtiComposer at line 9 and vendor.display.config::IDisplayConfig at line 2), vendor_a/etc/selinux/vendor_service_contexts (AIDL vendor.qti.hardware.display.config.IDisplayConfig/default at line 4), and system_a/system/etc/selinux/plat_hwservice_contexts (android.hardware.graphics.composer::IComposer at line 36)."
   },
@@ -120,7 +120,7 @@
    "label": "verified",
    "evidence": "python ET: \"vendor_a/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml | <manifest version=1.0 type=device> | hal=4\". sed excerpt: '<name>android.hardware.security.keymint</name> <fqname>IKeyMintDevice/default</fqname>' ... '<name>android.hardware.security.sharedsecret</name> <fqname>ISharedSecret/default</fqname>' ... '<name>android.hardware.security.secureclock</name> <fqname>ISecureClock/default</fqname>' ... '<fqname>IRemotelyProvisionedComponent/default</fqname>'. grep excerpt from system_a/system/etc/selinux/plat_service_contexts: '16:android.hardware.security.keymint.IKeyMintDevice/default u:object_r:hal_keymint_service:s0' through '19:android.hardware.security.sharedsecret.ISharedSecret/default u:object_r:hal_sharedsecret_service:s0'. vendor_a/etc/init/android.hardware.security.keymint-service-qti.rc: 'service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti' 'class early_hal'.",
    "file": "<image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.security.keymint-service-qti.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: root manifest version 1.0 type device; 4 aidl hal elements: android.hardware.security.keymint IKeyMintDevice/default, android.hardware.security.sharedsecret ISharedSecret/default, android.hardware.security.secureclock ISecureClock/default, android.hardware.security.keymint IRemotelyProvisionedComponent/default. sed -n 14,20p of system_a/system/etc/selinux/plat_service_contexts shows these at lines 16 to 19. vendor_a/etc/init/android.hardware.security.keymint-service-qti.rc: service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti with class early_hal; the binary is 36656 bytes.",
    "corrected_claim": ""
   },
@@ -130,7 +130,7 @@
    "label": "verified",
    "evidence": "python ET: \"vendor_a/etc/vintf/manifest/android.hardware.light@2.0-service.anorak.xml | hal=2\". sed excerpt: '<name>android.hardware.light</name> ... <version>2.0</version> <name>ILight</name>' and '<name>vendor.oculus.hardware.light</name> ... <version>2.0</version>'. vendor_a/etc/init/android.hardware.light@2.0-service.anorak.rc: 'service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.anorak' / '    interface android.hardware.light@2.0::ILight default' / '    interface vendor.oculus.hardware.light@2.0::ILight default'. grep excerpt: 'vendor_hwservice_contexts:3:vendor.oculus.hardware.light::ILight hal_light_hwservice'; 'plat_service_contexts:10:android.hardware.light.ILights/default'. The early-boot section writes ownership and mode for /sys/class/leds/blue/brightness and related LED nodes.",
    "file": "<image>/mnt/vendor_a/etc/vintf/manifest/android.hardware.light@2.0-service.anorak.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: the manifest has android.hardware.light 2.0 ILight and vendor.oculus.hardware.light 2.0 ILight, both hidl, hwbinder, instance default. The init service light-hal-2-0 registers both interfaces and runs /vendor/bin/hw/android.hardware.light@2.0-service.anorak (101480 bytes). vendor_a/etc/selinux/vendor_hwservice_contexts line 3 maps vendor.oculus.hardware.light::ILight to hal_light_hwservice. plat_service_contexts line 10 holds android.hardware.light.ILights/default. No group manifest declares the ILights name (grep over all 62 files); compatibility_matrix.5.xml and compatibility_matrix.6.xml require it as aidl. The early-boot section sets owner and mode for /sys/class/leds/blue, green and red brightness, breath and max_brightness nodes, and for white:indicator nodes.",
    "corrected_claim": ""
   },
@@ -140,7 +140,7 @@
    "label": "verified",
    "evidence": "python ET: \"odm_a/etc/vintf/manifest/vendor.oculus.hardware.sensors@1.0-service.xml | hal=1\"; hal_inventory interface list: 'ICameraProvider,IControllerProvider,IExternalTimingProvider,IFlickerSensor,IIad,IImu,IMag,ISensorsMiscDebug,IStructuredLightProjector,IZapper'. grep -n '' vendor_hwservice_contexts | sed -n '31,48p' excerpt: 'vendor.oculus.hardware.sensors::IAccel ... hal_oculus_sensors_hwservice'. odm_a/etc/init/vendor.oculus.hardware.sensors@1.0-service-debug.rc: 'service vendor.oculus.sensors-hal-1-0 /odm/bin/hw/vendor.oculus.hardware.sensors@1.0-service' and 'on boot && property:persist.vendor.oculus.sensor.service.impl=sensorservice'. vendor.oculus.hardware.sensors@1.0-service-mock.rc: 'disabled'. Binaries present: vendor.oculus.hardware.sensors@1.0-service 1541048 bytes, -service-mock 1490408, -iad 192744, -flicker 19944.",
    "file": "<image>/mnt/odm_a/etc/vintf/manifest/vendor.oculus.hardware.sensors@1.0-service.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: vendor.oculus.hardware.sensors@1.0-service.xml has one hwbinder hal with 10 interfaces, all instance default. vendor_a/etc/selinux/vendor_hwservice_contexts lines 31 to 48 hold 18 entries for the package. Eight are absent from the manifest: IAccel, ICamera, ICameraStream, IControllerStateProvider, IEventHaptics, IFaceEyeTrackingLed, IGyro, IPowerstate. The debug rc starts the service on boot when persist.vendor.oculus.sensor.service.impl=sensorservice; the mock rc is disabled. Binary sizes: service 1541048, mock 1490408, iad 192744, flicker 19944. The count of four is ambiguous: a fifth odm rc (vendor.oculus.hardware.sensorlock-service.rc) also starts a service from /odm/bin/hw.",
    "corrected_claim": "Four odm init rc files start the vendor.oculus.hardware.sensors@1.0 services from /odm/bin/hw: the debug, mock, iad and flicker rc files. A fifth odm rc, vendor.oculus.hardware.sensorlock-service.rc, also starts a service from /odm/bin/hw (an AIDL sensorlock service). The debug service starts on boot when persist.vendor.oculus.sensor.service.impl=sensorservice, and the mock service is disabled. The 18 hwservice entries are at vendor_a/etc/selinux/vendor_hwservice_contexts lines 31 to 48."
   },
@@ -150,7 +150,7 @@
    "label": "verified",
    "evidence": "python ET: \"odm_a/etc/vintf/manifest/android.hardware.usb@1.2-service.xml | hal=2\". sed excerpt: '<fqname>@1.2::IUsb/default</fqname>' and '<fqname>@1.2::IUsbGadget/default</fqname>'. odm_a/etc/init/android.hardware.usb@1.2-service.ovr.dev.rc: 'service vendor.usb-hal-1-2 /odm/bin/hw/android.hardware.usb@1.2-service.ovr' and interface lines for android.hardware.usb@1.0::IUsb, @1.1::IUsb, @1.2::IUsb, and the gadget at 1.0, 1.1, 1.2. system_a/system/etc/selinux/plat_hwservice_contexts:69: 'android.hardware.usb::IUsb u:object_r:hal_usb_hwservice:s0'.",
    "file": "<image>/mnt/odm_a/etc/vintf/manifest/android.hardware.usb@1.2-service.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: manifest declares IUsb 1.2 and IUsbGadget 1.2 (hidl, hwbinder, default). odm_a/etc/init/android.hardware.usb@1.2-service.ovr.dev.rc: service vendor.usb-hal-1-2 /odm/bin/hw/android.hardware.usb@1.2-service.ovr registers IUsb 1.0, 1.1 and 1.2 and IUsbGadget 1.0, 1.1 and 1.2; binary size 193360. system_a/system/etc/selinux/plat_hwservice_contexts lines 69 and 70 hold android.hardware.usb::IUsb and android.hardware.usb.gadget::IUsbGadget. The manifest filename has no .ovr suffix.",
    "corrected_claim": ""
   },
@@ -160,7 +160,7 @@
    "label": "verified",
    "evidence": "python ET: \"odm_a/etc/vintf/manifest/perfservice.xml | <manifest version=1.0 type=device> | hal=3\". hal_inventory rows: 'perfservice.xml hidl hwbinder android.hardware.power 1.3 IPower default' / 'android.hardware.thermal 1.0,2.0 IThermal default' / 'vendor.oculus.hardware.clocks 1.0 IClocks default'. odm_a/etc/init/perfservice.rc: 'service perfservice /odm/bin/hw/perf_service --schedutil ${vendor.scheduler.schedutil:-false}' / 'interface android.hardware.power@1.0::IPower default' through '@1.3::IPower' / 'on property:init.svc.zygote=restarting' / '   restart perfservice'. system_ext_a/etc/selinux/system_ext_hwservice_contexts:1: 'vendor.oculus.hardware.clocks::IClocks u:object_r:hal_power_hwservice:s0'.",
    "file": "<image>/mnt/odm_a/etc/vintf/manifest/perfservice.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: perfservice.xml has 3 hal elements, all hwbinder default: android.hardware.power 1.3 IPower, android.hardware.thermal 1.0 and 2.0 IThermal, vendor.oculus.hardware.clocks 1.0 IClocks. odm_a/etc/init/perfservice.rc: service perfservice /odm/bin/hw/perf_service (501832 bytes) with interface lines for IPower 1.0 to 1.3, IThermal 1.0 and 2.0, IClocks 1.0; on property:init.svc.zygote=restarting restarts perfservice. Labels: system_a/system/etc/selinux/plat_hwservice_contexts line 53 (IPower) and line 65 (IThermal); system_ext_a/etc/selinux/system_ext_hwservice_contexts line 1 (IClocks).",
    "corrected_claim": ""
   },
@@ -170,7 +170,7 @@
    "label": "verified",
    "evidence": "python ET: \"system_ext_a/etc/vintf/manifest/tracking_manifest.xml | <manifest version=1.0 type=framework> | hal=4\". hal_inventory rows: 'aidl true oculus.internal.tracking IFaceEyeTrackingService default IFaceEyeTrackingService/default' (and the other three). grep -n '' system_ext_a/etc/selinux/system_ext_service_contexts | sed -n '60,66p' excerpt: '60:oculus.internal.tracking.IAssetReceiver/encoder u' ... '62:oculus.internal.tracking.IEyeTrackingService/default u' ... '66:oculus.internal.tracking.ITrackingService/default u'.",
    "file": "<image>/mnt/system_ext_a/etc/vintf/manifest/tracking_manifest.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: tracking_manifest.xml has 4 aidl hal elements with optional true, name oculus.internal.tracking, instance default: IFaceEyeTrackingService, IHandTrackingService, IInsideOutBodyTrackingService, IMemoryBrokerService. grep -c of oculus.internal.tracking in system_ext_a/etc/selinux/system_ext_service_contexts gives 7; lines 60 to 66 hold them, with line 60 IAssetReceiver/encoder, line 62 IEyeTrackingService and line 66 ITrackingService (neither declared by the manifest).",
    "corrected_claim": ""
   },
@@ -180,7 +180,7 @@
    "label": "verified",
    "evidence": "python ET: \"system_ext_a/etc/vintf/manifest/bpfagent_manifest.xml | <manifest version=1.0 type=framework> | hal=1\". sed excerpt: '<hal format=\"aidl\">' '<name>vendor.oculus.hardware.bpfagent</name>' '<version>1</version>' '<fqname>IConfigurator/default</fqname>' '<fqname>IStrobemeta/default</fqname>'. system_ext_a/etc/init/bpfagent.rc: 'service bpfagent /system_ext/bin/bpfagent' / '    interface aidl vendor.oculus.hardware.bpfagent.IConfigurator/default' / '    interface aidl vendor.oculus.hardware.bpfagent.IStrobemeta/default' / '    disabled'. system_ext_service_contexts:104: 'vendor.oculus.hardware.bpfagent.IConfigurator/default u:object_r:bpfagent_configurator_service:s0'. plat_pub_versioned.cil:666 '(typeattribute hal_bpfagent_configurator)'.",
    "file": "<image>/mnt/system_ext_a/etc/vintf/manifest/bpfagent_manifest.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: bpfagent_manifest.xml has one aidl hal, vendor.oculus.hardware.bpfagent version 1, with fqnames IConfigurator/default and IStrobemeta/default and no optional attribute. system_ext_a/etc/init/bpfagent.rc: service bpfagent /system_ext/bin/bpfagent declares both aidl interfaces and is disabled; binary size 1645128. system_ext_a/etc/selinux/system_ext_service_contexts lines 104 and 105 map the two names to bpfagent_configurator_service and bpfagent_strobemeta_service. vendor_a/etc/selinux/plat_pub_versioned.cil defines hal_bpfagent_* typeattribute lines at 666 to 671. That file is CIL source text, so the word compiled is inaccurate.",
    "corrected_claim": "bpfagent_manifest.xml declares AIDL vendor.oculus.hardware.bpfagent version 1 with IConfigurator/default and IStrobemeta/default, not marked optional. The system_ext init service bpfagent declares both as aidl interfaces and is disabled at start. SELinux maps the names to bpfagent_configurator_service and bpfagent_strobemeta_service. The CIL policy source file vendor_a/etc/selinux/plat_pub_versioned.cil (text, not a compiled binary policy) defines the hal_bpfagent_* type attributes at lines 666 to 671."
   },
@@ -190,7 +190,7 @@
    "label": "verified",
    "evidence": "python ET: \"system_ext_a/etc/vintf/manifest/instsampd_manifest.xml | hal=1\". sed excerpt: '<hal format=\"aidl\" optional=\"true\">' '<name>oculus.internal</name>' '<fqname>IInstructionSampler/default</fqname>'. system_ext_a/etc/init/instsampd.rc: 'service instsampd /system_ext/bin/instsampd' / '    interface aidl oculus.internal.IInstructionSampler/default' / '    class late_start' / '    disabled'. system_ext_service_contexts:56: 'oculus.internal.IInstructionSampler/default u:object_r:instsamp_service:s0'.",
    "file": "<image>/mnt/system_ext_a/etc/vintf/manifest/instsampd_manifest.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: instsampd_manifest.xml has one hal, aidl, optional true, name oculus.internal, interface IInstructionSampler, instance default. system_ext_a/etc/init/instsampd.rc: service instsampd /system_ext/bin/instsampd declares the same interface, class late_start, disabled; binary size 396880. system_ext_service_contexts line 56 maps the name to instsamp_service. The start, stop and enable triggers are gated on persist.device_config.oculus_shared_os_services.oculus_mobile_instruction_sampler_enabled and ro.vendor.build.type, but the same rc also has triggers on ovr.instsampd.kptr_restrict_access and ovr.instsampd.set_perf_event_limits that are not gated on those properties. The claim that the properties are gated is therefore too broad.",
    "corrected_claim": "instsampd_manifest.xml declares one optional AIDL HAL, oculus.internal IInstructionSampler/default. The system_ext init service instsampd (/system_ext/bin/instsampd, 396880 bytes) declares the same interface, runs in class late_start, and is disabled at start. Its start, stop and enable triggers are gated on persist.device_config.oculus_shared_os_services.oculus_mobile_instruction_sampler_enabled and ro.vendor.build.type; two other property triggers (ovr.instsampd.kptr_restrict_access and ovr.instsampd.set_perf_event_limits) act on their own properties. SELinux maps the name to instsamp_service."
   },
@@ -200,7 +200,7 @@
    "label": "verified",
    "evidence": "python ET census: \"hal with override: 2\". sed excerpts: vendor.oculus.hardware.composer-service.xml '<hal format=\"hidl\" override=\"true\">' '<name>android.hardware.graphics.composer</name>' '<version>2.4</version>' '<instance>display</instance>'. emgservice_manifest.xml '<manifest version=\"2.0\" type=\"framework\">' '<hal format=\"aidl\" optional=\"true\" override=\"true\">' '<name>com.meta.wearable.emg</name>'. system_ext_service_contexts:16: 'com.meta.wearable.emg.IEmgService/default u:object_r:emgservice_service:s0'.",
    "file": "<image>/mnt/system_ext_a/etc/vintf/manifest/emgservice_manifest.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "grep -rn override over the 62 files returns exactly two lines, both value true: system_ext_a/etc/vintf/manifest/emgservice_manifest.xml line 2 (hal format aidl, optional true, override true; manifest version 2.0 type framework; name com.meta.wearable.emg, IEmgService/default) and system_ext_a/etc/vintf/manifest/vendor.oculus.hardware.composer-service.xml line 2 (hal format hidl, override true; android.hardware.graphics.composer version 2.4, IComposer, instance display). system_ext_a/etc/selinux/system_ext_service_contexts line 16 maps com.meta.wearable.emg.IEmgService/default.",
    "corrected_claim": ""
   },
@@ -210,7 +210,7 @@
    "label": "verified",
    "evidence": "python ET: \"system_a/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml | hal=2\". sed excerpt: '<hal max-level=\"5\">' '<name>android.frameworks.stats</name>' '<fqname>IStats/default</fqname>'. grep excerpt: 'system_a/system/etc/selinux/plat_hwservice_contexts:7:android.frameworks.stats::IStats u:object_r:fwk_stats_hwservice:s0'; 'plat_service_contexts:24:android.frameworks.stats.IStats/default u:object_r:fwk_stats_service:s0'; 'plat_service_contexts:25:android.system.keystore2.IKeystoreService/default u:object_r:keystore_service:s0'.",
    "file": "<image>/mnt/system_a/system/etc/vintf/manifest/android.frameworks.stats@1.0-service.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: android.frameworks.stats@1.0-service.xml has 2 hal elements: hidl android.frameworks.stats IStats 1.0 with max-level 5, and aidl android.frameworks.stats IStats/default. android.system.keystore2-service.xml has one aidl hal, android.system.keystore2 with IKeystoreService/default. system_a/system/etc/selinux/plat_hwservice_contexts line 7 maps android.frameworks.stats::IStats to fwk_stats_hwservice; plat_service_contexts line 24 maps android.frameworks.stats.IStats/default to fwk_stats_service; line 25 maps android.system.keystore2.IKeystoreService/default to keystore_service.",
    "corrected_claim": ""
   },
@@ -220,7 +220,7 @@
    "label": "verified",
    "evidence": "diff manifest_android.hardware.drm@1.4-service.clearkey.xml manifest_android.hardware.drm@1.4-service.widevine.xml. Excerpt: '20,21c20,21' / '<        <fqname>@1.4::ICryptoFactory/clearkey</fqname>' / '>        <fqname>@1.4::ICryptoFactory/widevine</fqname>' / '<        <fqname>@1.4::IDrmFactory/clearkey</fqname>' / '>        <fqname>@1.4::IDrmFactory/widevine</fqname>'. classified.tsv size column: both 945.",
    "file": "<image>/mnt/vendor_a/etc/vintf/manifest/manifest_android.hardware.drm@1.4-service.widevine.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Both files are 945 bytes. diff of the clearkey and widevine manifests returns only 20,21c20,21, the two fqname pairs: @1.4::ICryptoFactory/clearkey versus /widevine and @1.4::IDrmFactory/clearkey versus /widevine. cmp -l reports 16 differing bytes, which is the two 8-character instance names. The clearkey manifest declares android.hardware.drm hidl 1.4 over hwbinder.",
    "corrected_claim": ""
   },
@@ -230,7 +230,7 @@
    "label": "verified",
    "evidence": "python ET: \"product_a/etc/vintf/manifest/crashuploaderservice-default.xml | <manifest version=1.0 type=framework> | hal=1\". sed excerpt: '<hal format=\"aidl\">' '<name>meta.internal.diagnostics</name>' '<fqname>ICrashUploaderService/default</fqname>'. grep: 'system_ext_a/etc/selinux/system_ext_service_contexts:24: meta.internal.diagnostics.ICrashUploaderService/default u'. ls product_a/bin | grep -i crash -> 'ovr_crashuploader', 'ovr_crashuploader64'.",
    "file": "<image>/mnt/product_a/etc/vintf/manifest/crashuploaderservice-default.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "python3 ET: crashuploaderservice-default.xml has one aidl hal, meta.internal.diagnostics version 1, fqname ICrashUploaderService/default. system_ext_a/etc/selinux/system_ext_service_contexts line 24 holds meta.internal.diagnostics.ICrashUploaderService/default. product_a/etc/init/ovr_crashuploader.rc exists and was read here: it starts crashuploader from /product/bin/ovr_crashuploader64. product_a/bin holds ovr_crashuploader and ovr_crashuploader64. The claim statement that the rc was not read describes the earlier process, not the mount.",
    "corrected_claim": ""
   },
@@ -240,7 +240,7 @@
    "label": "verified",
    "evidence": "python3 -I xref_ctx.py over the mnt tree and hal_inventory.tsv, writing xref_ctx.out. Excerpt: 'found=414' / 'missing=7' / 'MISSING system_a/system/etc/vintf/compatibility_matrix.3.xml android.hardware.wifi.offload::IOffload' / 'MISSING system_a/system/etc/vintf/compatibility_matrix.device.xml vendor.oculus.hardware.peripheralconfig::IPeripheralConfig'. The 414 count includes matrix requirement rows; the sum of matched pairs is therefore 407 when the 7 misses are removed.",
    "file": "<image>-tools/work/subsystems/hal-manifests/xref_ctx.out",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "The cross-reference script, run with the same arguments (mnt and hal_inventory.tsv), prints found=414 and missing=7. The 414 is the number of matched pairs, and the 7 misses are added on top of it. Counted independently from the XML: 385 hal elements, 421 interface/fqname pairs (100 in manifests, 321 in matrices). So the totals are 421 pairs, 414 matched and 7 unmatched; the claimed 414 total and 407 matched do not hold. The 7 unmatched names do hold: all matrix requirements, none declared by any group manifest. Correction: the level 6 neuralnetworks miss is the aidl IDevice entry (regex-instance .*, no instance element); the hidl IDevice entry for the same name matches plat_hwservice_contexts line 50. The script assumes default for entries without an instance; no service_contexts line starts with android.hardware.neuralnetworks, so the miss stands.",
    "corrected_claim": "Name-level cross-reference of the 385 hal elements in the group (421 interface/fqname pairs: 100 from manifests, 321 from matrices) against the hwservice_contexts and service_contexts files: 414 pairs match a context label and 7 do not. The 7 unmatched requirements are all compatibility-matrix entries and none is declared by a group manifest: android.hardware.wifi.offload IOffload (matrix 3), vendor.oculus.hardware.peripheralconfig IPeripheralConfig (device), android.hardware.automotive.occupant_awareness IOccupantAwareness (matrix 5 and 6), android.hardware.automotive.sv ISurroundViewService (matrix 5 and 6), and the aidl android.hardware.neuralnetworks IDevice (matrix 6, regex instance). The hidl neuralnetworks IDevice requirement in matrix 6 matches plat_hwservice_contexts line 50."
   },
@@ -250,7 +250,7 @@
    "label": "inferred",
    "evidence": "find listing under mnt: 'odm_a/etc/vintf/manifest' (only entry, from ls odm_a/etc/vintf -> 'manifest'); 'product_a/etc/vintf' -> 'manifest'; 'vendor_a/etc/vintf' -> 'compatibility_matrix.xml manifest manifest.xml'; system_ext_a/etc/vintf/manifest.xml and system_ext_a/etc/vintf/manifest/ present. The fragment-assembly behaviour is an inference from this layout and is not reproduced on a device.",
    "file": "<image>/mnt/vendor_a/etc/vintf/manifest.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Directory listings: vendor_a/etc/vintf holds compatibility_matrix.xml, manifest and manifest.xml; odm_a/etc/vintf and product_a/etc/vintf each hold only manifest; system_ext_a/etc/vintf holds manifest and manifest.xml; system_a/system/etc/vintf holds compatibility_matrix.3, .4, .5, .6 and device .xml files, manifest and manifest.xml. The layout is confirmed. The assembly sentence stays an inference: not checked on a device, and the init and loader behaviour was not run. Not determined: how the framework or device loader combines fragments.",
    "corrected_claim": ""
   },
@@ -260,7 +260,7 @@
    "label": "inferred",
    "evidence": "grep -h '^service' odm_a/etc/init/perfservice.rc: 'service perfservice /odm/bin/hw/perf_service --schedutil ...'. vendor_a/etc/init/android.hardware.light@2.0-service.anorak.rc: 'service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.anorak'. system_ext_a/etc/init/bpfagent.rc: 'service bpfagent /system_ext/bin/bpfagent'. The general mapping of each partition directory to its mount point is inferred from these three.",
    "file": "<image>/mnt/odm_a/etc/init/perfservice.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Init paths: odm_a/etc/init/perfservice.rc starts /odm/bin/hw/perf_service; vendor_a/etc/init/android.hardware.light@2.0-service.anorak.rc starts /vendor/bin/hw/android.hardware.light@2.0-service.anorak; system_ext_a/etc/init/bpfagent.rc starts /system_ext/bin/bpfagent; product_a/etc/init/ovr_crashuploader.rc starts /product/bin/ovr_crashuploader64, with product_a/bin/ovr_crashuploader64 present. Not determined: the system_a to /system mapping has no init path in this group, and the actual mount points are not recorded on the mount.",
    "corrected_claim": ""
   },
@@ -270,7 +270,7 @@
    "label": "verified",
    "evidence": "python census (see GRP-03): 'optional attr on <hal>: {'(unset)': 79, 'false': 38, 'true': 268}'. Device matrix check: python iterates compatibility_matrix.device.xml hal elements and prints optional values. Every hal entry in the device matrix shows optional=\"true\" in the sed excerpt for 'vendor.oculus.hardware.peripheralconfig' (<hal format=\"hidl\" optional=\"true\">).",
    "file": "<image>/mnt/system_a/system/etc/vintf/compatibility_matrix.device.xml",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Split by root type: the 87 manifest hal elements have 8 optional true and 79 unset; the 298 compatibility-matrix hal elements have 260 optional true and 38 optional false, none unset. The 268 figure therefore mixes manifest and matrix entries, and the matrix-only count is 260 of 298. The file named compatibility_matrix.device.xml (root type framework) has 30 of 30 optional true, so the statement holds for that file. The device-type matrix, vendor_a/etc/vintf/compatibility_matrix.xml (root type device), has 6 of 6 optional false, so the device matrix does not have only optional entries. Matrix formats are hidl 261 and aidl 37, with optional values true or false in both.",
    "corrected_claim": "The compatibility matrices contain hidl (261) and aidl (37) requirements. Of the 298 matrix requirement entries, 260 are optional true and 38 optional false. Across all 385 hal elements in the 62 files, 268 are optional true, 38 false and 79 have no attribute (the last two groups include manifest entries). The framework matrix compatibility_matrix.device.xml has 30 of 30 entries optional true; the device-type matrix vendor_a/etc/vintf/compatibility_matrix.xml has 6 of 6 entries optional false."
   }

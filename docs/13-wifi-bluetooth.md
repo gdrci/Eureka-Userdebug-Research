@@ -6,7 +6,7 @@
 
 The wifi-bluetooth group is the Wi-Fi and Bluetooth stack of a device with a Qualcomm QCA6490 combo chipset (QCA6490 appears in the Bluetooth patch build strings and in the cnss-qca6490 sysfs node named in the SELinux file contexts). Vendor HAL services expose IWifi (HIDL 1.0 through 1.5), ISupplicant (1.0 through 1.4), IHostapd (1.0 through 1.3) and IBluetoothHci (1.0). These are backed by wpa_supplicant and hostapd 2.10-devel-12 daemons, Qualcomm WLAN services cnss-daemon and cnss_diag, and Qualcomm Bluetooth rampatch and NVM blobs stored as single-record TLV containers. The system partition holds the wificond daemon, the Bluetooth stack libbluetooth.so with its JNI library, the Wi-Fi APEX com.android.wifi (framework-wifi.jar, service-wifi.jar, ServiceWifiResources.apk), and privileged-permission and feature-flag XML. An Oculus vendor Wi-Fi HAL (vendor.oculus.hardware.wifi@1.0) is on odm, and a telemetry daemon is on system_ext. Configuration is delivered as wpa_supplicant and driver override text files, an ICM channel config, a Bluetooth stack trace config and Device ID files.
 
-The role table has one row for each of the 104 files in this group (91 verified, 13 observed, 0 inferred, 0 unverified). It is at `data/subsystems/wifi-bluetooth/roles.tsv`.
+Role table: `data/subsystems/wifi-bluetooth/roles.tsv` (104 files: 91 verified, 13 observed, 0 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -56,8 +56,6 @@ The role table has one row for each of the 104 files in this group (91 verified,
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **WB-02** (verified): All 104 input rows are present at their mount paths. The 103 regular files match their recorded size and sha256 (ok=103 bad=0). The one symlink, system_a/system/app/Bluetooth/lib/arm64/libbluetooth_jni.so, is present and its target /system/lib64/libbluetooth_jni.so exists in the system_a mount.
 - **WB-05** (verified): Init service definitions for the group are in: vendor_a/etc/init/hw/init.anorak.rc (wpa_supplicant, cnss-daemon), vendor_a/etc/init/hw/init.anorak.debug.rc (vendor.cnss_diag), vendor_a/etc/init/android.hardware.wifi@1.0-service.rc (vendor.wifi_hal_legacy), vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc (vendor.bluetooth-1-0-qti), vendor_a/etc/init/hostapd.android.rc (hostapd), system_a/system/etc/init/wificond.rc (wificond), system_ext_a/etc/init/wifitelemetry.rc (wifitelemetry) and odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc (vendor.oculus.wifi-hal-1-0). system_a/system/etc/init/wifi.rc defines no service; it holds restorecon and kernel tracing steps.
 - **WB-16** (observed): The Bluetooth HAL implementation contains the literal names of these persist and ro properties: persist.vendor.bluetooth.alt_path_for_fw, persist.vendor.bluetooth.patch_config, persist.vendor.bluetooth.modem_nv_support, persist.vendor.bluetooth.rx_delay, persist.vendor.qcom.bluetooth.soc, ro.vendor.bt.bdaddr_path and ro.vendor.bluetooth.wipower. It contains the format strings 'Downloading NVM TAG %d' and 'NVM_TAG_ERROR (0x%x) detected!!!'. The strings do not show which of these properties are read at run time.
@@ -70,8 +68,6 @@ The claims below are restated with the wording that the data supports.
 - **WB-54** (verified): The system partition has four entries in the group that are not ELF objects: system_a/system/apex/com.android.wifi.capex (the Wi-Fi APEX package), system_a/system/etc/bluetooth/bt_stack.conf and system_a/system/etc/bluetooth/bt_did.conf (Bluetooth stack and device-ID configuration), and system_a/system/etc/permissions/com.oculus.vrbluetooth.xml, which grants android.permission.BLUETOOTH_PRIVILEGED to package com.oculus.vrbluetooth as a privapp permission. The APEX manifest names package com.android.wifi.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

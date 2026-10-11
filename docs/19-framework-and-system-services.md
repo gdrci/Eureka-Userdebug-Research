@@ -6,7 +6,7 @@
 
 The group has 707 rows: 229 symlinks and 478 regular files, spread across system_a (681), system_ext_a (15), product_a (9) and odm_a (2). It holds the framework layer: bytecode and ART artifacts (services.jar, framework.jar, framework-res.apk, the services.odex/.vdex/.art set, the arm and arm64 boot-framework images), the native daemons and command clients in system/bin (servicemanager, hwservicemanager, app_process32/64 zygote launchers, toybox and toolbox applet links, cmd, service, and about 180 others), 22 APEX module packages, about 33 shell wrapper scripts that exec app_process or cmd, and XML configuration (platform.xml, privapp-permissions, default-permissions, framework-sysconfig, hidden-API whitelist, feature and library declarations). Startup wiring is visible in the init rc files (zygote variants, servicemanager, hwservicemanager) and in plat_file_contexts entries for the binaries. Neither the init nor the SELinux files in the mounted system_a tree name any of the XML configuration files. All roles and facts are read from the mounted copy; nothing was executed.
 
-The role table has one row for each of the 707 files in this group (324 verified, 281 observed, 101 inferred, 1 unverified). It is at `data/subsystems/framework-and-system-services/roles.tsv`.
+Role table: `data/subsystems/framework-and-system-services/roles.tsv` (707 files: 324 verified, 281 observed, 101 inferred, 1 unverified).
 
 ## Verified claims
 
@@ -40,8 +40,6 @@ The role table has one row for each of the 707 files in this group (324 verified
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **C05** (verified): The 229 symlinks resolve to: 173 toybox, 6 toolbox, 5 netutils-wrapper-1.0, 5 iptables, 3 mke2fs, 3 fsck.f2fs, 2 ziptool, 2 logpersist.start, 2 bzip2, 2 /apex/com.android.runtime/bin/linker64, 2 /apex/com.android.runtime/bin/linker, 18 relative ../boot-*.vdex links (9 boot names, each under system/framework/arm and system/framework/arm64), and singles: system/bin/linkerconfig into /apex/com.android.runtime/bin/linkerconfig, system/bin/dex2oat into /apex/com.android.art/bin/dex2oat64, system/bin/dalvikvm into /apex/com.android.art/bin/dalvikvm, system/bin/app_process into app_process64, and the bootstrap aliases system/bin/bootstrap/linker_asan -> linker and linker_asan64 -> linker64.
 - **C06** (verified): Eight symlinks that exist on the mounted tree are not in this group: system/bin/disable-verity, enable-verity, hwclock, tee, touch, ueventd, and the two system/framework/arm and arm64 boot-com.oculus.os.platform.vdex links. They belong to four other subsystems in classified.tsv: security-keystore-crypto (disable-verity, enable-verity, tee), display-and-composer (hwclock), sensors-mcu-meta-hal (touch and the two boot-com.oculus.os.platform.vdex links), and init-and-properties (ueventd).
 - **C07** (verified): 22 APEX-type packages are in the group: 20 in system_a (system/apex), 1 in product_a (apex/com.meta.quest.apex) and 1 in odm_a (apex/com.meta.xr.apex). Manifest names differ from filenames for two packages: com.android.vndk.current.apex (manifest com.android.vndk.v32) and com.android.tethering.inprocess.capex (manifest com.android.tethering). Each .apex has an apex_payload.img of ext4 type. Each .capex has no payload and contains an original_apex member. The com.android.art.capex original_apex is 60,234,888 bytes.
@@ -54,8 +52,6 @@ The claims below are restated with the wording that the data supports.
 - **C38** (inferred): The fifteen listed ELF executables (VRStool, vrs-recorder, vrs-recorder2, vrsbuilder, vrfocusserver, xrspd, resource_control, resource_load, stream-publisher, runtimeipcbroker, wattsdown, flags_health_check, clean_scratch_files, profcollectd, profcollectctl) are PIE AArch64 binaries. Their roles are inferred from names and linked libraries. profcollectd, profcollectctl and flags_health_check are platform components (plat_file_contexts lines 553, 577, 607), so they are not Meta- or Oculus-specific.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

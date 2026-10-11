@@ -6,7 +6,7 @@
 
 The native-libraries group is 1371 rows across five partitions: system_a 787, vendor_a 368, system_ext_a 169, odm_a 27 and product_a 20. It contains 1361 regular files and 10 symlinks. The regular files are 1351 ELF shared objects (854 ELF64 AArch64, 497 ELF32 ARM, all ET_DYN) and 10 LLVM bitcode files (libclc built-in libraries under system/lib and system/lib64). The symlinks are 8 bionic links (libc, libdl, libdl_android, libm in system/lib and system/lib64) that point into /apex/com.android.runtime, which is not in the mount, plus odm_a and vendor_a lib/modules links to the dlkm partitions. system_a holds the AOSP platform and NDK-public libraries plus HIDL/AIDL interface libraries and Rust dylibs. vendor_a holds Qualcomm HIDL/AIDL clients, HAL modules (lib/hw, lib64/hw), FastRPC, audio (AGM/PAL) and camera/display libraries. system_ext_a, product_a and odm_a hold device-specific libraries (Oculus/Meta telemetry, tracking, XR loader, maintenance boot, Vulkan layers). The configuration that governs the group is system/etc/public.libraries.txt (29 entries) and vendor/etc/public.libraries.txt (8 entries), plus SELinux labels in plat_file_contexts line 121 and vendor_file_contexts lines 142-153, 196. The role table is at roles.tsv with 1371 rows: 453 verified, 857 inferred, 61 unverified. `<image>/mnt` is the mount point of the image's partitions.
 
-The role table has one row for each of the 1371 files in this group (453 verified, 0 observed, 857 inferred, 61 unverified). It is at `data/subsystems/native-libraries/roles.tsv`.
+Role table: `data/subsystems/native-libraries/roles.tsv` (1371 files: 453 verified, 0 observed, 857 inferred, 61 unverified).
 
 ## Verified claims
 
@@ -39,8 +39,6 @@ The role table has one row for each of the 1371 files in this group (453 verifie
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **G5** (verified): 1300 ELF objects carry a DT_SONAME. The 51 without one are 50 .dylib.so objects and libVkLayer_khronos_validation.so. The 50 .dylib.so objects follow the Rust crate-dylib naming; 40 list libstd.dylib.so in NEEDED, and the Rust origin of the nine small crates without that entry (for example libbitflags.dylib.so) is inferred from their names (proof in `data/subsystems/native-libraries/claims.json`, id G5).
 - **G9** (verified): The vendor SELinux mapping labels vendor libadsprpc.so and the vendor.qti.hardware.display.mapper@2.0, @3.0 and @4.0 libraries and the vendor.qti.hardware.display.mapperextensions@1.0, @1.1 and @1.2 libraries in this group as same_process_hal_file (vendor_file_contexts lines 161-166 and 196). vendor_file_contexts line 17 labels the boot HAL service executable as hal_bootctl_default_exec, and line 108 labels the odm maintenance-boot service executable as hal_maintenanceboot_default_exec (proof in `data/subsystems/native-libraries/claims.json`, id G9).
 - **D1.1** (verified): system/lib64/libc.so is a 46-byte symbolic link to /apex/com.android.runtime/lib64/bionic/libc.so. That path is not materialized in the mount, and system_a/apex is empty. The APEX package itself is in the mount at system/apex/com.android.runtime.apex, and its apex_payload.img contains /lib64/bionic/libc.so (1322360 bytes) (proof in `data/subsystems/native-libraries/claims.json`, id D1.1).
@@ -51,8 +49,6 @@ The claims below are restated with the wording that the data supports.
 - **D14.1** (verified): system/etc/public.libraries.txt lists 29 entries after a comment header. The entry libneuralnetworks.so carries a trailing nopreload token. Five listed names (libicu.so, libicui18n.so, libicuuc.so, libnativehelper.so and libneuralnetworks.so) have no file or classified row under those exact names and are absent from the mount. The substring libneuralnetworks matches only libneuralnetworks_packageinfo.so (native-libraries, system_a) (proof in `data/subsystems/native-libraries/claims.json`, id D14.1).
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

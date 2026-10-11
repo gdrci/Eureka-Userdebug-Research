@@ -6,7 +6,7 @@
 
 内核模块组由两个只读 ext4 镜像中的 306 个文件组成：vendor_dlkm_a（271 个文件，262 个模块）和 odm_dlkm_a（35 个文件，27 个模块）。289 个 .ko 文件均为 64 位小端 AArch64 ELF 可重定位目标文件，全部针对内核 5.10.205-01655-g5c5a360e9c21 构建（vermagic 相同）。每个镜像都包含 modules.alias、modules.dep、modules.load、modules.softdep、build.prop、NOTICE.xml.gz（许可证列表为空）以及两个空的 fs_config 列表；vendor_dlkm_a 另外还包含 modules.blocklist。fstab.eureka 将这些镜像挂载到 /vendor_dlkm 和 /odm_dlkm，而 /vendor/lib/modules 和 /odm/lib/modules 是指向它们的符号链接。模块加载由 /vendor/bin/init.insmod.sh 完成，它读取 init.insmod.charger.cfg（charger 类，37 条具名 modprobe 条目）或 init.insmod.cfg（启动阶段，针对两个 modules.load 文件执行 modprobe -b *）。init.anorak.rc 还直接用 modprobe 加载 wlan 和 sched-walt。从 modinfo 和别名中可见的模块类别包括：vendor_dlkm_a 中的高通 SoC 平台驱动（时钟、互连、SMMU、GLINK/QRTR 传输、KGSL 图形、MSM DRM、cfg80211/mac80211 WLAN 协议栈、WCD/LPASS 音频编解码器、SPMI PMIC、UFS），以及 odm_dlkm_a 中 Oculus/Meta 外设的设备驱动（USB VDM、syncboss、传感器、稳压器、充电底座）。
 
-角色表为该组中 306 个文件各提供一行（278 个 verified，0 个 observed，27 个 inferred，1 个 unverified）。该表位于 `data/subsystems/kernel-modules/roles.tsv`。
+角色表：`data/subsystems/kernel-modules/roles.tsv`（306 个文件：278 个 verified，0 个 observed，27 个 inferred，1 个 unverified）。
 
 ## 已验证结论
 
@@ -38,8 +38,6 @@
 - **K34** (inferred)：289 个模块分为两组。vendor_dlkm_a 包含高通 SoC 平台驱动（时钟、互连、SMMU、GLINK/QRTR 传输、KGSL、MSM DRM、cfg80211/mac80211 WLAN、WCD/LPASS 音频、SPMI PMIC、UFS）。odm_dlkm_a 包含 Meta/Oculus 外设的设备驱动（USB VDM、syncboss、传感器、稳压器）。这种分组依据作者字符串、描述和 DT compatible，而非设备树（证据见 `data/subsystems/kernel-modules/claims.json`，编号 K34）。
 
 ## 措辞已修正的结论
-
-下方结论以数据所支持的措辞重新表述。
 
 - **K08** (verified)：两个 insmod 配置共使用 38 条 modprobe 指令、4 条 enable 指令和 4 条 setprop 指令。init.insmod.charger.cfg 中的 37 个具名模块均可在两棵模块目录树中解析到对应的 .ko。只有一个条目 pmic-glink.ko 与其文件名（pmic_glink.ko）不同；其余 36 个完全匹配，因此该条目依赖名称规范化（证据见 `data/subsystems/kernel-modules/claims.json`，编号 K08）。
 - **K09** (verified)：init.insmod.cfg（启动配置）包含一条加载全部模块的 modprobe 指令 'modprobe|-b *'。其后是 setprop vendor.all.modules.ready，然后是针对 ADSP 启动、CDSP 启动和 CVP 启动节点（/sys/devices/virtual/cvp/cvp/boot）的 enable 指令，最后是 setprop vendor.all.devices.ready（证据见 `data/subsystems/kernel-modules/claims.json`，编号 K09）。

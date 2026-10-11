@@ -6,7 +6,7 @@
 
 The apps group is 431 rows: product_a 27, system_a 123, system_ext_a 278, vendor_a 3. The rows are 142 Android APK archives (142 distinct package names), 137 ELF odex files and 137 vdex containers (136 packages, plus a second arm variant of Horizon), 2 ART app images, 2 ART profiles and 11 symlinks into /system_ext/lib64. Of the APK packages, 103 are com.oculus/com.meta/com.facebook packages (mostly on system_ext_a and product_a), 37 are AOSP com.android packages (mostly system_a), and 2 are other names. The manifests report platform build version 32 for most APKs, with targetSdkVersion 32 in 84 of 138 APKs that declare one. For the 15 deep-dive APKs, signing uses two certificate families: CN=Android (mapped to seinfo platform in plat_mac_permissions.xml) and CN=Android Debug (mapped to seinfo fbandroid_debug in system_ext_mac_permissions.xml). Configuration that names these packages is outside the group, in privapp-permissions, default-permissions and sysconfig XML files, the nonDiscretionaryAppPackageName list, system_ext_seapp_contexts (one package only) and one vendor JSON key. The group has no firmware and no init .rc file names any of the 15 deep-dive packages. Roles for all 431 rows are in roles.tsv: 306 verified and 125 inferred.
 
-The role table has one row for each of the 431 files in this group (306 verified, 0 observed, 125 inferred, 0 unverified). It is at `data/subsystems/apps/roles.tsv`.
+Role table: `data/subsystems/apps/roles.tsv` (431 files: 306 verified, 0 observed, 125 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -54,8 +54,6 @@ The role table has one row for each of the 431 files in this group (306 verified
 - **r14** (verified): Carmel (com.oculus.browser) is referenced in system_ext_a/etc/nonDiscretionaryAppPackageName line 137 and in system_a/system/etc/default-permissions/default-permissions.xml line 57 (exception block for com.oculus.browser, BLUETOOTH_CONNECT fixed=true). No privapp block exists for it (proof in `data/subsystems/apps/claims.json`, id r14).
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **c08** (verified): The Settings.vdex header (magic 'vdex', version '027' plus NUL) has 32-bit values at offsets 8, 12, ..., 36 of 4, 0, 60, 8, 1, 0, 0, 2. The file is 204124 bytes; the Settings odex is 95152 bytes. The file contains no 'dex' plus newline sequence. The field names for these values are not established by the file; the meaning of the first value (4) against the two classes*.dex entries is unresolved (proof in `data/subsystems/apps/claims.json`, id c08).
 - **c17** (verified): The mounted file_contexts files contain no explicit label for /system_ext/app or /system_ext/priv-app. system_ext paths fall under the generic rule '/(system_ext|system/system_ext)(/.*)?  u:object_r:system_file:s0' (plat_file_contexts line 55). Explicit app-directory labels exist for vendor and odm only: plat_file_contexts lines 13 (vendor app) and 29 (odm app), and lines 14 (vendor priv-app) and 30 (odm priv-app). plat_file_contexts has no explicit label for /system/app or /system/priv-app (proof in `data/subsystems/apps/claims.json`, id c17).

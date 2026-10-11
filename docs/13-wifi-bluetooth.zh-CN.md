@@ -6,7 +6,7 @@
 
 wifi-bluetooth 组是一台设备的 Wi-Fi 与蓝牙协议栈，该设备搭载高通 QCA6490 组合芯片（QCA6490 出现在蓝牙补丁构建字符串中，也出现在 SELinux 文件上下文中所命名的 cnss-qca6490 sysfs 节点中）。厂商 HAL 服务暴露 IWifi（HIDL 1.0 至 1.5）、ISupplicant（1.0 至 1.4）、IHostapd（1.0 至 1.3）和 IBluetoothHci（1.0）。这些服务由 wpa_supplicant 与 hostapd 2.10-devel-12 守护进程、高通 WLAN 服务 cnss-daemon 与 cnss_diag，以及以单记录 TLV 容器存储的高通蓝牙 rampatch 与 NVM 数据块支撑。system 分区包含 wificond 守护进程、带有 JNI 库的蓝牙协议栈 libbluetooth.so、Wi-Fi APEX com.android.wifi（framework-wifi.jar、service-wifi.jar、ServiceWifiResources.apk），以及特权权限与功能标志 XML。odm 分区上有 Oculus 厂商 Wi-Fi HAL（vendor.oculus.hardware.wifi@1.0），system_ext 分区上有一个遥测守护进程。配置以 wpa_supplicant 与驱动覆盖文本文件、ICM 通道配置、蓝牙协议栈 trace 配置以及设备 ID 文件的形式提供。
 
-角色表对本组中的 104 个文件各有一行（91 个 verified，13 个 observed，0 个 inferred，0 个 unverified）。该表位于 `data/subsystems/wifi-bluetooth/roles.tsv`。
+角色表：`data/subsystems/wifi-bluetooth/roles.tsv`（104 个文件：91 个 verified，13 个 observed，0 个 inferred，0 个 unverified）。
 
 ## 已验证的声明
 
@@ -56,8 +56,6 @@ wifi-bluetooth 组是一台设备的 Wi-Fi 与蓝牙协议栈，该设备搭载�
 
 ## 修正措辞的声明
 
-下方结论以数据所支持的措辞重新表述。
-
 - **WB-02** (verified)：全部 104 个输入行都位于其挂载路径上。103 个普通文件的大小与 sha256 与记录一致（ok=103 bad=0）。唯一的符号链接 system_a/system/app/Bluetooth/lib/arm64/libbluetooth_jni.so 存在，其目标 /system/lib64/libbluetooth_jni.so 在 system_a 挂载中存在。
 - **WB-05** (verified)：组内的 init 服务定义位于：vendor_a/etc/init/hw/init.anorak.rc（wpa_supplicant、cnss-daemon）、vendor_a/etc/init/hw/init.anorak.debug.rc（vendor.cnss_diag）、vendor_a/etc/init/android.hardware.wifi@1.0-service.rc（vendor.wifi_hal_legacy）、vendor_a/etc/init/android.hardware.bluetooth@1.0-service-qti.rc（vendor.bluetooth-1-0-qti）、vendor_a/etc/init/hostapd.android.rc（hostapd）、system_a/system/etc/init/wificond.rc（wificond）、system_ext_a/etc/init/wifitelemetry.rc（wifitelemetry）以及 odm_a/etc/init/vendor.oculus.hardware.wifi@1.0-service.rc（vendor.oculus.wifi-hal-1-0）。system_a/system/etc/init/wifi.rc 未定义任何服务，它只包含 restorecon 与内核 tracing 步骤。
 - **WB-16** (observed)：蓝牙 HAL 实现包含以下 persist 与 ro 属性的字面名称：persist.vendor.bluetooth.alt_path_for_fw、persist.vendor.bluetooth.patch_config、persist.vendor.bluetooth.modem_nv_support、persist.vendor.bluetooth.rx_delay、persist.vendor.qcom.bluetooth.soc、ro.vendor.bt.bdaddr_path 和 ro.vendor.bluetooth.wipower。它还包含格式字符串 'Downloading NVM TAG %d' 和 'NVM_TAG_ERROR (0x%x) detected!!!'。这些字符串并未显示其中哪些属性在运行时被读取。
@@ -70,8 +68,6 @@ wifi-bluetooth 组是一台设备的 Wi-Fi 与蓝牙协议栈，该设备搭载�
 - **WB-54** (verified)：system 分区中该组有四个非 ELF 对象：system_a/system/apex/com.android.wifi.capex（Wi-Fi APEX 包）、system_a/system/etc/bluetooth/bt_stack.conf 和 system_a/system/etc/bluetooth/bt_did.conf（蓝牙协议栈与设备 ID 配置），以及 system_a/system/etc/permissions/com.oculus.vrbluetooth.xml，后者将 android.permission.BLUETOOTH_PRIVILEGED 作为 privapp 权限授予包 com.oculus.vrbluetooth。APEX 清单中的包名为 com.android.wifi。
 
 ## 已排除的声明
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|

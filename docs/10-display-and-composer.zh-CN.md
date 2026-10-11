@@ -6,7 +6,7 @@
 
 该组共有 132 行（odm_a 6、system_a 65、system_ext_a 7、vendor_a 54；其中 130 个普通文件、2 个符号链接），构成一台搭载 Oculus VR（VROS）组件、基于高通 SDM/SDE 的设备的 Android 显示、图形合成与 DRM 栈。VINTF 中注册了两个 IComposer 2.4 HAL 实现：高通的 vendor.qti.hardware.display.composer-service（IQtiComposer 3.2、DisplayConfig AIDL），以及 Oculus 的 StrataComposer 服务（实例名 "display"，开机时禁用，仅当 persist.device_config 属性为 true 时启用）。surfaceflinger 是这两者的 HIDL 客户端，gralloc、mapper、allocator 和 DisplayConfig 客户端库位于其下层。显示调优参数来自 /system/etc/display.conf（JSON）、/vendor/etc/display/DPU930.xml（高通 SDE930 参数表，由 libdisplayqos.so 读取）以及厂商属性 vendor.display.*。约 70 行属于 DRM 与 media-DRM 相关内容（ClearKey 和 Widevine HAL 服务、DRM 框架、MediaDrm 指标、forward-lock 引擎、memtrack）。此处的 libdrm.so 是用户空间内核 DRM 库，而非 Android 内容保护 DRM。
 
-角色表为本组的 132 个文件各提供一行（114 verified、13 observed、5 inferred、0 unverified）。该表位于 `data/subsystems/display-and-composer/roles.tsv`。
+角色表：`data/subsystems/display-and-composer/roles.tsv`（132 个文件：114 个 verified，13 个 observed，5 个 inferred，0 个 unverified）。
 
 ## 已验证的论断
 
@@ -40,8 +40,6 @@
 - **C38**（verified）：Widevine 和 ClearKey HAL 服务二进制文件均为惰性服务，启动前保持禁用，并使用相同的接口编号。Widevine 服务为接口 1.0 至 1.4 注册 widevine DRM 和 crypto 工厂。
 
 ## 措辞已修正的论断
-
-下方结论以数据所支持的措辞重新表述。
 
 - **C01**（verified）：该组有 132 个输入行：130 个普通文件和 2 个符号链接，分布于 odm_a（6）、system_a（65）、system_ext_a（7）和 vendor_a（54）。四个分区均以只读方式挂载。每个普通文件都存在于挂载点下，且与其记录的大小和 sha256 一致。2 个符号链接行（system_a/system/bin/hwclock -> toybox、vendor_a/bin/hwclock -> toybox_vendor）未记录 sha256（字段为 '-'），仅作为链接进行检查。
 - **C08**（observed）：高通 composer 服务二进制文件包含 41 个以 vendor.display.、vendor.gralloc. 或 vendor.debug. 开头的字符串；其中 39 个是具体的属性键（另外两个是单纯的前缀 vendor.display. 以及模板 vendor.display.cac_ipd_adjust_%zu）。示例：vendor.display.enable_verbose_log、vendor.display.cac_scale_red、vendor.display.idle_time、vendor.display.disable_skip_validate、vendor.gralloc.disable_ubwc。

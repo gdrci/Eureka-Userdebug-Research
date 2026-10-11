@@ -6,7 +6,7 @@
 
 The unclassified group has 13 rows from two partitions: 12 symbolic links (11 in system_a, 1 in vendor_a) and one regular file, system/xbin/su. The links are absolute-path aliases to /data/cache, /system/bin, /system/etc, /storage/self/primary, /sys/kernel/debug, /odm/odm_dlkm/etc, /vendor/vendor_dlkm/etc, a shell bugreports directory under /data, and the /system_ext, /vendor, /product and /odm partition roots. plat_file_contexts labels these paths as rootfs, cache_file, vendor_file or system_file. The su file is a stripped AArch64 PIE ELF with interpreter /system/bin/linker64. It needs libc.so, libc++.so, libm.so and libdl.so, and the libc, libm and libdl names resolve through symlinks into the com.android.runtime APEX. Its usage text is "su [WHO [COMMAND...]]" with default shell /system/bin/sh, its mode bits are 4750 with owner 0:2000, and its file_contexts label is su_exec. The policy declares su and su_exec and contains a shell-to-su process transition. The system build.prop in the image reports Android release 12 and build type userdebug.
 
-The role table has one row for each of the 13 files in this group (13 verified, 0 observed, 0 inferred, 0 unverified). It is at `data/subsystems/unclassified/roles.tsv`.
+Role table: `data/subsystems/unclassified/roles.tsv` (13 files: 13 verified, 0 observed, 0 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -32,8 +32,6 @@ The role table has one row for each of the 13 files in this group (13 verified, 
 - **U29** (inferred): The su binary is a switch-user command. From its strings and imports it takes an optional WHO and COMMAND, sets the group and user IDs and the supplementary group list, and executes COMMAND or /system/bin/sh. The helper names suggest that one helper parses the WHO string into IDs and another extracts UID, GID and group list.
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **U04** (verified): su has 11 program headers: PHDR, INTERP, three LOAD segments (R, R+E, RW; alignment 0x1000), TLS, DYNAMIC, GNU_RELRO, GNU_EH_FRAME, GNU_STACK (RW) and NOTE. A non-allocated .gnu_debugdata section sits at file offset 0x23de with size 0x130.
 - **U10** (verified): The binary embeds --help, setuid failed, setgid failed, invalid uid/gid '%s', setgroups failed, not allowed, too many group ids and failed to exec %s, plus the environment names PATH, USER, LOGNAME, IFS. The default shell path /system/bin/sh and a default PATH literal (/product/bin:/apex/com.android.runtime/bin:...:/vendor/xbin) are embedded. The binary passes PATH, USER and LOGNAME to setenv (PATH with the default literal as value), and clears IFS, USER and LOGNAME with unsetenv at separate call sites. It imports no getenv, so these names are set or cleared rather than read.

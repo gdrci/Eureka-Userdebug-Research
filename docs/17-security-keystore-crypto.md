@@ -6,7 +6,7 @@
 
 The group has 60 classified rows: 56 regular files and 4 symlinks, spread over system_a (40), system_ext_a (1) and vendor_a (19). It covers four layers. (1) The system keystore2 stack: the Rust keystore2 daemon, its AIDL/NDK and C++ stubs, Rust crypto and attestation helpers, the keystore client CLI and the wait_for_keymaster boot helper. (2) Gatekeeper: the gatekeeperd and gatekeeperserver daemons, the gatekeeper core libraries, the OVR gatekeeper service and client libraries, and the Qualcomm gatekeeper 1.0 HAL service and implementation. (3) Keymaster and KeyMint: HIDL 3.0, 4.0 and 4.1 interface libraries in system and vendor, software keymaster libraries, the Qualcomm keymaster 4.1 HAL service and backend, and the qseecomd TEE daemon used by the vendor services. (4) fs-verity and AVB verity: fsverity_init (started from init.rc), set-verity-state with its enable-verity and disable-verity links, libfsverity, and the fs-verity release X.509 certificate. Cross-cutting libraries are BoringSSL libcrypto (32-bit and 64-bit) and the Widevine OEMCrypto libraries. All 56 regular files match their recorded sha256 and size. Binaries are stripped, so behaviour is taken from exported and imported symbols, NEEDED entries, strings, and init and SELinux text files.
 
-The role table has one row for each of the 60 files in this group (40 verified, 11 observed, 9 inferred, 0 unverified). It is at `data/subsystems/security-keystore-crypto/roles.tsv`.
+Role table: `data/subsystems/security-keystore-crypto/roles.tsv` (60 files: 40 verified, 11 observed, 9 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -33,8 +33,6 @@ The role table has one row for each of the 60 files in this group (40 verified, 
 - **libqtikeymaster4** (observed): lib64/libqtikeymaster4.so is the Qualcomm keymaster 4.x backend that the vendor keymaster 4.1 service links. It depends on the vendor keymaster device and utility libraries, libqcbor, and the 4.0 and 4.1 HIDL interfaces. It exports 239 defined symbols, including a CR* family of getter functions.
 
 ## Claims with corrected wording
-
-The claims below are restated with the wording that the data supports.
 
 - **ks2-interfaces** (observed): keystore2's binary strings contain the android.system.keystore2 service names (IKeystoreService/default, IKeystoreOperation) and the maintenance, metrics, authorization, compat, APC, legacy keystore and remote provisioning interface names, plus the KeyMint, secure clock and shared secret HAL interface names. It imports AServiceManager_addService and logs 'Successfully registered Keystore 2.0 service.' next to the IKeystoreService/default, APC, authorization, metrics, remote provisioning, maintenance and legacy keystore names. Whether each listed interface is served by the binary or only referenced is not determined from strings.
 - **set-verity-refs** (verified): Four binaries in the mounted partitions contain the verity-state command names: system_a/system/bin/init, snapshotctl, update_engine and set-verity-state itself (three besides set-verity-state). The verity-state rows (set-verity-state, enable-verity, disable-verity) and the tee symlink rows are not named in any init.rc or file_contexts entry in the checked partitions.

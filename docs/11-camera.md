@@ -6,7 +6,7 @@
 
 The camera group has 83 files in five partitions (vendor_a 57, system_a 12, system_ext_a 6, odm_a 4, product_a 4). Its core is a QTI Camera HAL3 module (vendor_a/lib64/hw/camera.qcom.so, hw_module id "camera", module API 3.0) that loads CHI pipeline and 3A/statistics component libraries from vendor_a/lib64/camera/components; an XR camera HAL implementation (vendor_a/lib64/libxrcamerahal.so) is reached through an odm shim (odm_a/lib64/libcamerahal.so exporting CameraHalC_Init/Start/Stop/Deinit). A camera mux-mode service family (system_ext cameramuxmodeservice daemon, a client monitor library, a JSON reader library and a command-line client) is configured by /product/etc/cameramuxmode/config.json (v1) and by configv2.json (version 3), which is duplicated in vendor_a and read by the odm sensor service. The CAMERA_ICP firmware is an Xtensa ELF32 MDT image with 21 program headers, 13 of whose segment files carry data. vendor_a/etc/camera holds 16 tuning and sensor-module blobs (Chromatix headers, AEC/AWB tables, CVA and depth AE JSON) for IMX471, OG01A1B and OV7251 sensors, and system_a holds framework and HIDL client libraries (camera.common@1.0, camera.device@3.2, camera2 NDK, camera client, camera metadata) in 32-bit and 64-bit builds. Init references in the mounted partitions name only cameramuxmodeservice; SELinux labels cover the mux-mode service, its config directory and properties, and the firmware directory.
 
-The role table has one row for each of the 83 files in this group (38 verified, 43 observed, 2 inferred, 0 unverified). It is at `data/subsystems/camera/roles.tsv`.
+Role table: `data/subsystems/camera/roles.tsv` (83 files: 38 verified, 43 observed, 2 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -52,8 +52,6 @@ The role table has one row for each of the 83 files in this group (38 verified, 
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **C07** (observed): camera.qcom.so holds literal paths for its file and component locations (/vendor/lib64/camera/components/, /vendor/etc/camera, /data/vendor/camera, /data/vendor/camera/metadata), format patterns %s/%s%s_%s_%d.bin, %s/GlobalUsecase%s_%d.bin and %s/PerUsecase%s_%d.bin, and property keys such as persist.vendor.camera.isp.enablePiAEC, persist.vendor.camera.eeprom.reload and persist.vendor.camera.enablemetahashmap.
 - **C12** (verified): odm_a/lib64/libcamerahal.so is a stripped AArch64 shared object (SONAME libcamerahal.so, 36,896 bytes). Its C-linkage exports are CameraHalC_Init, CameraHalC_Start, CameraHalC_Stop and CameraHalC_Deinit; it also exports 14 mangled C++ symbols in the CameraHal namespace. It NEEDs libbase, libimagebuffer, liblog, libmros_vendor_sysprops, libsensortelemetry, libui and libutils (plus libc++, libc, libm and libdl).
 - **C13** (observed): The odm camera HAL shim loads its implementation with dlopen and refers to a CreateCameraHal entry point by name in that library; it does not export an unmangled CreateCameraHal symbol. Its candidate names include libfastpathcamerahal.so and an xrcamera-named library (libxrcamerahal.so). Its properties are persist.vendor.camera.hal and vendor.camera.hal.debug_file.
@@ -65,8 +63,6 @@ The claims below are restated with the wording that the data supports.
 - **C41** (observed): camera.qcom.so names a sample sensor-module file com.qti.sensormodule.truly_ov8856.bin and its two-lane variant, which show the short com.qti.sensormodule.<sensor>.bin naming. The six bins in this group use the longer com.qti.sensormodule.camNN_<vendor>_eureka_<sensor>_<side>_csiN.bin form (see C40). No literal match for the group's file names, or for the tokens eureka, cam04, imx471, og01a1b or ov7251, appears in camera.qcom.so.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

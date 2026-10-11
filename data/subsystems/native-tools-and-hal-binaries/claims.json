@@ -10,7 +10,7 @@
    "label": "verified",
    "evidence": "cmd: awk -F'\\t' '$1==\"native-tools-and-hal-binaries\"' classified.tsv > input_rows.tsv; cut -f2 input_rows.tsv | sort | uniq -c ; wc -l < input_rows.tsv | out: 38 odm_a / 2 product_a / 10 system_a / 55 system_ext_a / 241 vendor_a ; 346",
    "file": "<image>/classified.tsv",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Partition counts reproduce: odm_a 38, product_a 2, system_a 10, system_ext_a 55, vendor_a 241; 346 rows in total.",
    "corrected_claim": ""
   },
@@ -19,7 +19,7 @@
    "claim": "157 rows are regular files (132 application/x-pie-executable, 17 application/x-sharedlib, 7 text/plain, 1 text/x-shellscript) and 189 rows are symlinks.",
    "label": "verified",
    "evidence": "cmd: cut -f4 input_rows.tsv | sort | uniq -c ; cut -f6 input_rows.tsv | sort | uniq -c | sort -rn | out: 157 file / 189 symlink ; 132 application/x-pie-executable / 17 application/x-sharedlib / 7 text/plain / 1 text/x-shellscript",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Kind counts are 157 file and 189 symlink. Regular-file MIME counts are 132 pie-executable, 17 sharedlib, 7 text/plain and 1 shell script (sum 157). Symlink rows carry MIME 'link' (189).",
    "corrected_claim": ""
   },
@@ -28,7 +28,7 @@
    "claim": "All 157 regular files match the manifest sha256 and byte size on disk.",
    "label": "verified",
    "evidence": "cmd: while read ...; h=$(sha256sum \"$f\" | cut -d' ' -f1); s=$(stat -c %s \"$f\") ... compared with input_rows.tsv columns 7 and 5 | out: hash ok=157 bad=0; size mismatches=0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All 157 regular-file rows match the recorded SHA-256 and byte size on disk: hash ok 157, bad 0; size mismatches 0.",
    "corrected_claim": ""
   },
@@ -37,7 +37,7 @@
    "claim": "All 189 symlink rows exist as symbolic links on the mounted partitions.",
    "label": "verified",
    "evidence": "cmd: while read ...; [ \"$kind\" = \"symlink\" ] && [ -L \"<image>/mnt/$part/$path\" ] ... | out: symlinks present: 189",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All 189 symlink rows are symbolic links on the mounted partitions (189 present as links).",
    "corrected_claim": ""
   },
@@ -46,7 +46,7 @@
    "claim": "Symlink targets are 172 links to toybox_vendor, 6 to toolbox, 1 to meta_screencap, and 10 absolute links from system_a/odm/* to /vendor/odm/<name> (app, bin, etc, firmware, framework, lib, lib64, overlay, priv-app, usr).",
    "label": "verified",
    "evidence": "cmd: readlink of each symlink row, then cut -f3 symlinks.txt | sort | uniq -c | sort -rn | out: 172 -> toybox_vendor / 6 -> toolbox / 1 -> meta_screencap / 1 each of 10 absolute /vendor/odm/* targets (system_a/odm/framework -> /vendor/odm/framework and nine more)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Symlink targets: 172 toybox_vendor, 6 toolbox (all in vendor_a/bin), 1 meta_screencap (system_ext_a/bin/screencap), and 10 absolute /vendor/odm/<name> targets, one each for app, bin, etc, firmware, framework, lib, lib64, overlay, priv-app and usr, all from system_a/odm/*.",
    "corrected_claim": ""
   },
@@ -56,7 +56,7 @@
    "label": "verified",
    "evidence": "cmd: strings -n 2 vendor_a/bin/toybox_vendor > toybox_strings.txt; for a in $(cat toybox_applet_names.txt); do grep -qxF -- \"$a\" toybox_strings.txt && echo x; done | wc -l | out: 171 ; not-as-string: [",
    "file": "<image>/mnt/vendor_a/bin/toybox_vendor",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "171 of the 172 toybox applet link names are exact lines in the toybox_vendor string table. The name '[' is the only miss.",
    "corrected_claim": ""
   },
@@ -66,7 +66,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 4 vendor_a/bin/toybox_vendor | grep -iE 'toybox[ _-]?[0-9]|0\\.[0-9]+\\.[0-9]+' ; strings -n 2 vendor_a/bin/toybox_vendor | grep -E '^usage: toybox' | out: 0.8.4-android ; usage: toybox [--long | --help | --version | [COMMAND] [ARGUMENTS...]]",
    "file": "<image>/mnt/vendor_a/bin/toybox_vendor",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The version string 0.8.4-android is present and the usage line is exactly 'usage: toybox [--long | --help | --version | [COMMAND] [ARGUMENTS...]]'.",
    "corrected_claim": ""
   },
@@ -76,7 +76,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -h vendor_a/bin/toybox_vendor | grep -E 'Type|Machine' ; readelf -l vendor_a/bin/toybox_vendor | grep interpreter ; readelf -d vendor_a/bin/toybox_vendor | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' | out: Type: DYN (Position-Independent Executable file); Machine: AArch64 ; [Requesting program interpreter: /system/bin/linker64] ; libcrypto.so libz.so liblog.so libprocessgroup.so libselinux.so libc.so libm.so libdl.so",
    "file": "<image>/mnt/vendor_a/bin/toybox_vendor",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Header type DYN (position-independent executable), machine AArch64, interpreter /system/bin/linker64, NEEDED list exactly libcrypto.so, libz.so, liblog.so, libprocessgroup.so, libselinux.so, libc.so, libm.so, libdl.so, no SONAME entry, stripped.",
    "corrected_claim": ""
   },
@@ -86,7 +86,7 @@
    "label": "verified",
    "evidence": "cmd: strings -n 3 vendor_a/bin/toolbox > toolbox_strings.txt; for a in getprop setprop start stop getevent modprobe toolbox; do printf '%s: ' $a; grep -cxF -- \"$a\" toolbox_strings.txt; done ; readlink vendor_a/bin/getprop | out: getprop: 1 / setprop: 1 / start: 1 / stop: 1 / getevent: 1 / modprobe: 1 / toolbox: 1 ; vendor_a/bin/getprop -> toolbox",
    "file": "<image>/mnt/vendor_a/bin/toolbox",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Six links to toolbox in vendor_a/bin (getprop, setprop, start, stop, getevent, modprobe). Each applet name occurs exactly once in the toolbox string table; getprop links to toolbox.",
    "corrected_claim": ""
   },
@@ -96,7 +96,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 3 vendor_a/bin/toolbox | grep -E 'usage|Usage|property_info|__system_property_foreach|ro.zygote' | out: usage: setprop NAME VALUE / usage: getprop [-TZ] [NAME [DEFAULT]] / /dev/__properties__/property_info / __system_property_foreach / ro.zygote",
    "file": "<image>/mnt/vendor_a/bin/toolbox",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The usage strings and the two libc property-read imports are present (undefined dynamic symbols). The phrase 'reads system properties through the property-info file' rests only on a path string, so the file use is an inference. Gap: whether toolbox opens property_info itself was not determined.",
    "corrected_claim": "toolbox carries the getprop and setprop usage strings, imports __system_property_foreach and __system_property_read_callback from libc, and its string table contains the path /dev/__properties__/property_info. Reading through that file is inferred from the path string; no import or open call shows it."
   },
@@ -106,7 +106,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 5 vendor_a/bin/sh | grep -E 'KSH_VERSION|mkshrc|/odm/bin' | out: KSH_VERSION=@(#)MIRBSD KSH R59 2020/05/16 Android ; ${ENV:-/vendor/etc/mkshrc} ; /product/bin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/system_ext/bin:/system/bin:/system/xbin:/odm/bin:/vendor/bin:/vendor/xbin",
    "file": "<image>/mnt/vendor_a/bin/sh",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The sh string table has KSH_VERSION=@(#)MIRBSD KSH R59 2020/05/16 Android, the ENV default ${ENV:-/vendor/etc/mkshrc}, and a PATH default containing /odm/bin and /vendor/bin.",
    "corrected_claim": ""
   },
@@ -115,7 +115,7 @@
    "claim": "/vendor/etc/mkshrc exists as a 389-byte file in vendor_a/etc.",
    "label": "verified",
    "evidence": "cmd: ls -la vendor_a/etc/mkshrc | out: -rw-r--r--. 1 root root 389 Jan  1  2009 vendor_a/etc/mkshrc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_a/etc/mkshrc is a regular file of 389 bytes (ls and stat agree).",
    "corrected_claim": ""
   },
@@ -125,7 +125,7 @@
    "label": "observed",
    "evidence": "cmd: cat vendor_a/etc/init/vndservicemanager.rc | out: service vndservicemanager /vendor/bin/vndservicemanager /dev/vndbinder / class core / user system / group system readproc / task_profiles ServiceCapacityLow ServicePerformance / onrestart class_restart main / onrestart class_restart hal / onrestart class_restart early_hal / shutdown critical",
    "file": "<image>/mnt/vendor_a/etc/init/vndservicemanager.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vndservicemanager.rc: service at /vendor/bin/vndservicemanager with argument /dev/vndbinder, class core, user system, group system readproc, and onrestart class_restart for main, hal and early_hal.",
    "corrected_claim": ""
   },
@@ -135,7 +135,7 @@
    "label": "observed",
    "evidence": "cmd: sed -n '86p' vendor_a/etc/selinux/vendor_file_contexts ; sed -n '1p' vendor_a/etc/selinux/vndservice_contexts | out: /(vendor|system/vendor)/bin/vndservicemanager  u:object_r:vndservicemanager_exec:s0 ; manager  u:object_r:service_manager_vndservice:s0",
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_file_contexts line 86 labels /(vendor|system/vendor)/bin/vndservicemanager as vndservicemanager_exec. vndservice_contexts line 1 maps 'manager' to service_manager_vndservice.",
    "corrected_claim": ""
   },
@@ -145,7 +145,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 6 vendor_a/bin/vndservice | grep -iE 'usage|list|check|call|service' | out: Usage: service [-h|-?] / service list / service check SERVICE / service call SERVICE CODE [i32 N | i64 N | f N | d N | s16 STR | null | fd f | nfd n | afd f ] ...",
    "file": "<image>/mnt/vendor_a/bin/vndservice",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Usage strings are 'service list', 'service check SERVICE' and 'service call SERVICE CODE [i32 N | ... ]'. The binary references /dev/vndbinder.",
    "corrected_claim": ""
   },
@@ -155,7 +155,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d vendor_a/bin/hal_proxy_daemon | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' | out: libnl.so libcutils.so liblog.so libwifi-hal-qcom.so libhardware_legacy.so libc++.so libc.so libm.so libdl.so",
    "file": "<image>/mnt/vendor_a/bin/hal_proxy_daemon",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED list is exactly libnl.so, libcutils.so, liblog.so, libwifi-hal-qcom.so, libhardware_legacy.so, libc++.so, libc.so, libm.so, libdl.so.",
    "corrected_claim": ""
   },
@@ -165,7 +165,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 6 vendor_a/bin/hal_proxy_daemon | grep -E '^wifi_|Type [0-9]+ for WifiLogger' | sort -u | out: wifi_initialize / wifi_get_ifaces / wifi_start_gscan ; Type 1 for WifiLogger Get Driver Version / Type 5 for WifiLogger Get Ring Buffer Status / Type 11 for WifiLogger Start packet fate stats",
    "file": "<image>/mnt/vendor_a/bin/hal_proxy_daemon",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The 60 wifi_* dynamic symbols are all undefined (imports), so the binary does not carry its own function table. The three named functions are among them. The WifiLogger Type 1 to Type 13 strings are confirmed. Gap: contents of libwifi-hal-qcom.so were not examined.",
    "corrected_claim": "hal_proxy_daemon imports wifi_* functions (for example wifi_initialize, wifi_get_ifaces and wifi_start_gscan, which are undefined dynamic symbols resolved from its NEEDED library libwifi-hal-qcom.so), and its string table holds WifiLogger command descriptions numbered 1 to 13."
   },
@@ -175,7 +175,7 @@
    "label": "verified",
    "evidence": "cmd: python3 -I xref2.py (matches /vendor/bin/hal_proxy_daemon against all files under etc/init and etc/selinux in odm_a, product_a, system_ext_a, vendor_a and system_a) | out: ## /vendor/bin/hal_proxy_daemon  full=0 base=0",
    "file": "<image>/mnt/vendor_a/bin/hal_proxy_daemon",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "No full-path or basename reference to /vendor/bin/hal_proxy_daemon in the init or SELinux text of the five named partitions (full=0, base=0). A whole-mount text search also finds no reference.",
    "corrected_claim": ""
   },
@@ -185,7 +185,7 @@
    "label": "observed",
    "evidence": "cmd: cat vendor_a/etc/init/android.hardware.light@2.0-service.anorak.rc (excerpt) | out: service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.anorak / interface android.hardware.light@2.0::ILight default / interface vendor.oculus.hardware.light@2.0::ILight default / class hal / user system / group system / shutdown critical",
    "file": "<image>/mnt/vendor_a/etc/init/android.hardware.light@2.0-service.anorak.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "service light-hal-2-0 in class hal, user and group system, with interface lines for android.hardware.light@2.0::ILight and vendor.oculus.hardware.light@2.0::ILight. The early-boot block sets owner and mode on the blue, green and red LED nodes and on white:indicator.",
    "corrected_claim": ""
   },
@@ -195,7 +195,7 @@
    "label": "observed",
    "evidence": "cmd: sed -n '121p' vendor_a/etc/selinux/vendor_file_contexts ; sed -n '3p' vendor_a/etc/selinux/vendor_hwservice_contexts | out: /(vendor|system/vendor)/bin/hw/android\\.hardware\\.light@2\\.0-service\\.[A-Za-z0-9_]+  u:object_r:hal_light_default_exec:s0 ; vendor.oculus.hardware.light::ILight  u:object_r:hal_light_hwservice:s0",
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_hwservice_contexts",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_file_contexts line 121 labels the light HAL hal_light_default_exec. vendor_hwservice_contexts line 3 maps vendor.oculus.hardware.light::ILight to hal_light_hwservice.",
    "corrected_claim": ""
   },
@@ -205,7 +205,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 6 vendor_a/bin/hw/android.hardware.light@2.0-service.anorak | grep '^_Z' | c++filt | grep -oE '[a-z]+::[a-z0-9_:]+::V[0-9_]+::I[A-Za-z0-9_]+' | sed 's/::/./g' | sort -u | out: android.hardware.light.V2_0.ILight / android.hidl.base.V1_0.IBase / vendor.oculus.hardware.light.V2_0.ILight",
    "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.light@2.0-service.anorak",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The three interface names reproduce from the demangled symbol strings. However, all 31 dynamic-symbol entries for these interfaces are undefined (imports), so the binary references rather than defines them. Gap: the implementing class in the stripped image was not determined.",
    "corrected_claim": "The light HAL binary references, as undefined dynamic-symbol imports, the method symbols of android.hardware.light.V2_0.ILight, vendor.oculus.hardware.light.V2_0.ILight and android.hidl.base.V1_0.IBase (31 symbols, none defined in the binary)."
   },
@@ -215,7 +215,7 @@
    "label": "observed",
    "evidence": "cmd: cat vendor_a/etc/init/android.hardware.security.keymint-service-qti.rc (excerpt) ; sed -n '489p' vendor_a/etc/selinux/vendor_file_contexts | out: on init / start vendor.keymint-qti / service vendor.keymint-qti /vendor/bin/hw/android.hardware.security.keymint-service-qti / class early_hal / user system / group system drmrpc ; /vendor/bin/hw/android\\.hardware\\.security\\.keymint-service-qti  u:object_r:vendor_hal_keymint_qti_exec:s0",
    "file": "<image>/mnt/vendor_a/etc/init/android.hardware.security.keymint-service-qti.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "on init starts vendor.keymint-qti. The service is in class early_hal, user system, group system drmrpc. vendor_file_contexts line 489 labels it vendor_hal_keymint_qti_exec.",
    "corrected_claim": ""
   },
@@ -225,7 +225,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 6 vendor_a/bin/hw/android.hardware.security.keymint-service-qti | grep '^_Z' | c++filt | grep -oE 'android::[A-Za-z0-9_:]*IKeyMint[A-Za-z0-9_]*|android\\.hardware\\.security\\.keymint\\.[A-Za-z]+' | sort -u | out: android.hardware.security.keymint.IKeyMintDevice / android.hardware.security.keymint.IKeyMintOperation / android.hardware.security.keymint.IRemotelyProvisionedComponent",
    "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.security.keymint-service-qti",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "All three names are present, but the stated pattern uses dotted names and misses android::hardware::security::keymint::IRemotelyProvisionedComponent, so it returns only two names. A pattern that accepts the :: form returns all three. Defined symbols are the weak ::hash members. Gap: the implementations in the linked libraries were not examined.",
    "corrected_claim": "The KeyMint binary carries symbols in the android::hardware::security::keymint namespace for IKeyMintDevice, IKeyMintOperation and IRemotelyProvisionedComponent. Their ::hash members are defined (weak), and the IKeyMintDevice and IRemotelyProvisionedComponent ::descriptor members are undefined imports."
   },
@@ -235,7 +235,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d vendor_a/bin/hw/android.hardware.security.keymint-service-qti | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' | out: liblog.so libcutils.so libbase.so libutils.so libhardware.so libbinder_ndk.so libhidlbase.so android.hardware.keymaster@4.0.so libqtikeymint.so libcrypto.so android.hardware.security.keymint-V1-ndk_platform.so android.hardware.security.secureclock-V1-ndk_platform.so android.hardware.security.sharedsecret-V1-ndk_platform.so libc++.so libc.so libm.so libdl.so",
    "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.security.keymint-service-qti",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED list includes libqtikeymint.so, libcrypto.so, android.hardware.keymaster@4.0.so, libhidlbase.so and three android.hardware.security.*-V1-ndk_platform.so libraries, plus libc++.so, libc.so, libm.so and libdl.so.",
    "corrected_claim": ""
   },
@@ -245,7 +245,7 @@
    "label": "verified",
    "evidence": "cmd: grep -rn -i 'keymint' vendor_a/etc/selinux/*_contexts | out: vendor_a/etc/selinux/vendor_file_contexts:70:/(vendor|system/vendor)/bin/hw/android\\.hardware\\.security\\.keymint-service   u:object_r:hal_keymint_default_exec:s ; vendor_a/etc/selinux/vendor_file_contexts:489:/vendor/bin/hw/android\\.hardware\\.security\\.keymint-service-qti              u:object_r:vendor_hal_keymint_qti_exec:s0",
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The per-file context scan gives vendor_file_contexts lines 70 and 489 only, and no hit in vendor_service_contexts or vendor_hwservice_contexts. The word 'only' is wrong outside the context files, since two compiled-policy .cil files also contain keymint type names.",
    "corrected_claim": "Within the *_contexts files, keymint appears only in vendor_file_contexts (lines 70 and 489), and the vendor service and hardware-service context files have no keymint entry. Across the whole etc/selinux directory, keymint also appears as type names in vendor_sepolicy.cil (51 matches) and plat_pub_versioned.cil (43 matches)."
   },
@@ -255,7 +255,7 @@
    "label": "observed",
    "evidence": "cmd: cat vendor_a/etc/init/android.hardware.health@2.1-service.rc ; sed -n '41p' vendor_a/etc/selinux/vendor_file_contexts ; strings -n 6 vendor_a/bin/hw/android.hardware.health@2.1-service | grep '^_Z' | c++filt | grep -oE 'android\\.hardware\\.health\\.V2_0\\.[A-Za-z]+' | sort -u | out: service health-hal-2-1 /vendor/bin/hw/android.hardware.health@2.1-service / class hal charger / capabilities WAKE_ALARM BLOCK_SUSPEND ; /(vendor|system/vendor)/bin/hw/android\\.hardware\\.health@2\\.1-service u:object_r:hal_health_default_exec:s0 ; android.hardware.health.V2_0.IHealth / android.hardware.health.V2_0.IHealthInfoCallback",
    "file": "<image>/mnt/vendor_a/bin/hw/android.hardware.health@2.1-service",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The stated pattern with dotted names returns nothing; the :: form returns IHealth and IHealthInfoCallback. All 11 V2_0 health dynamic symbols are undefined, so 'defines' should read 'references'. The init and label facts are confirmed.",
    "corrected_claim": "The health HAL 2.1 service health-hal-2-1 (classes hal and charger; user and group system; capabilities WAKE_ALARM and BLOCK_SUSPEND) is labelled hal_health_default_exec at vendor_file_contexts line 41. Its binary references, as undefined imports, android.hardware.health.V2_0.IHealth and android.hardware.health.V2_0.IHealthInfoCallback."
   },
@@ -265,7 +265,7 @@
    "label": "observed",
    "evidence": "cmd: cat odm_a/etc/init/fw_init.rc | out: service fw_init /vendor/odm/bin/fw_init / class main / user system / group system graphics input / oneshot / disabled / file /dev/kmsg w",
    "file": "<image>/mnt/odm_a/etc/init/fw_init.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fw_init.rc: service /vendor/odm/bin/fw_init, class main, user system, group system graphics input, oneshot, disabled, and file /dev/kmsg w.",
    "corrected_claim": ""
   },
@@ -275,7 +275,7 @@
    "label": "observed",
    "evidence": "cmd: sed -n '497,504p' vendor_a/etc/init/hw/init.anorak.rc | out: # Tell fw_init to suppress syncboss reset until the sensorservice starts / # during startup. / setprop vendor.syncbosshal.wait_for_service true / # Start fw_init as soon as we can / start fw_init",
    "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "init.anorak.rc lines 497 to 504: setprop vendor.syncbosshal.wait_for_service true, then start fw_init, with the comment about suppressing SyncBoss reset until sensorservice starts.",
    "corrected_claim": ""
   },
@@ -285,7 +285,7 @@
    "label": "verified",
    "evidence": "cmd: sha256sum odm_a/bin/fw_init ; grep -P '\\todm_a\\tbin/fw_init\\t' classified.tsv | cut -f7 | out: 62380bdbfd4280475b8ad8deddeed1589804e6d8b89e960ae6fafe21b1b59be7 odm_a/bin/fw_init ; 62380bdbfd4280475b8ad8deddeed1589804e6d8b89e960ae6fafe21b1b59be7",
    "file": "<image>/mnt/odm_a/bin/fw_init",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "odm_a/bin/fw_init SHA-256 is 62380bdbfd4280475b8ad8deddeed1589804e6d8b89e960ae6fafe21b1b59be7, the same as the manifest value.",
    "corrected_claim": ""
   },
@@ -295,7 +295,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d odm_a/bin/fw_init | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' ; readelf --dyn-syms -W odm_a/bin/fw_init | awk '$7!=\"UND\" && NR>3' | wc -l | out: libiad-utils.so libpng.so libsync.so libbase.so libcutils.so libgflags.so libhidlbase.so liblog.so libosutils.so libutils.so libdeviceid.so vendor.oculus.hardware.telemetry@1.0.so libovrfwupdate.so libsyncboss.so libc++.so libc.so libm.so libdl.so ; 157",
    "file": "<image>/mnt/odm_a/bin/fw_init",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "DYN (PIE), AArch64, interpreter /system/bin/linker64. NEEDED list matches the claim exactly, and 157 dynamic symbols are defined (non-UND).",
    "corrected_claim": ""
   },
@@ -305,7 +305,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 8 odm_a/bin/fw_init | grep -iE 'fw.?init|fw_update|syncboss|/dev/' | sort -u | out: /data/local/tmp/fw-init-{:s}.lck / /dev/syncboss0 / /odm/etc/fw_init.cfg / Starting Syncboss SWD Update / Starting Syncboss SPL Update / Force update Syncboss / Not updating Syncboss (nRF) firmware / vendor.fw_init.duration_ms (property name also present in the string table)",
    "file": "<image>/mnt/odm_a/bin/fw_init",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Literal strings present: /dev/syncboss0, /data/local/tmp/fw-init-{:s}.lck, /odm/etc/fw_init.cfg, vendor.fw_init.duration_ms, Starting Syncboss SWD Update, Starting Syncboss SPL Update, Syncboss (nRF) firmware version OK, and Not updating Syncboss (nRF) firmware.",
    "corrected_claim": ""
   },
@@ -315,7 +315,7 @@
    "label": "observed",
    "evidence": "cmd: cat odm_a/etc/fw_init.cfg | out: [syncboss] / path = \"/odm/firmware/syncboss.bin\" / id = 1 / busy_path = \"/sys/devices/virtual/misc/syncboss0/spi/control/streaming\" / [secondary] / path = \"/odm/firmware/santana_manager.bin\" / id = 0 / [blu] / path = \"/vendor/firmware/blu.bin\" / version_path = \"/vendor/firmware/blu.toml\" / part = \"bb51-8kb\" / uart = \"/dev/ttyHS13\" / bootloader_update_delay_s = 5 / app_update_delay_ms = 500",
    "file": "<image>/mnt/odm_a/etc/fw_init.cfg",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fw_init.cfg sections and keys match: [syncboss] path, id 1, busy_path under /sys/devices/virtual/misc/syncboss0; [secondary] path and id 0; [blu] path, version_path, part bb51-8kb, uart /dev/ttyHS13, bootloader_path and reset_path (sysfs under /sys/devices/platform/vendor/vendor:oculus,blu), bootloader_update_delay_s 5, app_update_delay_ms 500.",
    "corrected_claim": ""
   },
@@ -325,7 +325,7 @@
    "label": "verified",
    "evidence": "cmd: ls -l odm_a/firmware/syncboss.bin odm_a/firmware/santana_manager.bin ; file -b odm_a/firmware/syncboss.bin odm_a/firmware/santana_manager.bin ; ls vendor_a/firmware/blu.bin vendor_a/firmware/blu.toml | out: 366076 syncboss.bin / 60240 santana_manager.bin ; ARM Cortex-M firmware, initial SP at 0x2001e000, reset at 0x000006e8 ... ; ARM Cortex-M firmware, initial SP at 0x20008000, reset at 0x080005e0 ... ; ls: cannot access 'vendor_a/firmware/blu.bin': No such file or directory",
    "file": "<image>/mnt/odm_a/firmware/syncboss.bin",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "odm_a/firmware/syncboss.bin is 366076 bytes and santana_manager.bin is 60240 bytes; both are ARM Cortex-M firmware. vendor_a/firmware/blu.bin and blu.toml are absent.",
    "corrected_claim": ""
   },
@@ -335,7 +335,7 @@
    "label": "observed",
    "evidence": "cmd: sed -n '97p' vendor_a/etc/selinux/vendor_file_contexts ; sed -n '221p' vendor_a/etc/selinux/vendor_file_contexts | out: /(odm|vendor/odm)/bin/fw_init  u:object_r:syncboss_exec:s0 ; /dev/syncboss.*  u:object_r:syncboss_device:s0",
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_file_contexts line 97 maps (odm|vendor/odm)/bin/fw_init to syncboss_exec. Line 221 maps /dev/syncboss.* to syncboss_device.",
    "corrected_claim": ""
   },
@@ -345,7 +345,7 @@
    "label": "observed",
    "evidence": "cmd: cat odm_a/etc/init/fw_init_bootstat.rc | out: on property:vendor.fw_init.duration_ms=* / exec_background - system log -- /system/bin/bootstat -r FwInitDuration --value ${vendor.fw_init.duration_ms}",
    "file": "<image>/mnt/odm_a/etc/init/fw_init_bootstat.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fw_init_bootstat.rc: on property:vendor.fw_init.duration_ms=* runs bootstat -r FwInitDuration --value with the property value.",
    "corrected_claim": ""
   },
@@ -355,7 +355,7 @@
    "label": "verified",
    "evidence": "cmd: for f in $(grep '|SO|' elf_summary.txt | cut -d'|' -f1); do readelf --dyn-syms -W $f | grep -qw main && n=$((n+1)); done ; echo \"$n of $t\" | out: 17 of 17 ; file -b odm_a/bin/syncboss_getstatus | out: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, stripped",
    "file": "<image>/mnt/odm_a/bin/syncboss_getstatus",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Seventeen shared-object-type executables in odm_a/bin, equal to the 17 application/x-sharedlib rows. Each has a defined main dynamic symbol and interpreter /system/bin/linker64. The 'launched as programs' part is an inference from main plus interpreter; no launch was run.",
    "corrected_claim": ""
   },
@@ -365,7 +365,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d odm_a/bin/syncboss_getstatus | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' ; readelf --dyn-syms -W odm_a/bin/syncboss_getstatus | grep -w main | out: liblog.so libm.so libdl.so libc.so ; 126: 0000000000005ed4   304 FUNC    GLOBAL DEFAULT   12 main",
    "file": "<image>/mnt/odm_a/bin/syncboss_getstatus",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED is liblog.so, libm.so, libdl.so, libc.so. main is a defined GLOBAL FUNC DEFAULT at 0x5ed4, size 304 (dynamic symbol index 126, section 12).",
    "corrected_claim": ""
   },
@@ -375,7 +375,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 6 odm_a/bin/syncboss_getstatus | grep -oE '^(ro|persist|vendor|sys|init)\\.[a-z0-9_.-]{3,}' | sort -u | out: persist.vendor.syncbosshal.disable_fw_version_check / persist.vendor.syncbosshal.force_single_pulsar_tx_slot / persist.vendor.syncbosshal.sensor_controller.imu / ro.hardware / vendor.syncbosshal.pulsar_afh / vendor.syncbosshal.pulsar_blocklist",
    "file": "<image>/mnt/odm_a/bin/syncboss_getstatus",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All five keys occur in each of the 17 syncboss_* binaries in odm_a/bin that contain them (the consumers script is the one without them), so the 'SyncBoss tools' scope holds. Strings only; runtime use not determined.",
    "corrected_claim": ""
   },
@@ -385,7 +385,7 @@
    "label": "observed",
    "evidence": "cmd: grep -nE 'syncboss|fw_init' vendor_a/etc/selinux/vendor_property_contexts | out: 35:persist.vendor.syncbosshal.               u:object_r:vendor_syncboss_prop:s0 / 49:vendor.debug.fw_init.                     u:object_r:vendor_fw_init_prop:s0 / 50:vendor.fw_init.                           u:object_r:vendor_fw_init_prop:s0 / 52:vendor.syncbosshal.                       u:object_r:vendor_syncboss_prop:s0",
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_property_contexts",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_property_contexts lines 35 and 52 map persist.vendor.syncbosshal. and vendor.syncbosshal. to vendor_syncboss_prop. Lines 49 and 50 map vendor.debug.fw_init. and vendor.fw_init. to vendor_fw_init_prop.",
    "corrected_claim": ""
   },
@@ -395,7 +395,7 @@
    "label": "observed",
    "evidence": "cmd: strings -n 4 odm_a/bin/syncboss_print_fw_version | grep -E '^\\s*--[a-z-]+' ; strings -n 4 odm_a/bin/syncboss_powerstate_tool | grep -E '^\\s*--' ; strings -n 4 odm_a/bin/syncboss_prox_tool | grep -E '^\\s*--' | out: USAGE: syncboss_print_fw_version [OPTIONS] / --check-fw-version / --check-fw-flavor / --short / --build-flavor / --help ; --help / --get / --watch / --get-raw / --get-raw-interactive / --run-calibration",
    "file": "<image>/mnt/odm_a/bin/syncboss_print_fw_version",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "print_fw_version options match exactly (--check-fw-version, --check-fw-flavor, --short, --build-flavor, --help). powerstate includes --get and --watch (plus --help). prox includes --get, --get-raw, --get-raw-interactive, --watch, --watch-raw and --run-calibration, among others.",
    "corrected_claim": ""
   },
@@ -405,7 +405,7 @@
    "label": "observed",
    "evidence": "cmd: grep -nE 'LOCK_FILE=|MOCK_SS=|SERVICES=|flock|--exclude|Usage' odm_a/bin/syncboss_consumers_ctl (excerpt) | out: LOCK_FILE=/data/local/tmp/fw-init-syncboss.lck / MOCK_SS=vendor.oculus.sensors-mock-hal-1-0 / SERVICES=( / vendor.oculus.sensors-hal-1-0 / vendor.oculus.wifi-hal-1-0 / trackingservice / trackingfidelityservice / calibration_svr / mrsystemservice / sensorproxy / flock -x -n 9 / echo \"Usage: syncboss_consumers_ctl [start|stop|restart] [--exclude SERVICE]...\"",
    "file": "<image>/mnt/odm_a/bin/syncboss_consumers_ctl",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "SERVICES holds seven entries. start runs under an exclusive lock on /data/local/tmp/fw-init-syncboss.lck (fd 9). stop prepends vendor.oculus.sensors-mock-hal-1-0. --exclude is honoured. Usage line is start|stop|restart with --exclude.",
    "corrected_claim": ""
   },
@@ -415,7 +415,7 @@
    "label": "verified",
    "evidence": "cmd: grep -rIl -E 'syncboss_consumers_ctl' --exclude-dir=scratch . ; grep -rIn 'syncboss_consumers_ctl' odm_a/etc system_ext_a/etc vendor_a/etc | out: ./odm_a/bin/syncboss_consumers_ctl (single file listed) ; no output lines from odm_a/etc, system_ext_a/etc or vendor_a/etc",
    "file": "<image>/mnt/odm_a/bin/syncboss_consumers_ctl",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Across the whole mounted tree, only odm_a/bin/syncboss_consumers_ctl contains its name. odm_a/etc, system_ext_a/etc and vendor_a/etc have no match.",
    "corrected_claim": ""
   },
@@ -425,7 +425,7 @@
    "label": "observed",
    "evidence": "cmd: cat odm_a/etc/init/board_init.rc ; strings -n 6 odm_a/bin/board_init | grep -E 'setprops|usage' | out: service board_init /odm/bin/board_init --setprops / class core / user system / oneshot ; --setprops - set properties rather reading and dumping them / usage: board_init [options]",
    "file": "<image>/mnt/odm_a/bin/board_init",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "board_init.rc: service /odm/bin/board_init --setprops, class core, user system, oneshot. Option text reads '--setprops - set properties rather reading and dumping them' (the claim paraphrases it).",
    "corrected_claim": ""
   },
@@ -435,7 +435,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d odm_a/bin/board_init | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' ; strings -n 6 odm_a/bin/board_init | grep -E '^ro\\.' | out: libbase.so libcutils.so libdeviceid.so libgflags.so liblog.so libosutils.so libc++.so libc.so libm.so libdl.so ; ro.product.device / ro.vendor.hw.deviceid / ro.vendor.product.model_extended",
    "file": "<image>/mnt/odm_a/bin/board_init",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED list matches: libbase, libcutils, libdeviceid, libgflags, liblog, libosutils, libc++, libc, libm, libdl. Property names ro.product.device, ro.vendor.hw.deviceid and ro.vendor.product.model_extended are present.",
    "corrected_claim": ""
   },
@@ -445,7 +445,7 @@
    "label": "observed",
    "evidence": "cmd: cat odm_a/etc/init/perfservice.rc (excerpt) ; sed -n '102p' vendor_a/etc/selinux/vendor_file_contexts ; sed -n '24p' vendor_a/etc/selinux/vendor_property_contexts | out: service perfservice /odm/bin/hw/perf_service --schedutil ${vendor.scheduler.schedutil:-false} / interface android.hardware.power@1.0::IPower default ... / interface vendor.oculus.hardware.clocks@1.0::IClocks default / class hal / user root / group root system / capabilities SYS_ADMIN ; /(odm|vendor/odm)/bin/hw/perf_service  u:object_r:hal_perfservice_exec:s0 ; vendor.scheduler.  vendor_scheduler_prop:s0",
    "file": "<image>/mnt/odm_a/bin/hw/perf_service",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "perfservice runs perf_service --schedutil. Interfaces: IPower 1.0 to 1.3 default, IThermal 1.0 and 2.0 default, IClocks 1.0 default. vendor_file_contexts line 102 labels it hal_perfservice_exec. vendor_property_contexts line 24 maps vendor.scheduler. to vendor_scheduler_prop.",
    "corrected_claim": ""
   },
@@ -455,7 +455,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d odm_a/bin/hw/perf_service | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' | out: android.hardware.power@1.0.so, android.hardware.power@1.1.so, android.hardware.power@1.2.so, android.hardware.power@1.3.so, android.hardware.thermal@1.0.so, android.hardware.thermal@2.0.so, libbase.so, libcutils.so, libhidlbase.so, liblog.so, libmros_vendor_sysprops.so, libnl.so, libosutils.so, libthermalhalutils.so, libutils.so, vendor.oculus.hardware.clocks@1.0.so, ...",
    "file": "<image>/mnt/odm_a/bin/hw/perf_service",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED includes power@1.0 to 1.3, thermal@1.0 and 2.0, vendor.oculus.hardware.clocks@1.0.so, libthermalhalutils.so and libmros_vendor_sysprops.so, plus others.",
    "corrected_claim": ""
   },
@@ -465,7 +465,7 @@
    "label": "observed",
    "evidence": "cmd: cat odm_a/etc/init/android.hardware.usb@1.2-service.ovr.dev.rc (excerpt) ; sed -n '101p' vendor_a/etc/selinux/vendor_file_contexts ; strings -n 8 odm_a/bin/hw/android.hardware.usb@1.2-service.ovr | grep -E '^/config/usb_gadget/g1/UDC' | out: service vendor.usb-hal-1-2 /odm/bin/hw/android.hardware.usb@1.2-service.ovr / interface android.hardware.usb@1.2::IUsb default / interface android.hardware.usb.gadget@1.2::IUsbGadget default / class hal / user root / group root system mtp / shutdown delayed 20 ; /(odm|vendor/odm)/bin/hw/android\\.hardware\\.usb@1\\.2-service\\.[A-Za-z0-9_]+ u:object_r:hal_usb_oculus_exec:s0 ; /config/usb_gadget/g1/UDC",
    "file": "<image>/mnt/odm_a/bin/hw/android.hardware.usb@1.2-service.ovr",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor.usb-hal-1-2 is in class hal, user root, group root system mtp, shutdown delayed 20. Interfaces are IUsb 1.0 to 1.2 and IUsbGadget 1.0 to 1.2. vendor_file_contexts line 101 labels it hal_usb_oculus_exec. The configfs string /config/usb_gadget/g1/UDC is present.",
    "corrected_claim": ""
   },
@@ -475,7 +475,7 @@
    "label": "observed",
    "evidence": "cmd: cat system_ext_a/etc/init/vrdevicemanagerserver.rc ; sed -n '82p' system_ext_a/etc/selinux/system_ext_file_contexts ; strings -n 8 system_ext_a/bin/vrdevicemanagerserver | grep -E '^/system/etc/' | out: service vrdevice /system_ext/bin/vrdevicemanagerserver / class late_start / user system / group system readproc / capabilities SYS_NICE ; /system_ext/bin/vrdevicemanagerserver  u:object_r:vrdevicemanagerserver_exec:s0 ; /system/etc/device_props.json / /system/etc/display.conf",
    "file": "<image>/mnt/system_ext_a/bin/vrdevicemanagerserver",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vrdevice service in class late_start, user system, group system readproc, capability SYS_NICE. system_ext_file_contexts line 82 labels it vrdevicemanagerserver_exec. Strings /system/etc/device_props.json and /system/etc/display.conf are present (string-level references).",
    "corrected_claim": ""
   },
@@ -485,7 +485,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -d system_ext_a/bin/vrdevicemanagerserver | grep NEEDED | sed 's/.*\\[\\(.*\\)\\]/\\1/' | out: android.hardware.power@1.0.so, android.hardware.power@1.1.so, android.hardware.thermal@2.0.so, libbase.so, libbinder.so, libcutils.so, libhidlbase.so, libjsoncpp.so, liblog.so, libosutils.so, libprocessgroup.so, libshared_os_services_sysprops.so, libutils.so, vendor.oculus.hardware.clocks@1.0.so, vendor.oculus.hardware.graphics.composer@1.1.so, libc++.so, libc.so, ...",
    "file": "<image>/mnt/system_ext_a/bin/vrdevicemanagerserver",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED includes power@1.0 and 1.1, thermal@2.0, vendor.oculus.hardware.clocks@1.0, vendor.oculus.hardware.graphics.composer@1.1, libjsoncpp.so and libprocessgroup.so, plus others.",
    "corrected_claim": ""
   },
@@ -495,7 +495,7 @@
    "label": "verified",
    "evidence": "cmd: readelf -l vendor_a/bin/boringssl_self_test32 | grep -i interpreter ; readelf -l vendor_a/bin/toybox_vendor | grep -i interpreter | out: [Requesting program interpreter: /system/bin/linker] ; [Requesting program interpreter: /system/bin/linker64]",
    "file": "<image>/mnt/vendor_a/bin/boringssl_self_test32",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Across the 149 ELF rows: 5 are ELFCLASS32 with interpreter /system/bin/linker, and 144 are ELFCLASS64 with /system/bin/linker64. boringssl_self_test32 is one of the 32-bit rows with /system/bin/linker.",
    "corrected_claim": ""
   },
@@ -505,7 +505,7 @@
    "label": "verified",
    "evidence": "cmd: grep -c 'not-stripped' elf_summary.txt (elf_summary.txt built from file -b output for each ELF row) | out: 0 ; representative file -b output: ARM aarch64 ... dynamically linked, interpreter /system/bin/linker64, stripped",
    "file": "<image>/mnt/odm_a/bin/fw_init",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "Two rows report 'not stripped': odm_a/bin/peripheralconfig-tool (has debug_info sections) and system_ext_a/bin/bpftrace (has a .symtab section). The claimed zero comes from matching the hyphenated 'not-stripped', which the type-detection output never prints (it prints 'not stripped'). The work-directory summary records all 149 as 'stripped', which is wrong for these two rows.",
    "corrected_claim": "147 of the 149 ELF images in the group are reported stripped; odm_a/bin/peripheralconfig-tool and system_ext_a/bin/bpftrace are reported not stripped."
   },
@@ -515,7 +515,7 @@
    "label": "verified",
    "evidence": "cmd: grep -c '^## ' xref2_out.txt ; grep -c 'full=0 base=0' xref2_out.txt ; grep -cE 'full=[1-9]' xref2_out.txt ; grep -cE 'full=0 base=[1-9]' xref2_out.txt | out: 157 ; 94 ; 62 ; 1",
    "file": "<image>/mnt/vendor_a/etc/init/hw/init.anorak.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Re-derived: 157 entries; 94 with no full-path or basename reference; 62 with a full-path reference; 1 with a basename-only reference. That one is /vendor/bin/toolbox, where 'toolbox' appears as a domain type name inside system_ext_sepolicy.cil lists, not as a file reference.",
    "corrected_claim": ""
   },
@@ -525,7 +525,7 @@
    "label": "verified",
    "evidence": "cmd: ls odm_a/etc/selinux | out: precompiled_sepolicy / precompiled_sepolicy.plat_sepolicy_and_mapping.sha256 / precompiled_sepolicy.system_ext_sepolicy_and_mapping.sha256 ; sed -n '95,97p' vendor_a/etc/selinux/vendor_file_contexts | out: /(odm|vendor/odm)/bin/board_init  u:object_r:board_init_exec:s0 / /(odm|vendor/odm)/bin/flashswap.sh  u:object_r:flashswap-sh_exec:s0 / /(odm|vendor/odm)/bin/fw_init  u:object_r:syncboss_exec:s0",
    "file": "<image>/mnt/odm_a/etc/selinux",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "odm_a/etc/selinux holds precompiled_sepolicy and two .sha256 files only. vendor_file_contexts lines 95 to 97 carry the (odm|vendor/odm) prefix entries for board_init, flashswap.sh and fw_init.",
    "corrected_claim": ""
   },
@@ -535,7 +535,7 @@
    "label": "verified",
    "evidence": "cmd: grep -cE 'toybox|toolbox' vendor_a/etc/selinux/vendor_file_contexts system_ext_a/etc/selinux/system_ext_file_contexts ; grep -nE 'bin/sh\\b' vendor_a/etc/selinux/vendor_file_contexts | out: vendor_file_contexts:0 / system_ext_file_contexts:0 ; (no lines)",
    "file": "<image>/mnt/vendor_a/etc/selinux/vendor_file_contexts",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "No toybox or toolbox entries in vendor_file_contexts or system_ext_file_contexts. No bin/sh entry in either file. No wildcard /vendor/bin rule covers these paths.",
    "corrected_claim": ""
   },
@@ -545,7 +545,7 @@
    "label": "verified",
    "evidence": "cmd: wc -l roles.tsv ; cut -f4 roles.tsv | tail -n +2 | sort | uniq -c ; python3 -I build_roles.py (prints unique: True) | out: 347 ; 16 inferred / 139 observed / 1 unverified / 190 verified ; unique: True",
    "file": "<image>-tools/work/subsystems/native-tools-and-hal-binaries/roles.tsv",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "roles.tsv has 347 lines (one header and 346 rows). No duplicate partition and path pairs. Pairs equal the 346 group input rows. Confidence totals: 190 verified, 139 observed, 16 inferred, 1 unverified (sum 346). The build script was read but not executed, since it overwrites roles.tsv.",
    "corrected_claim": ""
   }

@@ -6,7 +6,7 @@
 
 The group holds 448 input rows: 434 in system_a, 8 in odm_a and 6 in product_a. It has three parts. Fonts: 210 system font entries (204 TrueType or OpenType files, two CJK TrueType collections, four symlinks) and six product fonts; system fonts are indexed by system_a/system/etc/fonts.xml (familyset version 23, 157 families, 24 aliases) with Roboto as the default sans-serif face, and product fonts are added through product_a/etc/fonts_customization.xml. Locale data: a tzdata2021a bundle with its tz_version string, 37 hyphenation pattern (.hyb) files, two BMD binary tables read by libFFTEm.so, and a usr/icu symlink into the com.android.i18n APEX. Input configuration: 176 Linux key layout (.kl) files, six key character maps (.kcm) and eight input device configuration (.idc) files, mostly gamepad and remote-control devices plus emulator and VR entries. All 443 regular files match their recorded size and sha256, and the five symlinks resolve.
 
-The role table has one row for each of the 448 files in this group (258 verified, 187 observed, 3 inferred, 0 unverified). It is at `data/subsystems/fonts-locale-input-resources/roles.tsv`.
+Role table: `data/subsystems/fonts-locale-input-resources/roles.tsv` (448 files: 258 verified, 187 observed, 3 inferred, 0 unverified).
 
 ## Verified claims
 
@@ -42,8 +42,6 @@ The role table has one row for each of the 448 files in this group (258 verified
 
 ## Claims with corrected wording
 
-The claims below are restated with the wording that the data supports.
-
 - **C10** (verified): Product fonts: OptimisticDisplay-VF.ttf is a variable TrueType font named 'Optimistic Disp VF Cyrl Md' (version 2.000, wght 200-800 with default 500, 341 glyphs, unitsPerEm 2000). OptimisticText-{Light,Regular,Medium,Bold,Black}.ttf are static TrueType fonts (version 1.000, 430 glyphs, unitsPerEm 2000) in the typographic family 'Optimistic Text App' (name ID 16, absent in Regular and Bold). Their full names are 'Optimistic Text App Light', 'Optimistic Text App' (Regular), 'Optimistic Text App Medium', 'Optimistic Text App Bold' and 'Optimistic Text App ExtraBold' (the file named Black). All six sit in product_a/fonts.
 - **C15** (observed): fonts.xml states its selection rule: fonts are chosen by a match on the full BCP-47 language tag including script, then on language, then on order (the first font containing the glyph). Order of appearance also breaks ties for weight matching.
 - **C18** (verified): Across the 176 key layout files in the group the directives are: key 2986, axis 1294, led 38, sensor 96. Sensor types are ACCELEROMETER and GYROSCOPE (48 each). Axis names include X, Y, Z, RZ, HAT_X and HAT_Y, each in 162 of the 176 files (156 of the 169 system_a files and 6 of the 7 odm_a files).
@@ -51,8 +49,6 @@ The claims below are restated with the wording that the data supports.
 - **C34** (verified): RFFstd_501.bmd (19586 bytes) and RFFspeed_501.bmd (12862 bytes) begin with a little-endian u32 whose value times 2 equals the file size (9793 and 6431). The string usr/share/bmd/RFFstd_501.bmd is in libFFTEm.so; the string RFFspeed does not occur in the lib, lib64, bin or framework directories. libFFTEm.so exports 945 defined dynamic symbols, most with prefixes bts_ (297), bbs_ (221), bbf_ (211), bim_ (120), bpi_ (56) and btk_ (36, of which 10 begin btk_SDK_), plus four unprefixed names including JNI_OnLoad.
 
 ## Excluded claims
-
-The claims below are excluded; the reason for each is given.
 
 | ID | Claim | Reason |
 |---|---|---|

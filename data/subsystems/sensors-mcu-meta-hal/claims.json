@@ -10,7 +10,7 @@
    "label": "verified",
    "evidence": "command: cut -f2,3 input_rows.tsv | sort > a; cut -f1,2 roles.tsv | tail -n +2 | sort > b; diff a b && echo 'key sets identical (263 rows)'. output: key sets identical (263 rows). command: cut -f1,2 roles.tsv | tail -n +2 | sort | uniq -d | wc -l. output: 0. command: awk -F'\\t' 'NR>1{print $4}' roles.tsv | sort | uniq -c. output: 175 verified, 13 observed, 75 inferred.",
    "file": "<image>-tools/work/subsystems/sensors-mcu-meta-hal/roles.tsv",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Sorted (partition, path) keys of input_rows.tsv (columns 2-3) and roles.tsv (columns 1-2, header skipped) are identical: diff is empty, 263 keys each, zero duplicate keys on either side. Confidence column counts are 175 verified, 13 observed, 75 inferred, totalling 263.",
    "corrected_claim": ""
   },
@@ -20,7 +20,7 @@
    "label": "verified",
    "evidence": "command: loop over input_rows.tsv running sha256sum on mnt/<partition>/<path> and comparing with column 7. output: sha ok=259 mismatch=0. command: awk -F'\\t' '$4==\"file\"{print $7}' input_rows.tsv | sort -u | wc -l. output: 259. example: sha256sum mnt/odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service output 1a86c2b4cba625baa506f3e1d19f7e962f45da37b21ee1ca6f0dd1b74212cbd0.",
    "file": "<image>/mnt",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sha256 of mnt/<partition>/<path> for all 259 file rows: 259 match the inventory digest, 0 mismatch, 0 missing. Unique digests among the 259 file rows: 259. Example odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service = 1a86c2b4cba625baa506f3e1d19f7e962f45da37b21ee1ca6f0dd1b74212cbd0.",
    "corrected_claim": ""
   },
@@ -29,7 +29,7 @@
    "claim": "Group composition: 43 odm_a, 19 product_a, 67 system_a, 123 system_ext_a, 11 vendor_a rows. Kinds: 259 file and 4 symlink. The symlinks are two ART vdex links to ../boot-com.oculus.os.platform.vdex (system_a arm64 and arm), system_a/system/bin/touch to toybox, and vendor_a/bin/touch to toybox_vendor.",
    "label": "verified",
    "evidence": "command: cut -f2 input_rows.tsv | sort | uniq -c. output: 43 odm_a, 19 product_a, 67 system_a, 123 system_ext_a, 11 vendor_a. command: cut -f4 input_rows.tsv | sort | uniq -c. output: 259 file, 4 symlink. command: readlink system/bin/touch; readlink vendor_a/bin/touch. output: toybox; toybox_vendor.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Partition counts: odm_a 43, product_a 19, system_a 67, system_ext_a 123, vendor_a 11. Kind counts: file 259, symlink 4. readlink: system_a arm64 and arm boot-com.oculus.os.platform.vdex -> ../boot-com.oculus.os.platform.vdex; system_a/system/bin/touch -> toybox; vendor_a/bin/touch -> toybox_vendor.",
    "corrected_claim": ""
   },
@@ -38,7 +38,7 @@
    "claim": "Several same-size library pairs differ in content across partitions: odm_a and system_ext_a copies of lib64/vendor.oculus.hardware.sensors@1.0.so are both 1534496 bytes with different digests; telemetry@1.0.so is 87296 bytes in odm_a, product_a and system_ext_a with three different digests.",
    "label": "verified",
    "evidence": "command: grep -E 'lib64/vendor.oculus.hardware.(sensors@1.0|telemetry@1.0)\\.so' input_rows.tsv | cut -f2,3,5,7. output: odm_a lib64/vendor.oculus.hardware.sensors@1.0.so 1534496 08aeef4c...; system_ext_a lib64/vendor.oculus.hardware.sensors@1.0.so 1534496 36a2e001...; odm_a lib64/vendor.oculus.hardware.telemetry@1.0.so 87296 1881fec5...; product_a lib64/vendor.oculus.hardware.telemetry@1.0.so 87296 3bfa47d2...; system_ext_a lib64/vendor.oculus.hardware.telemetry@1.0.so 87296 869cb283...",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "odm_a and system_ext_a lib64/vendor.oculus.hardware.sensors@1.0.so are both 1534496 bytes (on-disk sizes match) with digests 08aeef4c... and 36a2e001..., which differ. lib64/vendor.oculus.hardware.telemetry@1.0.so is 87296 bytes in odm_a, product_a and system_ext_a with three distinct digests (1881fec5..., 3bfa47d2..., 869cb283...).",
    "corrected_claim": ""
   },
@@ -48,7 +48,7 @@
    "label": "verified",
    "evidence": "command: file odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service. output: ELF 64-bit LSB pie executable, ARM aarch64 ... dynamically linked, interpreter /system/bin/linker64 ... stripped. command: readelf -d odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service | grep NEEDED. output (excerpt): Shared library: [libsensorutils.so] / [libvrsensors-hidlwrapper.so] / [android.hardware.sensors@1.0.so] / [android.hardware.sensors@2.0.so] / [libsyncboss.so] ... [vendor.oculus.hardware.dock@1.0.so] / [vendor.oculus.hardware.sensors@1.0.so] / [vendor.oculus.hardware.sensors_java@1.0.so] / [libdevicesensors.so] / [libsensortelemetry.so]. command: find mnt -name libsyncboss.so -o -name libcamerahal.so ... output: odm_a/lib64/libsyncboss.so, odm_a/lib64/libcamerahal.so and the others found in odm_a, system_ext_a, vendor_a or system_a.",
    "file": "<image>/mnt/odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "file output: ELF 64-bit LSB pie executable, ARM aarch64, dynamically linked, interpreter /system/bin/linker64, stripped; no .symtab section. The dynamic-section NEEDED list contains every named entry. Every NEEDED name was located in the mounted partitions, with none absent.",
    "corrected_claim": ""
   },
@@ -58,7 +58,7 @@
    "label": "verified",
    "evidence": "command: strings -n 4 odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service | grep -n -E 'sensorservice|\\.cfg|\\.toml|kDeviceVersionName|ruby|nice_|device_version|constellation|imu\\b'. output excerpt: 3177:\\t/vendor/etc/sensorservice.cfg. command: strings ... | grep -E 'default_rate|fallback' (with the TOML messages). output: Failed to parse mag data rate from TOML config for device version %s, looking for fallback; Failed to parse IMU data rate from TOML config for device version %s, looking for fallback; Incoming IMU data rate %d is invalid. Fallback to default rate from TOML config.; default_rate; fallback.",
    "file": "<image>/mnt/odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "strings on odm_a/bin/hw/vendor.oculus.hardware.sensors@1.0-service: /vendor/etc/sensorservice.cfg (line 3177); default_rate and fallback; 'Failed to parse IMU data rate from TOML config for device version %s, looking for fallback'; the mag equivalent; and 'Incoming IMU data rate %d is invalid. Fallback to default rate from TOML config.' are all present.",
    "corrected_claim": ""
   },
@@ -68,7 +68,7 @@
    "label": "verified",
    "evidence": "command: cat vendor_a/etc/sensorservice.cfg. output: nice_constellation = \"ruby\" / [imu.default_rate] / fallback = 800 / [mag.default_rate] / fallback = 25 / comment: NOTE: these keys must exactly match the strings in kDeviceVersionName in libdeviceid. command: grep -rl -a nice_constellation (on mnt). output includes system_a/system/etc/mrsystemservice.cfg and system_a/system/etc/trackingservice.cfg.",
    "file": "<image>/mnt/vendor_a/etc/sensorservice.cfg",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_a/etc/sensorservice.cfg: nice_constellation = \"ruby\"; [imu.default_rate] fallback = 800; [mag.default_rate] fallback = 25; NOTE that keys must match kDeviceVersionName in libdeviceid. A TOML parse yields {'nice_constellation': 'ruby', 'imu': {'default_rate': {'fallback': 800}}, 'mag': {'default_rate': {'fallback': 25}}}. Line 1 nice_constellation = \"ruby\" is identical in system_a mrsystemservice.cfg and trackingservice.cfg.",
    "corrected_claim": ""
   },
@@ -77,7 +77,7 @@
    "claim": "Init starts the sensors HAL only when the property selects it. The service vendor.oculus.sensors-hal-1-0 runs at class hal as user system, group system camera, declares interface vendor.oculus.hardware.sensors@1.0::IExternalTimingProvider default, uses task_profiles sensorServicePolicy and is marked disabled. It starts on boot when persist.vendor.oculus.sensor.service.impl=sensorservice. The sensoremu and sensor-emulator services use the same property with values sensoremu and sensor-emulator. odm_a/etc/build.prop sets sensorservice.",
    "label": "verified",
    "evidence": "command: cat odm_a/etc/init/vendor.oculus.hardware.sensors@1.0-service-debug.rc. output (excerpt): service vendor.oculus.sensors-hal-1-0 /odm/bin/hw/vendor.oculus.hardware.sensors@1.0-service / interface vendor.oculus.hardware.sensors@1.0::IExternalTimingProvider default / class hal / user system / group system camera / task_profiles sensorServicePolicy / disabled / on boot && property:persist.vendor.oculus.sensor.service.impl=sensorservice / start vendor.oculus.sensors-hal-1-0. command: sed -n '44,49p' odm_a/etc/build.prop. output: line 47 persist.vendor.oculus.sensor.service.impl=sensorservice. command: grep -rn 'persist.vendor.oculus.sensor.service.impl' mnt. output: odm.sensoremu.rc:13 (=sensoremu), odm.sensor-emulator.rc:13 (=sensor-emulator), debug rc:18 (=sensorservice).",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: service block (class hal, user system, group system camera, SYS_NICE, task_profiles sensorServicePolicy, interface IExternalTimingProvider default, disabled); on-boot trigger gated on persist.vendor.oculus.sensor.service.impl=sensorservice; build.prop line 47 sets sensorservice; sensoremu and sensor-emulator gates use sensoremu and sensor-emulator. Not accurate: 'only when the property selects it'. system_ext_a/bin/virtualcontroller_ctl sets kSensorSvcName=vendor.oculus.sensors-hal-1-0 and runs start $sensorSvcNew and stop for the old service. odm_a/bin/syncboss_consumers_ctl lists the service in SERVICES and runs start, stop and restart on it, so init starts it at runtime outside the boot trigger.",
    "corrected_claim": "The debug init file defines vendor.oculus.sensors-hal-1-0 (class hal, user system, group system camera, capabilities SYS_NICE, task_profiles sensorServicePolicy, interface vendor.oculus.hardware.sensors@1.0::IExternalTimingProvider default, disabled). Its only boot trigger starts it when persist.vendor.oculus.sensor.service.impl=sensorservice, which odm_a/etc/build.prop line 47 sets. The sensoremu and sensor-emulator services use the same property with the values sensoremu and sensor-emulator. The service is also started and stopped at runtime by name from the shell scripts virtualcontroller_ctl (system_ext_a/bin) and syncboss_consumers_ctl (odm_a/bin)."
   },
@@ -87,7 +87,7 @@
    "label": "verified",
    "evidence": "command: cat odm_a/etc/init/vendor.oculus.hardware.sensors@1.0-service-mock.rc. output (excerpt): service vendor.oculus.sensors-mock-hal-1-0 /odm/bin/hw/vendor.oculus.hardware.sensors@1.0-service-mock / class hal / user system / group system camera / capabilities SYS_NICE / task_profiles sensorServicePolicy / onrestart restart calibration_svr / onrestart restart mrsystemservice / onrestart restart sensorproxy / onrestart restart trackingservice / disabled. No line starting with on boot appears in that file.",
    "file": "<image>/mnt/odm_a/etc/init/vendor.oculus.hardware.sensors@1.0-service-mock.rc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor.oculus.hardware.sensors@1.0-service-mock.rc: the service is disabled; the only 'on' stanza is on post-fs-data; no line starts with 'on boot'. Its onrestart lines are calibration_svr, mrsystemservice, sensorproxy and trackingservice.",
    "corrected_claim": ""
   },
@@ -96,7 +96,7 @@
    "claim": "The VINTF manifest for the odm sensors HAL declares 10 interfaces (ICameraProvider, IControllerProvider, IExternalTimingProvider, IFlickerSensor, IIad, IImu, IMag, ISensorsMiscDebug, IStructuredLightProjector, IZapper). The HIDL library carries 40 distinct vendor.oculus.hardware.sensors@1.0::<name> strings. The SELinux hwservice contexts list 19 sensors-related entries, including IAccel, ICamera, ICameraStream, IGyro, IEventHaptics and IPowerstate. The lists do not match, and runtime registration is not determined.",
    "label": "verified",
    "evidence": "command: cat odm_a/etc/vintf/manifest/vendor.oculus.hardware.sensors@1.0-service.xml. output: 10 <interface><name>...</name><instance>default</instance></interface> entries as listed. command: strings -n 8 odm_a/lib64/vendor.oculus.hardware.sensors@1.0.so | grep -o -E 'vendor\\.oculus\\.hardware\\.sensors@1\\.0::[A-Za-z]+' | sort -u | wc -l. output: 40. command: grep -c 'sensors' vendor_a/etc/selinux/vendor_hwservice_contexts. output: 19. Lines 31-49 map ::IAccel, ::ICamera, ::ICameraStream, ::IGyro and others to hal_oculus_sensors_hwservice.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Manifest has 10 interface entries with the listed names. The library carries 40 distinct vendor.oculus.hardware.sensors@1.0::<name> descriptor strings. grep -c sensors on vendor_a/etc/selinux/vendor_hwservice_contexts gives 19 lines (lines 31-49: 18 vendor.oculus.hardware.sensors:: entries plus sensors_java::IPowerstate), including IAccel, ICamera, ICameraStream, IGyro, IEventHaptics and IPowerstate.",
    "corrected_claim": ""
   },
@@ -105,7 +105,7 @@
    "claim": "The vendor sensors HIDL library exports the HIDL interface symbols for about 25 named interfaces, including ICameraStream, IControllerStateProvider, IEventHaptics, IFaceEyeTrackingLed, IMotionSensorProvider and ISensorClient, beyond the manifest set. Its SONAME is vendor.oculus.hardware.sensors@1.0.so.",
    "label": "verified",
    "evidence": "command: readelf -d odm_a/lib64/vendor.oculus.hardware.sensors@1.0.so | grep -E 'SONAME|NEEDED'. output: SONAME [vendor.oculus.hardware.sensors@1.0.so]; NEEDED android.hardware.graphics.common@1.0.so, libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so. command: strings -n 8 ... | grep -o -E 'vendor\\.oculus\\.hardware\\.sensors@1\\.0::I[A-Za-z]+' | sort -u. output (excerpt): ICameraProvider, ICameraStream, IControllerStateProvider, IEventHaptics, IExternalTimingProvider, IFaceEyeTrackingLed, IFlickerSensor, IIad, IImu, IMag, IMotionSensorProvider, ISensorClient, ISensorsMiscDebug, IStructuredLightProjector, IZapper, IZapperCallback.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "SONAME vendor.oculus.hardware.sensors@1.0.so. NEEDED includes android.hardware.graphics.common@1.0.so, libhidlbase.so, liblog.so, libutils.so, libcutils.so and libc++.so. The interface symbols are defined dynamic symbols, not only strings: demangled, they give 26 distinct I-named interfaces (ICameraProvider through IZapperCallback), including ICameraStream, IControllerStateProvider, IEventHaptics, IFaceEyeTrackingLed, IMotionSensorProvider and ISensorClient. 'About 25 named interfaces' and 'exports' both hold.",
    "corrected_claim": ""
   },
@@ -114,7 +114,7 @@
    "claim": "The sensor emulator is provided by two init services. Service vendor.sensoremu (/odm/bin/sensoremu) runs as root and is oneshot and disabled. Service vendor.sensor-emulator (/odm/bin/sensor-emulator) is the same shape. Both have on-boot triggers gated on the sensor impl property. SELinux maps both binaries to hal_oculus_sensors_default_exec, and their data directories /data/vendor/misc/sensoremu and /data/vendor/misc/sensor-emulator to sensoremu_odm_file and sensor-emulator_odm_file.",
    "label": "verified",
    "evidence": "command: cat odm_a/etc/init/odm.sensoremu.rc. output: service vendor.sensoremu /odm/bin/sensoremu / user root / group root / disabled / capabilities SYS_NICE / oneshot / on boot && property:persist.vendor.oculus.sensor.service.impl=sensoremu / start vendor.sensoremu. command: grep -n -E 'sensoremu|sensor-emulator' vendor_a/etc/selinux/vendor_file_contexts. output: 129:/(odm|vendor/odm)/bin/sensoremu u:object_r:hal_oculus_sensors_default_exec:s0 / 130: .../bin/sensor-emulator ...hal_oculus_sensors_default_exec:s0 / 269:/data/vendor/misc/sensoremu(/.*)? u:object_r:sensoremu_odm_file:s0 / 339:/data/vendor/misc/sensor-emulator(/.*)? u:object_r:sensor-emulator_odm_file:s0.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "odm.sensoremu.rc: vendor.sensoremu, user root, group root, disabled, oneshot, SYS_NICE, on-boot gate =sensoremu. odm.sensor-emulator.rc has the same shape with =sensor-emulator. odm_a/bin/sensoremu and odm_a/bin/sensor-emulator exist. vendor_file_contexts lines 129-130 map both binaries to hal_oculus_sensors_default_exec; lines 269 and 339 map the data directories to sensoremu_odm_file and sensor-emulator_odm_file.",
    "corrected_claim": ""
   },
@@ -123,7 +123,7 @@
    "claim": "The sensorlock HAL is an AIDL service registered as vendor.oculus.hardware.sensorlock.ISensorLock/default. It is paired with an AIDL NDK stub library (ISensorLock, ISensorLockListener), a libsensorlock.so backend that links libsmcihandler.so, and a /dev/sensorlock node. The node is labelled sensorlock_device and its ueventd mode is 0444 system system.",
    "label": "verified",
    "evidence": "command: cat odm_a/etc/init/vendor.oculus.hardware.sensorlock-service.rc. output: service vendor.oculus.hardware.sensorlock-service /odm/bin/hw/vendor.oculus.hardware.sensorlock@1.0-service.anorak / interface aidl vendor.oculus.hardware.sensorlock.ISensorLock/default / class hal / user system / group system root. command: cat odm_a/etc/vintf/manifest/vendor.oculus.hardware.sensorlock-service.xml. output: <hal format=\"aidl\"> ... <fqname>ISensorLock/default</fqname>. command: sed -n '110p' system_ext_a/etc/selinux/system_ext_service_contexts. output: vendor.oculus.hardware.sensorlock.ISensorLock/default u:object_r:hal_sensorlock_service:s0. command: grep -n sensorlock vendor_a/etc/ueventd.rc vendor_a/etc/selinux/vendor_file_contexts. output: ueventd.rc:263 /dev/sensorlock 0444 system system; file_contexts:352 hal_sensorlock_default_exec; file_contexts:389 /dev/sensorlock sensorlock_device. command: readelf -d libsensorlock.so | grep NEEDED. output: [libsmcihandler.so].",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "rc: vendor.oculus.hardware.sensorlock-service, interface aidl vendor.oculus.hardware.sensorlock.ISensorLock/default, class hal, user system, group system root. Manifest fqname ISensorLock/default. AIDL NDK stub odm_a/lib64/vendor.oculus.hardware.sensorlock-V1-ndk_platform.so exports ISensorLock and ISensorLockListener (a copy is also in system_ext_a/lib64). libsensorlock.so NEEDED includes libsmcihandler.so. ueventd.rc:263 '/dev/sensorlock 0444 system system'; vendor_file_contexts:389 '/dev/sensorlock sensorlock_device'.",
    "corrected_claim": ""
   },
@@ -132,7 +132,7 @@
    "claim": "The IAD and flicker sensor HAL services are separate binaries. IAD is service vendor.oculus.iad-hal-1-0 in class early_hal, providing IIad, with task_profiles trackingPolicy. Flicker is service vendor.oculus.flicker-hal-1-0 in class hal, providing IFlickerSensor. The flicker backend libflickersensor.so links libstals.so and libtelemetry.so. SELinux labels the flicker and IAD binaries and maps the flicker device nodes /dev/vd6281 and /dev/vd6281_spi.",
    "label": "verified",
    "evidence": "command: cat odm_a/etc/init/vendor.oculus.hardware.sensors@1.0-iad.rc. output: service vendor.oculus.iad-hal-1-0 /odm/bin/hw/vendor.oculus.hardware.sensors@1.0-iad / interface vendor.oculus.hardware.sensors@1.0::IIad default / class early_hal / user system / group system / task_profiles trackingPolicy. command: cat odm_a/etc/init/vendor.oculus.hardware.sensors@1.0-flicker.rc. output: service vendor.oculus.flicker-hal-1-0 .../vendor.oculus.hardware.sensors@1.0-flicker / interface ...IFlickerSensor default / class hal. command: grep -n -E 'iad|flicker|vd6281' vendor_a/etc/selinux/vendor_file_contexts. output: 110 flicker_default_exec; 111 iad_default_exec; 373 /dev/vd6281 flicker_sensor_device; 391 /dev/vd6281_spi flicker_sensor_device. command: readelf -d odm_a/lib64/libflickersensor.so | grep NEEDED. output includes libstals.so and libtelemetry.so.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "IAD rc: vendor.oculus.iad-hal-1-0, interface IIad default, class early_hal, user and group system, task_profiles trackingPolicy. Flicker rc: vendor.oculus.flicker-hal-1-0, interface IFlickerSensor default, class hal. libflickersensor.so NEEDED includes libstals.so and libtelemetry.so. vendor_file_contexts: 110 flicker_default_exec, 111 iad_default_exec, 373 /dev/vd6281 and 391 /dev/vd6281_spi flicker_sensor_device.",
    "corrected_claim": ""
   },
@@ -141,7 +141,7 @@
    "claim": "The catty, dock and telemetry HAL services are separate binaries. Catty (ICatty, ICattyPipeClient) runs as service vendor.catty-1-0. Dock (IDock, IDockstateCallback) runs as service vendor.dock-1-0. Telemetry (IDeviceTelemetry) runs from system_ext as oculus-hardware-telemetry-1-0. The compatibility matrix lists catty and dock as optional HIDL HALs, and the hwservice contexts map them to dedicated hwservice types.",
    "label": "verified",
    "evidence": "command: grep -n service odm_a/etc/init/vendor.oculus.hardware.catty@1.0-service.rc odm_a/etc/init/vendor.oculus.hardware.dock@1.0-service.rc system_ext_a/etc/init/vendor.oculus.hardware.telemetry@1.0-service.rc. output: catty: service vendor.catty-1-0 /odm/bin/hw/vendor.oculus.hardware.catty@1.0-service; dock: service vendor.dock-1-0 /odm/bin/hw/vendor.oculus.hardware.dock@1.0-service; telemetry: service oculus-hardware-telemetry-1-0 /system_ext/bin/hw/vendor.oculus.hardware.telemetry@1.0-service. command: grep -n -A6 'vendor.oculus.hardware.catty' system_a/system/etc/vintf/compatibility_matrix.device.xml. output: <hal format=\"hidl\" optional=\"true\"> <name>vendor.oculus.hardware.catty</name> <version>1.0</version> <interface><name>ICatty</name>. Dock: hal optional IDock at line 73. vendor_hwservice_contexts:22 vendor.oculus.hardware.catty::ICatty hal_oculus_catty_hwservice; :25 vendor.oculus.hardware.dock::IDock hal_oculus_dock_hwservice.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Services: vendor.catty-1-0 (odm), vendor.dock-1-0 (odm), oculus-hardware-telemetry-1-0 (system_ext). ICatty and ICattyPipeClient are in odm_a/lib64/vendor.oculus.hardware.catty@1.0.so; IDock and IDockstateCallback are in odm_a/lib64/vendor.oculus.hardware.dock@1.0.so; IDeviceTelemetry is in the system_ext hwservice contexts. Compatibility matrix: catty (line 48) and dock (line 72) are <hal format=\"hidl\" optional=\"true\">. vendor_hwservice_contexts lines 22 and 25 map them to hal_oculus_catty_hwservice and hal_oculus_dock_hwservice.",
    "corrected_claim": ""
   },
@@ -150,7 +150,7 @@
    "claim": "sensorproxy is a system_ext service (/system_ext/bin/sensorproxy, class late_start, user system, disabled). It is started on boot only when persist.ovr.enable.sensorproxy=true and stopped when it is false. Its binary links libsensorclientutils, libsensordatatransforms, libcameramuxmodemonitor and libfaceeyetrackingledprovider. Its file context is sensorproxy_exec.",
    "label": "verified",
    "evidence": "command: cat system_ext_a/etc/init/sensorproxy.rc. output: service sensorproxy /system_ext/bin/sensorproxy / class late_start / user system / group system / disabled / on boot && property:persist.ovr.enable.sensorproxy=true / start sensorproxy / on boot && property:persist.ovr.enable.sensorproxy=false / stop sensorproxy. command: readelf -d system_ext_a/bin/sensorproxy | grep NEEDED. output includes libsensorclientutils.so, libsensordatatransforms.so, libcameramuxmodemonitor.so, libfaceeyetrackingledprovider.so. command: grep -n sensorproxy system_ext_a/etc/selinux/system_ext_file_contexts. output: 50:/system_ext/bin/sensorproxy u:object_r:sensorproxy_exec:s0.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sensorproxy.rc: class late_start, user system, group system, disabled; start on boot gated on persist.ovr.enable.sensorproxy=true and stop gated on =false. NEEDED includes libsensorclientutils.so, libsensordatatransforms.so, libcameramuxmodemonitor.so and libfaceeyetrackingledprovider.so. system_ext_file_contexts line 50: /system_ext/bin/sensorproxy sensorproxy_exec.",
    "corrected_claim": ""
   },
@@ -160,7 +160,7 @@
    "label": "verified",
    "evidence": "command: readelf -d system_a/system/bin/sensorservice | grep NEEDED. output: [libsensorservice.so] [libsensorprivacy.so] [libbinder.so] [libutils.so]. command: readelf --dyn-syms -W system_a/system/bin/sensorservice | awk '$7==\"UND\"{print $8}'. output (excerpt): _ZN7android13SensorServiceC1Ev / _ZN7android12ProcessState15startThreadPoolEv@LIBBINDER / _ZN7android14IPCThreadState14joinThreadPoolEb@LIBBINDER / _ZN7android21defaultServiceManagerEv@LIBBINDER. command: grep -n -E 'sensorservice|sensor_privacy' system_a/system/etc/selinux/plat_service_contexts. output: 238:sensorservice u:object_r:sensorservice_service:s0. command: grep -n 'android.hardware.sensors' system_a/system/etc/selinux/plat_hwservice_contexts. output: 61:android.hardware.sensors::ISensors u:object_r:hal_sensors_hwservice:s0.",
    "file": "<image>/mnt/system_a/system/bin/sensorservice",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "NEEDED: libsensorservice.so, libsensorprivacy.so, libbinder.so, libutils.so. Undefined symbols include SensorService::SensorService(), ProcessState::startThreadPool, IPCThreadState::joinThreadPool and defaultServiceManager(). Registration is not a named import. Disassembly of the call site shows defaultServiceManager(), a String16 built from the literal 'sensorservice', construction of SensorService, and an indirect call through the service manager's vtable (offset 0x30) with the name, the service and the flags, which is an addService-shaped call. plat_service_contexts:238 maps sensorservice to sensorservice_service; plat_hwservice_contexts:61 maps android.hardware.sensors::ISensors to hal_sensors_hwservice.",
    "corrected_claim": ""
   },
@@ -169,7 +169,7 @@
    "claim": "libsensorservice.so (lib64) exports the SensorService constructor and addProximityActiveListener and removeProximityActiveListener methods. The library reads the debug.sensors property, and its log strings include Sensors HAL died, attempting to reconnect.",
    "label": "verified",
    "evidence": "command: readelf --dyn-syms -W system_a/system/lib64/libsensorservice.so | awk '$7!=\"UND\" && $4==\"FUNC\"{print $8}' | grep -i SensorService. output: _ZN7android13SensorService26addProximityActiveListenerERKNS_2spINS0_23ProximityActiveListenerEEE / _ZN7android13SensorServiceC1Ev / _ZN7android13SensorService29removeProximityActiveListenerERKNS_2spINS0_23ProximityActiveListenerEEE. command: loop over group ELFs with strings | grep -F debug.sensors. output: system_a/system/lib/libsensorservice.so; system_a/system/lib64/libsensorservice.so. command: strings -n 6 system_a/system/lib64/libsensorservice.so | grep -E 'Sensors HAL died'. output: Sensors HAL died, attempting to reconnect.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libsensorservice.so (lib64) defines SensorService::SensorService(), addProximityActiveListener and removeProximityActiveListener as defined FUNC dynamic symbols. debug.sensors appears once in each of the lib and lib64 copies. The string 'Sensors HAL died, attempting to reconnect.' is present in lib64.",
    "corrected_claim": ""
   },
@@ -178,7 +178,7 @@
    "claim": "android.hardware.sensors@2.1.so (lib64) is the AOSP HIDL 2.1 client library. It links 1.0, 2.0 and 2.1 and exports ISensors and ISensorsCallback for 2.1.",
    "label": "verified",
    "evidence": "command: readelf -d system_a/system/lib64/android.hardware.sensors@2.1.so | grep NEEDED. output: android.hardware.sensors@1.0.so, android.hardware.sensors@2.0.so, libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so, libdl.so, android.hardware.sensors@2.1.so. command: strings -n 8 ... | grep -o -E 'android\\.hardware\\.sensors@2\\.1::[A-Za-z]+' | sort -u. output: android.hardware.sensors@2.1::ISensors, android.hardware.sensors@2.1::ISensorsCallback.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The export claim holds: ISensors (36 symbols) and ISensorsCallback are defined in the V2_1 namespace. The link claim does not: NEEDED entries are android.hardware.sensors@1.0.so and android.hardware.sensors@2.0.so plus libhidlbase, liblog, libutils, libcutils, libc++, libc, libm and libdl. No NEEDED entry names 2.1; 2.1 is the library's own SONAME. The group data does not establish the AOSP origin.",
    "corrected_claim": "android.hardware.sensors@2.1.so (lib64) is a HIDL 2.1 client library with SONAME android.hardware.sensors@2.1.so. It links android.hardware.sensors@1.0.so and android.hardware.sensors@2.0.so, plus libhidlbase.so, liblog.so, libutils.so, libcutils.so, libc++.so, libc.so, libm.so and libdl.so. It defines ISensors and ISensorsCallback in the 2.1 namespace. Its AOSP origin is inferred, not shown by the group data."
   },
@@ -187,7 +187,7 @@
    "claim": "sensor_tool is a CLI for sensor and camera stream debugging. It parses TOML and JSON configuration (policy values Realtime, Normal and Batch), dumps frames to a directory selected with --out, and links libEGL, libGLESv3, libgui and libvrsensors-hidlwrapper. sensor_bench is an FMQ-based benchmark CLI that reads and writes CPU frequencies.",
    "label": "verified",
    "evidence": "command: readelf -d system_ext_a/bin/sensor_tool | grep NEEDED. output: libEGL.so libGLESv3.so libbase.so libbinder.so libcutils.so libfmq.so libgui.so libhidlbase.so libjsoncpp.so liblog.so libsysutils.so libtrackingvendorutils.so libui.so libutils.so libvrsensors-hidlwrapper.so libvrsensors-utils.so. command: strings -n 3 system_ext_a/bin/sensor_tool | grep -n -E 'Dump every|--out|Config \\[%s\\] policy must be'. output: 1120:Dump every <NUM>th frame to a directory specified by --out. Must be > 0. / Config [%s] policy must be Realtime, Normal, or Batch. command: readelf -d system_ext_a/bin/sensor_bench | grep NEEDED. output includes libgflags.so, libfmq.so. command: strings ... | grep 'Failed to write cpu frequencies'. output: sensor_bench: Failed to write cpu frequencies.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "sensor_tool NEEDED includes libEGL.so, libGLESv3.so, libgui.so, libvrsensors-hidlwrapper.so, libjsoncpp.so and libfmq.so. Strings include 'Dump every <NUM>th frame to a directory specified by --out', 'Config [%s] policy must be Realtime, Normal, or Batch' and 'Config file must have policy [%s]'. An embedded TOML parser's diagnostics are present, so TOML parsing is inferred from the library rather than from a config run; JSON parsing comes from the linked jsoncpp. sensor_bench NEEDED includes libfmq.so and libgflags.so; strings include 'Failed to read cpu frequencies', 'Failed to write cpu frequencies' and the scaling_min_freq and scaling_max_freq paths.",
    "corrected_claim": ""
   },
@@ -196,7 +196,7 @@
    "claim": "sensor_validation is invoked by the system svt.sh script with per-device configuration names of the form SensorValidation_<device>_Stu, for example SensorValidation_Eureka_Stu. The standalone variant links vendor.oculus.hardware.sensors@1.0.so and libsensorclientutils.so.",
    "label": "observed",
    "evidence": "command: grep -n 'sensor_validation' system_a/system/bin/svt.sh. output: 82: sensor_validation $JSONOPT --conf_file=SensorValidation_Eureka_Stu \"$VRSFILE\" | tee \"$OUTFILE\"; 93: ...SensorValidation_Panther_Stu...; 104: ...SensorValidation_Seacliff_Stu...; 113: ...SensorValidation_Hollywood_Stu...; 121: ...SensorValidation_Starlet_Stu. command: readelf -d system_ext_a/bin/sensor_validation_standalone | grep NEEDED. output includes vendor.oculus.hardware.sensors@1.0.so and libsensorclientutils.so.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "svt.sh lines 82, 93, 104, 113 and 121 call sensor_validation with --conf_file=SensorValidation_<Eureka|Panther|Seacliff|Hollywood|Starlet>_Stu. sensor_validation_standalone NEEDED includes vendor.oculus.hardware.sensors@1.0.so and libsensorclientutils.so. The 'observed' label is conservative; the value was reproduced.",
    "corrected_claim": ""
   },
@@ -205,7 +205,7 @@
    "claim": "Sensor property and config keys referenced by group ELFs are: persist.vendor.ovr.imu.direct_channel (libvrsensors-hidlwrapper.so in odm_a and system_a), persist.vendor.oculus.sensor.service.enable_high_frequency_telemetry and persist.vendor.oculus.sensor.service.disable_telemetry_submission (libsensortelemetry.so in odm_a and system_a), and debug.sensors (libsensorservice.so in system_a).",
    "label": "verified",
    "evidence": "command: while read f; do strings -n 6 \"$f\" | grep -q -F \"$k\" && echo \"$f\"; done < elf_list.txt, for each key. output: persist.vendor.ovr.imu.direct_channel -> odm_a/lib64/libvrsensors-hidlwrapper.so, system_a/system/lib/libvrsensors-hidlwrapper.so, system_a/system/lib64/libvrsensors-hidlwrapper.so; persist.vendor.oculus.sensor.service.enable_high_frequency_telemetry -> odm_a/lib64/libsensortelemetry.so and system_a copies; persist.vendor.oculus.sensor.service.disable_telemetry_submission -> same files; debug.sensors -> system_a/system/lib/libsensorservice.so, system_a/system/lib64/libsensorservice.so.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Searching all 140 ELF rows of elf_list.txt (all present) for each key: persist.vendor.ovr.imu.direct_channel appears in odm_a/lib64, system_a/system/lib and system_a/system/lib64 copies of libvrsensors-hidlwrapper.so; enable_high_frequency_telemetry and disable_telemetry_submission appear in the odm_a/lib64 and system_a lib and lib64 copies of libsensortelemetry.so; debug.sensors appears in the system_a lib and lib64 copies of libsensorservice.so. No other group ELF matches.",
    "corrected_claim": ""
   },
@@ -214,7 +214,7 @@
    "claim": "The IMU tracker archives are TorchScript zip containers. Each has a *_final.pt name, a data.pkl, code/ and constants/ directories, a bytecode.pkl, a version file containing 3, and an extra/producer_info.json. The left and right archives are 278366 and 278395 bytes. Path strings in the tracking engine library reference /system/etc/input_tracking/runtime/eureka/ruby, which points at this directory.",
    "label": "verified",
    "evidence": "command: unzip -l system_a/system/etc/input_tracking/runtime/eureka/ruby/imu_only_tracker/release/left_imuml_torchscript_boltnn_lite_final.pt. output (excerpt): left_imuml_torchscript_boltnn_lite_final/data.pkl; .../code/__torch__/___torch_mangle_686.py; .../constants/0.storage ... 17.storage; .../constants.pkl; .../bytecode.pkl; .../version; 26 files. command: unzip -p <same>.pt left_imuml_torchscript_boltnn_lite_final/version. output: 3. command: strings -n 8 system_a/system/lib64/libtrackingengines.so | grep input_tracking. output: /system/etc/input_tracking/runtime/eureka/ruby (and panther/ruby).",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Structure holds: each archive has a *_final.pt name, data.pkl, bytecode.pkl, a version file with content '3', extra/producer_info.json, code/ and constants/ entries. Sizes are 278366 (left) and 278395 (right). libtrackingengines.so (lib64) contains the exact string /system/etc/input_tracking/runtime/eureka/ruby. The evidence count is wrong: the archive listing gives 29 file entries per archive, not 26 (zip listing: 29 entries, none are directory entries).",
    "corrected_claim": "The IMU tracker archives are TorchScript zip containers, each with 29 file entries and no directory entries. Each has a *_final.pt name, data.pkl, bytecode.pkl, a version file containing 3, extra/producer_info.json, code/ and constants/ entries. The left and right archives are 278366 and 278395 bytes. libtrackingengines.so contains the path string /system/etc/input_tracking/runtime/eureka/ruby, which points at this directory."
   },
@@ -223,7 +223,7 @@
    "claim": "The handtracking microgesture files are PyTorch Lite zip archives with archive/ prefixes, under the paths nimble_gesture/microgesture/model. MGV23, MGV23MG, MGV24MG and MGV25MG are the four variants. The tracking engine library contains the strings MGV23, MGV23MG and MGV24MG. No MGV25MG string was found in the scanned binaries. The empty .placeholder is present in the same directory.",
    "label": "verified",
    "evidence": "command: unzip -l system_a/system/etc/handtracking/runtime/microgesture/MGV23.ptl. output (excerpt): archive/extra/producer_info.json; archive/data/0; archive/data.pkl; archive/code/__torch__/deeplearning/projects/nimble_gesture/microgesture/model/model.py; 26 files. command: unzip -p <each .ptl> archive/extra/producer_info.json (for MGV23MG, MGV24MG, MGV25MG). output: each returns JSON producer metadata. command: strings -n 5 system_a/system/lib64/libtrackingengines.so | grep -E 'MGV2[345]'. output: MGV24MG / MGV23MG / MGV23. command: grep -r -l -a -E 'MGV2[345]' (mnt, binaries excluded). output: only system_a/system/lib64/libtrackingengines.so. command: stat -c %s system_a/system/etc/handtracking/runtime/microgesture/.placeholder. output: 0.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Four .ptl archives: MGV23.ptl (26 entries), MGV23MG.ptl, MGV24MG.ptl and MGV25MG.ptl (21 entries each), all with archive/ prefixes, archive/data.pkl and archive/extra/producer_info.json. Their code entries sit under archive/code/__torch__/deeplearning/projects/nimble_gesture/microgesture/model. Strings MGV23, MGV23MG and MGV24MG appear only in system_a/system/lib64/libtrackingengines.so; no mounted file contains an MGV25 string. The .placeholder is 0 bytes.",
    "corrected_claim": ""
   },
@@ -232,7 +232,7 @@
    "claim": "The oculus-device key layout maps scancode 172 to HOME and 159 to FORWARD. The key character map sets FORWARD with base fallback HOME. The odm IDC file Vendor_2833_Product_0160.idc (outside this group) binds keyboard.layout and keyboard.characterMap to oculus-device.",
    "label": "verified",
    "evidence": "command: cat odm_a/usr/keylayout/oculus-device.kl. output: key 172 HOME / key 159 FORWARD. command: cat odm_a/usr/keychars/oculus-device.kcm. output: type FULL / key FORWARD { base: fallback HOME }. command: cat odm_a/usr/idc/Vendor_2833_Product_0160.idc. output: keyboard.layout = oculus-device / keyboard.characterMap = oculus-device / device.internal=1 / device.type=vrPeripheral.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "usr/keylayout/oculus-device.kl: key 172 HOME, key 159 FORWARD. usr/keychars/oculus-device.kcm: type FULL; key FORWARD { base: fallback HOME }. usr/idc/Vendor_2833_Product_0160.idc (in the fonts-locale-input-resources subsystem, outside this group): keyboard.layout = oculus-device, keyboard.characterMap = oculus-device, device.internal=1, device.type=vrPeripheral.",
    "corrected_claim": ""
   },
@@ -241,7 +241,7 @@
    "claim": "The 94 XML rows are permission and config files. The product_a permission files declare 17 feature or privileged-permission entries. Example features include oculus.hardware.sensorlock, oculus.software.handtracking, oculus.software.spatial and oculus.software.physical_tracked_keyboard. The doze allowlist lists 6 packages, the hidden-API whitelist lists 18 and the rollback whitelist lists 5. system_ext permission XML declares privileged permissions for many packages. Role text is derived from each file's tags by script.",
    "label": "verified",
    "evidence": "command: awk -F'\\t' 'NR>1 && $2 ~ /\\.xml$/' roles.tsv | wc -l. output: 94. command: grep -h -o '<feature name=\"[^\"]*\"' product_a/etc/permissions/*.xml (restricted to the group's files). output includes oculus.hardware.sensorlock, oculus.software.handtracking, oculus.software.spatial, oculus.software.physical_tracked_keyboard. command: grep -c '<allow-in-power-save' system_a/system/etc/sysconfig/oculus-doze-allowlist.xml. output: 6. command: grep -c '<hidden-api-whitelisted-app' system_a/system/etc/sysconfig/oculus-hiddenapi-package-whitelist.xml. output: 18. command: grep -c '<rollback-whitelisted-app' system_a/system/etc/sysconfig/oculus-rollback-whitelisted-app.xml. output: 5.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Confirmed: 94 XML rows (etc/permissions 67, etc/default-permissions 14, system/etc/permissions 4, system/etc/default-permissions 2, system/etc/sysconfig 7); all are permission, default-permissions or sysconfig files. product_a has 17 files: 14 <feature> elements plus 3 <privapp-permissions> blocks, which makes 17. Named features are present; sysconfig counts are 6 doze, 18 hidden-API, 5 rollback; 45 of 64 system_ext_a XML files carry privapp-permissions. Not accurate: role text is built from the file's tags by script for 93 of 94 XML rows. One row, system_a/system/etc/sysconfig/oculus-backup-transport.xml, uses a hand-written role entry in the build script.",
    "corrected_claim": "The 94 XML rows are permission, default-permissions and sysconfig files. The product_a set has 17 files declaring 14 feature elements and 3 privapp-permissions blocks. Role text is derived from each file's tags by the build script for 93 of 94 XML rows; system_a/system/etc/sysconfig/oculus-backup-transport.xml has a hand-written role. The system_ext_a permission XML declares privileged permissions for many packages (45 of 64 files)."
   },
@@ -250,7 +250,7 @@
    "claim": "The boot-image artifacts for com.oculus.os.platform are ART and OAT files. The arm64 OAT is ELF. The arm64 ART file starts with the magic art followed by 099. The oculus-system-services vdex starts with vdex027. The arm64 odex is ELF.",
    "label": "verified",
    "evidence": "command: od -A n -c -N 8 system_a/system/framework/arm64/boot-com.oculus.os.platform.art. output: a r t \\n 0 9 9 \\0. command: od -A n -c -N 8 .../boot-com.oculus.os.platform.oat. output: 177 E L F 002 001 001 003. command: od -A n -c -N 8 system_ext_a/framework/oat/arm64/oculus-system-services.vdex. output: v d e x 0 2 7 \\0. command: file -b system_ext_a/framework/oat/arm64/oculus-system-services.odex. output: ELF 64-bit LSB shared object, ARM aarch64.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "od on system_a/system/framework/arm64/boot-com.oculus.os.platform.art: 'art\\n099\\0'. Same for the .oat: 0x7f 'E' 'L' 'F' 02 01 01 03 (ELF). system_ext_a/framework/oat/arm64/oculus-system-services.vdex: 'vdex027\\0'. file on oculus-system-services.odex: ELF 64-bit LSB shared object, ARM aarch64.",
    "corrected_claim": ""
   },
@@ -259,7 +259,7 @@
    "claim": "The sensors VINTF data places the sensorlock AIDL HAL and the sensors HIDL HAL in the device compatibility matrix as optional entries. The matrix lists the sensors HIDL interfaces ICameraProvider and others. It does not list every descriptor in the library.",
    "label": "verified",
    "evidence": "command: grep -n -E -A3 'vendor\\.oculus\\.hardware\\.(sensorlock|sensors)' system_a/system/etc/vintf/compatibility_matrix.device.xml. output: line 156 <hal format=\"aidl\" optional=\"true\"> <name>vendor.oculus.hardware.sensorlock</name> <interface><name>ISensorLock</name>; line 163 <hal format=\"hidl\" optional=\"true\"> <name>vendor.oculus.hardware.sensors</name> <version>1.0</version> <interface><name>ICameraProvider</name>.",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "compatibility_matrix.device.xml: line 156 <hal format=\"aidl\" optional=\"true\"> vendor.oculus.hardware.sensorlock with ISensorLock; line 163 <hal format=\"hidl\" optional=\"true\"> vendor.oculus.hardware.sensors 1.0 listing 10 interfaces starting with ICameraProvider. The library carries 40 descriptors (26 interface names), so the matrix list is not exhaustive.",
    "corrected_claim": ""
   },
@@ -268,7 +268,7 @@
    "claim": "Permission and feature tags for the group are present for 13 system_a and system_ext_a packages. Examples: com.oculus.mrservice privileged permissions, com.oculus.mrservice default USE_SCENE exception, com.oculus.xrstreamingclient default RECORD_AUDIO and POST_NOTIFICATIONS exceptions, and com.oculus.systemdriver privileged permissions.",
    "label": "verified",
    "evidence": "command: grep -o -E 'package=\"[^\"]*\"|name=\"[^\"]*\"' system_a/system/etc/default-permissions/com.oculus.mrservice.xml. output: permission name=\"com.oculus.permission.USE_SCENE\" fixed=\"true\". command: same on com.oculus.xrstreamingclient.xml. output: android.permission.RECORD_AUDIO fixed=\"false\"; android.permission.POST_NOTIFICATIONS fixed=\"true\". command: grep -o '<privapp-permissions package=\"[^\"]*\"' system_a/system/etc/permissions/com.oculus.systemdriver.xml. output: com.oculus.systemdriver.",
-   "verdict": "refuted",
+   "verdict": "does not hold",
    "reason": "The four examples hold: com.oculus.mrservice has a privapp-permissions block and a default USE_SCENE grant (fixed=true); com.oculus.xrstreamingclient has default RECORD_AUDIO (fixed=false) and POST_NOTIFICATIONS (fixed=true) exceptions; com.oculus.systemdriver has a privapp-permissions block. The count of 13 does not reproduce under any definition tested. Distinct packages in privapp-permissions and exception blocks: 3 in system_a (com.oculus.mrservice, com.oculus.systemdriver, com.oculus.xrstreamingclient) and 49 in system_ext_a, 52 combined. Files with those blocks: 4 in system_a, 59 in system_ext_a. system_a has 13 XML rows, which may be the source of the 13 figure, but those are not packages.",
    "corrected_claim": "The group's system_a and system_ext_a XML name 52 distinct packages in privapp-permissions and default-permissions exception blocks: 3 in system_a (com.oculus.mrservice, com.oculus.systemdriver, com.oculus.xrstreamingclient) and 49 in system_ext_a. com.oculus.mrservice has privileged permissions and a default USE_SCENE grant; com.oculus.xrstreamingclient has default RECORD_AUDIO and POST_NOTIFICATIONS exceptions; com.oculus.systemdriver has privileged permissions."
   },
@@ -277,7 +277,7 @@
    "claim": "The two ART and OAT pairs for the sensors system services and provisioning apps and the 32-bit boot files are present but were classified by name only. Their magic and internal structure were not inspected.",
    "label": "inferred",
    "evidence": "command: file -b on the listed odex and vdex files was not run. Role classification is name and path based (see roles.tsv rows for Provision and QuestManagedProvisioning odex, vdex and the arm/ boot-com.oculus.os.platform files).",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The roles table labels inferred (name and path only) for: the 32-bit boot-com.oculus.os.platform .art and .oat under system_a/system/framework/arm, the system_a framework boot-com.oculus.os.platform.vdex, oculus-system-services.art (arm64), and the Provision and QuestManagedProvisioning odex and vdex files (arm64). Those rows' magic and structure were not checked. The claim is wrong for oculus-system-services.odex and .vdex, which were inspected (ELF and vdex027 magic) and are labelled verified, and the evidence statement that file was not run on the listed odex and vdex files is also wrong for those two. The arm64 boot-com .art and .oat were inspected too.",
    "corrected_claim": "The 32-bit boot-com.oculus.os.platform .art and .oat under system_a/system/framework/arm, the system_a framework boot-com.oculus.os.platform.vdex, oculus-system-services.art (arm64), and the Provision and QuestManagedProvisioning odex and vdex files (arm64) are classified by name and path only (confidence inferred). Their magic and internal structure were not inspected. The arm64 boot-com .art and .oat and the oculus-system-services .odex and .vdex were inspected and are labelled verified."
   },
@@ -286,7 +286,7 @@
    "claim": "The odm sensors_java HAL (IPowerstate, IPowerstateCallback) is declared in the odm VINTF manifest and mapped to hal_oculus_sensors_hwservice. The same library is also present in system_ext_a in both 32-bit and 64-bit builds.",
    "label": "observed",
    "evidence": "command: cat odm_a/etc/vintf/manifest/vendor.oculus.hardware.sensors_java@1.0-service.xml. output: <name>vendor.oculus.hardware.sensors_java</name> <interface><name>IPowerstate</name>. command: sed -n '49p' vendor_a/etc/selinux/vendor_hwservice_contexts. output: vendor.oculus.hardware.sensors_java::IPowerstate u:object_r:hal_oculus_sensors_hwservice:s0. command: awk -F'\\t' '$3 ~ /sensors_java/' input_rows.tsv (partitions odm_a, system_ext_a). output: odm_a lib64 and system_ext_a lib and lib64 rows.",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "The odm manifest (vendor.oculus.hardware.sensors_java@1.0-service.xml) declares only IPowerstate. IPowerstateCallback appears in the library strings but is not a manifest interface. IPowerstate maps to hal_oculus_sensors_hwservice (vendor_hwservice_contexts line 49). The library is present in system_ext_a as 32-bit (86884 bytes) and 64-bit (124752 bytes) copies. The system_ext_a 64-bit copy has the same size as the odm_a copy but a different digest (640ed9df... vs 15f14589...), so the copies are not identical.",
    "corrected_claim": "The odm sensors_java HAL (lib64, interface IPowerstate) is declared in the odm VINTF manifest with IPowerstate only; IPowerstateCallback appears in the library but is not a manifest interface. The IPowerstate descriptor maps to hal_oculus_sensors_hwservice. A library of the same name is present in system_ext_a in 32-bit and 64-bit builds; the 64-bit system_ext_a copy is the same size as the odm_a copy but has a different digest, so the copies are not byte-identical."
   }

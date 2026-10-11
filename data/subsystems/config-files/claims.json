@@ -9,7 +9,7 @@
    "label": "verified",
    "claim": "The group has 392 rows: system_a 270, system_ext_a 73, vendor_a 28, odm_a 11, product_a 10; 389 are regular files and 3 are symlinks.",
    "evidence": "cmd: awk -F'\\t' '$1==\"config-files\"{print $2}' classified.tsv | sort | uniq -c   out: 11 odm_a / 10 product_a / 270 system_a / 73 system_ext_a / 28 vendor_a. cmd: awk -F'\\t' '$1==\"config-files\"{print $4}' classified.tsv | sort | uniq -c   out: 389 file / 3 symlink",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Partition counts 11 odm_a, 10 product_a, 270 system_a, 73 system_ext_a, 28 vendor_a; kind counts 389 file and 3 symlink; 392 rows in total. All stated figures match.",
    "corrected_claim": ""
   },
@@ -18,7 +18,7 @@
    "label": "verified",
    "claim": "Every row's file exists at mnt/<partition>/<path> and its sha256 equals the recorded value for all 392 rows.",
    "evidence": "cmd: while IFS=$'\\t' read -r sub part path kind size mime sha; do f=mnt/$part/$path; if [ \"$kind\" = symlink ]; then [ -L \"$f\" ] || echo NOLINK; continue; fi; [ -f \"$f\" ] || echo MISSING; h=$(sha256sum \"$f\"|cut -d' ' -f1); [ \"$h\" = \"$sha\" ] || echo MISMATCH; done < input_rows.tsv (followed by a count of ok/missing/mismatch)   out: ok=392 missing=0 mismatch=0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Existence and sha256 check over all rows gives ok=392 missing=0 mismatch=0 nolink=0. The 3 symlink rows are present as links. Recorded sizes of the 389 regular files also match on disk.",
    "corrected_claim": ""
   },
@@ -27,7 +27,7 @@
    "label": "verified",
    "claim": "MIME distribution of the group: 194 text/plain, 42 application/zip, 39 application/x-terminfo, 31 application/octet-stream, 30 application/json, 24 inode/x-empty, 13 text/xml, 6 application/gzip, 3 text/x-tex, 2 image/png, 2 application/x-object, 2 application/x-dc42-floppy-image, 1 application/x-pie-executable, and 3 link rows.",
    "evidence": "cmd: awk -F'\\t' '{print $6}' input_rows.tsv | sort | uniq -c | sort -rn   out (excerpt): 194 text/plain / 42 application/zip / 39 application/x-terminfo / 31 application/octet-stream / 30 application/json / 24 inode/x-empty / 13 text/xml / 6 application/gzip / 3 text/x-tex / 3 link / 2 image/png / 2 application/x-object / 2 application/x-dc42-floppy-image / 1 application/x-pie-executable",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Full MIME distribution reproduced exactly: 194 text/plain, 42 application/zip, 39 application/x-terminfo, 31 application/octet-stream, 30 application/json, 24 inode/x-empty, 13 text/xml, 6 application/gzip, 3 text/x-tex, 3 link, 2 image/png, 2 application/x-object, 2 application/x-dc42-floppy-image, 1 application/x-pie-executable. Sum is 392.",
    "corrected_claim": ""
   },
@@ -36,7 +36,7 @@
    "label": "verified",
    "claim": "The 123 security/cacerts rows are single-certificate PEM files; each file name equals the certificate's subject_hash_old (123 of 123). Examples: 01419da9.0 is Microsoft ECC Root Certificate Authority 2017; 9d6523ce.0 is the Chunghwa Telecom ePKI Root Certification Authority; 8d6437c3.0 is DigiCert Assured ID Root G2.",
    "evidence": "cmd: for each input row under system/etc/security/cacerts: openssl x509 -in <file> -noout -subject_hash_old, compared with basename minus .0   out: cacerts subject_hash_old match: ok=123 bad=0. cmd: openssl x509 -in mnt/system_a/system/etc/security/cacerts/01419da9.0 -noout -subject_hash_old -subject   out: 01419da9 / subject=C = US, O = Microsoft Corporation, CN = Microsoft ECC Root Certificate Authority 2017. cmd: grep -c 'BEGIN CERTIFICATE' on each file   out: files=125 single-cert=125 (all cacerts on disk)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "All 123 input cacerts rows are single-certificate PEM files (one BEGIN CERTIFICATE each). openssl subject_hash_old equals the file basename for 123 of 123. Subjects: 01419da9 is Microsoft ECC Root Certificate Authority 2017; 9d6523ce has O = Chunghwa Telecom Co., Ltd. and OU = ePKI Root Certification Authority; 8d6437c3 is DigiCert Assured ID Root G2. The directory holds 125 files, all single-certificate.",
    "corrected_claim": ""
   },
@@ -45,7 +45,7 @@
    "label": "verified",
    "claim": "Two files on disk under system_a/system/etc/security/cacerts (a3896b44.0 and a7605362.0) are classified under subsystem gpu, not config-files, so they are outside this group and are not in roles.tsv.",
    "evidence": "cmd: ls mnt/system_a/system/etc/security/cacerts | wc -l   out: 125 (input rows for this directory: 123). cmd: grep -P '\\tsystem/etc/security/cacerts/(a3896b44|a7605362)\\.0\\t' classified.tsv | cut -f1-3   out: gpu system_a system/etc/security/cacerts/a7605362.0 / gpu system_a system/etc/security/cacerts/a3896b44.0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The cacerts directory lists 125 entries against 123 input rows. a3896b44.0 and a7605362.0 are classified under gpu in classified.tsv and do not appear in input_rows.tsv or roles.tsv.",
    "corrected_claim": ""
   },
@@ -54,7 +54,7 @@
    "label": "verified",
    "claim": "All 41 terminfo rows decode with infocmp. All 41 start with the legacy terminfo magic 0x011a (bytes 1a 01). Two rows (x/xterm and x/xterm-xfree86) are labelled application/x-dc42-floppy-image by the classification, which is a misidentification of the same terminfo format.",
    "evidence": "cmd: infocmp -A mnt/system_ext_a/etc/terminfo -1 <name> for each of the 41 names   out: terminfo decode ok=41 fail=0. cmd: od -A n -t x1 -N 4 mnt/system_ext_a/etc/terminfo/x/xterm-xfree86   out:  1a 01 30 00. cmd: od -A n -t x1 -N 2 on each row   out: magic 1a01 count 41 (2 rows labelled application/x-dc42-floppy-image)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "infocmp -A on the system_ext_a terminfo tree decodes 41 of 41 entries. The first two bytes are 1a 01 in all 41 files. The x/xterm and x/xterm-xfree86 rows carry the application/x-dc42-floppy-image label although their content is legacy terminfo, so that label is a misidentification; the other 39 carry application/x-terminfo.",
    "corrected_claim": ""
   },
@@ -63,7 +63,7 @@
    "label": "verified",
    "claim": "The five NOTICE.xml.gz rows are gzip-compressed XML <licenses> indices with file-name entry counts: system_a 3497, vendor_a 559, system_ext_a 28, odm_a 5, product_a 4.",
    "evidence": "cmd: zcat mnt/<partition>/etc/NOTICE.xml.gz | grep -c 'file-name'  (for system_a/system/etc, odm_a/etc, product_a/etc, system_ext_a/etc, vendor_a/etc)   out: system_a/system/etc 3497 / odm_a/etc 5 / product_a/etc 4 / system_ext_a/etc 28 / vendor_a/etc 559",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "Lines containing file-name (one entry per line) are 3497 for system_a, 559 for vendor_a, 28 for system_ext_a, 5 for odm_a and 4 for product_a. Each archive's root element is licenses.",
    "corrected_claim": ""
   },
@@ -72,7 +72,7 @@
    "label": "verified",
    "claim": "24 rows are zero bytes (sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855). They are six .placeholder markers, fs_config_dirs and fs_config_files stubs, group and passwd stubs, and the zero-byte system xtables.lock.",
    "evidence": "cmd: awk -F'\\t' '$1==\"config-files\" && $7==\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"' classified.tsv | wc -l   out: 24. cmd: grep -c 'placeholder marker' roles.tsv   out: 6",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "24 regular files are zero-byte with sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. Composition: 6 .placeholder files (six roles.tsv rows say placeholder marker), 9 fs_config_dirs/fs_config_files stubs, 8 group/passwd stubs and system/etc/xtables.lock. System fs_config_dirs is not zero-byte (32 bytes, see D05a); the claim does not state otherwise.",
    "corrected_claim": ""
   },
@@ -81,7 +81,7 @@
    "label": "verified",
    "claim": "Three rows are symlinks. The two odm_a openxr active_runtime manifests point to absolute /apex/com.meta.xr/ paths that do not exist in the mounted partitions. vendor_a/bin/groups points to toybox_vendor.",
    "evidence": "cmd: readlink mnt/odm_a/etc/openxr/1/active_runtime.aarch64.json   out: /apex/com.meta.xr/active_runtime.aarch64.json. cmd: ls -la mnt/odm_a/etc/openxr/1/active_runtime.aarch64.json   out: lrw-r--r--. 1 root root 45 Jan  1  2009 ... -> /apex/com.meta.xr/active_runtime.aarch64.json. cmd: ls -d mnt/system_a/apex/com.meta.xr   out: ls: cannot access ... No such file or directory. cmd: readlink mnt/vendor_a/bin/groups   out: toybox_vendor",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "readlink gives /apex/com.meta.xr/active_runtime.aarch64.json and /apex/com.meta.xr/active_runtime.armv7a-vfp.json for the two odm_a manifests. vendor_a/bin/groups points to toybox_vendor, which is present. No /apex/com.meta.xr directory exists in the mounted partitions. Observed refinement: odm_a/apex/com.meta.xr.apex exists as an APEX container; its apex_payload.img (ext2) root holds only apex_manifest.pb and lost+found, so the target file is absent there too.",
    "corrected_claim": ""
   },
@@ -90,7 +90,7 @@
    "label": "verified",
    "claim": "The zip-container model rows (for example system_ext_a/etc/assistant/en_US/ww_model.pt and system_a/system/etc/handtracking/runtime/dpe/DPEV23.ptl) hold entries such as <prefix>/extra/producer_info.json. The 42 zip-typed rows include 2 rotation CSV archives, 1 otacerts archive, 1 gltf scene archive and 38 model archives.",
    "evidence": "cmd: unzip -Z1 mnt/system_ext_a/etc/assistant/en_US/ww_model.pt | head -2   out: ww_model/extra/producer_info.json / ww_model/data/0. cmd: unzip -Z1 mnt/system_a/system/etc/handtracking/runtime/dpe/DPEV23.ptl | grep -c producer_info   out: 1. cmd: unzip -Z1 on all 42 zip-typed rows   out: entry lists (2 to 315 entries per archive)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The 42 zip-typed rows are 2 rotation archives (rotation_v2.zip, rotation_v3.zip, 12 entries each), 1 otacerts.zip, 1 gltf archive (product_a pinchArrowBlend.gltf.ovrscene) and 38 model archives. All 38 model archives contain a producer_info entry, and ww_model.pt begins with ww_model/extra/producer_info.json. DPEV23.ptl contains one producer_info entry. Evidence-line correction only: entry counts range from 1 to 315, not 2 to 315, because otacerts.zip holds one entry (testkey.x509.pem).",
    "corrected_claim": ""
   },
@@ -99,7 +99,7 @@
    "label": "verified",
    "claim": "roles.tsv has a header and 392 data rows, four tab-separated columns on every line, and the (partition, path) keys match the input rows exactly, each once.",
    "evidence": "cmd: awk -F'\\t' '{print NF}' roles.tsv | sort | uniq -c   out: 393 4. cmd: compare sorted partition|path keys of roles.tsv (excluding header) with input_rows.tsv   out: roles keys identical to input keys. cmd: wc -l roles.tsv   out: 393. Confidence counts: 261 verified, 96 observed, 35 inferred",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "roles.tsv has 393 lines: a header plus 392 data rows, with 4 tab-separated fields on every line and no empty fields. The partition|path keys match the 392 input keys exactly, with no duplicates. Confidence counts are 261 verified, 96 observed and 35 inferred. rowsListed is 392 data rows.",
    "corrected_claim": ""
   },
@@ -109,7 +109,7 @@
    "file": "<image>/mnt/system_a/system/etc/cgroups.json",
    "claim": "system/etc/cgroups.json (1018 bytes, JSON) has top-level keys Cgroups and Cgroups2. Cgroups lists five controllers: blkio, cpu, cpuacct, cpuset, memory (memory has Optional true). Cgroups2 has path /sys/fs/cgroup with one freezer controller at path '.'.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import json,sys; d=json.load(open(sys.argv[1])); print(list(d.keys())); print([c[\"Controller\"] for c in d[\"Cgroups\"]]); print(json.dumps(d[\"Cgroups2\"])[:160]); print([c.get(\"Optional\") for c in d[\"Cgroups\"]])' \"<image>/mnt/system_a/system/etc/cgroups.json\"   out: ['Cgroups', 'Cgroups2'] / ['blkio', 'cpu', 'cpuacct', 'cpuset', 'memory'] / {\"Path\": \"/sys/fs/cgroup\", ... \"Controllers\": [{\"Controller\": \"freezer\", \"Path\": \".\", ...}]} / [None, None, None, None, True]",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "cgroups.json is 1018 bytes. Top-level keys are Cgroups and Cgroups2. Cgroups controllers are blkio, cpu, cpuacct, cpuset, memory, and only memory has Optional true. Cgroups2 has path /sys/fs/cgroup with one freezer controller at path '.'.",
    "corrected_claim": ""
   },
@@ -119,7 +119,7 @@
    "file": "<image>/mnt/system_a/system/etc/cgroups.json",
    "claim": "Init and the process-group library reference the file by path: init.rc line 14 comments that cgroups are mounted 'using list from /etc/cgroups.json'; libprocessgroup_setup.so contains the literals /etc/cgroups.json and /vendor/etc/cgroups.json; plat_file_contexts maps /(vendor|system/vendor)/etc/cgroups.json to vendor_cgroup_desc_file (line 6) and /system/etc/cgroups.json to cgroup_desc_file (line 554).",
    "evidence": "cmd: sed -n '14p' mnt/system_a/system/etc/init/hw/init.rc   out: # Cgroups are mounted right before early-init using list from /etc/cgroups.json. cmd: strings -n 6 mnt/system_a/system/lib64/libprocessgroup_setup.so | grep -F '/etc/cgroups.json'   out: /etc/cgroups.json / /vendor/etc/cgroups.json. cmd: grep -n -F 'cgroups\\.json' mnt/system_a/system/etc/selinux/plat_file_contexts   out: 6:/(vendor|system/vendor)/etc/cgroups\\.json      u:object_r:vendor_cgroup_desc_file:s0 / 554:/system/etc/cgroups\\.json               u:object_r:cgroup_desc_file:s0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "init.rc line 14 reads 'Cgroups are mounted right before early-init using list from /etc/cgroups.json'. libprocessgroup_setup.so contains /etc/cgroups.json and /vendor/etc/cgroups.json. plat_file_contexts line 6 maps the vendor path to vendor_cgroup_desc_file and line 554 maps /system/etc/cgroups.json to cgroup_desc_file.",
    "corrected_claim": ""
   },
@@ -129,7 +129,7 @@
    "file": "<image>/mnt/system_a/system/etc/task_profiles.json",
    "claim": "system/etc/task_profiles.json (12543 bytes) has top-level keys Attributes (10), Profiles (40) and AggregateProfiles (13). CPUSET_SP_TOP_APP is an AggregateProfiles entry with Profiles [MaxPerformance, ProcessCapacityMax, MaxIoPriority, TimerSlackNormal].",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import json,sys; d=json.load(open(sys.argv[1])); print(list(d.keys())); print({k:len(v) for k,v in d.items()}); print(json.dumps([x for x in d[\"AggregateProfiles\"] if x[\"Name\"]==\"CPUSET_SP_TOP_APP\"]))' \"<image>/mnt/system_a/system/etc/task_profiles.json\"   out: ['Attributes', 'Profiles', 'AggregateProfiles'] / {'Attributes': 10, 'Profiles': 40, 'AggregateProfiles': 13} / [{\"Name\": \"CPUSET_SP_TOP_APP\", \"Profiles\": [\"MaxPerformance\", \"ProcessCapacityMax\", \"MaxIoPriority\", \"TimerSlackNormal\"]}]",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "task_profiles.json is 12543 bytes with top-level keys Attributes (10), Profiles (40) and AggregateProfiles (13). CPUSET_SP_TOP_APP is an aggregate with Profiles MaxPerformance, ProcessCapacityMax, MaxIoPriority, TimerSlackNormal.",
    "corrected_claim": ""
   },
@@ -139,7 +139,7 @@
    "file": "<image>/mnt/system_a/system/etc/task_profiles.json",
    "claim": "Consumers reference the file by path: libprocessgroup.so contains /etc/task_profiles.json, /vendor/etc/task_profiles.json and /etc/task_profiles/task_profiles_%u.json; plat_file_contexts line 603 maps /system/etc/task_profiles.json to task_profiles_file; line 347 maps /system/etc/task_profiles/task_profiles_[0-9]+.json to task_profiles_api_file. The odm init script odm.sensor-emulator.rc line 10 uses the profile name CPUSET_SP_TOP_APP.",
    "evidence": "cmd: strings -n 6 mnt/system_a/system/lib64/libprocessgroup.so | grep -E 'task_profiles'   out: /etc/task_profiles/task_profiles_%u.json / /vendor/etc/task_profiles.json / /etc/task_profiles.json. cmd: grep -n -F 'task_profiles\\.json' mnt/system_a/system/etc/selinux/plat_file_contexts   out: 603:/system/etc/task_profiles\\.json  u:object_r:task_profiles_file:s0. cmd: grep -n 'CPUSET_SP_TOP_APP' mnt/odm_a/etc/init/odm.sensor-emulator.rc   out: 10:    task_profiles CPUSET_SP_TOP_APP",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libprocessgroup.so contains /etc/task_profiles/task_profiles_%u.json, /vendor/etc/task_profiles.json and /etc/task_profiles.json. plat_file_contexts line 603 maps /system/etc/task_profiles.json to task_profiles_file and line 347 maps the task_profiles_[0-9]+.json pattern to task_profiles_api_file. odm.sensor-emulator.rc line 10 reads 'task_profiles CPUSET_SP_TOP_APP'.",
    "corrected_claim": ""
   },
@@ -149,7 +149,7 @@
    "file": "<image>/mnt/vendor_a/etc/task_profiles.json",
    "claim": "vendor_a/etc/task_profiles.json defines 11 attributes, 52 profiles and 22 aggregate profiles. The profiles trackingPolicy, sensorServicePolicy, mrSystemPolicy and SoftRealtimePerformance exist only in the vendor file, not in system/etc/task_profiles.json.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import json,sys; s=json.load(open(sys.argv[1])); v=json.load(open(sys.argv[2])); print({k:len(x) for k,x in v.items()}); names=[\"trackingPolicy\",\"sensorServicePolicy\",\"mrSystemPolicy\",\"SoftRealtimePerformance\"]; sp={p[\"Name\"] for p in s[\"Profiles\"]}; vp={p[\"Name\"] for p in v[\"Profiles\"]}; print({n:(n in sp, n in vp) for n in names})' \"<image>/mnt/system_a/system/etc/task_profiles.json\" \"<image>/mnt/vendor_a/etc/task_profiles.json\"   out: {'Attributes': 11, 'Profiles': 52, 'AggregateProfiles': 22} / {'trackingPolicy': (False, True), 'sensorServicePolicy': (False, True), 'mrSystemPolicy': (False, True), 'SoftRealtimePerformance': (False, True)}",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vendor_a task_profiles.json has 11 Attributes, 52 Profiles and 22 AggregateProfiles. trackingPolicy, sensorServicePolicy, mrSystemPolicy and SoftRealtimePerformance appear in the vendor Profiles list and not in the system Profiles list.",
    "corrected_claim": ""
   },
@@ -159,7 +159,7 @@
    "file": "<image>/mnt/system_a/system/etc/fonts.xml",
    "claim": "system/etc/fonts.xml (67158 bytes) is a familyset with version 23, 157 family elements and 24 alias elements. It names 204 distinct font files, and all 204 exist in system_a/system/fonts. Aliases map names such as sans-serif-thin to sans-serif with a weight attribute.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import sys,os,xml.etree.ElementTree as ET; r=ET.parse(sys.argv[1]).getroot(); print(r.tag, r.attrib); print(\"families\", len(r.findall(\"family\")), \"aliases\", len(r.findall(\"alias\"))); n=sorted({(f.text or \"\").strip() for f in r.iter(\"font\")}-{\"\"}); print(\"distinct files\", len(n)); print(\"present in system_a/system/fonts\", sum(os.path.exists(os.path.join(sys.argv[2],\"system_a/system/fonts\",x)) for x in n))' \"<image>/mnt/system_a/system/etc/fonts.xml\" \"<image>/mnt\"   out: familyset {'version': '23'} / families 157 aliases 24 / distinct files 204 / present in system_a/system/fonts 204",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fonts.xml is 67158 bytes, a familyset with version 23, 157 family and 24 alias children. It names 204 distinct font files and all 204 exist in system_a/system/fonts. Alias sans-serif-thin maps to sans-serif with weight 100.",
    "corrected_claim": ""
   },
@@ -169,7 +169,7 @@
    "file": "<image>/mnt/system_a/system/etc/fonts.xml",
    "claim": "libandroid.so contains the literal paths /system/etc/fonts.xml and /product/etc/fonts_customization.xml.",
    "evidence": "cmd: strings -n 8 mnt/system_a/system/lib64/libandroid.so | grep -E 'fonts\\.xml|fonts_customization'   out: /product/etc/fonts_customization.xml / /system/etc/fonts.xml",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libandroid.so contains the literal strings /system/etc/fonts.xml and /product/etc/fonts_customization.xml.",
    "corrected_claim": ""
   },
@@ -179,7 +179,7 @@
    "file": "<image>/mnt/product_a/etc/fonts_customization.xml",
    "claim": "product_a/etc/fonts_customization.xml (1104 bytes) is a fonts-modification document (version 1) with three new-named-family entries: ms-neo-gothic (MSNeoGothic.ttf), optimistic (five OptimisticText weights) and optimistic display (OptimisticDisplay-VF.ttf at five weights). It references seven distinct font files.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import sys,xml.etree.ElementTree as ET; r=ET.parse(sys.argv[1]).getroot(); print(r.tag, r.attrib); print([(f.get(\"name\"), f.get(\"customizationType\")) for f in r.findall(\"family\")]); print(sorted({f.text for f in r.iter(\"font\")}))' \"<image>/mnt/product_a/etc/fonts_customization.xml\"   out: fonts-modification {'version': '1'} / [('ms-neo-gothic', 'new-named-family'), ('optimistic', 'new-named-family'), ('optimistic display', 'new-named-family')] / ['MSNeoGothic.ttf', 'OptimisticDisplay-VF.ttf', 'OptimisticText-Black.ttf', 'OptimisticText-Bold.ttf', 'OptimisticText-Light.ttf', 'OptimisticText-Medium.ttf', 'OptimisticText-Regular.ttf']",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fonts_customization.xml is 1104 bytes, a fonts-modification document with version 1. Its three new-named-family entries are ms-neo-gothic, optimistic and optimistic display. It names seven distinct font files.",
    "corrected_claim": ""
   },
@@ -189,7 +189,7 @@
    "file": "<image>/mnt/product_a/etc/fonts_customization.xml",
    "claim": "Of the seven font files named in fonts_customization.xml, the six Optimistic files are present in product_a/fonts. MSNeoGothic.ttf is absent from product_a/fonts and is present in system_a/system/fonts.",
    "evidence": "cmd: ls mnt/system_a/system/fonts/MSNeoGothic.ttf mnt/product_a/fonts/MSNeoGothic.ttf   out: ls: cannot access '.../mnt/product_a/fonts/MSNeoGothic.ttf': No such file or directory / .../mnt/system_a/system/fonts/MSNeoGothic.ttf. cmd: ls mnt/product_a/fonts | wc -l   out: 6 (OptimisticDisplay-VF.ttf, OptimisticText-Black/Bold/Light/Medium/Regular.ttf)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "MSNeoGothic.ttf is absent from product_a/fonts and present in system_a/system/fonts. product_a/fonts holds the six Optimistic files (OptimisticDisplay-VF.ttf and five OptimisticText weights).",
    "corrected_claim": ""
   },
@@ -199,7 +199,7 @@
    "file": "<image>/mnt/system_a/system/etc/fs_config_dirs",
    "claim": "system/etc/fs_config_dirs is a 32-byte binary fs_config table with one entry: length 32, mode 0771 (octal), uid 1000, gid 1000, capabilities 0x0, prefix 'persist/'. Layout: uint16 length, uint16 mode, uint16 uid, uint16 gid, uint64 capabilities, then a NUL-terminated prefix padded to the length.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import struct,sys; d=open(sys.argv[1],\"rb\").read(); ln,mode,uid,gid,caps=struct.unpack_from(\"<HHHHQ\",d,0); print(len(d), ln, oct(mode), uid, gid, hex(caps), d[16:ln].split(b\"\\0\")[0])' \"<image>/mnt/system_a/system/etc/fs_config_dirs\"   out: 32 32 0o771 1000 1000 0x0 b'persist/'. cmd: od -A x -t x1z mnt/system_a/system/etc/fs_config_dirs | head -2   out: 000000 20 00 f9 01 e8 03 e8 03 00 00 00 00 00 00 00 00 ... 000010 70 65 72 73 69 73 74 2f ...",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fs_config_dirs is 32 bytes with one record. Header bytes: 20 00 (length 32), f9 01 (mode 0o771), e8 03 (uid 1000), e8 03 (gid 1000), eight zero bytes (capabilities 0x0). The NUL-terminated prefix 'persist/' starts at offset 16 and is zero-padded to 32. Little-endian uint16 fields and uint64 capabilities match the stated layout.",
    "corrected_claim": ""
   },
@@ -209,7 +209,7 @@
    "file": "<image>/mnt/system_a/system/etc/fs_config_dirs",
    "claim": "libcutils.so contains literal paths for fs_config_dirs and fs_config_files under /odm, /oem, /product, /system_ext, /system and /vendor; libadbd_fs.so and libcutils.so carry the fs_config symbol names.",
    "evidence": "cmd: strings -n 6 mnt/system_a/system/lib64/libcutils.so | grep -E 'fs_config_(dirs|files)'   out: /odm/etc/fs_config_dirs / /odm/etc/fs_config_files / /oem/etc/fs_config_dirs / /oem/etc/fs_config_files / /product/etc/fs_config_dirs / /product/etc/fs_config_files / /system_ext/etc/fs_config_dirs / /system_ext/etc/fs_config_files / /system/etc/fs_config_dirs / /system/etc/fs_config_files / /vendor/etc/fs_config_dirs / /vendor/etc/fs_config_files",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libcutils.so contains literal paths /odm, /oem, /product, /system_ext, /system and /vendor each with /etc/fs_config_dirs and /etc/fs_config_files, and exports fs_config, canned_fs_config and load_canned_fs_config. libadbd_fs.so carries the strings adbd_fs_config and fs_config and fs_config path literals.",
    "corrected_claim": ""
   },
@@ -219,7 +219,7 @@
    "file": "<image>/mnt/system_a/system/etc/linker.config.pb",
    "claim": "system/etc/linker.config.pb (984 bytes) is a binary protobuf whose top-level fields are 3 (38 length-delimited strings) and 4 (19 strings). Field 3 values are library names such as heapprofd_client_api.so, libEGL.so, libGLESv1_CM.so and libc.so; field 4 values include libandroidicu.so, libdexfile.so, libicu.so and libnativeloader.so.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c '<wire-format walk: read varint keys, collect length-delimited values>' \"<image>/mnt/system_a/system/etc/linker.config.pb\"   out: 984 Counter({3: 38, 4: 19}) / ['heapprofd_client_api.so', 'libEGL.so', 'libGLESv1_CM.so', 'libGLESv2.so'] / ['libandroidicu.so', 'libdexfile.so', 'libdexfiled.so', 'libicu.so']",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "linker.config.pb is 984 bytes. A complete protobuf wire-format walk finds only top-level fields 3 (38 length-delimited strings) and 4 (19 strings). Field 3 includes heapprofd_client_api.so, libEGL.so, libGLESv1_CM.so and libc.so. Field 4 includes libandroidicu.so, libdexfile.so, libicu.so and libnativeloader.so.",
    "corrected_claim": ""
   },
@@ -229,7 +229,7 @@
    "file": "<image>/mnt/system_a/system/etc/linker.config.pb",
    "claim": "The linkerconfig binary loads the file by path (/system/etc/linker.config.pb and /etc/linker.config.pb) and its embedded build paths name a linker_config.proto definition. The meaning of fields 3 and 4 is inferred from the name lists, not confirmed against the .proto.",
    "evidence": "cmd: strings -n 6 mnt/system_a/system/bin/bootstrap/linkerconfig | grep -F 'linker.config.pb'   out: /system/etc/linker.config.pb / /etc/linker.config.pb. Embedded string: .../build/soong/linkerconfig/proto/lib_linker_config_proto_lite/.../gen/proto/build/soong/linkerconfig/proto/linker_config.pb.cc",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "linkerconfig contains /system/etc/linker.config.pb and /etc/linker.config.pb, and an embedded build path naming linker_config.pb.cc. Gap: the meaning of fields 3 and 4 is not confirmed against the .proto; the claim already labels it inferred.",
    "corrected_claim": ""
   },
@@ -239,7 +239,7 @@
    "file": "<image>/mnt/system_a/system/etc/xrs-hmdconfig.capnp.bin",
    "claim": "system/etc/xrs-hmdconfig.capnp.bin (760 bytes) is a Cap'n Proto message: a 4-byte segment count (0, meaning one segment), a 4-byte segment size of 94 words, and the segment data; 8 + 94 x 8 = 760 bytes. Strings in the segment include 'Meta Quest 3' and 'Oculus VR'.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import struct,sys; d=open(sys.argv[1],\"rb\").read(); n=struct.unpack_from(\"<I\",d,0)[0]+1; s=struct.unpack_from(\"<I\",d,4)[0]; print(len(d), \"segments\", n, \"words\", s, \"8+words*8\", 8+s*8)' \"<image>/mnt/system_a/system/etc/xrs-hmdconfig.capnp.bin\"   out: 760 segments 1 words 94 8+words*8 760. cmd: strings -n 6 <file> | head -2   out: Meta Quest 3 / Oculus VR",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "xrs-hmdconfig.capnp.bin is 760 bytes. The 4-byte segment count minus one is 0 (one segment), and the 4-byte segment size is 94 words, so 8 + 94*8 = 760. Strings 'Meta Quest 3' and 'Oculus VR' are present in the segment.",
    "corrected_claim": ""
   },
@@ -249,7 +249,7 @@
    "file": "<image>/mnt/system_a/system/etc/xrs-hmdconfig.capnp.bin",
    "claim": "The file is labelled in system_ext SELinux file contexts as xrs_system_file, and libossdk.oculus.so contains its path literal /system/etc/xrs-hmdconfig.capnp.bin.",
    "evidence": "cmd: grep -n -F 'xrs-hmdconfig' mnt/system_ext_a/etc/selinux/system_ext_file_contexts   out: 26:/system/etc/xrs-hmdconfig.capnp.bin  u:object_r:xrs_system_file:s0. cmd: strings -n 6 mnt/system_ext_a/lib64/libossdk.oculus.so | grep -F 'xrs-hmdconfig'   out: /system/etc/xrs-hmdconfig.capnp.bin",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "system_ext_file_contexts line 26 reads /system/etc/xrs-hmdconfig.capnp.bin u:object_r:xrs_system_file:s0. libossdk.oculus.so contains the literal /system/etc/xrs-hmdconfig.capnp.bin.",
    "corrected_claim": ""
   },
@@ -259,7 +259,7 @@
    "file": "<image>/mnt/system_a/system/etc/ppp/ip-up-vpn",
    "claim": "system/etc/ppp/ip-up-vpn (11048 bytes) is an ELF64 little-endian DYN (PIE) executable for AArch64, entry 0x1000, with six NEEDED libraries (libcutils.so, liblog.so, libc++.so, libc.so, libm.so, libdl.so) and build-id 8bf65ecfdd62db387cd2d4f103a653ea. Its undefined dynamic symbols include __android_log_print, fopen, fwrite, ioctl, inet_pton, socket and rename. Its strings include /data/misc/vpn/state, /data/misc/vpn/.tmp and INTERNAL_ADDR4.",
    "evidence": "cmd: readelf -h mnt/system_a/system/etc/ppp/ip-up-vpn | grep -E 'Class|Type|Machine|Entry'   out: Class: ELF64 / Type: DYN (Position-Independent Executable file) / Machine: AArch64 / Entry point address: 0x1000. cmd: readelf -d <file> | grep NEEDED   out: Shared library: [libcutils.so] / [liblog.so] / [libc++.so] / [libc.so] / [libm.so] / [libdl.so]. cmd: readelf --dyn-syms -W <file> | awk '$7==\"UND\"{print $8}'   out: __libc_init@LIBC __android_log_print@LIBLOG ... fopen@LIBC ioctl@LIBC rename@LIBC socket@LIBC. cmd: strings -n 5 <file> | grep -E '/data/misc/vpn|INTERNAL_ADDR4'   out: INTERNAL_ADDR4 / /data/misc/vpn/state / /data/misc/vpn/.tmp",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "ip-up-vpn is 11048 bytes: ELF64, little-endian, DYN (PIE), AArch64, entry 0x1000. It has six NEEDED entries (libcutils, liblog, libc++, libc, libm, libdl) and build ID 8bf65ecfdd62db387cd2d4f103a653ea. Undefined dynamic symbols include __android_log_print, fopen, fwrite, ioctl, inet_pton, socket and rename. Strings INTERNAL_ADDR4, /data/misc/vpn/state and /data/misc/vpn/.tmp are present.",
    "corrected_claim": ""
   },
@@ -269,7 +269,7 @@
    "file": "<image>/mnt/system_a/system/etc/ppp/ip-up-vpn",
    "claim": "The racoon binary contains the literal /etc/ppp/ip-up-vpn. No init .rc file or SELinux context file in the mounted partitions names this path.",
    "evidence": "cmd: strings -n 6 mnt/system_a/system/bin/racoon | grep -F 'ip-up-vpn'   out: /etc/ppp/ip-up-vpn. cmd: grep -rl -a -F 'ip-up-vpn' mnt/system_a/system/bin mnt/system_a/system/etc/init mnt/system_a/system/etc/ppp mnt/system_a/system/lib64 mnt/system_a/system/etc/selinux   out: system_a/system/bin/racoon / system_a/system/etc/ppp/ip-up-vpn",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "racoon contains the literal /etc/ppp/ip-up-vpn. A search of all mounted partitions for that string finds only system_a/system/bin/racoon and the ip-up-vpn file itself, so no init or SELinux file names the path.",
    "corrected_claim": ""
   },
@@ -279,7 +279,7 @@
    "file": "<image>/mnt/system_a/system/etc/bpf/netd.o",
    "claim": "system/etc/bpf/netd.o (16552 bytes) is an ELF64 relocatable object for Linux BPF. Its program sections are cgroupskb/ingress/stats, cgroupskb/egress/stats, cgroupsock/inet/create and four skfilter/*/xtbpf sections (ingress, egress, allowlist, denylist). Sections maps, progs, license, critical, bpfloader_min_ver, bpfloader_max_ver, size_of_bpf_map_def and size_of_bpf_prog_def are present. License is 'Apache 2.0.' and size_of_bpf_map_def is 0x30 bytes. Ten map names: uid_counterset_map, iface_stats_map, app_uid_stats_map, uid_owner_map, configuration_map, uid_permission_map, cookie_tag_map, iface_index_name_map, stats_map_A, stats_map_B.",
    "evidence": "cmd: readelf -h mnt/system_a/system/etc/bpf/netd.o | grep -E 'Class|Type|Machine'   out: ELF64 / REL (Relocatable file) / Machine: Linux BPF. cmd: readelf -SW <file> | grep -oE '(cgroup|skfilter)[a-z/]*[a-z]' | sort -u   out: cgroupskb/egress/stats / cgroupskb/ingress/stats / cgroupsock/inet/create / skfilter/allowlist/xtbpf / skfilter/denylist/xtbpf / skfilter/egress/xtbpf / skfilter/ingress/xtbpf. cmd: readelf -x license <file> | sed -n '3p'   out: 0x00000000 41706163 68652032 2e3000 Apache 2.0. cmd: readelf -x size_of_bpf_map_def <file> | sed -n '3p'   out: 0x00000000 30000000 00000000 0....... cmd: strings -n 4 <file> | grep -E '_map$'   out: uid_counterset_map / iface_stats_map / app_uid_stats_map / uid_owner_map / configuration_map / uid_permission_map / cookie_tag_map / iface_index_name_map",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Structure confirmed: 16552-byte ELF64 REL Linux BPF object; the listed program sections, required sections, ten map symbols (all in the maps section, size 48 = 0x30) and size_of_bpf_map_def 0x30 match. The license section is 11 bytes: 'Apache 2.0' followed by a NUL byte. readelf displays the NUL as a trailing period, so the string is 'Apache 2.0' without a period.",
    "corrected_claim": "system/etc/bpf/netd.o (16552 bytes) is an ELF64 relocatable object for Linux BPF. Its program sections are cgroupskb/ingress/stats, cgroupskb/egress/stats, cgroupsock/inet/create and four skfilter/*/xtbpf sections (ingress, egress, allowlist, denylist). Sections maps, progs, license, critical, bpfloader_min_ver, bpfloader_max_ver, size_of_bpf_map_def and size_of_bpf_prog_def are present. The license section holds the 11-byte string 'Apache 2.0' followed by a NUL terminator. size_of_bpf_map_def is 0x30 bytes. Ten map names: uid_counterset_map, iface_stats_map, app_uid_stats_map, uid_owner_map, configuration_map, uid_permission_map, cookie_tag_map, iface_index_name_map, stats_map_A, stats_map_B."
   },
@@ -289,7 +289,7 @@
    "file": "<image>/mnt/system_a/system/etc/bpf/netd.o",
    "claim": "The bpfloader binary references the object directory /system/etc/bpf/ and /apex/com.android.tethering/etc/bpf/. The bpfloader_min_ver section bytes are 00000000 and bpfloader_max_ver bytes are 00000100; the integer width and endianness of these fields are not confirmed.",
    "evidence": "cmd: strings -n 6 mnt/system_a/system/bin/bpfloader | grep -E '/etc/bpf/|apex/com.android.tethering/etc/bpf'   out: /system/etc/bpf/ / /apex/com.android.tethering/etc/bpf/. cmd: readelf -x bpfloader_max_ver <file> | sed -n '3p'   out: 0x00000000 00000100 ....",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "bpfloader contains /system/etc/bpf/ and /apex/com.android.tethering/etc/bpf/. The bpfloader_min_ver bytes are 00000000 and bpfloader_max_ver bytes are 00000100. Gap: integer width and endianness of these fields are not confirmed, as the claim states.",
    "corrected_claim": ""
   },
@@ -299,7 +299,7 @@
    "file": "<image>/mnt/system_a/system/etc/bpf/clatd.o",
    "claim": "system/etc/bpf/clatd.o (9496 bytes) is an ELF64 relocatable Linux BPF object with schedcls sections ingress6/clat_ether, ingress6/clat_rawip, egress4/clat_ether and egress4/clat_rawip, maps clat_ingress6_map and clat_egress4_map, and license Apache 2.0. The CLAT (464XLAT) purpose is inferred from the names.",
    "evidence": "cmd: readelf -h mnt/system_a/system/etc/bpf/clatd.o | grep -E 'Type|Machine'   out: REL (Relocatable file) / Linux BPF. cmd: readelf -SW <file> | grep -oE 'schedcls/[a-z0-9/_]+' | sort -u   out: schedcls/egress4/clat_ether / schedcls/egress4/clat_rawip / schedcls/ingress6/clat_ether / schedcls/ingress6/clat_rawip. cmd: strings -n 4 <file> | grep -E '_map$'   out: clat_ingress6_map / clat_egress4_map",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "clatd.o is 9496 bytes, REL Linux BPF. Schedcls sections are egress4/clat_ether, egress4/clat_rawip, ingress6/clat_ether and ingress6/clat_rawip. Maps are clat_ingress6_map and clat_egress4_map. License string is Apache 2.0 (NUL-terminated). The CLAT purpose remains inferred from names.",
    "corrected_claim": ""
   },
@@ -309,7 +309,7 @@
    "file": "<image>/mnt/system_a/system/etc/openxr/1/active_runtime.aarch64.json",
    "claim": "The OpenXR active-runtime manifests for aarch64, armv7a-vfp and x86_64 each have file_format_version 1.0.0 and runtime.library_path pointing into /system/priv-app/VrDriver/VrDriver.apk!/lib/<abi>/libopenxr_forwardloader.so. The VrDriver.apk archive holds the arm64-v8a and armeabi-v7a forwardloader libraries and no x86_64 openxr entry.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d[\"file_format_version\"], d[\"runtime\"][\"library_path\"])' \"<image>/mnt/system_a/system/etc/openxr/1/active_runtime.aarch64.json\"   out: 1.0.0 /system/priv-app/VrDriver/VrDriver.apk!/lib/arm64-v8a/libopenxr_forwardloader.so. cmd: unzip -l mnt/system_a/system/priv-app/VrDriver/VrDriver.apk | grep -i openxr   out: 295480 lib/arm64-v8a/libopenxr_forwardloader.so / 177740 lib/armeabi-v7a/libopenxr_forwardloader.so. cmd: unzip -Z1 <apk> | grep -c -i 'x86_64.*openxr'   out: 0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "The aarch64, armv7a-vfp and x86_64 active_runtime manifests each have file_format_version 1.0.0 and runtime.library_path under /system/priv-app/VrDriver/VrDriver.apk!/lib/<abi>/libopenxr_forwardloader.so. VrDriver.apk holds lib/arm64-v8a (295480 bytes) and lib/armeabi-v7a (177740 bytes) forwardloader entries and no x86_64 entries.",
    "corrected_claim": ""
   },
@@ -319,7 +319,7 @@
    "file": "<image>/mnt/system_ext_a/lib64/libopenxr_loader.so",
    "claim": "libopenxr_loader.so contains the path fragments /etc/openxr/, openxr/1/api_layers/implicit.d/ and the file names /active_runtime.aarch64.json and /active_runtime.json. The odm_a openxr symlinks target /apex/com.meta.xr/, which is absent from the mounted partitions.",
    "evidence": "cmd: strings -n 4 mnt/system_ext_a/lib64/libopenxr_loader.so | grep -E '^/etc/openxr/$|^openxr/1/api_layers/implicit.d/$|^/active_runtime\\.aarch64\\.json$'   out: /etc/openxr/ / openxr/1/api_layers/implicit.d/ / /active_runtime.aarch64.json",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libopenxr_loader.so contains /etc/openxr/, openxr/1/api_layers/implicit.d/, /active_runtime.aarch64.json and /active_runtime.json.",
    "corrected_claim": ""
   },
@@ -329,7 +329,7 @@
    "file": "<image>/mnt/odm_a/etc/fw_init.cfg",
    "claim": "odm_a/etc/fw_init.cfg (513 bytes) is an INI file with sections syncboss (path, id, busy_path), secondary (path, id) and blu (path, version_path, part, uart, bootloader_path, reset_path, bootloader_update_delay_s, app_update_delay_ms). odm_a/etc/catty.cfg (149 bytes) has sections syncboss (prefix, dev, baud) and santanamanager (prefix, dev, baud).",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c '<INI section and key reader>' \"<image>/mnt/odm_a/etc/fw_init.cfg\" \"<image>/mnt/odm_a/etc/catty.cfg\"   out: {'syncboss': ['path', 'id', 'busy_path'], 'secondary': ['path', 'id'], 'blu': ['path', 'version_path', 'part', 'uart', 'bootloader_path', 'reset_path', 'bootloader_update_delay_s', 'app_update_delay_ms']} / {'syncboss': ['prefix', 'dev', 'baud'], 'santanamanager': ['prefix', 'dev', 'baud']}",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fw_init.cfg is 513 bytes with sections syncboss (path, id, busy_path), secondary (path, id) and blu (path, version_path, part, uart, bootloader_path, reset_path, bootloader_update_delay_s, app_update_delay_ms). catty.cfg is 149 bytes with sections syncboss (prefix, dev, baud) and santanamanager (prefix, dev, baud).",
    "corrected_claim": ""
   },
@@ -339,7 +339,7 @@
    "file": "<image>/mnt/odm_a/etc/fw_init.cfg",
    "claim": "The fw_init service (odm_a/etc/init/fw_init.rc) runs /vendor/odm/bin/fw_init as a disabled oneshot; vendor init.anorak.rc starts it at line 504. The fw_init binary contains the literal /odm/etc/fw_init.cfg and the catty service binary contains /odm/etc/catty.cfg. The catty service starts from odm_a/etc/init/vendor.oculus.hardware.catty@1.0-service.rc line 1.",
    "evidence": "cmd: cat mnt/odm_a/etc/init/fw_init.rc | head -3   out: service fw_init /vendor/odm/bin/fw_init / class main / user system. cmd: grep -n 'fw_init|catty' mnt/vendor_a/etc/init/hw/init.anorak.rc | head -4   out: 497: start vendor.catty-1-0 / 504: start fw_init. cmd: strings -n 6 mnt/odm_a/bin/fw_init | grep -F 'fw_init.cfg'   out: /odm/etc/fw_init.cfg. cmd: strings -n 6 mnt/odm_a/bin/hw/vendor.oculus.hardware.catty@1.0-service | grep -F 'catty.cfg'   out: /odm/etc/catty.cfg",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "fw_init.rc defines service fw_init /vendor/odm/bin/fw_init with oneshot and disabled. init.anorak.rc line 504 reads 'start fw_init'. The fw_init binary contains /odm/etc/fw_init.cfg and the catty service binary contains /odm/etc/catty.cfg. The catty service is defined on line 1 of vendor.oculus.hardware.catty@1.0-service.rc.",
    "corrected_claim": ""
   },
@@ -349,7 +349,7 @@
    "file": "<image>/mnt/odm_a/firmware",
    "claim": "The firmware files named by fw_init.cfg are partly present: odm_a/firmware/syncboss.bin (366076 bytes) and santana_manager.bin (60240 bytes) exist. vendor_a/firmware/blu.bin and blu.toml named in the blu section do not exist in the mounted image.",
    "evidence": "cmd: ls -la mnt/odm_a/firmware/syncboss.bin mnt/odm_a/firmware/santana_manager.bin   out: 366076 syncboss.bin / 60240 santana_manager.bin. cmd: ls mnt/vendor_a/firmware/blu.bin mnt/vendor_a/firmware/blu.toml   out: ls: cannot access ... No such file or directory (both)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "odm_a/firmware/syncboss.bin (366076 bytes) and santana_manager.bin (60240 bytes) are present. blu.bin and blu.toml are absent from vendor_a/firmware and from every mounted partition.",
    "corrected_claim": ""
   },
@@ -359,7 +359,7 @@
    "file": "<image>/mnt/vendor_a/etc/resourcemanager_anorak_max98388.xml",
    "claim": "vendor_a/etc/resourcemanager_anorak_max98388.xml (61849 bytes) has root resource_manager_info and version 2.0, with 13 child elements: version, config_params, config_volume, config_lpm, config_gapless, bt_codecs, gain_db_to_level_mapping, config_voice, sleep_monitor_vote_streams, group_device_cfg, in_streams, device_profile and sound_trigger_platform_info. group_device_cfg children include upd_rx, handset, speaker, speaker_voice, upd_rx_handset and upd_rx_speaker.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import sys,xml.etree.ElementTree as ET,collections; r=ET.parse(sys.argv[1]).getroot(); print(r.tag, \"version\", r.find(\"version\").text); print(sorted(collections.Counter(c.tag for c in r).keys())); print([c.tag for c in r.find(\"group_device_cfg\")][:6])' \"<image>/mnt/vendor_a/etc/resourcemanager_anorak_max98388.xml\"   out: resource_manager_info version 2.0 / ['bt_codecs', 'config_gapless', 'config_lpm', 'config_params', 'config_voice', 'config_volume', 'device_profile', 'gain_db_to_level_mapping', 'group_device_cfg', 'in_streams', 'sleep_monitor_vote_streams', 'sound_trigger_platform_info', 'version'] / ['upd_rx', 'handset', 'speaker', 'speaker_voice', 'upd_rx_handset', 'upd_rx_speaker']",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "resourcemanager_anorak_max98388.xml is 61849 bytes with root resource_manager_info and version 2.0. It has 13 direct children with the stated names. group_device_cfg children begin upd_rx, handset, speaker, speaker_voice, upd_rx_handset, upd_rx_speaker.",
    "corrected_claim": ""
   },
@@ -369,7 +369,7 @@
    "file": "<image>/mnt/vendor_a/etc/resourcemanager_anorak_max98388.xml",
    "claim": "The audio library libar-pal.so contains the literals /vendor/etc/usecaseKvManager.xml and /vendor/etc/card-defs.xml and a log message that mentions Rm.xml. No literal path to resourcemanager_anorak_max98388.xml exists in the vendor binaries or libraries, so the loader of this file is not identified.",
    "evidence": "cmd: strings -n 8 mnt/vendor_a/lib64/libar-pal.so | grep -E 'Rm\\.xml|usecaseKvManager|card-defs'   out: %s: %d: sp_vi_ch_map info is not updated from Rm.xml / /vendor/etc/usecaseKvManager.xml / /vendor/etc/card-defs.xml. cmd: grep -rl -a -F 'resourcemanager_' mnt/vendor_a/bin mnt/vendor_a/lib64 mnt/vendor_a/lib | wc -l   out: 0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libar-pal.so contains /vendor/etc/usecaseKvManager.xml, /vendor/etc/card-defs.xml and a log message mentioning Rm.xml. No match for resourcemanager_ in the vendor bin, lib64 or lib directories. Gap: the loader of the resource manager XML remains unidentified.",
    "corrected_claim": ""
   },
@@ -379,7 +379,7 @@
    "file": "<image>/mnt/vendor_a/etc/peripheralconfig/dynamic_logical_device_manifest.json",
    "claim": "vendor_a/etc/peripheralconfig/dynamic_logical_device_manifest.json (6030 bytes) has targetName 'halliday', logicalDeviceCount 1, logicalDeviceXMLnames ['eureka.xml'], one logical device LogicalRGB (fwkId 6, primaryCameraIndex 1, visible true) with physical cameras JacksonRight and JacksonLeft, and an xmlConfigSensorIdToName map of six sensor entries (og01a1b_left, og01a1b_right, ov7251_left, ov7251_right, imx471_left, imx471_right).",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import json,sys; d=json.load(open(sys.argv[1])); ld=d[\"logicalDevices\"][0][0]; print(d[\"targetName\"], d[\"logicalDeviceCount\"], d[\"logicalDeviceXMLnames\"]); print(ld[\"name\"], ld[\"fwkId\"], ld[\"primaryCameraIndex\"], ld[\"visible\"], [c[\"name\"] for c in ld[\"physicalCameras\"]]); print(d[\"xmlConfigSensorIdToName\"][0][:2])' \"<image>/mnt/vendor_a/etc/peripheralconfig/dynamic_logical_device_manifest.json\"   out: halliday 1 ['eureka.xml'] / LogicalRGB 6 1 True ['JacksonRight', 'JacksonLeft'] / [[0, ['og01a1b_left', False]], [1, ['og01a1b_right', False]]]",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "dynamic_logical_device_manifest.json is 6030 bytes. targetName is halliday, logicalDeviceCount is 1, logicalDeviceXMLnames is ['eureka.xml']. LogicalRGB has fwkId 6, primaryCameraIndex 1, visible true, and physical cameras JacksonRight and JacksonLeft. xmlConfigSensorIdToName is a single list of six pairs with names og01a1b_left, og01a1b_right, ov7251_left, ov7251_right, imx471_left, imx471_right.",
    "corrected_claim": ""
   },
@@ -389,7 +389,7 @@
    "file": "<image>/mnt/vendor_a/etc/peripheralconfig/dynamic_logical_device_manifest.json",
    "claim": "The camera adapter plugin peripheralconfig-plugin-camx-adapter.so contains the literal /vendor/etc/peripheralconfig/dynamic_logical_device_manifest.json.",
    "evidence": "cmd: strings -n 8 mnt/vendor_a/lib64/peripheralconfig/server-plugins/peripheralconfig-plugin-camx-adapter.so | grep -F 'dynamic_logical_device_manifest.json'   out: /vendor/etc/peripheralconfig/dynamic_logical_device_manifest.json",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "peripheralconfig-plugin-camx-adapter.so contains the literal /vendor/etc/peripheralconfig/dynamic_logical_device_manifest.json.",
    "corrected_claim": ""
   },
@@ -399,7 +399,7 @@
    "file": "<image>/mnt/system_a/system/etc/facetracking/runtime/config.json",
    "claim": "system/etc/facetracking/runtime/config.json (9393 bytes) has top-level keys lipsyncSmoothing (minCutoff 2.0, beta 20.0, dCutoff 1.0), lipsyncBlendshapes (14 entries), lipsync (one key, modelPath) and audioToExpression (17 entries). Its modelPath values at lines 368 and 371 are models/lipsync/prod/nn_config.json and models/a2e/prod/nn_config.json. Those two nn_config.json files are JSON arrays of backend entries (TorchScript, QNNPACK) that point to bolt/a2e.ptl, bolt/model.pt and htp/qnn_model.ptl.",
    "evidence": "cmd: M=<image>/mnt; python3 -I -c 'import json,sys; d=json.load(open(sys.argv[1])); print(list(d.keys())); print(d[\"lipsyncSmoothing\"]); print(len(d[\"lipsyncBlendshapes\"]), list(d[\"lipsync\"].keys())[:3], len(d[\"audioToExpression\"]))' \"<image>/mnt/system_a/system/etc/facetracking/runtime/config.json\"   out: ['lipsyncSmoothing', 'lipsyncBlendshapes', 'lipsync', 'audioToExpression'] / {'minCutoff': 2.0, 'beta': 20.0, 'dCutoff': 1.0} / 14 ['modelPath'] 17. cmd: grep -n modelPath <file>   out: 368: \"modelPath\": \"models/lipsync/prod/nn_config.json\" / 371: \"modelPath\": \"models/a2e/prod/nn_config.json\"",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Verified: config.json is 9393 bytes with the stated top-level keys, values and counts (lipsyncBlendshapes 14, lipsync one key, audioToExpression 17). modelPath is at lines 368 and 371. The two nn_config.json files are JSON lists with TorchScript backends. lipsync lists QEngine QNNPACK three times and FBGEMM once; a2e lists Model bolt/a2e.ptl and CpuModel cpu/a2e.ptl with QNNPACK and FBGEMM. The claim omits FBGEMM, the CpuModel key and the cpu/ paths. The referenced htp/qnn_model.ptl and cpu/* files are not present in the mount; only bolt/model.pt and bolt/a2e.ptl exist. Gap: these absent files are not on disk.",
    "corrected_claim": "system/etc/facetracking/runtime/config.json (9393 bytes) has top-level keys lipsyncSmoothing (minCutoff 2.0, beta 20.0, dCutoff 1.0), lipsyncBlendshapes (14 entries), lipsync (one key, modelPath) and audioToExpression (17 entries). Its modelPath values at lines 368 and 371 are models/lipsync/prod/nn_config.json and models/a2e/prod/nn_config.json. Those two nn_config.json files are JSON lists of backend entries (Backend TorchScript; QEngine QNNPACK or FBGEMM) that point to bolt/model.pt, htp/qnn_model.ptl and cpu/model.pt (lipsync), and bolt/a2e.ptl and cpu/a2e.ptl under the CpuModel key (a2e). Of these referenced model files, only bolt/model.pt and bolt/a2e.ptl exist in the mount."
   },
@@ -409,7 +409,7 @@
    "file": "<image>/mnt/system_a/system/etc/facetracking/runtime/config.json",
    "claim": "libtrackingengines.so contains the literal /system/etc/facetracking/runtime. It contains no literal ending in facetracking/runtime/config.json, so the loader of config.json is not identified; no init or SELinux reference to the file was found.",
    "evidence": "cmd: strings -n 6 mnt/system_a/system/lib64/libtrackingengines.so | grep -F '/system/etc/facetracking/runtime'   out: /system/etc/facetracking/runtime. cmd: strings -n 6 mnt/system_a/system/lib64/libtrackingengines.so | grep -c 'facetracking/runtime/config\\.json'   out: 0",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "libtrackingengines.so contains the literal /system/etc/facetracking/runtime and no literal ending in facetracking/runtime/config.json. No facetracking reference appears in the init or SELinux files checked. Gap: the loader of config.json is not identified.",
    "corrected_claim": ""
   },
@@ -419,7 +419,7 @@
    "file": "<image>/mnt/system_a/system/etc/threadpolicy.conf",
    "claim": "system/etc/threadpolicy.conf (293 bytes) is JSON-like but not strict JSON: a trailing comma after the ELEVATED_SOFT_REALTIME entry makes a strict parser fail at line 12, column 6. It defines two policies: ELEVATED (policy SCHED_FIFO, rtprio 47, taskprofile SoftRealtimePerformance) and ELEVATED_SOFT_REALTIME (policy SCHED_OTHER, nice -20, taskprofile SoftRealtimePerformance).",
    "evidence": "cmd: python3 -I -c 'import json,sys; json.load(open(sys.argv[1]))' mnt/system_a/system/etc/threadpolicy.conf   out: json.decoder.JSONDecodeError: Illegal trailing comma before end of object: line 12 column 6 (char 285). cmd: sed -n '1,12p' <file> | cat -A | tail -4   out: \"policy\": \"SCHED_OTHER\",$ / \"nice\": -20,$ / \"taskprofile\": [\"SoftRealtimePerformance\"]$ / },$",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "threadpolicy.conf is 293 bytes. Strict JSON parsing fails with 'Illegal trailing comma before end of object: line 12 column 6', and the trailing comma follows the ELEVATED_SOFT_REALTIME entry. ELEVATED has policy SCHED_FIFO, rtprio 47 and taskprofile SoftRealtimePerformance. ELEVATED_SOFT_REALTIME has policy SCHED_OTHER, nice -20 and taskprofile SoftRealtimePerformance.",
    "corrected_claim": ""
   },
@@ -429,7 +429,7 @@
    "file": "<image>/mnt/system_a/system/etc/threadpolicy.conf",
    "claim": "The vrdevicemanagerserver binary contains the literal /system/etc/threadpolicy.conf and the symbol string setThreadPolicy. The taskprofile name SoftRealtimePerformance is defined in vendor_a/etc/task_profiles.json and not in the system task_profiles.json.",
    "evidence": "cmd: strings -n 6 mnt/system_ext_a/bin/vrdevicemanagerserver | grep -F 'threadpolicy.conf'   out: /system/etc/threadpolicy.conf. cmd: strings -n 6 <same file> | grep -F 'setThreadPolicy'   out: setThreadPolicy. Profile presence check as in D02c: SoftRealtimePerformance (False, True)",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "vrdevicemanagerserver contains /system/etc/threadpolicy.conf and the string setThreadPolicy. SoftRealtimePerformance is absent from the system task_profiles.json Profiles list and present in the vendor list.",
    "corrected_claim": ""
   },
@@ -438,7 +438,7 @@
    "label": "observed",
    "claim": "Init rc files reference several group files by path: vendor init.anorak.rc line 246 runs insmod_sh with /vendor/etc/init.insmod.cfg; line 291 runs vendor.irsc_util with /vendor/etc/sec_config; line 296 runs vendor.msm_irqbalance with /vendor/etc/msm_irqbalance.conf; system logd.rc writes /dev/event-log-tags; system_ext mrsystemservice.rc line 18 names the trackingPolicy profile through trackingservice.rc.",
    "evidence": "cmd: grep -n -E 'init\\.insmod\\.cfg|/vendor/etc/sec_config|msm_irqbalance\\.conf' mnt/vendor_a/etc/init/hw/init.anorak.rc   out: 246:service insmod_sh /vendor/bin/init.insmod.sh /vendor/etc/init.insmod.cfg / 291:service vendor.irsc_util /vendor/bin/irsc_util \"/vendor/etc/sec_config\" / 296:service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f \"/vendor/etc/msm_irqbalance.conf\". cmd: grep -n 'event-log-tags' mnt/system_a/system/etc/init/logd.rc   out: 29: write /dev/event-log-tags. cmd: grep -n 'trackingPolicy' mnt/system_ext_a/etc/init/trackingservice.rc   out: 18: task_profiles trackingPolicy",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "Lines 246 (insmod_sh with /vendor/etc/init.insmod.cfg), 291 (vendor.irsc_util with /vendor/etc/sec_config), 296 (vendor.msm_irqbalance with /vendor/etc/msm_irqbalance.conf) and logd.rc line 29 (write /dev/event-log-tags) are confirmed. The trackingPolicy reference is at trackingservice.rc line 18 (task_profiles trackingPolicy), not at mrsystemservice.rc. mrsystemservice.rc line 18 reads task_profiles mrSystemPolicy.",
    "corrected_claim": "Init rc files reference several group files by path: vendor init.anorak.rc line 246 runs insmod_sh with /vendor/etc/init.insmod.cfg; line 291 runs vendor.irsc_util with /vendor/etc/sec_config; line 296 runs vendor.msm_irqbalance with /vendor/etc/msm_irqbalance.conf; system logd.rc writes /dev/event-log-tags; system_ext trackingservice.rc line 18 names the trackingPolicy task profile for service trackingservice, and system_ext mrsystemservice.rc line 18 names the mrSystemPolicy task profile."
   },
@@ -447,7 +447,7 @@
    "label": "observed",
    "claim": "SELinux file contexts map several group files: /system/etc/event-log-tags to system_event_log_tags_file (plat_file_contexts line 579), /system/etc/task_profiles/cgroups_[0-9]+.json to cgroup_desc_api_file (line 343) and /system/etc/task_profiles/task_profiles_[0-9]+.json to task_profiles_api_file (line 347). Many other group files (fonts, facetracking, perfstream, threadpolicy, openxr, resourcemanager, linker.config.pb, fs_config_dirs) have no matching context line in the mounted contexts files.",
    "evidence": "cmd: grep -n -F 'event-log-tags' mnt/system_a/system/etc/selinux/plat_file_contexts   out: 579:/system/etc/event-log-tags              u:object_r:system_event_log_tags_file:s0. cmd: grep -n -E 'cgroups_\\[0-9\\]|task_profiles_\\[0-9\\]' mnt/system_a/system/etc/selinux/plat_file_contexts   out: 343:/system/etc/task_profiles/cgroups_[0-9]+\\.json u:object_r:cgroup_desc_api_file:s0 / 347:/system/etc/task_profiles/task_profiles_[0-9]+\\.json u:object_r:task_profiles_api_file:s0. cmd: grep -rn -E 'etc/(bpf|ppp|openxr|threadpolicy|linker\\.config|fonts|facetracking|perfstream|peripheralconfig|fs_config)' mnt --include='*contexts*'   out: no match for these names",
-   "verdict": "confirmed",
+   "verdict": "holds",
    "reason": "plat_file_contexts line 579 maps /system/etc/event-log-tags to system_event_log_tags_file; line 343 maps cgroups_[0-9]+.json to cgroup_desc_api_file; line 347 maps task_profiles_[0-9]+.json to task_profiles_api_file. In the three mounted contexts files, no line matches fonts.xml, facetracking, perfstream (product_a/etc/perfstream/device.cfg), threadpolicy, openxr, resourcemanager, linker.config.pb or fs_config_dirs. Gap: product_file_contexts is not in the mount, so the product partition's own labels cannot be checked.",
    "corrected_claim": ""
   },
@@ -456,7 +456,7 @@
    "label": "verified",
    "claim": "The text file vendor_a/etc/msm_irqbalance.conf (467 bytes) and vendor_a/etc/sec_config (331 lines) are consumed by the init services listed in X01. The mount holds 2 extra terminfo-style and cacerts rows outside the group, as recorded in C05.",
    "evidence": "cmd: wc -l mnt/vendor_a/etc/sec_config   out: 331 mnt/vendor_a/etc/sec_config. cmd: grep -n 'msm_irqbalance' mnt/vendor_a/etc/init/hw/init.anorak.rc   out: 296:service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f \"/vendor/etc/msm_irqbalance.conf\"",
-   "verdict": "needs_change",
+   "verdict": "corrected",
    "reason": "msm_irqbalance.conf is 467 bytes and sec_config is 331 lines, and both are consumed by the init services in X01. The two extra files outside the group are cacerts files (a3896b44.0 and a7605362.0, classified gpu, see C05), not terminfo files. All 41 terminfo files on disk are inside the group.",
    "corrected_claim": "The text file vendor_a/etc/msm_irqbalance.conf (467 bytes) and vendor_a/etc/sec_config (331 lines) are consumed by the init services listed in X01. The mount holds 2 extra cacerts files outside the group (a3896b44.0 and a7605362.0, classified gpu), as recorded in C05; all 41 terminfo files on disk are inside the group."
   }

@@ -6,7 +6,7 @@
 
 相机组包含分布在五个分区中的 83 个文件（vendor_a 57 个、system_a 12 个、system_ext_a 6 个、odm_a 4 个、product_a 4 个）。其核心是一个 QTI Camera HAL3 模块（vendor_a/lib64/hw/camera.qcom.so，hw_module id 为 "camera"，模块 API 3.0），它从 vendor_a/lib64/camera/components 加载 CHI 管线以及 3A/统计组件库；XR 相机 HAL 实现（vendor_a/lib64/libxrcamerahal.so）则通过一个 odm 垫片库（odm_a/lib64/libcamerahal.so，导出 CameraHalC_Init/Start/Stop/Deinit）访问。一组相机 mux-mode 服务（system_ext 中的 cameramuxmodeservice 守护进程、一个客户端监控库、一个 JSON 读取库和一个命令行客户端）由 /product/etc/cameramuxmode/config.json（v1）和 configv2.json（版本 3）配置，其中 configv2.json 在 vendor_a 中有副本，并由 odm 传感器服务读取。CAMERA_ICP 固件是一个 Xtensa ELF32 MDT 镜像，具有 21 个程序头，其中 13 个段文件携带数据。vendor_a/etc/camera 包含 16 个针对 IMX471、OG01A1B 和 OV7251 传感器的调优与传感器模块数据块（Chromatix 头文件、AEC/AWB 表、CVA 和深度 AE JSON），system_a 则包含 32 位和 64 位构建版本的框架及 HIDL 客户端库（camera.common@1.0、camera.device@3.2、camera2 NDK、camera client、camera metadata）。已挂载分区中的 init 引用仅提到 cameramuxmodeservice；SELinux 标签涵盖 mux-mode 服务、其配置目录与属性，以及固件目录。
 
-角色表为本组 83 个文件各包含一行（38 个 verified、43 个 observed、2 个 inferred、0 个 unverified）。该表位于 `data/subsystems/camera/roles.tsv`。
+角色表：`data/subsystems/camera/roles.tsv`（83 个文件：38 个 verified，43 个 observed，2 个 inferred，0 个 unverified）。
 
 ## 已验证的声明
 
@@ -52,8 +52,6 @@
 
 ## 修正措辞后的声明
 
-下方结论以数据所支持的措辞重新表述。
-
 - **C07** (observed)：camera.qcom.so 中保存了其文件与组件位置的字面路径（/vendor/lib64/camera/components/、/vendor/etc/camera、/data/vendor/camera、/data/vendor/camera/metadata）、格式模式 %s/%s%s_%s_%d.bin、%s/GlobalUsecase%s_%d.bin 和 %s/PerUsecase%s_%d.bin，以及属性键，例如 persist.vendor.camera.isp.enablePiAEC、persist.vendor.camera.eeprom.reload 和 persist.vendor.camera.enablemetahashmap。
 - **C12** (verified)：odm_a/lib64/libcamerahal.so 是一个已剥离符号的 AArch64 共享对象（SONAME 为 libcamerahal.so，36,896 字节）。其 C 链接导出符号为 CameraHalC_Init、CameraHalC_Start、CameraHalC_Stop 和 CameraHalC_Deinit；它还导出 CameraHal 命名空间下的 14 个 C++ 修饰符号。其 NEEDED 条目包括 libbase、libimagebuffer、liblog、libmros_vendor_sysprops、libsensortelemetry、libui 和 libutils（另有 libc++、libc、libm 和 libdl）。
 - **C13** (observed)：odm 相机 HAL 垫片库通过 dlopen 加载其实现，并按名称引用该库中的 CreateCameraHal 入口点；它并不导出未修饰的 CreateCameraHal 符号。其候选名称包括 libfastpathcamerahal.so 以及一个以 xrcamera 命名的库（libxrcamerahal.so）。其属性为 persist.vendor.camera.hal 和 vendor.camera.hal.debug_file。
@@ -65,8 +63,6 @@
 - **C41** (observed)：camera.qcom.so 中提到一个示例传感器模块文件 com.qti.sensormodule.truly_ov8856.bin 及其双通道变体，它们体现了较短的 com.qti.sensormodule.<sensor>.bin 命名方式。本组中的六个 bin 文件采用较长的 com.qti.sensormodule.camNN_<vendor>_eureka_<sensor>_<side>_csiN.bin 格式（见 C40）。在 camera.qcom.so 中，既没有与本组文件名字面匹配的内容，也没有 eureka、cam04、imx471、og01a1b 或 ov7251 这些 token 的字面匹配。
 
 ## 已排除的声明
-
-下方声明已排除；每条都给出了原因。
 
 | ID | 声明 | 原因 |
 |---|---|---|
